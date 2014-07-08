@@ -1,0 +1,23 @@
+{
+  "name": "tns-template-hello-world",
+  "version": "0.1.0",
+  "description": "Hello World project template for NativeScript",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/NativeScript/template-hello-world.git"
+  },
+  "keywords": [
+    "nativescript",
+    "tns",
+    "appbuilder",
+    "telerik",
+    "mobile"
+  ],
+  "author": "Telerik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NativeScript/template-hello-world/issues"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/NativeScript/template-hello-world"
+}
