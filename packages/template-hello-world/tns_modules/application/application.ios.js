@@ -1,4 +1,4 @@
-﻿var appModule = require("application/application-common");
+var appModule = require("application/application-common");
 
 require("utils/module-merge").merge(appModule, exports);
 
@@ -70,6 +70,9 @@ var iOSApplication = (function () {
                     if (exports.onLowMemory) {
                         exports.onLowMemory();
                     }
+                },
+                applicationOpenURLSourceApplicationAnnotation: function (application, url, annotation) {
+                      Foundation.NSNotificationCenter.defaultCenter().postNotificationNameObjectUserInfo("com.telerik.TLKApplicationOpenURL", null, { TLKApplicationOpenURL: url , TLKApplication: application })
                 }
             }
         });
