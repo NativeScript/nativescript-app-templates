@@ -1,14 +1,59 @@
-﻿var types = require("location/location-types");
-
+var __extends = this.__extends || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+var enums = require("ui/enums");
+var locationModule = require("location");
+var LocationListenerImpl = (function (_super) {
+    __extends(LocationListenerImpl, _super);
+    function LocationListenerImpl() {
+        _super.apply(this, arguments);
+    }
+    LocationListenerImpl.new = function () {
+        return _super.new.call(this);
+    };
+    LocationListenerImpl.prototype.initWithLocationErrorOptions = function (location, error, options) {
+        this._onLocation = location;
+        if (error) {
+            this._onError = error;
+        }
+        if (options) {
+            this._options = options;
+        }
+        this._maximumAge = (this._options && ("number" === typeof this._options.maximumAge)) ? this._options.maximumAge : undefined;
+        return this;
+    };
+    LocationListenerImpl.prototype.locationManagerDidUpdateLocations = function (manager, locations) {
+        for (var i = 0; i < locations.count; i++) {
+            var location = LocationManager._locationFromCLLocation(locations.objectAtIndex(i));
+            if (this._maximumAge) {
+                if (location.timestamp.valueOf() + this._maximumAge > new Date().valueOf()) {
+                    this._onLocation(location);
+                }
+            }
+            else {
+                this._onLocation(location);
+            }
+        }
+    };
+    LocationListenerImpl.prototype.locationManagerDidFailWithError = function (manager, error) {
+        if (this._onError) {
+            this._onError(new Error(error.localizedDescription));
+        }
+    };
+    LocationListenerImpl.ObjCProtocols = [CLLocationManagerDelegate];
+    return LocationListenerImpl;
+})(NSObject);
 var LocationManager = (function () {
     function LocationManager() {
-        this.isStarted = false;
-        this.desiredAccuracy = 3 /* HIGH */;
-        this.updateDistance = -1;
-        this.iosLocationManager = new CoreLocation.CLLocationManager();
+        this.desiredAccuracy = enums.Accuracy.any;
+        this.updateDistance = kCLDistanceFilterNone;
+        this.iosLocationManager = new CLLocationManager();
     }
-    LocationManager.locationFromCLLocation = function (clLocation) {
-        var location = new types.Location();
+    LocationManager._locationFromCLLocation = function (clLocation) {
+        var location = new locationModule.Location();
         location.latitude = clLocation.coordinate.latitude;
         location.longitude = clLocation.coordinate.longitude;
         location.altitude = clLocation.altitude;
@@ -16,30 +61,26 @@ var LocationManager = (function () {
         location.verticalAccuracy = clLocation.verticalAccuracy;
         location.speed = clLocation.speed;
         location.direction = clLocation.course;
-        location.timestamp = new Date(clLocation.timestamp.timeIntervalSince1970() * 1000);
+        location.timestamp = new Date(clLocation.timestamp.timeIntervalSince1970 * 1000);
         location.ios = clLocation;
-
         return location;
     };
-
     LocationManager.iosLocationFromLocation = function (location) {
         var hAccuracy = location.horizontalAccuracy ? location.horizontalAccuracy : -1;
         var vAccuracy = location.verticalAccuracy ? location.verticalAccuracy : -1;
         var speed = location.speed ? location.speed : -1;
         var course = location.direction ? location.direction : -1;
         var altitude = location.altitude ? location.altitude : -1;
-        var timestamp = location.timestamp ? Foundation.NSDate.dateWithTimeIntervalSince1970(location.timestamp.getTime()) : null;
-        var iosLocation = CoreLocation.CLLocation.initWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyCourseSpeedTimestamp(CoreLocation.CLLocationCoordinate2DMake(location.latitude, location.longitude), altitude, hAccuracy, vAccuracy, course, speed, timestamp);
+        var timestamp = location.timestamp ? NSDate.dateWithTimeIntervalSince1970(location.timestamp.getTime()) : null;
+        var iosLocation = CLLocation.alloc().initWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyCourseSpeedTimestamp(CLLocationCoordinate2DMake(location.latitude, location.longitude), altitude, hAccuracy, vAccuracy, course, speed, timestamp);
         return iosLocation;
     };
-
     LocationManager.isEnabled = function () {
-        if (CoreLocation.CLLocationManager.locationServicesEnabled()) {
-            return true;
+        if (CLLocationManager.locationServicesEnabled()) {
+            return (CLLocationManager.authorizationStatus() === CLAuthorizationStatus.kCLAuthorizationStatusAuthorizedWhenInUse || CLLocationManager.authorizationStatus() === CLAuthorizationStatus.kCLAuthorizationStatusAuthorizedAlways || CLLocationManager.authorizationStatus() === CLAuthorizationStatus.kCLAuthorizationStatusAuthorized);
         }
         return false;
     };
-
     LocationManager.distance = function (loc1, loc2) {
         if (!loc1.ios) {
             loc1.ios = LocationManager.iosLocationFromLocation(loc1);
@@ -49,73 +90,33 @@ var LocationManager = (function () {
         }
         return loc1.ios.distanceFromLocation(loc2.ios);
     };
-
     LocationManager.prototype.startLocationMonitoring = function (onLocation, onError, options) {
-        if (!this.isStarted) {
-            var LocationListener = Foundation.NSObject.extends({
-                setupWithFunctions: function (onLocation, onError) {
-                    this.onLocation = onLocation;
-                    this.onError = onError;
-
-                    this.maximumAge = (options && ("number" === typeof options.maximumAge)) ? options.maximumAge : undefined;
-                }
-            }, {}).implements({
-                protocol: "CLLocationManagerDelegate",
-                implementation: {
-                    locationManagerDidUpdateLocations: function (manager, locations) {
-                        for (var i = 0; i < locations.count(); i++) {
-                            var location = LocationManager.locationFromCLLocation(locations.objectAtIndex(i));
-                            if (this.maximumAge) {
-                                if (location.timestamp.valueOf() + this.maximumAge > new Date().valueOf()) {
-                                    this.onLocation(location);
-                                }
-                            } else {
-                                this.onLocation(location);
-                            }
-                        }
-                    },
-                    locationManagerDidFailWithError: function (manager, error) {
-                        console.error('location error received ' + error.localizedDescription());
-                        if (this.onError) {
-                            this.onError(new Error(error.localizedDescription()));
-                        }
-                    }
-                }
-            });
-
+        if (!this.listener) {
             if (options) {
-                if (options.desiredAccuracy)
+                if (options.desiredAccuracy) {
                     this.desiredAccuracy = options.desiredAccuracy;
-                if (options.updateDistance)
+                }
+                if (options.updateDistance) {
                     this.updateDistance = options.updateDistance;
+                }
             }
-
-            this.listener = new LocationListener();
-            this.listener.setupWithFunctions(onLocation, onError);
+            this.listener = LocationListenerImpl.new().initWithLocationErrorOptions(onLocation, onError, options);
             this.iosLocationManager.delegate = this.listener;
             this.iosLocationManager.desiredAccuracy = this.desiredAccuracy;
             this.iosLocationManager.distanceFilter = this.updateDistance;
             this.iosLocationManager.startUpdatingLocation();
-            this.isStarted = true;
-        } else if (onError) {
-            onError(new Error('location monitoring already started'));
         }
     };
-
     LocationManager.prototype.stopLocationMonitoring = function () {
-        if (this.isStarted) {
-            this.iosLocationManager.stopUpdatingLocation();
-            this.iosLocationManager.delegate = null;
-            this.listener = null;
-            this.isStarted = false;
-        }
+        this.iosLocationManager.stopUpdatingLocation();
+        this.iosLocationManager.delegate = null;
+        this.listener = null;
     };
-
     Object.defineProperty(LocationManager.prototype, "lastKnownLocation", {
         get: function () {
             var clLocation = this.iosLocationManager.location;
-            if (null != clLocation) {
-                return LocationManager.locationFromCLLocation(clLocation);
+            if (clLocation) {
+                return LocationManager._locationFromCLLocation(clLocation);
             }
             return null;
         },
@@ -125,4 +126,3 @@ var LocationManager = (function () {
     return LocationManager;
 })();
 exports.LocationManager = LocationManager;
-//# sourceMappingURL=location-manager.ios.js.map

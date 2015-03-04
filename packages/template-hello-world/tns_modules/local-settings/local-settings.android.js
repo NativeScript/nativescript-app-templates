@@ -1,13 +1,10 @@
-﻿var appModule = require("application/application");
+var appModule = require("application");
 var Common = require("local-settings/local-settings-common");
-
 var sharedPreferences = appModule.android.context.getSharedPreferences("prefs.db", 0);
-
 exports.hasKey = function (key) {
     Common.checkKey(key);
     return sharedPreferences.contains(key);
 };
-
 exports.getBoolean = function (key, defaultValue) {
     Common.checkKey(key);
     if (exports.hasKey(key)) {
@@ -15,7 +12,6 @@ exports.getBoolean = function (key, defaultValue) {
     }
     return defaultValue;
 };
-
 exports.getString = function (key, defaultValue) {
     Common.checkKey(key);
     if (exports.hasKey(key)) {
@@ -23,7 +19,6 @@ exports.getString = function (key, defaultValue) {
     }
     return defaultValue;
 };
-
 exports.getNumber = function (key, defaultValue) {
     Common.checkKey(key);
     if (exports.hasKey(key)) {
@@ -31,7 +26,6 @@ exports.getNumber = function (key, defaultValue) {
     }
     return defaultValue;
 };
-
 exports.setBoolean = function (key, value) {
     Common.checkKey(key);
     Common.ensureValidValue(value, "boolean");
@@ -39,7 +33,6 @@ exports.setBoolean = function (key, value) {
     editor.putBoolean(key, value);
     editor.commit();
 };
-
 exports.setString = function (key, value) {
     Common.checkKey(key);
     Common.ensureValidValue(value, "string");
@@ -47,7 +40,6 @@ exports.setString = function (key, value) {
     editor.putString(key, value);
     editor.commit();
 };
-
 exports.setNumber = function (key, value) {
     Common.checkKey(key);
     Common.ensureValidValue(value, "number");
@@ -55,11 +47,9 @@ exports.setNumber = function (key, value) {
     editor.putFloat(key, float(value));
     editor.commit();
 };
-
 exports.remove = function (key) {
     Common.checkKey(key);
     var editor = sharedPreferences.edit();
     editor.remove(key);
     editor.commit();
 };
-//# sourceMappingURL=local-settings.android.js.map
