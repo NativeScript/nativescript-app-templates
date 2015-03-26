@@ -11,6 +11,7 @@
     "bugs": {
         "url":"https://github.com/NativeScript/template-hello-world/issues"
     },
+    "main": "app.js",
     "license":"Apache-2.0",
     "homepage":"https://github.com/NativeScript/template-hello-world"
 }
