@@ -49,21 +49,13 @@ exports.eachInheritableProperty = eachInheritableProperty;
 var Property = (function (_super) {
     __extends(Property, _super);
     function Property(name, cssName, metadata, valueConverter) {
-        _super.call(this, name, "Style", metadata);
+        _super.call(this, name, "Style", metadata, valueConverter);
         this._cssName = cssName;
-        this._valueConverter = valueConverter;
         registerProperty(this);
     }
     Object.defineProperty(Property.prototype, "cssName", {
         get: function () {
             return this._cssName;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Property.prototype, "valueConverter", {
-        get: function () {
-            return this._valueConverter;
         },
         enumerable: true,
         configurable: true

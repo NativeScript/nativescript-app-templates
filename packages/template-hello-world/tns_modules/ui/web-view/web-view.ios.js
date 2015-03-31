@@ -19,12 +19,19 @@ var UIWebViewDelegateImpl = (function (_super) {
         this._owner = owner;
         return this;
     };
+    UIWebViewDelegateImpl.prototype.webViewShouldStartLoadWithRequestNavigationType = function (webView, request, navigationType) {
+        if (request.URL) {
+            trace.write("UIWebViewDelegateClass.webViewShouldStartLoadWithRequestNavigationType(" + request.URL.absoluteString + ", " + navigationType + ")", trace.categories.Debug);
+            this._owner._onLoadStarted(request.URL.absoluteString);
+        }
+        return true;
+    };
     UIWebViewDelegateImpl.prototype.webViewDidStartLoad = function (webView) {
-        trace.write("UIWebViewDelegateClass.webViewDidStartLoad()", trace.categories.Debug);
+        trace.write("UIWebViewDelegateClass.webViewDidStartLoad(" + webView.request.URL + ")", trace.categories.Debug);
     };
     UIWebViewDelegateImpl.prototype.webViewDidFinishLoad = function (webView) {
         trace.write("UIWebViewDelegateClass.webViewDidFinishLoad(" + webView.request.URL + ")", trace.categories.Debug);
-        this._owner._onFinished(webView.request.URL.absoluteString);
+        this._owner._onLoadFinished(webView.request.URL.absoluteString);
     };
     UIWebViewDelegateImpl.prototype.webViewDidFailLoadWithError = function (webView, error) {
         var url = this._owner.url;
@@ -32,7 +39,7 @@ var UIWebViewDelegateImpl = (function (_super) {
             url = webView.request.URL.absoluteString;
         }
         trace.write("UIWebViewDelegateClass.webViewDidFailLoadWithError(" + error.localizedDescription + ")", trace.categories.Debug);
-        this._owner._onFinished(url, error.localizedDescription);
+        this._owner._onLoadFinished(url, error.localizedDescription);
     };
     UIWebViewDelegateImpl.ObjCProtocols = [UIWebViewDelegate];
     return UIWebViewDelegateImpl;

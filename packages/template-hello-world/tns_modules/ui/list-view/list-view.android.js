@@ -7,11 +7,23 @@ var __extends = this.__extends || function (d, b) {
 var common = require("ui/list-view/list-view-common");
 var layout = require("ui/layouts/layout");
 var stackLayout = require("ui/layouts/stack-layout");
+var color = require("color");
 var ITEMLOADING = common.knownEvents.itemLoading;
 var LOADMOREITEMS = common.knownEvents.loadMoreItems;
 var ITEMTAP = common.knownEvents.itemTap;
 var REALIZED_INDEX = "realizedIndex";
 require("utils/module-merge").merge(common, exports);
+function onSeparatorColorPropertyChanged(data) {
+    var bar = data.object;
+    if (!bar.android) {
+        return;
+    }
+    if (data.newValue instanceof color.Color) {
+        bar.android.setDivider(new android.graphics.drawable.ColorDrawable(data.newValue.android));
+        bar.android.setDividerHeight(1);
+    }
+}
+common.ListView.separatorColorProperty.metadata.onSetNativeValue = onSeparatorColorPropertyChanged;
 var ListView = (function (_super) {
     __extends(ListView, _super);
     function ListView() {
@@ -33,11 +45,11 @@ var ListView = (function (_super) {
                     return;
                 }
                 if (scrollState === android.widget.AbsListView.OnScrollListener.SCROLL_STATE_IDLE) {
-                    owner._setValue(common.isScrollingProperty, false);
+                    owner._setValue(common.ListView.isScrollingProperty, false);
                     owner._notifyScrollIdle();
                 }
                 else {
-                    owner._setValue(common.isScrollingProperty, true);
+                    owner._setValue(common.ListView.isScrollingProperty, true);
                 }
             },
             onScroll: function (view, firstVisibleItem, visibleItemCount, totalItemCount) {
@@ -70,10 +82,10 @@ var ListView = (function (_super) {
         configurable: true
     });
     ListView.prototype.refresh = function () {
-        if (!this._android || !this._android.Adapter) {
+        if (!this._android || !this._android.getAdapter()) {
             return;
         }
-        this.android.Adapter.notifyDataSetChanged();
+        this.android.getAdapter().notifyDataSetChanged();
     };
     ListView.prototype._onDetached = function (force) {
         _super.prototype._onDetached.call(this, force);

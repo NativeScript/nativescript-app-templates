@@ -7,9 +7,6 @@ var __extends = this.__extends || function (d, b) {
 var view = require("ui/core/view");
 var dependencyObservable = require("ui/core/dependency-observable");
 var proxy = require("ui/core/proxy");
-exports.valueProperty = new dependencyObservable.Property("value", "Slider", new proxy.PropertyMetadata(0));
-exports.minValueProperty = new dependencyObservable.Property("minValue", "Slider", new proxy.PropertyMetadata(0));
-exports.maxValueProperty = new dependencyObservable.Property("maxValue", "Slider", new proxy.PropertyMetadata(100));
 var Slider = (function (_super) {
     __extends(Slider, _super);
     function Slider() {
@@ -17,28 +14,28 @@ var Slider = (function (_super) {
     }
     Object.defineProperty(Slider.prototype, "value", {
         get: function () {
-            return this._getValue(exports.valueProperty);
+            return this._getValue(Slider.valueProperty);
         },
         set: function (value) {
             var newValue = value;
             newValue = Math.max(newValue, this.minValue);
             newValue = Math.min(newValue, this.maxValue);
-            this._setValue(exports.valueProperty, newValue);
+            this._setValue(Slider.valueProperty, newValue);
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(Slider.prototype, "minValue", {
         get: function () {
-            return this._getValue(exports.minValueProperty);
+            return this._getValue(Slider.minValueProperty);
         },
         set: function (newValue) {
-            this._setValue(exports.minValueProperty, newValue);
+            this._setValue(Slider.minValueProperty, newValue);
             if (newValue > this.maxValue) {
-                this._setValue(exports.maxValueProperty, newValue);
+                this._setValue(Slider.maxValueProperty, newValue);
             }
             if (newValue > this.value) {
-                this._setValue(exports.valueProperty, newValue);
+                this._setValue(Slider.valueProperty, newValue);
             }
         },
         enumerable: true,
@@ -46,20 +43,23 @@ var Slider = (function (_super) {
     });
     Object.defineProperty(Slider.prototype, "maxValue", {
         get: function () {
-            return this._getValue(exports.maxValueProperty);
+            return this._getValue(Slider.maxValueProperty);
         },
         set: function (newValue) {
-            this._setValue(exports.maxValueProperty, newValue);
+            this._setValue(Slider.maxValueProperty, newValue);
             if (newValue < this.minValue) {
-                this._setValue(exports.minValueProperty, newValue);
+                this._setValue(Slider.minValueProperty, newValue);
             }
             if (newValue < this.value) {
-                this._setValue(exports.valueProperty, newValue);
+                this._setValue(Slider.valueProperty, newValue);
             }
         },
         enumerable: true,
         configurable: true
     });
+    Slider.valueProperty = new dependencyObservable.Property("value", "Slider", new proxy.PropertyMetadata(0));
+    Slider.minValueProperty = new dependencyObservable.Property("minValue", "Slider", new proxy.PropertyMetadata(0));
+    Slider.maxValueProperty = new dependencyObservable.Property("maxValue", "Slider", new proxy.PropertyMetadata(100));
     return Slider;
 })(view.View);
 exports.Slider = Slider;

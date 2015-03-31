@@ -1,3 +1,4 @@
+exports.Transparent = "#00000000";
 exports.AliceBlue = "#F0F8FF";
 exports.AntiqueWhite = "#FAEBD7";
 exports.Aqua = "#00FFFF";

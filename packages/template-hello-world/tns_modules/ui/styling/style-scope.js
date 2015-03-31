@@ -15,34 +15,44 @@ var StyleScope = (function () {
         },
         set: function (value) {
             this._css = value;
+            this._cssFileName = undefined;
             this._cssSelectors = undefined;
             this._reset();
         },
         enumerable: true,
         configurable: true
     });
-    StyleScope.prototype.addCss = function (cssString) {
+    StyleScope.prototype.addCss = function (cssString, cssFileName) {
         if (this._css === undefined) {
             this._css = cssString;
         }
         else {
             this._css += cssString;
         }
+        this._cssFileName = cssFileName;
         this._reset();
         if (this._cssSelectors) {
-            var addedCssTree = cssParser.parse(cssString, undefined);
-            var addedSelectors = StyleScope.createSelectorsFromSyntaxTree(addedCssTree);
+            var addedSelectors = StyleScope.createSelectorsFromCss(cssString, cssFileName);
             this._cssSelectors = this._joinCssSelectorsArrays([this._cssSelectors, addedSelectors]);
+        }
+    };
+    StyleScope.createSelectorsFromCss = function (css, cssFileName) {
+        try {
+            var pageCssSyntaxTree = css ? cssParser.parse(css, { source: cssFileName }) : null;
+            var pageCssSelectors;
+            if (pageCssSyntaxTree) {
+                pageCssSelectors = StyleScope.createSelectorsFromSyntaxTree(pageCssSyntaxTree);
+            }
+            return pageCssSelectors;
+        }
+        catch (e) {
+            trace.write("Css styling failed: " + e, trace.categories.Error, trace.messageType.error);
         }
     };
     StyleScope.prototype.ensureSelectors = function () {
         if (!this._cssSelectors && (this._css || application.cssSelectorsCache)) {
             var applicationCssSelectors = application.cssSelectorsCache ? application.cssSelectorsCache : null;
-            var pageCssSyntaxTree = this._css ? cssParser.parse(this._css, undefined) : null;
-            var pageCssSelectors;
-            if (pageCssSyntaxTree) {
-                pageCssSelectors = StyleScope.createSelectorsFromSyntaxTree(pageCssSyntaxTree);
-            }
+            var pageCssSelectors = StyleScope.createSelectorsFromCss(this._css, this._cssFileName);
             this._cssSelectors = this._joinCssSelectorsArrays([applicationCssSelectors, pageCssSelectors]);
         }
     };
@@ -140,7 +150,7 @@ function applyInlineSyle(view, style) {
         cssSelector.applyInlineSyle(view, filteredDeclarations);
     }
     catch (ex) {
-        trace.write("Applying local style failed: " + ex, trace.categories.Style);
+        trace.write("Applying local style failed: " + ex, trace.categories.Error, trace.messageType.error);
     }
 }
 exports.applyInlineSyle = applyInlineSyle;

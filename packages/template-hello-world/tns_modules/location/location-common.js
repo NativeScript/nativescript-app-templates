@@ -1,7 +1,6 @@
 var timer = require("timer");
-var locationManagerModule = require("location/location-manager");
-var merger = require("utils/module-merge");
-merger.merge(locationManagerModule, exports);
+var defModule = require("location");
+var defaultGetLocationTimeout = 20000;
 var Location = (function () {
     function Location() {
     }
@@ -10,7 +9,7 @@ var Location = (function () {
 exports.Location = Location;
 exports.getLocation = function (options) {
     var timerId;
-    var locationManager = new locationManagerModule.LocationManager();
+    var locationManager = new defModule.LocationManager();
     if (options && (0 === options.timeout)) {
         return new Promise(function (resolve, reject) {
             var location = locationManager.lastKnownLocation;
@@ -33,7 +32,7 @@ exports.getLocation = function (options) {
         });
     }
     return new Promise(function (resolve, reject) {
-        if (!locationManagerModule.LocationManager.isEnabled()) {
+        if (!defModule.LocationManager.isEnabled()) {
             return reject(new Error("Location service is disabled"));
         }
         locationManager.startLocationMonitoring(function (location) {
@@ -65,7 +64,7 @@ exports.getLocation = function (options) {
             timerId = timer.setTimeout(function () {
                 locationManager.stopLocationMonitoring();
                 reject(new Error("timeout searching for location"));
-            }, options.timeout);
+            }, options.timeout || defaultGetLocationTimeout);
         }
     });
 };

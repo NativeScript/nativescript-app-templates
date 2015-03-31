@@ -115,7 +115,7 @@ var PropertyMetadata = (function () {
 })();
 exports.PropertyMetadata = PropertyMetadata;
 var Property = (function () {
-    function Property(name, ownerType, metadata) {
+    function Property(name, ownerType, metadata, valueConverter) {
         this._key = generatePropertyKey(name, ownerType, true);
         if (propertyFromKey[this._key]) {
             throw new Error("Property " + name + " already registered for type " + ownerType + ".");
@@ -131,6 +131,7 @@ var Property = (function () {
             metadata.options = PropertyMetadataSettings.None;
         }
         this._id = propertyIdCounter++;
+        this._valueConverter = valueConverter;
     }
     Object.defineProperty(Property.prototype, "name", {
         get: function () {
@@ -159,6 +160,13 @@ var Property = (function () {
         }
         return true;
     };
+    Object.defineProperty(Property.prototype, "valueConverter", {
+        get: function () {
+            return this._valueConverter;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Property.prototype._getEffectiveValue = function (entry) {
         if (types.isDefined(entry.localValue)) {
             entry.valueSource = ValueSource.Local;
@@ -358,6 +366,9 @@ var DependencyObservable = (function (_super) {
         return this.typeName;
     };
     DependencyObservable.prototype._setValueInternal = function (property, value, source) {
+        if (types.isString(value) && property.valueConverter) {
+            value = property.valueConverter(value);
+        }
         var entry = this._propertyEntries[property.id];
         if (!entry) {
             entry = new PropertyEntry(property);

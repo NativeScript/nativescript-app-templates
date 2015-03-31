@@ -11,6 +11,8 @@ var trace = require("trace");
 var builder = require("ui/builder");
 var fs = require("file-system");
 var utils = require("utils/utils");
+var platform = require("platform");
+var fileResolverModule = require("file-system/file-name-resolver");
 var frameStack = [];
 function buildEntryFromArgs(arg) {
     var entry;
@@ -53,7 +55,7 @@ function resolvePageFromEntry(entry) {
             page = moduleExports.createPage();
         }
         else {
-            page = pageFromBuilder(moduleNamePath, entry.moduleName, moduleExports);
+            page = pageFromBuilder(moduleNamePath, moduleExports);
         }
         if (!(page && page instanceof pages.Page)) {
             throw new Error("Failed to load Page from entry.moduleName: " + entry.moduleName);
@@ -61,17 +63,31 @@ function resolvePageFromEntry(entry) {
     }
     return page;
 }
-function pageFromBuilder(moduleNamePath, moduleName, moduleExports) {
+var fileNameResolver;
+function resolveFilePath(path, ext) {
+    if (!fileNameResolver) {
+        fileNameResolver = new fileResolverModule.FileNameResolver({
+            width: platform.screen.mainScreen.widthDIPs,
+            height: platform.screen.mainScreen.heightDIPs,
+            os: platform.device.os,
+            deviceType: platform.device.deviceType
+        });
+    }
+    return fileNameResolver.resolveFileName(path, ext);
+}
+function pageFromBuilder(moduleNamePath, moduleExports) {
     var page;
     var element;
-    var fileName = moduleNamePath + ".xml";
-    if (fs.File.exists(fileName)) {
+    var fileName = resolveFilePath(moduleNamePath, "xml");
+    if (fileName) {
         trace.write("Loading XML file: " + fileName, trace.categories.Navigation);
         element = builder.load(fileName, moduleExports);
         if (element instanceof pages.Page) {
             page = element;
-            var cssFileName = moduleName + ".css";
-            page.addCssFile(cssFileName);
+            var cssFileName = resolveFilePath(moduleNamePath, "css");
+            if (cssFileName) {
+                page.addCssFile(cssFileName);
+            }
         }
     }
     return page;
@@ -198,7 +214,7 @@ var Frame = (function (_super) {
     });
     Object.defineProperty(Frame.prototype, "backStack", {
         get: function () {
-            return this._backStack;
+            return this._backStack.slice();
         },
         enumerable: true,
         configurable: true
@@ -290,6 +306,8 @@ var Frame = (function (_super) {
     };
     Frame.prototype._removeViewFromNativeVisualTree = function (child) {
         child._isAddedToNativeVisualTree = false;
+    };
+    Frame.prototype._invalidateOptionsMenu = function () {
     };
     Frame.defaultAnimatedNavigation = true;
     return Frame;

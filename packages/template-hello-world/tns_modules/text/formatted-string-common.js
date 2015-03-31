@@ -20,6 +20,18 @@ var FormattedString = (function (_super) {
         this._spans.addEventListener(observableArray.knownEvents.change, this.onSpansCollectionChanged, this);
         this._isDirty = true;
     }
+    Object.defineProperty(FormattedString.prototype, "parent", {
+        get: function () {
+            return this._parent;
+        },
+        set: function (value) {
+            if (this._parent !== value) {
+                this._parent = value;
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(FormattedString.prototype, "fontFamily", {
         get: function () {
             return this._fontFamily;

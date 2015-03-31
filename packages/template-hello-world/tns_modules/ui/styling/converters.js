@@ -1,38 +1,37 @@
 var color = require("color");
 var enums = require("ui/enums");
-var types = require("utils/types");
-function colorConverter(cssValue) {
-    return new color.Color(cssValue);
+function colorConverter(value) {
+    return new color.Color(value);
 }
 exports.colorConverter = colorConverter;
-function fontSizeConverter(cssValue) {
-    var result = parseFloat(cssValue);
+function fontSizeConverter(value) {
+    var result = parseFloat(value);
     return result;
 }
 exports.fontSizeConverter = fontSizeConverter;
-function textAlignConverter(cssValue) {
-    switch (cssValue) {
+function textAlignConverter(value) {
+    switch (value) {
         case enums.TextAlignment.left:
         case enums.TextAlignment.center:
         case enums.TextAlignment.right:
-            return cssValue;
+            return value;
             break;
         default:
-            throw new Error("CSS text-align \"" + cssValue + "\" is not supported.");
+            throw new Error("CSS text-align \"" + value + "\" is not supported.");
             break;
     }
 }
 exports.textAlignConverter = textAlignConverter;
 exports.numberConverter = parseFloat;
-function visibilityConverter(cssValue) {
-    if (types.isString(cssValue) && cssValue.toLowerCase() === enums.Visibility.collapsed) {
+function visibilityConverter(value) {
+    if (value.toLowerCase() === enums.Visibility.collapsed) {
         return enums.Visibility.collapsed;
     }
     return enums.Visibility.visible;
 }
 exports.visibilityConverter = visibilityConverter;
-function opacityConverter(cssValue) {
-    var result = parseFloat(cssValue);
+function opacityConverter(value) {
+    var result = parseFloat(value);
     result = Math.max(0.0, result);
     result = Math.min(1.0, result);
     return result;

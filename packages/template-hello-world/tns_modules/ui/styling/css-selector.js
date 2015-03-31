@@ -49,9 +49,6 @@ var CssSelector = (function () {
             property = styleProperty.getPropertyByCssName(this._declarations[i].property);
             if (property) {
                 resolvedValue = this._declarations[i].value;
-                if (property.valueConverter) {
-                    resolvedValue = property.valueConverter(resolvedValue);
-                }
                 callback(property, resolvedValue);
             }
         }

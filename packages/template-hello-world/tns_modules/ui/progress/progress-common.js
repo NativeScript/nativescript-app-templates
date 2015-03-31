@@ -7,8 +7,6 @@ var __extends = this.__extends || function (d, b) {
 var view = require("ui/core/view");
 var dependencyObservable = require("ui/core/dependency-observable");
 var proxy = require("ui/core/proxy");
-exports.valueProperty = new dependencyObservable.Property("value", "Progress", new proxy.PropertyMetadata(0, dependencyObservable.PropertyMetadataSettings.AffectsLayout));
-exports.maxValueProperty = new dependencyObservable.Property("maxValue", "Progress", new proxy.PropertyMetadata(100, dependencyObservable.PropertyMetadataSettings.AffectsLayout));
 var Progress = (function (_super) {
     __extends(Progress, _super);
     function Progress() {
@@ -18,10 +16,10 @@ var Progress = (function (_super) {
     }
     Object.defineProperty(Progress.prototype, "maxValue", {
         get: function () {
-            return this._getValue(exports.maxValueProperty);
+            return this._getValue(Progress.maxValueProperty);
         },
         set: function (newMaxValue) {
-            this._setValue(exports.maxValueProperty, newMaxValue);
+            this._setValue(Progress.maxValueProperty, newMaxValue);
             if (this.value > newMaxValue) {
                 this.value = newMaxValue;
             }
@@ -31,15 +29,17 @@ var Progress = (function (_super) {
     });
     Object.defineProperty(Progress.prototype, "value", {
         get: function () {
-            return this._getValue(exports.valueProperty);
+            return this._getValue(Progress.valueProperty);
         },
         set: function (value) {
             value = Math.min(value, this.maxValue);
-            this._setValue(exports.valueProperty, value);
+            this._setValue(Progress.valueProperty, value);
         },
         enumerable: true,
         configurable: true
     });
+    Progress.valueProperty = new dependencyObservable.Property("value", "Progress", new proxy.PropertyMetadata(0, dependencyObservable.PropertyMetadataSettings.AffectsLayout));
+    Progress.maxValueProperty = new dependencyObservable.Property("maxValue", "Progress", new proxy.PropertyMetadata(100, dependencyObservable.PropertyMetadataSettings.AffectsLayout));
     return Progress;
 })(view.View);
 exports.Progress = Progress;

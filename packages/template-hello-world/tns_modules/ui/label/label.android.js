@@ -19,7 +19,7 @@ function onTextWrapPropertyChanged(data) {
         label.android.setEllipsize(android.text.TextUtils.TruncateAt.END);
     }
 }
-common.textWrapProperty.metadata.onSetNativeValue = onTextWrapPropertyChanged;
+common.Label.textWrapProperty.metadata.onSetNativeValue = onTextWrapPropertyChanged;
 require("utils/module-merge").merge(common, exports);
 var Label = (function (_super) {
     __extends(Label, _super);

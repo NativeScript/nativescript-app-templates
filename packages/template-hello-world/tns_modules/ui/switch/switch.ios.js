@@ -9,7 +9,7 @@ function onCheckedPropertyChanged(data) {
     var swtch = data.object;
     swtch.ios.on = data.newValue;
 }
-common.checkedProperty.metadata.onSetNativeValue = onCheckedPropertyChanged;
+common.Switch.checkedProperty.metadata.onSetNativeValue = onCheckedPropertyChanged;
 require("utils/module-merge").merge(common, exports);
 var SwitchChangeHandlerImpl = (function (_super) {
     __extends(SwitchChangeHandlerImpl, _super);
@@ -24,7 +24,7 @@ var SwitchChangeHandlerImpl = (function (_super) {
         return this;
     };
     SwitchChangeHandlerImpl.prototype.valueChanged = function (sender) {
-        this._owner._onPropertyChangedFromNative(common.checkedProperty, sender.on);
+        this._owner._onPropertyChangedFromNative(common.Switch.checkedProperty, sender.on);
     };
     SwitchChangeHandlerImpl.ObjCExposedMethods = {
         'valueChanged': { returns: interop.types.void, params: [UISwitch] }

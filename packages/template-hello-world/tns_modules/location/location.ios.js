@@ -6,6 +6,9 @@ var __extends = this.__extends || function (d, b) {
 };
 var enums = require("ui/enums");
 var locationModule = require("location");
+var common = require("location/location-common");
+var merger = require("utils/module-merge");
+merger.merge(common, exports);
 var LocationListenerImpl = (function (_super) {
     __extends(LocationListenerImpl, _super);
     function LocationListenerImpl() {
@@ -50,8 +53,23 @@ var LocationManager = (function () {
     function LocationManager() {
         this.desiredAccuracy = enums.Accuracy.any;
         this.updateDistance = kCLDistanceFilterNone;
-        this.iosLocationManager = new CLLocationManager();
+        var iosLocManager = new CLLocationManager();
+        this.iosLocationManager = new iOSLocationManager(iosLocManager);
     }
+    Object.defineProperty(LocationManager.prototype, "android", {
+        get: function () {
+            return undefined;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(LocationManager.prototype, "ios", {
+        get: function () {
+            return this.iosLocationManager;
+        },
+        enumerable: true,
+        configurable: true
+    });
     LocationManager._locationFromCLLocation = function (clLocation) {
         var location = new locationModule.Location();
         location.latitude = clLocation.coordinate.latitude;
@@ -61,7 +79,8 @@ var LocationManager = (function () {
         location.verticalAccuracy = clLocation.verticalAccuracy;
         location.speed = clLocation.speed;
         location.direction = clLocation.course;
-        location.timestamp = new Date(clLocation.timestamp.timeIntervalSince1970 * 1000);
+        var timeIntervalSince1970 = NSDate.dateWithTimeIntervalSinceDate(0, clLocation.timestamp).timeIntervalSince1970;
+        location.timestamp = new Date(timeIntervalSince1970 * 1000);
         location.ios = clLocation;
         return location;
     };
@@ -71,7 +90,7 @@ var LocationManager = (function () {
         var speed = location.speed ? location.speed : -1;
         var course = location.direction ? location.direction : -1;
         var altitude = location.altitude ? location.altitude : -1;
-        var timestamp = location.timestamp ? NSDate.dateWithTimeIntervalSince1970(location.timestamp.getTime()) : null;
+        var timestamp = location.timestamp ? NSDate.dateWithTimeIntervalSince1970(location.timestamp.getTime() / 1000) : null;
         var iosLocation = CLLocation.alloc().initWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyCourseSpeedTimestamp(CLLocationCoordinate2DMake(location.latitude, location.longitude), altitude, hAccuracy, vAccuracy, course, speed, timestamp);
         return iosLocation;
     };
@@ -101,20 +120,22 @@ var LocationManager = (function () {
                 }
             }
             this.listener = LocationListenerImpl.new().initWithLocationErrorOptions(onLocation, onError, options);
-            this.iosLocationManager.delegate = this.listener;
-            this.iosLocationManager.desiredAccuracy = this.desiredAccuracy;
-            this.iosLocationManager.distanceFilter = this.updateDistance;
-            this.iosLocationManager.startUpdatingLocation();
+            this.iosLocationManager.manager.delegate = this.listener;
+            this.iosLocationManager.manager.desiredAccuracy = this.desiredAccuracy;
+            this.iosLocationManager.manager.distanceFilter = this.updateDistance;
+            this.iosLocationManager.manager.startUpdatingLocation();
+            this.isStarted = true;
         }
     };
     LocationManager.prototype.stopLocationMonitoring = function () {
-        this.iosLocationManager.stopUpdatingLocation();
-        this.iosLocationManager.delegate = null;
+        this.iosLocationManager.manager.stopUpdatingLocation();
+        this.iosLocationManager.manager.delegate = null;
         this.listener = null;
+        this.isStarted = false;
     };
     Object.defineProperty(LocationManager.prototype, "lastKnownLocation", {
         get: function () {
-            var clLocation = this.iosLocationManager.location;
+            var clLocation = this.iosLocationManager.manager.location;
             if (clLocation) {
                 return LocationManager._locationFromCLLocation(clLocation);
             }
@@ -126,3 +147,17 @@ var LocationManager = (function () {
     return LocationManager;
 })();
 exports.LocationManager = LocationManager;
+var iOSLocationManager = (function () {
+    function iOSLocationManager(manager) {
+        this._manager = manager;
+    }
+    Object.defineProperty(iOSLocationManager.prototype, "manager", {
+        get: function () {
+            return this._manager;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return iOSLocationManager;
+})();
+exports.iOSLocationManager = iOSLocationManager;

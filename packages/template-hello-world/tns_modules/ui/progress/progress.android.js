@@ -19,8 +19,8 @@ function onMaxValuePropertyChanged(data) {
     }
     progress.android.setMax(data.newValue);
 }
-common.valueProperty.metadata.onSetNativeValue = onValuePropertyChanged;
-common.maxValueProperty.metadata.onSetNativeValue = onMaxValuePropertyChanged;
+common.Progress.valueProperty.metadata.onSetNativeValue = onValuePropertyChanged;
+common.Progress.maxValueProperty.metadata.onSetNativeValue = onMaxValuePropertyChanged;
 require("utils/module-merge").merge(common, exports);
 var Progress = (function (_super) {
     __extends(Progress, _super);

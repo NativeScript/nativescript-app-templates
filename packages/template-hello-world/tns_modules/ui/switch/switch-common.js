@@ -7,7 +7,6 @@ var __extends = this.__extends || function (d, b) {
 var view = require("ui/core/view");
 var dependencyObservable = require("ui/core/dependency-observable");
 var proxy = require("ui/core/proxy");
-exports.checkedProperty = new dependencyObservable.Property("checked", "Switch", new proxy.PropertyMetadata(false));
 var Switch = (function (_super) {
     __extends(Switch, _super);
     function Switch() {
@@ -15,14 +14,15 @@ var Switch = (function (_super) {
     }
     Object.defineProperty(Switch.prototype, "checked", {
         get: function () {
-            return this._getValue(exports.checkedProperty);
+            return this._getValue(Switch.checkedProperty);
         },
         set: function (value) {
-            this._setValue(exports.checkedProperty, value);
+            this._setValue(Switch.checkedProperty, value);
         },
         enumerable: true,
         configurable: true
     });
+    Switch.checkedProperty = new dependencyObservable.Property("checked", "Switch", new proxy.PropertyMetadata(false));
     return Switch;
 })(view.View);
 exports.Switch = Switch;

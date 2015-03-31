@@ -387,7 +387,7 @@ var GridLayout = (function (_super) {
             this.setRows(attributeValue);
             return true;
         }
-        return _super.prototype.applyXmlAttribute.call(this, attributeName, attributeValue);
+        return false;
     };
     GridLayout.parseItemSpecs = function (value) {
         var result = new Array();

@@ -19,7 +19,7 @@ function onTextWrapPropertyChanged(data) {
         label.ios.numberOfLines = 1;
     }
 }
-common.textWrapProperty.metadata.onSetNativeValue = onTextWrapPropertyChanged;
+common.Label.textWrapProperty.metadata.onSetNativeValue = onTextWrapPropertyChanged;
 require("utils/module-merge").merge(common, exports);
 var Label = (function (_super) {
     __extends(Label, _super);

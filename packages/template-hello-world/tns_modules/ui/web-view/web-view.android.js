@@ -22,20 +22,21 @@ var WebViewClientClass = (function (_super) {
         _super.prototype.onPageStarted.call(this, view, url, favicon);
         if (this._view) {
             trace.write("WebViewClientClass.onPageStarted(" + url + ", " + favicon + ")", trace.categories.Debug);
+            this._view._onLoadStarted(url);
         }
     };
     WebViewClientClass.prototype.onPageFinished = function (view, url) {
         _super.prototype.onPageFinished.call(this, view, url);
         if (this._view) {
             trace.write("WebViewClientClass.onPageFinished(" + url + ")", trace.categories.Debug);
-            this._view._onFinished(url, undefined);
+            this._view._onLoadFinished(url, undefined);
         }
     };
     WebViewClientClass.prototype.onReceivedError = function (view, errorCode, description, failingUrl) {
         _super.prototype.onReceivedError.call(this, view, errorCode, description, failingUrl);
         if (this._view) {
             trace.write("WebViewClientClass.onReceivedError(" + errorCode + ", " + description + ", " + failingUrl + ")", trace.categories.Debug);
-            this._view._onFinished(failingUrl, description + "(" + errorCode + ")");
+            this._view._onLoadFinished(failingUrl, description + "(" + errorCode + ")");
         }
     };
     return WebViewClientClass;

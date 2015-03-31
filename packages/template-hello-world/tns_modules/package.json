@@ -1,15 +1,23 @@
 {
 	"name": "tns-core",
-	"description": "NativeScript core modules",
-	"version": "0.9.0",
+	"description": "Telerik NativeScript Core",
+	"version": "0.4.2",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/NativeScript/cross-platform-modules/commit/dfcc820f2f113ca3f05a4e72414913c34d8736d1"
+	},
 	"files": [
-		"**/*.*"
+		"**/*.*",
+		"**/*"
 	],
+	"license": "Apache-2.0",
 	"devDependencies": {
 		"grunt": "0.4.5",
 		"grunt-contrib-clean": "0.5.0",
 		"grunt-contrib-copy": "0.5.0",
 		"grunt-exec": "0.4.5",
+		"grunt-multi-dest": "1.0.0",
+		"grunt-shell": "1.1.2",
 		"grunt-ts": "1.12.1",
 		"grunt-tslint": "0.4.2",
 		"typescript": "1.4.1"

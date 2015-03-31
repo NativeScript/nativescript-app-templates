@@ -5,6 +5,8 @@ var __extends = this.__extends || function (d, b) {
     d.prototype = new __();
 };
 var common = require("ui/search-bar/search-bar-common");
+var color = require("color");
+var types = require("utils/types");
 var SEARCHTEXT = "searchText";
 var QUERY = "query";
 var EMPTY = "";
@@ -15,7 +17,43 @@ function onTextPropertyChanged(data) {
     }
     bar.android.setQuery(data.newValue, false);
 }
-common.textProperty.metadata.onSetNativeValue = onTextPropertyChanged;
+common.SearchBar.textProperty.metadata.onSetNativeValue = onTextPropertyChanged;
+function onTextFieldBackgroundColorPropertyChanged(data) {
+    var bar = data.object;
+    if (!bar.android) {
+        return;
+    }
+    if (data.newValue instanceof color.Color) {
+        _changeSearchViewBackgroundColor(bar.android, data.newValue.android);
+    }
+}
+common.SearchBar.textFieldBackgroundColorProperty.metadata.onSetNativeValue = onTextFieldBackgroundColorPropertyChanged;
+function onHintPropertyChanged(data) {
+    var bar = data.object;
+    if (!bar.android) {
+        return;
+    }
+    var newValue = data.newValue;
+    if (types.isString(newValue)) {
+        bar.android.setQueryHint(newValue);
+    }
+}
+common.SearchBar.hintProperty.metadata.onSetNativeValue = onHintPropertyChanged;
+function getTextView(bar) {
+    if (bar) {
+        var id = bar.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
+        if (id) {
+            return bar.findViewById(id);
+        }
+    }
+    return undefined;
+}
+function _changeSearchViewBackgroundColor(bar, color) {
+    var textView = getTextView(bar);
+    if (textView) {
+        textView.setBackgroundColor(color);
+    }
+}
 require("utils/module-merge").merge(common, exports);
 var SearchBar = (function (_super) {
     __extends(SearchBar, _super);
@@ -24,6 +62,7 @@ var SearchBar = (function (_super) {
     }
     SearchBar.prototype._createUI = function () {
         this._android = new android.widget.SearchView(this._context);
+        this._android.setIconified(false);
         var that = new WeakRef(this);
         this._android.setOnQueryTextListener(new android.widget.SearchView.OnQueryTextListener({
             get owner() {
@@ -31,7 +70,7 @@ var SearchBar = (function (_super) {
             },
             onQueryTextChange: function (newText) {
                 if (this.owner) {
-                    this.owner._onPropertyChangedFromNative(common.textProperty, newText);
+                    this.owner._onPropertyChangedFromNative(common.SearchBar.textProperty, newText);
                     if (newText === EMPTY && this[SEARCHTEXT] !== newText) {
                         this.owner._emit(common.knownEvents.clear);
                     }
@@ -60,6 +99,9 @@ var SearchBar = (function (_super) {
                 return true;
             }
         }));
+        if (this.textFieldBackgroundColor instanceof color.Color) {
+            _changeSearchViewBackgroundColor(this._android, this.textFieldBackgroundColor.android);
+        }
     };
     Object.defineProperty(SearchBar.prototype, "android", {
         get: function () {

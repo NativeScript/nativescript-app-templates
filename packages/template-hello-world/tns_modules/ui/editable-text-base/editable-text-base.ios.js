@@ -39,28 +39,64 @@ var EditableTextBase = (function (_super) {
         this.ios.keyboardType = newKeyboardType;
     };
     EditableTextBase.prototype._onReturnKeyTypePropertyChanged = function (data) {
-        var newReturnKeyType;
+        var newValue;
         switch (data.newValue) {
             case enums.ReturnKeyType.done:
-                newReturnKeyType = UIReturnKeyType.UIReturnKeyDone;
+                newValue = UIReturnKeyType.UIReturnKeyDone;
                 break;
             case enums.ReturnKeyType.go:
-                newReturnKeyType = UIReturnKeyType.UIReturnKeyGo;
+                newValue = UIReturnKeyType.UIReturnKeyGo;
                 break;
             case enums.ReturnKeyType.next:
-                newReturnKeyType = UIReturnKeyType.UIReturnKeyNext;
+                newValue = UIReturnKeyType.UIReturnKeyNext;
                 break;
             case enums.ReturnKeyType.search:
-                newReturnKeyType = UIReturnKeyType.UIReturnKeySearch;
+                newValue = UIReturnKeyType.UIReturnKeySearch;
                 break;
             case enums.ReturnKeyType.send:
-                newReturnKeyType = UIReturnKeyType.UIReturnKeySend;
+                newValue = UIReturnKeyType.UIReturnKeySend;
                 break;
             default:
-                newReturnKeyType = UIReturnKeyType.UIReturnKeyDefault;
+                newValue = UIReturnKeyType.UIReturnKeyDefault;
                 break;
         }
-        this.ios.returnKeyType = newReturnKeyType;
+        this.ios.returnKeyType = newValue;
+    };
+    EditableTextBase.prototype._onAutocapitalizationTypePropertyChanged = function (data) {
+        var newValue;
+        switch (data.newValue) {
+            case enums.AutocapitalizationType.none:
+                newValue = UITextAutocapitalizationType.UITextAutocapitalizationTypeNone;
+                break;
+            case enums.AutocapitalizationType.words:
+                newValue = UITextAutocapitalizationType.UITextAutocapitalizationTypeWords;
+                break;
+            case enums.AutocapitalizationType.sentences:
+                newValue = UITextAutocapitalizationType.UITextAutocapitalizationTypeSentences;
+                break;
+            case enums.AutocapitalizationType.allCharacters:
+                newValue = UITextAutocapitalizationType.UITextAutocapitalizationTypeAllCharacters;
+                break;
+            default:
+                newValue = UITextAutocapitalizationType.UITextAutocapitalizationTypeSentences;
+                break;
+        }
+        this.ios.autocapitalizationType = newValue;
+    };
+    EditableTextBase.prototype._onAutocorrectPropertyChanged = function (data) {
+        var newValue;
+        switch (data.newValue) {
+            case true:
+                newValue = UITextAutocorrectionType.UITextAutocorrectionTypeYes;
+                break;
+            case false:
+                newValue = UITextAutocorrectionType.UITextAutocorrectionTypeNo;
+                break;
+            default:
+                newValue = UITextAutocorrectionType.UITextAutocorrectionTypeDefault;
+                break;
+        }
+        this.ios.autocorrectionType = newValue;
     };
     return EditableTextBase;
 })(common.EditableTextBase);

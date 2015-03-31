@@ -11,10 +11,9 @@ var TextView = (function (_super) {
     function TextView() {
         _super.apply(this, arguments);
     }
-    TextView.prototype._createUI = function () {
-        _super.prototype._createUI.call(this);
+    TextView.prototype._configureEditText = function () {
+        this.android.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_VARIATION_NORMAL | android.text.InputType.TYPE_TEXT_FLAG_CAP_SENTENCES | android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE);
         this.android.setGravity(android.view.Gravity.TOP | android.view.Gravity.LEFT);
-        this.android.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE);
     };
     return TextView;
 })(common.TextView);

@@ -13,7 +13,7 @@ var view = require("ui/core/view");
 function validateOrientation(value) {
     return value === enums.Orientation.vertical || value === enums.Orientation.horizontal;
 }
-exports.orientationProperty = new dependencyObservable.Property("orientation", "LinearLayout", new proxy.PropertyMetadata(enums.Orientation.vertical, dependencyObservable.PropertyMetadataSettings.AffectsLayout, undefined, validateOrientation));
+exports.orientationProperty = new dependencyObservable.Property("orientation", "StackLayout", new proxy.PropertyMetadata(enums.Orientation.vertical, dependencyObservable.PropertyMetadataSettings.AffectsLayout, undefined, validateOrientation));
 var StackLayout = (function (_super) {
     __extends(StackLayout, _super);
     function StackLayout() {
@@ -32,6 +32,7 @@ var StackLayout = (function (_super) {
     });
     StackLayout.prototype.onMeasure = function (widthMeasureSpec, heightMeasureSpec) {
         _super.prototype.onMeasure.call(this, widthMeasureSpec, heightMeasureSpec);
+        var density = utils.layout.getDisplayDensity();
         var measureWidth = 0;
         var measureHeight = 0;
         var width = utils.layout.getMeasureSpecSize(widthMeasureSpec);
@@ -39,6 +40,8 @@ var StackLayout = (function (_super) {
         var height = utils.layout.getMeasureSpecSize(heightMeasureSpec);
         var heightMode = utils.layout.getMeasureSpecMode(heightMeasureSpec);
         var isVertical = this.orientation === enums.Orientation.vertical;
+        var verticalPadding = (this.paddingTop + this.paddingBottom) * density;
+        var horizontalPadding = (this.paddingLeft + this.paddingRight) * density;
         var count = this.getChildrenCount();
         var measureSpec;
         var mode = isVertical ? heightMode : widthMode;
@@ -49,7 +52,18 @@ var StackLayout = (function (_super) {
         }
         else {
             measureSpec = utils.layout.AT_MOST;
-            remainingLength = isVertical ? height : width;
+            remainingLength = isVertical ? height - verticalPadding : width - horizontalPadding;
+        }
+        var childMeasureSpec;
+        if (isVertical) {
+            var childWidth = (widthMode === utils.layout.UNSPECIFIED) ? 0 : width - horizontalPadding;
+            childWidth = Math.max(0, childWidth);
+            childMeasureSpec = utils.layout.makeMeasureSpec(childWidth, widthMode);
+        }
+        else {
+            var childHeight = (heightMode === utils.layout.UNSPECIFIED) ? 0 : height - verticalPadding;
+            childHeight = Math.max(0, childHeight);
+            childMeasureSpec = utils.layout.makeMeasureSpec(childHeight, heightMode);
         }
         var childSize;
         for (var i = 0; i < count; i++) {
@@ -58,23 +72,22 @@ var StackLayout = (function (_super) {
                 continue;
             }
             if (isVertical) {
-                childSize = view.View.measureChild(this, child, widthMeasureSpec, utils.layout.makeMeasureSpec(remainingLength, measureSpec));
+                childSize = view.View.measureChild(this, child, childMeasureSpec, utils.layout.makeMeasureSpec(remainingLength, measureSpec));
                 measureWidth = Math.max(measureWidth, childSize.measuredWidth);
                 var viewHeight = childSize.measuredHeight;
                 measureHeight += viewHeight;
                 remainingLength = Math.max(0, remainingLength - viewHeight);
             }
             else {
-                childSize = view.View.measureChild(this, child, utils.layout.makeMeasureSpec(remainingLength, measureSpec), heightMeasureSpec);
+                childSize = view.View.measureChild(this, child, utils.layout.makeMeasureSpec(remainingLength, measureSpec), childMeasureSpec);
                 measureHeight = Math.max(measureHeight, childSize.measuredHeight);
                 var viewWidth = childSize.measuredWidth;
                 measureWidth += viewWidth;
                 remainingLength = Math.max(0, remainingLength - viewWidth);
             }
         }
-        var density = utils.layout.getDisplayDensity();
-        measureWidth += (this.paddingLeft + this.paddingRight) * density;
-        measureHeight += (this.paddingTop + this.paddingBottom) * density;
+        measureWidth += horizontalPadding;
+        measureHeight += verticalPadding;
         measureWidth = Math.max(measureWidth, this.minWidth * density);
         measureHeight = Math.max(measureHeight, this.minHeight * density);
         this._totalLength = isVertical ? measureHeight : measureWidth;

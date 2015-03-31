@@ -3,6 +3,7 @@ var Console = (function () {
     function Console() {
         this.dir = this.dump;
         this._timers = {};
+        this._stripFirstTwoLinesRegEx = /^([^\n]*?\n){2}((.|\n)*)$/gmi;
     }
     Console.prototype.sprintf = function (message) {
         var regex = /%%|%(\d+\$)?([-+\'#0 ]*)(\*\d+\$|\*|\d+)?(\.(\*\d+\$|\*|\d+))?([scboxXuideEfFgG])/g;
@@ -223,18 +224,11 @@ var Console = (function () {
         helperModule.helper_log(this.formatParams.apply(this, arguments));
     };
     Console.prototype.trace = function () {
-        var callstack = [];
-        var currentFunction = arguments.callee.caller;
-        while (currentFunction) {
-            var fn = currentFunction.toString();
-            var fname = fn.substring(fn.indexOf('function') + 8, fn.indexOf('{')).trim() || 'anonymous';
-            if ('()' === fname) {
-                fname = 'anonymous';
-            }
-            callstack.push(fname);
-            currentFunction = currentFunction.caller;
-            this.log(callstack.join('\n'));
-        }
+        var stack;
+        stack = (new Error()).stack.toString();
+        stack = stack.replace(this._stripFirstTwoLinesRegEx, "$2");
+        stack = "Stack Trace:\n" + stack;
+        this.log(stack);
     };
     Console.prototype.dump = function (obj) {
         if (null == obj) {

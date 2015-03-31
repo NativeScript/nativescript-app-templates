@@ -8,6 +8,14 @@ var viewCommon = require("ui/core/view-common");
 var trace = require("trace");
 var utils = require("utils/utils");
 require("utils/module-merge").merge(viewCommon, exports);
+function onIdPropertyChanged(data) {
+    var view = data.object;
+    if (!view._nativeView) {
+        return;
+    }
+    view._nativeView.accessibilityIdentifier = data.newValue;
+}
+viewCommon.View.idProperty.metadata.onSetNativeValue = onIdPropertyChanged;
 function onIsEnabledPropertyChanged(data) {
     var view = data.object;
     if (!view._nativeView) {
@@ -17,7 +25,7 @@ function onIsEnabledPropertyChanged(data) {
         view._nativeView.enabled = data.newValue;
     }
 }
-viewCommon.isEnabledProperty.metadata.onSetNativeValue = onIsEnabledPropertyChanged;
+viewCommon.View.isEnabledProperty.metadata.onSetNativeValue = onIsEnabledPropertyChanged;
 function onIsUserInteractionEnabledPropertyChanged(data) {
     var view = data.object;
     if (!view._nativeView) {
@@ -25,7 +33,7 @@ function onIsUserInteractionEnabledPropertyChanged(data) {
     }
     view._nativeView.userInteractionEnabled = data.newValue;
 }
-viewCommon.isUserInteractionEnabledProperty.metadata.onSetNativeValue = onIsUserInteractionEnabledPropertyChanged;
+viewCommon.View.isUserInteractionEnabledProperty.metadata.onSetNativeValue = onIsUserInteractionEnabledPropertyChanged;
 var PFLAG_FORCE_LAYOUT = 1;
 var PFLAG_MEASURED_DIMENSION_SET = 1 << 1;
 var PFLAG_LAYOUT_REQUIRED = 1 << 2;

@@ -10,6 +10,7 @@ var observable = require("data/observable");
 var utils = require("utils/utils");
 var view = require("ui/core/view");
 var application = require("application");
+var enums = require("ui/enums");
 require("utils/module-merge").merge(frameCommon, exports);
 var TAG = "_fragmentTag";
 var OWNER = "_owner";
@@ -31,6 +32,7 @@ var PageFragmentBody = (function (_super) {
     PageFragmentBody.prototype.onCreate = function (savedInstanceState) {
         _super.prototype.onCreate.call(this, savedInstanceState);
         trace.write(this.getTag() + ".onCreate(); savedInstanceState: " + savedInstanceState, trace.categories.NativeLifecycle);
+        _super.prototype.setHasOptionsMenu.call(this, true);
     };
     PageFragmentBody.prototype.onCreateView = function (inflater, container, savedInstanceState) {
         trace.write(this.getTag() + ".onCreateView(); container: " + container + "; savedInstanceState: " + savedInstanceState, trace.categories.NativeLifecycle);
@@ -100,6 +102,46 @@ var PageFragmentBody = (function (_super) {
     PageFragmentBody.prototype.onDetach = function () {
         _super.prototype.onDetach.call(this);
         trace.write(this.getTag() + ".onDetach();", trace.categories.NativeLifecycle);
+    };
+    PageFragmentBody.prototype.onCreateOptionsMenu = function (menu, inflater) {
+        _super.prototype.onCreateOptionsMenu.call(this, menu, inflater);
+        var page = this.entry.resolvedPage;
+        var items = page.optionsMenu.getItems();
+        for (var i = 0; i < items.length; i++) {
+            var item = items[i];
+            var menuItem = menu.add(android.view.Menu.NONE, i, android.view.Menu.NONE, item.text);
+            if (item.icon) {
+                var androidApp = application.android;
+                var res = androidApp.context.getResources();
+                var id = res.getIdentifier(item.icon, 'drawable', androidApp.packageName);
+                if (id) {
+                    menuItem.setIcon(id);
+                }
+            }
+            var showAsAction = PageFragmentBody.getShowAsAction(item);
+            menuItem.setShowAsAction(showAsAction);
+        }
+    };
+    PageFragmentBody.getShowAsAction = function (menuItem) {
+        switch (menuItem.android.position) {
+            case enums.MenuItemPosition.actionBarIfRoom:
+                return android.view.MenuItem.SHOW_AS_ACTION_IF_ROOM;
+            case enums.MenuItemPosition.popup:
+                return android.view.MenuItem.SHOW_AS_ACTION_NEVER;
+            case enums.MenuItemPosition.actionBar:
+            default:
+                return android.view.MenuItem.SHOW_AS_ACTION_ALWAYS;
+        }
+    };
+    PageFragmentBody.prototype.onOptionsItemSelected = function (item) {
+        var page = this.entry.resolvedPage;
+        var itemId = item.getItemId();
+        var menuItem = page.optionsMenu.getItemAt(itemId);
+        if (menuItem) {
+            menuItem._raiseTap();
+            return true;
+        }
+        _super.prototype.onOptionsItemSelected.call(this, item);
     };
     return PageFragmentBody;
 })(android.app.Fragment);
@@ -250,6 +292,11 @@ var Frame = (function (_super) {
         }
     };
     Frame.prototype._clearAndroidReference = function () {
+    };
+    Frame.prototype._invalidateOptionsMenu = function () {
+        if (this.android && this.android.activity) {
+            this.android.activity.invalidateOptionsMenu();
+        }
     };
     return Frame;
 })(frameCommon.Frame);
@@ -481,10 +528,11 @@ function findPageForFragment(fragment, frame) {
         trace.write("Current page matches fragment: " + fragmentTag, trace.categories.NativeLifecycle);
     }
     else {
-        for (var i = 0; i < frame.backStack.length; i++) {
-            entry = frame.backStack[i];
-            if (frame.backStack[i].resolvedPage[TAG] === fragmentTag) {
-                entry = frame.backStack[i];
+        var backStack = frame.backStack;
+        for (var i = 0; i < backStack.length; i++) {
+            entry = backStack[i];
+            if (backStack[i].resolvedPage[TAG] === fragmentTag) {
+                entry = backStack[i];
                 break;
             }
         }

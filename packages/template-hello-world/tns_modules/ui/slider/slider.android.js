@@ -26,9 +26,9 @@ function onMaxValuePropertyChanged(data) {
     }
     slider.android.setMax(data.newValue - slider.minValue);
 }
-common.valueProperty.metadata.onSetNativeValue = onValuePropertyChanged;
-common.minValueProperty.metadata.onSetNativeValue = onMinValuePropertyChanged;
-common.maxValueProperty.metadata.onSetNativeValue = onMaxValuePropertyChanged;
+common.Slider.valueProperty.metadata.onSetNativeValue = onValuePropertyChanged;
+common.Slider.minValueProperty.metadata.onSetNativeValue = onMinValuePropertyChanged;
+common.Slider.maxValueProperty.metadata.onSetNativeValue = onMaxValuePropertyChanged;
 require("utils/module-merge").merge(common, exports);
 var Slider = (function (_super) {
     __extends(Slider, _super);
@@ -44,7 +44,7 @@ var Slider = (function (_super) {
                 if (owner) {
                     if (!owner._supressNativeValue) {
                         var newValue = seekBar.getProgress() + owner.minValue;
-                        owner._onPropertyChangedFromNative(common.valueProperty, newValue);
+                        owner._onPropertyChangedFromNative(common.Slider.valueProperty, newValue);
                     }
                 }
             },

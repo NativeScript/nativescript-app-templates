@@ -4,8 +4,15 @@ var knownEvents;
     knownEvents.propertyChange = "propertyChange";
 })(knownEvents = exports.knownEvents || (exports.knownEvents = {}));
 var Observable = (function () {
-    function Observable() {
+    function Observable(json) {
         this._observers = {};
+        if (json) {
+            for (var prop in json) {
+                if (json.hasOwnProperty(prop)) {
+                    this.set(prop, json[prop]);
+                }
+            }
+        }
     }
     Object.defineProperty(Observable.prototype, "typeName", {
         get: function () {

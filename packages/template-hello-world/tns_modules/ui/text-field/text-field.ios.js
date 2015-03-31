@@ -35,7 +35,7 @@ var UITextFieldDelegateImpl = (function (_super) {
     };
     UITextFieldDelegateImpl.prototype.textFieldDidEndEditing = function (textField) {
         if (this._owner.updateTextTrigger === enums.UpdateTextTrigger.focusLost) {
-            this._owner._onPropertyChangedFromNative(textBase.textProperty, textField.text);
+            this._owner._onPropertyChangedFromNative(textBase.TextBase.textProperty, textField.text);
         }
         this._owner.dismissSoftInput();
     };
@@ -45,7 +45,8 @@ var UITextFieldDelegateImpl = (function (_super) {
     };
     UITextFieldDelegateImpl.prototype.textFieldShouldChangeCharactersInRangeReplacementString = function (textField, range, replacementString) {
         if (this._owner.updateTextTrigger === enums.UpdateTextTrigger.textChanged) {
-            this._owner._onPropertyChangedFromNative(textBase.textProperty, textField.text);
+            var newText = NSString.alloc().initWithString(textField.text).stringByReplacingCharactersInRangeWithString(range, replacementString);
+            this._owner._onPropertyChangedFromNative(textBase.TextBase.textProperty, newText);
         }
         return true;
     };

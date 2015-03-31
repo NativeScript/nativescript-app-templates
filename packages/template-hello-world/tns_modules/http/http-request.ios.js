@@ -14,7 +14,7 @@ function request(options) {
             urlRequest.setValueForHTTPHeaderField(USER_AGENT, USER_AGENT_HEADER);
             if (options.headers) {
                 for (var header in options.headers) {
-                    urlRequest.setValueForHTTPHeaderField(options.headers[header], header);
+                    urlRequest.setValueForHTTPHeaderField(options.headers[header] + "", header);
                 }
             }
             if (types.isNumber(options.timeout)) {

@@ -9,6 +9,7 @@ var utilsModule = require("utils/utils");
 var trace = require("trace");
 var utils = require("utils/utils");
 var view = require("ui/core/view");
+var imageSource = require("image-source");
 require("utils/module-merge").merge(common, exports);
 var UITabBarControllerImpl = (function (_super) {
     __extends(UITabBarControllerImpl, _super);
@@ -81,6 +82,7 @@ var TabView = (function (_super) {
         _super.call(this);
         this._tabBarHeight = 0;
         this._navBarHeight = 0;
+        this._iconsCache = {};
         this._ios = UITabBarControllerImpl.new().initWithOwner(this);
         this._tabBarControllerDelegate = UITabBarControllerDelegateImpl.new().initWithOwner(this);
         this._ios.delegate = this._tabBarControllerDelegate;
@@ -127,26 +129,45 @@ var TabView = (function (_super) {
         _super.prototype._addTabs.call(this, newItems);
         var i;
         var length = newItems.length;
-        var newItem;
+        var item;
         var newControllers = NSMutableArray.alloc().initWithCapacity(length);
         var newController;
         for (i = 0; i < length; i++) {
-            newItem = newItems[i];
-            this._addView(newItem.view);
-            if (newItem.view.ios instanceof UIViewController) {
-                newController = newItem.view.ios;
+            item = newItems[i];
+            this._addView(item.view);
+            if (item.view.ios instanceof UIViewController) {
+                newController = item.view.ios;
             }
             else {
                 newController = new UIViewController();
-                newController.view.addSubview(newItem.view.ios);
+                newController.view.addSubview(item.view.ios);
             }
-            newController.tabBarItem = UITabBarItem.alloc().initWithTitleImageTag(newItem.title, null, -1);
-            newController.tabBarItem.setTitlePositionAdjustment({ horizontal: 0, vertical: -20 });
+            var icon = this._getIcon(item.iconSource);
+            newController.tabBarItem = UITabBarItem.alloc().initWithTitleImageTag(item.title, icon, i);
+            if (!icon) {
+                newController.tabBarItem.setTitlePositionAdjustment({ horizontal: 0, vertical: -20 });
+            }
             newControllers.addObject(newController);
         }
         this._ios.viewControllers = newControllers;
         this._ios.customizableViewControllers = null;
         this._ios.moreNavigationController.delegate = this._moreNavigationControllerDelegate;
+    };
+    TabView.prototype._getIcon = function (iconSource) {
+        if (!iconSource) {
+            return null;
+        }
+        var image;
+        image = this._iconsCache[iconSource];
+        if (!image) {
+            var is = imageSource.fromFileOrResource(iconSource);
+            if (is && is.ios) {
+                is.ios.renderingMode = UIImageRenderingMode.UIImageRenderingModeAlwaysOriginal;
+                this._iconsCache[iconSource] = is.ios;
+                image = is.ios;
+            }
+        }
+        return image;
     };
     TabView.prototype._onSelectedIndexPropertyChangedSetNativeValue = function (data) {
         _super.prototype._onSelectedIndexPropertyChangedSetNativeValue.call(this, data);

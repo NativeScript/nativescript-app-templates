@@ -27,25 +27,25 @@ var AbsoluteLayout = (function (_super) {
         if (!element) {
             throw new Error("element cannot be null or undefinied.");
         }
-        return element._getValue(AbsoluteLayout.LeftProperty);
+        return element._getValue(AbsoluteLayout.leftProperty);
     };
     AbsoluteLayout.setLeft = function (element, value) {
         if (!element) {
             throw new Error("element cannot be null or undefinied.");
         }
-        element._setValue(AbsoluteLayout.LeftProperty, value);
+        element._setValue(AbsoluteLayout.leftProperty, value);
     };
     AbsoluteLayout.getTop = function (element) {
         if (!element) {
             throw new Error("element cannot be null or undefinied.");
         }
-        return element._getValue(AbsoluteLayout.TopProperty);
+        return element._getValue(AbsoluteLayout.topProperty);
     };
     AbsoluteLayout.setTop = function (element, value) {
         if (!element) {
             throw new Error("element cannot be null or undefinied.");
         }
-        element._setValue(AbsoluteLayout.TopProperty, value);
+        element._setValue(AbsoluteLayout.topProperty, value);
     };
     AbsoluteLayout.prototype.onMeasure = function (widthMeasureSpec, heightMeasureSpec) {
         _super.prototype.onMeasure.call(this, widthMeasureSpec, heightMeasureSpec);
@@ -93,8 +93,8 @@ var AbsoluteLayout = (function (_super) {
             view.View.layoutChild(this, child, childLeft, childTop, childRight, childBottom);
         }
     };
-    AbsoluteLayout.LeftProperty = new dependencyObservable.Property("Left", "AbsoluteLayout", new dependencyObservable.PropertyMetadata(0, undefined, onPropertyChanged, numberUtils.isFiniteNumber));
-    AbsoluteLayout.TopProperty = new dependencyObservable.Property("Top", "AbsoluteLayout", new dependencyObservable.PropertyMetadata(0, undefined, onPropertyChanged, numberUtils.isFiniteNumber));
+    AbsoluteLayout.leftProperty = new dependencyObservable.Property("left", "AbsoluteLayout", new dependencyObservable.PropertyMetadata(0, undefined, onPropertyChanged, numberUtils.isFiniteNumber));
+    AbsoluteLayout.topProperty = new dependencyObservable.Property("top", "AbsoluteLayout", new dependencyObservable.PropertyMetadata(0, undefined, onPropertyChanged, numberUtils.isFiniteNumber));
     return AbsoluteLayout;
 })(layouts.Layout);
 exports.AbsoluteLayout = AbsoluteLayout;

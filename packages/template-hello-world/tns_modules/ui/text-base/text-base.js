@@ -11,18 +11,18 @@ var proxy = require("ui/core/proxy");
 var weakEventListener = require("ui/core/weak-event-listener");
 var utils = require("utils/utils");
 var trace = require("trace");
-exports.textProperty = new dependencyObservable.Property("text", "TextBase", new proxy.PropertyMetadata("", dependencyObservable.PropertyMetadataSettings.AffectsLayout));
-exports.formattedTextProperty = new dependencyObservable.Property("formattedText", "TextBase", new proxy.PropertyMetadata("", dependencyObservable.PropertyMetadataSettings.AffectsLayout));
+var textProperty = new dependencyObservable.Property("text", "TextBase", new proxy.PropertyMetadata("", dependencyObservable.PropertyMetadataSettings.AffectsLayout));
+var formattedTextProperty = new dependencyObservable.Property("formattedText", "TextBase", new proxy.PropertyMetadata("", dependencyObservable.PropertyMetadataSettings.AffectsLayout));
 function onTextPropertyChanged(data) {
     var textBase = data.object;
     textBase._onTextPropertyChanged(data);
 }
-exports.textProperty.metadata.onSetNativeValue = onTextPropertyChanged;
+textProperty.metadata.onSetNativeValue = onTextPropertyChanged;
 function onFormattedTextPropertyChanged(data) {
     var textBase = data.object;
     textBase._onFormattedTextPropertyChanged(data);
 }
-exports.formattedTextProperty.metadata.onSetNativeValue = onFormattedTextPropertyChanged;
+formattedTextProperty.metadata.onSetNativeValue = onFormattedTextPropertyChanged;
 var TextBase = (function (_super) {
     __extends(TextBase, _super);
     function TextBase(options) {
@@ -36,17 +36,17 @@ var TextBase = (function (_super) {
     };
     Object.defineProperty(TextBase.prototype, "text", {
         get: function () {
-            return this._getValue(exports.textProperty);
+            return this._getValue(TextBase.textProperty);
         },
         set: function (value) {
-            this._setValue(exports.textProperty, value);
+            this._setValue(TextBase.textProperty, value);
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(TextBase.prototype, "formattedText", {
         get: function () {
-            return this._getValue(exports.formattedTextProperty);
+            return this._getValue(TextBase.formattedTextProperty);
         },
         set: function (value) {
             if (this.formattedText !== value) {
@@ -61,7 +61,7 @@ var TextBase = (function (_super) {
                 if (this.formattedText) {
                     weakEventListener.WeakEventListener.removeWeakEventListener(weakEventOptions);
                 }
-                this._setValue(exports.formattedTextProperty, value);
+                this._setValue(TextBase.formattedTextProperty, value);
                 if (value) {
                     weakEventListener.WeakEventListener.addWeakEventListener(weakEventOptions);
                 }
@@ -91,6 +91,9 @@ var TextBase = (function (_super) {
         }
     };
     TextBase.prototype._onFormattedTextPropertyChanged = function (data) {
+        if (data.newValue) {
+            data.newValue.parent = this;
+        }
         this.setFormattedTextPropertyToNative(data.newValue);
     };
     TextBase.prototype.onLayout = function (left, top, right, bottom) {
@@ -111,6 +114,8 @@ var TextBase = (function (_super) {
         }
         _super.prototype.onLayout.call(this, left, top, right, bottom);
     };
+    TextBase.textProperty = textProperty;
+    TextBase.formattedTextProperty = formattedTextProperty;
     return TextBase;
 })(view.View);
 exports.TextBase = TextBase;

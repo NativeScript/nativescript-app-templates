@@ -17,9 +17,9 @@ function onMaxValuePropertyChanged(data) {
     var slider = data.object;
     slider.ios.maximumValue = data.newValue;
 }
-common.valueProperty.metadata.onSetNativeValue = onValuePropertyChanged;
-common.minValueProperty.metadata.onSetNativeValue = onMinValuePropertyChanged;
-common.maxValueProperty.metadata.onSetNativeValue = onMaxValuePropertyChanged;
+common.Slider.valueProperty.metadata.onSetNativeValue = onValuePropertyChanged;
+common.Slider.minValueProperty.metadata.onSetNativeValue = onMinValuePropertyChanged;
+common.Slider.maxValueProperty.metadata.onSetNativeValue = onMaxValuePropertyChanged;
 require("utils/module-merge").merge(common, exports);
 var SliderChangeHandlerImpl = (function (_super) {
     __extends(SliderChangeHandlerImpl, _super);
@@ -34,7 +34,7 @@ var SliderChangeHandlerImpl = (function (_super) {
         return this;
     };
     SliderChangeHandlerImpl.prototype.sliderValueChanged = function (sender) {
-        this._owner._onPropertyChangedFromNative(common.valueProperty, sender.value);
+        this._owner._onPropertyChangedFromNative(common.Slider.valueProperty, sender.value);
     };
     SliderChangeHandlerImpl.ObjCExposedMethods = {
         'sliderValueChanged': { returns: interop.types.void, params: [UISlider] }

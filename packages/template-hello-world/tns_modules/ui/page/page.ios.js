@@ -6,7 +6,7 @@ var __extends = this.__extends || function (d, b) {
 };
 var pageCommon = require("ui/page/page-common");
 var trace = require("trace");
-module.exports.knownEvents = pageCommon.knownEvents;
+require("utils/module-merge").merge(pageCommon, exports);
 var UIViewControllerImpl = (function (_super) {
     __extends(UIViewControllerImpl, _super);
     function UIViewControllerImpl() {

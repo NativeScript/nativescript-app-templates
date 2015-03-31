@@ -19,7 +19,7 @@ function onCornerRadiusPropertyChanged(data) {
         view._nativeView.setBackgroundDrawable(gd);
     }
 }
-borderCommon.cornerRadiusProperty.metadata.onSetNativeValue = onCornerRadiusPropertyChanged;
+borderCommon.Border.cornerRadiusProperty.metadata.onSetNativeValue = onCornerRadiusPropertyChanged;
 function onBorderWidthPropertyChanged(data) {
     var view = data.object;
     if (!view._nativeView) {
@@ -32,7 +32,7 @@ function onBorderWidthPropertyChanged(data) {
         view._nativeView.setBackgroundDrawable(gd);
     }
 }
-borderCommon.borderWidthProperty.metadata.onSetNativeValue = onBorderWidthPropertyChanged;
+borderCommon.Border.borderWidthProperty.metadata.onSetNativeValue = onBorderWidthPropertyChanged;
 function onBorderColorPropertyChanged(data) {
     var view = data.object;
     if (!view._nativeView) {
@@ -45,7 +45,7 @@ function onBorderColorPropertyChanged(data) {
         view._nativeView.setBackgroundDrawable(gd);
     }
 }
-borderCommon.borderColorProperty.metadata.onSetNativeValue = onBorderColorPropertyChanged;
+borderCommon.Border.borderColorProperty.metadata.onSetNativeValue = onBorderColorPropertyChanged;
 var Border = (function (_super) {
     __extends(Border, _super);
     function Border() {

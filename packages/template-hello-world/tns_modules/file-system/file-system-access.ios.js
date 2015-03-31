@@ -134,6 +134,12 @@ var FileSystemAccess = (function () {
         this.deleteEntity(path, onSuccess, onError);
     };
     FileSystemAccess.prototype.deleteFolder = function (path, isKnown, onSuccess, onError) {
+        if (isKnown) {
+            if (onError) {
+                onError({ message: "Cannot delete known folder." });
+            }
+            return;
+        }
         this.deleteEntity(path, onSuccess, onError);
     };
     FileSystemAccess.prototype.emptyFolder = function (path, onSuccess, onError) {

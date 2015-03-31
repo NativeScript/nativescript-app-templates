@@ -124,7 +124,7 @@ var Color = (function () {
         return hex;
     };
     Color.prototype._parseComponents = function () {
-        if (!this._argb) {
+        if (types.isUndefined(this._argb)) {
             throw new Error("Missing the ARGB numeric value");
         }
         this._a = (this._argb >> 24) & 255;

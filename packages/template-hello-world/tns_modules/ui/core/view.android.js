@@ -12,16 +12,21 @@ var ANDROID = "_android";
 var NATIVE_VIEW = "_nativeView";
 var VIEW_GROUP = "_viewGroup";
 var OWNER = "_owner";
+function onIdPropertyChanged(data) {
+    var view = data.object;
+    view._nativeView.setTag(data.newValue);
+}
+viewCommon.View.idProperty.metadata.onSetNativeValue = onIdPropertyChanged;
 function onIsEnabledPropertyChanged(data) {
     var view = data.object;
     view._nativeView.setEnabled(data.newValue);
 }
-viewCommon.isEnabledProperty.metadata.onSetNativeValue = onIsEnabledPropertyChanged;
+viewCommon.View.isEnabledProperty.metadata.onSetNativeValue = onIsEnabledPropertyChanged;
 function onIsUserInteractionEnabledPropertyChanged(data) {
     var view = data.object;
     view._updateOnTouchListener(data.newValue);
 }
-viewCommon.isUserInteractionEnabledProperty.metadata.onSetNativeValue = onIsUserInteractionEnabledPropertyChanged;
+viewCommon.View.isUserInteractionEnabledProperty.metadata.onSetNativeValue = onIsUserInteractionEnabledPropertyChanged;
 exports.NativeViewGroup = android.view.ViewGroup.extend({
     get owner() {
         return this[OWNER];

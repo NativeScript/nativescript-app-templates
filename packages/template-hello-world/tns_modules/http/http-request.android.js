@@ -69,7 +69,7 @@ function buildJavaOptions(options) {
         var arrayList = new java.util.ArrayList();
         var pair = com.tns.Async.Http.KeyValuePair;
         for (var key in options.headers) {
-            arrayList.add(new pair(key, options.headers[key]));
+            arrayList.add(new pair(key, options.headers[key] + ""));
         }
         javaOptions.headers = arrayList;
     }

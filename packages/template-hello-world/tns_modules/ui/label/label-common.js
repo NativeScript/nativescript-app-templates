@@ -7,7 +7,6 @@ var __extends = this.__extends || function (d, b) {
 var dependencyObservable = require("ui/core/dependency-observable");
 var proxy = require("ui/core/proxy");
 var textBase = require("ui/text-base");
-exports.textWrapProperty = new dependencyObservable.Property("textWrap", "Label", new proxy.PropertyMetadata(false, dependencyObservable.PropertyMetadataSettings.AffectsLayout));
 var Label = (function (_super) {
     __extends(Label, _super);
     function Label(options) {
@@ -15,14 +14,15 @@ var Label = (function (_super) {
     }
     Object.defineProperty(Label.prototype, "textWrap", {
         get: function () {
-            return this._getValue(exports.textWrapProperty);
+            return this._getValue(Label.textWrapProperty);
         },
         set: function (value) {
-            this._setValue(exports.textWrapProperty, value);
+            this._setValue(Label.textWrapProperty, value);
         },
         enumerable: true,
         configurable: true
     });
+    Label.textWrapProperty = new dependencyObservable.Property("textWrap", "Label", new proxy.PropertyMetadata(false, dependencyObservable.PropertyMetadataSettings.AffectsLayout));
     return Label;
 })(textBase.TextBase);
 exports.Label = Label;

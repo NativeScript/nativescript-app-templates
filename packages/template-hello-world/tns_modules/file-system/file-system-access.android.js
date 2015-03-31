@@ -103,20 +103,22 @@ var FileSystemAccess = (function () {
                 }
                 return;
             }
-            this.deleteFolderContent(javaFile);
-            if (!isKnown) {
-                if (javaFile.delete()) {
-                    if (onSuccess) {
-                        onSuccess();
-                    }
+            if (isKnown) {
+                if (onError) {
+                    onError({ message: "Cannot delete known folder." });
                 }
-                else {
-                    if (onError) {
-                        onError({ message: "Folder deletion failed." });
-                    }
+                return;
+            }
+            this.deleteFolderContent(javaFile);
+            if (javaFile.delete()) {
+                if (onSuccess) {
+                    onSuccess();
                 }
             }
             else {
+                if (onError) {
+                    onError({ message: "Folder deletion failed." });
+                }
             }
         }
         catch (exception) {

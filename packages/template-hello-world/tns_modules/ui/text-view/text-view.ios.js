@@ -22,13 +22,13 @@ var UITextViewDelegateImpl = (function (_super) {
     };
     UITextViewDelegateImpl.prototype.textViewDidEndEditing = function (textView) {
         if (this._owner.updateTextTrigger === enums.UpdateTextTrigger.focusLost) {
-            this._owner._onPropertyChangedFromNative(textBase.textProperty, textView.text);
+            this._owner._onPropertyChangedFromNative(textBase.TextBase.textProperty, textView.text);
         }
         this._owner.dismissSoftInput();
     };
     UITextViewDelegateImpl.prototype.textViewDidChange = function (textView) {
         if (this._owner.updateTextTrigger === enums.UpdateTextTrigger.textChanged) {
-            this._owner._onPropertyChangedFromNative(textBase.textProperty, textView.text);
+            this._owner._onPropertyChangedFromNative(textBase.TextBase.textProperty, textView.text);
         }
     };
     UITextViewDelegateImpl.ObjCProtocols = [UITextViewDelegate];

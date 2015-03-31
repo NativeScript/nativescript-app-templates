@@ -46,20 +46,24 @@ var Span = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    Span.prototype._getColorValue = function (value) {
+        var result;
+        if (types.isString(value) && value.indexOf("#") === 0) {
+            result = new colorModule.Color(value);
+        }
+        else {
+            result = value;
+        }
+        return result;
+    };
     Object.defineProperty(Span.prototype, "foregroundColor", {
         get: function () {
             return this._foregroundColor;
         },
         set: function (value) {
-            var foreColor;
-            if (types.isString(value) && value.indexOf("#") === 0) {
-                foreColor = new colorModule.Color(value);
-            }
-            else {
-                foreColor = value;
-            }
-            if (this._foregroundColor !== foreColor) {
-                this._foregroundColor = foreColor;
+            var convertedColor = this._getColorValue(value);
+            if (this._foregroundColor !== convertedColor) {
+                this._foregroundColor = convertedColor;
                 this.updateAndNotify();
             }
         },
@@ -71,8 +75,9 @@ var Span = (function (_super) {
             return this._backgroundColor;
         },
         set: function (value) {
-            if (this._backgroundColor !== value) {
-                this._backgroundColor = value;
+            var convertedColor = this._getColorValue(value);
+            if (this._backgroundColor !== convertedColor) {
+                this._backgroundColor = convertedColor;
                 this.updateAndNotify();
             }
         },

@@ -5,11 +5,40 @@ var __extends = this.__extends || function (d, b) {
     d.prototype = new __();
 };
 var common = require("ui/search-bar/search-bar-common");
+var color = require("color");
+var types = require("utils/types");
 function onTextPropertyChanged(data) {
     var bar = data.object;
     bar.ios.text = data.newValue;
 }
-common.textProperty.metadata.onSetNativeValue = onTextPropertyChanged;
+common.SearchBar.textProperty.metadata.onSetNativeValue = onTextPropertyChanged;
+function onTextFieldBackgroundColorPropertyChanged(data) {
+    var bar = data.object;
+    if (data.newValue instanceof color.Color) {
+        var tf = getUITextField(bar.ios);
+        if (tf) {
+            tf.backgroundColor = data.newValue.ios;
+        }
+    }
+}
+common.SearchBar.textFieldBackgroundColorProperty.metadata.onSetNativeValue = onTextFieldBackgroundColorPropertyChanged;
+function onHintPropertyChanged(data) {
+    var bar = data.object;
+    if (!bar.ios) {
+        return;
+    }
+    var newValue = data.newValue;
+    if (types.isString(newValue)) {
+        bar.ios.placeholder = newValue;
+    }
+}
+common.SearchBar.hintProperty.metadata.onSetNativeValue = onHintPropertyChanged;
+function getUITextField(bar) {
+    if (bar) {
+        return bar.valueForKey("_searchField");
+    }
+    return undefined;
+}
 require("utils/module-merge").merge(common, exports);
 var UISearchBarDelegateImpl = (function (_super) {
     __extends(UISearchBarDelegateImpl, _super);
@@ -24,7 +53,7 @@ var UISearchBarDelegateImpl = (function (_super) {
         return this;
     };
     UISearchBarDelegateImpl.prototype.searchBarTextDidChange = function (searchBar, searchText) {
-        this._owner._onPropertyChangedFromNative(common.textProperty, searchText);
+        this._owner._onPropertyChangedFromNative(common.SearchBar.textProperty, searchText);
         if (searchText === "" && this._searchText !== searchText) {
             this._owner._emit(common.knownEvents.clear);
         }

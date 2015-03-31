@@ -17,15 +17,15 @@ var knownCollections;
 (function (knownCollections) {
     knownCollections.items = "items";
 })(knownCollections = exports.knownCollections || (exports.knownCollections = {}));
-exports.itemsProperty = new dependencyObservable.Property(ITEMS, TAB_VIEW, new proxy.PropertyMetadata(undefined, dependencyObservable.PropertyMetadataSettings.AffectsLayout));
-exports.itemsProperty.metadata.onSetNativeValue = function (data) {
-    var tabView = data.object;
-    tabView._onItemsPropertyChangedSetNativeValue(data);
-};
-exports.selectedIndexProperty = new dependencyObservable.Property(SELECTED_INDEX, TAB_VIEW, new proxy.PropertyMetadata(undefined, dependencyObservable.PropertyMetadataSettings.AffectsLayout));
-exports.selectedIndexProperty.metadata.onSetNativeValue = function (data) {
+var itemsProperty = new dependencyObservable.Property(ITEMS, TAB_VIEW, new proxy.PropertyMetadata(undefined, dependencyObservable.PropertyMetadataSettings.AffectsLayout));
+var selectedIndexProperty = new dependencyObservable.Property(SELECTED_INDEX, TAB_VIEW, new proxy.PropertyMetadata(undefined, dependencyObservable.PropertyMetadataSettings.AffectsLayout));
+selectedIndexProperty.metadata.onSetNativeValue = function (data) {
     var tabView = data.object;
     tabView._onSelectedIndexPropertyChangedSetNativeValue(data);
+};
+itemsProperty.metadata.onSetNativeValue = function (data) {
+    var tabView = data.object;
+    tabView._onItemsPropertyChangedSetNativeValue(data);
 };
 var TabView = (function (_super) {
     __extends(TabView, _super);
@@ -39,10 +39,10 @@ var TabView = (function (_super) {
     };
     Object.defineProperty(TabView.prototype, "items", {
         get: function () {
-            return this._getValue(exports.itemsProperty);
+            return this._getValue(TabView.itemsProperty);
         },
         set: function (value) {
-            this._setValue(exports.itemsProperty, value);
+            this._setValue(TabView.itemsProperty, value);
         },
         enumerable: true,
         configurable: true
@@ -79,19 +79,19 @@ var TabView = (function (_super) {
         for (i = 0; i < length; i++) {
             newItem = newItems[i];
             if (!newItem) {
-                throw new Error("TabEntry at index " + i + " is undefined.");
+                throw new Error("TabViewItem at index " + i + " is undefined.");
             }
             if (!newItem.view) {
-                throw new Error("TabEntry at index " + i + " does not have a view.");
+                throw new Error("TabViewItem at index " + i + " does not have a view.");
             }
         }
     };
     Object.defineProperty(TabView.prototype, "selectedIndex", {
         get: function () {
-            return this._getValue(exports.selectedIndexProperty);
+            return this._getValue(TabView.selectedIndexProperty);
         },
         set: function (value) {
-            this._setValue(exports.selectedIndexProperty, value);
+            this._setValue(TabView.selectedIndexProperty, value);
         },
         enumerable: true,
         configurable: true
@@ -155,6 +155,8 @@ var TabView = (function (_super) {
             }
         }
     };
+    TabView.itemsProperty = itemsProperty;
+    TabView.selectedIndexProperty = selectedIndexProperty;
     return TabView;
 })(view.View);
 exports.TabView = TabView;

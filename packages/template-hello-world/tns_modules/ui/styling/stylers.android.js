@@ -25,6 +25,26 @@ var DefaultStyler = (function () {
         }
         return drawable;
     };
+    DefaultStyler.setBackgroundImageSourceProperty = function (view, newValue) {
+        var nativeView = view.android;
+        var bmp = newValue;
+        var d = new android.graphics.drawable.BitmapDrawable(bmp);
+        d.setTileModeXY(android.graphics.Shader.TileMode.REPEAT, android.graphics.Shader.TileMode.REPEAT);
+        d.setDither(true);
+        nativeView.setBackgroundDrawable(d);
+    };
+    DefaultStyler.resetBackgroundImageSourceProperty = function (view, nativeValue) {
+        if (types.isDefined(nativeValue)) {
+            view.android.setBackgroundDrawable(nativeValue);
+        }
+    };
+    DefaultStyler.getNativeBackgroundImageSourceValue = function (view) {
+        var drawable = view.android.getBackground();
+        if (drawable instanceof android.graphics.drawable.BitmapDrawable) {
+            return drawable;
+        }
+        return undefined;
+    };
     DefaultStyler.setVisibilityProperty = function (view, newValue) {
         var androidValue = (newValue === enums.Visibility.visible) ? android.view.View.VISIBLE : android.view.View.GONE;
         view.android.setVisibility(androidValue);
@@ -52,6 +72,7 @@ var DefaultStyler = (function () {
     };
     DefaultStyler.registerHandlers = function () {
         style.registerHandler(style.backgroundColorProperty, new stylersCommon.StylePropertyChangedHandler(DefaultStyler.setBackgroundProperty, DefaultStyler.resetBackgroundProperty, DefaultStyler.getNativeBackgroundValue));
+        style.registerHandler(style.backgroundImageSourceProperty, new stylersCommon.StylePropertyChangedHandler(DefaultStyler.setBackgroundImageSourceProperty, DefaultStyler.resetBackgroundImageSourceProperty, DefaultStyler.getNativeBackgroundImageSourceValue));
         style.registerHandler(style.visibilityProperty, new stylersCommon.StylePropertyChangedHandler(DefaultStyler.setVisibilityProperty, DefaultStyler.resetVisibilityProperty));
         style.registerHandler(style.opacityProperty, new stylersCommon.StylePropertyChangedHandler(DefaultStyler.setOpacityProperty, DefaultStyler.resetOpacityProperty));
         style.registerHandler(style.minWidthProperty, new stylersCommon.StylePropertyChangedHandler(DefaultStyler.setMinWidthProperty, DefaultStyler.resetMinWidthProperty));
@@ -149,11 +170,95 @@ var ActivityIndicatorStyler = (function () {
     return ActivityIndicatorStyler;
 })();
 exports.ActivityIndicatorStyler = ActivityIndicatorStyler;
+var SegmentedBarStyler = (function () {
+    function SegmentedBarStyler() {
+    }
+    SegmentedBarStyler.setColorProperty = function (view, newValue) {
+        var tabHost = view.android;
+        for (var tabIndex = 0; tabIndex < tabHost.getTabWidget().getTabCount(); tabIndex++) {
+            var tab = tabHost.getTabWidget().getChildTabViewAt(tabIndex);
+            var t = tab.getChildAt(1);
+            t.setTextColor(newValue);
+        }
+    };
+    SegmentedBarStyler.resetColorProperty = function (view, nativeValue) {
+        var tabHost = view.android;
+        for (var tabIndex = 0; tabIndex < tabHost.getTabWidget().getTabCount(); tabIndex++) {
+            var tab = tabHost.getTabWidget().getChildTabViewAt(tabIndex);
+            var t = tab.getChildAt(1);
+            t.setTextColor(constants.btn_default);
+        }
+    };
+    SegmentedBarStyler.registerHandlers = function () {
+        style.registerHandler(style.colorProperty, new stylersCommon.StylePropertyChangedHandler(SegmentedBarStyler.setColorProperty, SegmentedBarStyler.resetColorProperty), "SegmentedBar");
+    };
+    return SegmentedBarStyler;
+})();
+exports.SegmentedBarStyler = SegmentedBarStyler;
+var SearchBarStyler = (function () {
+    function SearchBarStyler() {
+    }
+    SearchBarStyler.getBackgroundColorProperty = function (view) {
+        var bar = view.android;
+        return bar.getDrawingCacheBackgroundColor();
+    };
+    SearchBarStyler.setBackgroundColorProperty = function (view, newValue) {
+        var bar = view.android;
+        bar.setBackgroundColor(newValue);
+        SearchBarStyler._changeSearchViewPlateBackgroundColor(bar, newValue);
+    };
+    SearchBarStyler.resetBackgroundColorProperty = function (view, nativeValue) {
+        var bar = view.android;
+        bar.setBackgroundColor(nativeValue);
+        SearchBarStyler._changeSearchViewPlateBackgroundColor(bar, nativeValue);
+    };
+    SearchBarStyler.getColorProperty = function (view) {
+        var bar = view.android;
+        var textView = SearchBarStyler._getSearchViewTextView(bar);
+        if (textView) {
+            return textView.getCurrentTextColor();
+        }
+        return undefined;
+    };
+    SearchBarStyler.setColorProperty = function (view, newValue) {
+        var bar = view.android;
+        SearchBarStyler._changeSearchViewTextColor(bar, newValue);
+    };
+    SearchBarStyler.resetColorProperty = function (view, nativeValue) {
+        var bar = view.android;
+        SearchBarStyler._changeSearchViewTextColor(bar, nativeValue);
+    };
+    SearchBarStyler.registerHandlers = function () {
+        style.registerHandler(style.backgroundColorProperty, new stylersCommon.StylePropertyChangedHandler(SearchBarStyler.setBackgroundColorProperty, SearchBarStyler.resetBackgroundColorProperty, SearchBarStyler.getBackgroundColorProperty), "SearchBar");
+        style.registerHandler(style.colorProperty, new stylersCommon.StylePropertyChangedHandler(SearchBarStyler.setColorProperty, SearchBarStyler.resetColorProperty, SearchBarStyler.getColorProperty), "SearchBar");
+    };
+    SearchBarStyler._getSearchViewTextView = function (bar) {
+        var id = bar.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
+        return bar.findViewById(id);
+    };
+    SearchBarStyler._changeSearchViewTextColor = function (bar, color) {
+        var textView = SearchBarStyler._getSearchViewTextView(bar);
+        if (textView) {
+            textView.setTextColor(color);
+        }
+    };
+    SearchBarStyler._changeSearchViewPlateBackgroundColor = function (bar, color) {
+        var id = bar.getContext().getResources().getIdentifier("android:id/search_plate", null, null);
+        var textView = bar.findViewById(id);
+        if (textView) {
+            textView.setBackgroundColor(color);
+        }
+    };
+    return SearchBarStyler;
+})();
+exports.SearchBarStyler = SearchBarStyler;
 function _registerDefaultStylers() {
     style.registerNoStylingClass("Frame");
     DefaultStyler.registerHandlers();
     ButtonStyler.registerHandlers();
     TextViewStyler.registerHandlers();
     ActivityIndicatorStyler.registerHandlers();
+    SegmentedBarStyler.registerHandlers();
+    SearchBarStyler.registerHandlers();
 }
 exports._registerDefaultStylers = _registerDefaultStylers;

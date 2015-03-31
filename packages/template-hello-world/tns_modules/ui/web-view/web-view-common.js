@@ -9,9 +9,10 @@ var dependencyObservable = require("ui/core/dependency-observable");
 var proxy = require("ui/core/proxy");
 var knownEvents;
 (function (knownEvents) {
-    knownEvents.finished = "finished";
+    knownEvents.loadFinished = "loadFinished";
+    knownEvents.loadStarted = "loadStarted";
 })(knownEvents = exports.knownEvents || (exports.knownEvents = {}));
-exports.urlProperty = new dependencyObservable.Property("url", "WebView", new proxy.PropertyMetadata(""));
+var urlProperty = new dependencyObservable.Property("url", "WebView", new proxy.PropertyMetadata(""));
 function onUrlPropertyChanged(data) {
     var webView = data.object;
     if (webView._suspendLoading) {
@@ -19,7 +20,7 @@ function onUrlPropertyChanged(data) {
     }
     webView._loadUrl(data.newValue);
 }
-exports.urlProperty.metadata.onSetNativeValue = onUrlPropertyChanged;
+urlProperty.metadata.onSetNativeValue = onUrlPropertyChanged;
 var WebView = (function (_super) {
     __extends(WebView, _super);
     function WebView() {
@@ -27,23 +28,32 @@ var WebView = (function (_super) {
     }
     Object.defineProperty(WebView.prototype, "url", {
         get: function () {
-            return this._getValue(exports.urlProperty);
+            return this._getValue(WebView.urlProperty);
         },
         set: function (value) {
-            this._setValue(exports.urlProperty, value);
+            this._setValue(WebView.urlProperty, value);
         },
         enumerable: true,
         configurable: true
     });
-    WebView.prototype._onFinished = function (url, error) {
+    WebView.prototype._onLoadFinished = function (url, error) {
         this._suspendLoading = true;
         this.url = url;
         this._suspendLoading = false;
         var args = {
-            eventName: knownEvents.finished,
+            eventName: knownEvents.loadFinished,
             object: this,
             url: url,
             error: error
+        };
+        this.notify(args);
+    };
+    WebView.prototype._onLoadStarted = function (url) {
+        var args = {
+            eventName: knownEvents.loadStarted,
+            object: this,
+            url: url,
+            error: undefined
         };
         this.notify(args);
     };
@@ -73,6 +83,7 @@ var WebView = (function (_super) {
     WebView.prototype.reload = function () {
         throw new Error("This member is abstract.");
     };
+    WebView.urlProperty = urlProperty;
     return WebView;
 })(view.View);
 exports.WebView = WebView;

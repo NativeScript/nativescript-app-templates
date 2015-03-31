@@ -12,7 +12,7 @@ function onCheckedPropertyChanged(data) {
     }
     swtch.android.setChecked(data.newValue);
 }
-common.checkedProperty.metadata.onSetNativeValue = onCheckedPropertyChanged;
+common.Switch.checkedProperty.metadata.onSetNativeValue = onCheckedPropertyChanged;
 require("utils/module-merge").merge(common, exports);
 var Switch = (function (_super) {
     __extends(Switch, _super);
@@ -35,7 +35,7 @@ var Switch = (function (_super) {
             },
             onCheckedChanged: function (sender, isChecked) {
                 if (this.owner) {
-                    this.owner._onPropertyChangedFromNative(common.checkedProperty, isChecked);
+                    this.owner._onPropertyChangedFromNative(common.Switch.checkedProperty, isChecked);
                 }
             }
         }));

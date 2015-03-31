@@ -11,9 +11,9 @@ var dependencyObservable = require("ui/core/dependency-observable");
 var types = require("utils/types");
 var viewModule = require("ui/core/view");
 var utils = require("utils/utils");
-exports.cornerRadiusProperty = new dependencyObservable.Property("cornerRadius", "Border", new proxy.PropertyMetadata(0, dependencyObservable.PropertyMetadataSettings.AffectsStyle));
-exports.borderWidthProperty = new dependencyObservable.Property("borderWidth", "Border", new proxy.PropertyMetadata(0, dependencyObservable.PropertyMetadataSettings.AffectsStyle));
-exports.borderColorProperty = new dependencyObservable.Property("borderColor", "Border", new proxy.PropertyMetadata(undefined, dependencyObservable.PropertyMetadataSettings.AffectsStyle));
+var cornerRadiusProperty = new dependencyObservable.Property("cornerRadius", "Border", new proxy.PropertyMetadata(0, dependencyObservable.PropertyMetadataSettings.AffectsStyle));
+var borderWidthProperty = new dependencyObservable.Property("borderWidth", "Border", new proxy.PropertyMetadata(0, dependencyObservable.PropertyMetadataSettings.AffectsStyle));
+var borderColorProperty = new dependencyObservable.Property("borderColor", "Border", new proxy.PropertyMetadata(undefined, dependencyObservable.PropertyMetadataSettings.AffectsStyle));
 var Border = (function (_super) {
     __extends(Border, _super);
     function Border() {
@@ -21,34 +21,34 @@ var Border = (function (_super) {
     }
     Object.defineProperty(Border.prototype, "cornerRadius", {
         get: function () {
-            return this._getValue(exports.cornerRadiusProperty);
+            return this._getValue(Border.cornerRadiusProperty);
         },
         set: function (value) {
-            this._setValue(exports.cornerRadiusProperty, value);
+            this._setValue(Border.cornerRadiusProperty, value);
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(Border.prototype, "borderWidth", {
         get: function () {
-            return this._getValue(exports.borderWidthProperty);
+            return this._getValue(Border.borderWidthProperty);
         },
         set: function (value) {
-            this._setValue(exports.borderWidthProperty, value);
+            this._setValue(Border.borderWidthProperty, value);
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(Border.prototype, "borderColor", {
         get: function () {
-            return this._getValue(exports.borderColorProperty);
+            return this._getValue(Border.borderColorProperty);
         },
         set: function (value) {
             if (types.isString(value) || types.isNumber(value)) {
-                this._setValue(exports.borderColorProperty, new color.Color(value));
+                this._setValue(Border.borderColorProperty, new color.Color(value));
             }
             else {
-                this._setValue(exports.borderColorProperty, value);
+                this._setValue(Border.borderColorProperty, value);
             }
         },
         enumerable: true,
@@ -71,6 +71,9 @@ var Border = (function (_super) {
         var borderSize = this.borderWidth * density;
         viewModule.View.layoutChild(this, this.content, borderSize, borderSize, right - left - borderSize, bottom - top - borderSize);
     };
+    Border.cornerRadiusProperty = cornerRadiusProperty;
+    Border.borderWidthProperty = borderWidthProperty;
+    Border.borderColorProperty = borderColorProperty;
     return Border;
 })(contentView.ContentView);
 exports.Border = Border;

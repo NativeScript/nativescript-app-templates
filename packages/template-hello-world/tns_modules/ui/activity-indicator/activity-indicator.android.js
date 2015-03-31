@@ -15,7 +15,7 @@ function onBusyPropertyChanged(data) {
         indicator.android.setVisibility(data.newValue ? android.view.View.VISIBLE : android.view.View.INVISIBLE);
     }
 }
-aiCommon.busyProperty.metadata.onSetNativeValue = onBusyPropertyChanged;
+aiCommon.ActivityIndicator.busyProperty.metadata.onSetNativeValue = onBusyPropertyChanged;
 require("utils/module-merge").merge(aiCommon, exports);
 var ActivityIndicator = (function (_super) {
     __extends(ActivityIndicator, _super);
