@@ -6,10 +6,11 @@ var __extends = this.__extends || function (d, b) {
 };
 var common = require("ui/gestures/gestures-common");
 var definition = require("ui/gestures");
+var view = require("ui/core/view");
+var trace = require("trace");
 require("utils/module-merge").merge(common, exports);
 var SWIPE_THRESHOLD = 100;
 var SWIPE_VELOCITY_THRESHOLD = 100;
-var LOADED = "loaded";
 var GesturesObserver = (function () {
     function GesturesObserver(callback) {
         this._callback = callback;
@@ -24,37 +25,46 @@ var GesturesObserver = (function () {
     GesturesObserver.prototype.observe = function (target, type) {
         var _this = this;
         if (target) {
+            this._target = target;
+            this._onTargetLoaded = function (args) {
+                trace.write(_this._target + ".target loaded. android:" + _this._target.android, "gestures");
+                _this._attach(target, type);
+            };
+            this._onTargetUnloaded = function (args) {
+                trace.write(_this._target + ".target unloaded. android:" + _this._target.android, "gestures");
+                _this._dettach();
+            };
+            target.on(view.knownEvents.loaded, this._onTargetLoaded);
+            target.on(view.knownEvents.unloaded, this._onTargetUnloaded);
             if (target.isLoaded) {
                 this._attach(target, type);
-            }
-            else {
-                this._onTargetLoaded = function (args) {
-                    _this._attach(target, type);
-                };
-                target.on(LOADED, this._onTargetLoaded);
             }
         }
     };
     GesturesObserver.prototype.disconnect = function () {
+        this._dettach();
         if (this._target) {
-            if (this._target.android) {
-                this._target.android.setOnTouchListener(null);
-            }
-            if (this._onTargetLoaded != null) {
-                this._target.off(LOADED, this._onTargetLoaded);
-                this._onTargetLoaded = null;
-            }
+            this._target.off(view.knownEvents.loaded, this._onTargetLoaded);
+            this._target.off(view.knownEvents.unloaded, this._onTargetUnloaded);
+            this._onTargetLoaded = null;
+            this._onTargetUnloaded = null;
+            this._target = null;
+        }
+    };
+    GesturesObserver.prototype._dettach = function () {
+        trace.write(this._target + "._detach() android:" + this._target.android, "gestures");
+        if (this._target && this._target.android) {
+            this._target.android.setOnTouchListener(null);
         }
         this._onTouchListener = null;
         this._simpleGestureDetector = null;
         this._scaleGestureDetector = null;
         this._swipeGestureDetector = null;
         this._panGestureDetector = null;
-        this._target = null;
     };
     GesturesObserver.prototype._attach = function (target, type) {
-        this.disconnect();
-        this._target = target;
+        trace.write(this._target + "._attach() android:" + this._target.android, "gestures");
+        this._dettach();
         if (type & definition.GestureTypes.Tap || type & definition.GestureTypes.DoubleTap || type & definition.GestureTypes.LongPress) {
             this._simpleGestureDetector = new android.support.v4.view.GestureDetectorCompat(target._context, new TapAndDoubleTapGestureListener(this, this._target));
         }

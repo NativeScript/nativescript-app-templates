@@ -84,10 +84,18 @@ var TabView = (function (_super) {
         this._navBarHeight = 0;
         this._iconsCache = {};
         this._ios = UITabBarControllerImpl.new().initWithOwner(this);
-        this._tabBarControllerDelegate = UITabBarControllerDelegateImpl.new().initWithOwner(this);
-        this._ios.delegate = this._tabBarControllerDelegate;
+        this._delegate = UITabBarControllerDelegateImpl.new().initWithOwner(this);
         this._moreNavigationControllerDelegate = UINavigationControllerDelegateImpl.new().initWithOwner(this);
     }
+    TabView.prototype.onLoaded = function () {
+        _super.prototype.onLoaded.call(this);
+        this._ios.delegate = this._delegate;
+    };
+    TabView.prototype.onUnloaded = function () {
+        this._ios.delegate = null;
+        this._ios.moreNavigationController.delegate = null;
+        _super.prototype.onUnloaded.call(this);
+    };
     Object.defineProperty(TabView.prototype, "ios", {
         get: function () {
             return this._ios;

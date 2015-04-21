@@ -76,8 +76,15 @@ var SearchBar = (function (_super) {
         _super.call(this);
         this._ios = new UISearchBar();
         this._delegate = UISearchBarDelegateImpl.new().initWithOwner(this);
-        this._ios.delegate = this._delegate;
     }
+    SearchBar.prototype.onLoaded = function () {
+        _super.prototype.onLoaded.call(this);
+        this._ios.delegate = this._delegate;
+    };
+    SearchBar.prototype.onUnloaded = function () {
+        this._ios.delegate = null;
+        _super.prototype.onUnloaded.call(this);
+    };
     Object.defineProperty(SearchBar.prototype, "ios", {
         get: function () {
             return this._ios;

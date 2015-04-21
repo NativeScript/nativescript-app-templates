@@ -5,9 +5,6 @@ var __extends = this.__extends || function (d, b) {
     d.prototype = new __();
 };
 var observable = require("data/observable");
-function isValidImage(url) {
-    return url.indexOf(".png") !== -1 || url.indexOf(".jpg") !== -1;
-}
 var knownEvents;
 (function (knownEvents) {
     knownEvents.downloaded = "downloaded";
@@ -129,10 +126,6 @@ var Cache = (function (_super) {
     };
     Cache.prototype._shouldDownload = function (request, onTop) {
         if (request.key in this._cache || request.key in this._pendingDownloads) {
-            return false;
-        }
-        if (!isValidImage(request.url)) {
-            this._cache[request.key] = this.invalid;
             return false;
         }
         if (this._currentDownloads >= this.maxRequests || !this._enabled) {

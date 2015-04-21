@@ -134,10 +134,17 @@ var ListView = (function (_super) {
         var dataSource = DataSource.new().initWithOwner(this);
         this._dataSource = dataSource;
         this._ios.dataSource = this._dataSource;
-        this._uiTableViewDelegate = UITableViewDelegateImpl.new().initWithOwner(this);
-        this._ios.delegate = this._uiTableViewDelegate;
+        this._delegate = UITableViewDelegateImpl.new().initWithOwner(this);
         this._heights = new Array();
     }
+    ListView.prototype.onLoaded = function () {
+        _super.prototype.onLoaded.call(this);
+        this._ios.delegate = this._delegate;
+    };
+    ListView.prototype.onUnloaded = function () {
+        this._ios.delegate = null;
+        _super.prototype.onUnloaded.call(this);
+    };
     Object.defineProperty(ListView.prototype, "ios", {
         get: function () {
             return this._ios;
@@ -179,18 +186,18 @@ var ListView = (function (_super) {
     };
     ListView.prototype._prepareCell = function (tableCell, indexPath) {
         var cell = tableCell;
-        if (!cell.view) {
-            cell.view = this._getItemTemplateContent(indexPath.row);
-        }
-        var args = notifyForItemAtIndex(this, cell, ITEMLOADING, indexPath);
-        var view = cell.view = args.view || this._getDefaultItemContent(indexPath.row);
-        if (view && !view.parent && view.ios) {
-            cell.contentView.addSubview(view.ios);
-            this._addView(view);
-        }
         var cellHeight;
         try {
             this._preparingCell = true;
+            if (!cell.view) {
+                cell.view = this._getItemTemplateContent(indexPath.row);
+            }
+            var args = notifyForItemAtIndex(this, cell, ITEMLOADING, indexPath);
+            var view = cell.view = args.view || this._getDefaultItemContent(indexPath.row);
+            if (view && !view.parent && view.ios) {
+                cell.contentView.addSubview(view.ios);
+                this._addView(view);
+            }
             this._prepareItem(view, indexPath.row);
             cellHeight = this._layoutCell(view, indexPath);
         }

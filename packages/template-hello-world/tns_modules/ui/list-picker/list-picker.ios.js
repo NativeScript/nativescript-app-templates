@@ -16,8 +16,15 @@ var ListPicker = (function (_super) {
         this._dataSource = dataSource;
         this._ios.dataSource = this._dataSource;
         this._delegate = ListPickerDelegateImpl.new().initWithOwner(this);
-        this._ios.delegate = this._delegate;
     }
+    ListPicker.prototype.onLoaded = function () {
+        _super.prototype.onLoaded.call(this);
+        this._ios.delegate = this._delegate;
+    };
+    ListPicker.prototype.onUnloaded = function () {
+        this._ios.delegate = null;
+        _super.prototype.onUnloaded.call(this);
+    };
     Object.defineProperty(ListPicker.prototype, "ios", {
         get: function () {
             return this._ios;

@@ -8,6 +8,8 @@ var frameCommon = require("ui/frame/frame-common");
 var trace = require("trace");
 var imageSource = require("image-source");
 var enums = require("ui/enums");
+var utils = require("utils/utils");
+var view = require("ui/core/view");
 require("utils/module-merge").merge(frameCommon, exports);
 var ENTRY = "_entry";
 var navDepth = 0;
@@ -15,7 +17,7 @@ var Frame = (function (_super) {
     __extends(Frame, _super);
     function Frame() {
         _super.call(this);
-        this.shouldSkipNativePop = false;
+        this._shouldSkipNativePop = false;
         this._ios = new iOSFrame(this);
     }
     Frame.prototype.onLoaded = function () {
@@ -51,7 +53,7 @@ var Frame = (function (_super) {
     Frame.prototype._goBackCore = function (entry) {
         navDepth--;
         trace.write("Frame<" + this._domId + ">.popViewControllerAnimated depth = " + navDepth, trace.categories.Navigation);
-        if (!this.shouldSkipNativePop) {
+        if (!this._shouldSkipNativePop) {
             this._ios.controller.popViewControllerAnimated(this._getIsAnimatedNavigation(entry));
         }
     };
@@ -98,6 +100,25 @@ var Frame = (function (_super) {
         var window = this._nativeView.window;
         if (window) {
             window.setNeedsLayout();
+        }
+    };
+    Frame.prototype.onMeasure = function (widthMeasureSpec, heightMeasureSpec) {
+        var width = utils.layout.getMeasureSpecSize(widthMeasureSpec);
+        var widthMode = utils.layout.getMeasureSpecMode(widthMeasureSpec);
+        var height = utils.layout.getMeasureSpecSize(heightMeasureSpec);
+        var heightMode = utils.layout.getMeasureSpecMode(heightMeasureSpec);
+        var result = view.View.measureChild(this, this.currentPage, widthMeasureSpec, utils.layout.makeMeasureSpec(height - this.navigationBarHeight, heightMode));
+        if (this._navigateToEntry) {
+            view.View.measureChild(this, this._navigateToEntry.resolvedPage, widthMeasureSpec, utils.layout.makeMeasureSpec(height - this.navigationBarHeight, heightMode));
+        }
+        var widthAndState = view.View.resolveSizeAndState(result.measuredWidth, width, widthMode, 0);
+        var heightAndState = view.View.resolveSizeAndState(result.measuredHeight, height, heightMode, 0);
+        this.setMeasuredDimension(widthAndState, heightAndState);
+    };
+    Frame.prototype.onLayout = function (left, top, right, bottom) {
+        view.View.layoutChild(this, this.currentPage, 0, this.navigationBarHeight, right - left, bottom - top);
+        if (this._navigateToEntry) {
+            view.View.layoutChild(this, this._navigateToEntry.resolvedPage, 0, this.navigationBarHeight, right - left, bottom - top);
         }
     };
     Frame.prototype.layoutNativeView = function (left, top, right, bottom) {
@@ -171,29 +192,47 @@ var UINavigationControllerImpl = (function (_super) {
         trace.write(this._owner + " viewDidLayoutSubviews, isLoaded = " + this._owner.isLoaded, trace.categories.ViewHierarchy);
         this._owner._updateLayout();
     };
+    UINavigationControllerImpl.prototype.navigationControllerWillShowViewControllerAnimated = function (navigationController, viewController, animated) {
+        var frame = this._owner;
+        var newEntry = viewController[ENTRY];
+        var newPage = newEntry.resolvedPage;
+        if (!newPage.parent) {
+            if (!frame._currentEntry) {
+                frame._currentEntry = newEntry;
+            }
+            else {
+                frame._navigateToEntry = newEntry;
+            }
+            frame._addView(newPage);
+            frame.populateMenuItems(newPage);
+        }
+        else if (newPage.parent !== frame) {
+            throw new Error("Page is already shown on another frame.");
+        }
+    };
     UINavigationControllerImpl.prototype.navigationControllerDidShowViewControllerAnimated = function (navigationController, viewController, animated) {
         var frame = this._owner;
         var backStack = frame.backStack;
         var currentEntry = backStack.length > 0 ? backStack[backStack.length - 1] : null;
         var newEntry = viewController[ENTRY];
-        if (newEntry === currentEntry && currentEntry) {
+        var isBack = currentEntry && newEntry === currentEntry;
+        if (isBack) {
             try {
-                frame.shouldSkipNativePop = true;
+                frame._shouldSkipNativePop = true;
                 frame.goBack();
             }
             finally {
-                frame.shouldSkipNativePop = false;
+                frame._shouldSkipNativePop = false;
             }
         }
         var page = frame.currentPage;
-        if (page) {
+        if (page && !navigationController.viewControllers.containsObject(page.ios)) {
             frame._removeView(page);
         }
-        var newPage = newEntry.resolvedPage;
+        frame._navigateToEntry = null;
         frame._currentEntry = newEntry;
-        frame._addView(newPage);
-        frame.populateMenuItems(newPage);
         frame.updateNavigationBar();
+        var newPage = newEntry.resolvedPage;
         newPage.onNavigatedTo(newEntry.entry.context);
         frame._processNavigationQueue(newPage);
     };

@@ -4,6 +4,7 @@ var fs = require("file-system");
 var fileSystemAccess = require("file-system/file-system-access");
 var styleScope = require("ui/styling/style-scope");
 exports.cssFile = "app.css";
+exports.resources = {};
 exports.onUncaughtError = undefined;
 exports.onLaunch = undefined;
 exports.onSuspend = undefined;

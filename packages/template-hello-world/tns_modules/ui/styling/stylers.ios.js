@@ -121,12 +121,15 @@ var ButtonStyler = (function () {
             switch (newValue) {
                 case enums.TextAlignment.left:
                     ios.titleLabel.textAlignment = NSTextAlignment.NSTextAlignmentLeft;
+                    ios.contentHorizontalAlignment = UIControlContentHorizontalAlignment.UIControlContentHorizontalAlignmentLeft;
                     break;
                 case enums.TextAlignment.center:
                     ios.titleLabel.textAlignment = NSTextAlignment.NSTextAlignmentCenter;
+                    ios.contentHorizontalAlignment = UIControlContentHorizontalAlignment.UIControlContentHorizontalAlignmentCenter;
                     break;
                 case enums.TextAlignment.right:
                     ios.titleLabel.textAlignment = NSTextAlignment.NSTextAlignmentRight;
+                    ios.contentHorizontalAlignment = UIControlContentHorizontalAlignment.UIControlContentHorizontalAlignmentRight;
                     break;
                 default:
                     break;
@@ -136,13 +139,17 @@ var ButtonStyler = (function () {
     ButtonStyler.resetTextAlignmentProperty = function (view, nativeValue) {
         var ios = view._nativeView;
         if (ios) {
-            ios.titleLabel.textAlignment = nativeValue;
+            ios.titleLabel.textAlignment = nativeValue.textAlign;
+            ios.contentHorizontalAlignment = nativeValue.contentAlign;
         }
     };
     ButtonStyler.getNativeTextAlignmentValue = function (view) {
         var ios = view._nativeView;
         if (ios) {
-            return ios.titleLabel.textAlignment;
+            return {
+                textAlign: ios.titleLabel.textAlignment,
+                contentAlign: ios.contentHorizontalAlignment
+            };
         }
     };
     ButtonStyler.registerHandlers = function () {

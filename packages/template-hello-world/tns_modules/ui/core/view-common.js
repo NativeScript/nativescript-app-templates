@@ -125,26 +125,6 @@ var View = (function (_super) {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(View.prototype, "fontSize", {
-        get: function () {
-            return this.style.fontSize;
-        },
-        set: function (value) {
-            this.style.fontSize = value;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(View.prototype, "textAlignment", {
-        get: function () {
-            return this.style.textAlignment;
-        },
-        set: function (value) {
-            this.style.textAlignment;
-        },
-        enumerable: true,
-        configurable: true
-    });
     Object.defineProperty(View.prototype, "minWidth", {
         get: function () {
             return this.style.minWidth;
@@ -499,14 +479,14 @@ var View = (function (_super) {
                 break;
             case utils.layout.AT_MOST:
                 if (specSize < size) {
-                    result = Math.round(specSize) | utils.layout.MEASURED_STATE_TOO_SMALL;
+                    result = Math.round(specSize + 0.499) | utils.layout.MEASURED_STATE_TOO_SMALL;
                 }
                 break;
             case utils.layout.EXACTLY:
                 result = specSize;
                 break;
         }
-        return Math.round(result) | (childMeasuredState & utils.layout.MEASURED_STATE_MASK);
+        return Math.round(result + 0.499) | (childMeasuredState & utils.layout.MEASURED_STATE_MASK);
     };
     View.layoutChild = function (parent, child, left, top, right, bottom) {
         if (!child || !child._isVisible) {

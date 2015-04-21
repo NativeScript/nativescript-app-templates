@@ -43,8 +43,15 @@ var TextView = (function (_super) {
             this._ios.font = UIFont.systemFontOfSize(12);
         }
         this._delegate = UITextViewDelegateImpl.new().initWithOwner(this);
-        this._ios.delegate = this._delegate;
     }
+    TextView.prototype.onLoaded = function () {
+        _super.prototype.onLoaded.call(this);
+        this._ios.delegate = this._delegate;
+    };
+    TextView.prototype.onUnloaded = function () {
+        this._ios.delegate = null;
+        _super.prototype.onUnloaded.call(this);
+    };
     Object.defineProperty(TextView.prototype, "ios", {
         get: function () {
             return this._ios;

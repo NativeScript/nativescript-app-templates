@@ -6,6 +6,7 @@ var bindingConstants;
     bindingConstants.expression = "expression";
     bindingConstants.twoWay = "twoWay";
     bindingConstants.source = "source";
+    bindingConstants.bindingValueKey = "$value";
 })(bindingConstants = exports.bindingConstants || (exports.bindingConstants = {}));
 ;
 var hasEqualSignRegex = /=+/;
@@ -71,7 +72,8 @@ function parseNamedProperties(parameterList, knownOptions, callback) {
 function extractPropertyNameFromExpression(expression) {
     var firstExpressionSymbolIndex = expression.search(expressionSymbolsRegex);
     if (firstExpressionSymbolIndex > -1) {
-        return expression.substr(0, firstExpressionSymbolIndex).trim();
+        var sourceProp = expression.substr(0, firstExpressionSymbolIndex).trim();
+        return sourceProp;
     }
     else {
         return expression;

@@ -1,10 +1,10 @@
 {
 	"name": "tns-core",
 	"description": "Telerik NativeScript Core",
-	"version": "0.4.2",
+	"version": "0.10.0",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/NativeScript/cross-platform-modules/commit/dfcc820f2f113ca3f05a4e72414913c34d8736d1"
+		"url": "https://github.com/NativeScript/cross-platform-modules/commit/27a20f5b425e81231ebe53e61a986102a52b7124"
 	},
 	"files": [
 		"**/*.*",

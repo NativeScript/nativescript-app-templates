@@ -126,5 +126,5 @@ function getExports(instance) {
     while (parent && parent.exports === undefined) {
         parent = parent.parent;
     }
-    return parent.exports;
+    return parent ? parent.exports : undefined;
 }

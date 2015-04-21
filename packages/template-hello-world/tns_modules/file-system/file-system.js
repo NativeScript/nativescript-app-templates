@@ -158,7 +158,7 @@ var File = (function (_super) {
     });
     Object.defineProperty(File.prototype, "isLocked", {
         get: function () {
-            return this[fileLockedProperty];
+            return !!this[fileLockedProperty];
         },
         enumerable: true,
         configurable: true

@@ -204,6 +204,7 @@ var TabView = (function (_super) {
         _super.prototype.onLoaded.call(this);
         if (this.android && this.android.isShown()) {
             this._addTabsIfNeeded();
+            this._setNativeSelectedIndex(this.selectedIndex);
         }
     };
     TabView.prototype.onUnloaded = function () {
@@ -338,11 +339,13 @@ var TabView = (function (_super) {
         if (actionBar) {
             var actionBarSelectedIndex = actionBar.getSelectedNavigationIndex();
             if (actionBarSelectedIndex !== index) {
+                trace.write("TabView actionBar.setSelectedNavigationItem(" + index + ")", common.traceCategory);
                 actionBar.setSelectedNavigationItem(index);
             }
         }
         var viewPagerSelectedIndex = this._android.getCurrentItem();
         if (viewPagerSelectedIndex !== index) {
+            trace.write("TabView this._android.setCurrentItem(" + index + ", true);", common.traceCategory);
             this._android.setCurrentItem(index, true);
         }
     };

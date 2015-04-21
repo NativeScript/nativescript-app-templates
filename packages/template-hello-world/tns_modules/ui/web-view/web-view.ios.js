@@ -50,8 +50,15 @@ var WebView = (function (_super) {
         _super.call(this);
         this._ios = new UIWebView();
         this._delegate = UIWebViewDelegateImpl.new().initWithOwner(this);
-        this._ios.delegate = this._delegate;
     }
+    WebView.prototype.onLoaded = function () {
+        _super.prototype.onLoaded.call(this);
+        this._ios.delegate = this._delegate;
+    };
+    WebView.prototype.onUnloaded = function () {
+        this._ios.delegate = null;
+        _super.prototype.onUnloaded.call(this);
+    };
     Object.defineProperty(WebView.prototype, "ios", {
         get: function () {
             return this._ios;
