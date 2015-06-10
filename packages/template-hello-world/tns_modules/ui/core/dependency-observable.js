@@ -337,12 +337,12 @@ var DependencyObservable = (function (_super) {
             property.metadata.onValueChanged({
                 object: this,
                 property: property,
-                eventName: observable.knownEvents.propertyChange,
+                eventName: observable.Observable.propertyChangeEvent,
                 newValue: newValue,
                 oldValue: oldValue
             });
         }
-        if (this.hasListeners(observable.knownEvents.propertyChange)) {
+        if (this.hasListeners(observable.Observable.propertyChangeEvent)) {
             var changeData = _super.prototype._createPropertyChangeData.call(this, property.name, newValue);
             this.notify(changeData);
         }

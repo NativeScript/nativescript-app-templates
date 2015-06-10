@@ -375,12 +375,12 @@ var NativeActivity = (function (_super) {
         trace.write("NativeScriptActivity.onDestroy();", trace.categories.NativeLifecycle);
     };
     NativeActivity.prototype.onOptionsItemSelected = function (menuItem) {
-        if (!this.androidFrame.hasListeners(frameCommon.knownEvents.android.optionSelected)) {
+        if (!this.androidFrame.hasListeners(frameCommon.Frame.androidOptionSelectedEvent)) {
             return false;
         }
         var data = {
             handled: false,
-            eventName: frameCommon.knownEvents.android.optionSelected,
+            eventName: frameCommon.Frame.androidOptionSelectedEvent,
             item: menuItem,
             object: this.androidFrame
         };

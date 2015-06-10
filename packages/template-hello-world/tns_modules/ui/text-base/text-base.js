@@ -72,7 +72,7 @@ var TextBase = (function (_super) {
             if (this.formattedText !== value) {
                 var weakEventOptions = {
                     targetWeakRef: new WeakRef(this),
-                    eventName: observable.knownEvents.propertyChange,
+                    eventName: observable.Observable.propertyChangeEvent,
                     sourceWeakRef: new WeakRef(value),
                     handler: this.onFormattedTextChanged,
                     handlerContext: this,

@@ -18,12 +18,6 @@ var LISTVIEW = "ListView";
 var ITEMSCHANGED = "_itemsChanged";
 var CHANGE = "change";
 var SEPARATORCOLOR = "separatorColor";
-var knownEvents;
-(function (knownEvents) {
-    knownEvents.itemLoading = "itemLoading";
-    knownEvents.itemTap = "itemTap";
-    knownEvents.loadMoreItems = "loadMoreItems";
-})(knownEvents = exports.knownEvents || (exports.knownEvents = {}));
 var knownTemplates;
 (function (knownTemplates) {
     knownTemplates.itemTemplate = "itemTemplate";
@@ -114,6 +108,9 @@ var ListView = (function (_super) {
         lbl.text = this._getDataItem(index) + "";
         return lbl;
     };
+    ListView.itemLoadingEvent = "itemLoading";
+    ListView.itemTapEvent = "itemTap";
+    ListView.loadMoreItemsEvent = "loadMoreItems";
     ListView.separatorColorProperty = new dependencyObservable.Property(SEPARATORCOLOR, LISTVIEW, new proxy.PropertyMetadata(undefined));
     ListView.itemsProperty = new dependencyObservable.Property(ITEMS, LISTVIEW, new proxy.PropertyMetadata(undefined, dependencyObservable.PropertyMetadataSettings.AffectsLayout, onItemsPropertyChanged));
     ListView.itemTemplateProperty = new dependencyObservable.Property(ITEMTEMPLATE, LISTVIEW, new proxy.PropertyMetadata(undefined, dependencyObservable.PropertyMetadataSettings.AffectsLayout, onItemTemplatePropertyChanged));

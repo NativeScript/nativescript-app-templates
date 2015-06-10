@@ -191,6 +191,23 @@ var View = (function (_super) {
         }
         return false;
     };
+    View.resolveSizeAndState = function (size, specSize, specMode, childMeasuredState) {
+        var result = size;
+        switch (specMode) {
+            case utils.layout.UNSPECIFIED:
+                result = size;
+                break;
+            case utils.layout.AT_MOST:
+                if (specSize < size) {
+                    result = specSize | utils.layout.MEASURED_STATE_TOO_SMALL;
+                }
+                break;
+            case utils.layout.EXACTLY:
+                result = specSize;
+                break;
+        }
+        return result | (childMeasuredState & utils.layout.MEASURED_STATE_MASK);
+    };
     return View;
 })(viewCommon.View);
 exports.View = View;

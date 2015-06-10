@@ -7,11 +7,6 @@ var __extends = this.__extends || function (d, b) {
 var view = require("ui/core/view");
 var dependencyObservable = require("ui/core/dependency-observable");
 var proxy = require("ui/core/proxy");
-var knownEvents;
-(function (knownEvents) {
-    knownEvents.loadFinished = "loadFinished";
-    knownEvents.loadStarted = "loadStarted";
-})(knownEvents = exports.knownEvents || (exports.knownEvents = {}));
 var urlProperty = new dependencyObservable.Property("url", "WebView", new proxy.PropertyMetadata(""));
 function onUrlPropertyChanged(data) {
     var webView = data.object;
@@ -41,7 +36,7 @@ var WebView = (function (_super) {
         this.url = url;
         this._suspendLoading = false;
         var args = {
-            eventName: knownEvents.loadFinished,
+            eventName: WebView.loadFinishedEvent,
             object: this,
             url: url,
             error: error
@@ -50,7 +45,7 @@ var WebView = (function (_super) {
     };
     WebView.prototype._onLoadStarted = function (url) {
         var args = {
-            eventName: knownEvents.loadStarted,
+            eventName: WebView.loadStartedEvent,
             object: this,
             url: url,
             error: undefined
@@ -83,6 +78,8 @@ var WebView = (function (_super) {
     WebView.prototype.reload = function () {
         throw new Error("This member is abstract.");
     };
+    WebView.loadStartedEvent = "loadStarted";
+    WebView.loadFinishedEvent = "loadFinished";
     WebView.urlProperty = urlProperty;
     return WebView;
 })(view.View);

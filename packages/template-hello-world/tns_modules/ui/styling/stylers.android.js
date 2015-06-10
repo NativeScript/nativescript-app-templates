@@ -252,6 +252,23 @@ var SearchBarStyler = (function () {
     return SearchBarStyler;
 })();
 exports.SearchBarStyler = SearchBarStyler;
+var BorderStyler = (function () {
+    function BorderStyler() {
+    }
+    BorderStyler.setBackgroundProperty = function (view, newValue) {
+        var border = view;
+        border._updateAndroidBorder();
+    };
+    BorderStyler.resetBackgroundProperty = function (view, nativeValue) {
+        var border = view;
+        border._updateAndroidBorder();
+    };
+    BorderStyler.registerHandlers = function () {
+        style.registerHandler(style.backgroundColorProperty, new stylersCommon.StylePropertyChangedHandler(BorderStyler.setBackgroundProperty, BorderStyler.resetBackgroundProperty), "Border");
+    };
+    return BorderStyler;
+})();
+exports.BorderStyler = BorderStyler;
 function _registerDefaultStylers() {
     style.registerNoStylingClass("Frame");
     DefaultStyler.registerHandlers();
@@ -260,5 +277,6 @@ function _registerDefaultStylers() {
     ActivityIndicatorStyler.registerHandlers();
     SegmentedBarStyler.registerHandlers();
     SearchBarStyler.registerHandlers();
+    BorderStyler.registerHandlers();
 }
 exports._registerDefaultStylers = _registerDefaultStylers;

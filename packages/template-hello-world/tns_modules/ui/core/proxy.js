@@ -86,7 +86,7 @@ var ProxyObject = (function (_super) {
             proxyMetadata.onSetNativeValue({
                 object: this,
                 property: property,
-                eventName: observable.knownEvents.propertyChange,
+                eventName: observable.Observable.propertyChangeEvent,
                 newValue: newValue,
                 oldValue: oldValue
             });

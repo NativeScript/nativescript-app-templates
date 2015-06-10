@@ -55,17 +55,17 @@ var UISearchBarDelegateImpl = (function (_super) {
     UISearchBarDelegateImpl.prototype.searchBarTextDidChange = function (searchBar, searchText) {
         this._owner._onPropertyChangedFromNative(common.SearchBar.textProperty, searchText);
         if (searchText === "" && this._searchText !== searchText) {
-            this._owner._emit(common.knownEvents.clear);
+            this._owner._emit(common.SearchBar.clearEvent);
         }
         this._searchText = searchText;
     };
     UISearchBarDelegateImpl.prototype.searchBarCancelButtonClicked = function (searchBar) {
         searchBar.resignFirstResponder();
-        this._owner._emit(common.knownEvents.clear);
+        this._owner._emit(common.SearchBar.clearEvent);
     };
     UISearchBarDelegateImpl.prototype.searchBarSearchButtonClicked = function (searchBar) {
         searchBar.resignFirstResponder();
-        this._owner._emit(common.knownEvents.submit);
+        this._owner._emit(common.SearchBar.submitEvent);
     };
     UISearchBarDelegateImpl.ObjCProtocols = [UISearchBarDelegate];
     return UISearchBarDelegateImpl;

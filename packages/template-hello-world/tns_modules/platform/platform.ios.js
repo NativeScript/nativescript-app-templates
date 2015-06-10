@@ -7,6 +7,13 @@ var platformNames;
 var device = (function () {
     function device() {
     }
+    Object.defineProperty(device, "manufacturer", {
+        get: function () {
+            return "Apple";
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(device, "os", {
         get: function () {
             return platformNames.ios;
@@ -71,6 +78,17 @@ var device = (function () {
                 userDefaults.synchronize();
             }
             return app_uuid;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(device, "language", {
+        get: function () {
+            if (!device._language) {
+                var languages = NSLocale.preferredLanguages();
+                device._language = languages[0];
+            }
+            return device._language;
         },
         enumerable: true,
         configurable: true

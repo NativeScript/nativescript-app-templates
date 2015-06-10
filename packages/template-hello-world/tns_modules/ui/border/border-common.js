@@ -71,6 +71,8 @@ var Border = (function (_super) {
         var borderSize = this.borderWidth * density;
         viewModule.View.layoutChild(this, this.content, borderSize, borderSize, right - left - borderSize, bottom - top - borderSize);
     };
+    Border.prototype._updateAndroidBorder = function () {
+    };
     Border.cornerRadiusProperty = cornerRadiusProperty;
     Border.borderWidthProperty = borderWidthProperty;
     Border.borderColorProperty = borderColorProperty;

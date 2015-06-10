@@ -17,7 +17,7 @@ var FormattedString = (function (_super) {
     function FormattedString() {
         _super.call(this);
         this._spans = new observableArray.ObservableArray();
-        this._spans.addEventListener(observableArray.knownEvents.change, this.onSpansCollectionChanged, this);
+        this._spans.addEventListener(observableArray.ObservableArray.changeEvent, this.onSpansCollectionChanged, this);
         this._isDirty = true;
     }
     Object.defineProperty(FormattedString.prototype, "parent", {
@@ -167,14 +167,14 @@ var FormattedString = (function (_super) {
             for (i = 0; i < eventData.addedCount; i++) {
                 var addedSpan = eventData.object.getItem(eventData.index + i);
                 addedSpan.parentFormattedString = this;
-                addedSpan.addEventListener(observable.knownEvents.propertyChange, this.onSpanChanged, this);
+                addedSpan.addEventListener(observable.Observable.propertyChangeEvent, this.onSpanChanged, this);
             }
         }
         if (eventData.removed && eventData.removed.length > 0) {
             var p;
             for (p = 0; p < eventData.removed.length; p++) {
                 var removedSpan = eventData.removed[p];
-                removedSpan.removeEventListener(observable.knownEvents.propertyChange, this.onSpanChanged, this);
+                removedSpan.removeEventListener(observable.Observable.propertyChangeEvent, this.onSpanChanged, this);
             }
         }
         this.updateFormattedText(true);

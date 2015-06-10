@@ -5,52 +5,46 @@ var __extends = this.__extends || function (d, b) {
     d.prototype = new __();
 };
 var borderCommon = require("ui/border/border-common");
-var color = require("color");
+var utils = require("utils/utils");
 require("utils/module-merge").merge(borderCommon, exports);
-function onCornerRadiusPropertyChanged(data) {
-    var view = data.object;
-    if (!view._nativeView) {
-        return;
-    }
-    if (view._nativeView instanceof android.view.ViewGroup) {
-        var gd = new android.graphics.drawable.GradientDrawable();
-        gd.setCornerRadius(data.newValue);
-        gd.setStroke(view.borderWidth, view.borderColor.android);
-        view._nativeView.setBackgroundDrawable(gd);
-    }
+function onBorderPropertyChanged(data) {
+    var border = data.object;
+    border._updateAndroidBorder();
 }
-borderCommon.Border.cornerRadiusProperty.metadata.onSetNativeValue = onCornerRadiusPropertyChanged;
-function onBorderWidthPropertyChanged(data) {
-    var view = data.object;
-    if (!view._nativeView) {
-        return;
-    }
-    if (view._nativeView instanceof android.view.ViewGroup) {
-        var gd = new android.graphics.drawable.GradientDrawable();
-        gd.setCornerRadius(view.cornerRadius);
-        gd.setStroke(data.newValue, view.borderColor.android);
-        view._nativeView.setBackgroundDrawable(gd);
-    }
-}
-borderCommon.Border.borderWidthProperty.metadata.onSetNativeValue = onBorderWidthPropertyChanged;
-function onBorderColorPropertyChanged(data) {
-    var view = data.object;
-    if (!view._nativeView) {
-        return;
-    }
-    if (view._nativeView instanceof android.view.ViewGroup && data.newValue instanceof color.Color) {
-        var gd = new android.graphics.drawable.GradientDrawable();
-        gd.setCornerRadius(view.cornerRadius);
-        gd.setStroke(view.borderWidth, data.newValue.android);
-        view._nativeView.setBackgroundDrawable(gd);
-    }
-}
-borderCommon.Border.borderColorProperty.metadata.onSetNativeValue = onBorderColorPropertyChanged;
+borderCommon.Border.cornerRadiusProperty.metadata.onSetNativeValue = onBorderPropertyChanged;
+borderCommon.Border.borderWidthProperty.metadata.onSetNativeValue = onBorderPropertyChanged;
+borderCommon.Border.borderColorProperty.metadata.onSetNativeValue = onBorderPropertyChanged;
 var Border = (function (_super) {
     __extends(Border, _super);
     function Border() {
         _super.apply(this, arguments);
     }
+    Border.prototype._updateAndroidBorder = function () {
+        if (!this._nativeView) {
+            return;
+        }
+        var nativeView = this._nativeView;
+        var backgroundDrawable = nativeView.getBackground();
+        if (!(backgroundDrawable instanceof android.graphics.drawable.GradientDrawable)) {
+            backgroundDrawable = new android.graphics.drawable.GradientDrawable();
+            nativeView.setBackgroundDrawable(backgroundDrawable);
+        }
+        var gd = backgroundDrawable;
+        var density = utils.layout.getDisplayDensity();
+        gd.setCornerRadius(this.cornerRadius * density);
+        if (this.borderColor) {
+            gd.setStroke(this.borderWidth * density, this.borderColor.android);
+        }
+        else {
+            gd.setStroke(this.borderWidth * density, android.graphics.Color.TRANSPARENT);
+        }
+        if (this.backgroundColor) {
+            gd.setColor(this.backgroundColor.android);
+        }
+        else {
+            gd.setColor(android.graphics.Color.TRANSPARENT);
+        }
+    };
     return Border;
 })(borderCommon.Border);
 exports.Border = Border;

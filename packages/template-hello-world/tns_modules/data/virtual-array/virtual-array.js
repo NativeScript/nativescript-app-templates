@@ -7,11 +7,6 @@ var __extends = this.__extends || function (d, b) {
 var observable = require("data/observable");
 var types = require("utils/types");
 var CHANGE = "change", UPDATE = "update", DELETE = "delete", ADD = "add";
-var knownEvents;
-(function (knownEvents) {
-    knownEvents.itemsLoading = "itemsLoading";
-    knownEvents.change = "change";
-})(knownEvents = exports.knownEvents || (exports.knownEvents = {}));
 var ChangeType = (function () {
     function ChangeType() {
     }
@@ -125,7 +120,7 @@ var VirtualArray = (function (_super) {
             else {
                 if (count > 0) {
                     this.notify({
-                        eventName: knownEvents.itemsLoading,
+                        eventName: VirtualArray.itemsLoadingEvent,
                         object: this,
                         index: start,
                         count: count
@@ -137,13 +132,15 @@ var VirtualArray = (function (_super) {
         }
         if (start >= 0 && count > 0) {
             this.notify({
-                eventName: knownEvents.itemsLoading,
+                eventName: VirtualArray.itemsLoadingEvent,
                 object: this,
                 index: start,
                 count: count
             });
         }
     };
+    VirtualArray.changeEvent = CHANGE;
+    VirtualArray.itemsLoadingEvent = "itemsLoading";
     return VirtualArray;
 })(observable.Observable);
 exports.VirtualArray = VirtualArray;

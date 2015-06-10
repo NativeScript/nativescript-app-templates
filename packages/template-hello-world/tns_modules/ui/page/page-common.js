@@ -13,11 +13,6 @@ var bindable = require("ui/core/bindable");
 var dependencyObservable = require("ui/core/dependency-observable");
 var enums = require("ui/enums");
 var OPTIONS_MENU = "optionsMenu";
-var knownEvents;
-(function (knownEvents) {
-    knownEvents.navigatedTo = "navigatedTo";
-    knownEvents.tap = "tap";
-})(knownEvents = exports.knownEvents || (exports.knownEvents = {}));
 var knownCollections;
 (function (knownCollections) {
     knownCollections.optionsMenu = "optionsMenu";
@@ -105,7 +100,7 @@ var Page = (function (_super) {
     Page.prototype.onNavigatedTo = function (context) {
         this._navigationContext = context;
         this.notify({
-            eventName: knownEvents.navigatedTo,
+            eventName: Page.navigatedToEvent,
             object: this,
             context: context
         });
@@ -145,6 +140,7 @@ var Page = (function (_super) {
             this.optionsMenu.setItems(value);
         }
     };
+    Page.navigatedToEvent = "navigatedTo";
     return Page;
 })(contentView.ContentView);
 exports.Page = Page;
@@ -245,8 +241,9 @@ var MenuItem = (function (_super) {
         configurable: true
     });
     MenuItem.prototype._raiseTap = function () {
-        this._emit(knownEvents.tap);
+        this._emit(MenuItem.tapEvent);
     };
+    MenuItem.tapEvent = "tap";
     MenuItem.textProperty = new dependencyObservable.Property("text", "MenuItem", new dependencyObservable.PropertyMetadata("", null, MenuItem.onItemChanged));
     MenuItem.iconProperty = new dependencyObservable.Property("icon", "MenuItem", new dependencyObservable.PropertyMetadata(null, null, MenuItem.onItemChanged));
     return MenuItem;

@@ -8,9 +8,9 @@ var common = require("ui/list-view/list-view-common");
 var layout = require("ui/layouts/layout");
 var stackLayout = require("ui/layouts/stack-layout");
 var color = require("color");
-var ITEMLOADING = common.knownEvents.itemLoading;
-var LOADMOREITEMS = common.knownEvents.loadMoreItems;
-var ITEMTAP = common.knownEvents.itemTap;
+var ITEMLOADING = common.ListView.itemLoadingEvent;
+var LOADMOREITEMS = common.ListView.loadMoreItemsEvent;
+var ITEMTAP = common.ListView.itemTapEvent;
 var REALIZED_INDEX = "realizedIndex";
 require("utils/module-merge").merge(common, exports);
 function onSeparatorColorPropertyChanged(data) {

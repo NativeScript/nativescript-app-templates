@@ -1,5 +1,5 @@
 var appModule = require("application");
-var Common = require("local-settings/local-settings-common");
+var Common = require("application-settings/application-settings-common");
 var sharedPreferences = appModule.android.context.getSharedPreferences("prefs.db", 0);
 exports.hasKey = function (key) {
     Common.checkKey(key);

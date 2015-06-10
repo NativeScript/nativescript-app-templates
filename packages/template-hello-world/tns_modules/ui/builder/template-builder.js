@@ -11,11 +11,11 @@ var TemplateBuilder = (function () {
         enumerable: true,
         configurable: true
     });
-    TemplateBuilder.prototype.addStartElement = function (elementName, attributes) {
-        this._items.push("<" + elementName + (attributes ? " " + getAttributesAsString(attributes) + ">" : ">"));
+    TemplateBuilder.prototype.addStartElement = function (prefix, namespace, elementName, attributes) {
+        this._items.push("<" + getElementNameWithPrefix(prefix, elementName) + (namespace ? " " + getNamespace(prefix, namespace) : "") + (attributes ? " " + getAttributesAsString(attributes) : "") + ">");
     };
-    TemplateBuilder.prototype.addEndElement = function (elementName) {
-        this._items.push("</" + elementName + ">");
+    TemplateBuilder.prototype.addEndElement = function (prefix, elementName) {
+        this._items.push("</" + getElementNameWithPrefix(prefix, elementName) + ">");
     };
     TemplateBuilder.prototype.build = function () {
         if (this._templateProperty.name in this._templateProperty.parent.component) {
@@ -35,4 +35,10 @@ function getAttributesAsString(attributes) {
         result.push(item + '="' + attributes[item] + '"');
     }
     return result.join(" ");
+}
+function getElementNameWithPrefix(prefix, elementName) {
+    return (prefix ? prefix + ":" : "") + elementName;
+}
+function getNamespace(prefix, namespace) {
+    return 'xmlns:' + prefix + '="' + namespace + '"';
 }

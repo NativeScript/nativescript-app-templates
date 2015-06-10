@@ -42,7 +42,7 @@ var Bindable = (function (_super) {
         if (!bindingSource) {
             bindingSource = this.bindingContext;
         }
-        if (bindingSource) {
+        if (!types.isNullOrUndefined(bindingSource)) {
             binding.bind(bindingSource);
         }
     };
@@ -91,7 +91,7 @@ var Bindable = (function (_super) {
             }
             trace.write("Binding target: " + binding.target.get() + " targetProperty: " + binding.options.targetProperty + " to the changed context: " + newValue, trace.categories.Binding);
             binding.unbind();
-            if (newValue) {
+            if (!types.isNullOrUndefined(newValue)) {
                 binding.bind(newValue);
             }
         }
@@ -108,7 +108,7 @@ var Binding = (function () {
         this.options = options;
     }
     Binding.prototype.bind = function (obj) {
-        if (!obj) {
+        if (types.isNullOrUndefined(obj)) {
             throw new Error("Expected valid object reference as a source in the Binding.bind method.");
         }
         if (typeof (obj) === "number") {
@@ -131,7 +131,7 @@ var Binding = (function () {
                 this.weakEventListenerOptions = {
                     targetWeakRef: this.target,
                     sourceWeakRef: this.sourceOptions.instance,
-                    eventName: observable.knownEvents.propertyChange,
+                    eventName: observable.Observable.propertyChangeEvent,
                     handler: this.onSourcePropertyChanged,
                     handlerContext: this,
                     key: this.options.targetProperty
@@ -289,7 +289,7 @@ var Binding = (function () {
             for (i = 0; i < properties.length - 1; i++) {
                 currentObject = currentObject[properties[i]];
             }
-            if (currentObject !== undefined && currentObject !== null) {
+            if (!types.isNullOrUndefined(currentObject)) {
                 options = {
                     instance: new WeakRef(currentObject),
                     property: properties[properties.length - 1]

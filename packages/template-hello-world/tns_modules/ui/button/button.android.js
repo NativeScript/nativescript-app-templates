@@ -30,7 +30,7 @@ var Button = (function (_super) {
             },
             onClick: function (v) {
                 if (this.owner) {
-                    this.owner._emit(common.knownEvents.tap);
+                    this.owner._emit(common.Button.tapEvent);
                 }
             }
         }));

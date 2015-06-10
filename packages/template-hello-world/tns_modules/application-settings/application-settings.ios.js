@@ -1,4 +1,4 @@
-var Common = require("local-settings/local-settings-common");
+var Common = require("application-settings/application-settings-common");
 var userDefaults = NSUserDefaults.standardUserDefaults();
 exports.hasKey = function (key) {
     Common.checkKey(key);

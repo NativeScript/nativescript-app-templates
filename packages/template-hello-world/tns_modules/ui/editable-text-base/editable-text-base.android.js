@@ -90,6 +90,13 @@ var EditableTextBase = (function (_super) {
             this._imm.hideSoftInputFromWindow(this._android.getWindowToken(), 0);
         }
     };
+    EditableTextBase.prototype.focus = function () {
+        var result = _super.prototype.focus.call(this);
+        if (result && this._nativeView) {
+            this._imm.showSoftInput(this._nativeView, android.view.inputmethod.InputMethodManager.SHOW_IMPLICIT);
+        }
+        return result;
+    };
     EditableTextBase.prototype._onTextPropertyChanged = function (data) {
         if (this._android) {
             this.android.setText(data.newValue + "", android.widget.TextView.BufferType.EDITABLE);

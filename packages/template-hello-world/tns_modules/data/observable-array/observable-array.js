@@ -16,10 +16,6 @@ var ChangeType = (function () {
 })();
 exports.ChangeType = ChangeType;
 var CHANGE = "change";
-var knownEvents;
-(function (knownEvents) {
-    knownEvents.change = CHANGE;
-})(knownEvents = exports.knownEvents || (exports.knownEvents = {}));
 var ObservableArray = (function (_super) {
     __extends(ObservableArray, _super);
     function ObservableArray() {
@@ -191,6 +187,7 @@ var ObservableArray = (function (_super) {
     ObservableArray.prototype.reduceRight = function (callbackfn, initialValue) {
         return this._array.reduceRight(callbackfn, initialValue);
     };
+    ObservableArray.changeEvent = CHANGE;
     return ObservableArray;
 })(observable.Observable);
 exports.ObservableArray = ObservableArray;

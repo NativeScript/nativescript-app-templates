@@ -7,16 +7,12 @@ var __extends = this.__extends || function (d, b) {
 var common = require("ui/time-picker/time-picker-common");
 function onHourPropertyChanged(data) {
     var picker = data.object;
-    if (picker.android) {
-        picker.android.setCurrentHour(new java.lang.Integer(data.newValue));
-    }
+    picker._setNativeHourSilently(data.newValue);
 }
 common.TimePicker.hourProperty.metadata.onSetNativeValue = onHourPropertyChanged;
 function onMinutePropertyChanged(data) {
     var picker = data.object;
-    if (picker.android) {
-        picker.android.setCurrentMinute(new java.lang.Integer(data.newValue));
-    }
+    picker._setNativeMinuteSilently(data.newValue);
 }
 common.TimePicker.minuteProperty.metadata.onSetNativeValue = onMinutePropertyChanged;
 require("utils/module-merge").merge(common, exports);
@@ -24,6 +20,7 @@ var TimePicker = (function (_super) {
     __extends(TimePicker, _super);
     function TimePicker() {
         _super.apply(this, arguments);
+        this._isSettingTime = false;
     }
     Object.defineProperty(TimePicker.prototype, "android", {
         get: function () {
@@ -40,7 +37,7 @@ var TimePicker = (function (_super) {
                 return that.get();
             },
             onTimeChanged: function (picker, hour, minute) {
-                if (this.owner) {
+                if (this.owner && !this.owner._isSettingTime) {
                     if (hour !== this.owner.hour) {
                         this.owner._onPropertyChangedFromNative(common.TimePicker.hourProperty, hour);
                     }
@@ -51,6 +48,30 @@ var TimePicker = (function (_super) {
             }
         });
         this._android.setOnTimeChangedListener(this._listener);
+    };
+    TimePicker.prototype._setNativeHourSilently = function (newValue) {
+        if (!this.android) {
+            return;
+        }
+        this._isSettingTime = true;
+        try {
+            this.android.setCurrentHour(new java.lang.Integer(newValue));
+        }
+        finally {
+            this._isSettingTime = false;
+        }
+    };
+    TimePicker.prototype._setNativeMinuteSilently = function (newValue) {
+        if (!this.android) {
+            return;
+        }
+        this._isSettingTime = true;
+        try {
+            this.android.setCurrentMinute(new java.lang.Integer(newValue));
+        }
+        finally {
+            this._isSettingTime = false;
+        }
     };
     return TimePicker;
 })(common.TimePicker);

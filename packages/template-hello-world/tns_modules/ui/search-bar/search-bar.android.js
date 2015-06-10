@@ -72,7 +72,7 @@ var SearchBar = (function (_super) {
                 if (this.owner) {
                     this.owner._onPropertyChangedFromNative(common.SearchBar.textProperty, newText);
                     if (newText === EMPTY && this[SEARCHTEXT] !== newText) {
-                        this.owner._emit(common.knownEvents.clear);
+                        this.owner._emit(common.SearchBar.clearEvent);
                     }
                     this[SEARCHTEXT] = newText;
                 }
@@ -81,7 +81,7 @@ var SearchBar = (function (_super) {
             onQueryTextSubmit: function (query) {
                 if (this.owner) {
                     if (query !== EMPTY && this[QUERY] !== query) {
-                        this.owner._emit(common.knownEvents.submit);
+                        this.owner._emit(common.SearchBar.submitEvent);
                     }
                     this[QUERY] = query;
                 }
@@ -94,7 +94,7 @@ var SearchBar = (function (_super) {
             },
             onClose: function () {
                 if (this.owner) {
-                    this.owner._emit(common.knownEvents.clear);
+                    this.owner._emit(common.SearchBar.clearEvent);
                 }
                 return true;
             }

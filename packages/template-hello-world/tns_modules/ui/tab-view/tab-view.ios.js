@@ -10,6 +10,7 @@ var trace = require("trace");
 var utils = require("utils/utils");
 var view = require("ui/core/view");
 var imageSource = require("image-source");
+var types = require("utils/types");
 require("utils/module-merge").merge(common, exports);
 var UITabBarControllerImpl = (function (_super) {
     __extends(UITabBarControllerImpl, _super);
@@ -181,7 +182,7 @@ var TabView = (function (_super) {
         _super.prototype._onSelectedIndexPropertyChangedSetNativeValue.call(this, data);
         var newIndex = data.newValue;
         trace.write("TabView._onSelectedIndexPropertyChangedSetNativeValue(" + newIndex + ")", trace.categories.Debug);
-        if (newIndex === undefined || newIndex === null) {
+        if (types.isNullOrUndefined(newIndex)) {
             return;
         }
         this._ios.selectedIndex = data.newValue;

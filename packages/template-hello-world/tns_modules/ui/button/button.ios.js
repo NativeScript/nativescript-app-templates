@@ -19,7 +19,7 @@ var TapHandlerImpl = (function (_super) {
         return this;
     };
     TapHandlerImpl.prototype.tap = function (args) {
-        this._owner._emit(common.knownEvents.tap);
+        this._owner._emit(common.Button.tapEvent);
     };
     TapHandlerImpl.ObjCExposedMethods = {
         "tap": { returns: interop.types.void, params: [interop.types.id] }

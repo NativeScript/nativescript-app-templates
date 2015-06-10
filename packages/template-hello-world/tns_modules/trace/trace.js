@@ -29,6 +29,11 @@ function clearWriters() {
 }
 exports.clearWriters = clearWriters;
 function setCategories(categories) {
+    _categories = {};
+    addCategories(categories);
+}
+exports.setCategories = setCategories;
+function addCategories(categories) {
     var split = categories.split(",");
     _categories = {};
     var i;
@@ -36,7 +41,7 @@ function setCategories(categories) {
         _categories[split[i].trim()] = true;
     }
 }
-exports.setCategories = setCategories;
+exports.addCategories = addCategories;
 function write(message, category, type) {
     if (!_enabled) {
         return;

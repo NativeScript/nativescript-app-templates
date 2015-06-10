@@ -7,6 +7,7 @@ var __extends = this.__extends || function (d, b) {
 var common = require("ui/tab-view/tab-view-common");
 var trace = require("trace");
 var imageSource = require("image-source");
+var types = require("utils/types");
 var VIEWS_STATES = "_viewStates";
 require("utils/module-merge").merge(common, exports);
 var ViewPagerClass = (function (_super) {
@@ -332,7 +333,7 @@ var TabView = (function (_super) {
         this._setNativeSelectedIndex(data.newValue);
     };
     TabView.prototype._setNativeSelectedIndex = function (index) {
-        if (index === undefined || index === null) {
+        if (types.isNullOrUndefined(index)) {
             return;
         }
         var actionBar = this._getActionBar();

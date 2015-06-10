@@ -5,27 +5,34 @@ var __extends = this.__extends || function (d, b) {
     d.prototype = new __();
 };
 var common = require("ui/date-picker/date-picker-common");
+var types = require("utils/types");
 function onYearPropertyChanged(data) {
     var picker = data.object;
     if (picker.android && picker.android.getYear() !== data.newValue) {
-        picker.android.updateDate(data.newValue, picker.android.getMonth(), picker.android.getDayOfMonth());
+        updateNativeDate(picker);
     }
 }
 common.DatePicker.yearProperty.metadata.onSetNativeValue = onYearPropertyChanged;
 function onMonthPropertyChanged(data) {
     var picker = data.object;
     if (picker.android && picker.android.getMonth() !== (data.newValue - 1)) {
-        picker.android.updateDate(picker.android.getYear(), data.newValue - 1, picker.android.getDayOfMonth());
+        updateNativeDate(picker);
     }
 }
 common.DatePicker.monthProperty.metadata.onSetNativeValue = onMonthPropertyChanged;
 function onDayPropertyChanged(data) {
     var picker = data.object;
     if (picker.android && picker.android.getDayOfMonth !== data.newValue) {
-        picker.android.updateDate(picker.android.getYear(), picker.android.getMonth(), data.newValue);
+        updateNativeDate(picker);
     }
 }
 common.DatePicker.dayProperty.metadata.onSetNativeValue = onDayPropertyChanged;
+function updateNativeDate(picker) {
+    var year = types.isNumber(picker.year) ? picker.year : picker.android.getYear();
+    var month = types.isNumber(picker.month) ? (picker.month - 1) : picker.android.getMonth();
+    var day = types.isNumber(picker.day) ? picker.day : picker.android.getDayOfMonth();
+    picker.android.updateDate(year, month, day);
+}
 function onMaxDatePropertyChanged(data) {
     var picker = data.object;
     var newValue = data.newValue.getTime();
