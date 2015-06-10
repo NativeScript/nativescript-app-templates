@@ -31,24 +31,68 @@ function verifyCallback(value) {
     }
 }
 exports.verifyCallback = verifyCallback;
+var classInfosMap = new Map();
 var funcNameRegex = /function (.{1,})\(/;
 function getClass(object) {
-    var results = (funcNameRegex).exec((object).constructor.toString());
-    return (results && results.length > 1) ? results[1] : "";
+    return getClassInfo(object).name;
 }
 exports.getClass = getClass;
-function getBaseClasses(object) {
-    var baseProto = object.__proto__;
-    var result = [];
-    result.push(getClass(object));
-    while (baseProto !== Object.prototype) {
-        var baseProtoString = baseProto.toString();
-        if (result.indexOf(baseProtoString) === -1) {
-            result.push(baseProtoString);
-        }
-        baseProto = baseProto.__proto__;
+function getClassInfo(object) {
+    var constructor = object.constructor;
+    var result = classInfosMap.get(constructor);
+    if (!result) {
+        result = new ClassInfo(constructor);
+        classInfosMap.set(constructor, result);
     }
-    result.push("Object");
+    return result;
+}
+exports.getClassInfo = getClassInfo;
+function getBaseClasses(object) {
+    var result = [];
+    var info = getClassInfo(object);
+    while (info) {
+        result.push(info.name);
+        info = info.baseClassInfo;
+    }
     return result;
 }
 exports.getBaseClasses = getBaseClasses;
+var ClassInfo = (function () {
+    function ClassInfo(typeCosntructor) {
+        this._typeCosntructor = typeCosntructor;
+    }
+    Object.defineProperty(ClassInfo.prototype, "name", {
+        get: function () {
+            if (!this._name) {
+                var results = (funcNameRegex).exec(this._typeCosntructor.toString());
+                this._name = (results && results.length > 1) ? results[1] : "";
+            }
+            return this._name;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ClassInfo.prototype, "baseClassInfo", {
+        get: function () {
+            if (isUndefined(this._baseClassInfo)) {
+                this._baseClassInfo = ClassInfo._getBase(this);
+                if (this._baseClassInfo && this._baseClassInfo.name === this.name) {
+                    this._baseClassInfo = ClassInfo._getBase(this._baseClassInfo);
+                }
+            }
+            return this._baseClassInfo;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ClassInfo._getBase = function (info) {
+        var result = null;
+        var constructorProto = info._typeCosntructor.prototype;
+        if (constructorProto.__proto__) {
+            result = getClassInfo(constructorProto.__proto__);
+        }
+        return result;
+    };
+    return ClassInfo;
+})();
+exports.ClassInfo = ClassInfo;

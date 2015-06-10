@@ -9,13 +9,13 @@ var color = require("color");
 var types = require("utils/types");
 var trace = require("trace");
 var dependencyObservable = require("ui/core/dependency-observable");
-var view = require("ui/core/view");
 var stylers = require("ui/styling/stylers");
 var styleProperty = require("ui/styling/style-property");
 var converters = require("ui/styling/converters");
 var enums = require("ui/enums");
 var imageSource = require("image-source");
-var _registeredHandlers = {};
+var utils = require("utils/utils");
+var _registeredHandlers = Array();
 var _handlersCache = {};
 var noStylingClasses = {};
 var Style = (function (_super) {
@@ -262,7 +262,10 @@ var Style = (function (_super) {
         });
     };
     Style.prototype._onPropertyChanged = function (property, oldValue, newValue) {
-        trace.write("Style._onPropertyChanged view:" + this._view + ", property: " + property.name + ", oldValue: " + oldValue + ", newValue: " + newValue, trace.categories.Style);
+        trace.write("Style._onPropertyChanged view:" + this._view +
+            ", property: " + property.name +
+            ", oldValue: " + oldValue +
+            ", newValue: " + newValue, trace.categories.Style);
         _super.prototype._onPropertyChanged.call(this, property, oldValue, newValue);
         this._view._checkMetadataOnPropertyChanged(property.metadata);
         this._applyProperty(property, newValue);
@@ -291,7 +294,7 @@ var Style = (function (_super) {
         try {
             var handler = getHandler(property, this._view);
             if (!handler) {
-                trace.write("No handler for property: " + property.name + " with id: " + property.id + ", view:" + view, trace.categories.Style);
+                trace.write("No handler for property: " + property.name + " with id: " + property.id + ", view:" + this._view, trace.categories.Style);
             }
             else {
                 trace.write("Found handler for property: " + property.name + ", view:" + this._view, trace.categories.Style);
@@ -333,14 +336,12 @@ var Style = (function (_super) {
 exports.Style = Style;
 function registerHandler(property, handler, className) {
     var realClassName = className ? className : "default";
-    if (_registeredHandlers.hasOwnProperty(property.id + "")) {
-        _registeredHandlers[property.id][realClassName] = handler;
-    }
-    else {
-        var handlerRecord = {};
-        handlerRecord[realClassName] = handler;
+    var handlerRecord = _registeredHandlers[property.id];
+    if (!handlerRecord) {
+        handlerRecord = {};
         _registeredHandlers[property.id] = handlerRecord;
     }
+    handlerRecord[realClassName] = handler;
 }
 exports.registerHandler = registerHandler;
 function registerNoStylingClass(className) {
@@ -348,47 +349,56 @@ function registerNoStylingClass(className) {
 }
 exports.registerNoStylingClass = registerNoStylingClass;
 function getHandler(property, view) {
-    var classNames = types.getBaseClasses(view);
-    classNames.push("default");
-    if (_handlersCache.hasOwnProperty(classNames[0] + property.id)) {
-        return _handlersCache[classNames[0] + property.id];
-    }
-    else {
-        var i;
-        var propertyHandlers;
-        var handler;
-        propertyHandlers = _registeredHandlers[property.id];
-        for (i = 0; i < classNames.length; i++) {
-            if (propertyHandlers) {
-                var loopClassName = classNames[i];
-                if (noStylingClasses.hasOwnProperty(loopClassName)) {
-                    _handlersCache[loopClassName + property.id] = null;
-                    return null;
-                }
-                if (propertyHandlers.hasOwnProperty(loopClassName)) {
-                    handler = propertyHandlers[loopClassName];
-                    _handlersCache[loopClassName + property.id] = handler;
-                    return handler;
-                }
-            }
-        }
-    }
-    return null;
+    return getHandlerInternal(property.id, types.getClassInfo(view));
 }
 exports.getHandler = getHandler;
+function getHandlerInternal(propertyId, classInfo) {
+    var className = classInfo ? classInfo.name : "default";
+    var handlerKey = className + propertyId;
+    var result = _handlersCache[handlerKey];
+    if (types.isDefined(result)) {
+        return result;
+    }
+    var propertyHandlers = _registeredHandlers[propertyId];
+    if (noStylingClasses.hasOwnProperty(className) || !propertyHandlers) {
+        result = null;
+    }
+    else if (propertyHandlers.hasOwnProperty(className)) {
+        result = propertyHandlers[className];
+    }
+    else if (classInfo) {
+        result = getHandlerInternal(propertyId, classInfo.baseClassInfo);
+    }
+    else {
+        result = null;
+    }
+    _handlersCache[handlerKey] = result;
+    return result;
+}
 exports.colorProperty = new styleProperty.Property("color", "color", new observable.PropertyMetadata(undefined, observable.PropertyMetadataSettings.Inheritable, undefined, undefined, color.Color.equals), converters.colorConverter);
 exports.backgroundImageProperty = new styleProperty.Property("backgroundImage", "background-image", new observable.PropertyMetadata(undefined, observable.PropertyMetadataSettings.None, onBackgroundImagePropertyChanged));
 function onBackgroundImagePropertyChanged(data) {
     var style = data.object;
-    var pattern = /url\(('|")(.*?)\1\)/;
-    var url = data.newValue.match(pattern)[2];
-    if (imageSource.isFileOrResourcePath(url)) {
-        style._setValue(exports.backgroundImageSourceProperty, imageSource.fromFileOrResource(url), observable.ValueSource.Local);
-    }
-    else if (types.isString(url)) {
-        imageSource.fromUrl(url).then(function (r) {
-            style._setValue(exports.backgroundImageSourceProperty, r, observable.ValueSource.Local);
-        });
+    if (types.isString(data.newValue)) {
+        var pattern = /url\(('|")(.*?)\1\)/;
+        var match = data.newValue && data.newValue.match(pattern);
+        var url = match && match[2];
+        if (types.isDefined(url)) {
+            if (utils.isDataURI(url)) {
+                var base64Data = url.split(",")[1];
+                if (types.isDefined(base64Data)) {
+                    style._setValue(exports.backgroundImageSourceProperty, imageSource.fromBase64(base64Data), observable.ValueSource.Local);
+                }
+            }
+            else if (utils.isFileOrResourcePath(url)) {
+                style._setValue(exports.backgroundImageSourceProperty, imageSource.fromFileOrResource(url), observable.ValueSource.Local);
+            }
+            else {
+                imageSource.fromUrl(url).then(function (r) {
+                    style._setValue(exports.backgroundImageSourceProperty, r, observable.ValueSource.Local);
+                });
+            }
+        }
     }
 }
 exports.backgroundImageSourceProperty = new styleProperty.Property("backgroundImageSource", "background-image-source", new observable.PropertyMetadata(undefined, observable.PropertyMetadataSettings.None, undefined, undefined, undefined));

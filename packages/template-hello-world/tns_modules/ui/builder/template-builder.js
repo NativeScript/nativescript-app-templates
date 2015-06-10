@@ -12,7 +12,11 @@ var TemplateBuilder = (function () {
         configurable: true
     });
     TemplateBuilder.prototype.addStartElement = function (prefix, namespace, elementName, attributes) {
-        this._items.push("<" + getElementNameWithPrefix(prefix, elementName) + (namespace ? " " + getNamespace(prefix, namespace) : "") + (attributes ? " " + getAttributesAsString(attributes) : "") + ">");
+        this._items.push("<" +
+            getElementNameWithPrefix(prefix, elementName) +
+            (namespace ? " " + getNamespace(prefix, namespace) : "") +
+            (attributes ? " " + getAttributesAsString(attributes) : "") +
+            ">");
     };
     TemplateBuilder.prototype.addEndElement = function (prefix, elementName) {
         this._items.push("</" + getElementNameWithPrefix(prefix, elementName) + ">");

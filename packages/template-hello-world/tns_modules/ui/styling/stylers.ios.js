@@ -320,19 +320,33 @@ var TextViewStyler = (function () {
     TextViewStyler.setColorProperty = function (view, newValue) {
         var textView = view._nativeView;
         if (textView) {
-            textView.textColor = newValue;
+            TextViewStyler._setTextViewColor(textView, newValue);
         }
     };
     TextViewStyler.resetColorProperty = function (view, nativeValue) {
         var textView = view._nativeView;
         if (textView) {
-            textView.textColor = nativeValue;
+            TextViewStyler._setTextViewColor(textView, nativeValue);
+        }
+    };
+    TextViewStyler._setTextViewColor = function (textView, newValue) {
+        var color = newValue;
+        if (textView.isShowingHint && color) {
+            textView.textColor = color.colorWithAlphaComponent(0.22);
+        }
+        else {
+            textView.textColor = color;
         }
     };
     TextViewStyler.getNativeColorValue = function (view) {
         var textView = view._nativeView;
         if (textView) {
-            return textView.textColor;
+            if (textView.isShowingHint && textView.textColor) {
+                return textView.textColor.colorWithAlphaComponent(1);
+            }
+            else {
+                return textView.textColor;
+            }
         }
     };
     TextViewStyler.setFontSizeProperty = function (view, newValue) {

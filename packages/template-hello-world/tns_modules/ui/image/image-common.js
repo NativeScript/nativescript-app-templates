@@ -42,7 +42,7 @@ function onSrcPropertyChanged(data) {
         image.imageSource = value;
     }
     else {
-        image._setNativeImage(value);
+        image.imageSource = imageSource.fromNativeSource(value);
     }
 }
 var Image = (function (_super) {
@@ -107,7 +107,9 @@ var Image = (function (_super) {
             var resultH = Math.floor(nativeHeight * scale.height);
             measureWidth = finiteWidth ? Math.min(resultW, width) : resultW;
             measureHeight = finiteHeight ? Math.min(resultH, height) : resultH;
-            trace.write("Image stretch: " + this.stretch + ", nativeWidth: " + nativeWidth + ", nativeHeight: " + nativeHeight, trace.categories.Layout);
+            trace.write("Image stretch: " + this.stretch +
+                ", nativeWidth: " + nativeWidth +
+                ", nativeHeight: " + nativeHeight, trace.categories.Layout);
         }
         var widthAndState = view.View.resolveSizeAndState(measureWidth, width, widthMode, 0);
         var heightAndState = view.View.resolveSizeAndState(measureHeight, height, heightMode, 0);
@@ -116,7 +118,8 @@ var Image = (function (_super) {
     Image.computeScaleFactor = function (measureWidth, measureHeight, widthIsFinite, heightIsFinite, nativeWidth, nativeHeight, imageStretch) {
         var scaleW = 1;
         var scaleH = 1;
-        if ((imageStretch === enums.Stretch.aspectFill || imageStretch === enums.Stretch.aspectFit || imageStretch === enums.Stretch.fill) && (widthIsFinite || heightIsFinite)) {
+        if ((imageStretch === enums.Stretch.aspectFill || imageStretch === enums.Stretch.aspectFit || imageStretch === enums.Stretch.fill) &&
+            (widthIsFinite || heightIsFinite)) {
             scaleW = (nativeWidth > 0) ? measureWidth / nativeWidth : 0;
             scaleH = (nativeHeight > 0) ? measureHeight / nativeHeight : 0;
             if (!widthIsFinite) {

@@ -8,6 +8,7 @@ var appModule = require("application/application-common");
 var frame = require("ui/frame");
 var utils = require("utils/utils");
 var types = require("utils/types");
+var definition = require("application");
 require("utils/module-merge").merge(appModule, exports);
 exports.mainModule;
 var Window = (function (_super) {
@@ -33,37 +34,7 @@ var Window = (function (_super) {
         configurable: true
     });
     Window.prototype.layoutSubviews = function () {
-        if (!this._content) {
-            return;
-        }
-        var statusFrame = UIApplication.sharedApplication().statusBarFrame;
-        var statusBarHeight = 0;
-        try {
-            statusBarHeight = Math.min(statusFrame.size.width, statusFrame.size.height);
-        }
-        catch (ex) {
-            console.log("exception: " + ex);
-        }
-        var isLandscape = utils.ios.isLandscape();
-        var iOSMajorVersion = utils.ios.MajorVersion;
-        if (isLandscape && iOSMajorVersion > 7) {
-            statusBarHeight = 0;
-        }
-        var deviceFrame = UIScreen.mainScreen().bounds;
-        var size = deviceFrame.size;
-        var width = size.width;
-        var height = size.height;
-        if (iOSMajorVersion < 8 && isLandscape) {
-            width = size.height;
-            height = size.width;
-        }
-        var origin = deviceFrame.origin;
-        var left = origin.x;
-        var top = origin.y + statusBarHeight;
-        var widthSpec = utils.layout.makeMeasureSpec(width, utils.layout.EXACTLY);
-        var heightSpec = utils.layout.makeMeasureSpec(height - statusBarHeight, utils.layout.EXACTLY);
-        this._content.measure(widthSpec, heightSpec);
-        this._content.layout(left, top, width, height);
+        utils.ios._layoutRootView(this._content);
     };
     return Window;
 })(UIWindow);
@@ -78,6 +49,7 @@ var TNSAppDelegate = (function (_super) {
         if (exports.onLaunch) {
             exports.onLaunch();
         }
+        exports.notify({ eventName: definition.launchEvent, object: this, ios: launchOptions });
         var topFrame = frame.topmost();
         if (!topFrame) {
             if (exports.mainModule) {
@@ -99,6 +71,7 @@ var TNSAppDelegate = (function (_super) {
         if (exports.onResume) {
             exports.onResume();
         }
+        exports.notify({ eventName: definition.resumeEvent, object: this, ios: application });
     };
     TNSAppDelegate.prototype.applicationWillResignActive = function (application) {
     };
@@ -106,6 +79,7 @@ var TNSAppDelegate = (function (_super) {
         if (exports.onSuspend) {
             exports.onSuspend();
         }
+        exports.notify({ eventName: definition.suspendEvent, object: this, ios: application });
     };
     TNSAppDelegate.prototype.applicationWillEnterForeground = function (application) {
     };
@@ -113,11 +87,13 @@ var TNSAppDelegate = (function (_super) {
         if (exports.onExit) {
             exports.onExit();
         }
+        exports.notify({ eventName: definition.exitEvent, object: this, ios: application });
     };
     TNSAppDelegate.prototype.applicationDidReceiveMemoryWarning = function (application) {
         if (exports.onLowMemory) {
             exports.onLowMemory();
         }
+        exports.notify({ eventName: definition.lowMemoryEvent, object: this, android: undefined, ios: application });
     };
     TNSAppDelegate.prototype.applicationOpenURLSourceApplicationAnnotation = function (application, url, sourceApplication, annotation) {
         var dictionary = new NSMutableDictionary();
@@ -151,5 +127,6 @@ exports.start = function () {
             return;
         }
         exports.onUncaughtError(error);
+        definition.notify({ eventName: definition.uncaughtErrorEvent, object: definition.ios, ios: error });
     }
 };

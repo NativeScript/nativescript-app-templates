@@ -212,6 +212,9 @@ var FileSystemAccess = (function () {
         return url.path;
     };
     FileSystemAccess.prototype.getFileExtension = function (path) {
+        // TODO [For Panata]: The definitions currently specify "any" as a return value of this method
+        //var nsString = Foundation.NSString.stringWithString(path);
+        //var extension = nsString.pathExtension();
         var dotIndex = path.lastIndexOf(".");
         if (dotIndex && dotIndex >= 0 && dotIndex < path.length) {
             return path.substring(dotIndex);

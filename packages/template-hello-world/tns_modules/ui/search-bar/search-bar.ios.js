@@ -22,6 +22,13 @@ function onTextFieldBackgroundColorPropertyChanged(data) {
     }
 }
 common.SearchBar.textFieldBackgroundColorProperty.metadata.onSetNativeValue = onTextFieldBackgroundColorPropertyChanged;
+function onTextFieldHintColorPropertyChanged(data) {
+    try {
+    }
+    catch (Err) {
+    }
+}
+common.SearchBar.textFieldHintColorProperty.metadata.onSetNativeValue = onTextFieldHintColorPropertyChanged;
 function onHintPropertyChanged(data) {
     var bar = data.object;
     if (!bar.ios) {

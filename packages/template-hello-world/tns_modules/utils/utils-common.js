@@ -1,4 +1,5 @@
 var types = require("utils/types");
+exports.RESOURCE_PREFIX = "res://";
 function copyFrom(source, target) {
     if (types.isDefined(source) && types.isDefined(target)) {
         var i;
@@ -44,3 +45,20 @@ var layout;
     }
     layout.getMeasureSpecSize = getMeasureSpecSize;
 })(layout = exports.layout || (exports.layout = {}));
+function isFileOrResourcePath(path) {
+    if (!types.isString(path)) {
+        return false;
+    }
+    return path.indexOf("~/") === 0 ||
+        path.indexOf("/") === 0 ||
+        path.indexOf(exports.RESOURCE_PREFIX) === 0;
+}
+exports.isFileOrResourcePath = isFileOrResourcePath;
+function isDataURI(uri) {
+    if (!types.isString(uri)) {
+        return false;
+    }
+    var firstSegment = uri.trim().split(',')[0];
+    return firstSegment && firstSegment.indexOf("data:") === 0 && firstSegment.indexOf('base64') >= 0;
+}
+exports.isDataURI = isDataURI;

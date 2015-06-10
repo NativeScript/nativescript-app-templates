@@ -3,19 +3,22 @@ var types = require("utils/types");
 require("utils/module-merge").merge(httpRequest, exports);
 function getString(arg) {
     return new Promise(function (resolve, reject) {
-        httpRequest.request(typeof arg === "string" ? { url: arg, method: "GET" } : arg).then(function (r) { return resolve(r.content.toString()); }, function (e) { return reject(e); });
+        httpRequest.request(typeof arg === "string" ? { url: arg, method: "GET" } : arg)
+            .then(function (r) { return resolve(r.content.toString()); }, function (e) { return reject(e); });
     });
 }
 exports.getString = getString;
 function getJSON(arg) {
     return new Promise(function (resolve, reject) {
-        httpRequest.request(typeof arg === "string" ? { url: arg, method: "GET" } : arg).then(function (r) { return resolve(r.content.toJSON()); }, function (e) { return reject(e); });
+        httpRequest.request(typeof arg === "string" ? { url: arg, method: "GET" } : arg)
+            .then(function (r) { return resolve(r.content.toJSON()); }, function (e) { return reject(e); });
     });
 }
 exports.getJSON = getJSON;
 function getImage(arg) {
     return new Promise(function (resolve, reject) {
-        httpRequest.request(typeof arg === "string" ? { url: arg, method: "GET" } : arg).then(function (r) {
+        httpRequest.request(typeof arg === "string" ? { url: arg, method: "GET" } : arg)
+            .then(function (r) {
             r.content.toImage().then(function (source) { return resolve(source); });
         }, function (e) { return reject(e); });
     });
@@ -101,7 +104,10 @@ var XMLHttpRequest = (function () {
         return result.substr(0, result.length - 2);
     };
     XMLHttpRequest.prototype.getResponseHeader = function (header) {
-        if (types.isString(header) && this._readyState > 1 && this._headers && this._headers[header] && !this._errorFlag) {
+        if (types.isString(header) && this._readyState > 1
+            && this._headers
+            && this._headers[header]
+            && !this._errorFlag) {
             return this._headers[header];
         }
         return null;

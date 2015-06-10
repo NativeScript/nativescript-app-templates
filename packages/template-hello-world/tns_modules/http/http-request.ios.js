@@ -1,3 +1,6 @@
+/**
+ * iOS specific http request implementation.
+ */
 var imageSource = require("image-source");
 var types = require("utils/types");
 var GET = "GET";
@@ -17,11 +20,11 @@ function request(options) {
                     urlRequest.setValueForHTTPHeaderField(options.headers[header] + "", header);
                 }
             }
-            if (types.isNumber(options.timeout)) {
-                urlRequest.timeoutInterval = options.timeout * 1000;
-            }
             if (types.isString(options.content)) {
                 urlRequest.HTTPBody = NSString.alloc().initWithString(options.content).dataUsingEncoding(4);
+            }
+            if (types.isNumber(options.timeout)) {
+                urlRequest.timeoutInterval = options.timeout / 1000;
             }
             var dataTask = session.dataTaskWithRequestCompletionHandler(urlRequest, function (data, response, error) {
                 if (error) {
@@ -38,12 +41,8 @@ function request(options) {
                     resolve({
                         content: {
                             raw: data,
-                            toString: function () {
-                                return NSDataToString(data);
-                            },
-                            toJSON: function () {
-                                return JSON.parse(NSDataToString(data));
-                            },
+                            toString: function () { return NSDataToString(data); },
+                            toJSON: function () { return JSON.parse(NSDataToString(data)); },
                             toImage: function () {
                                 return new Promise(function (resolveImage, reject) {
                                     resolveImage(imageSource.fromData(data));

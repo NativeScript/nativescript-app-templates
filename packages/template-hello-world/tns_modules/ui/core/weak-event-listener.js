@@ -1,91 +1,117 @@
-var definition = require("ui/core/weak-event-listener");
-var WeakEventListener = (function () {
-    function WeakEventListener() {
+var types = require("utils/types");
+var handlersForEventName = new Map();
+var sourcesMap = new WeakMap();
+var TargetHandlerPair = (function () {
+    function TargetHandlerPair(target, handler) {
+        this.tagetRef = new WeakRef(target);
+        this.handler = handler;
     }
-    WeakEventListener.prototype.handlerCallback = function (eventData) {
-        if (this.handler) {
-            if (this.handlerContext) {
-                this.handler.call(this.handlerContext, eventData);
-            }
-            else {
-                this.handler(eventData);
-            }
-        }
-    };
-    WeakEventListener.prototype.init = function (options) {
-        this.listener = options.targetWeakRef;
-        this.sender = options.sourceWeakRef;
-        this.eventName = options.eventName;
-        this.handler = options.handler;
-        if (options.handlerContext) {
-            this.handlerContext = options.handlerContext;
-        }
-        var sourceInstance = this.sender.get();
-        if (sourceInstance) {
-            sourceInstance.addEventListener(this.eventName, this.handlerCallback, this);
-        }
-    };
-    WeakEventListener.addWeakEventListener = function (options) {
-        if (options.targetWeakRef && options.sourceWeakRef && options.eventName && options.handler && options.key) {
-            var weakEventListener = new WeakEventListener();
-            weakEventListener.init(options);
-            var targetWeakEventListenersMap = WeakEventListener.getWeakMapValueByKeys([options.sourceWeakRef, options.targetWeakRef]);
-            targetWeakEventListenersMap[options.key] = weakEventListener;
-            return true;
-        }
-        else {
-            return false;
-        }
-    };
-    WeakEventListener.prototype.clear = function () {
-        var sourceInstance = this.sender.get();
-        if (sourceInstance) {
-            sourceInstance.removeEventListener(this.eventName, this.handlerCallback, this);
-            this.sender.clear();
-        }
-        this.listener = undefined;
-        this.eventName = undefined;
-        this.handler = undefined;
-        this.handlerContext = undefined;
-    };
-    WeakEventListener.getWeakMapValueByKeys = function (keys) {
-        var result;
-        if (!WeakEventListener.rootWeakEventListenersMap) {
-            WeakEventListener.rootWeakEventListenersMap = new WeakMap();
-        }
-        var currentMap = WeakEventListener.rootWeakEventListenersMap;
-        var i;
-        for (i = 0; i < keys.length - 1; i++) {
-            if (currentMap.has(keys[i])) {
-                currentMap = currentMap.get(keys[i]);
-            }
-            else {
-                var innerMap = new WeakMap();
-                currentMap.set(keys[i], innerMap);
-                currentMap = innerMap;
-            }
-        }
-        if (currentMap.has(keys[keys.length - 1])) {
-            result = currentMap.get(keys[keys.length - 1]);
-        }
-        if (!result) {
-            result = {};
-            currentMap.set(keys[keys.length - 1], result);
-        }
-        return result;
-    };
-    WeakEventListener.removeWeakEventListener = function (options) {
-        if (options && options.sourceWeakRef && options.targetWeakRef && options.key) {
-            var weakMapValueForKey = WeakEventListener.getWeakMapValueByKeys([options.sourceWeakRef, options.targetWeakRef]);
-            if (weakMapValueForKey && weakMapValueForKey[options.key]) {
-                if (weakMapValueForKey[options.key] instanceof definition.WeakEventListener) {
-                    weakMapValueForKey[options.key].clear();
-                }
-                delete weakMapValueForKey[options.key];
-            }
-        }
-    };
-    WeakEventListener.rootWeakEventListenersMap = new WeakMap();
-    return WeakEventListener;
+    return TargetHandlerPair;
 })();
-exports.WeakEventListener = WeakEventListener;
+function getHandlerForEventName(eventName) {
+    var handler = handlersForEventName.get(eventName);
+    if (!handler) {
+        handler = function (eventData) {
+            var source = eventData.object;
+            var sourceEventMap = sourcesMap.get(source);
+            if (!sourceEventMap) {
+                source.removeEventListener(eventName, handlersForEventName.get(eventName));
+                return;
+            }
+            var targetHandlerPairList = sourceEventMap.get(eventName);
+            if (!targetHandlerPairList) {
+                return;
+            }
+            var deadPairsIndexes = [];
+            for (var i = 0; i < targetHandlerPairList.length; i++) {
+                var pair = targetHandlerPairList[i];
+                var target = pair.tagetRef.get();
+                if (target) {
+                    pair.handler.call(target, eventData);
+                }
+                else {
+                    deadPairsIndexes.push(i);
+                }
+            }
+            if (deadPairsIndexes.length === targetHandlerPairList.length) {
+                source.removeEventListener(eventName, handlersForEventName.get(eventName));
+                sourceEventMap.delete(eventName);
+            }
+            else {
+                for (var j = deadPairsIndexes.length - 1; j >= 0; j--) {
+                    targetHandlerPairList.splice(deadPairsIndexes[j], 1);
+                }
+            }
+        };
+        handlersForEventName.set(eventName, handler);
+    }
+    return handler;
+}
+function validateArgs(source, eventName, handler, target) {
+    if (types.isNullOrUndefined(source)) {
+        throw new Error("source is null or undefined");
+    }
+    if (types.isNullOrUndefined(target)) {
+        throw new Error("target is null or undefined");
+    }
+    if (!types.isString(eventName)) {
+        throw new Error("eventName is not a string");
+    }
+    if (!types.isFunction(handler)) {
+        throw new Error("handler is not a function");
+    }
+}
+function addWeakEventListener(source, eventName, handler, target) {
+    validateArgs(source, eventName, handler, target);
+    var shouldAttach = false;
+    var sourceEventMap = sourcesMap.get(source);
+    if (!sourceEventMap) {
+        sourceEventMap = new Map();
+        sourcesMap.set(source, sourceEventMap);
+        shouldAttach = true;
+    }
+    var pairList = sourceEventMap.get(eventName);
+    if (!pairList) {
+        pairList = new Array();
+        sourceEventMap.set(eventName, pairList);
+        shouldAttach = true;
+    }
+    pairList.push(new TargetHandlerPair(target, handler));
+    if (shouldAttach) {
+        source.addEventListener(eventName, getHandlerForEventName(eventName));
+    }
+}
+exports.addWeakEventListener = addWeakEventListener;
+function removeWeakEventListener(source, eventName, handler, target) {
+    validateArgs(source, eventName, handler, target);
+    var handlerForEventWithName = handlersForEventName.get(eventName);
+    if (!handlerForEventWithName) {
+        return;
+    }
+    var sourceEventMap = sourcesMap.get(source);
+    if (!sourceEventMap) {
+        return;
+    }
+    var targetHandlerPairList = sourceEventMap.get(eventName);
+    if (!targetHandlerPairList) {
+        return;
+    }
+    var targetHandlerPairsToRemove = [];
+    for (var i = 0; i < targetHandlerPairList.length; i++) {
+        var pair = targetHandlerPairList[i];
+        var registeredTarget = pair.tagetRef.get();
+        if (!registeredTarget || (registeredTarget === target && handler === pair.handler)) {
+            targetHandlerPairsToRemove.push(i);
+        }
+    }
+    if (targetHandlerPairsToRemove.length === targetHandlerPairList.length) {
+        source.removeEventListener(eventName, handlerForEventWithName);
+        sourceEventMap.delete(eventName);
+    }
+    else {
+        for (var j = targetHandlerPairsToRemove.length - 1; j >= 0; j--) {
+            targetHandlerPairList.splice(targetHandlerPairsToRemove[j], 1);
+        }
+    }
+}
+exports.removeWeakEventListener = removeWeakEventListener;

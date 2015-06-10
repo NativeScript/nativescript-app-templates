@@ -24,11 +24,6 @@ var UITabBarControllerImpl = (function (_super) {
         this._owner = owner;
         return this;
     };
-    UITabBarControllerImpl.prototype.viewDidAppear = function (animated) {
-        trace.write("TabView.UITabBarControllerClass.viewDidAppear();", trace.categories.Debug);
-        _super.prototype.viewDidAppear.call(this, animated);
-        this._owner.onLoaded();
-    };
     UITabBarControllerImpl.prototype.viewDidLayoutSubviews = function () {
         trace.write("TabView.UITabBarControllerClass.viewDidLayoutSubviews();", trace.categories.Debug);
         _super.prototype.viewDidLayoutSubviews.call(this);
@@ -187,6 +182,8 @@ var TabView = (function (_super) {
         }
         this._ios.selectedIndex = data.newValue;
         this.requestLayout();
+        var args = { eventName: TabView.selectedIndexChangedEvent, object: this, oldIndex: data.oldValue, newIndex: data.newValue };
+        this.notify(args);
     };
     TabView.prototype.onMeasure = function (widthMeasureSpec, heightMeasureSpec) {
         var nativeView = this._nativeView;

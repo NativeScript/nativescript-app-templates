@@ -6,6 +6,27 @@ var Console = (function () {
         this._stripFirstTwoLinesRegEx = /^([^\n]*?\n){2}((.|\n)*)$/gmi;
     }
     Console.prototype.sprintf = function (message) {
+        //  discuss at: http://phpjs.org/functions/sprintf/
+        // original by: Ash Searle (http://hexmen.com/blog/)
+        // improved by: Michael White (http://getsprink.com)
+        // improved by: Jack
+        // improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+        // improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+        // improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+        // improved by: Dj
+        // improved by: Allidylls
+        //    input by: Paulo Freitas
+        //    input by: Brett Zamir (http://brett-zamir.me)
+        //   example 1: sprintf("%01.2f", 123.1);
+        //   returns 1: 123.10
+        //   example 2: sprintf("[%10s]", 'monkey');
+        //   returns 2: '[    monkey]'
+        //   example 3: sprintf("[%'#10s]", 'monkey');
+        //   returns 3: '[####monkey]'
+        //   example 4: sprintf("%d", 123456789012345);
+        //   returns 4: '123456789012345'
+        //   example 5: sprintf('%-03s', 'E');
+        //   returns 5: 'E00'
         var regex = /%%|%(\d+\$)?([-+\'#0 ]*)(\*\d+\$|\*|\d+)?(\.(\*\d+\$|\*|\d+))?([scboxXuideEfFgG])/g;
         var a = arguments;
         var i = 0;
@@ -14,7 +35,8 @@ var Console = (function () {
             if (!chr) {
                 chr = ' ';
             }
-            var padding = (str.length >= len) ? '' : new Array(1 + len - str.length >>> 0).join(chr);
+            var padding = (str.length >= len) ? '' : new Array(1 + len - str.length >>> 0)
+                .join(chr);
             return leftJustify ? str + padding : padding + str;
         };
         var justify = function (value, prefix, leftJustify, minWidth, zeroPad, customPadChar) {
@@ -123,7 +145,8 @@ var Console = (function () {
                 case 'x':
                     return formatBaseX(value, 16, prefixBaseX, leftJustify, minWidth, precision, zeroPad);
                 case 'X':
-                    return formatBaseX(value, 16, prefixBaseX, leftJustify, minWidth, precision, zeroPad).toUpperCase();
+                    return formatBaseX(value, 16, prefixBaseX, leftJustify, minWidth, precision, zeroPad)
+                        .toUpperCase();
                 case 'u':
                     return formatBaseX(value, 10, prefixBaseX, leftJustify, minWidth, precision, zeroPad);
                 case 'i':
@@ -153,7 +176,7 @@ var Console = (function () {
     };
     Console.prototype.formatParams = function (message) {
         if (arguments.length <= 1) {
-            return message ? message : '';
+            return "" + message;
         }
         var res = this.sprintf.apply(this, arguments);
         if (res === message) {

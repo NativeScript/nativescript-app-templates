@@ -28,6 +28,16 @@ function onTextFieldBackgroundColorPropertyChanged(data) {
     }
 }
 common.SearchBar.textFieldBackgroundColorProperty.metadata.onSetNativeValue = onTextFieldBackgroundColorPropertyChanged;
+function onTextFieldHintColorPropertyChanged(data) {
+    var bar = data.object;
+    if (!bar.android) {
+        return;
+    }
+    if (data.newValue instanceof color.Color) {
+        _changeSearchViewHintColor(bar.android, data.newValue.android);
+    }
+}
+common.SearchBar.textFieldHintColorProperty.metadata.onSetNativeValue = onTextFieldHintColorPropertyChanged;
 function onHintPropertyChanged(data) {
     var bar = data.object;
     if (!bar.android) {
@@ -52,6 +62,12 @@ function _changeSearchViewBackgroundColor(bar, color) {
     var textView = getTextView(bar);
     if (textView) {
         textView.setBackgroundColor(color);
+    }
+}
+function _changeSearchViewHintColor(bar, color) {
+    var textView = getTextView(bar);
+    if (textView) {
+        textView.setHintTextColor(color);
     }
 }
 require("utils/module-merge").merge(common, exports);
@@ -101,6 +117,9 @@ var SearchBar = (function (_super) {
         }));
         if (this.textFieldBackgroundColor instanceof color.Color) {
             _changeSearchViewBackgroundColor(this._android, this.textFieldBackgroundColor.android);
+        }
+        if (this.textFieldHintColor instanceof color.Color) {
+            _changeSearchViewHintColor(this._android, this.textFieldHintColor.android);
         }
     };
     Object.defineProperty(SearchBar.prototype, "android", {

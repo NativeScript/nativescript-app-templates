@@ -352,11 +352,11 @@ var knownFolders;
     };
 })(knownFolders = exports.knownFolders || (exports.knownFolders = {}));
 var path;
-(function (_path) {
+(function (path_1) {
     function normalize(path) {
         return getFileAccess().normalizePath(path);
     }
-    _path.normalize = normalize;
+    path_1.normalize = normalize;
     function join() {
         var paths = [];
         for (var _i = 0; _i < arguments.length; _i++) {
@@ -365,6 +365,6 @@ var path;
         var fileAccess = getFileAccess();
         return fileAccess.joinPaths(paths);
     }
-    _path.join = join;
-    _path.separator = getFileAccess().getPathSeparator();
+    path_1.join = join;
+    path_1.separator = getFileAccess().getPathSeparator();
 })(path = exports.path || (exports.path = {}));

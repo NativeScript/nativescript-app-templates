@@ -157,6 +157,7 @@ var TabView = (function (_super) {
     };
     TabView.itemsProperty = itemsProperty;
     TabView.selectedIndexProperty = selectedIndexProperty;
+    TabView.selectedIndexChangedEvent = "selectedIndexChanged";
     return TabView;
 })(view.View);
 exports.TabView = TabView;

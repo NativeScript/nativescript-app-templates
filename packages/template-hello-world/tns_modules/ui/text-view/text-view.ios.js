@@ -20,11 +20,16 @@ var UITextViewDelegateImpl = (function (_super) {
         this._owner = owner;
         return this;
     };
+    UITextViewDelegateImpl.prototype.textViewShouldBeginEditing = function (textView) {
+        this._owner._hideHint();
+        return true;
+    };
     UITextViewDelegateImpl.prototype.textViewDidEndEditing = function (textView) {
         if (this._owner.updateTextTrigger === enums.UpdateTextTrigger.focusLost) {
             this._owner._onPropertyChangedFromNative(textBase.TextBase.textProperty, textView.text);
         }
         this._owner.dismissSoftInput();
+        this._owner._refreshHintState(this._owner.hint, textView.text);
     };
     UITextViewDelegateImpl.prototype.textViewDidChange = function (textView) {
         if (this._owner.updateTextTrigger === enums.UpdateTextTrigger.textChanged) {
@@ -61,6 +66,31 @@ var TextView = (function (_super) {
     });
     TextView.prototype._onEditablePropertyChanged = function (data) {
         this._ios.editable = data.newValue;
+    };
+    TextView.prototype._onHintPropertyChanged = function (data) {
+        this._refreshHintState(data.newValue, this.text);
+    };
+    TextView.prototype._onTextPropertyChanged = function (data) {
+        _super.prototype._onTextPropertyChanged.call(this, data);
+        this._refreshHintState(this.hint, data.newValue);
+    };
+    TextView.prototype._refreshHintState = function (hint, text) {
+        if (hint && !text) {
+            this._showHint(hint);
+        }
+        else {
+            this._hideHint();
+        }
+    };
+    TextView.prototype._showHint = function (hint) {
+        this.ios.textColor = this.ios.textColor ? this.ios.textColor.colorWithAlphaComponent(0.22) : UIColor.blackColor().colorWithAlphaComponent(0.22);
+        this.ios.text = hint + "";
+        this.ios.isShowingHint = true;
+    };
+    TextView.prototype._hideHint = function () {
+        this.ios.textColor = this.color ? this.color.ios : null;
+        this.ios.text = this.text + "";
+        this.ios.isShowingHint = false;
     };
     return TextView;
 })(common.TextView);

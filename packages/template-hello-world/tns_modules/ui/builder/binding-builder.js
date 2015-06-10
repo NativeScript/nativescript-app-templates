@@ -1,4 +1,4 @@
-var expressionSymbolsRegex = /[ \+\-\*%\?:<>=!\|&\(\)\[\]]/;
+var expressionSymbolsRegex = /[ \+\-\*%\?:<>=!\|&\(\)\[\]^~]/;
 var bindingConstants;
 (function (bindingConstants) {
     bindingConstants.sourceProperty = "sourceProperty";

@@ -104,9 +104,7 @@ var CssClassSelector = (function (_super) {
     });
     CssClassSelector.prototype.matches = function (view) {
         var expectedClass = this.expression;
-        return view._cssClasses.some(function (cssClass, i, arr) {
-            return cssClass === expectedClass;
-        });
+        return view._cssClasses.some(function (cssClass, i, arr) { return cssClass === expectedClass; });
     };
     return CssClassSelector;
 })(CssSelector);
@@ -132,7 +130,9 @@ var CssVisualStateSelector = (function (_super) {
     }
     Object.defineProperty(CssVisualStateSelector.prototype, "specificity", {
         get: function () {
-            return (this._isById ? ID_SPECIFICITY : 0) + (this._isByClass ? CLASS_SPECIFICITY : 0) + (this._isByType ? TYPE_SPECIFICITY : 0);
+            return (this._isById ? ID_SPECIFICITY : 0) +
+                (this._isByClass ? CLASS_SPECIFICITY : 0) +
+                (this._isByType ? TYPE_SPECIFICITY : 0);
         },
         enumerable: true,
         configurable: true
@@ -158,9 +158,7 @@ var CssVisualStateSelector = (function (_super) {
         }
         if (this._isByClass) {
             var expectedClass = this._match;
-            matches = view._cssClasses.some(function (cssClass, i, arr) {
-                return cssClass === expectedClass;
-            });
+            matches = view._cssClasses.some(function (cssClass, i, arr) { return cssClass === expectedClass; });
         }
         if (this._isByType) {
             matches = this._match === view.cssType.toLowerCase();

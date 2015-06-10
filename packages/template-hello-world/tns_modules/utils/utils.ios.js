@@ -70,6 +70,40 @@ var ios;
     }
     ios.isLandscape = isLandscape;
     ios.MajorVersion = NSString.stringWithString(UIDevice.currentDevice().systemVersion).intValue;
+    function _layoutRootView(rootView) {
+        if (!rootView) {
+            return;
+        }
+        var statusFrame = UIApplication.sharedApplication().statusBarFrame;
+        var statusBarHeight = 0;
+        try {
+            statusBarHeight = Math.min(statusFrame.size.width, statusFrame.size.height);
+        }
+        catch (ex) {
+            console.log("exception: " + ex);
+        }
+        var landscape = isLandscape();
+        var iOSMajorVersion = ios.MajorVersion;
+        if (landscape && iOSMajorVersion > 7) {
+            statusBarHeight = 0;
+        }
+        var deviceFrame = UIScreen.mainScreen().bounds;
+        var size = deviceFrame.size;
+        var width = size.width;
+        var height = size.height;
+        if (iOSMajorVersion < 8 && landscape) {
+            width = size.height;
+            height = size.width;
+        }
+        var origin = deviceFrame.origin;
+        var left = origin.x;
+        var top = origin.y + statusBarHeight;
+        var widthSpec = layout.makeMeasureSpec(width, common.layout.EXACTLY);
+        var heightSpec = layout.makeMeasureSpec(height - statusBarHeight, common.layout.EXACTLY);
+        rootView.measure(widthSpec, heightSpec);
+        rootView.layout(left, top, width, height);
+    }
+    ios._layoutRootView = _layoutRootView;
 })(ios = exports.ios || (exports.ios = {}));
 function GC() {
     __collect();

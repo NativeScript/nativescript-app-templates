@@ -69,7 +69,10 @@ var EditableTextBase = (function (_super) {
             onEditorAction: function (textView, actionId, event) {
                 var owner = that.get();
                 if (owner) {
-                    if (actionId === android.view.inputmethod.EditorInfo.IME_ACTION_DONE || actionId === android.view.inputmethod.EditorInfo.IME_ACTION_GO || actionId === android.view.inputmethod.EditorInfo.IME_ACTION_SEARCH || actionId === android.view.inputmethod.EditorInfo.IME_ACTION_SEND) {
+                    if (actionId === android.view.inputmethod.EditorInfo.IME_ACTION_DONE ||
+                        actionId === android.view.inputmethod.EditorInfo.IME_ACTION_GO ||
+                        actionId === android.view.inputmethod.EditorInfo.IME_ACTION_SEARCH ||
+                        actionId === android.view.inputmethod.EditorInfo.IME_ACTION_SEND) {
                         owner.dismissSoftInput();
                     }
                 }
@@ -213,6 +216,13 @@ var EditableTextBase = (function (_super) {
                 break;
         }
         editableTextBase.android.setInputType(inputType);
+    };
+    EditableTextBase.prototype._onHintPropertyChanged = function (data) {
+        var editableTextBase = data.object;
+        if (!editableTextBase.android) {
+            return;
+        }
+        editableTextBase.android.setHint(data.newValue);
     };
     return EditableTextBase;
 })(common.EditableTextBase);

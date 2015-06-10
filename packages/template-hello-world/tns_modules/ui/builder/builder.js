@@ -8,6 +8,9 @@ var templateBuilderDef = require("ui/builder/template-builder");
 var KNOWNCOLLECTIONS = "knownCollections";
 function parse(value, exports) {
     var viewToReturn;
+    if (exports instanceof view.View) {
+        exports = getExports(exports);
+    }
     var componentModule = parseInternal(value, exports);
     if (componentModule) {
         viewToReturn = componentModule.component;
@@ -120,7 +123,10 @@ function parseInternal(value, exports) {
     }, function (e) {
         throw new Error("XML parse error: " + e.message);
     }, true);
-    xmlParser.parse(value.replace('xmlns="http://www.nativescript.org/tns.xsd"', "").replace("xmlns='http://www.nativescript.org/tns.xsd'", ""));
+    if (types.isString(value)) {
+        value = value.replace(/xmlns=("|')http:\/\/www.nativescript.org\/tns.xsd\1/, "");
+        xmlParser.parse(value);
+    }
     return rootComponentModule;
 }
 function load(fileName, exports) {
@@ -172,4 +178,11 @@ function addToComplexProperty(parent, complexProperty, elementModule) {
     else {
         parentComponent[complexProperty.name] = elementModule.component;
     }
+}
+function getExports(instance) {
+    var parent = instance.parent;
+    while (parent && parent.exports === undefined) {
+        parent = parent.parent;
+    }
+    return parent ? parent.exports : undefined;
 }

@@ -22,6 +22,13 @@ var ImageSource = (function () {
         this.ios = UIImage.imageWithData(data);
         return this.ios != null;
     };
+    ImageSource.prototype.loadFromBase64 = function (source) {
+        if (types.isString(source)) {
+            var data = NSData.alloc().initWithBase64EncodedStringOptions(source, NSDataBase64DecodingOptions.NSDataBase64DecodingIgnoreUnknownCharacters);
+            this.ios = UIImage.imageWithData(data);
+        }
+        return this.ios != null;
+    };
     ImageSource.prototype.setNativeSource = function (source) {
         this.ios = source;
         return source != null;

@@ -6,6 +6,8 @@ var __extends = this.__extends || function (d, b) {
 };
 var common = require("ui/web-view/web-view-common");
 var trace = require("trace");
+var utils = require("utils/utils");
+var fs = require("file-system");
 require("utils/module-merge").merge(common, exports);
 var UIWebViewDelegateImpl = (function (_super) {
     __extends(UIWebViewDelegateImpl, _super);
@@ -72,6 +74,30 @@ var WebView = (function (_super) {
             this._ios.stopLoading();
         }
         this._ios.loadRequest(NSURLRequest.requestWithURL(NSURL.URLWithString(url)));
+    };
+    WebView.prototype._loadSrc = function (src) {
+        var _this = this;
+        trace.write("WebView._loadSrc(" + src + ")", trace.categories.Debug);
+        if (this._ios.loading) {
+            this._ios.stopLoading();
+        }
+        if (utils.isFileOrResourcePath(src)) {
+            if (src.indexOf("~/") === 0) {
+                src = fs.path.join(fs.knownFolders.currentApp().path, src.replace("~/", ""));
+            }
+            var file = fs.File.fromPath(src);
+            if (file) {
+                file.readText().then(function (r) {
+                    _this._ios.loadHTMLStringBaseURL(r, null);
+                });
+            }
+        }
+        else if (src.indexOf("http://") === 0 || src.indexOf("https://") === 0) {
+            this._ios.loadRequest(NSURLRequest.requestWithURL(NSURL.URLWithString(src)));
+        }
+        else {
+            this._ios.loadHTMLStringBaseURL(src, null);
+        }
     };
     Object.defineProperty(WebView.prototype, "canGoBack", {
         get: function () {

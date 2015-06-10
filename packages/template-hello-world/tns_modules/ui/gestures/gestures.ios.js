@@ -17,18 +17,21 @@ var UIGestureRecognizerImpl = (function (_super) {
     UIGestureRecognizerImpl.new = function () {
         return _super.new.call(this);
     };
-    UIGestureRecognizerImpl.prototype.initWithOwnerTypeCallback = function (owner, type, callback) {
+    UIGestureRecognizerImpl.prototype.initWithOwnerTypeCallback = function (owner, type, callback, thisArg) {
         this._owner = owner;
         this._type = type;
         if (callback) {
             this._callback = callback;
         }
+        if (thisArg) {
+            this._context = thisArg;
+        }
         return this;
     };
     UIGestureRecognizerImpl.prototype.recognize = function (recognizer) {
-        var callback = this._callback ? this._callback : this._owner._callback;
+        var callback = this._callback ? this._callback : this._owner.callback;
         var type = this._type;
-        var target = this._owner._target;
+        var target = this._owner.target;
         var args = {
             type: type,
             view: target,
@@ -36,7 +39,7 @@ var UIGestureRecognizerImpl = (function (_super) {
             android: undefined
         };
         if (callback) {
-            callback(args);
+            callback.call(this._context, args);
         }
     };
     UIGestureRecognizerImpl.ObjCExposedMethods = {
@@ -44,27 +47,28 @@ var UIGestureRecognizerImpl = (function (_super) {
     };
     return UIGestureRecognizerImpl;
 })(NSObject);
-var GesturesObserver = (function () {
-    function GesturesObserver(callback) {
-        this._callback = callback;
+var GesturesObserver = (function (_super) {
+    __extends(GesturesObserver, _super);
+    function GesturesObserver(target, callback, context) {
+        _super.call(this, target, callback, context);
         this._recognizers = {};
     }
-    GesturesObserver.prototype.observe = function (target, type) {
+    GesturesObserver.prototype.observe = function (type) {
         var _this = this;
-        if (target) {
-            this._target = target;
+        if (this.target) {
+            this.type = type;
             this._onTargetLoaded = function (args) {
-                trace.write(_this._target + ".target loaded. _nativeView:" + _this._target._nativeView, "gestures");
-                _this._attach(target, type);
+                trace.write(_this.target + ".target loaded. _nativeView:" + _this.target._nativeView, "gestures");
+                _this._attach(_this.target, type);
             };
             this._onTargetUnloaded = function (args) {
-                trace.write(_this._target + ".target unloaded. _nativeView:" + _this._target._nativeView, "gestures");
+                trace.write(_this.target + ".target unloaded. _nativeView:" + _this.target._nativeView, "gestures");
                 _this._dettach();
             };
-            target.on(view.View.loadedEvent, this._onTargetLoaded);
-            target.on(view.View.unloadedEvent, this._onTargetUnloaded);
-            if (target.isLoaded) {
-                this._attach(target, type);
+            this.target.on(view.View.loadedEvent, this._onTargetLoaded);
+            this.target.on(view.View.unloadedEvent, this._onTargetUnloaded);
+            if (this.target.isLoaded) {
+                this._attach(this.target, type);
             }
         }
     };
@@ -117,12 +121,12 @@ var GesturesObserver = (function () {
         }
     };
     GesturesObserver.prototype._dettach = function () {
-        trace.write(this._target + "._dettach() _nativeView:" + this._target._nativeView, "gestures");
-        if (this._target && this._target._nativeView) {
+        trace.write(this.target + "._dettach() _nativeView:" + this.target._nativeView, "gestures");
+        if (this.target && this.target._nativeView) {
             for (var name in this._recognizers) {
                 if (this._recognizers.hasOwnProperty(name)) {
                     var item = this._recognizers[name];
-                    this._target._nativeView.removeGestureRecognizer(item.recognizer);
+                    this.target._nativeView.removeGestureRecognizer(item.recognizer);
                     item.recognizer = null;
                     item.target = null;
                 }
@@ -132,23 +136,23 @@ var GesturesObserver = (function () {
     };
     GesturesObserver.prototype.disconnect = function () {
         this._dettach();
-        if (this._target) {
-            this._target.off(view.View.loadedEvent, this._onTargetLoaded);
-            this._target.off(view.View.unloadedEvent, this._onTargetUnloaded);
+        if (this.target) {
+            this.target.off(view.View.loadedEvent, this._onTargetLoaded);
+            this.target.off(view.View.unloadedEvent, this._onTargetUnloaded);
             this._onTargetLoaded = null;
             this._onTargetUnloaded = null;
-            this._target = null;
         }
+        _super.prototype.disconnect.call(this);
     };
     GesturesObserver.prototype._executeCallback = function (args) {
-        if (this._callback) {
-            this._callback(args);
+        if (this.callback) {
+            this.callback.call(this.context, args);
         }
     };
     GesturesObserver.prototype._createRecognizer = function (type, callback, swipeDirection) {
         var recognizer;
         var name = definition.toString(type);
-        var target = _createUIGestureRecognizerTarget(this, type, callback);
+        var target = _createUIGestureRecognizerTarget(this, type, callback, this.context);
         var recognizerType = _getUIGestureRecognizerType(type);
         if (recognizerType) {
             if (type === definition.GestureTypes.swipe && swipeDirection) {
@@ -166,10 +170,10 @@ var GesturesObserver = (function () {
         return recognizer;
     };
     return GesturesObserver;
-})();
+})(common.GesturesObserver);
 exports.GesturesObserver = GesturesObserver;
-function _createUIGestureRecognizerTarget(owner, type, callback) {
-    return UIGestureRecognizerImpl.new().initWithOwnerTypeCallback(owner, type, callback);
+function _createUIGestureRecognizerTarget(owner, type, callback, thisArg) {
+    return UIGestureRecognizerImpl.new().initWithOwnerTypeCallback(owner, type, callback, thisArg);
 }
 function _getUIGestureRecognizerType(type) {
     var nativeType = null;

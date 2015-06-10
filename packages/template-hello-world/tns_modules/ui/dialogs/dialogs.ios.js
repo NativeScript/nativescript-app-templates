@@ -1,3 +1,6 @@
+/**
+ * iOS specific dialogs functions implementation.
+ */
 var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -111,9 +114,7 @@ function alert(arg) {
             }
             else {
                 var alertController = UIAlertController.alertControllerWithTitleMessagePreferredStyle(options.title, options.message, UIAlertControllerStyle.UIAlertControllerStyleAlert);
-                addButtonsToAlertController(alertController, options, function () {
-                    resolve();
-                });
+                addButtonsToAlertController(alertController, options, function () { resolve(); });
                 showUIAlertController(alertController);
             }
         }
@@ -139,13 +140,7 @@ function confirm(arg) {
             }
             else {
                 var alertController = UIAlertController.alertControllerWithTitleMessagePreferredStyle(options.title, options.message, UIAlertControllerStyle.UIAlertControllerStyleAlert);
-                addButtonsToAlertController(alertController, options, function () {
-                    resolve(true);
-                }, function () {
-                    resolve(false);
-                }, function () {
-                    resolve(undefined);
-                });
+                addButtonsToAlertController(alertController, options, function () { resolve(true); }, function () { resolve(false); }, function () { resolve(undefined); });
                 showUIAlertController(alertController);
             }
         }
@@ -207,13 +202,7 @@ function prompt(arg) {
                     arg.secureTextEntry = options && options.inputType === dialogs.inputType.password;
                 });
                 textField = alertController.textFields.firstObject;
-                addButtonsToAlertController(alertController, options, function () {
-                    resolve({ result: true, text: textField.text });
-                }, function () {
-                    resolve({ result: false, text: textField.text });
-                }, function () {
-                    resolve({ result: undefined, text: textField.text });
-                });
+                addButtonsToAlertController(alertController, options, function () { resolve({ result: true, text: textField.text }); }, function () { resolve({ result: false, text: textField.text }); }, function () { resolve({ result: undefined, text: textField.text }); });
                 showUIAlertController(alertController);
             }
         }
@@ -282,13 +271,7 @@ function login(arg) {
                 });
                 userNameTextField = alertController.textFields.firstObject;
                 passwordTextField = alertController.textFields.lastObject;
-                addButtonsToAlertController(alertController, options, function () {
-                    resolve({ result: true, userName: userNameTextField.text, password: passwordTextField.text });
-                }, function () {
-                    resolve({ result: false, userName: userNameTextField.text, password: passwordTextField.text });
-                }, function () {
-                    resolve({ result: undefined, userName: userNameTextField.text, password: passwordTextField.text });
-                });
+                addButtonsToAlertController(alertController, options, function () { resolve({ result: true, userName: userNameTextField.text, password: passwordTextField.text }); }, function () { resolve({ result: false, userName: userNameTextField.text, password: passwordTextField.text }); }, function () { resolve({ result: undefined, userName: userNameTextField.text, password: passwordTextField.text }); });
                 showUIAlertController(alertController);
             }
         }

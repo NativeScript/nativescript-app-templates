@@ -22,9 +22,19 @@ function validateRegisterParameters(name, ownerType) {
         throw new Error("OwnerType should not be null or empty string.");
     }
 }
-function getPropertyByNameAndType(name, ownerType) {
-    var key = generatePropertyKey(name, ownerType);
-    return propertyFromKey[key];
+function getPropertyByNameAndType(name, owner) {
+    var result;
+    var key;
+    var classInfo = types.getClassInfo(owner);
+    while (classInfo) {
+        key = generatePropertyKey(name, classInfo.name);
+        result = propertyFromKey[key];
+        if (result) {
+            break;
+        }
+        classInfo = classInfo.baseClassInfo;
+    }
+    return result;
 }
 var PropertyMetadataSettings;
 (function (PropertyMetadataSettings) {
@@ -275,7 +285,7 @@ var DependencyObservable = (function (_super) {
         this._propertyEntries = {};
     }
     DependencyObservable.prototype.set = function (name, value) {
-        var property = getPropertyByNameAndType(name, this.typeName);
+        var property = getPropertyByNameAndType(name, this);
         if (property) {
             this._setValue(property, value, ValueSource.Local);
         }
@@ -284,7 +294,7 @@ var DependencyObservable = (function (_super) {
         }
     };
     DependencyObservable.prototype.get = function (name) {
-        var property = getPropertyByNameAndType(name, this.typeName);
+        var property = getPropertyByNameAndType(name, this);
         if (property) {
             return this._getValue(property);
         }

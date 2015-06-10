@@ -65,6 +65,7 @@ function resolvePageFromEntry(entry) {
     }
     return page;
 }
+exports.resolvePageFromEntry = resolvePageFromEntry;
 var fileNameResolver;
 function resolveFilePath(path, ext) {
     if (!fileNameResolver) {
@@ -301,8 +302,6 @@ var Frame = (function (_super) {
     };
     Frame.prototype._removeViewFromNativeVisualTree = function (child) {
         child._isAddedToNativeVisualTree = false;
-    };
-    Frame.prototype._invalidateOptionsMenu = function () {
     };
     Frame.androidOptionSelectedEvent = "optionSelected";
     Frame.defaultAnimatedNavigation = true;

@@ -14,6 +14,7 @@ var editableProperty = new dependencyObservable.Property("editable", "EditableTe
 var updateTextTriggerProperty = new dependencyObservable.Property("updateTextTrigger", "EditableTextBase", new proxy.PropertyMetadata(enums.UpdateTextTrigger.textChanged, dependencyObservable.PropertyMetadataSettings.None));
 var autocapitalizationTypeProperty = new dependencyObservable.Property("autocapitalizationType", "EditableTextBase", new proxy.PropertyMetadata(enums.AutocapitalizationType.sentences, dependencyObservable.PropertyMetadataSettings.None));
 var autocorrectProperty = new dependencyObservable.Property("autocorrect", "EditableTextBase", new proxy.PropertyMetadata(undefined, dependencyObservable.PropertyMetadataSettings.None));
+exports.hintProperty = new dependencyObservable.Property("hint", "EditableTextBase", new proxy.PropertyMetadata(""));
 function onKeyboardTypePropertyChanged(data) {
     var editableTextBase = data.object;
     editableTextBase._onKeyboardTypePropertyChanged(data);
@@ -39,6 +40,11 @@ function onAutocorrectPropertyChanged(data) {
     editableTextBase._onAutocorrectPropertyChanged(data);
 }
 autocorrectProperty.metadata.onSetNativeValue = onAutocorrectPropertyChanged;
+function onHintPropertyChanged(data) {
+    var editableTextBase = data.object;
+    editableTextBase._onHintPropertyChanged(data);
+}
+exports.hintProperty.metadata.onSetNativeValue = onHintPropertyChanged;
 var EditableTextBase = (function (_super) {
     __extends(EditableTextBase, _super);
     function EditableTextBase(options) {
@@ -104,6 +110,16 @@ var EditableTextBase = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(EditableTextBase.prototype, "hint", {
+        get: function () {
+            return this._getValue(EditableTextBase.hintProperty);
+        },
+        set: function (value) {
+            this._setValue(EditableTextBase.hintProperty, value);
+        },
+        enumerable: true,
+        configurable: true
+    });
     EditableTextBase.prototype.dismissSoftInput = function () {
     };
     EditableTextBase.prototype._onKeyboardTypePropertyChanged = function (data) {
@@ -116,12 +132,15 @@ var EditableTextBase = (function (_super) {
     };
     EditableTextBase.prototype._onAutocorrectPropertyChanged = function (data) {
     };
+    EditableTextBase.prototype._onHintPropertyChanged = function (data) {
+    };
     EditableTextBase.keyboardTypeProperty = keyboardTypeProperty;
     EditableTextBase.returnKeyTypeProperty = returnKeyTypeProperty;
     EditableTextBase.editableProperty = editableProperty;
     EditableTextBase.updateTextTriggerProperty = updateTextTriggerProperty;
     EditableTextBase.autocapitalizationTypeProperty = autocapitalizationTypeProperty;
     EditableTextBase.autocorrectProperty = autocorrectProperty;
+    EditableTextBase.hintProperty = exports.hintProperty;
     return EditableTextBase;
 })(textBase.TextBase);
 exports.EditableTextBase = EditableTextBase;

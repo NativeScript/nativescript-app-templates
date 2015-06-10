@@ -46,7 +46,8 @@ var Cache = (function (_super) {
     }
     Cache.prototype._downloadCore = function (request) {
         var that = this;
-        httpRequest.request({ url: request.url, method: "GET" }).then(function (response) {
+        httpRequest.request({ url: request.url, method: "GET" })
+            .then(function (response) {
             var image = UIImage.alloc().initWithData(response.content.raw);
             that._onDownloadCompleted(request.key, image);
         });

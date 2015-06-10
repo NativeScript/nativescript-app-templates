@@ -126,9 +126,17 @@ var View = (function (_super) {
     };
     View.prototype.layoutNativeView = function (left, top, right, bottom) {
         var frame = CGRectMake(left, top, right - left, bottom - top);
-        if (!CGRectEqualToRect(this._nativeView.frame, frame)) {
-            trace.write(this + ", Native setFrame: " + NSStringFromCGRect(frame), trace.categories.Layout);
-            this._nativeView.frame = frame;
+        var nativeView;
+        if (!this.parent && this._nativeView.subviews.count > 0) {
+            trace.write(this + " has no parent. Setting frame to first child instead.", trace.categories.Layout);
+            nativeView = this._nativeView.subviews[0];
+        }
+        else {
+            nativeView = this._nativeView;
+        }
+        if (!CGRectEqualToRect(nativeView.frame, frame)) {
+            trace.write(this + ", Native setFrame: = " + NSStringFromCGRect(frame), trace.categories.Layout);
+            nativeView.frame = frame;
         }
     };
     View.prototype._updateLayout = function () {
@@ -166,6 +174,7 @@ var CustomLayoutView = (function (_super) {
         configurable: true
     });
     CustomLayoutView.prototype.onMeasure = function (widthMeasureSpec, heightMeasureSpec) {
+        // Don't call super because it will trigger measure again.
         var width = utils.layout.getMeasureSpecSize(widthMeasureSpec);
         var widthMode = utils.layout.getMeasureSpecMode(widthMeasureSpec);
         var height = utils.layout.getMeasureSpecSize(heightMeasureSpec);

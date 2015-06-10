@@ -7,11 +7,6 @@ var __extends = this.__extends || function (d, b) {
 var common = require("ui/text-field/text-field-common");
 var textBase = require("ui/text-base");
 var enums = require("ui/enums");
-function onHintPropertyChanged(data) {
-    var textField = data.object;
-    textField.ios.placeholder = data.newValue;
-}
-common.hintProperty.metadata.onSetNativeValue = onHintPropertyChanged;
 function onSecurePropertyChanged(data) {
     var textField = data.object;
     textField.ios.secureTextEntry = data.newValue;
@@ -75,6 +70,10 @@ var TextField = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    TextField.prototype._onHintPropertyChanged = function (data) {
+        var textField = data.object;
+        textField.ios.placeholder = data.newValue;
+    };
     return TextField;
 })(common.TextField);
 exports.TextField = TextField;

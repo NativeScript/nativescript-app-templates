@@ -5,14 +5,6 @@ var __extends = this.__extends || function (d, b) {
     d.prototype = new __();
 };
 var common = require("ui/text-field/text-field-common");
-function onHintPropertyChanged(data) {
-    var textField = data.object;
-    if (!textField.android) {
-        return;
-    }
-    textField.android.setHint(data.newValue);
-}
-common.hintProperty.metadata.onSetNativeValue = onHintPropertyChanged;
 function onSecurePropertyChanged(data) {
     var textField = data.object;
     if (!textField.android) {

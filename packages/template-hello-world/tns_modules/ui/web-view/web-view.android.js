@@ -6,6 +6,8 @@ var __extends = this.__extends || function (d, b) {
 };
 var common = require("ui/web-view/web-view-common");
 var trace = require("trace");
+var utils = require("utils/utils");
+var fs = require("file-system");
 require("utils/module-merge").merge(common, exports);
 var WebViewClientClass = (function (_super) {
     __extends(WebViewClientClass, _super);
@@ -65,6 +67,29 @@ var WebView = (function (_super) {
         trace.write("WebView._loadUrl(" + url + ")", trace.categories.Debug);
         this._android.stopLoading();
         this._android.loadUrl(url);
+    };
+    WebView.prototype._loadSrc = function (src) {
+        var _this = this;
+        trace.write("WebView._loadSrc(" + src + ")", trace.categories.Debug);
+        this._android.stopLoading();
+        this._android.loadUrl("about:blank");
+        if (utils.isFileOrResourcePath(src)) {
+            if (src.indexOf("~/") === 0) {
+                src = fs.path.join(fs.knownFolders.currentApp().path, src.replace("~/", ""));
+            }
+            var file = fs.File.fromPath(src);
+            if (file) {
+                file.readText().then(function (r) {
+                    _this._android.loadData(r, "text/html", null);
+                });
+            }
+        }
+        else if (src.indexOf("http://") === 0 || src.indexOf("https://") === 0) {
+            this._android.loadUrl(src);
+        }
+        else {
+            this._android.loadData(src, "text/html", null);
+        }
     };
     Object.defineProperty(WebView.prototype, "canGoBack", {
         get: function () {

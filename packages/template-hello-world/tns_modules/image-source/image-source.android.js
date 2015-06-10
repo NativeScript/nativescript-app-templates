@@ -34,6 +34,13 @@ var ImageSource = (function () {
         this.android = android.graphics.BitmapFactory.decodeStream(data);
         return this.android != null;
     };
+    ImageSource.prototype.loadFromBase64 = function (source) {
+        if (types.isString(source)) {
+            var bytes = android.util.Base64.decode(source, android.util.Base64.DEFAULT);
+            this.android = android.graphics.BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        }
+        return this.android != null;
+    };
     ImageSource.prototype.setNativeSource = function (source) {
         this.android = source;
         return source != null;

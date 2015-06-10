@@ -6,15 +6,19 @@ var __extends = this.__extends || function (d, b) {
 };
 var observable = require("data/observable");
 var dependencyObservable = require("ui/core/dependency-observable");
-var weakEventListener = require("ui/core/weak-event-listener");
+var weakEvents = require("ui/core/weak-event-listener");
 var appModule = require("application");
 var types = require("utils/types");
 var trace = require("trace");
 var polymerExpressions = require("js-libs/polymer-expressions");
 var bindingBuilder = require("../builder/binding-builder");
-var bindingContextProperty = new dependencyObservable.Property("bindingContext", "Bindable", new dependencyObservable.PropertyMetadata(undefined, dependencyObservable.PropertyMetadataSettings.Inheritable));
+var viewModule = require("ui/core/view");
+var bindingContextProperty = new dependencyObservable.Property("bindingContext", "Bindable", new dependencyObservable.PropertyMetadata(undefined, dependencyObservable.PropertyMetadataSettings.Inheritable, onBindingContextChanged));
+function onBindingContextChanged(data) {
+    var bindable = data.object;
+    bindable._onBindingContextChanged(data.oldValue, data.newValue);
+}
 var contextKey = "context";
-var resourcesKey = "resources";
 var Bindable = (function (_super) {
     __extends(Bindable, _super);
     function Bindable() {
@@ -41,6 +45,7 @@ var Bindable = (function (_super) {
         var bindingSource = source;
         if (!bindingSource) {
             bindingSource = this.bindingContext;
+            binding.sourceIsBindingContext = true;
         }
         if (!types.isNullOrUndefined(bindingSource)) {
             binding.bind(bindingSource);
@@ -66,19 +71,20 @@ var Bindable = (function (_super) {
     Bindable.prototype._onPropertyChanged = function (property, oldValue, newValue) {
         trace.write("Bindable._onPropertyChanged(" + this + ") " + property.name, trace.categories.Binding);
         _super.prototype._onPropertyChanged.call(this, property, oldValue, newValue);
-        if (property === Bindable.bindingContextProperty) {
-            this._onBindingContextChanged(oldValue, newValue);
+        if (this instanceof viewModule.View) {
+            if (property.metadata.inheritable && this._isInheritedChange() === true) {
+                return;
+            }
         }
         var binding = this._bindings[property.name];
-        if (binding) {
-            var shouldRemoveBinding = !binding.updating && !binding.options.twoWay;
-            if (shouldRemoveBinding) {
-                trace.write("_onPropertyChanged(" + this + ") removing binding for property: " + property.name, trace.categories.Binding);
-                this.unbind(property.name);
-            }
-            else {
+        if (binding && !binding.updating) {
+            if (binding.options.twoWay) {
                 trace.write("_updateTwoWayBinding(" + this + "): " + property.name, trace.categories.Binding);
                 this._updateTwoWayBinding(property.name, newValue);
+            }
+            else {
+                trace.write("_onPropertyChanged(" + this + ") removing binding for property: " + property.name, trace.categories.Binding);
+                this.unbind(property.name);
             }
         }
     };
@@ -86,10 +92,12 @@ var Bindable = (function (_super) {
         var binding;
         for (var p in this._bindings) {
             binding = this._bindings[p];
-            if (binding.options.targetProperty === Bindable.bindingContextProperty.name && binding.updating) {
+            if (binding.updating || !binding.sourceIsBindingContext) {
                 continue;
             }
-            trace.write("Binding target: " + binding.target.get() + " targetProperty: " + binding.options.targetProperty + " to the changed context: " + newValue, trace.categories.Binding);
+            trace.write("Binding target: " + binding.target.get() +
+                " targetProperty: " + binding.options.targetProperty +
+                " to the changed context: " + newValue, trace.categories.Binding);
             binding.unbind();
             if (!types.isNullOrUndefined(newValue)) {
                 binding.bind(newValue);
@@ -103,7 +111,6 @@ exports.Bindable = Bindable;
 var Binding = (function () {
     function Binding(target, options) {
         this.updating = false;
-        this.weakEL = weakEventListener.WeakEventListener;
         this.target = new WeakRef(target);
         this.options = options;
     }
@@ -128,15 +135,7 @@ var Binding = (function () {
         if (this.sourceOptions) {
             var sourceOptionsInstance = this.sourceOptions.instance.get();
             if (sourceOptionsInstance instanceof observable.Observable) {
-                this.weakEventListenerOptions = {
-                    targetWeakRef: this.target,
-                    sourceWeakRef: this.sourceOptions.instance,
-                    eventName: observable.Observable.propertyChangeEvent,
-                    handler: this.onSourcePropertyChanged,
-                    handlerContext: this,
-                    key: this.options.targetProperty
-                };
-                this.weakEL.addWeakEventListener(this.weakEventListenerOptions);
+                weakEvents.addWeakEventListener(sourceOptionsInstance, observable.Observable.propertyChangeEvent, this.onSourcePropertyChanged, this);
             }
         }
     };
@@ -144,8 +143,12 @@ var Binding = (function () {
         if (!this.source) {
             return;
         }
-        this.weakEL.removeWeakEventListener(this.weakEventListenerOptions);
-        this.weakEventListenerOptions = undefined;
+        if (this.sourceOptions) {
+            var sourceOptionsInstance = this.sourceOptions.instance.get();
+            if (sourceOptionsInstance) {
+                weakEvents.removeWeakEventListener(sourceOptionsInstance, observable.Observable.propertyChangeEvent, this.onSourcePropertyChanged, this);
+            }
+        }
         if (this.source) {
             this.source.clear();
         }
@@ -162,13 +165,18 @@ var Binding = (function () {
             return;
         }
         if (this.options.twoWay) {
-            if (this._isExpression(this.options.expression)) {
+            if (this.options.expression) {
                 var changedModel = {};
-                if (this.options.sourceProperty === bindingBuilder.bindingConstants.bindingValueKey) {
-                    changedModel[bindingBuilder.bindingConstants.bindingValueKey] = value;
+                changedModel[bindingBuilder.bindingConstants.bindingValueKey] = value;
+                var sourcePropertyName = "";
+                if (this.sourceOptions) {
+                    sourcePropertyName = this.sourceOptions.property;
                 }
-                else {
-                    changedModel[this.options.sourceProperty] = value;
+                else if (typeof this.options.sourceProperty === "string" && this.options.sourceProperty.indexOf(".") === -1) {
+                    sourcePropertyName = this.options.sourceProperty;
+                }
+                if (sourcePropertyName !== "") {
+                    changedModel[sourcePropertyName] = value;
                 }
                 var expressionValue = this._getExpressionValue(this.options.expression, true, changedModel);
                 if (expressionValue instanceof Error) {
@@ -183,23 +191,18 @@ var Binding = (function () {
             }
         }
     };
-    Binding.prototype._isExpression = function (expression) {
-        if (expression) {
-            var result = expression.indexOf(" ") !== -1;
-            return result;
-        }
-        else {
-            return false;
-        }
-    };
     Binding.prototype._getExpressionValue = function (expression, isBackConvert, changedModel) {
         try {
             var exp = polymerExpressions.PolymerExpressions.getExpression(expression);
             if (exp) {
                 var context = this.source && this.source.get && this.source.get() || global;
                 var model = {};
+                for (var prop in appModule.resources) {
+                    if (appModule.resources.hasOwnProperty(prop) && !context.hasOwnProperty(prop)) {
+                        context[prop] = appModule.resources[prop];
+                    }
+                }
                 model[contextKey] = context;
-                model[resourcesKey] = appModule.resources;
                 return exp.getValue(model, isBackConvert, changedModel);
             }
             return new Error(expression + " is not a valid expression.");
@@ -210,7 +213,7 @@ var Binding = (function () {
         }
     };
     Binding.prototype.onSourcePropertyChanged = function (data) {
-        if (this._isExpression(this.options.expression)) {
+        if (this.options.expression) {
             var expressionValue = this._getExpressionValue(this.options.expression, false, undefined);
             if (expressionValue instanceof Error) {
                 trace.write(expressionValue.message, trace.categories.Binding, trace.messageType.error);
@@ -219,16 +222,14 @@ var Binding = (function () {
                 this.updateTarget(expressionValue);
             }
         }
-        else if (data.propertyName === this.options.sourceProperty) {
+        else if (data.propertyName === this.sourceOptions.property) {
             this.updateTarget(data.value);
         }
     };
     Binding.prototype.getSourceProperty = function () {
-        if (this._isExpression(this.options.expression)) {
+        if (this.options.expression) {
             var changedModel = {};
-            if (this.options.sourceProperty === bindingBuilder.bindingConstants.bindingValueKey) {
-                changedModel[bindingBuilder.bindingConstants.bindingValueKey] = this.source.get();
-            }
+            changedModel[bindingBuilder.bindingConstants.bindingValueKey] = this.source.get();
             var expressionValue = this._getExpressionValue(this.options.expression, false, changedModel);
             if (expressionValue instanceof Error) {
                 trace.write(expressionValue.message, trace.categories.Binding, trace.messageType.error);
@@ -249,7 +250,8 @@ var Binding = (function () {
             else if (sourceOptionsInstance instanceof observable.Observable) {
                 value = sourceOptionsInstance.get(this.sourceOptions.property);
             }
-            else if (sourceOptionsInstance && this.sourceOptions.property && this.sourceOptions.property in sourceOptionsInstance) {
+            else if (sourceOptionsInstance && this.sourceOptions.property &&
+                this.sourceOptions.property in sourceOptionsInstance) {
                 value = sourceOptionsInstance[this.sourceOptions.property];
             }
         }
@@ -282,7 +284,7 @@ var Binding = (function () {
             };
             return options;
         }
-        if (!this._isExpression(property) && types.isString(property) && property.indexOf(".") !== -1) {
+        if (types.isString(property) && property.indexOf(".") !== -1) {
             var properties = property.split(".");
             var i;
             var currentObject = obj.get();

@@ -1,3 +1,6 @@
+/**
+ * Android specific dialogs functions implementation.
+ */
 var dialogs = require("ui/dialogs");
 var dialogs_common = require("ui/dialogs/dialogs-common");
 var appmodule = require("application");
@@ -62,9 +65,7 @@ function confirm(arg) {
         try {
             var options = types.isString(arg) ? { title: dialogs_common.CONFIRM, okButtonText: dialogs_common.OK, cancelButtonText: dialogs_common.CANCEL, message: arg } : arg;
             var alert = createAlertDialog(options);
-            addButtonsToAlertDialog(alert, options, function (result) {
-                resolve(result);
-            });
+            addButtonsToAlertDialog(alert, options, function (result) { resolve(result); });
             alert.show();
         }
         catch (ex) {
@@ -106,12 +107,8 @@ function prompt(arg) {
             }
             input.setText(options && options.defaultText || "");
             alert.setView(input);
-            var getText = function () {
-                return input.getText().toString();
-            };
-            addButtonsToAlertDialog(alert, options, function (r) {
-                resolve({ result: r, text: getText() });
-            });
+            var getText = function () { return input.getText().toString(); };
+            addButtonsToAlertDialog(alert, options, function (r) { resolve({ result: r, text: getText() }); });
             alert.show();
         }
         catch (ex) {

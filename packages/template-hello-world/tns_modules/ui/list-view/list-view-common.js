@@ -5,18 +5,18 @@ var __extends = this.__extends || function (d, b) {
     d.prototype = new __();
 };
 var observable = require("data/observable");
+var observableArray = require("data/observable-array");
 var view = require("ui/core/view");
 var proxy = require("ui/core/proxy");
 var dependencyObservable = require("ui/core/dependency-observable");
 var builder = require("ui/builder");
 var label = require("ui/label");
 var color = require("color");
+var weakEvents = require("ui/core/weak-event-listener");
 var ITEMS = "items";
 var ITEMTEMPLATE = "itemTemplate";
 var ISSCROLLING = "isScrolling";
 var LISTVIEW = "ListView";
-var ITEMSCHANGED = "_itemsChanged";
-var CHANGE = "change";
 var SEPARATORCOLOR = "separatorColor";
 var knownTemplates;
 (function (knownTemplates) {
@@ -24,14 +24,7 @@ var knownTemplates;
 })(knownTemplates = exports.knownTemplates || (exports.knownTemplates = {}));
 function onItemsPropertyChanged(data) {
     var listView = data.object;
-    var itemsChanged = listView[ITEMSCHANGED];
-    if (data.oldValue instanceof observable.Observable) {
-        data.oldValue.off(CHANGE, itemsChanged);
-    }
-    if (data.newValue instanceof observable.Observable) {
-        data.newValue.on(CHANGE, itemsChanged);
-    }
-    listView.refresh();
+    listView._onItemsPropertyChanged(data);
 }
 function onItemTemplatePropertyChanged(data) {
     var listView = data.object;
@@ -40,11 +33,7 @@ function onItemTemplatePropertyChanged(data) {
 var ListView = (function (_super) {
     __extends(ListView, _super);
     function ListView() {
-        var _this = this;
-        _super.call(this);
-        this._itemsChanged = function (args) {
-            _this.refresh();
-        };
+        _super.apply(this, arguments);
     }
     Object.defineProperty(ListView.prototype, "items", {
         get: function () {
@@ -91,7 +80,7 @@ var ListView = (function (_super) {
     ListView.prototype._getItemTemplateContent = function (index) {
         var v;
         if (this.itemTemplate && this.items) {
-            v = builder.parse(this.itemTemplate, getExports(this));
+            v = builder.parse(this.itemTemplate, this);
         }
         return v;
     };
@@ -105,8 +94,23 @@ var ListView = (function (_super) {
     };
     ListView.prototype._getDefaultItemContent = function (index) {
         var lbl = new label.Label();
-        lbl.text = this._getDataItem(index) + "";
+        lbl.bind({
+            targetProperty: "text",
+            sourceProperty: "$value"
+        });
         return lbl;
+    };
+    ListView.prototype._onItemsPropertyChanged = function (data) {
+        if (data.oldValue instanceof observable.Observable) {
+            weakEvents.removeWeakEventListener(data.oldValue, observableArray.ObservableArray.changeEvent, this._onItemsChanged, this);
+        }
+        if (data.newValue instanceof observable.Observable) {
+            weakEvents.addWeakEventListener(data.newValue, observableArray.ObservableArray.changeEvent, this._onItemsChanged, this);
+        }
+        this.refresh();
+    };
+    ListView.prototype._onItemsChanged = function (args) {
+        this.refresh();
     };
     ListView.itemLoadingEvent = "itemLoading";
     ListView.itemTapEvent = "itemTap";
@@ -118,10 +122,3 @@ var ListView = (function (_super) {
     return ListView;
 })(view.View);
 exports.ListView = ListView;
-function getExports(instance) {
-    var parent = instance.parent;
-    while (parent && parent.exports === undefined) {
-        parent = parent.parent;
-    }
-    return parent ? parent.exports : undefined;
-}

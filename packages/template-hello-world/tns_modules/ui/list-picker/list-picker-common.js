@@ -37,7 +37,7 @@ var ListPicker = (function (_super) {
     });
     ListPicker.prototype._getItemAsString = function (index) {
         if (!this.items || !this.items.length) {
-            return "";
+            return " ";
         }
         if (types.isDefined(this.items)) {
             var item = this.items.getItem ? this.items.getItem(index) : this.items[index];

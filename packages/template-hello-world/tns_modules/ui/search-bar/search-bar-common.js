@@ -43,9 +43,20 @@ var SearchBar = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(SearchBar.prototype, "textFieldHintColor", {
+        get: function () {
+            return this._getValue(SearchBar.textFieldHintColorProperty);
+        },
+        set: function (value) {
+            this._setValue(SearchBar.textFieldHintColorProperty, value instanceof color.Color ? value : new color.Color(value));
+        },
+        enumerable: true,
+        configurable: true
+    });
     SearchBar.submitEvent = "submit";
     SearchBar.clearEvent = "clear";
     SearchBar.textFieldBackgroundColorProperty = new dependencyObservable.Property("textFieldBackgroundColor", "SearchBar", new proxy.PropertyMetadata(undefined));
+    SearchBar.textFieldHintColorProperty = new dependencyObservable.Property("textFieldHintColor", "SearchBar", new proxy.PropertyMetadata(undefined));
     SearchBar.hintProperty = new dependencyObservable.Property("hint", "SearchBar", new proxy.PropertyMetadata(""));
     SearchBar.textProperty = new dependencyObservable.Property("text", "SearchBar", new proxy.PropertyMetadata("", dependencyObservable.PropertyMetadataSettings.AffectsLayout));
     return SearchBar;

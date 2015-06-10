@@ -15,7 +15,9 @@ var Span = (function (_super) {
     Span.prototype.updateSpanModifiers = function (parent) {
         _super.prototype.updateSpanModifiers.call(this, parent);
         var realFontFamily = this.fontFamily || (parent ? parent.fontFamily : undefined);
-        var realFontSize = this.fontSize || (parent ? parent.fontSize : undefined) || (parent && parent.parent ? parent.parent.style.fontSize : undefined);
+        var realFontSize = this.fontSize ||
+            (parent ? parent.fontSize : undefined) ||
+            (parent && parent.parent ? parent.parent.style.fontSize : undefined);
         var realFontAttributes = this.fontAttributes || (parent ? parent.fontAttributes : undefined);
         if (realFontAttributes || realFontFamily || realFontSize) {
             var font;
@@ -43,14 +45,18 @@ var Span = (function (_super) {
                 });
             }
         }
-        var realForegroundColor = this.foregroundColor || (parent ? parent.foregroundColor : undefined) || (parent && parent.parent ? parent.parent.style.color : undefined);
+        var realForegroundColor = this.foregroundColor ||
+            (parent ? parent.foregroundColor : undefined) ||
+            (parent && parent.parent ? parent.parent.style.color : undefined);
         if (realForegroundColor) {
             this.spanModifiers.push({
                 key: NSForegroundColorAttributeName,
                 value: realForegroundColor.ios
             });
         }
-        var realBackgroundColor = this.backgroundColor || (parent ? parent.backgroundColor : undefined) || (parent && parent.parent ? parent.parent.style.backgroundColor : undefined);
+        var realBackgroundColor = this.backgroundColor ||
+            (parent ? parent.backgroundColor : undefined) ||
+            (parent && parent.parent ? parent.parent.style.backgroundColor : undefined);
         if (realBackgroundColor) {
             this.spanModifiers.push({
                 key: NSBackgroundColorAttributeName,
