@@ -49,6 +49,7 @@ var Stretch;
 var Visibility;
 (function (Visibility) {
     Visibility.visible = "visible";
+    Visibility.collapse = "collapse";
     Visibility.collapsed = "collapsed";
 })(Visibility = exports.Visibility || (exports.Visibility = {}));
 var FontAttributes;
@@ -92,14 +93,42 @@ var NavigationBarVisibility;
     NavigationBarVisibility.never = "never";
     NavigationBarVisibility.always = "always";
 })(NavigationBarVisibility = exports.NavigationBarVisibility || (exports.NavigationBarVisibility = {}));
-var MenuItemPosition;
-(function (MenuItemPosition) {
-    MenuItemPosition.actionBar = "actionBar";
-    MenuItemPosition.actionBarIfRoom = "actionBarIfRoom";
-    MenuItemPosition.popup = "popup";
-})(MenuItemPosition = exports.MenuItemPosition || (exports.MenuItemPosition = {}));
+var AndroidActionBarIconVisibility;
+(function (AndroidActionBarIconVisibility) {
+    AndroidActionBarIconVisibility.auto = "auto";
+    AndroidActionBarIconVisibility.never = "never";
+    AndroidActionBarIconVisibility.always = "always";
+})(AndroidActionBarIconVisibility = exports.AndroidActionBarIconVisibility || (exports.AndroidActionBarIconVisibility = {}));
+var AndroidActionItemPosition;
+(function (AndroidActionItemPosition) {
+    AndroidActionItemPosition.actionBar = "actionBar";
+    AndroidActionItemPosition.actionBarIfRoom = "actionBarIfRoom";
+    AndroidActionItemPosition.popup = "popup";
+})(AndroidActionItemPosition = exports.AndroidActionItemPosition || (exports.AndroidActionItemPosition = {}));
+var IOSActionItemPosition;
+(function (IOSActionItemPosition) {
+    IOSActionItemPosition.left = "left";
+    IOSActionItemPosition.right = "right";
+})(IOSActionItemPosition = exports.IOSActionItemPosition || (exports.IOSActionItemPosition = {}));
 var ImageFormat;
 (function (ImageFormat) {
     ImageFormat.png = "png";
     ImageFormat.jpeg = "jpeg";
 })(ImageFormat = exports.ImageFormat || (exports.ImageFormat = {}));
+var FontStyle;
+(function (FontStyle) {
+    FontStyle.normal = "normal";
+    FontStyle.italic = "italic";
+})(FontStyle = exports.FontStyle || (exports.FontStyle = {}));
+var FontWeight;
+(function (FontWeight) {
+    FontWeight.normal = "normal";
+    FontWeight.bold = "bold";
+})(FontWeight = exports.FontWeight || (exports.FontWeight = {}));
+var BackgroundRepeat;
+(function (BackgroundRepeat) {
+    BackgroundRepeat.repeat = "repeat";
+    BackgroundRepeat.repeatX = "repeat-x";
+    BackgroundRepeat.repeatY = "repeat-y";
+    BackgroundRepeat.noRepeat = "no-repeat";
+})(BackgroundRepeat = exports.BackgroundRepeat || (exports.BackgroundRepeat = {}));

@@ -15,6 +15,8 @@ var converters = require("ui/styling/converters");
 var enums = require("ui/enums");
 var imageSource = require("image-source");
 var utils = require("utils/utils");
+var font = require("ui/styling/font");
+var background = require("ui/styling/background");
 var _registeredHandlers = Array();
 var _handlersCache = {};
 var noStylingClasses = {};
@@ -22,6 +24,8 @@ var Style = (function (_super) {
     __extends(Style, _super);
     function Style(parentView) {
         _super.call(this);
+        this._updateCounter = 0;
+        this._nativeSetters = new Map();
         this._view = parentView;
     }
     Object.defineProperty(Style.prototype, "color", {
@@ -54,12 +58,112 @@ var Style = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(Style.prototype, "backgroundRepeat", {
+        get: function () {
+            return this._getValue(exports.backgroundRepeatProperty);
+        },
+        set: function (value) {
+            this._setValue(exports.backgroundRepeatProperty, value, observable.ValueSource.Local);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Style.prototype, "backgroundSize", {
+        get: function () {
+            return this._getValue(exports.backgroundSizeProperty);
+        },
+        set: function (value) {
+            this._setValue(exports.backgroundSizeProperty, value, observable.ValueSource.Local);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Style.prototype, "backgroundPosition", {
+        get: function () {
+            return this._getValue(exports.backgroundPositionProperty);
+        },
+        set: function (value) {
+            this._setValue(exports.backgroundPositionProperty, value, observable.ValueSource.Local);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Style.prototype, "borderColor", {
+        get: function () {
+            return this._getValue(exports.borderColorProperty);
+        },
+        set: function (value) {
+            this._setValue(exports.borderColorProperty, value, observable.ValueSource.Local);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Style.prototype, "borderWidth", {
+        get: function () {
+            return this._getValue(exports.borderWidthProperty);
+        },
+        set: function (value) {
+            this._setValue(exports.borderWidthProperty, value, observable.ValueSource.Local);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Style.prototype, "borderRadius", {
+        get: function () {
+            return this._getValue(exports.borderRadiusProperty);
+        },
+        set: function (value) {
+            this._setValue(exports.borderRadiusProperty, value, observable.ValueSource.Local);
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(Style.prototype, "fontSize", {
         get: function () {
             return this._getValue(exports.fontSizeProperty);
         },
         set: function (value) {
             this._setValue(exports.fontSizeProperty, value, observable.ValueSource.Local);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Style.prototype, "fontFamily", {
+        get: function () {
+            return this._getValue(exports.fontFamilyProperty);
+        },
+        set: function (value) {
+            this._setValue(exports.fontFamilyProperty, value, observable.ValueSource.Local);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Style.prototype, "fontStyle", {
+        get: function () {
+            return this._getValue(exports.fontStyleProperty);
+        },
+        set: function (value) {
+            this._setValue(exports.fontStyleProperty, value, observable.ValueSource.Local);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Style.prototype, "fontWeight", {
+        get: function () {
+            return this._getValue(exports.fontWeightProperty);
+        },
+        set: function (value) {
+            this._setValue(exports.fontWeightProperty, value, observable.ValueSource.Local);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Style.prototype, "font", {
+        get: function () {
+            return this._getValue(exports.fontProperty);
+        },
+        set: function (value) {
+            this._setValue(exports.fontProperty, value, observable.ValueSource.Local);
         },
         enumerable: true,
         configurable: true
@@ -254,10 +358,31 @@ var Style = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    Style.prototype._beginUpdate = function () {
+        this._updateCounter++;
+    };
+    Style.prototype._endUpdate = function () {
+        var _this = this;
+        this._updateCounter--;
+        if (this._updateCounter < 0) {
+            throw new Error("style._endUpdate() called, but no update is in progress.");
+        }
+        if (this._updateCounter === 0) {
+            this._nativeSetters.forEach(function (newValue, property, map) { _this._applyStyleProperty(property, newValue); });
+            this._nativeSetters.clear();
+        }
+    };
     Style.prototype._resetCssValues = function () {
         var that = this;
         this._eachSetProperty(function (property) {
             that._resetValue(property, observable.ValueSource.Css);
+            return true;
+        });
+    };
+    Style.prototype._resetLocalValues = function () {
+        var that = this;
+        this._eachSetProperty(function (property) {
+            that._resetValue(property, observable.ValueSource.Local);
             return true;
         });
     };
@@ -291,6 +416,10 @@ var Style = (function (_super) {
         this._view._eachChildView(eachChild);
     };
     Style.prototype._applyStyleProperty = function (property, newValue) {
+        if (this._updateCounter > 0) {
+            this._nativeSetters.set(property, newValue);
+            return;
+        }
         try {
             var handler = getHandler(property, this._view);
             if (!handler) {
@@ -298,7 +427,14 @@ var Style = (function (_super) {
             }
             else {
                 trace.write("Found handler for property: " + property.name + ", view:" + this._view, trace.categories.Style);
-                if (types.isUndefined(newValue)) {
+                var shouldReset = false;
+                if (property.metadata.equalityComparer) {
+                    shouldReset = property.metadata.equalityComparer(newValue, property.metadata.defaultValue);
+                }
+                else {
+                    shouldReset = (newValue === property.metadata.defaultValue);
+                }
+                if (shouldReset) {
                     handler.resetProperty(property, this._view);
                 }
                 else {
@@ -377,33 +513,128 @@ function getHandlerInternal(propertyId, classInfo) {
 }
 exports.colorProperty = new styleProperty.Property("color", "color", new observable.PropertyMetadata(undefined, observable.PropertyMetadataSettings.Inheritable, undefined, undefined, color.Color.equals), converters.colorConverter);
 exports.backgroundImageProperty = new styleProperty.Property("backgroundImage", "background-image", new observable.PropertyMetadata(undefined, observable.PropertyMetadataSettings.None, onBackgroundImagePropertyChanged));
+exports.backgroundColorProperty = new styleProperty.Property("backgroundColor", "background-color", new observable.PropertyMetadata(undefined, observable.PropertyMetadataSettings.None, onBackgroundColorPropertyChanged, undefined, color.Color.equals), converters.colorConverter);
+exports.backgroundRepeatProperty = new styleProperty.Property("backgroundRepeat", "background-repeat", new observable.PropertyMetadata(undefined, observable.PropertyMetadataSettings.None, onBackgroundRepeatPropertyChanged));
+exports.backgroundSizeProperty = new styleProperty.Property("backgroundSize", "background-size", new observable.PropertyMetadata(undefined, observable.PropertyMetadataSettings.None, onBackgroundSizePropertyChanged));
+exports.backgroundPositionProperty = new styleProperty.Property("backgroundPosition", "background-position", new observable.PropertyMetadata(undefined, observable.PropertyMetadataSettings.None, onBackgroundPositionPropertyChanged));
+exports.borderColorProperty = new styleProperty.Property("borderColor", "border-color", new observable.PropertyMetadata(undefined, observable.PropertyMetadataSettings.None, undefined, undefined, color.Color.equals), converters.colorConverter);
+exports.borderWidthProperty = new styleProperty.Property("borderWidth", "border-width", new observable.PropertyMetadata(0, observable.PropertyMetadataSettings.AffectsLayout, null, isPaddingValid), converters.numberConverter);
+exports.borderRadiusProperty = new styleProperty.Property("borderRadius", "border-radius", new observable.PropertyMetadata(0, observable.PropertyMetadataSettings.AffectsLayout, null, isPaddingValid), converters.numberConverter);
+exports.backgroundInternalProperty = new styleProperty.Property("_backgroundInternal", "_backgroundInternal", new observable.PropertyMetadata(background.Background.default, observable.PropertyMetadataSettings.None, undefined, undefined, background.Background.equals));
 function onBackgroundImagePropertyChanged(data) {
     var style = data.object;
+    var url = data.newValue;
+    var currentBackground = style._getValue(exports.backgroundInternalProperty);
+    var isValid = false;
     if (types.isString(data.newValue)) {
         var pattern = /url\(('|")(.*?)\1\)/;
-        var match = data.newValue && data.newValue.match(pattern);
-        var url = match && match[2];
-        if (types.isDefined(url)) {
-            if (utils.isDataURI(url)) {
-                var base64Data = url.split(",")[1];
-                if (types.isDefined(base64Data)) {
-                    style._setValue(exports.backgroundImageSourceProperty, imageSource.fromBase64(base64Data), observable.ValueSource.Local);
-                }
-            }
-            else if (utils.isFileOrResourcePath(url)) {
-                style._setValue(exports.backgroundImageSourceProperty, imageSource.fromFileOrResource(url), observable.ValueSource.Local);
-            }
-            else {
-                imageSource.fromUrl(url).then(function (r) {
-                    style._setValue(exports.backgroundImageSourceProperty, r, observable.ValueSource.Local);
-                });
+        var match = url.match(pattern);
+        if (match && match[2]) {
+            url = match[2];
+        }
+        if (utils.isDataURI(url)) {
+            var base64Data = url.split(",")[1];
+            if (types.isDefined(base64Data)) {
+                style._setValue(exports.backgroundInternalProperty, currentBackground.withImage(imageSource.fromBase64(base64Data)));
+                isValid = true;
             }
         }
+        else if (utils.isFileOrResourcePath(url)) {
+            style._setValue(exports.backgroundInternalProperty, currentBackground.withImage(imageSource.fromFileOrResource(url)));
+            isValid = true;
+        }
+        else if (url.indexOf("http") !== -1) {
+            style["_url"] = url;
+            style._setValue(exports.backgroundInternalProperty, currentBackground.withImage(undefined));
+            imageSource.fromUrl(url).then(function (r) {
+                if (style && style["_url"] === url) {
+                    style._setValue(exports.backgroundInternalProperty, currentBackground.withImage(r));
+                }
+            });
+            isValid = true;
+        }
+    }
+    if (!isValid) {
+        style._setValue(exports.backgroundInternalProperty, currentBackground.withImage(undefined));
     }
 }
-exports.backgroundImageSourceProperty = new styleProperty.Property("backgroundImageSource", "background-image-source", new observable.PropertyMetadata(undefined, observable.PropertyMetadataSettings.None, undefined, undefined, undefined));
-exports.backgroundColorProperty = new styleProperty.Property("backgroundColor", "background-color", new observable.PropertyMetadata(undefined, observable.PropertyMetadataSettings.None, undefined, undefined, color.Color.equals), converters.colorConverter);
-exports.fontSizeProperty = new styleProperty.Property("fontSize", "font-size", new observable.PropertyMetadata(undefined, observable.PropertyMetadataSettings.AffectsLayout | observable.PropertyMetadataSettings.Inheritable), converters.fontSizeConverter);
+function onBackgroundColorPropertyChanged(data) {
+    var style = data.object;
+    var currentBackground = style._getValue(exports.backgroundInternalProperty);
+    if (!color.Color.equals(currentBackground.color, data.newValue)) {
+        style._setValue(exports.backgroundInternalProperty, currentBackground.withColor(data.newValue));
+    }
+}
+function onBackgroundSizePropertyChanged(data) {
+    var style = data.object;
+    var currentBackground = style._getValue(exports.backgroundInternalProperty);
+    if (data.newValue !== currentBackground.size) {
+        style._setValue(exports.backgroundInternalProperty, currentBackground.withSize(data.newValue));
+    }
+}
+function onBackgroundRepeatPropertyChanged(data) {
+    var style = data.object;
+    var currentBackground = style._getValue(exports.backgroundInternalProperty);
+    if (data.newValue !== currentBackground.repeat) {
+        style._setValue(exports.backgroundInternalProperty, currentBackground.withRepeat(data.newValue));
+    }
+}
+function onBackgroundPositionPropertyChanged(data) {
+    var style = data.object;
+    var currentBackground = style._getValue(exports.backgroundInternalProperty);
+    if (data.newValue !== currentBackground.position) {
+        style._setValue(exports.backgroundInternalProperty, currentBackground.withPosition(data.newValue));
+    }
+}
+exports.fontProperty = new styleProperty.Property("font", "font", new observable.PropertyMetadata(undefined, observable.PropertyMetadataSettings.None, onFontChanged));
+exports.fontSizeProperty = new styleProperty.Property("fontSize", "font-size", new observable.PropertyMetadata(undefined, observable.PropertyMetadataSettings.Inheritable, onFontSizeChanged), converters.fontSizeConverter);
+exports.fontFamilyProperty = new styleProperty.Property("fontFamily", "font-family", new observable.PropertyMetadata(undefined, observable.PropertyMetadataSettings.Inheritable, onFontFamilyChanged));
+exports.fontStyleProperty = new styleProperty.Property("fontStyle", "font-style", new observable.PropertyMetadata(enums.FontStyle.normal, observable.PropertyMetadataSettings.Inheritable, onFontStyleChanged, isFontStyleValid));
+exports.fontWeightProperty = new styleProperty.Property("fontWeight", "font-weight", new observable.PropertyMetadata(enums.FontWeight.normal, observable.PropertyMetadataSettings.Inheritable, onFontWeightChanged, isFontWeightValid));
+exports.fontInternalProperty = new styleProperty.Property("_fontInternal", "_fontInternal", new observable.PropertyMetadata(font.Font.default, observable.PropertyMetadataSettings.AffectsLayout, null, null, font.Font.equals), font.Font.parse);
+function isFontWeightValid(value) {
+    return value === enums.FontWeight.normal || value === enums.FontWeight.bold;
+}
+function isFontStyleValid(value) {
+    return value === enums.FontStyle.normal || value === enums.FontStyle.italic;
+}
+function onFontFamilyChanged(data) {
+    var style = data.object;
+    var currentFont = style._getValue(exports.fontInternalProperty);
+    if (currentFont.fontFamily !== data.newValue) {
+        style._setValue(exports.fontInternalProperty, currentFont.withFontFamily(data.newValue));
+    }
+}
+function onFontStyleChanged(data) {
+    var style = data.object;
+    var currentFont = style._getValue(exports.fontInternalProperty);
+    if (currentFont.fontStyle !== data.newValue) {
+        style._setValue(exports.fontInternalProperty, currentFont.withFontStyle(data.newValue));
+    }
+}
+function onFontWeightChanged(data) {
+    var style = data.object;
+    var currentFont = style._getValue(exports.fontInternalProperty);
+    if (currentFont.fontWeight !== data.newValue) {
+        style._setValue(exports.fontInternalProperty, currentFont.withFontWeight(data.newValue));
+    }
+}
+function onFontSizeChanged(data) {
+    var style = data.object;
+    var currentFont = style._getValue(exports.fontInternalProperty);
+    if (currentFont.fontSize !== data.newValue) {
+        style._setValue(exports.fontInternalProperty, currentFont.withFontSize(data.newValue));
+    }
+}
+function onFontChanged(data) {
+    var style = data.object;
+    var newFont = font.Font.parse(data.newValue);
+    var valueSource = style._getValueSource(exports.fontProperty);
+    style._setValue(exports.fontFamilyProperty, newFont.fontFamily, valueSource);
+    style._setValue(exports.fontStyleProperty, newFont.fontStyle, valueSource);
+    style._setValue(exports.fontWeightProperty, newFont.fontWeight, valueSource);
+    style._setValue(exports.fontSizeProperty, newFont.fontSize, valueSource);
+}
 exports.textAlignmentProperty = new styleProperty.Property("textAlignment", "text-align", new observable.PropertyMetadata(undefined, observable.PropertyMetadataSettings.AffectsLayout | observable.PropertyMetadataSettings.Inheritable), converters.textAlignConverter);
 function isWidthHeightValid(value) {
     return isNaN(value) || (value >= 0.0 && isFinite(value));
@@ -466,10 +697,10 @@ exports.paddingRightProperty = new styleProperty.Property("paddingRight", "paddi
 exports.paddingTopProperty = new styleProperty.Property("paddingTop", "padding-top", new observable.PropertyMetadata(0, observable.PropertyMetadataSettings.AffectsLayout, null, isPaddingValid), converters.numberConverter);
 exports.paddingBottomProperty = new styleProperty.Property("paddingBottom", "padding-bottom", new observable.PropertyMetadata(0, observable.PropertyMetadataSettings.AffectsLayout, null, isPaddingValid), converters.numberConverter);
 function isVisibilityValid(value) {
-    return value === enums.Visibility.visible || value === enums.Visibility.collapsed;
+    return value === enums.Visibility.visible || value === enums.Visibility.collapse || value === enums.Visibility.collapsed;
 }
 function setLayoutInfoVisibility(data) {
-    data.object._view._isVisibleCache = data.newValue !== enums.Visibility.collapsed;
+    data.object._view._isVisibleCache = (data.newValue === enums.Visibility.visible);
 }
 exports.visibilityProperty = new styleProperty.Property("visibility", "visibility", new observable.PropertyMetadata(enums.Visibility.visible, observable.PropertyMetadataSettings.AffectsLayout, setLayoutInfoVisibility, isVisibilityValid), converters.visibilityConverter);
 function isPaddingValid(value) {

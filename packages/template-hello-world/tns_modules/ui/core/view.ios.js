@@ -7,6 +7,7 @@ var __extends = this.__extends || function (d, b) {
 var viewCommon = require("ui/core/view-common");
 var trace = require("trace");
 var utils = require("utils/utils");
+var background = require("ui/styling/background");
 require("utils/module-merge").merge(viewCommon, exports);
 function onIdPropertyChanged(data) {
     var view = data.object;
@@ -92,6 +93,7 @@ var View = (function (_super) {
         if (changed || (this._privateFlags & PFLAG_LAYOUT_REQUIRED) === PFLAG_LAYOUT_REQUIRED) {
             this.onLayout(left, top, right, bottom);
             this._privateFlags &= ~PFLAG_LAYOUT_REQUIRED;
+            this._onBoundsChanged();
         }
         this._privateFlags &= ~PFLAG_FORCE_LAYOUT;
     };
@@ -125,9 +127,12 @@ var View = (function (_super) {
         trace.write(this + " :onLayout: " + left + ", " + top + ", " + (right - left) + ", " + (bottom - top), trace.categories.Layout);
     };
     View.prototype.layoutNativeView = function (left, top, right, bottom) {
+        if (!this._nativeView) {
+            return;
+        }
         var frame = CGRectMake(left, top, right - left, bottom - top);
         var nativeView;
-        if (!this.parent && this._nativeView.subviews.count > 0) {
+        if (!this.parent && this._nativeView.subviews.count > 0 && !this._isModal) {
             trace.write(this + " has no parent. Setting frame to first child instead.", trace.categories.Layout);
             nativeView = this._nativeView.subviews[0];
         }
@@ -148,6 +153,12 @@ var View = (function (_super) {
             return this.ios.becomeFirstResponder();
         }
         return false;
+    };
+    View.prototype._onBoundsChanged = function () {
+        var bgColor = background.ios.createBackgroundUIColor(this);
+        if (bgColor) {
+            this._nativeView.backgroundColor = bgColor;
+        }
     };
     return View;
 })(viewCommon.View);

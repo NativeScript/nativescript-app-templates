@@ -5,9 +5,10 @@ var __extends = this.__extends || function (d, b) {
     d.prototype = new __();
 };
 var pageCommon = require("ui/page/page-common");
-var imageSource = require("image-source");
+var viewModule = require("ui/core/view");
 var trace = require("trace");
 var utils = require("utils/utils");
+var types = require("utils/types");
 require("utils/module-merge").merge(pageCommon, exports);
 var UIViewControllerImpl = (function (_super) {
     __extends(UIViewControllerImpl, _super);
@@ -25,7 +26,8 @@ var UIViewControllerImpl = (function (_super) {
     UIViewControllerImpl.prototype.didRotateFromInterfaceOrientation = function (fromInterfaceOrientation) {
         trace.write(this._owner + " didRotateFromInterfaceOrientation(" + fromInterfaceOrientation + ")", trace.categories.ViewHierarchy);
         if (this._owner._isModal) {
-            utils.ios._layoutRootView(this._owner);
+            var parentBounds = this._owner._UIModalPresentationFormSheet ? this._owner._nativeView.superview.bounds : UIScreen.mainScreen().bounds;
+            utils.ios._layoutRootView(this._owner, parentBounds);
         }
     };
     UIViewControllerImpl.prototype.viewDidLoad = function () {
@@ -55,7 +57,6 @@ var Page = (function (_super) {
     __extends(Page, _super);
     function Page(options) {
         _super.call(this, options);
-        this._isModal = false;
         this._ios = UIViewControllerImpl.new().initWithOwner(this);
     }
     Page.prototype._onContentChanged = function (oldView, newView) {
@@ -111,61 +112,46 @@ var Page = (function (_super) {
         enumerable: true,
         configurable: true
     });
-    Page.prototype._invalidateOptionsMenu = function () {
-        this.populateMenuItems();
-    };
-    Page.prototype.populateMenuItems = function () {
-        var items = this.optionsMenu.getItems();
-        var navigationItem = this.ios.navigationItem;
-        var array = items.length > 0 ? NSMutableArray.new() : null;
-        for (var i = 0; i < items.length; i++) {
-            var item = items[i];
-            var tapHandler = TapBarItemHandlerImpl.new().initWithOwner(item);
-            item.handler = tapHandler;
-            var barButtonItem;
-            if (item.icon) {
-                var img = imageSource.fromResource(item.icon);
-                barButtonItem = UIBarButtonItem.alloc().initWithImageStyleTargetAction(img.ios, UIBarButtonItemStyle.UIBarButtonItemStylePlain, tapHandler, "tap");
-            }
-            else {
-                barButtonItem = UIBarButtonItem.alloc().initWithTitleStyleTargetAction(item.text, UIBarButtonItemStyle.UIBarButtonItemStylePlain, tapHandler, "tap");
-            }
-            array.addObject(barButtonItem);
-        }
-        navigationItem.setRightBarButtonItemsAnimated(array, true);
-    };
-    Page.prototype._showNativeModalView = function (parent, context, closeCallback) {
+    Page.prototype._showNativeModalView = function (parent, context, closeCallback, fullscreen) {
         this._isModal = true;
-        utils.ios._layoutRootView(this);
+        if (!parent.ios.view.window) {
+            throw new Error("Parent page is not part of the window hierarchy. Close the current modal page before showing another one!");
+        }
+        if (fullscreen) {
+            this._ios.modalPresentationStyle = UIModalPresentationStyle.UIModalPresentationFullScreen;
+            utils.ios._layoutRootView(this, UIScreen.mainScreen().bounds);
+        }
+        else {
+            this._ios.modalPresentationStyle = UIModalPresentationStyle.UIModalPresentationFormSheet;
+            this._UIModalPresentationFormSheet = true;
+        }
         var that = this;
         parent.ios.presentViewControllerAnimatedCompletion(this._ios, false, function completion() {
+            if (!fullscreen) {
+                utils.ios._layoutRootView(that, that._nativeView.superview.bounds);
+            }
             that._raiseShownModallyEvent(parent, context, closeCallback);
         });
     };
     Page.prototype._hideNativeModalView = function (parent) {
         parent._ios.dismissModalViewControllerAnimated(false);
         this._isModal = false;
+        this._UIModalPresentationFormSheet = false;
+    };
+    Page.prototype._updateActionBar = function (hidden) {
+        if (types.isDefined(hidden) && this.ios.navigationController.navigationBarHidden !== hidden) {
+            this.ios.navigationController.navigationBarHidden = hidden;
+            this.requestLayout();
+        }
+    };
+    Page.prototype.onMeasure = function (widthMeasureSpec, heightMeasureSpec) {
+        viewModule.View.measureChild(this, this.actionBar, widthMeasureSpec, heightMeasureSpec);
+        _super.prototype.onMeasure.call(this, widthMeasureSpec, heightMeasureSpec);
+    };
+    Page.prototype.onLayout = function (left, top, right, bottom) {
+        viewModule.View.layoutChild(this, this.actionBar, 0, 0, right - left, bottom - top);
+        _super.prototype.onLayout.call(this, left, top, right, bottom);
     };
     return Page;
 })(pageCommon.Page);
 exports.Page = Page;
-var TapBarItemHandlerImpl = (function (_super) {
-    __extends(TapBarItemHandlerImpl, _super);
-    function TapBarItemHandlerImpl() {
-        _super.apply(this, arguments);
-    }
-    TapBarItemHandlerImpl.new = function () {
-        return _super.new.call(this);
-    };
-    TapBarItemHandlerImpl.prototype.initWithOwner = function (owner) {
-        this._owner = owner;
-        return this;
-    };
-    TapBarItemHandlerImpl.prototype.tap = function (args) {
-        this._owner._raiseTap();
-    };
-    TapBarItemHandlerImpl.ObjCExposedMethods = {
-        "tap": { returns: interop.types.void, params: [interop.types.id] }
-    };
-    return TapBarItemHandlerImpl;
-})(NSObject);

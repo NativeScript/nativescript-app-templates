@@ -192,7 +192,7 @@ var Span = (function (_super) {
         this._isInEditMode = false;
         this.updateAndNotify();
     };
-    Span.prototype.applyXmlAttribute = function (attribute, value) {
+    Span.prototype._applyXmlAttribute = function (attribute, value) {
         if (attribute === "fontAttributes") {
             if (value.indexOf(",")) {
                 var fontAttr = value.split(",");

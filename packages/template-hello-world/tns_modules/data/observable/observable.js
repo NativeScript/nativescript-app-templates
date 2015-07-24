@@ -3,8 +3,24 @@ var Observable = (function () {
     function Observable(json) {
         this._observers = {};
         if (json) {
+            this._map = new Map();
+            var that = this;
+            var definePropertyFunc = function definePropertyFunc(propertyName) {
+                Object.defineProperty(Observable.prototype, propertyName, {
+                    get: function () {
+                        return that._map.get(propertyName);
+                    },
+                    set: function (value) {
+                        that._map.set(propertyName, value);
+                        that.notify(that._createPropertyChangeData(propertyName, value));
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+            };
             for (var prop in json) {
                 if (json.hasOwnProperty(prop)) {
+                    definePropertyFunc(prop);
                     this.set(prop, json[prop]);
                 }
             }

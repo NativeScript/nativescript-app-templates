@@ -7,6 +7,9 @@ var bindingConstants;
     bindingConstants.twoWay = "twoWay";
     bindingConstants.source = "source";
     bindingConstants.bindingValueKey = "$value";
+    bindingConstants.parentValueKey = "$parent";
+    bindingConstants.parentsValueKey = "$parents";
+    bindingConstants.newPropertyValueKey = "$newPropertyValue";
 })(bindingConstants = exports.bindingConstants || (exports.bindingConstants = {}));
 ;
 var hasEqualSignRegex = /=+/;
@@ -79,9 +82,29 @@ function extractPropertyNameFromExpression(expression) {
         return expression;
     }
 }
+function getParamsArray(value) {
+    var result = [];
+    var i;
+    var skipComma = 0;
+    var indexReached = 0;
+    for (i = 0; i < value.length; i++) {
+        if (value[i] === '(' || value[i] === '[') {
+            skipComma++;
+        }
+        if (value[i] === ')' || value[i] === ']') {
+            skipComma--;
+        }
+        if (value[i] === ',' && skipComma === 0) {
+            result.push(value.substr(indexReached, i - indexReached));
+            indexReached = i + 1;
+        }
+    }
+    result.push(value.substr(indexReached));
+    return result;
+}
 function getBindingOptions(name, value) {
     var namedParams = [];
-    var params = value.split(",");
+    var params = getParamsArray(value);
     if (!areNamedParams(params)) {
         if (params.length === 1) {
             namedParams.push(bindingConstants.sourceProperty + " = " + extractPropertyNameFromExpression(params[0].trim()));
@@ -92,7 +115,7 @@ function getBindingOptions(name, value) {
             namedParams.push(bindingConstants.twoWay + " = true");
         }
         else {
-            namedParams.push(bindingConstants.sourceProperty + " = " + extractPropertyNameFromExpression(params[0].trim()));
+            namedParams.push(bindingConstants.sourceProperty + " = " + params[0].trim());
             namedParams.push(bindingConstants.expression + " = " + params[1].trim());
             var twoWay = params[2] ? params[2].toLowerCase().trim() === "true" : true;
             namedParams.push(bindingConstants.twoWay + " = " + twoWay);

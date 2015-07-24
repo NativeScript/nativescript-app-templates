@@ -19,6 +19,9 @@ function onBindingContextChanged(data) {
     bindable._onBindingContextChanged(data.oldValue, data.newValue);
 }
 var contextKey = "context";
+var paramsRegex = /\[\s*(['"])*(\w*)\1\s*\]/;
+var parentsRegex = /\$parents\s*\[\s*(['"]*)\w*\1\s*\]/g;
+var bc = bindingBuilder.bindingConstants;
 var Bindable = (function (_super) {
     __extends(Bindable, _super);
     function Bindable() {
@@ -160,6 +163,13 @@ var Binding = (function () {
             this.targetOptions = undefined;
         }
     };
+    Binding.prototype.prepareExpressionForUpdate = function () {
+        var escapeRegex = /[-\/\\^$*+?.()|[\]{}]/g;
+        var escapedSourceProperty = this.options.sourceProperty.replace(escapeRegex, '\\$&');
+        var expRegex = new RegExp(escapedSourceProperty, 'g');
+        var resultExp = this.options.expression.replace(expRegex, bc.newPropertyValueKey);
+        return resultExp;
+    };
     Binding.prototype.updateTwoWay = function (value) {
         if (this.updating) {
             return;
@@ -167,7 +177,8 @@ var Binding = (function () {
         if (this.options.twoWay) {
             if (this.options.expression) {
                 var changedModel = {};
-                changedModel[bindingBuilder.bindingConstants.bindingValueKey] = value;
+                changedModel[bc.bindingValueKey] = value;
+                changedModel[bc.newPropertyValueKey] = value;
                 var sourcePropertyName = "";
                 if (this.sourceOptions) {
                     sourcePropertyName = this.sourceOptions.property;
@@ -178,7 +189,9 @@ var Binding = (function () {
                 if (sourcePropertyName !== "") {
                     changedModel[sourcePropertyName] = value;
                 }
-                var expressionValue = this._getExpressionValue(this.options.expression, true, changedModel);
+                var updateExpression = this.prepareExpressionForUpdate();
+                this.prepareContextForExpression(changedModel, updateExpression);
+                var expressionValue = this._getExpressionValue(updateExpression, true, changedModel);
                 if (expressionValue instanceof Error) {
                     trace.write(expressionValue.message, trace.categories.Binding, trace.messageType.error);
                 }
@@ -202,6 +215,7 @@ var Binding = (function () {
                         context[prop] = appModule.resources[prop];
                     }
                 }
+                this.prepareContextForExpression(context, expression);
                 model[contextKey] = context;
                 return exp.getValue(model, isBackConvert, changedModel);
             }
@@ -226,10 +240,31 @@ var Binding = (function () {
             this.updateTarget(data.value);
         }
     };
+    Binding.prototype.prepareContextForExpression = function (model, expression) {
+        var parentViewAndIndex;
+        var parentView;
+        if (expression.indexOf(bc.parentValueKey) > -1) {
+            parentView = this.getParentView(this.target.get(), bc.parentValueKey).view;
+            if (parentView) {
+                model[bc.parentValueKey] = parentView.bindingContext;
+            }
+        }
+        var parentsArray = expression.match(parentsRegex);
+        if (parentsArray) {
+            var i;
+            for (i = 0; i < parentsArray.length; i++) {
+                parentViewAndIndex = this.getParentView(this.target.get(), parentsArray[i]);
+                if (parentViewAndIndex.view) {
+                    model[bc.parentsValueKey] = model[bc.parentsValueKey] || {};
+                    model[bc.parentsValueKey][parentViewAndIndex.index] = parentViewAndIndex.view.bindingContext;
+                }
+            }
+        }
+    };
     Binding.prototype.getSourceProperty = function () {
         if (this.options.expression) {
             var changedModel = {};
-            changedModel[bindingBuilder.bindingConstants.bindingValueKey] = this.source.get();
+            changedModel[bc.bindingValueKey] = this.source.get();
             var expressionValue = this._getExpressionValue(this.options.expression, false, changedModel);
             if (expressionValue instanceof Error) {
                 trace.write(expressionValue.message, trace.categories.Binding, trace.messageType.error);
@@ -244,7 +279,7 @@ var Binding = (function () {
         var value;
         if (this.sourceOptions) {
             var sourceOptionsInstance = this.sourceOptions.instance.get();
-            if (this.sourceOptions.property === bindingBuilder.bindingConstants.bindingValueKey) {
+            if (this.sourceOptions.property === bc.bindingValueKey) {
                 value = sourceOptionsInstance;
             }
             else if (sourceOptionsInstance instanceof observable.Observable) {
@@ -275,9 +310,39 @@ var Binding = (function () {
         }
         this.updateOptions(this.sourceOptions, value);
     };
+    Binding.prototype.getParentView = function (target, property) {
+        if (!target || !(target instanceof viewModule.View)) {
+            return { view: null, index: null };
+        }
+        var result;
+        if (property === bc.parentValueKey) {
+            result = target.parent;
+        }
+        if (property.indexOf(bc.parentsValueKey) === 0) {
+            result = target.parent;
+            var indexParams = paramsRegex.exec(property);
+            var index;
+            if (indexParams && indexParams.length > 1) {
+                index = indexParams[2];
+            }
+            if (!isNaN(index)) {
+                var indexAsInt = parseInt(index);
+                while (indexAsInt > 0) {
+                    result = result.parent;
+                    indexAsInt--;
+                }
+            }
+            else {
+                while (result && result.typeName !== index) {
+                    result = result.parent;
+                }
+            }
+        }
+        return { view: result, index: index };
+    };
     Binding.prototype.resolveOptions = function (obj, property) {
         var options;
-        if (property === bindingBuilder.bindingConstants.bindingValueKey) {
+        if (property === bc.bindingValueKey) {
             options = {
                 instance: obj,
                 property: property
@@ -289,6 +354,16 @@ var Binding = (function () {
             var i;
             var currentObject = obj.get();
             for (i = 0; i < properties.length - 1; i++) {
+                if (properties[i] === bc.bindingValueKey) {
+                    continue;
+                }
+                if (properties[i] === bc.parentValueKey || properties[i].indexOf(bc.parentsValueKey) === 0) {
+                    var parentView = this.getParentView(this.target.get(), properties[i]).view;
+                    if (parentView) {
+                        currentObject = parentView.bindingContext;
+                    }
+                    continue;
+                }
                 currentObject = currentObject[properties[i]];
             }
             if (!types.isNullOrUndefined(currentObject)) {

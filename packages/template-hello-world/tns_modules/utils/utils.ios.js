@@ -34,7 +34,7 @@ var ios;
         function nsArrayToJSArray(a) {
             var arr = [];
             if ("undefined" !== typeof a) {
-                for (var i = 0; i < a.count(); i++) {
+                for (var i = 0; i < a.count; i++) {
                     arr.push(a.objectAtIndex(i));
                 }
             }
@@ -70,32 +70,38 @@ var ios;
     }
     ios.isLandscape = isLandscape;
     ios.MajorVersion = NSString.stringWithString(UIDevice.currentDevice().systemVersion).intValue;
-    function _layoutRootView(rootView) {
-        if (!rootView) {
+    function _layoutRootView(rootView, parentBounds) {
+        if (!rootView || !parentBounds) {
             return;
-        }
-        var statusFrame = UIApplication.sharedApplication().statusBarFrame;
-        var statusBarHeight = 0;
-        try {
-            statusBarHeight = Math.min(statusFrame.size.width, statusFrame.size.height);
-        }
-        catch (ex) {
-            console.log("exception: " + ex);
         }
         var landscape = isLandscape();
         var iOSMajorVersion = ios.MajorVersion;
-        if (landscape && iOSMajorVersion > 7) {
-            statusBarHeight = 0;
-        }
-        var deviceFrame = UIScreen.mainScreen().bounds;
-        var size = deviceFrame.size;
+        var size = parentBounds.size;
         var width = size.width;
         var height = size.height;
-        if (iOSMajorVersion < 8 && landscape) {
+        var superview = rootView._nativeView.superview;
+        var superViewRotationRadians;
+        if (superview) {
+            superViewRotationRadians = atan2f(superview.transform.b, superview.transform.a);
+        }
+        if (iOSMajorVersion < 8 && landscape && !superViewRotationRadians) {
             width = size.height;
             height = size.width;
         }
-        var origin = deviceFrame.origin;
+        var statusBarHeight;
+        if (UIApplication.sharedApplication().statusBarHidden || (rootView._UIModalPresentationFormSheet && !CGSizeEqualToSize(parentBounds.size, UIScreen.mainScreen().bounds.size))) {
+            statusBarHeight = 0;
+        }
+        else {
+            var statusFrame = UIApplication.sharedApplication().statusBarFrame;
+            try {
+                statusBarHeight = Math.min(statusFrame.size.width, statusFrame.size.height);
+            }
+            catch (ex) {
+                console.log("exception: " + ex);
+            }
+        }
+        var origin = parentBounds.origin;
         var left = origin.x;
         var top = origin.y + statusBarHeight;
         var widthSpec = layout.makeMeasureSpec(width, common.layout.EXACTLY);

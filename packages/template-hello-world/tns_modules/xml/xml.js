@@ -136,6 +136,16 @@ var XmlParser = (function () {
             });
         }
     }
+    Object.defineProperty(XmlParser.prototype, "angularSyntax", {
+        get: function () {
+            return this._parser.angularSyntax;
+        },
+        set: function (value) {
+            this._parser.angularSyntax = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     XmlParser.prototype.parse = function (xmlString) {
         if (this._processNamespaces) {
             this._namespaceStack = [];

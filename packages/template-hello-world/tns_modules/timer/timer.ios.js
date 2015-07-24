@@ -5,6 +5,7 @@ var __extends = this.__extends || function (d, b) {
     d.prototype = new __();
 };
 var timeoutCallbacks = {};
+var timerId = 0;
 var TimerTargetImpl = (function (_super) {
     __extends(TimerTargetImpl, _super);
     function TimerTargetImpl() {
@@ -26,7 +27,8 @@ var TimerTargetImpl = (function (_super) {
     return TimerTargetImpl;
 })(NSObject);
 function createTimerAndGetId(callback, milliseconds, shouldRepeat) {
-    var id = new Date().getUTCMilliseconds();
+    timerId++;
+    var id = timerId;
     var timerTarget = TimerTargetImpl.new().initWithCallback(callback);
     var timer = NSTimer.scheduledTimerWithTimeIntervalTargetSelectorUserInfoRepeats(milliseconds / 1000, timerTarget, "tick", null, shouldRepeat);
     if (!timeoutCallbacks[id]) {
@@ -42,7 +44,7 @@ exports.setTimeout = setTimeout;
 function clearTimeout(id) {
     if (timeoutCallbacks[id]) {
         timeoutCallbacks[id].invalidate();
-        timeoutCallbacks[id] = null;
+        delete timeoutCallbacks[id];
     }
 }
 exports.clearTimeout = clearTimeout;

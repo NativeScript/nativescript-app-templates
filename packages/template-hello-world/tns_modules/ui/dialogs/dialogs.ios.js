@@ -56,19 +56,52 @@ function createUIAlertView(options) {
     ;
     return alert;
 }
+var allertButtons;
+(function (allertButtons) {
+    allertButtons[allertButtons["cancel"] = 1] = "cancel";
+    allertButtons[allertButtons["neutral"] = 2] = "neutral";
+    allertButtons[allertButtons["ok"] = 4] = "ok";
+})(allertButtons || (allertButtons = {}));
 function addButtonsToAlertDialog(alert, options) {
     if (!options) {
         return;
     }
     if (options.cancelButtonText) {
+        alert.tag = allertButtons.cancel;
         alert.addButtonWithTitle(options.cancelButtonText);
     }
     if (options.neutralButtonText) {
+        alert.tag = alert.tag | allertButtons.neutral;
         alert.addButtonWithTitle(options.neutralButtonText);
     }
     if (options.okButtonText) {
+        alert.tag = alert.tag | allertButtons.ok;
         alert.addButtonWithTitle(options.okButtonText);
     }
+}
+function getDialogResult(buttons, index) {
+    var hasCancel = buttons & allertButtons.cancel;
+    var hasNeutral = buttons & allertButtons.neutral;
+    var hasOk = buttons & allertButtons.ok;
+    if (hasCancel && hasNeutral && hasOk) {
+        return index === 0 ? false : index === 2 ? true : undefined;
+    }
+    else if (buttons & hasNeutral && hasOk) {
+        return index === 0 ? undefined : true;
+    }
+    else if (hasCancel && hasOk) {
+        return index !== 0;
+    }
+    else if (hasCancel && hasNeutral) {
+        return index === 0 ? false : undefined;
+    }
+    else if (hasCancel) {
+        return false;
+    }
+    else if (hasOk) {
+        return true;
+    }
+    return undefined;
 }
 function addButtonsToAlertController(alertController, options, okCallback, cancelCallback, neutralCallback) {
     if (!options) {
@@ -132,7 +165,7 @@ function confirm(arg) {
                 var alert = createUIAlertView(options);
                 addButtonsToAlertDialog(alert, options);
                 var delegate = UIAlertViewDelegateImpl.new().initWithCallback(function (view, index) {
-                    resolve(index === 2 ? undefined : index === 0);
+                    resolve(getDialogResult(alert.tag, index));
                     delegate = undefined;
                 });
                 alert.delegate = delegate;
@@ -189,7 +222,7 @@ function prompt(arg) {
                 textField = alert.textFieldAtIndex(0);
                 textField.text = types.isString(options.defaultText) ? options.defaultText : "";
                 var delegate = UIAlertViewDelegateImpl.new().initWithCallback(function (view, index) {
-                    resolve({ result: index === 2 ? undefined : index === 0, text: textField.text });
+                    resolve({ result: getDialogResult(alert.tag, index), text: textField.text });
                     delegate = undefined;
                 });
                 alert.delegate = delegate;
@@ -249,10 +282,10 @@ function login(arg) {
                 addButtonsToAlertDialog(alert, options);
                 userNameTextField = alert.textFieldAtIndex(0);
                 userNameTextField.text = types.isString(options.userName) ? options.userName : "";
-                userNameTextField = alert.textFieldAtIndex(1);
-                userNameTextField.text = types.isString(options.password) ? options.password : "";
+                passwordTextField = alert.textFieldAtIndex(1);
+                passwordTextField.text = types.isString(options.password) ? options.password : "";
                 var delegate = UIAlertViewDelegateImpl.new().initWithCallback(function (view, index) {
-                    resolve({ result: index === 2 ? undefined : index === 0, userName: userNameTextField.text, password: userNameTextField.text });
+                    resolve({ result: getDialogResult(alert.tag, index), userName: userNameTextField.text, password: passwordTextField.text });
                     delegate = undefined;
                 });
                 alert.delegate = delegate;
@@ -286,6 +319,11 @@ function showUIAlertController(alertController) {
     if (topMostFrame) {
         var viewController = topMostFrame.currentPage && topMostFrame.currentPage.ios;
         if (viewController) {
+            if (alertController.popoverPresentationController) {
+                alertController.popoverPresentationController.sourceView = viewController.view;
+                alertController.popoverPresentationController.sourceRect = CGRectMake(viewController.view.bounds.size.width / 2.0, viewController.view.bounds.size.height / 2.0, 1.0, 1.0);
+                alertController.popoverPresentationController.permittedArrowDirections = 0;
+            }
             viewController.presentModalViewControllerAnimated(alertController, true);
         }
     }

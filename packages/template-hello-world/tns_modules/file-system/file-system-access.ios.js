@@ -9,7 +9,7 @@ var FileSystemAccess = (function () {
     }
     FileSystemAccess.prototype.getLastModified = function (path) {
         var fileManager = NSFileManager.defaultManager();
-        var attributes = fileManager.attributesOfItemAtPathError(path, null);
+        var attributes = fileManager.attributesOfItemAtPathError(path);
         if (attributes) {
             return attributes.objectForKey(this.keyModificationTime);
         }
@@ -66,9 +66,12 @@ var FileSystemAccess = (function () {
             var fileManager = NSFileManager.defaultManager();
             var exists = this.folderExists(path);
             if (!exists) {
-                if (!fileManager.createDirectoryAtPathWithIntermediateDirectoriesAttributesError(path, true, null, null)) {
+                try {
+                    fileManager.createDirectoryAtPathWithIntermediateDirectoriesAttributesError(path, true, null);
+                }
+                catch (ex) {
                     if (onError) {
-                        onError(new Error("Failed to create folder at path '" + path + "'"));
+                        onError(new Error("Failed to create folder at path '" + path + "': " + ex));
                     }
                     return undefined;
                 }
@@ -145,9 +148,12 @@ var FileSystemAccess = (function () {
         var filesEnum = function (files) {
             var i;
             for (i = 0; i < files.length; i++) {
-                if (!fileManager.removeItemAtPathError(files[i].path, null)) {
+                try {
+                    fileManager.removeItemAtPathError(files[i].path);
+                }
+                catch (ex) {
                     if (onError) {
-                        onError(new Error("Failed to empty folder '" + path + "'"));
+                        onError(new Error("Failed to empty folder '" + path + "': " + ex));
                     }
                     return;
                 }
@@ -160,12 +166,16 @@ var FileSystemAccess = (function () {
     };
     FileSystemAccess.prototype.rename = function (path, newPath, onSuccess, onError) {
         var fileManager = NSFileManager.defaultManager();
-        if (!fileManager.moveItemAtPathToPathError(path, newPath, null)) {
-            if (onError) {
-                onError(new Error("Failed to rename '" + path + "' to '" + newPath + "'"));
-            }
+        try {
+            fileManager.moveItemAtPathToPathError(path, newPath);
         }
-        else if (onSuccess) {
+        catch (ex) {
+            if (onError) {
+                onError(new Error("Failed to rename '" + path + "' to '" + newPath + "': " + ex));
+            }
+            return;
+        }
+        if (onSuccess) {
             onSuccess();
         }
     };
@@ -180,13 +190,16 @@ var FileSystemAccess = (function () {
         if (!actualEncoding) {
             actualEncoding = textModule.encoding.UTF_8;
         }
-        var nsString = NSString.stringWithContentsOfFileEncodingError(path, actualEncoding, null);
-        if (!nsString) {
-            if (onError) {
-                onError(new Error("Failed to read file at path '" + path + "'"));
-            }
+        try {
+            var nsString = NSString.stringWithContentsOfFileEncodingError(path, actualEncoding);
         }
-        else if (onSuccess) {
+        catch (ex) {
+            if (onError) {
+                onError(new Error("Failed to read file at path '" + path + "': " + ex));
+            }
+            return;
+        }
+        if (onSuccess) {
             onSuccess(nsString.toString());
         }
     };
@@ -196,12 +209,16 @@ var FileSystemAccess = (function () {
         if (!actualEncoding) {
             actualEncoding = textModule.encoding.UTF_8;
         }
-        if (!nsString.writeToFileAtomicallyEncodingError(path, false, actualEncoding, null)) {
-            if (onError) {
-                onError(new Error("Failed to write to file '" + path + "'"));
-            }
+        try {
+            nsString.writeToFileAtomicallyEncodingError(path, false, actualEncoding);
         }
-        else if (onSuccess) {
+        catch (ex) {
+            if (onError) {
+                onError(new Error("Failed to write to file '" + path + "': " + ex));
+            }
+            return;
+        }
+        if (onSuccess) {
             onSuccess();
         }
     };
@@ -223,24 +240,27 @@ var FileSystemAccess = (function () {
     };
     FileSystemAccess.prototype.deleteEntity = function (path, onSuccess, onError) {
         var fileManager = NSFileManager.defaultManager();
-        if (!fileManager.removeItemAtPathError(path, null)) {
+        try {
+            fileManager.removeItemAtPathError(path);
+        }
+        catch (ex) {
             if (onError) {
-                onError(new Error("Failed to delete file at path '" + path + "'"));
+                onError(new Error("Failed to delete file at path '" + path + "': " + ex));
             }
         }
-        else {
-            if (onSuccess) {
-                onSuccess();
-            }
+        if (onSuccess) {
+            onSuccess();
         }
     };
     FileSystemAccess.prototype.enumEntities = function (path, callback, onError) {
         try {
             var fileManager = NSFileManager.defaultManager();
-            var files = fileManager.contentsOfDirectoryAtPathError(path, null);
-            if (!files) {
+            try {
+                var files = fileManager.contentsOfDirectoryAtPathError(path);
+            }
+            catch (ex) {
                 if (onError) {
-                    onError(new Error("Failed to enum files for forlder '" + path + "'"));
+                    onError(new Error("Failed to enum files for folder '" + path + "': " + ex));
                 }
                 return;
             }

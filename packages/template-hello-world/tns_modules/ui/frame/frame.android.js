@@ -10,7 +10,6 @@ var observable = require("data/observable");
 var utils = require("utils/utils");
 var view = require("ui/core/view");
 var application = require("application");
-var enums = require("ui/enums");
 require("utils/module-merge").merge(frameCommon, exports);
 var TAG = "_fragmentTag";
 var OWNER = "_owner";
@@ -107,39 +106,12 @@ var PageFragmentBody = (function (_super) {
     PageFragmentBody.prototype.onCreateOptionsMenu = function (menu, inflater) {
         _super.prototype.onCreateOptionsMenu.call(this, menu, inflater);
         var page = this.entry.resolvedPage;
-        var items = page.optionsMenu.getItems();
-        for (var i = 0; i < items.length; i++) {
-            var item = items[i];
-            var menuItem = menu.add(android.view.Menu.NONE, i, android.view.Menu.NONE, item.text);
-            if (item.icon) {
-                var androidApp = application.android;
-                var res = androidApp.context.getResources();
-                var id = res.getIdentifier(item.icon, 'drawable', androidApp.packageName);
-                if (id) {
-                    menuItem.setIcon(id);
-                }
-            }
-            var showAsAction = PageFragmentBody.getShowAsAction(item);
-            menuItem.setShowAsAction(showAsAction);
-        }
-    };
-    PageFragmentBody.getShowAsAction = function (menuItem) {
-        switch (menuItem.android.position) {
-            case enums.MenuItemPosition.actionBarIfRoom:
-                return android.view.MenuItem.SHOW_AS_ACTION_IF_ROOM;
-            case enums.MenuItemPosition.popup:
-                return android.view.MenuItem.SHOW_AS_ACTION_NEVER;
-            case enums.MenuItemPosition.actionBar:
-            default:
-                return android.view.MenuItem.SHOW_AS_ACTION_ALWAYS;
-        }
+        page.actionBar._updateAndroid(menu);
     };
     PageFragmentBody.prototype.onOptionsItemSelected = function (item) {
         var page = this.entry.resolvedPage;
         var itemId = item.getItemId();
-        var menuItem = page.optionsMenu.getItemAt(itemId);
-        if (menuItem) {
-            menuItem._raiseTap();
+        if (page.actionBar._onAndroidItemSelected(itemId)) {
             return true;
         }
         return _super.prototype.onOptionsItemSelected.call(this, item);
@@ -337,6 +309,14 @@ var NativeActivity = {
         if (result) {
             result(requestCode, resultCode, data);
         }
+        application.android.notify({
+            eventName: "activityResult",
+            object: application.android,
+            activity: this,
+            requestCode: requestCode,
+            resultCode: resultCode,
+            intent: data
+        });
     },
     onAttachFragment: function (fragment) {
         trace.write("NativeScriptActivity.onAttachFragment() : " + fragment.getTag(), trace.categories.NativeLifecycle);
@@ -380,6 +360,16 @@ var NativeActivity = {
     },
     onBackPressed: function () {
         trace.write("NativeScriptActivity.onBackPressed;", trace.categories.NativeLifecycle);
+        var args = {
+            eventName: "activityBackPressed",
+            object: application.android,
+            activity: this,
+            cancel: false,
+        };
+        application.android.notify(args);
+        if (args.cancel) {
+            return;
+        }
         if (!frameCommon.goBack()) {
             this.super.onBackPressed();
         }

@@ -18,7 +18,7 @@ var StylePropertyChangedHandler = (function () {
         else if (application.ios) {
             newValue = newValue.ios ? newValue.ios : newValue;
         }
-        this._applyProperty(view, newValue);
+        this._applyProperty(view, newValue, _defaultNativeValuesCache[className + property.id]);
     };
     StylePropertyChangedHandler.prototype.resetProperty = function (property, view) {
         var className = types.getClass(view);

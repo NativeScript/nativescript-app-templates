@@ -34,7 +34,7 @@ var Window = (function (_super) {
         configurable: true
     });
     Window.prototype.layoutSubviews = function () {
-        utils.ios._layoutRootView(this._content);
+        utils.ios._layoutRootView(this._content, UIScreen.mainScreen().bounds);
     };
     return Window;
 })(UIWindow);

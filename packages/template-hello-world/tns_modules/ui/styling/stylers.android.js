@@ -1,49 +1,51 @@
 var types = require("utils/types");
-var trace = require("trace");
 var constants = require("utils/android_constants");
 var style = require("ui/styling/style");
 var stylersCommon = require("ui/styling/stylers-common");
 var enums = require("ui/enums");
 var utils = require("utils/utils");
+var styleModule = require("ui/styling/style");
+var background = require("ui/styling/background");
 require("utils/module-merge").merge(stylersCommon, exports);
+var _defaultBackgrounds = new Map();
+function onBackgroundOrBorderPropertyChanged(v) {
+    if (!v._nativeView) {
+        return;
+    }
+    var backgroundValue = v.style._getValue(styleModule.backgroundInternalProperty);
+    if (v.borderWidth !== 0 || v.borderRadius !== 0 || !backgroundValue.isEmpty()) {
+        var nativeView = v._nativeView;
+        var bkg = nativeView.getBackground();
+        if (!(bkg instanceof background.ad.BorderDrawable)) {
+            bkg = new background.ad.BorderDrawable();
+            var viewClass = types.getClass(v);
+            if (!_defaultBackgrounds.has(viewClass)) {
+                _defaultBackgrounds.set(viewClass, nativeView.getBackground());
+            }
+            nativeView.setBackground(bkg);
+        }
+        var padding = v.borderWidth * utils.layout.getDisplayDensity();
+        nativeView.setPadding(padding, padding, padding, padding);
+        bkg.borderWidth = v.borderWidth;
+        bkg.cornerRadius = v.borderRadius;
+        bkg.borderColor = v.borderColor ? v.borderColor.android : android.graphics.Color.TRANSPARENT;
+        bkg.background = backgroundValue;
+    }
+    else {
+        var viewClass = types.getClass(v);
+        if (_defaultBackgrounds.has(viewClass)) {
+            v.android.setBackgroundDrawable(_defaultBackgrounds.get(viewClass));
+        }
+    }
+}
 var DefaultStyler = (function () {
     function DefaultStyler() {
     }
-    DefaultStyler.setBackgroundProperty = function (view, newValue) {
-        view.android.setBackgroundColor(newValue);
+    DefaultStyler.setBackgroundBorderProperty = function (view, newValue, defaultValue) {
+        onBackgroundOrBorderPropertyChanged(view);
     };
-    DefaultStyler.resetBackgroundProperty = function (view, nativeValue) {
-        if (types.isDefined(nativeValue)) {
-            view.android.setBackground(nativeValue);
-        }
-    };
-    DefaultStyler.getNativeBackgroundValue = function (view) {
-        var drawable = view.android.getBackground();
-        if (drawable instanceof android.graphics.drawable.StateListDrawable) {
-            trace.write("Native value of view: " + view + " is StateListDrawable. It will not be cached.", trace.categories.Style);
-            return undefined;
-        }
-        return drawable;
-    };
-    DefaultStyler.setBackgroundImageSourceProperty = function (view, newValue) {
-        var nativeView = view.android;
-        var bmp = newValue;
-        var d = new android.graphics.drawable.BitmapDrawable(bmp);
-        d.setTileModeXY(android.graphics.Shader.TileMode.REPEAT, android.graphics.Shader.TileMode.REPEAT);
-        d.setDither(true);
-        nativeView.setBackgroundDrawable(d);
-    };
-    DefaultStyler.resetBackgroundImageSourceProperty = function (view, nativeValue) {
-        if (types.isDefined(nativeValue)) {
-            view.android.setBackgroundDrawable(nativeValue);
-        }
-    };
-    DefaultStyler.getNativeBackgroundImageSourceValue = function (view) {
-        var drawable = view.android.getBackground();
-        if (drawable instanceof android.graphics.drawable.BitmapDrawable) {
-            return drawable;
-        }
-        return undefined;
+    DefaultStyler.resetBackgroundBorderProperty = function (view, nativeValue) {
+        onBackgroundOrBorderPropertyChanged(view);
     };
     DefaultStyler.setVisibilityProperty = function (view, newValue) {
         var androidValue = (newValue === enums.Visibility.visible) ? android.view.View.VISIBLE : android.view.View.GONE;
@@ -71,12 +73,15 @@ var DefaultStyler = (function () {
         view._nativeView.setMinimumHeight(0);
     };
     DefaultStyler.registerHandlers = function () {
-        style.registerHandler(style.backgroundColorProperty, new stylersCommon.StylePropertyChangedHandler(DefaultStyler.setBackgroundProperty, DefaultStyler.resetBackgroundProperty, DefaultStyler.getNativeBackgroundValue));
-        style.registerHandler(style.backgroundImageSourceProperty, new stylersCommon.StylePropertyChangedHandler(DefaultStyler.setBackgroundImageSourceProperty, DefaultStyler.resetBackgroundImageSourceProperty, DefaultStyler.getNativeBackgroundImageSourceValue));
         style.registerHandler(style.visibilityProperty, new stylersCommon.StylePropertyChangedHandler(DefaultStyler.setVisibilityProperty, DefaultStyler.resetVisibilityProperty));
         style.registerHandler(style.opacityProperty, new stylersCommon.StylePropertyChangedHandler(DefaultStyler.setOpacityProperty, DefaultStyler.resetOpacityProperty));
         style.registerHandler(style.minWidthProperty, new stylersCommon.StylePropertyChangedHandler(DefaultStyler.setMinWidthProperty, DefaultStyler.resetMinWidthProperty));
         style.registerHandler(style.minHeightProperty, new stylersCommon.StylePropertyChangedHandler(DefaultStyler.setMinHeightProperty, DefaultStyler.resetMinHeightProperty));
+        var borderHandler = new stylersCommon.StylePropertyChangedHandler(DefaultStyler.setBackgroundBorderProperty, DefaultStyler.resetBackgroundBorderProperty);
+        style.registerHandler(style.backgroundInternalProperty, borderHandler);
+        style.registerHandler(style.borderWidthProperty, borderHandler);
+        style.registerHandler(style.borderColorProperty, borderHandler);
+        style.registerHandler(style.borderRadiusProperty, borderHandler);
     };
     return DefaultStyler;
 })();
@@ -93,14 +98,34 @@ var TextViewStyler = (function () {
     TextViewStyler.getNativeColorValue = function (view) {
         return view.android.getTextColors().getDefaultColor();
     };
-    TextViewStyler.setFontSizeProperty = function (view, newValue) {
-        view.android.setTextSize(newValue);
+    TextViewStyler.setFontInternalProperty = function (view, newValue, nativeValue) {
+        var tv = view.android;
+        var fontValue = newValue;
+        var typeface = fontValue.getAndroidTypeface();
+        if (typeface) {
+            tv.setTypeface(typeface);
+        }
+        else {
+            tv.setTypeface(nativeValue.typeface);
+        }
+        if (fontValue.fontSize) {
+            tv.setTextSize(fontValue.fontSize);
+        }
+        else {
+            tv.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, nativeValue.size);
+        }
     };
-    TextViewStyler.resetFontSizeProperty = function (view, nativeValue) {
-        view.android.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, nativeValue);
+    TextViewStyler.resetFontInternalProperty = function (view, nativeValue) {
+        var tv = view.android;
+        tv.setTypeface(nativeValue.typeface);
+        tv.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, nativeValue.size);
     };
-    TextViewStyler.getNativeFontSizeValue = function (view) {
-        return view.android.getTextSize();
+    TextViewStyler.getNativeFontInternalValue = function (view) {
+        var tv = view.android;
+        return {
+            typeface: tv.getTypeface(),
+            size: tv.getTextSize()
+        };
     };
     TextViewStyler.setTextAlignmentProperty = function (view, newValue) {
         var verticalGravity = view.android.getGravity() & android.view.Gravity.VERTICAL_GRAVITY_MASK;
@@ -125,28 +150,16 @@ var TextViewStyler = (function () {
         return view.android.getGravity();
     };
     TextViewStyler.registerHandlers = function () {
-        style.registerHandler(style.colorProperty, new stylersCommon.StylePropertyChangedHandler(TextViewStyler.setColorProperty, TextViewStyler.resetColorProperty, TextViewStyler.getNativeColorValue));
-        style.registerHandler(style.fontSizeProperty, new stylersCommon.StylePropertyChangedHandler(TextViewStyler.setFontSizeProperty, TextViewStyler.resetFontSizeProperty, TextViewStyler.getNativeFontSizeValue));
-        style.registerHandler(style.textAlignmentProperty, new stylersCommon.StylePropertyChangedHandler(TextViewStyler.setTextAlignmentProperty, TextViewStyler.resetTextAlignmentProperty, TextViewStyler.getNativeTextAlignmentValue));
+        style.registerHandler(style.colorProperty, new stylersCommon.StylePropertyChangedHandler(TextViewStyler.setColorProperty, TextViewStyler.resetColorProperty, TextViewStyler.getNativeColorValue), "TextBase");
+        style.registerHandler(style.fontInternalProperty, new stylersCommon.StylePropertyChangedHandler(TextViewStyler.setFontInternalProperty, TextViewStyler.resetFontInternalProperty, TextViewStyler.getNativeFontInternalValue), "TextBase");
+        style.registerHandler(style.textAlignmentProperty, new stylersCommon.StylePropertyChangedHandler(TextViewStyler.setTextAlignmentProperty, TextViewStyler.resetTextAlignmentProperty, TextViewStyler.getNativeTextAlignmentValue), "TextBase");
+        style.registerHandler(style.colorProperty, new stylersCommon.StylePropertyChangedHandler(TextViewStyler.setColorProperty, TextViewStyler.resetColorProperty, TextViewStyler.getNativeColorValue), "Button");
+        style.registerHandler(style.fontInternalProperty, new stylersCommon.StylePropertyChangedHandler(TextViewStyler.setFontInternalProperty, TextViewStyler.resetFontInternalProperty, TextViewStyler.getNativeFontInternalValue), "Button");
+        style.registerHandler(style.textAlignmentProperty, new stylersCommon.StylePropertyChangedHandler(TextViewStyler.setTextAlignmentProperty, TextViewStyler.resetTextAlignmentProperty, TextViewStyler.getNativeTextAlignmentValue), "Button");
     };
     return TextViewStyler;
 })();
 exports.TextViewStyler = TextViewStyler;
-var ButtonStyler = (function () {
-    function ButtonStyler() {
-    }
-    ButtonStyler.setButtonBackgroundProperty = function (view, newValue) {
-        view.android.setBackgroundColor(newValue);
-    };
-    ButtonStyler.resetButtonBackgroundProperty = function (view, nativeValue) {
-        view.android.setBackgroundResource(constants.btn_default);
-    };
-    ButtonStyler.registerHandlers = function () {
-        style.registerHandler(style.backgroundColorProperty, new stylersCommon.StylePropertyChangedHandler(ButtonStyler.setButtonBackgroundProperty, ButtonStyler.resetButtonBackgroundProperty), "Button");
-    };
-    return ButtonStyler;
-})();
-exports.ButtonStyler = ButtonStyler;
 var ActivityIndicatorStyler = (function () {
     function ActivityIndicatorStyler() {
     }
@@ -157,7 +170,7 @@ var ActivityIndicatorStyler = (function () {
         ActivityIndicatorStyler.setIndicatorVisibility(view.busy, enums.Visibility.visible, view.android);
     };
     ActivityIndicatorStyler.setIndicatorVisibility = function (isBusy, visibility, nativeView) {
-        if (visibility === enums.Visibility.collapsed) {
+        if (visibility === enums.Visibility.collapsed || visibility === enums.Visibility.collapse) {
             nativeView.setVisibility(android.view.View.GONE);
         }
         else {
@@ -252,31 +265,12 @@ var SearchBarStyler = (function () {
     return SearchBarStyler;
 })();
 exports.SearchBarStyler = SearchBarStyler;
-var BorderStyler = (function () {
-    function BorderStyler() {
-    }
-    BorderStyler.setBackgroundProperty = function (view, newValue) {
-        var border = view;
-        border._updateAndroidBorder();
-    };
-    BorderStyler.resetBackgroundProperty = function (view, nativeValue) {
-        var border = view;
-        border._updateAndroidBorder();
-    };
-    BorderStyler.registerHandlers = function () {
-        style.registerHandler(style.backgroundColorProperty, new stylersCommon.StylePropertyChangedHandler(BorderStyler.setBackgroundProperty, BorderStyler.resetBackgroundProperty), "Border");
-    };
-    return BorderStyler;
-})();
-exports.BorderStyler = BorderStyler;
 function _registerDefaultStylers() {
     style.registerNoStylingClass("Frame");
     DefaultStyler.registerHandlers();
-    ButtonStyler.registerHandlers();
     TextViewStyler.registerHandlers();
     ActivityIndicatorStyler.registerHandlers();
     SegmentedBarStyler.registerHandlers();
     SearchBarStyler.registerHandlers();
-    BorderStyler.registerHandlers();
 }
 exports._registerDefaultStylers = _registerDefaultStylers;

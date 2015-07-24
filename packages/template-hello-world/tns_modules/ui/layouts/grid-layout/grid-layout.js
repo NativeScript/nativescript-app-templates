@@ -378,7 +378,7 @@ var GridLayout = (function (_super) {
             }
         }
     };
-    GridLayout.prototype.applyXmlAttribute = function (attributeName, attributeValue) {
+    GridLayout.prototype._applyXmlAttribute = function (attributeName, attributeValue) {
         if (attributeName === "columns") {
             this.setColumns(attributeValue);
             return true;
@@ -387,7 +387,7 @@ var GridLayout = (function (_super) {
             this.setRows(attributeValue);
             return true;
         }
-        return false;
+        return _super.prototype._applyXmlAttribute.call(this, attributeName, attributeValue);
     };
     GridLayout.parseItemSpecs = function (value) {
         var result = new Array();

@@ -9,6 +9,7 @@ var trace = require("trace");
 var enums = require("ui/enums");
 var utils = require("utils/utils");
 var view = require("ui/core/view");
+var types = require("utils/types");
 require("utils/module-merge").merge(frameCommon, exports);
 var ENTRY = "_entry";
 var navDepth = 0;
@@ -68,7 +69,12 @@ var Frame = (function (_super) {
                 break;
             case enums.NavigationBarVisibility.auto:
                 var pageInstance = page || this.currentPage;
-                newValue = this.backStack.length > 0 || (pageInstance && pageInstance.optionsMenu.getItems().length > 0);
+                if (pageInstance && types.isDefined(pageInstance.actionBarHidden)) {
+                    newValue = !pageInstance.actionBarHidden;
+                }
+                else {
+                    newValue = this.backStack.length > 0 || (pageInstance && !pageInstance.actionBar._isEmpty());
+                }
                 newValue = !!newValue;
                 break;
         }
@@ -171,11 +177,11 @@ var UINavigationControllerImpl = (function (_super) {
                 frame._navigateToEntry = newEntry;
             }
             frame._addView(newPage);
-            newPage._invalidateOptionsMenu();
         }
         else if (newPage.parent !== frame) {
             throw new Error("Page is already shown on another frame.");
         }
+        newPage.actionBar.update();
     };
     UINavigationControllerImpl.prototype.navigationControllerDidShowViewControllerAnimated = function (navigationController, viewController, animated) {
         var frame = this._owner;
@@ -199,6 +205,7 @@ var UINavigationControllerImpl = (function (_super) {
         frame._navigateToEntry = null;
         frame._currentEntry = newEntry;
         frame.updateNavigationBar();
+        frame.ios.controller.navigationBar.backIndicatorImage;
         var newPage = newEntry.resolvedPage;
         newPage.onNavigatedTo();
         frame._processNavigationQueue(newPage);

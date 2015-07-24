@@ -27,7 +27,7 @@ var Span = (function (_super) {
             if (realFontFamily) {
                 font = UIFont.fontWithNameSize(realFontFamily, realFontSize);
             }
-            else {
+            if (!font) {
                 var fontDescriptor = UIFontDescriptor.new();
                 var symbolicTraits;
                 if (realFontAttributes & enums.FontAttributes.Bold) {
@@ -38,12 +38,10 @@ var Span = (function (_super) {
                 }
                 font = UIFont.fontWithDescriptorSize(fontDescriptor.fontDescriptorWithSymbolicTraits(symbolicTraits), realFontSize);
             }
-            if (font) {
-                this.spanModifiers.push({
-                    key: NSFontAttributeName,
-                    value: font
-                });
-            }
+            this.spanModifiers.push({
+                key: NSFontAttributeName,
+                value: font
+            });
         }
         var realForegroundColor = this.foregroundColor ||
             (parent ? parent.foregroundColor : undefined) ||

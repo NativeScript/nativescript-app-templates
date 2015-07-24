@@ -14,7 +14,7 @@ var Placeholder = (function (_super) {
     Placeholder.prototype._createUI = function () {
         var args = { eventName: common.Placeholder.creatingViewEvent, object: this, view: undefined, context: this._context };
         this.notify(args);
-        this._android = args.view;
+        this._android = args.view || new android.view.View(this._context);
     };
     Object.defineProperty(Placeholder.prototype, "android", {
         get: function () {

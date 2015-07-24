@@ -14,10 +14,9 @@ var Placeholder = (function (_super) {
     Object.defineProperty(Placeholder.prototype, "ios", {
         get: function () {
             if (!this._ios) {
-                console.trace();
                 var args = { eventName: common.Placeholder.creatingViewEvent, object: this, view: undefined, context: undefined };
                 _super.prototype.notify.call(this, args);
-                this._ios = args.view;
+                this._ios = args.view || new UIView();
             }
             return this._ios;
         },

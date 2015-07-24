@@ -23,9 +23,6 @@ var ListViewCell = (function (_super) {
     ListViewCell.new = function () {
         return _super.new.call(this);
     };
-    ListViewCell.class = function () {
-        return ListViewCell;
-    };
     return ListViewCell;
 })(UITableViewCell);
 function notifyForItemAtIndex(listView, cell, eventName, indexPath) {

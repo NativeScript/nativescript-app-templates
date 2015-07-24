@@ -9,25 +9,44 @@ var view = require("ui/core/view");
 var styleScope = require("ui/styling/style-scope");
 var fs = require("file-system");
 var fileSystemAccess = require("file-system/file-system-access");
-var bindable = require("ui/core/bindable");
-var dependencyObservable = require("ui/core/dependency-observable");
-var enums = require("ui/enums");
 var frameCommon = require("ui/frame/frame-common");
-var OPTIONS_MENU = "optionsMenu";
-var knownCollections;
-(function (knownCollections) {
-    knownCollections.optionsMenu = "optionsMenu";
-})(knownCollections = exports.knownCollections || (exports.knownCollections = {}));
+var actionBar = require("ui/action-bar");
+var dependencyObservable = require("ui/core/dependency-observable");
+var proxy = require("ui/core/proxy");
+var actionBarHiddenProperty = new dependencyObservable.Property("actionBarHidden", "Page", new proxy.PropertyMetadata(undefined, dependencyObservable.PropertyMetadataSettings.AffectsLayout));
+function onActionBarHiddenPropertyChanged(data) {
+    var page = data.object;
+    if (page.isLoaded) {
+        page._updateActionBar(data.newValue);
+    }
+}
+actionBarHiddenProperty.metadata.onSetNativeValue = onActionBarHiddenPropertyChanged;
 var Page = (function (_super) {
     __extends(Page, _super);
     function Page(options) {
         _super.call(this, options);
         this._styleScope = new styleScope.StyleScope();
-        this._optionsMenu = new OptionsMenu(this);
+        this._cssFiles = {};
+        this.actionBar = new actionBar.ActionBar();
     }
     Page.prototype.onLoaded = function () {
         this._applyCss();
+        if (this.actionBarHidden !== undefined) {
+            this._updateActionBar(this.actionBarHidden);
+        }
         _super.prototype.onLoaded.call(this);
+    };
+    Object.defineProperty(Page.prototype, "actionBarHidden", {
+        get: function () {
+            return this._getValue(Page.actionBarHiddenProperty);
+        },
+        set: function (value) {
+            this._setValue(Page.actionBarHiddenProperty, value);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Page.prototype._updateActionBar = function (hidden) {
     };
     Object.defineProperty(Page.prototype, "navigationContext", {
         get: function () {
@@ -50,12 +69,23 @@ var Page = (function (_super) {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(Page.prototype, "optionsMenu", {
+    Object.defineProperty(Page.prototype, "actionBar", {
         get: function () {
-            return this._optionsMenu;
+            return this._actionBar;
         },
         set: function (value) {
-            throw new Error("optionsMenu property is read-only");
+            if (!value) {
+                throw new Error("ActionBar cannot be null or undefined.");
+            }
+            if (this._actionBar !== value) {
+                if (this._actionBar) {
+                    this._actionBar.page = undefined;
+                    this._removeView(this._actionBar);
+                }
+                this._actionBar = value;
+                this._actionBar.page = this;
+                this._addView(this._actionBar);
+            }
         },
         enumerable: true,
         configurable: true
@@ -77,13 +107,17 @@ var Page = (function (_super) {
         this._refreshCss();
     };
     Page.prototype.addCssFile = function (cssFileName) {
-        if (cssFileName.indexOf(fs.knownFolders.currentApp().path) !== 0) {
-            cssFileName = fs.path.join(fs.knownFolders.currentApp().path, cssFileName);
+        var _this = this;
+        if (cssFileName.indexOf("~/") === 0) {
+            cssFileName = fs.path.join(fs.knownFolders.currentApp().path, cssFileName.replace("~/", ""));
         }
-        var cssString;
-        if (fs.File.exists(cssFileName)) {
-            new fileSystemAccess.FileSystemAccess().readText(cssFileName, function (r) { cssString = r; });
-            this._addCssInternal(cssString, cssFileName);
+        if (!this._cssFiles[cssFileName]) {
+            if (fs.File.exists(cssFileName)) {
+                new fileSystemAccess.FileSystemAccess().readText(cssFileName, function (r) {
+                    _this._addCssInternal(r, cssFileName);
+                    _this._cssFiles[cssFileName] = true;
+                });
+            }
         }
     };
     Object.defineProperty(Page.prototype, "frame", {
@@ -123,11 +157,19 @@ var Page = (function (_super) {
         });
         this._navigationContext = undefined;
     };
-    Page.prototype.showModal = function (moduleName, context, closeCallback) {
+    Page.prototype.showModal = function (moduleName, context, closeCallback, fullscreen) {
         var page = frameCommon.resolvePageFromEntry({ moduleName: moduleName });
-        page._showNativeModalView(this, context, closeCallback);
+        page._showNativeModalView(this, context, closeCallback, fullscreen);
     };
-    Page.prototype._showNativeModalView = function (parent, context, closeCallback) {
+    Page.prototype._addChildFromBuilder = function (name, value) {
+        if (value instanceof actionBar.ActionBar) {
+            this.actionBar = value;
+        }
+        else {
+            _super.prototype._addChildFromBuilder.call(this, name, value);
+        }
+    };
+    Page.prototype._showNativeModalView = function (parent, context, closeCallback, fullscreen) {
     };
     Page.prototype._hideNativeModalView = function (parent) {
     };
@@ -147,7 +189,9 @@ var Page = (function (_super) {
     Page.prototype._getStyleScope = function () {
         return this._styleScope;
     };
-    Page.prototype._invalidateOptionsMenu = function () {
+    Page.prototype._eachChildView = function (callback) {
+        _super.prototype._eachChildView.call(this, callback);
+        callback(this.actionBar);
     };
     Page.prototype._applyCss = function () {
         if (this._cssApplied) {
@@ -171,11 +215,13 @@ var Page = (function (_super) {
         resetCssValuesFunc(this);
         view.eachDescendant(this, resetCssValuesFunc);
     };
-    Page.prototype._addArrayFromBuilder = function (name, value) {
-        if (name === OPTIONS_MENU) {
-            this.optionsMenu.setItems(value);
+    Page.prototype._addViewToNativeVisualTree = function (view) {
+        if (view === this.actionBar) {
+            return true;
         }
+        return _super.prototype._addViewToNativeVisualTree.call(this, view);
     };
+    Page.actionBarHiddenProperty = actionBarHiddenProperty;
     Page.navigatingToEvent = "navigatingTo";
     Page.navigatedToEvent = "navigatedTo";
     Page.navigatingFromEvent = "navigatingFrom";
@@ -184,108 +230,3 @@ var Page = (function (_super) {
     return Page;
 })(contentView.ContentView);
 exports.Page = Page;
-var OptionsMenu = (function () {
-    function OptionsMenu(page) {
-        this._items = new Array();
-        this._page = page;
-    }
-    OptionsMenu.prototype.addItem = function (item) {
-        if (!item) {
-            throw new Error("Cannot add empty item");
-        }
-        this._items.push(item);
-        item.menu = this;
-        item.bind({
-            sourceProperty: "bindingContext",
-            targetProperty: "bindingContext"
-        }, this._page);
-        this.invalidate();
-    };
-    OptionsMenu.prototype.removeItem = function (item) {
-        if (!item) {
-            throw new Error("Cannot remove empty item");
-        }
-        var itemIndex = this._items.indexOf(item);
-        if (itemIndex < 0) {
-            throw new Error("Cannot find item to remove");
-        }
-        item.menu = undefined;
-        item.unbind("bindingContext");
-        this._items.splice(itemIndex, 1);
-        this.invalidate();
-    };
-    OptionsMenu.prototype.getItems = function () {
-        return this._items.slice();
-    };
-    OptionsMenu.prototype.getItemAt = function (index) {
-        return this._items[index];
-    };
-    OptionsMenu.prototype.setItems = function (items) {
-        while (this._items.length > 0) {
-            this.removeItem(this._items[this._items.length - 1]);
-        }
-        for (var i = 0; i < items.length; i++) {
-            this.addItem(items[i]);
-        }
-        this.invalidate();
-    };
-    OptionsMenu.prototype.invalidate = function () {
-        if (this._page) {
-            this._page._invalidateOptionsMenu();
-        }
-    };
-    return OptionsMenu;
-})();
-exports.OptionsMenu = OptionsMenu;
-var MenuItem = (function (_super) {
-    __extends(MenuItem, _super);
-    function MenuItem() {
-        _super.call(this);
-        if (global.android) {
-            this._android = {
-                position: enums.MenuItemPosition.actionBar
-            };
-        }
-    }
-    MenuItem.onItemChanged = function (data) {
-        var menuItem = data.object;
-        if (menuItem.menu) {
-            menuItem.menu.invalidate();
-        }
-    };
-    Object.defineProperty(MenuItem.prototype, "android", {
-        get: function () {
-            return this._android;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(MenuItem.prototype, "text", {
-        get: function () {
-            return this._getValue(MenuItem.textProperty);
-        },
-        set: function (value) {
-            this._setValue(MenuItem.textProperty, value);
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(MenuItem.prototype, "icon", {
-        get: function () {
-            return this._getValue(MenuItem.iconProperty);
-        },
-        set: function (value) {
-            this._setValue(MenuItem.iconProperty, value);
-        },
-        enumerable: true,
-        configurable: true
-    });
-    MenuItem.prototype._raiseTap = function () {
-        this._emit(MenuItem.tapEvent);
-    };
-    MenuItem.tapEvent = "tap";
-    MenuItem.textProperty = new dependencyObservable.Property("text", "MenuItem", new dependencyObservable.PropertyMetadata("", null, MenuItem.onItemChanged));
-    MenuItem.iconProperty = new dependencyObservable.Property("icon", "MenuItem", new dependencyObservable.PropertyMetadata(null, null, MenuItem.onItemChanged));
-    return MenuItem;
-})(bindable.Bindable);
-exports.MenuItem = MenuItem;

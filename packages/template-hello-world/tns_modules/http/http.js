@@ -83,6 +83,7 @@ var XMLHttpRequest = (function () {
                 }
             }).catch(function (e) {
                 _this._errorFlag = true;
+                _this._setReadyState(_this.DONE);
             });
         }
     };
@@ -121,11 +122,34 @@ var XMLHttpRequest = (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(XMLHttpRequest.prototype, "responseType", {
+        get: function () {
+            return this._responseType;
+        },
+        set: function (value) {
+            if (value === "" || value === "text") {
+                this._responseType = value;
+            }
+            else {
+                throw new Error("Response type of '" + value + "' not supported.");
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
     XMLHttpRequest.prototype._setReadyState = function (value) {
         if (this._readyState !== value) {
             this._readyState = value;
             if (types.isFunction(this.onreadystatechange)) {
                 this.onreadystatechange();
+            }
+        }
+        if (this._readyState === this.DONE) {
+            if (this._errorFlag && types.isFunction(this.onerror)) {
+                this.onerror();
+            }
+            if (!this._errorFlag && types.isFunction(this.onload)) {
+                this.onload();
             }
         }
     };

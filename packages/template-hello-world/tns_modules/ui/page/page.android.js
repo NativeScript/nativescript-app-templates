@@ -10,9 +10,10 @@ var color = require("color");
 require("utils/module-merge").merge(pageCommon, exports);
 var DialogFragmentClass = (function (_super) {
     __extends(DialogFragmentClass, _super);
-    function DialogFragmentClass(owner) {
+    function DialogFragmentClass(owner, fullscreen) {
         _super.call(this);
         this._owner = owner;
+        this._fullscreen = fullscreen;
         return global.__native(this);
     }
     DialogFragmentClass.prototype.onCreateDialog = function (savedInstanceState) {
@@ -21,7 +22,9 @@ var DialogFragmentClass = (function (_super) {
         dialog.setContentView(this._owner._nativeView);
         var window = dialog.getWindow();
         window.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
-        window.setLayout(android.view.ViewGroup.LayoutParams.FILL_PARENT, android.view.ViewGroup.LayoutParams.FILL_PARENT);
+        if (this._fullscreen) {
+            window.setLayout(android.view.ViewGroup.LayoutParams.FILL_PARENT, android.view.ViewGroup.LayoutParams.FILL_PARENT);
+        }
         return dialog;
     };
     return DialogFragmentClass;
@@ -46,19 +49,14 @@ var Page = (function (_super) {
         this._isBackNavigation = isBackNavigation;
         _super.prototype.onNavigatedFrom.call(this, isBackNavigation);
     };
-    Page.prototype._invalidateOptionsMenu = function () {
-        if (this.frame && this.frame.android && this.frame.android.activity) {
-            this.frame.android.activity.invalidateOptionsMenu();
-        }
-    };
-    Page.prototype._showNativeModalView = function (parent, context, closeCallback) {
+    Page.prototype._showNativeModalView = function (parent, context, closeCallback, fullscreen) {
         if (!this.backgroundColor) {
             this.backgroundColor = new color.Color("White");
         }
         this._onAttached(parent._context);
         this._isAddedToNativeVisualTree = true;
         this.onLoaded();
-        this._dialogFragment = new DialogFragmentClass(this);
+        this._dialogFragment = new DialogFragmentClass(this, fullscreen);
         this._dialogFragment.show(parent.frame.android.activity.getFragmentManager(), "dialog");
         _super.prototype._raiseShownModallyEvent.call(this, parent, context, closeCallback);
     };
@@ -68,6 +66,9 @@ var Page = (function (_super) {
         this.onUnloaded();
         this._isAddedToNativeVisualTree = false;
         this._onDetached(true);
+    };
+    Page.prototype._updateActionBar = function (hidden) {
+        this.actionBar.update();
     };
     return Page;
 })(pageCommon.Page);

@@ -5,6 +5,7 @@ var __extends = this.__extends || function (d, b) {
     d.prototype = new __();
 };
 var common = require("ui/tab-view/tab-view-common");
+var view = require("ui/core/view");
 var trace = require("trace");
 var imageSource = require("image-source");
 var types = require("utils/types");
@@ -262,6 +263,10 @@ var TabView = (function (_super) {
         }
     };
     TabView.prototype._addTabs = function (newItems) {
+        var parentPage = view.getAncestor(this, "Page");
+        if (parentPage && parentPage.actionBarHidden) {
+            return;
+        }
         trace.write("TabView._addTabs(" + newItems + ");", common.traceCategory);
         _super.prototype._addTabs.call(this, newItems);
         var actionBar = this._getActionBar();
@@ -318,6 +323,10 @@ var TabView = (function (_super) {
         }
     };
     TabView.prototype._removeTabs = function (oldItems) {
+        var parentPage = view.getAncestor(this, "Page");
+        if (parentPage && parentPage.actionBarHidden) {
+            return;
+        }
         trace.write("TabView._removeTabs(" + oldItems + ");", common.traceCategory);
         _super.prototype._removeTabs.call(this, oldItems);
         var actionBar = this._getActionBar();
@@ -359,12 +368,9 @@ var TabView = (function (_super) {
             return;
         }
         var actionBar = this._getActionBar();
-        if (actionBar) {
-            var actionBarSelectedIndex = actionBar.getSelectedNavigationIndex();
-            if (actionBarSelectedIndex !== index) {
-                trace.write("TabView actionBar.setSelectedNavigationItem(" + index + ")", common.traceCategory);
-                actionBar.setSelectedNavigationItem(index);
-            }
+        if (actionBar && index < actionBar.getNavigationItemCount() && index !== actionBar.getSelectedNavigationIndex()) {
+            trace.write("TabView actionBar.setSelectedNavigationItem(" + index + ")", common.traceCategory);
+            actionBar.setSelectedNavigationItem(index);
         }
         var viewPagerSelectedIndex = this._android.getCurrentItem();
         if (viewPagerSelectedIndex !== index) {
