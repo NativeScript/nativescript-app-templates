@@ -192,12 +192,14 @@ var ActionBar = (function (_super) {
         }
     };
     ActionBar.prototype._onTitlePropertyChanged = function () {
-        if (frame.topmost().currentPage === this.page) {
+        var topFrame = frame.topmost();
+        if (topFrame && topFrame.currentPage === this.page) {
             this._updateTitleAndTitleView(frame.topmost().android.actionBar);
         }
     };
     ActionBar.prototype._onIconPropertyChanged = function () {
-        if (frame.topmost().currentPage === this.page) {
+        var topFrame = frame.topmost();
+        if (topFrame && topFrame.currentPage === this.page) {
             this._updateIcon(frame.topmost().android.actionBar);
         }
     };

@@ -1,10 +1,10 @@
 {
-	"name": "tns-core",
-	"description": "Telerik NativeScript Core",
-	"version": "1.2.0",
+	"name": "tns-core-modules",
+	"description": "Telerik NativeScript Core Modules",
+	"version": "1.2.1",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/NativeScript/NativeScript/commit/06ddbf133a1c022a9ec61dc442d7f7ce0841c915"
+		"url": "https://github.com/NativeScript/NativeScript/commit/368f9f2e0fdbd3b22b146f07b2f655ab4f4a43b9"
 	},
 	"files": [
 		"**/*.*",
