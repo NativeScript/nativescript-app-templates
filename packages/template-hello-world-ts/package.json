@@ -15,6 +15,14 @@
 		"template"
 	],
 	"repository": {
-		"url": "https://github.com/NativeScript/NativeScript/commit/ba187f2d982a0f4e3eb44fa6b0f7feec58221014"
+		"type": "git",
+		"url": "git@github.com:NativeScript/template-hello-world-ts.git"
+	},
+	"bugs": {
+		"url": "https://github.com/NativeScript/template-hello-world-ts/issues"
+	},
+	"homepage": "https://github.com/NativeScript/template-hello-world-ts",
+	"android": {
+		"v8Flags": "--expose_gc"
 	}
 }
