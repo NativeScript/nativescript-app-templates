@@ -4,7 +4,7 @@
 	"version": "1.5.0",
 	"author": "Telerik <support@telerik.com>",
 	"description": "Nativescript hello-world-ts project template",
-	"license": "BSD",
+	"license": "Apache-2.0",
 	"keywords": [
 		"telerik",
 		"mobile",
