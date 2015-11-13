@@ -1,7 +1,6 @@
 {
 	"name": "tns-template-hello-world",
 	"main": "app.js",
-	"jsoptions": "--expose_gc",
 	"version": "1.5.0",
 	"author": "Telerik <support@telerik.com>",
 	"description": "Nativescript hello-world project template",
@@ -22,5 +21,8 @@
 	"bugs": {
 		"url": "https://github.com/NativeScript/template-hello-world/issues"
 	},
-	"homepage": "https://github.com/NativeScript/template-hello-world"
+	"homepage": "https://github.com/NativeScript/template-hello-world",
+	"android": {
+		"v8Flags": "--expose_gc"
+	}
 }
