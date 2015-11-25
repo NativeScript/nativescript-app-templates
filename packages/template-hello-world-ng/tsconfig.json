@@ -12,10 +12,8 @@
   },
   "files": [
     "app/app.ts",
-    "app/checkbox.ts",
     "app/compat.d.ts",
     "app/main-page.ts",
-    "app/services/store.ts",
     "node_modules/tns-core-modules/tns-core-modules.d.ts"
   ],
   "filesGlob": [

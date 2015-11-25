@@ -1,6 +1,9 @@
 {
 	"nativescript": {
-		"id": "org.nativescript.helloworldng"
+		"id": "org.nativescript.helloworldng",
+		"tns-android": {
+			"version": "1.5.0"
+		}
 	},
 	"name": "todomvc",
 	"main": "app.js",
