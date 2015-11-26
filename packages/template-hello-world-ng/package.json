@@ -1,11 +1,8 @@
 {
 	"nativescript": {
-		"id": "org.nativescript.helloworldng",
-		"tns-android": {
-			"version": "1.5.0"
-		}
+		"id": "org.nativescript.helloworldng"
 	},
-	"name": "todomvc",
+	"name": "nativescript-hello-world-ng",
 	"main": "app.js",
 	"version": "1.2.0",
 	"author": "Telerik <support@telerik.com>",
