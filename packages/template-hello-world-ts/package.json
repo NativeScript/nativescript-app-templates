@@ -24,5 +24,8 @@
 	"homepage": "https://github.com/NativeScript/template-hello-world-ts",
 	"android": {
 		"v8Flags": "--expose_gc"
+	},
+	"devDependencies": {
+		"nativescript-dev-typescript": "^0.2.2"
 	}
 }
