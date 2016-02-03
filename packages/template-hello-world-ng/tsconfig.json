@@ -11,9 +11,9 @@
         "noEmitOnError": true
     },
     "files": [
-        "app/app.ts",
+        "app/main.ts",
         "app/compat.d.ts",
-        "app/main-page.ts",
+        "app/app.component.ts",
         "node_modules/tns-core-modules/tns-core-modules.d.ts"
     ],
     "filesGlob": [
