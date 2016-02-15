@@ -26,6 +26,6 @@
 		"v8Flags": "--expose_gc"
 	},
 	"devDependencies": {
-		"nativescript-dev-typescript": "^0.2.3"
+		"nativescript-dev-typescript": "^0.3.0"
 	}
 }
