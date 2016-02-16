@@ -1,11 +1,8 @@
 {
 	"nativescript": {
 		"id": "org.nativescript.helloworldng",
-		"tns-ios": {
-			"version": "1.5.2"
-		},
 		"tns-android": {
-			"version": "1.5.1"
+			"version": "1.6.0"
 		}
 	},
 	"name": "nativescript-hello-world-ng",
@@ -30,7 +27,7 @@
 	},
 	"homepage": "http://nativescript.org",
 	"dependencies": {
-		"tns-core-modules": "1.6.0-angular-5",
+		"tns-core-modules": "1.6.0",
 		"nativescript-angular": "0.0.29",
 		"angular2": "2.0.0-beta.3",
 		"parse5": "1.4.2",
@@ -42,7 +39,7 @@
 		"zone.js": "0.5.11"
 	},
 	"devDependencies": {
-		"nativescript-dev-typescript": "^0.2.2",
+		"nativescript-dev-typescript": "^0.3.0",
 		"shelljs": "^0.5.3",
 		"typescript": "^1.7.5"
 	}
