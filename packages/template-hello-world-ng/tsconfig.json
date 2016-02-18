@@ -10,16 +10,6 @@
         "emitDecoratorMetadata": true,
         "noEmitOnError": true
     },
-    "files": [
-        "app/main.ts",
-        "app/compat.d.ts",
-        "app/app.component.ts",
-        "node_modules/tns-core-modules/tns-core-modules.base.d.ts"
-    ],
-    "filesGlob": [
-        "node_modules/tns-core-modules/tns-core-modules.base.d.ts",
-        "app/**/*.ts"
-    ],
     "exclude": [
         "node_modules",
         "platforms"
