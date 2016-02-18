@@ -6,7 +6,7 @@
 		}
 	},
 	"name": "nativescript-hello-world-ng",
-	"main": "app.js",
+	"main": "main.js",
 	"version": "1.0.0",
 	"author": "Telerik <support@telerik.com>",
 	"description": "Nativescript Angular Hello World template",
