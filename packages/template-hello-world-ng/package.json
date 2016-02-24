@@ -1,13 +1,10 @@
 {
 	"nativescript": {
-		"id": "org.nativescript.helloworldng",
-		"tns-android": {
-			"version": "1.6.0"
-		}
+		"id": "org.nativescript.helloworldng"
 	},
-	"name": "nativescript-hello-world-ng",
+	"name": "tns-template-hello-world-ng",
 	"main": "main.js",
-	"version": "1.0.0",
+	"version": "1.6.1",
 	"author": "Telerik <support@telerik.com>",
 	"description": "Nativescript Angular Hello World template",
 	"license": "BSD",
@@ -27,20 +24,20 @@
 	},
 	"homepage": "http://nativescript.org",
 	"dependencies": {
-		"tns-core-modules": "1.6.0",
-		"nativescript-angular": "0.0.32",
-		"angular2": "2.0.0-beta.6",
+		"tns-core-modules": "^1.7.0-angular-0",
+		"angular2": "2.0.0-beta.7",
+		"nativescript-angular": "0.0.34",
 		"parse5": "1.4.2",
 		"punycode": "1.3.2",
 		"querystring": "0.2.0",
 		"url": "0.10.3",
 		"reflect-metadata": "0.1.2",
-		"rxjs": "5.0.0-beta.0",
-		"zone.js": "0.5.14"
+		"rxjs": "5.0.0-beta.2",
+		"zone.js": "0.5.15"
 	},
 	"devDependencies": {
-		"nativescript-dev-typescript": "^0.3.0",
+		"nativescript-dev-typescript": "^0.3.1",
 		"shelljs": "^0.5.3",
-		"typescript": "^1.7.5"
+		"typescript": "^1.8.2"
 	}
 }
