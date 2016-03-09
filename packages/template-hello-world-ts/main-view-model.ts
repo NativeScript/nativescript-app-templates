@@ -1,23 +1,38 @@
 import observable = require("data/observable");
 
 export class HelloWorldModel extends observable.Observable {
-    private counter: number;
+
+    private _counter: number;
+    private _message: string;
+
+    get message(): string {
+        return this._message;
+    }
+    set message(value: string) {
+        if (this._message !== value) {
+            this._message = value;
+            this.notifyPropertyChange("message", value)
+        }
+    }
+
     constructor() {
         super();
 
         // Initialize default values.
-        this.counter = 42;
-        this.set("message", this.counter + " taps left");
+        this._counter = 42;
+        this.updateMessage();
     }
 
-    public tapAction() {
-        this.counter--;
-        if (this.counter <= 0) {
-            this.set("message", "Hoorraaay! You unlocked the NativeScript clicker achievement!");
-        }
-        else {
-            this.set("message", this.counter + " taps left")
+    private updateMessage() {
+        if (this._counter <= 0) {
+            this.message = "Hoorraaay! You unlocked the NativeScript clicker achievement!";
+        } else {
+            this.message = this._counter + " taps left";
         }
     }
+
+    public onTap() {
+        this._counter--;
+        this.updateMessage();
+    }
 }
-export var mainViewModel = new HelloWorldModel();

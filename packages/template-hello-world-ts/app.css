@@ -1,7 +1,7 @@
 ﻿.title {
     font-size: 30;
     horizontal-align: center;
-    margin:20;
+    margin: 20;
 }
 
 button {
@@ -13,4 +13,6 @@ button {
     font-size: 20;
     color: #284848;
     horizontal-align: center;
+    margin: 0 20;
+    text-align: center;
 }
