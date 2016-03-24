@@ -23,6 +23,9 @@
 		"url": "git://github.com/NativeScript/template-hello-world-ng"
 	},
 	"homepage": "http://nativescript.org",
+	"android": {
+		"v8Flags": "--expose_gc"
+	},
 	"dependencies": {
 		"tns-core-modules": "^1.7.0",
 		"angular2": "2.0.0-beta.9",
