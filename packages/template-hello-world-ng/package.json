@@ -27,7 +27,9 @@
 		"v8Flags": "--expose_gc"
 	},
 	"dependencies": {
-		"nativescript-angular": "0.0.38"
+		"angular2": "2.0.0-beta.9",
+		"nativescript-angular": "0.0.38",
+		"tns-core-modules": "^1.7.0"
 	},
 	"devDependencies": {
 		"nativescript-dev-typescript": "^0.3.1"
