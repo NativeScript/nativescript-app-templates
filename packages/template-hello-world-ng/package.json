@@ -4,7 +4,7 @@
 	},
 	"name": "tns-template-hello-world-ng",
 	"main": "main.js",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"author": "Telerik <support@telerik.com>",
 	"description": "Nativescript Angular Hello World template",
 	"license": "BSD",
@@ -27,8 +27,8 @@
 		"v8Flags": "--expose_gc"
 	},
 	"dependencies": {
-		"angular2": "2.0.0-beta.14",
-		"nativescript-angular": "0.0.45",
+		"angular2": "2.0.0-beta.16",
+		"nativescript-angular": "0.0.46",
 		"tns-core-modules": "^2.0.0 || 2.0.0-angular-6"
 	},
 	"devDependencies": {
