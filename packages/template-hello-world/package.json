@@ -1,4 +1,7 @@
 {
+	"nativescript": {
+		"id": "org.nativescript.helloworld"
+	},
 	"name": "tns-template-hello-world",
 	"main": "app.js",
 	"version": "2.0.0",
