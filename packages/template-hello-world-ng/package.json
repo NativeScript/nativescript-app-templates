@@ -27,17 +27,17 @@
 		"v8Flags": "--expose_gc"
 	},
 	"dependencies": {
-		"@angular/common": "2.0.0-rc.1",
-		"@angular/compiler": "2.0.0-rc.1",
-		"@angular/core": "2.0.0-rc.1",
-		"@angular/http": "2.0.0-rc.1",
-		"@angular/platform-browser": "2.0.0-rc.1",
-		"@angular/platform-browser-dynamic": "2.0.0-rc.1",
-		"@angular/platform-server": "2.0.0-rc.1",
-		"@angular/router": "2.0.0-rc.1",
-		"@angular/router-deprecated": "2.0.0-rc.1",
-		"nativescript-angular": "0.1.1",
-		"tns-core-modules": "^2.0.0"
+		"@angular/common": "2.0.0-rc.2",
+		"@angular/compiler": "2.0.0-rc.2",
+		"@angular/core": "2.0.0-rc.2",
+		"@angular/http": "2.0.0-rc.2",
+		"@angular/platform-browser": "2.0.0-rc.2",
+		"@angular/platform-browser-dynamic": "2.0.0-rc.2",
+		"@angular/platform-server": "2.0.0-rc.2",
+		"@angular/router": "3.0.0-alpha.6",
+		"@angular/router-deprecated": "2.0.0-rc.2",
+		"nativescript-angular": "0.1.7",
+		"tns-core-modules": "^2.1.0"
 	},
 	"devDependencies": {
 		"nativescript-dev-typescript": "^0.3.2"
