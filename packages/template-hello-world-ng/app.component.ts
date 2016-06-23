@@ -2,15 +2,7 @@ import {Component} from "@angular/core";
 
 @Component({
     selector: "my-app",
-    template: `
-<StackLayout>
-    <Label text="Tap the button" class="title"></Label>
-    
-    <Button text="TAP" (tap)="onTap()"></Button>
-
-    <Label [text]="message" class="message" textWrap="true"></Label>
-</StackLayout>
-`,
+    templateUrl: "app.component.html",
 })
 export class AppComponent {
     public counter: number = 16;
