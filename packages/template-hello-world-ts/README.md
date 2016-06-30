@@ -9,8 +9,8 @@ You can create a new app that uses this template with either the `--template` op
 tns create my-app-name --template tns-template-hello-world-ts
 ```
 
-Or the `--ts` shorthand.
+Or the `--tsc` shorthand.
 
 ```
-tns create my-app-name --ts
+tns create my-app-name --tsc
 ```
