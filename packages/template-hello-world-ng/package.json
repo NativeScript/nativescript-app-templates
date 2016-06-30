@@ -4,7 +4,7 @@
 	},
 	"name": "tns-template-hello-world-ng",
 	"main": "main.js",
-	"version": "2.1.0",
+	"version": "2.2.0",
 	"author": "Telerik <support@telerik.com>",
 	"description": "Nativescript Angular Hello World template",
 	"license": "BSD",
@@ -36,7 +36,7 @@
 		"@angular/platform-server": "2.0.0-rc.3",
 		"@angular/router": "3.0.0-alpha.7",
 		"@angular/router-deprecated": "2.0.0-rc.2",
-		"nativescript-angular": "0.1.8",
+		"nativescript-angular": "0.2.0",
 		"tns-core-modules": "^2.1.0"
 	},
 	"devDependencies": {
