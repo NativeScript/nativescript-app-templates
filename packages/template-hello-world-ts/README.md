@@ -1,8 +1,16 @@
-# tns-template-hello-world-ts
+# NativeScript TypeScript Template
 
-This template creates a NativeScript app with the same hello world example,
+This template creates a NativeScript app with the NativeScript hello world example,
 however, in this template the example is built with TypeScript.
+
+You can create a new app that uses this template with either the `--template` option.
 
 ```
 tns create my-app-name --template tns-template-hello-world-ts
+```
+
+Or the `--ts` shorthand.
+
+```
+tns create my-app-name --ts
 ```
