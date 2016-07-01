@@ -41,7 +41,6 @@
         "tns-core-modules": "^2.1.0"
     },
     "devDependencies": {
-        "nativescript-dev-typescript": "^0.3.2",
-        "allow-publish": "*"
+        "nativescript-dev-typescript": "^0.3.2"
     }
 }
