@@ -38,6 +38,8 @@
         "@angular/router": "3.0.0-beta.2",
         "@angular/router-deprecated": "2.0.0-rc.2",
         "reflect-metadata": "^0.1.5",
+        "rxjs": "5.0.0-beta.6",
+        "zone.js": "^0.6.12",
         "nativescript-angular": "^0.3.0"
     },
     "devDependencies": {
