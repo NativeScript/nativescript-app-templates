@@ -1,47 +1,58 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <Page.actionBar>
+    <ActionBar class="action-bar">
+      <ActionBar.titleView>
+        <StackLayout class="action-title">
+          <Label text="Your App" />
+        </StackLayout>
+      </ActionBar.titleView>
+    </ActionBar>
+  </Page.actionBar>
   <TabView id="tabViewContainer" class="tab-view" selectedColor="#30bcff" tabsBackgroundColor="#f9f9f9">
-      <TabView.items>
-          <TabViewItem title="Home">
-              <TabViewItem.view>
-                <StackLayout class="p-20">
-                  <Label text="Welcome to NativeScript" class="h2" />
-                  <Label text="You are now setup to begin developing for iOS and Android. We have included the core theme in this template to help you style your app consistently across both platforms. The other tabs contain a small sample of those styles. " class="h4" textWrap="true" />
-                  <Button text="Open {N} UI Docs" tap="{{viewDocs}}" class="btn btn-primary" />
-                  <Button text="Open {N} Theme Docs" tap="{{viewThemeDocs}}" class="btn btn-primary" />
-                  <Label text="The following is a small example of data binding at work:" class="body" textWrap="true" />
-                  <StackLayout>
-                    <Label text="Tap the button" class="title"/>
-                    <Button text="TAP" tap="{{ onTap }}" />
-                    <Label text="{{ message }}" class="message" textWrap="true"/>
-                  </StackLayout>      
-                </StackLayout>
-              </TabViewItem.view>
-          </TabViewItem>
-          <TabViewItem title="Basics">
-              <TabViewItem.view>
-                  <StackLayout class="p-20">
-                    <Label text="A few utility classes for text." class="body" />
-                    <StackLayout class="hr-light m-b-2"></StackLayout>
-                    <Label text=".pull-left" class="pull-left" />
-                    <Label text=".pull-right" class="pull-right" />
-                    <Label text=".m-x-auto" class="m-x-auto" />
-                    <Label text=".text-primary" class="text-primary " />
-                    <Label text=".text-danger" class="text-danger " />
-                    <Label text=".text-muted" class="text-muted" />
-                    <Label text=".bg-primary" class="bg-primary" />
-                    <Label text=".bg-danger" class="bg-danger" />
-                  </StackLayout>
-              </TabViewItem.view>
-          </TabViewItem>
-          <TabViewItem title="Themes">
-              <TabViewItem.view>
-                <StackLayout class="p-20">
-                  <Label text="There are 2 skins with the installed theme: light and dark." class="footnote" />
-                  <Label text="The light skin is used by default but you can use the dark theme by opening the 'app.css' file and modifying the first to line to:" class="body" textWrap="true" />
-                  <Label text="@import '~/css/core.dark.css';" class="body" />
-                </StackLayout>
-              </TabViewItem.view>
-          </TabViewItem>
-      </TabView.items>
+    <TabView.items>
+      <TabViewItem title="Home">
+        <TabViewItem.view>
+          <StackLayout class="p-20">
+            <Label text="Welcome to NativeScript" class="h2" />
+            <StackLayout class="hr-light m-y-5"></StackLayout>
+            <Label text="You are now setup to begin developing for iOS and Android. We have included the core theme in this template to help you style your app consistently across both platforms. The other tabs contain a small sample of those styles. " class="h4" textWrap="true" />
+            <Button text="Open {N} UI Docs" tap="{{viewDocs}}" class="btn btn-primary" />
+            <Button text="Open {N} Theme Docs" tap="{{viewThemeDocs}}" class="btn btn-primary" />
+              <StackLayout class="hr-light m-y-5"></StackLayout>
+            <Label text="The following is a small example of data binding at work:" class="body" textWrap="true" />
+            <StackLayout>
+              <Label text="Tap the button" class="m-20 m-x-auto t-30"/>
+              <Button text="TAP" tap="{{ onTap }}" class="btn btn-primary btn-rounded-lg" />
+              <Label text="{{ message }}" class="text-center m-t-20 t-20 c-grey-d-20" textWrap="true"/>
+            </StackLayout>      
+          </StackLayout>
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="Basics">
+        <TabViewItem.view>
+          <StackLayout class="p-20">
+            <Label text="A few utility classes for text." class="body" />
+            <StackLayout class="hr-light m-y-5"></StackLayout>
+            <Label text=".pull-left" class="pull-left" />
+            <Label text=".pull-right" class="pull-right" />
+            <Label text=".m-x-auto" class="m-x-auto" />
+            <Label text=".text-primary" class="text-primary " />
+            <Label text=".text-danger" class="text-danger " />
+            <Label text=".text-muted" class="text-muted" />
+            <Label text=".bg-primary" class="bg-primary" />
+            <Label text=".bg-danger" class="bg-danger" />
+          </StackLayout>
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="Themes">
+        <TabViewItem.view>
+          <StackLayout class="p-20">
+            <Label text="There are 2 skins with the installed theme: light and dark." class="h2 m-b-10" textWrap="true" />
+            <Label text="The light skin is used by default but you can use the dark theme by opening the 'app.css' file and modifying the first to line to:" class="body m-b-20" textWrap="true" />
+            <Label text="@import '~/css/core.dark.css';" class="body" />
+          </StackLayout>
+        </TabViewItem.view>
+      </TabViewItem>
+    </TabView.items>
   </TabView>
 </Page>
