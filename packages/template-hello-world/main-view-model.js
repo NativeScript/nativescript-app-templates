@@ -1,4 +1,5 @@
 var Observable = require("data/observable").Observable;
+var utilityModule = require("utils/utils");
 
 function getMessage(counter) {
     if (counter <= 0) {
@@ -21,4 +22,14 @@ function createViewModel() {
     return viewModel;
 }
 
+function viewDocs() {
+  utilityModule.openUrl("https://docs.nativescript.org/ui/components");
+}
+
+function viewThemeDocs() {
+  utilityModule.openUrl("https://github.com/NativeScript/theme/wiki/Class-Names");
+}
+
 exports.createViewModel = createViewModel;
+exports.viewDocs = viewDocs;
+exports.viewThemeDocs = viewThemeDocs;

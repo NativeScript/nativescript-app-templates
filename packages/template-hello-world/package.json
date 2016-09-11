@@ -1,7 +1,7 @@
 {
 	"name": "tns-template-hello-world",
 	"main": "app.js",
-	"version": "2.4.0",
+	"version": "2.5.0",
 	"author": "Telerik <support@telerik.com>",
 	"description": "Nativescript hello-world project template",
 	"license": "Apache-2.0",
@@ -24,5 +24,8 @@
 	"homepage": "https://github.com/NativeScript/template-hello-world",
 	"android": {
 		"v8Flags": "--expose_gc"
+	},
+  "devDependencies": {
+		"nativescript-theme-core": "^0.0.5"
 	}
 }
