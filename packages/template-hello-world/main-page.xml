@@ -51,6 +51,8 @@
         <TabViewItem.view>
           <ScrollView>
             <StackLayout class="demo-full p-20">
+              <Label text="Here are a few of the class names you can add to your UI components to style a NativeScript app." class="body m-b-5" textWrap="true" />
+              <StackLayout class="hr-light m-t-5 m-b-10"></StackLayout>
               <GridLayout rows="auto" columns="*,*" class="h1 m-5 w-full">
                 <Label text="Class: h1" row="0" col="0" />
                 <Label text="Heading" row="0" col="1" class="text-right" />
