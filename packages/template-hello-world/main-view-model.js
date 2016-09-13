@@ -9,7 +9,8 @@ function getMessage(counter) {
   }
 }
 
-function createViewModel() {
+function createViewModel(page) {
+  var page = page;
   var viewModel = new Observable();
   viewModel.counter = 42;
   viewModel.message = getMessage(viewModel.counter);
@@ -19,12 +20,31 @@ function createViewModel() {
     this.set("message", getMessage(this.counter));
   };
 
-  viewModel.viewDocs = function () {
-    utilityModule.openUrl("https://docs.nativescript.org/ui/components");
+  viewModel.viewTheme = function () {
+    page.showModal("modal", {
+      url: "https://docs.nativescript.org/theme",
+      title: "Theme Docs"
+    }, function(data) {
+      console.log("View model callback with: " + data);
+    });
   };
 
-  viewModel.viewThemeDocs = function () {
-    utilityModule.openUrl("https://github.com/NativeScript/theme/wiki/Class-Names");
+  viewModel.viewNews = function () {
+    page.showModal("modal", {
+      url: "https://www.nativescript.org/nativescript-newsletter",
+      title: "Newsletter"
+    }, function (data) {
+      console.log("View model callback with: " + data);
+    });
+  };
+
+  viewModel.viewHelp = function () {
+    page.showModal("modal", {
+      url: "http://stackoverflow.com/questions/tagged/nativescript",
+      title: "StackOverflow {N}"
+    }, function(data) {
+      console.log("View model callback with: " + data);
+    });
   };
 
   return viewModel;
