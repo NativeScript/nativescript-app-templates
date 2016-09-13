@@ -19,12 +19,14 @@ exports.onShownModally = onShownModally;
 
 function createViewModel() {
   var viewModel = new Observable();
+  var url;
   
   viewModel.setTitle = function (url) {
     viewModel.set('title', url);
   }; 
 
   viewModel.setUrl = function (url) {
+    url = url;
     viewModel.set('url', url);
   }; 
 
