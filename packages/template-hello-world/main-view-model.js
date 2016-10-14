@@ -40,7 +40,7 @@ function createViewModel(page) {
 
   viewModel.viewHelp = function () {
     page.showModal("modal", {
-      url: "http://stackoverflow.com/questions/tagged/nativescript",
+      url: "https://stackoverflow.com/questions/tagged/nativescript",
       title: "StackOverflow {N}"
     }, function(data) {
       console.log("View model callback with: " + data);
