@@ -26,6 +26,6 @@
 		"v8Flags": "--expose_gc"
 	},
   "dependencies": {
-		"nativescript-theme-core": "^0.0.7"
+		"nativescript-theme-core": "^0.1.2"
 	}
 }
