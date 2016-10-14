@@ -20,20 +20,14 @@
 
               <GridLayout rows="auto,auto" columns="auto,*" class="m-y-5">
                 <Label text="-" class="m-r-10" rowSpan="2" col="0"  />
-                <Label text="A full list of the class names you can use to customize the look of your NativeScript apps:" class="h4" textWrap="true" row="0" col="1" />
-                <Label text="https://docs.nativescript.org/theme" tap="{{ viewTheme }}" class="text-primary t-14" textWrap="true" row="1" col="1" />
-              </GridLayout>
-
-              <GridLayout rows="auto,auto" columns="auto,*" class="m-y-5">
-                <Label text="-" class="m-r-10" rowSpan="2" col="0"  />
                 <Label text="News and updates about NativeScript:" class="h4" textWrap="true" row="0" col="1" />
-                <Label text="https://www.nativescript.org/nativescript-newsletter" tap="{{ viewNews }}" class="text-primary t-14" textWrap="true" row="1" col="1" />
+                <Label text="https://twitter.com/nativescript" tap="{{ viewNews }}" class="text-primary t-14" textWrap="true" row="1" col="1" />
               </GridLayout>
               
               <GridLayout rows="auto,auto" columns="auto,*" class="m-y-5">
                 <Label text="-" class="m-r-10" rowSpan="2" col="0"  />
                 <Label text="Help if you run into problems:" class="h4" textWrap="true" row="0" col="1" />
-                <Label text="http://stackoverflow.com/questions/tagged/nativescript" tap="{{ viewHelp }}" class="text-primary t-14" textWrap="true" row="1" col="1" />
+                <Label text="https://stackoverflow.com/questions/tagged/nativescript" tap="{{ viewHelp }}" class="text-primary t-14" textWrap="true" row="1" col="1" />
               </GridLayout>
               
               <StackLayout class="hr-light m-t-5 m-b-10"></StackLayout>
@@ -51,7 +45,7 @@
         <TabViewItem.view>
           <ScrollView>
             <StackLayout class="demo-full p-20">
-              <Label text="Here are a few of the class names you can add to your UI components to style a NativeScript app. You can find the full list at https://docs.nativescript.org/theme." tap="{{ viewTheme }}" class="body m-b-5" textWrap="true" />
+              <Label text="Below is a list of a few class names you can add to your UI components to style a NativeScript app. You can find the full list at https://docs.nativescript.org/theme." tap="{{ viewTheme }}" class="body m-b-5" textWrap="true" />
               <StackLayout class="hr-light m-t-5 m-b-10"></StackLayout>
               <GridLayout rows="auto" columns="*,*" class="h1 m-5 w-full">
                 <Label text="Class: h1" row="0" col="0" />
