@@ -8,125 +8,23 @@
       </ActionBar.titleView>
     </ActionBar>
   </Page.actionBar>
-  <TabView id="tabViewContainer" class="tab-view" selectedColor="#30bcff" tabsBackgroundColor="#f9f9f9">
-    <TabView.items>
-      <TabViewItem title="Home">
-        <TabViewItem.view>
-          <ScrollView>
-            <StackLayout class="p-20">
-              <Label text="Welcome to NativeScript" class="h2" />
-              <StackLayout class="hr-light m-t-5 m-b-10"></StackLayout>
-              <Label text="You are now set up to begin developing for iOS and Android. When getting started you may find the following resources helpful:" class="body m-b-5" textWrap="true" />
+  <ScrollView>
+    <StackLayout class="p-20">
+      <Label text="Welcome to NativeScript" class="h2" />
+      <StackLayout class="hr-light m-t-5 m-b-10"></StackLayout>
+      <Label text="You are now set up to begin developing for iOS and Android. When getting started you may find the following resources helpful:" class="body m-b-5" textWrap="true" />
 
-              <GridLayout rows="auto,auto" columns="auto,*" class="m-y-5">
-                <Label text="-" class="m-r-10" rowSpan="2" col="0"  />
-                <Label text="News and updates about NativeScript:" class="h4" textWrap="true" row="0" col="1" />
-                <Label text="https://twitter.com/nativescript" tap="{{ viewNews }}" class="text-primary t-14" textWrap="true" row="1" col="1" />
-              </GridLayout>
-              
-              <GridLayout rows="auto,auto" columns="auto,*" class="m-y-5">
-                <Label text="-" class="m-r-10" rowSpan="2" col="0"  />
-                <Label text="Help if you run into problems:" class="h4" textWrap="true" row="0" col="1" />
-                <Label text="https://stackoverflow.com/questions/tagged/nativescript" tap="{{ viewHelp }}" class="text-primary t-14" textWrap="true" row="1" col="1" />
-              </GridLayout>
-              
-              <StackLayout class="hr-light m-t-5 m-b-10"></StackLayout>
-              <Label text="The following is a small example of NativeScript’s data binding at work. Take a look at the main-page.xml and main-view-model.js files to get started." class="h4" textWrap="true" />
-              <StackLayout>
-                <Label text="Tap the button" class="m-20 m-x-auto t-30"/>
-                <Button text="TAP" tap="{{ onTap }}" class="btn btn-primary btn-rounded-lg" />
-                <Label text="{{ message }}" class="text-center m-t-20 t-20 c-grey-d-20" textWrap="true"/>
-              </StackLayout>      
-            </StackLayout>
-          </ScrollView>
-        </TabViewItem.view>
-      </TabViewItem>
-      <TabViewItem title="Theme">
-        <TabViewItem.view>
-          <ScrollView>
-            <StackLayout class="demo-full p-20">
-              <Label text="Below is a list of a few class names you can add to your UI components to style a NativeScript app. You can find the full list at https://docs.nativescript.org/theme." tap="{{ viewTheme }}" class="body m-b-5" textWrap="true" />
-              <StackLayout class="hr-light m-t-5 m-b-10"></StackLayout>
-              <GridLayout rows="auto" columns="*,*" class="h1 m-5 w-full">
-                <Label text="Class: h1" row="0" col="0" />
-                <Label text="Heading" row="0" col="1" class="text-right" />
-              </GridLayout>
-              <GridLayout rows="auto" columns="*,*" class="h2 m-5 w-full">
-                <Label text="Class: h2" row="0" col="0" />
-                <Label text="Heading" row="0" col="1" class="text-right" />
-              </GridLayout>
-              <GridLayout rows="auto" columns="*,*" class="h3 m-5 w-full">
-                <Label text="Class: h3" row="0" col="0" />
-                <Label text="Heading" row="0" col="1" class="text-right" />
-              </GridLayout>
-              <GridLayout rows="auto" columns="*,*" class="h4 m-5 w-full">
-                <Label text="Class: h4" row="0" col="0" />
-                <Label text="Heading" row="0" col="1" class="text-right" />
-              </GridLayout>
-              <GridLayout rows="auto" columns="*,*" class="h5 m-5 w-full">
-                <Label text="Class: h5" row="0" col="0" />
-                <Label text="Heading" row="0" col="1" class="text-right" />
-              </GridLayout>
-              <GridLayout rows="auto" columns="*,*" class="body m-5 w-full">
-                <Label text="Class: body" row="0" col="0" />
-                <Label text="Body" row="0" col="1" class="text-right" />
-              </GridLayout>
-              <GridLayout rows="auto" columns="*,*" class="body2 m-5 w-full">
-                <Label text="Class: body2" row="0" col="0" />
-                <Label text="Body 2" row="0" col="1" class="text-right" />
-              </GridLayout>
-              <GridLayout rows="auto" columns="*,*" class="footnote m-5 w-full">
-                <Label text="Class: footnote" row="0" col="0" />
-                <Label text="Footnote" row="0" col="1" class="text-right" />
-              </GridLayout>
-              <StackLayout class="demo-full m-t-10">
-                <Label text="Text" class="h2" />
-                <StackLayout class="hr-light m-y-10"></StackLayout>
-                <!--<Label text="Note: text-transform is not working." textWrap="true" class="t-14 c-grey-d-20 m-b-5" />-->
-
-                <GridLayout rows="auto" columns="*,*" class="text-lowercase m-t-5 w-full">
-                  <Label text="text-lowercase" row="0" col="0" />
-                  <Label text="Lowercase" row="0" col="1" class="text-right" />
-                </GridLayout>
-                <GridLayout rows="auto" columns="*,*" class="m-t-5 w-full">
-                  <Label text="text-uppercase" row="0" col="0" />
-                  <Label text="Uppercase" row="0" col="1" class="text-right text-uppercase" />
-                </GridLayout>
-                <GridLayout rows="auto" columns="*,*" class="m-t-5 w-full">
-                  <Label text="text-capitalize" row="0" col="0" />
-                  <Label text="capitalize" row="0" col="1" class="text-right text-capitalize" />
-                </GridLayout>
-                <GridLayout rows="auto" columns="*,*" class="font-weight-normal m-t-5 w-full">
-                  <Label text="font-weight-normal" row="0" col="0" />
-                  <Label text="Normal Weight" row="0" col="1" class="text-right" />
-                </GridLayout>
-                <GridLayout rows="auto" columns="*,*" class="font-weight-bold m-t-5 w-full">
-                  <Label text="font-weight-bold" row="0" col="0" />
-                  <Label text="Bold" row="0" col="1" class="text-right" />
-                </GridLayout>
-                <GridLayout rows="auto" columns="*,*" class="font-italic m-t-5 w-full">
-                  <Label text="font-italic" row="0" col="0" />
-                  <Label text="Italic" row="0" col="1" class="text-right" />
-                </GridLayout>
-              </StackLayout>
-              
-              <!-- UTILITIES -->
-              <StackLayout class="demo-full m-t-10 m-b-30">
-                <Label text="Utilities" class="h2" />
-                <StackLayout class="hr-light m-y-10"></StackLayout>
-                <Label text=".pull-left" class="pull-left" />
-                <Label text=".pull-right" class="pull-right" />
-                <Label text=".m-x-auto" class="m-x-auto" />
-                <Label text=".text-primary" class="text-primary " />
-                <Label text=".text-danger" class="text-danger " />
-                <Label text=".text-muted" class="text-muted" />
-                <Label text=".bg-primary" class="bg-primary" />
-                <Label text=".bg-danger" class="bg-danger" />
-              </StackLayout>
-            </StackLayout>
-          </ScrollView>
-        </TabViewItem.view>
-      </TabViewItem>
-    </TabView.items>
-  </TabView>
+      <GridLayout rows="auto,auto" columns="auto,*" class="m-y-5">
+        <Label text="-" class="m-r-10" rowSpan="2" col="0"  />
+        <Label text="News and updates about NativeScript:" class="h4" textWrap="true" row="0" col="1" />
+        <Label text="https://twitter.com/nativescript" tap="{{ viewNews }}" class="text-primary t-14" textWrap="true" row="1" col="1" />
+      </GridLayout>
+      
+      <GridLayout rows="auto,auto" columns="auto,*" class="m-y-5">
+        <Label text="-" class="m-r-10" rowSpan="2" col="0"  />
+        <Label text="Help if you run into problems:" class="h4" textWrap="true" row="0" col="1" />
+        <Label text="https://stackoverflow.com/questions/tagged/nativescript" tap="{{ viewHelp }}" class="text-primary t-14" textWrap="true" row="1" col="1" />
+      </GridLayout>   
+    </StackLayout>
+  </ScrollView>
 </Page>
