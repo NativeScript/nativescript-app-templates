@@ -17,7 +17,7 @@
       <GridLayout rows="auto,auto" columns="auto,*" class="m-y-5">
         <Label text="-" class="m-r-10" rowSpan="2" col="0"  />
         <Label text="News and updates about NativeScript:" class="h4" textWrap="true" row="0" col="1" />
-        <Label text="https://twitter.com/nativescript" tap="{{ viewNews }}" class="text-primary t-14" textWrap="true" row="1" col="1" />
+        <Label text="https://twitter.com/nativescript" tap="{{ viewTwitter }}" class="text-primary t-14" textWrap="true" row="1" col="1" />
       </GridLayout>
       
       <GridLayout rows="auto,auto" columns="auto,*" class="m-y-5">

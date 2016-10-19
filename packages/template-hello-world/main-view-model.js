@@ -4,19 +4,10 @@ function createViewModel(page) {
   var page = page;
   var viewModel = new Observable();
 
-  viewModel.viewTheme = function () {
+  viewModel.viewTwitter = function () {
     page.showModal("modal", {
-      url: "https://docs.nativescript.org/theme",
-      title: "Theme Docs"
-    }, function(data) {
-      console.log("View model callback with: " + data);
-    });
-  };
-
-  viewModel.viewNews = function () {
-    page.showModal("modal", {
-      url: "https://www.nativescript.org/nativescript-newsletter",
-      title: "Newsletter"
+      url: "https://twitter.com/nativescript",
+      title: "Twitter @nativescript"
     }, function (data) {
       console.log("View model callback with: " + data);
     });
