@@ -7,7 +7,7 @@ function createViewModel(page) {
   viewModel.viewTwitter = function () {
     page.showModal("modal", {
       url: "https://twitter.com/nativescript",
-      title: "Twitter @nativescript"
+      title: "Twitter"
     }, function (data) {
       console.log("View model callback with: " + data);
     });
@@ -16,7 +16,7 @@ function createViewModel(page) {
   viewModel.viewHelp = function () {
     page.showModal("modal", {
       url: "https://stackoverflow.com/questions/tagged/nativescript",
-      title: "StackOverflow {N}"
+      title: "Stack Overflow"
     }, function(data) {
       console.log("View model callback with: " + data);
     });

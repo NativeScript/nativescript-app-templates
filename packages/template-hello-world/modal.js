@@ -3,14 +3,13 @@ var WebView = require("ui/web-view").WebView;
 var closeCallback;
 
 function onLoaded(args) {
-  console.log("modal loaded.");
-  let page = args.object;
+  var page = args.object;
   page.bindingContext = createViewModel();
 }
 exports.onLoaded = onLoaded;
 
 function onShownModally(args) {
-  console.log('modal using url: ' + args.context.url);
+  console.log("Showing modal using URL: " + args.context.url);
   closeCallback = args.closeCallback;
   args.object.bindingContext.setTitle(args.context.title);
   args.object.bindingContext.setUrl(args.context.url);
@@ -22,16 +21,16 @@ function createViewModel() {
   var url;
   
   viewModel.setTitle = function (url) {
-    viewModel.set('title', url);
+    viewModel.set("title", url);
   }; 
 
   viewModel.setUrl = function (url) {
     url = url;
-    viewModel.set('url', url);
+    viewModel.set("url", url);
   }; 
 
   viewModel.close = function () {
-    closeCallback("closed modal which had " + url + " loaded.");
+    closeCallback("Closed modal with URL: " + url);
   };
 
   return viewModel;
