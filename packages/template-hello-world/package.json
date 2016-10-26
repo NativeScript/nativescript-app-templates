@@ -27,5 +27,8 @@
 	},
 	"dependencies": {
 		"nativescript-theme-core": "^0.1.2"
+	},
+	"devDependencies": {
+		"nativescript-dev-android-snapshot": "^0.*.*"
 	}
 }
