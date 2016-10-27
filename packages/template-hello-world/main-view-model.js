@@ -1,28 +1,24 @@
 var Observable = require("data/observable").Observable;
 
-function createViewModel(page) {
-  var page = page;
-  var viewModel = new Observable();
+function getMessage(counter) {
+    if (counter <= 0) {
+        return "Hoorraaay! You unlocked the NativeScript clicker achievement!";
+    } else {
+        return counter + " taps left";
+    }
+}
 
-  viewModel.viewTwitter = function () {
-    page.showModal("modal", {
-      url: "https://twitter.com/nativescript",
-      title: "Twitter"
-    }, function (data) {
-      console.log("View model callback with: " + data);
-    });
-  };
+function createViewModel() {
+    var viewModel = new Observable();
+    viewModel.counter = 42;
+    viewModel.message = getMessage(viewModel.counter);
 
-  viewModel.viewHelp = function () {
-    page.showModal("modal", {
-      url: "https://stackoverflow.com/questions/tagged/nativescript",
-      title: "Stack Overflow"
-    }, function(data) {
-      console.log("View model callback with: " + data);
-    });
-  };
+    viewModel.onTap = function() {
+        this.counter--;
+        this.set("message", getMessage(this.counter));
+    }
 
-  return viewModel;
+    return viewModel;
 }
 
 exports.createViewModel = createViewModel;

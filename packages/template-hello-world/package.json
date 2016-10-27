@@ -26,7 +26,7 @@
 		"v8Flags": "--expose_gc"
 	},
 	"dependencies": {
-		"nativescript-theme-core": "^0.1.2"
+		"nativescript-theme-core": "^0.1.3"
 	},
 	"devDependencies": {
 		"nativescript-dev-android-snapshot": "^0.*.*"
