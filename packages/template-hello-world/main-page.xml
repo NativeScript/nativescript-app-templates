@@ -1,16 +1,16 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
-  <Page.actionBar>
-    <ActionBar class="action-bar">
-      <ActionBar.titleView>
-        <StackLayout class="action-title">
-          <Label text="Your App" />
-        </StackLayout>
-      </ActionBar.titleView>
-    </ActionBar>
-  </Page.actionBar>
-  <StackLayout class="p-20">
-    <Label text="Tap the button" class="h1 text-center"/>
-    <Button text="TAP" tap="{{ onTap }}" class="btn btn-primary btn-active" />
-    <Label text="{{ message }}" class="h2 text-center" textWrap="true"/>
-  </StackLayout>
+    <Page.actionBar>
+        <ActionBar class="action-bar">
+            <ActionBar.titleView>
+                <StackLayout class="action-title">
+                    <Label text="Your App" />
+                </StackLayout>
+            </ActionBar.titleView>
+        </ActionBar>
+    </Page.actionBar>
+    <StackLayout class="p-20">
+        <Label text="Tap the button" class="h1 text-center"/>
+        <Button text="TAP" tap="{{ onTap }}" class="btn btn-primary btn-active" />
+        <Label text="{{ message }}" class="h2 text-center" textWrap="true"/>
+    </StackLayout>
 </Page>
