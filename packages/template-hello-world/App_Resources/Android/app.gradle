@@ -10,9 +10,11 @@ android {
     generatedDensities = []
     applicationId = "__PACKAGE__" 
     
-    ndk {
-      		abiFilters "armeabi-v7a", "x86"
- 		}
+    //override supported platforms
+    // ndk {
+    //       abiFilters.clear()
+    //   		abiFilters "armeabi-v7a"
+ 		// }
   
   }  
   aaptOptions {  
