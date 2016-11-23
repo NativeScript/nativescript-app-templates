@@ -8,7 +8,7 @@
     "version": "2.5.0",
     "author": "Telerik <support@telerik.com>",
     "description": "Nativescript Angular Hello World template",
-    "license": "BSD",
+    "license": "Apache-2.0",
     "keywords": [
         "telerik",
         "mobile",
