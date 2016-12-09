@@ -43,6 +43,7 @@
     },
     "devDependencies": {
         "zone.js": "~0.6.21",
+        "typescript": "~2.0.10",
         "nativescript-dev-typescript": "^0.3.2",
         "nativescript-dev-android-snapshot": "^0.*.*"
     }
