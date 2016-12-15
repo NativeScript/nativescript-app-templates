@@ -1,0 +1,6 @@
+<ListView [items]="items" class="list-group">
+    <template let-item="item">
+        <Label [nsRouterLink]="['/item', item.id]" [text]="item.name"
+            class="list-group-item"></Label>
+    </template>
+</ListView>
