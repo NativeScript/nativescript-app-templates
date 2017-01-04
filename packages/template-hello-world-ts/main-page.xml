@@ -6,6 +6,14 @@ https://docs.nativescript.org/ui/components.
 -->
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="page">
     <!--
+    The ActionBar is the NativeScript common abstraction over the Android ActionBar and iOS NavigationBar.
+    http://docs.nativescript.org/ui/action-bar
+    -->
+    <Page.actionBar>
+        <ActionBar title="My App" icon="" class="action-bar">
+        </ActionBar>
+    </Page.actionBar>
+    <!--
     The StackLayout stacks UI components on the screen—either vertically or horizontally.
     In this case, the StackLayout does vertical stacking; you can change the stacking to
     horizontal by applying a orientation="horizontal" attribute to the <StackLayout> element.
