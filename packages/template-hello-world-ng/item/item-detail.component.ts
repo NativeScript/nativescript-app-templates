@@ -6,7 +6,8 @@ import { ItemService } from "./item.service";
 
 @Component({
     selector: "ns-details",
-    templateUrl: "item/item-detail.component.html",
+    moduleId: module.id,
+    templateUrl: "./item-detail.component.html",
 })
 export class ItemDetailComponent implements OnInit {
     item: Item;
