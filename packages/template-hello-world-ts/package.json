@@ -29,7 +29,7 @@
 		"nativescript-theme-core": "~1.0.2"
 	},
 	"devDependencies": {
-		"nativescript-dev-typescript": "~0.3.5",
+		"nativescript-dev-typescript": "~0.4.0",
 		"nativescript-dev-android-snapshot": "^0.*.*",
 		"typescript": "~2.1.0"
 	}
