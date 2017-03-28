@@ -2,9 +2,9 @@
 </ActionBar>
 <StackLayout class="page">
     <ListView [items]="items" class="list-group">
-        <template let-item="item">
+        <ng-template let-item="item">
             <Label [nsRouterLink]="['/item', item.id]" [text]="item.name"
                 class="list-group-item"></Label>
-        </template>
+        </ng-template>
     </ListView>
 </StackLayout>
