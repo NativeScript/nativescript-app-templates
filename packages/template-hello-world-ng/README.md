@@ -1,6 +1,6 @@
-# NativeScript Angular 2 Template
+# NativeScript Angular Template
 
-This template creates a "Hello, world" NativeScript app using TypeScript and Angular 2.
+This template creates a "Hello, world" NativeScript app using TypeScript and Angular.
 
 You can create a new app that uses this template with either the `--template` option.
 
@@ -14,7 +14,7 @@ Or the `--ng` shorthand.
 tns create my-app-name --ng
 ```
 
-> Note: Both commands will create a new NativeScript app that uses the latest version of this template published to [npm] (https://www.npmjs.com/package/tns-template-hello-world-ts).
+> Note: Both commands will create a new NativeScript app that uses the latest version of this template published to [npm] (https://www.npmjs.com/package/tns-template-hello-world-ng).
 
 If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
 
