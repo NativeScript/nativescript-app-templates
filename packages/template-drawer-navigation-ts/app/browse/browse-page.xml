@@ -1,0 +1,32 @@
+<Page
+    navigatingTo="onNavigatingTo"  
+    xmlns:nsDrawer="nativescript-telerik-ui/sidedrawer"
+    xmlns:myDrawer="shared/my-drawer"
+    xmlns="http://www.nativescript.org/tns.xsd">
+
+    <!--Add your page content here-->
+    <ActionBar title="Browse">
+        <ActionItem android.systemIcon="ic_menu_account_list" tap="onOpenDrawerTap" />
+    </ActionBar>
+
+    <nsDrawer:RadSideDrawer id="sideDrawer" showOverNavigation="true">
+        <!--Customize your transition-->
+        <nsDrawer:RadSideDrawer.drawerTransition>
+            <nsDrawer:PushTransition/>
+        </nsDrawer:RadSideDrawer.drawerTransition>
+
+        <nsDrawer:RadSideDrawer.drawerContent>
+            <!--Add your drawer content here. If it's a custom component, add the xmlns to the DrawerPage tag above-->
+            <StackLayout>
+                <myDrawer:MyDrawer />
+            </StackLayout>
+            <!--End of drawer content-->
+        </nsDrawer:RadSideDrawer.drawerContent>
+
+        <nsDrawer:RadSideDrawer.mainContent>
+            <StackLayout>
+                <Label text="Browse Page"/>
+            </StackLayout>
+        </nsDrawer:RadSideDrawer.mainContent>
+    </nsDrawer:RadSideDrawer>
+</Page>

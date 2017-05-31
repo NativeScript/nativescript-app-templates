@@ -1,0 +1,9 @@
+<StackLayout loaded="onLoaded">
+    <GridLayout>
+        <ListView id="listview" items="{{ items }}" itemTap="onNavigateToRoute">
+            <ListView.itemTemplate>
+                <Label text="{{ title }}"/>
+            </ListView.itemTemplate>
+        </ListView>
+    </GridLayout>
+</StackLayout>
