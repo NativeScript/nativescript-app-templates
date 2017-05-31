@@ -1,0 +1,47 @@
+<!--
+The markup in NativeScript apps contains a series of user interface components, each
+of which NativeScript renders with a platform-specific iOS or Android native control.
+You can find a full list of user interface components you can use in your app at
+https://docs.nativescript.org/ui/components.
+-->
+<Page navigatingTo="onNavigatingTo" class="page"
+    xmlns:lv="nativescript-telerik-ui/listview"
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+    <!--
+    The ActionBar is the NativeScript common abstraction over the Android ActionBar and iOS NavigationBar.
+    http://docs.nativescript.org/ui/action-bar
+    -->
+    <ActionBar title="Car Rental" icon="" class="action-bar">
+    </ActionBar>
+
+    <GridLayout>
+        <lv:RadListView items="{{ cars }}" itemTap="onCarItemTap">
+            <lv:RadListView.listViewLayout>
+                <lv:ListViewLinearLayout scrollDirection="Vertical"/>
+            </lv:RadListView.listViewLayout>
+
+            <lv:RadListView.itemTemplate>
+                <GridLayout columns="*, *, *" rows="*,*,*,*">
+                    <Image src="{{ imageUrl }}" stretch="aspectFill" col="0" rowSpan="4"/>
+                    <Label text="{{ name }}" col="1" colSpan="2" row="0"/>
+
+                    <Label row="1" col="1" text="Class"/>
+                    <Label row="1" col="2" text="{{ class }}"/>
+
+                    <Label row="2" col="1" text="Transmission"/>
+                    <Label row="2" col="2" text="{{ transmission }}"/>
+
+                    <Label row="3" col="1" colSpan="2">
+                        <FormattedString>
+                            <Span text="€" fontAttributes="Bold"></Span>
+                            <Span text="{{ price }}" fontAttributes="Bold"></Span>
+                            <Span text="/day" fontAttributes="Bold"></Span>
+                        </FormattedString>
+                    </Label>
+                </GridLayout>
+            </lv:RadListView.itemTemplate>
+        </lv:RadListView>
+
+        <ActivityIndicator busy="{{ isLoading }}"/>
+    </GridLayout>
+</Page>
