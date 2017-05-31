@@ -1,0 +1,18 @@
+<ActionBar class="action-bar">
+    <Label class="action-bar-title" text="Tabs"></Label>
+</ActionBar>
+
+<TabView #tabview sdkExampleTitle sdkToggleNavButton>
+    <StackLayout *tabItem="{title: '\uf015 Home'}">
+        <Home></Home>
+    </StackLayout>
+    <StackLayout *tabItem="{title: '\uf1ea Browse'}">
+        <Browse></Browse>
+    </StackLayout>
+    <StackLayout *tabItem="{title: '\uf002 Search'}">
+        <Search></Search>
+    </StackLayout>
+    <StackLayout *tabItem="{title: '\uf005 Featured'}">
+        <Featured></Featured>
+    </StackLayout>
+</TabView>
