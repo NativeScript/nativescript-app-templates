@@ -1,0 +1,3 @@
+<StackLayout orientation="vertical" loaded="loaded" navigatingTo="onNavigatingTo">
+    <Label text="Search page"/>
+</StackLayout>
