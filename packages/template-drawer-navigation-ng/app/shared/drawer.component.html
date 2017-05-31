@@ -1,0 +1,21 @@
+<StackLayout class="sidedrawer sidedrawer-left">
+    <StackLayout class="sidedrawer-header">
+        <Image class="sidedrawer-header-image img-circle p-0" src="res://icon"></Image>
+        <Label class="sidedrawer-header-brand" text="Name of My App"></Label>
+        <Label class="footnote" text="username@mail.com"></Label>
+    </StackLayout>
+    
+    <StackLayout class="sidedrawer-content">
+        <ListView [items]="items" separatorColor="transparent">
+            <ng-template let-item="item" let-i="index" let-odd="odd" let-even="even">
+                <GridLayout rows="*" columns="auto, *"
+                    (tap)="navigateToRoute(item.route)"
+                    class="sidedrawer-list-item" 
+                    [class.selected]="isPageSelected(item.title)">
+                    <Label row="0" col="0" [text]="item.icon" class="fa p-l-15 p-r-5"></Label>
+                    <Label row="0" col="1" [text]="item.title" textWrap="true"></Label>
+                </GridLayout>
+            </ng-template>
+        </ListView>
+    </StackLayout>
+</StackLayout>

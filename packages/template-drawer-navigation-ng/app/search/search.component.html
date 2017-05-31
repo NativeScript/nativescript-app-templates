@@ -1,0 +1,18 @@
+<ActionBar class="action-bar">
+    <ActionItem (tap)="openDrawer()"
+        ios.position="left"
+        android.position="actionBar">
+        <Label text="&#xf0c9;" class="fa p-r-15"></Label>
+    </ActionItem>
+    <Label class="action-bar-title" text="Search"></Label>
+</ActionBar>
+
+<RadSideDrawer #drawer showOverNavigation="true" [drawerTransition]="sideDrawerTransition" tkExampleTitle tkToggleNavButton>
+    <StackLayout tkDrawerContent>
+        <MyDrawer [selectedPage]="'Search'"></MyDrawer>
+    </StackLayout>
+    
+    <StackLayout tkMainContent>
+        <Label text="Search Page"></Label>
+    </StackLayout>
+</RadSideDrawer>
