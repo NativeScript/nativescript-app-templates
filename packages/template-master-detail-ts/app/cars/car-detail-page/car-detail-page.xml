@@ -1,0 +1,64 @@
+<!--
+The markup in NativeScript apps contains a series of user interface components, each
+of which NativeScript renders with a platform-specific iOS or Android native control.
+You can find a full list of user interface components you can use in your app at
+https://docs.nativescript.org/ui/components.
+-->
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page">
+    <!--
+    The ActionBar is the NativeScript common abstraction over the Android ActionBar and iOS NavigationBar.
+    http://docs.nativescript.org/ui/action-bar
+    -->
+    <ActionBar title="{{ car.name }}" icon="" class="action-bar">
+        <NavigationButton tap="onGoBack" android.systemIcon="ic_menu_back"/>
+    </ActionBar>
+
+    <GridLayout>
+        <ScrollView>
+            <StackLayout>
+                <Image src="{{ car.imageUrl }}" stretch="aspectFit"/>
+
+                <StackLayout>
+                    <Label text="Price"/>
+                    <Label>
+                        <FormattedString>
+                            <Span text="€" fontAttributes="Bold"></Span>
+                            <Span text="{{ car.price }}" fontAttributes="Bold"></Span>
+                            <Span text="/day" fontAttributes="Bold"></Span>
+                        </FormattedString>
+                    </Label>
+                </StackLayout>
+
+                <StackLayout>
+                    <Label text="Class"/>
+                    <Label text="{{ car.class }}"/>
+                </StackLayout>
+
+                <StackLayout>
+                    <Label text="Transmission"/>
+                    <Label text="{{ car.transmission }}"/>
+                </StackLayout>
+
+                <StackLayout>
+                    <Label text="Doors"/>
+                    <Label text="{{ car.doors }}"/>
+                </StackLayout>
+
+                <StackLayout>
+                    <Label text="Luggage"/>
+                    <Label text="{{ car.luggage }}"/>
+                </StackLayout>
+
+                <StackLayout>
+                    <Label text="Seats"/>
+                    <Label text="{{ car.seats }}"/>
+                </StackLayout>
+
+                <StackLayout>
+                    <Label text="Other information"/>
+                    <Label text="{{ car.description }}" textWrap="true"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </GridLayout>
+</Page>
