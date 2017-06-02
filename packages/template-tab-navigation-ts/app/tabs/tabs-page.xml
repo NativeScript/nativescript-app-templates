@@ -8,7 +8,8 @@ https://docs.nativescript.org/ui/components.
   xmlns:home="/home"
   xmlns:search="/search"
   xmlns:browse="/browse"
-  xmlns:featured="/featured">
+  xmlns:featured="/featured"
+  xmlns:settings="/settings">
     <!--
     The ActionBar is the NativeScript common abstraction over the Android ActionBar and iOS NavigationBar.
     http://docs.nativescript.org/ui/action-bar
@@ -38,6 +39,11 @@ https://docs.nativescript.org/ui/components.
         <TabViewItem title="Featured">
           <TabViewItem.view>
              <featured:FeaturedView/>
+          </TabViewItem.view>
+        </TabViewItem>
+        <TabViewItem title="Settings">
+          <TabViewItem.view>
+             <settings:SettingsView/>
           </TabViewItem.view>
         </TabViewItem>
       </TabView.items>
