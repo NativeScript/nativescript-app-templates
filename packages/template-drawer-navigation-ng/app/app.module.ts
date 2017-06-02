@@ -3,7 +3,7 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NSModuleFactoryLoader } from "nativescript-angular/router";
 
 import { AppComponent } from "./app.component";
-import { AppRoutingModule } from "./app.routing";
+import { AppRoutingModule } from "./app-routing.module";
 
 @NgModule({
     bootstrap: [

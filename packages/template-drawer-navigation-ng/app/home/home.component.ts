@@ -8,9 +8,8 @@ import { RadSideDrawerComponent } from "nativescript-telerik-ui/sidedrawer/angul
     templateUrl: "./home.component.html",
 })
 export class HomeComponent implements OnInit {
-    public sideDrawerTransition: DrawerTransitionBase;
-
-    @ViewChild("drawer") public drawerComponent: RadSideDrawerComponent;
+    @ViewChild("drawer") drawerComponent: RadSideDrawerComponent;
+    sideDrawerTransition: DrawerTransitionBase;
 
     constructor() {
         this.sideDrawerTransition = new SlideInOnTopTransition();
@@ -20,7 +19,7 @@ export class HomeComponent implements OnInit {
 
     }
 
-    openDrawer(): void {
+    onDrawerButtonTap(): void {
         this.drawerComponent.sideDrawer.toggleDrawerState();
     }
 }

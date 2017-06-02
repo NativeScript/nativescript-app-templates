@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
+import { ItemEventData } from "ui/list-view";
 
 @Component({
     selector: "MyDrawer",
@@ -9,7 +10,7 @@ import { RouterExtensions } from "nativescript-angular/router";
 })
 export class DrawerComponent implements OnInit {
     @Input() selectedPage: string;
-    items: any = [
+    navigationItems: any = [
         {
             title: "Home",
             route: "/home",
@@ -44,11 +45,16 @@ export class DrawerComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    navigateToRoute(route:string): void {
-        this.routerExtensions.navigate([route]);
+    onNavigationItemTap(args: ItemEventData) {
+        let route = args.view.bindingContext.route;
+        this.routerExtensions.navigate([route], {
+            transition: {
+                name: "slide"
+            }
+        });
     }
 
-    isPageSelected(pageTitle:string): boolean {
+    isPageSelected(pageTitle :string): boolean {
         return pageTitle === this.selectedPage;
     }
 }

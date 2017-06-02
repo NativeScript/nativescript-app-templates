@@ -6,10 +6,9 @@
     </StackLayout>
     
     <StackLayout class="sidedrawer-content">
-        <ListView [items]="items" separatorColor="transparent">
+        <ListView [items]="navigationItems" separatorColor="transparent" (itemTap)="onNavigationItemTap($event)">
             <ng-template let-item="item" let-i="index" let-odd="odd" let-even="even">
                 <GridLayout rows="*" columns="auto, *"
-                    (tap)="navigateToRoute(item.route)"
                     class="sidedrawer-list-item" 
                     [class.selected]="isPageSelected(item.title)">
                     <Label row="0" col="0" [text]="item.icon" class="fa p-l-15 p-r-5"></Label>
