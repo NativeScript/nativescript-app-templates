@@ -1,14 +1,8 @@
-import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
+import { NgModule, NgModuleFactoryLoader, NO_ERRORS_SCHEMA } from "@angular/core";
+import { NSModuleFactoryLoader } from "nativescript-angular/router";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
-import { AppRoutingModule } from "./app.routing";
 import { AppComponent } from "./app.component";
-
-import { HomeComponent } from "./home/home.component";
-import { BrowseComponent } from "./browse/browse.component";
-import { SearchComponent } from "./search/search.component";
-import { FeaturedComponent } from "./featured/featured.component";
-
-import { TabsComponent } from "./tabs.component";
+import { AppRoutingModule } from "./app.routing";
 
 @NgModule({
     bootstrap: [
@@ -19,14 +13,11 @@ import { TabsComponent } from "./tabs.component";
         AppRoutingModule
     ],
     declarations: [
-        AppComponent,
-        TabsComponent,
-        HomeComponent,
-        BrowseComponent,
-        SearchComponent,
-        FeaturedComponent,
+        AppComponent
     ],
-    providers: [],
+    providers: [
+        { provide: NgModuleFactoryLoader, useClass: NSModuleFactoryLoader }
+    ],
     schemas: [
         NO_ERRORS_SCHEMA
     ]
