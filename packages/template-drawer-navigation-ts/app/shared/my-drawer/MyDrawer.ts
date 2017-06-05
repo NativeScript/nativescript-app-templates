@@ -4,7 +4,7 @@ import { StackLayout } from 'ui/layouts/stack-layout';
 import frameModule = require("ui/frame");
 
 let model = {
-    items: [
+    navigationItems: [
         {
             title: "Home",
             route: "home/home-page"
@@ -39,7 +39,12 @@ export function onLoaded(args: EventData) {
     page.bindingContext = model;
 }
 
-export function onNavigateToRoute(args) {
-    let tappedModelItem = model.items[args.index];
-    frameModule.topmost().navigate(tappedModelItem.route);
+export function onNavigationItemTap(args) {
+    let route = args.view.bindingContext.route;
+    frameModule.topmost().navigate({
+        moduleName: route,
+        transition: {
+            name: "slide"
+        }
+    });
 }

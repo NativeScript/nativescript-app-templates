@@ -17,7 +17,7 @@ export function onNavigatingTo(args: EventData) {
     page.bindingContext = new BrowseViewModel();
 }
 
-export function onOpenDrawerTap() {
+export function onDrawerButtonTap() {
     let sideDrawer = <RadSideDrawer>view.getViewById(page, "sideDrawer");
     sideDrawer.showDrawer();
 }

@@ -6,13 +6,13 @@
 
     <!--Add your page content here-->
     <ActionBar title="Featured">
-        <ActionItem android.systemIcon="ic_menu_account_list" tap="onOpenDrawerTap" />
+        <ActionItem android.systemIcon="ic_menu_account_list" tap="onDrawerButtonTap" />
     </ActionBar>
 
     <nsDrawer:RadSideDrawer id="sideDrawer" showOverNavigation="true">
         <!--Customize your transition-->
         <nsDrawer:RadSideDrawer.drawerTransition>
-            <nsDrawer:PushTransition/>
+            <nsDrawer:SlideInOnTopTransition/>
         </nsDrawer:RadSideDrawer.drawerTransition>
 
         <nsDrawer:RadSideDrawer.drawerContent>
