@@ -35,7 +35,7 @@ function onNavigatingTo(args) {
     page.bindingContext = featuredViewModel;
 }
 
-function onOpenDrawerTap() {
+function onDrawerButtonTap() {
     var sideDrawer = frameModule.topmost().getViewById("sideDrawer");
     sideDrawer.showDrawer();
 }
@@ -47,4 +47,4 @@ function here makes the navigatingTo="onNavigatingTo" binding in this page’s X
 file work.
 */
 exports.onNavigatingTo = onNavigatingTo;
-exports.onOpenDrawerTap = onOpenDrawerTap;
+exports.onDrawerButtonTap = onDrawerButtonTap;
