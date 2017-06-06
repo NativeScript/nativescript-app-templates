@@ -1,0 +1,55 @@
+<ActionBar title="Edit Car Details" icon="">
+    <!--HACK - we should remove the navigation button-->
+    <NavigationButton visibility="collapsed"></NavigationButton>
+    <ActionItem text="Cancel" position="left" (tap)="onCancel()"></ActionItem>
+    <ActionItem text="Done" position="right" (tap)="onUpdate()"></ActionItem>
+</ActionBar>
+
+<GridLayout>
+    <ScrollView>
+        <StackLayout>
+            <Label text="CAR MAKE"></Label>
+            <TextField [(ngModel)]="car.name" hint="Enter your car make"></TextField>
+
+            <GridLayout columns="auto, *">
+                <Label text="PRICE PER DAY"></Label>
+                <Label col="1" horizontalAlignment="right">
+                    <FormattedString>
+                        <Span text="€"></Span>
+                        <Span [text]="car.price"></Span>
+                    </FormattedString>
+                </Label>
+            </GridLayout>
+            <Slider [(ngModel)]="car.price"></Slider>
+
+            <Label text="ADD OR REMOVE IMAGE"></Label>
+            <ImageAddRemove [imageUrl]="car.imageUrl" (selectionChanged)="onImageAddRemove($event)"></ImageAddRemove>
+
+            <Label text="CLASS"></Label>
+            <ListSelector [selectedValue]="car.class" [items]="carClasses" tag="class"></ListSelector>
+
+            <Label text="DOORS"></Label>
+            <ListSelector [selectedValue]="car.doors" [items]="carDoors" tag="doors"></ListSelector>
+
+            <Label text="SEATS"></Label>
+            <ListSelector [selectedValue]="car.seats" [items]="carSeats" tag="seats"></ListSelector>
+
+            <Label text="TRANSMISSION"></Label>
+            <ListSelector [selectedValue]="car.transmission" [items]="carTransmissions" tag="transmission"></ListSelector>
+
+            <GridLayout columns="auto, *">
+                <Label text="LUGGAGE"></Label>
+                <Label col="1" horizontalAlignment="right">
+                    <FormattedString>
+                        <Span [text]="car.luggage"></Span>
+                        <Span text=" Bag(s)"></Span>
+                    </FormattedString>
+                </Label>
+            </GridLayout>
+            <Slider [minValue]="carLuggageMinValue" [maxValue]="carLuggageMaxValue" [(ngModel)]="car.luggage">
+            </Slider>
+        </StackLayout>
+    </ScrollView>
+
+    <ActivityIndicator [busy]="isUploading"></ActivityIndicator>
+</GridLayout>

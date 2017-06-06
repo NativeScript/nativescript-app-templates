@@ -1,0 +1,30 @@
+<ActionBar title="Car Rental" icon="">
+</ActionBar>
+
+<GridLayout>
+    <RadListView [items]="cars" (itemTap)="onCarItemTap($event)">
+        <ng-template tkListItemTemplate let-car="item">
+            <GridLayout columns="*, *, *" rows="*,*,*,*">
+                <Image col="0" rowSpan="4" [src]="car.imageUrl"></Image>
+                <Label col="1" colSpan="2" row="0" [text]="car.name"></Label>
+
+                <Label row="1" col="1" text="Class"></Label>
+                <Label row="1" col="2" [text]="car.class"></Label>
+
+                <Label row="2" col="1" text="Transmission"></Label>
+                <Label row="2" col="2" [text]="car.transmission"></Label>
+
+                <Label row="3" col="1" colSpan="2">
+                    <FormattedString>
+                        <Span text="€"></Span>
+                        <Span [text]="car.price"></Span>
+                        <Span text="/day"></Span>
+                    </FormattedString>
+                </Label>
+            </GridLayout>
+        </ng-template>
+    </RadListView>
+    
+    <ActivityIndicator [busy]="isLoading"></ActivityIndicator>
+</GridLayout>
+
