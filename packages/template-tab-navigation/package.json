@@ -1,7 +1,8 @@
 {
   "name": "nativescript-js-ui-kit-tab",
+  "displayName": "Tab navigation",
   "version": "0.1.0",
-  "description": "NativeScript Application",
+  "description": "Simple template with Tab navigation for Vanilla NativeScript apps using JavaScript",
   "license": "SEE LICENSE IN <your-license-filename>",
   "readme": "NativeScript Application",
   "repository": "<fill-your-repository-here>",
