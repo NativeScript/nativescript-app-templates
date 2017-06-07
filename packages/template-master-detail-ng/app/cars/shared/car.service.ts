@@ -14,7 +14,7 @@ export class CarService {
         this._cars = [];
     }
 
-    public getCarById(id: string) {
+    getCarById(id: string) {
         if (!id) {
             return;
         }
@@ -24,7 +24,7 @@ export class CarService {
         })[0];
     }
 
-    public load(): Observable<any> {
+    load(): Observable<any> {
         return new Observable((observer: any) => {
             let path = 'cars';
 
@@ -38,7 +38,7 @@ export class CarService {
         }).catch(this.handleErrors);
     }
 
-    public update(editObject: any) {
+    update(editObject: any) {
         var self = this;
 
         return firebase.update("/cars/" + editObject.id, editObject)
@@ -55,7 +55,7 @@ export class CarService {
             });
     }
 
-    public uploadImage(remoteFullPath: string, localFullPath: string) {
+    uploadImage(remoteFullPath: string, localFullPath: string) {
         return firebase.uploadFile({
             remoteFullPath: remoteFullPath,
             localFullPath: localFullPath,

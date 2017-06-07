@@ -22,12 +22,12 @@ export class CarEditService {
 
     constructor(private _carService: CarService) { }
 
-    public startEdit(id: string) {
+    startEdit(id: string) {
         let car = this._carService.getCarById(id);
         this._editObject = this.cloneEditableSubset(car);
     }
 
-    public cancelEdit() {
+    cancelEdit() {
         this._editObject = null;
     }
 

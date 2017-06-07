@@ -99,11 +99,11 @@ export class CarDetailEditComponent implements OnInit {
         this._car.luggage = value;
     }
 
-    onCancel(): void {
+    onCancelItemTap(): void {
         this._routerExtensions.navigate(["/car-detail", this._car.id], { clearHistory: true });
     }
 
-    onUpdate(): void {
+    onDoneItemTap(): void {
         let self = this;
         let queue = Promise.resolve();
 

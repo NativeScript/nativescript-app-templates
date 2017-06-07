@@ -38,11 +38,11 @@ export class CarDetailComponent implements OnInit {
         return this._car;
     }
 
-    onGoBack() : void {
+    onBackButtonTap(): void {
         this._routerExtensions.navigate(["/cars"], { clearHistory: true });
     }
 
-    onEdit() : void {
+    onEditItemTap(): void {
         this._carEditService.startEdit(this._car.id);
         this._routerExtensions.navigate(["/car-detail-edit"]);
     }
