@@ -99,11 +99,11 @@ export class CarDetailEditComponent implements OnInit, AfterViewInit {
         this._car.luggage = value;
     }
 
-    onCancelItemTap(): void {
+    onCancelButtonTap(): void {
         this._routerExtensions.navigate(["/car-detail", this._car.id], { clearHistory: true });
     }
 
-    onDoneItemTap(): void {
+    onDoneButtonTap(): void {
         let queue = Promise.resolve();
 
         // TODO: car image should be required field

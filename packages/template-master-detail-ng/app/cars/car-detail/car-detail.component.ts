@@ -42,7 +42,7 @@ export class CarDetailComponent implements OnInit {
         this._routerExtensions.navigate(["/cars"], { clearHistory: true });
     }
 
-    onEditItemTap(): void {
+    onEditButtonTap(): void {
         this._carEditService.startEdit(this._car.id);
         this._routerExtensions.navigate(["/car-detail-edit"]);
     }
