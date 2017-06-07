@@ -19,31 +19,29 @@ export class ListSelectorPickerComponent {
         private _routerExtensions: RouterExtensions,
         private _carEditService: CarEditService
     ) {
-        let self = this;
-
         // use switchMap to get the latest activatedRoute instance
         this._pageRoute.activatedRoute
-            .switchMap(activatedRoute => activatedRoute.params)
+            .switchMap((activatedRoute) => activatedRoute.params)
             .forEach((params) => {
-                self._selectedIndex = Number(params["selectedIndex"]);
-                self._tag = params["tag"];
+                this._selectedIndex = Number(params.selectedIndex);
+                this._tag = params.tag;
                 try {
-                    self._items = [];
-                    let result = JSON.parse(params["items"]);
+                    this._items = [];
+                    const result = JSON.parse(params.items);
                     for (let i = 0; i < result.length; i++) {
-                        self._items.push({ value: result[i], isSelected: i === self._selectedIndex ? true : false });
+                        this._items.push({ value: result[i], isSelected: i === this._selectedIndex ? true : false });
                     }
                 } catch (err) {
-                    console.log(err)
+                    console.log(err);
                 }
             });
     }
 
     onItemSelected(args): void {
-        let oldSelectedItem = this._items[this._selectedIndex];
+        const oldSelectedItem = this._items[this._selectedIndex];
         oldSelectedItem.isSelected = false;
 
-        let newSelectedItem = this._items[args.itemIndex];
+        const newSelectedItem = this._items[args.itemIndex];
         newSelectedItem.isSelected = true;
         this._selectedIndex = args.itemIndex;
 

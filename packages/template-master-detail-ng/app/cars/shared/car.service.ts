@@ -8,7 +8,7 @@ import { Car } from "./car.model";
 
 @Injectable()
 export class CarService {
-    private _cars: Car[];
+    private _cars: Array<Car>;
 
     constructor(private _ngZone: NgZone) {
         this._cars = [];
@@ -20,17 +20,17 @@ export class CarService {
         }
 
         return this._cars.filter((car) => {
-            return car.id == id;
+            return car.id === id;
         })[0];
     }
 
     load(): Observable<any> {
         return new Observable((observer: any) => {
-            let path = 'cars';
+            const path = "cars";
 
-            let onValueEvent = (snapshot: any) => {
+            const onValueEvent = (snapshot: any) => {
                 this._ngZone.run(() => {
-                    let results = this.handleSnapshot(snapshot.value);
+                    const results = this.handleSnapshot(snapshot.value);
                     observer.next(results);
                 });
             };
@@ -39,24 +39,14 @@ export class CarService {
     }
 
     update(editObject: any) {
-        return firebase.update("/cars/" + editObject.id, editObject)
-            .catch(function (errorMessage: any) {
-                console.log(errorMessage);
-                throw errorMessage;
-            });
+        return firebase.update("/cars/" + editObject.id, editObject);
     }
 
     uploadImage(remoteFullPath: string, localFullPath: string) {
         return firebase.uploadFile({
-            remoteFullPath: remoteFullPath,
-            localFullPath: localFullPath,
-            onProgress: function (status) {
-                console.log("Uploaded fraction: " + status.fractionCompleted);
-                console.log("Percentage complete: " + status.percentageCompleted);
-            }
-        }).catch(function (errorMessage: any) {
-            console.log(errorMessage);
-            throw errorMessage;
+            localFullPath,
+            remoteFullPath,
+            onProgress: null
         });
     }
 
@@ -64,9 +54,11 @@ export class CarService {
         this._cars = [];
 
         if (data) {
-            for (let id in data) {
-                let result = (<any>Object).assign({ id: id }, data[id]);
-                this._cars.push(new Car(result));
+            for (const id in data) {
+                if (data.hasOwnProperty(id)) {
+                    const result = Object.assign({ id }, ...data[id]);
+                    this._cars.push(new Car(result));
+                }
             }
         }
 
@@ -74,7 +66,6 @@ export class CarService {
     }
 
     private handleErrors(error: Response) {
-        console.log(JSON.stringify(error.json()));
         return Observable.throw(error);
     }
 }

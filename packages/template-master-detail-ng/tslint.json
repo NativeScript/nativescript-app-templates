@@ -1,0 +1,4 @@
+{
+  "extends": "./app/tools/config/tslint.json",
+  "rules": {}
+}

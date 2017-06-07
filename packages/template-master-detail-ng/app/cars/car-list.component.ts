@@ -1,14 +1,14 @@
 import { Component, OnInit } from "@angular/core";
-import { RouterExtensions } from "nativescript-angular/router";
 import { ObservableArray } from "data/observable-array";
+import { RouterExtensions } from "nativescript-angular/router";
 
-import { CarService } from "./shared/car.service";
 import { Car } from "./shared/car.model";
+import { CarService } from "./shared/car.service";
 
 @Component({
     selector: "CarsList",
     moduleId: module.id,
-    templateUrl: "./car-list.component.html",
+    templateUrl: "./car-list.component.html"
 })
 export class CarListComponent implements OnInit {
     private _isLoading: boolean;
@@ -28,7 +28,7 @@ export class CarListComponent implements OnInit {
 
         this._carService.load()
             .finally(() => this._isLoading = false)
-            .subscribe((cars: Car[]) => {
+            .subscribe((cars: Array<Car>) => {
                 this._cars = new ObservableArray(cars);
                 this._isLoading = false;
             });
@@ -43,7 +43,7 @@ export class CarListComponent implements OnInit {
     }
 
     onCarItemTap(args): void {
-        let tappedCarItem = args.object.bindingContext;
+        const tappedCarItem = args.object.bindingContext;
 
         this._routerExtensions.navigate(["/car-detail", tappedCarItem.id]);
     }

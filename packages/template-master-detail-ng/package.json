@@ -41,6 +41,7 @@
     "babel-traverse": "6.4.5",
     "babel-types": "6.4.5",
     "babylon": "6.4.5",
+    "codelyzer": "^3.0.1",
     "copy-webpack-plugin": "~4.0.1",
     "extract-text-webpack-plugin": "~2.1.0",
     "lazy": "1.0.11",
@@ -49,11 +50,13 @@
     "nativescript-dev-webpack": "^0.5.0",
     "raw-loader": "~0.5.1",
     "resolve-url-loader": "~2.0.2",
+    "tslint": "^5.4.3",
     "typescript": "~2.2.1",
     "webpack": "~2.5.1",
     "webpack-sources": "~0.2.3"
   },
   "scripts": {
+    "lint": "tslint ./app/**/*.ts",
     "ns-bundle": "ns-bundle",
     "start-android-bundle": "npm run ns-bundle --android --start-app",
     "start-ios-bundle": "npm run ns-bundle --ios --start-app",

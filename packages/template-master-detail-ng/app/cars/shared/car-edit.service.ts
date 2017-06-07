@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 
-import { CarService } from "../shared/car.service";
 import { Car } from "../shared/car.model";
+import { CarService } from "../shared/car.service";
 
 const editableProperties = [
     "id",
@@ -23,7 +23,7 @@ export class CarEditService {
     constructor(private _carService: CarService) { }
 
     startEdit(id: string) {
-        let car = this._carService.getCarById(id);
+        const car = this._carService.getCarById(id);
         this._editObject = this.cloneEditableSubset(car);
     }
 

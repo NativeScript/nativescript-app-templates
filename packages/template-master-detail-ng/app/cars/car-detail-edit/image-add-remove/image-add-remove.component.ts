@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
-import * as platform from "tns-core-modules/platform";
 import * as imagePicker from "nativescript-imagepicker";
 import * as permissions from "nativescript-permissions";
+import * as platform from "tns-core-modules/platform";
 
 const faPlusIcon = "\uf067";
-const faThrashIcon = "\uf014"
+const faThrashIcon = "\uf014";
 
 @Component({
     selector: "ImageAddRemove",
@@ -32,25 +32,19 @@ export class ImageAddRemoveComponent {
 
         this._addRemoveText = faThrashIcon;
 
-        let context = imagePicker.create({
+        const context = imagePicker.create({
             mode: "single"
         });
 
-        let self = this;
         let queue = Promise.resolve();
 
         // lower SDK versions will grant permission from AndroidManifest file
         if (platform.device.os === "Android" && Number(platform.device.sdkVersion) >= 23) {
-            queue = queue.then(function () {
-                return permissions.requestPermission("android.permission.READ_EXTERNAL_STORAGE");
-            });
+            queue = queue.then(() => permissions.requestPermission("android.permission.READ_EXTERNAL_STORAGE"));
         }
 
-        queue.then(function () {
-            self.startSelection(context);
-        }).catch(function (errorMessage: any) {
-            console.log(errorMessage);
-        });
+        queue.then(() => this.startSelection(context))
+            .catch((errorMessage: any) => console.log(errorMessage));
     }
 
     startSelection(context): void {
@@ -61,19 +55,17 @@ export class ImageAddRemoveComponent {
                 if (selection && selection.length) {
                     this.handleImageChange(selection[0].fileUri);
                 }
-            }).catch(function (errorMessage: any) {
-                console.log(errorMessage);
-            });
+            }).catch((errorMessage: any) => console.log(errorMessage));
     }
 
     handleImageChange(newValue): void {
-        let oldValue = this.imageUrl;
+        const oldValue = this.imageUrl;
         if (oldValue === newValue) {
             return;
         }
 
         this.imageUrl = newValue;
-        this.selectionChanged.emit({ oldValue: oldValue, newValue: newValue });
+        this.selectionChanged.emit({ oldValue, newValue });
     }
 
     get addRemoveText(): string {

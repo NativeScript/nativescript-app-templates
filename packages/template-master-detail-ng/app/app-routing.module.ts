@@ -1,11 +1,11 @@
 import { NgModule } from "@angular/core";
-import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { Routes } from "@angular/router";
+import { NativeScriptRouterModule } from "nativescript-angular/router";
 
-import { CarListComponent } from "./cars/car-list.component";
-import { CarDetailComponent } from "./cars/car-detail/car-detail.component";
 import { CarDetailEditComponent } from "./cars/car-detail-edit/car-detail-edit.component";
-import { ListSelectorPickerComponent} from "./cars/car-detail-edit/list-selector/list-selector-picker.component";
+import { ListSelectorPickerComponent } from "./cars/car-detail-edit/list-selector/list-selector-picker.component";
+import { CarDetailComponent } from "./cars/car-detail/car-detail.component";
+import { CarListComponent } from "./cars/car-list.component";
 
 const routes: Routes = [
     { path: "", redirectTo: "/cars", pathMatch: "full" },

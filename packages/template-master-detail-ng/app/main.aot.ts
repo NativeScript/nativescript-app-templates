@@ -5,5 +5,5 @@ import { AppModuleNgFactory } from "./app.module.ngfactory";
 
 // Firebase initialization
 import "./shared/firebase.common";
-    
+
 platformNativeScript().bootstrapModuleFactory(AppModuleNgFactory);

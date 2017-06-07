@@ -1,18 +1,18 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 import { alert } from "ui/dialogs";
 
-import { CarService } from "../shared/car.service";
 import { CarEditService } from "../shared/car-edit.service";
 import { Car } from "../shared/car.model";
+import { CarService } from "../shared/car.service";
 import { carClassList, carDoorList, carSeatList, carTransmissionList } from "./constants";
 
 @Component({
-    selector: "CarDetailEdit",
     moduleId: module.id,
-    templateUrl: "./car-detail-edit.component.html",
+    selector: "CarDetailEdit",
+    templateUrl: "./car-detail-edit.component.html"
 })
-export class CarDetailEditComponent implements OnInit {
+export class CarDetailEditComponent implements OnInit, AfterViewInit {
     private _car: Car;
     private _carClasses: Array<string>;
     private _carDoors: Array<number>;
@@ -30,23 +30,23 @@ export class CarDetailEditComponent implements OnInit {
         private _routerExtensions: RouterExtensions
     ) {
         this._carClasses = [];
-        for (let i = 0; i < carClassList.length; i++) {
-            this._carClasses.push(carClassList[i]);
+        for (const classItem of carClassList) {
+            this._carClasses.push(classItem);
         }
 
         this._carDoors = [];
-        for (let i = 0; i < carDoorList.length; i++) {
-            this._carDoors.push(carDoorList[i]);
+        for (const doorItem of carDoorList) {
+            this._carDoors.push(doorItem);
         }
 
         this._carSeats = [];
-        for (let i = 0; i < carSeatList.length; i++) {
-            this._carSeats.push(carSeatList[i]);
+        for (const seatItem of carSeatList) {
+            this._carSeats.push(seatItem);
         }
 
         this._carTransmissions = [];
-        for (let i = 0; i < carTransmissionList.length; i++) {
-            this._carTransmissions.push(carTransmissionList[i]);
+        for (const transmissionItem of carTransmissionList) {
+            this._carTransmissions.push(transmissionItem);
         }
 
         this._isUploading = false;
@@ -104,7 +104,6 @@ export class CarDetailEditComponent implements OnInit {
     }
 
     onDoneItemTap(): void {
-        let self = this;
         let queue = Promise.resolve();
 
         // TODO: car image should be required field
@@ -113,25 +112,19 @@ export class CarDetailEditComponent implements OnInit {
             this._isUploading = true;
 
             queue = queue
-                .then(function () {
-                    return self._carService.uploadImage(self._car.imageStoragePath, self._carImageUriToUpload);
-                })
-                .then(function (uploadedFile: any) {
-                    self._isUploading = false;
-                    self._car.imageUrl = uploadedFile.url;
+                .then(() => this._carService.uploadImage(this._car.imageStoragePath, this._carImageUriToUpload))
+                .then((uploadedFile: any) => {
+                    this._isUploading = false;
+                    this._car.imageUrl = uploadedFile.url;
                 });
         }
 
-        queue.then(function () {
-            return self._carService.update(self._car);
-        }).then(function () {
-            self._routerExtensions.navigate(["/cars"], { clearHistory: true });
-        }).catch(function (errorMessage: any) {
-            self._isUploading = false;
-
-            console.log(errorMessage);
-            alert({ title: "Oops!", message: "Something went wrong. Please try again.", okButtonText: "Ok" })
-        });
+        queue.then(() => this._carService.update(this._car))
+            .then(() => this._routerExtensions.navigate(["/cars"], { clearHistory: true }))
+            .catch((errorMessage: any) => {
+                this._isUploading = false;
+                alert({ title: "Oops!", message: "Something went wrong. Please try again.", okButtonText: "Ok" });
+            });
     }
 
     onImageAddRemove(args): void {
