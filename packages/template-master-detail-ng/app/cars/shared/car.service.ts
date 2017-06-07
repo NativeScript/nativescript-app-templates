@@ -39,16 +39,7 @@ export class CarService {
     }
 
     update(editObject: any) {
-        var self = this;
-
         return firebase.update("/cars/" + editObject.id, editObject)
-            .then(function () {
-                // HACK: update local instance explicitly as value event is raised too late 
-                // for first navigation to detail view to take the server change into account 
-                // TODO: better alternatives?
-                let car = self.getCarById(editObject.id);
-                (<any>Object).assign(car, editObject);
-            })
             .catch(function (errorMessage: any) {
                 console.log(errorMessage);
                 throw errorMessage;

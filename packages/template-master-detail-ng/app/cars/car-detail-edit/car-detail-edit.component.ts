@@ -125,7 +125,7 @@ export class CarDetailEditComponent implements OnInit {
         queue.then(function () {
             return self._carService.update(self._car);
         }).then(function () {
-            self._routerExtensions.navigate(["/car-detail", self._car.id], { clearHistory: true });
+            self._routerExtensions.navigate(["/cars"], { clearHistory: true });
         }).catch(function (errorMessage: any) {
             self._isUploading = false;
 
