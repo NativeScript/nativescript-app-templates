@@ -9,3 +9,5 @@ node_modules/
 platforms/
 tmp/
 typings/
+.idea
+.vscode
