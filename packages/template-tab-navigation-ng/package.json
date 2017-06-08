@@ -5,7 +5,7 @@
   "main": "main.js",
   "name": "tns-template-tab-navigation-ng",
   "displayName": "Tab navigation",
-  "version": "3.0.0",
+  "version": "1.0.0",
   "description": "Simple template with Tab navigation for NativeScript apps using Angular",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
