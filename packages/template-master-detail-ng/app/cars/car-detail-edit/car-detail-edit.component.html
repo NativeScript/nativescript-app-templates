@@ -1,8 +1,8 @@
 <ActionBar title="Edit Car Details" icon="">
     <!--HACK - we should remove the navigation button-->
     <NavigationButton visibility="collapsed"></NavigationButton>
-    <ActionItem text="Cancel" position="left" (tap)="onCancelButtonTap()"></ActionItem>
-    <ActionItem text="Done" position="right" (tap)="onDoneButtonTap()"></ActionItem>
+    <ActionItem text="Cancel" ios.position="left" android.position="left" (tap)="onCancelButtonTap()"></ActionItem>
+    <ActionItem text="Done" ios.position="right" android.position="right" (tap)="onDoneButtonTap()"></ActionItem>
 </ActionBar>
 
 <GridLayout>
@@ -46,8 +46,11 @@
                     </FormattedString>
                 </Label>
             </GridLayout>
-            <Slider [minValue]="carLuggageMinValue" [maxValue]="carLuggageMaxValue" [(ngModel)]="car.luggage">
-            </Slider>
+            <!-- HACK: Currently setting (or binding) minValue / maxValue properties resets the slider value-->
+            <!-- On the other hand [even collapsed] the "Android" hack triggers segmentation fault on iOS hence the ngIf -->
+            <Slider *ngIf="!isAndroid" minValue="0" maxValue="5" [(ngModel)]="car.luggage"></Slider>
+            <Slider *ngIf="isAndroid" [minValue]="carLuggageMinValue" [maxValue]="carLuggageMaxValue" [(ngModel)]="car.luggage"></Slider>
+
         </StackLayout>
     </ScrollView>
 

@@ -51,15 +51,18 @@ export class ImageAddRemoveComponent {
         context
             .authorize()
             .then(() => context.present())
-            .then((selection) => {
-                if (selection && selection.length) {
-                    this.handleImageChange(selection[0].fileUri);
-                }
-            }).catch((errorMessage: any) => console.log(errorMessage));
+            .then((selection) => selection.forEach((selectedImage) => this.handleImageChange(selectedImage.fileUri)))
+            .catch((errorMessage: any) => console.log(errorMessage));
     }
 
     handleImageChange(newValue): void {
         const oldValue = this.imageUrl;
+
+        if (newValue) {
+            // iOS simulator fileUri looks like file:///Users/...
+            newValue = newValue.replace("file://", "");
+        }
+
         if (oldValue === newValue) {
             return;
         }

@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
+import { isAndroid } from "tns-core-modules/platform";
 import { alert } from "ui/dialogs";
 
 import { CarEditService } from "../shared/car-edit.service";
@@ -63,6 +64,10 @@ export class CarDetailEditComponent implements OnInit, AfterViewInit {
         this._carLuggageMaxValue = 5;
     }
 
+    get isAndroid(): boolean {
+        return isAndroid;
+    }
+
     get isUploading(): boolean {
         return this._isUploading;
     }
@@ -100,7 +105,7 @@ export class CarDetailEditComponent implements OnInit, AfterViewInit {
     }
 
     onCancelButtonTap(): void {
-        this._routerExtensions.navigate(["/car-detail", this._car.id], { clearHistory: true });
+        this._routerExtensions.backToPreviousPage();
     }
 
     onDoneButtonTap(): void {
