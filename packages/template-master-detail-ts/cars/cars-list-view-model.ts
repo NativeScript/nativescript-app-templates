@@ -30,7 +30,7 @@ export class CarsListViewModel extends Observable {
         }
     }
 
-    load() {
+    load(): void {
         this.isLoading = true;
 
         fetch(Config.apiUrl + "Cars")
@@ -39,7 +39,6 @@ export class CarsListViewModel extends Observable {
                 return response.json();
             }).then((data) => {
                 data.Result.forEach((carJson) => {
-                    console.log(carJson.Name);
                     this._cars.push(new Car(carJson));
                 });
 
@@ -47,15 +46,14 @@ export class CarsListViewModel extends Observable {
             });
     }
 
-    empty() {
+    empty(): void {
         while (this._cars.length) {
             this._cars.pop();
         }
     }
 
-    private handleErrors(response) {
+    private handleErrors(response): void {
         if (!response.ok) {
-            console.log(JSON.stringify(response));
             throw Error(response.statusText);
         }
         return response;
