@@ -1,11 +1,11 @@
-import { EventData } from 'data/observable';
-import { Page } from 'ui/page';
-import { SearchViewModel } from './search-view-model';
+import { EventData } from "data/observable";
+import { Page } from "ui/page";
+import { SearchViewModel } from "./search-view-model";
 
-import { RadSideDrawer } from 'nativescript-telerik-ui/sidedrawer';
+import { RadSideDrawer } from "nativescript-telerik-ui/sidedrawer";
 import view = require("ui/core/view");
 
-var page;
+let page;
 // Event handler for Page "navigatingTo" event attached in tabs-page.xml
 export function onNavigatingTo(args: EventData) {
     /*
@@ -13,11 +13,11 @@ export function onNavigatingTo(args: EventData) {
     view the API reference of the Page to see what’s available at
     https://docs.nativescript.org/api-reference/classes/_ui_page_.page.html
     */
-    page = <Page>args.object;
+    page = <Page> args.object;
     page.bindingContext = new SearchViewModel();
 }
 
 export function onDrawerButtonTap() {
-    let sideDrawer = <RadSideDrawer>view.getViewById(page, "sideDrawer");
+    const sideDrawer = <RadSideDrawer> view.getViewById(page, "sideDrawer");
     sideDrawer.showDrawer();
 }

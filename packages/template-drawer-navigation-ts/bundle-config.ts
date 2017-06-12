@@ -1,9 +1,10 @@
-if ((<any>global).TNS_WEBPACK) {
-    //registers tns-core-modules UI framework modules
+if ((global).TNS_WEBPACK) {
+    // registers tns-core-modules UI framework modules
     require("bundle-entry-points");
 
-    //register application modules
-    global.registerModule("nativescript-telerik-ui/sidedrawer", () => require('../node_modules/nativescript-telerik-ui/sidedrawer'))
+    // register application modules
+    global.registerModule("nativescript-telerik-ui/sidedrawer",
+        () => require("../node_modules/nativescript-telerik-ui/sidedrawer"));
 
     global.registerModule("shared/my-drawer/MyDrawer", () => require("./shared/my-drawer/MyDrawer"));
     global.registerModule("home/home-page", () => require("./home/home-page"));

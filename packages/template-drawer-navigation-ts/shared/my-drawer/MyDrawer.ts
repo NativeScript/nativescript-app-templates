@@ -1,9 +1,9 @@
-import { EventData } from 'data/observable';
-import { StackLayout } from 'ui/layouts/stack-layout';
+import { EventData } from "data/observable";
+import { StackLayout } from "ui/layouts/stack-layout";
 
 import frameModule = require("ui/frame");
 
-let model = {
+const model = {
     navigationItems: [
         {
             title: "Home",
@@ -35,12 +35,12 @@ export function onLoaded(args: EventData) {
     view the API reference of the Page to see what’s available at
     https://docs.nativescript.org/api-reference/classes/_ui_page_.page.html
     */
-    let page = <StackLayout>args.object;
+    const page = <StackLayout> args.object;
     page.bindingContext = model;
 }
 
 export function onNavigationItemTap(args) {
-    let route = args.view.bindingContext.route;
+    const route = args.view.bindingContext.route;
     frameModule.topmost().navigate({
         moduleName: route,
         transition: {
