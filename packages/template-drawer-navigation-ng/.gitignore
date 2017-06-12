@@ -2,7 +2,7 @@ npm-debug.log
 .DS_Store
 
 *.js.map
-app/**/*.js
+**/*.js
 hooks/
 lib/
 node_modules/
@@ -11,3 +11,4 @@ tmp/
 typings/
 .idea
 .vscode
+.cloud
