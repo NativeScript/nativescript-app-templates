@@ -37,7 +37,7 @@ export class ListSelectorComponent {
             const selectedIndex = this.items.indexOf(this.selectedValue);
             const items = JSON.stringify(this.items);
 
-            this._routerExtensions.navigate(["/list-selector-picker", this.tag, items, selectedIndex]);
+            this._routerExtensions.navigate(["/cars/list-selector-picker", this.tag, items, selectedIndex]);
         }
     }
 }

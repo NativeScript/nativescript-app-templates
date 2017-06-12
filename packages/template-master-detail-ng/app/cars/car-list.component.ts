@@ -45,6 +45,6 @@ export class CarListComponent implements OnInit {
     onCarItemTap(args): void {
         const tappedCarItem = args.object.bindingContext;
 
-        this._routerExtensions.navigate(["/car-detail", tappedCarItem.id]);
+        this._routerExtensions.navigate(["/cars/detail", tappedCarItem.id]);
     }
 }

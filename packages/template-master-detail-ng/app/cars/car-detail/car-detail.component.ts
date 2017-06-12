@@ -44,6 +44,6 @@ export class CarDetailComponent implements OnInit {
 
     onEditButtonTap(): void {
         this._carEditService.startEdit(this._car.id);
-        this._routerExtensions.navigate(["/car-detail-edit"]);
+        this._routerExtensions.navigate(["/cars/detail-edit"]);
     }
 }

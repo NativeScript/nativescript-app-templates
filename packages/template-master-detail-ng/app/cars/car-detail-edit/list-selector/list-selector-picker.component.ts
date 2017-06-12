@@ -47,7 +47,7 @@ export class ListSelectorPickerComponent {
 
         this._carEditService.editObject[this._tag] = newSelectedItem.value;
 
-        this._routerExtensions.navigate(["/car-detail-edit"], { clearHistory: true });
+        this._routerExtensions.navigate(["/cars/detail-edit"], { clearHistory: true });
     }
 
     get items(): Array<any> {
