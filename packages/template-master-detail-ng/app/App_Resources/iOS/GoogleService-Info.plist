@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>33002893899-e2nk7cv6q70adm1okflla8c7iok2698r.apps.googleusercontent.com</string>
+	<string>33002893899-tc7ct9av9cviej1onanmmq6pm5966j7u.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.33002893899-e2nk7cv6q70adm1okflla8c7iok2698r</string>
+	<string>com.googleusercontent.apps.33002893899-tc7ct9av9cviej1onanmmq6pm5966j7u</string>
 	<key>API_KEY</key>
 	<string>AIzaSyCJ0KcyECoJpMIcdmJ-rMybLWcV7Ce1FNU</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>org.nativescript.ng.masterdetail</string>
+	<string>org.nativescript.masterdetail</string>
 	<key>PROJECT_ID</key>
 	<string>car-rental-b26b7</string>
 	<key>STORAGE_BUCKET</key>
@@ -33,7 +33,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:33002893899:ios:b77805f862f34971</string>
+	<string>1:33002893899:ios:1aa8448c56b58a16</string>
 	<key>DATABASE_URL</key>
 	<string>https://car-rental-b26b7.firebaseio.com</string>
 </dict>
