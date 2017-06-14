@@ -37,8 +37,5 @@
     "nativescript-dev-typescript": "~0.4.0",
     "tslint": "^5.4.3",
     "typescript": "~2.2.1"
-  },
-  "scripts": {
-    "lint": "tslint ./app/**/*.ts"
   }
 }
