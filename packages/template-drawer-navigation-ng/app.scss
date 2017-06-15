@@ -4,8 +4,8 @@
 @import '~nativescript-theme-core/scss/light';
 
 // Start custom common variables
-@import 'app-variables';
-@import 'app-classes';
+@import 'sass/app-variables';
+@import 'sass/app-classes';
 // End custom common variables
 
 // Customize any of the theme’s variables here, for instance $btn-color: red;

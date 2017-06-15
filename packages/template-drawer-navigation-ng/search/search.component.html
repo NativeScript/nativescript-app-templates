@@ -1,5 +1,7 @@
 <ActionBar class="action-bar">
-    <ActionItem (tap)="openDrawer()"
+    <!--HACK - we should remove the navigation button-->
+    <NavigationButton visibility="collapsed"></NavigationButton>
+    <ActionItem (tap)="onDrawerButtonTap()"
         ios.position="left"
         android.position="actionBar">
         <Label text="&#xf0c9;" class="fa p-r-15"></Label>
@@ -12,7 +14,6 @@
         <MyDrawer [selectedPage]="'Search'"></MyDrawer>
     </StackLayout>
     
-    <StackLayout tkMainContent>
-        <Label text="Search Page"></Label>
+    <StackLayout class="page appPage searchPage" tkMainContent>
     </StackLayout>
 </RadSideDrawer>

@@ -1,4 +1,6 @@
 <ActionBar class="action-bar">
+    <!--HACK - we should remove the navigation button-->
+    <NavigationButton visibility="collapsed"></NavigationButton>
     <ActionItem (tap)="onDrawerButtonTap()"
         ios.position="left"
         android.position="actionBar">
@@ -12,7 +14,6 @@
         <MyDrawer [selectedPage]="'Home'"></MyDrawer>
     </StackLayout>
     
-    <StackLayout tkMainContent>
-        <Label text="Home Page"></Label>
+    <StackLayout class="page appPage homePage" tkMainContent>
     </StackLayout>
 </RadSideDrawer>

@@ -7,10 +7,18 @@
 // End custom common variables
 
 // Drawer navigation custom styles
+$sidedrawer-header-image-size: 60;
+$sidedrawer-header-image-offset-top: 10;
+$sidedrawer-header-image-offset-bottom: 5;
 .sidedrawer {
     &.sidedrawer-left {
         .sidedrawer-header-image {
-            margin-bottom: 15;
+            height: $sidedrawer-header-image-size;
+            width: $sidedrawer-header-image-size;
+            font-size: $sidedrawer-header-image-size;
+            padding: 0;
+            margin-bottom: $sidedrawer-header-image-offset-top;
+            margin-top: $sidedrawer-header-image-offset-top;
         }
 
         .footnote {
