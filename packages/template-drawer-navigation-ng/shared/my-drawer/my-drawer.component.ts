@@ -1,12 +1,12 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 import { ItemEventData } from "ui/list-view";
 
 @Component({
     selector: "MyDrawer",
     moduleId: module.id,
-    templateUrl: "./drawer.component.html",
-    styleUrls: ["./drawer.component.css"]
+    templateUrl: "./my-drawer.component.html",
+    styleUrls: ["./my-drawer.component.css"]
 })
 export class DrawerComponent implements OnInit {
     @Input() selectedPage: string;
@@ -36,17 +36,18 @@ export class DrawerComponent implements OnInit {
             route: "/settings",
             icon: "\uf013"
         }
-    ]
+    ];
 
     constructor(private routerExtensions: RouterExtensions) {
 
     }
 
     ngOnInit(): void {
+
     }
 
-    onNavigationItemTap(args: ItemEventData) {
-        let route = args.view.bindingContext.route;
+    onNavigationItemTap(args: ItemEventData): void {
+        const route = args.view.bindingContext.route;
         this.routerExtensions.navigate([route], {
             transition: {
                 name: "slide"
@@ -54,7 +55,7 @@ export class DrawerComponent implements OnInit {
         });
     }
 
-    isPageSelected(pageTitle :string): boolean {
+    isPageSelected(pageTitle: string): boolean {
         return pageTitle === this.selectedPage;
     }
 }

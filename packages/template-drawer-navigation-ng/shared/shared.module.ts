@@ -2,7 +2,7 @@ import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptUISideDrawerModule } from "nativescript-telerik-ui/sidedrawer/angular";
 
-import { DrawerComponent } from "./drawer.component";
+import { DrawerComponent } from "./my-drawer/my-drawer.component";
 
 @NgModule({
     imports: [
@@ -18,6 +18,6 @@ import { DrawerComponent } from "./drawer.component";
     ],
     schemas: [
         NO_ERRORS_SCHEMA
-    ],
+    ]
 })
 export class SharedModule { }

@@ -1,9 +1,9 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 
-import { FeaturedComponent } from "./featured.component";
-import { FeaturedRoutingModule } from "./featured-routing.module";
 import { SharedModule } from "../shared/shared.module";
+import { FeaturedRoutingModule } from "./featured-routing.module";
+import { FeaturedComponent } from "./featured.component";
 
 @NgModule({
     imports: [
