@@ -40,21 +40,21 @@ $sidedrawer-header-image-offset-bottom: 5;
 
         ListView {
             height: 100%;
-
-            .selected {
-                background-color: $item-active-background;
-                color: $item-active-color;
-            }
-
-            .mdi {
-                color: $item-active-icon-color;
-            }
         }
     }
 
     .sidedrawer-list-item {
         Label {
             vertical-align: center;
+            color: $blue-dark;
+        }
+
+        &.selected {
+            background-color: $item-active-background;
+
+            Label {
+                color: $item-active-color;
+            }
         }
     }
 }
