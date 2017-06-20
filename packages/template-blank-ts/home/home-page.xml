@@ -1,0 +1,10 @@
+<Page
+    navigatingTo="onNavigatingTo"  
+    xmlns="http://www.nativescript.org/tns.xsd">
+    
+    <ActionBar title="Home">
+    </ActionBar>
+
+    <GridLayout>
+    </GridLayout>
+</Page>
