@@ -2,7 +2,7 @@ import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptUISideDrawerModule } from "nativescript-telerik-ui/sidedrawer/angular";
 
-import { DrawerComponent } from "./my-drawer/my-drawer.component";
+import { MyDrawerComponent } from "./my-drawer/my-drawer.component";
 
 @NgModule({
     imports: [
@@ -10,10 +10,10 @@ import { DrawerComponent } from "./my-drawer/my-drawer.component";
         NativeScriptUISideDrawerModule
     ],
     declarations: [
-        DrawerComponent
+        MyDrawerComponent
     ],
     exports: [
-        DrawerComponent,
+        MyDrawerComponent,
         NativeScriptUISideDrawerModule
     ],
     schemas: [

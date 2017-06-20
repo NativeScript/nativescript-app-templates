@@ -9,11 +9,24 @@
     <Label class="action-bar-title" text="Browse"></Label>
 </ActionBar>
 
+<!--
+RadSideDrawer is a UI component part of the Progress NativeScript UI set of components.
+Learn more about the RadSideDrawer UI component and how it can be customized in this documentation article:
+http://docs.telerik.com/devtools/nativescript-ui/Controls/Angular/SideDrawer/getting-started
+The RadSideDrawer component is designed to be used as a root element and
+it shouldn't have any other siblings other than the <ActionBar> component.
+-->
 <RadSideDrawer #drawer showOverNavigation="true" [drawerTransition]="sideDrawerTransition">
+    <!--
+    Use the tkDrawerContent directive to display the content of the app drawer on this page.
+    -->
     <StackLayout tkDrawerContent>
         <MyDrawer [selectedPage]="'Browse'"></MyDrawer>
     </StackLayout>
     
+    <!--
+    Use the tkMainContent directive to display the content of the page when you have an app drawer.
+    -->
     <StackLayout class="page appPage browsePage" tkMainContent>
     </StackLayout>
 </RadSideDrawer>
