@@ -46,7 +46,7 @@
                     </FormattedString>
                 </Label>
             </GridLayout>
-            <!-- HACK: Currently setting (or binding) minValue / maxValue properties resets the slider value-->
+            <!-- Currently setting (or binding) minValue / maxValue properties resets the slider value -->
             <!-- On the other hand [even collapsed] the "Android" hack triggers segmentation fault on iOS hence the ngIf -->
             <Slider *ngIf="!isAndroid" minValue="0" maxValue="5" [(ngModel)]="car.luggage"></Slider>
             <Slider *ngIf="isAndroid" [minValue]="carLuggageMinValue" [maxValue]="carLuggageMaxValue" [(ngModel)]="car.luggage"></Slider>

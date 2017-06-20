@@ -1,14 +1,14 @@
-import { Component, Input } from "@angular/core";
-import { RouterExtensions } from "nativescript-angular/router";
-import { isAndroid } from "tns-core-modules/platform";
-import { action } from "ui/dialogs";
+import { Component, Input, ViewContainerRef } from "@angular/core";
+import { ModalDialogOptions, ModalDialogService } from "nativescript-angular/modal-dialog";
 
 import { CarEditService } from "../../shared/car-edit.service";
+import { ListSelectorModalViewComponent } from "./list-selector-modal-view.component";
 
 const capitalizeFirstLetter = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
 @Component({
     moduleId: module.id,
+    providers: [ModalDialogService],
     selector: "ListSelector",
     templateUrl: "./list-selector.component.html"
 })
@@ -18,26 +18,28 @@ export class ListSelectorComponent {
     @Input() tag: string;
 
     constructor(
-        private _routerExtensions: RouterExtensions,
+        private _modalService: ModalDialogService,
+        private _vcRef: ViewContainerRef,
         private _carEditService: CarEditService) { }
 
     onSelectorTap(): void {
-        if (isAndroid) {
-            const options = {
-                title: capitalizeFirstLetter(this.tag),
-                message: "Choose your " + this.tag,
-                cancelButtonText: "Cancel",
-                actions: this.items.map((item) => item.toString())
-            };
+        const title = `Select Car ${capitalizeFirstLetter(this.tag)}`;
+        const selectedIndex = this.items.indexOf(this.selectedValue);
+        const options: ModalDialogOptions = {
+            viewContainerRef: this._vcRef,
+            context: {
+                items: this.items,
+                title,
+                selectedIndex
+            },
+            fullscreen: false
+        };
 
-            action(options).then((selectedValue) => {
-                this._carEditService.editObject[this.tag] = selectedValue;
+        this._modalService.showModal(ListSelectorModalViewComponent, options)
+            .then((selectedValue: string) => {
+                if (selectedValue) {
+                    this._carEditService.editObject[this.tag] = selectedValue;
+                }
             });
-        } else {
-            const selectedIndex = this.items.indexOf(this.selectedValue);
-            const items = JSON.stringify(this.items);
-
-            this._routerExtensions.navigate(["/cars/list-selector-picker", this.tag, items, selectedIndex]);
-        }
     }
 }

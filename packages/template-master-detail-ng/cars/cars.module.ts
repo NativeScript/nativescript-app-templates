@@ -5,7 +5,7 @@ import { NativeScriptUIListViewModule } from "nativescript-telerik-ui/listview/a
 
 import { CarDetailEditComponent } from "./car-detail-edit/car-detail-edit.component";
 import { ImageAddRemoveComponent } from "./car-detail-edit/image-add-remove/image-add-remove.component";
-import { ListSelectorPickerComponent } from "./car-detail-edit/list-selector/list-selector-picker.component";
+import { ListSelectorModalViewComponent } from "./car-detail-edit/list-selector/list-selector-modal-view.component";
 import { ListSelectorComponent } from "./car-detail-edit/list-selector/list-selector.component";
 import { CarDetailComponent } from "./car-detail/car-detail.component";
 import { CarListComponent } from "./car-list.component";
@@ -25,8 +25,11 @@ import { CarService } from "./shared/car.service";
         CarDetailComponent,
         CarDetailEditComponent,
         ListSelectorComponent,
-        ListSelectorPickerComponent,
+        ListSelectorModalViewComponent,
         ImageAddRemoveComponent
+    ],
+    entryComponents: [
+        ListSelectorModalViewComponent
     ],
     providers: [
         CarService,
