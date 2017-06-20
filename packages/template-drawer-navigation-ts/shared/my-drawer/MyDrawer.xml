@@ -1,9 +1,11 @@
+<!--
+The MyDrawer custom component view is where you define what will be displayed in the app drawer.
+Feel free to customize layouts and components to change how your app drawer looks.
+-->
 <StackLayout loaded="onLoaded">
-    <GridLayout>
-        <ListView id="listview" items="{{ navigationItems }}" itemTap="onNavigationItemTap">
-            <ListView.itemTemplate>
-                <Label text="{{ title }}"/>
-            </ListView.itemTemplate>
-        </ListView>
-    </GridLayout>
+    <ListView id="listview" items="{{ navigationItems }}" itemTap="onNavigationItemTap">
+        <ListView.itemTemplate>
+            <Label text="{{ title }}"/>
+        </ListView.itemTemplate>
+    </ListView>
 </StackLayout>

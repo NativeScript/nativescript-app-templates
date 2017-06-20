@@ -1,48 +1,30 @@
 import { EventData } from "data/observable";
+import { topmost } from "ui/frame";
 import { StackLayout } from "ui/layouts/stack-layout";
+import { ItemEventData } from "ui/list-view";
 
-import frameModule = require("ui/frame");
+import { MyDrawerViewModel } from "./MyDrawer-view-model";
 
-const model = {
-    navigationItems: [
-        {
-            title: "Home",
-            route: "home/home-page"
-        },
-        {
-            title: "Browse",
-            route: "browse/browse-page"
-        },
-        {
-            title: "Search",
-            route: "search/search-page"
-        },
-        {
-            title: "Featured",
-            route: "featured/featured-page"
-        },
-        {
-            title: "Settings",
-            route: "settings/settings-page"
-        }
-    ]
-};
+/* ***********************************************************
+* Use the "loaded" event handler of the wrapping layout element to bind the view model to your view.
+*************************************************************/
+export function onLoaded(args: EventData): void {
+    const component = <StackLayout> args.object;
 
-// Event handler for Page "navigatingTo" event attached in tabs-page.xml
-export function onLoaded(args: EventData) {
-    /*
-    This gets a reference this page’s <StackLayout> UI component. You can
-    view the API reference of the Page to see what’s available at
-    https://docs.nativescript.org/api-reference/classes/_ui_page_.page.html
-    */
-    const page = <StackLayout> args.object;
-    page.bindingContext = model;
+    component.bindingContext = new MyDrawerViewModel();
 }
 
-export function onNavigationItemTap(args) {
-    const route = args.view.bindingContext.route;
-    frameModule.topmost().navigate({
-        moduleName: route,
+/* ***********************************************************
+* Use the "itemTap" event handler of the <ListView> component for handling list item taps.
+* The "itemTap" event handler of the app drawer <ListView> is used to navigate the app
+* based on the tapped navigationItem's route.
+*************************************************************/
+export function onNavigationItemTap(args: ItemEventData): void {
+    const navigationItemView = args.view;
+    const navigationItemRoute = navigationItemView.bindingContext.route;
+
+    topmost().navigate({
+        moduleName: navigationItemRoute,
         transition: {
             name: "slide"
         }

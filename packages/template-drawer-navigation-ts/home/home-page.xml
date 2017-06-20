@@ -3,26 +3,46 @@
     xmlns:nsDrawer="nativescript-telerik-ui/sidedrawer"
     xmlns:myDrawer="shared/my-drawer"
     xmlns="http://www.nativescript.org/tns.xsd">
-
-    <!--Add your page content here-->
+    
     <ActionBar title="Home">
         <ActionItem android.systemIcon="ic_menu_account_list" tap="onDrawerButtonTap" />
     </ActionBar>
 
+    <!--
+    RadSideDrawer is a UI component part of the Progress NativeScript UI set of components.
+    Learn more about the RadSideDrawer UI component and how it can be customized in this documentation article:
+    http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawer/getting-started
+    The RadSideDrawer component is designed to be used as a root element to the <Page> and
+    it shouldn't have any other siblings other than the <ActionBar> component.
+    -->
     <nsDrawer:RadSideDrawer id="sideDrawer" showOverNavigation="true">
-        <!--Customize your transition-->
+        <!--
+        Use the RadSideDrawer.drawerTransition component to change the open/close animation of the drawer.
+        -->
         <nsDrawer:RadSideDrawer.drawerTransition>
             <nsDrawer:SlideInOnTopTransition/>
         </nsDrawer:RadSideDrawer.drawerTransition>
 
+        <!--
+        Use the RadSideDrawer.drawerContent component to display the content of the app drawer on this page.
+        Always wrap content in a layout component.
+        -->
         <nsDrawer:RadSideDrawer.drawerContent>
-        <!--Add your drawer content here. If it's a custom component, add the xmlns to the DrawerPage tag above-->
-        <StackLayout>
-            <myDrawer:MyDrawer />
-        </StackLayout>
-        <!--End of drawer content-->
+            <StackLayout>
+                <!--
+                Use {N} custom components to reuse UI across your mobile app.
+                The MyDrawer custom component defined in "/shared/my-drawer" holds the contents of the app drawer.
+                Learn more about custom components and how they can be used in this documentation article:
+                http://docs.nativescript.org/ui/basics#custom-components
+                -->
+                <myDrawer:MyDrawer />
+            </StackLayout>
         </nsDrawer:RadSideDrawer.drawerContent>
 
+        <!--
+        Use the RadSideDrawer.mainContent component to display the content of the page when you have an app drawer.
+        Always wrap content in a layout component.
+        -->
         <nsDrawer:RadSideDrawer.mainContent>
             <StackLayout>
                 <Label text="Home Page"/>
