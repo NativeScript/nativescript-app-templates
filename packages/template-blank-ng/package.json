@@ -44,7 +44,9 @@
     "zone.js": "~0.8.2"
   },
   "devDependencies": {
+    "codelyzer": "^3.0.1",
     "nativescript-dev-typescript": "~0.4.0",
+    "tslint": "^5.4.3",
     "typescript": "~2.2.1"
   }
 }
