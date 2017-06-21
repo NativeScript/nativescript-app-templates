@@ -1,40 +1,27 @@
 var frameModule = require("ui/frame");
 
-var model = {
-    navigationItems: [
-        {
-            title: "Home",
-            route: "home/home-page"
-        },
-        {
-            title: "Browse",
-            route: "browse/browse-page"
-        },
-        {
-            title: "Search",
-            route: "search/search-page"
-        },
-        {
-            title: "Featured",
-            route: "featured/featured-page"
-        },
-        {
-            title: "Settings",
-            route: "settings/settings-page"
-        }
-    ]
-};
+var MyDrawerViewModel = require("./MyDrawer-view-model");
 
+/* ***********************************************************
+* Use the "loaded" event handler of the wrapping layout element to bind the view model to your view.
+*************************************************************/
 function onLoaded(args) {
-    var layout = args.object;
+    var component = args.object;
 
-    layout.bindingContext = model;
+    component.bindingContext = new MyDrawerViewModel();
 }
 
+/* ***********************************************************
+* Use the "itemTap" event handler of the <ListView> component for handling list item taps.
+* The "itemTap" event handler of the app drawer <ListView> is used to navigate the app
+* based on the tapped navigationItem's route.
+*************************************************************/
 function onNavigationItemTap(args) {
-    var route = args.view.bindingContext.route;
+    var navigationItemView = args.view;
+    var navigationItemRoute = navigationItemView.bindingContext.route;
+
     frameModule.topmost().navigate({
-        moduleName: route,
+        moduleName: navigationItemRoute,
         transition: {
             name: "slide"
         }
