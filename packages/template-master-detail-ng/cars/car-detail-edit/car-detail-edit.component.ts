@@ -1,9 +1,9 @@
 import { AfterViewInit, Component, OnInit } from "@angular/core";
-import { RouterExtensions } from "nativescript-angular/router";
+import { PageRoute, RouterExtensions } from "nativescript-angular/router";
+import "rxjs/add/operator/switchMap";
 import { isAndroid } from "tns-core-modules/platform";
 import { alert } from "ui/dialogs";
 
-import { CarEditService } from "../shared/car-edit.service";
 import { Car } from "../shared/car.model";
 import { CarService } from "../shared/car.service";
 import { carClassList, carDoorList, carSeatList, carTransmissionList } from "./constants";
@@ -23,11 +23,11 @@ export class CarDetailEditComponent implements OnInit, AfterViewInit {
     private _carLuggageMaxValue: number;
     private _carImageUriToUpload: string;
     private _isCarImageDirty: boolean;
-    private _isUploading: boolean;
+    private _isUpdating: boolean;
 
     constructor(
         private _carService: CarService,
-        private _carEditService: CarEditService,
+        private _pageRoute: PageRoute,
         private _routerExtensions: RouterExtensions
     ) {
         this._carClasses = [];
@@ -50,13 +50,22 @@ export class CarDetailEditComponent implements OnInit, AfterViewInit {
             this._carTransmissions.push(transmissionItem);
         }
 
-        this._isUploading = false;
+        this._isUpdating = false;
         this._isCarImageDirty = false;
         this._carImageUriToUpload = null;
     }
 
     ngOnInit(): void {
-        this._car = this._carEditService.editObject;
+        let carId = "";
+
+        // use switchMap to get the latest activatedRoute instance
+        this._pageRoute.activatedRoute
+            .switchMap((activatedRoute) => activatedRoute.params)
+            .forEach((params) => {
+                carId = params.id;
+            });
+
+        this._car = this._carService.getCarById(carId);
     }
 
     ngAfterViewInit(): void {
@@ -68,8 +77,8 @@ export class CarDetailEditComponent implements OnInit, AfterViewInit {
         return isAndroid;
     }
 
-    get isUploading(): boolean {
-        return this._isUploading;
+    get isUpdating(): boolean {
+        return this._isUpdating;
     }
 
     get car(): Car {
@@ -111,23 +120,25 @@ export class CarDetailEditComponent implements OnInit, AfterViewInit {
     onDoneButtonTap(): void {
         let queue = Promise.resolve();
 
+        this._isUpdating = true;
+
         // TODO: car image should be required field
         if (this._isCarImageDirty && this._carImageUriToUpload) {
             // no need to explicitly delete old image as upload to an existing remote path overwrites it
-            this._isUploading = true;
-
             queue = queue
                 .then(() => this._carService.uploadImage(this._car.imageStoragePath, this._carImageUriToUpload))
                 .then((uploadedFile: any) => {
-                    this._isUploading = false;
                     this._car.imageUrl = uploadedFile.url;
                 });
         }
 
         queue.then(() => this._carService.update(this._car))
-            .then(() => this._routerExtensions.navigate(["/cars"], { clearHistory: true }))
+            .then(() => {
+                this._isUpdating = false;
+                this._routerExtensions.navigate(["/cars"], { clearHistory: true });
+            })
             .catch((errorMessage: any) => {
-                this._isUploading = false;
+                this._isUpdating = false;
                 alert({ title: "Oops!", message: "Something went wrong. Please try again.", okButtonText: "Ok" });
             });
     }

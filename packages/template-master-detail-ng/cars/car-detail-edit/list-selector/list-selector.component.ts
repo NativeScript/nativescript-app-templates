@@ -1,7 +1,9 @@
-import { Component, Input, ViewContainerRef } from "@angular/core";
+import { Component, Input, OnInit, ViewContainerRef } from "@angular/core";
 import { ModalDialogOptions, ModalDialogService } from "nativescript-angular/modal-dialog";
+import { PageRoute } from "nativescript-angular/router";
 
-import { CarEditService } from "../../shared/car-edit.service";
+import { Car } from "../../shared/car.model";
+import { CarService } from "../../shared/car.service";
 import { ListSelectorModalViewComponent } from "./list-selector-modal-view.component";
 
 const capitalizeFirstLetter = (s) => s.charAt(0).toUpperCase() + s.slice(1);
@@ -12,15 +14,31 @@ const capitalizeFirstLetter = (s) => s.charAt(0).toUpperCase() + s.slice(1);
     selector: "ListSelector",
     templateUrl: "./list-selector.component.html"
 })
-export class ListSelectorComponent {
+export class ListSelectorComponent implements OnInit {
     @Input() selectedValue: string;
     @Input() items: Array<string>;
     @Input() tag: string;
 
+    private _car: Car;
+
     constructor(
+        private _pageRoute: PageRoute,
         private _modalService: ModalDialogService,
         private _vcRef: ViewContainerRef,
-        private _carEditService: CarEditService) { }
+        private _carService: CarService) { }
+
+    ngOnInit(): void {
+        let carId = "";
+
+        // use switchMap to get the latest activatedRoute instance
+        this._pageRoute.activatedRoute
+            .switchMap((activatedRoute) => activatedRoute.params)
+            .forEach((params) => {
+                carId = params.id;
+            });
+
+        this._car = this._carService.getCarById(carId);
+    }
 
     onSelectorTap(): void {
         const title = `Select Car ${capitalizeFirstLetter(this.tag)}`;
@@ -38,7 +56,7 @@ export class ListSelectorComponent {
         this._modalService.showModal(ListSelectorModalViewComponent, options)
             .then((selectedValue: string) => {
                 if (selectedValue) {
-                    this._carEditService.editObject[this.tag] = selectedValue;
+                    this._car[this.tag] = selectedValue;
                 }
             });
     }

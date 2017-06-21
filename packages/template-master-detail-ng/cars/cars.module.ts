@@ -10,7 +10,6 @@ import { ListSelectorComponent } from "./car-detail-edit/list-selector/list-sele
 import { CarDetailComponent } from "./car-detail/car-detail.component";
 import { CarListComponent } from "./car-list.component";
 import { CarsRoutingModule } from "./cars-routing.module";
-import { CarEditService } from "./shared/car-edit.service";
 import { CarService } from "./shared/car.service";
 
 @NgModule({
@@ -32,8 +31,7 @@ import { CarService } from "./shared/car.service";
         ListSelectorModalViewComponent
     ],
     providers: [
-        CarService,
-        CarEditService
+        CarService
     ],
     schemas: [
         NO_ERRORS_SCHEMA

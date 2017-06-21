@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { PageRoute, RouterExtensions } from "nativescript-angular/router";
 import "rxjs/add/operator/switchMap";
 
-import { CarEditService } from "../shared/car-edit.service";
 import { Car } from "../shared/car.model";
 import { CarService } from "../shared/car.service";
 
@@ -16,7 +15,6 @@ export class CarDetailComponent implements OnInit {
 
     constructor(
         private _carService: CarService,
-        private _carEditService: CarEditService,
         private _pageRoute: PageRoute,
         private _routerExtensions: RouterExtensions
     ) { }
@@ -43,7 +41,6 @@ export class CarDetailComponent implements OnInit {
     }
 
     onEditButtonTap(): void {
-        this._carEditService.startEdit(this._car.id);
-        this._routerExtensions.navigate(["/cars/detail-edit"]);
+        this._routerExtensions.navigate(["/cars/detail-edit", this._car.id]);
     }
 }

@@ -9,7 +9,7 @@ import { CarListComponent } from "./car-list.component";
 const routes: Routes = [
     { path: "", component: CarListComponent },
     { path: "detail/:id", component: CarDetailComponent },
-    { path: "detail-edit", component: CarDetailEditComponent }
+    { path: "detail-edit/:id", component: CarDetailEditComponent }
 ];
 
 @NgModule({
