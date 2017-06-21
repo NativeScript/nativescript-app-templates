@@ -6,6 +6,7 @@ import { RadSideDrawerComponent } from "nativescript-telerik-ui/sidedrawer/angul
     selector: "Browse",
     moduleId: module.id,
     templateUrl: "./browse.component.html",
+    styleUrls: ["./browse.component.css"]
 })
 export class BrowseComponent implements OnInit {
     /* ***********************************************************

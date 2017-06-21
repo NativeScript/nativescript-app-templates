@@ -6,6 +6,7 @@ import { RadSideDrawerComponent } from "nativescript-telerik-ui/sidedrawer/angul
     selector: "Featured",
     moduleId: module.id,
     templateUrl: "./featured.component.html",
+    styleUrls: ["./featured.component.css"]
 })
 export class FeaturedComponent implements OnInit {
     /* ***********************************************************

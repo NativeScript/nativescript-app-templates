@@ -3,31 +3,10 @@
 // for example '~nativescript-theme-core/scss/dark'.
 @import '~nativescript-theme-core/scss/light';
 
-// Start custom common variables
-@import 'sass/app-variables';
-@import 'sass/app-classes';
-// End custom common variables
+// Custom common variables
+@import 'app-variables';
 
 @import '~nativescript-theme-core/scss/platforms/index.ios';
 
 // Place any CSS rules you want to apply only on iOS here
 
-.homePage {
-    background-image: url("res://pageIcons/home");
-}
-
-.searchPage {
-    background-image: url("res://pageIcons/search");
-}
-
-.settingsPage {
-    background-image: url("res://pageIcons/settings");
-}
-
-.browsePage {
-    background-image: url("res://pageIcons/browse");
-}
-
-.featuredPage {
-    background-image: url("res://pageIcons/favorites");
-}
