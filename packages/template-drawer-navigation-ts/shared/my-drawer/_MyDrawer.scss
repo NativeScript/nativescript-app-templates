@@ -1,0 +1,59 @@
+// Import the theme’s variables. If you’re using a color scheme
+// other than “light”, switch the path to the alternative scheme,
+// for example '~nativescript-theme-core/scss/dark'.
+@import '~nativescript-theme-core/scss/light';
+// Custom common variables
+@import '../../app-variables';
+
+// Drawer navigation custom styles
+$sidedrawer-header-image-size: 60;
+$sidedrawer-header-image-offset-top: 10;
+$sidedrawer-header-image-offset-bottom: 5;
+.sidedrawer {
+    &.sidedrawer-left {
+        .sidedrawer-header-image {
+            height: $sidedrawer-header-image-size;
+            width: $sidedrawer-header-image-size;
+            font-size: $sidedrawer-header-image-size;
+            padding: 0;
+            margin-bottom: $sidedrawer-header-image-offset-top;
+            margin-top: $sidedrawer-header-image-offset-top;
+        }
+
+        .footnote {
+            color: rgba($ab-color, 0.5);
+        }
+    }
+
+    .sidedrawer-header {
+        background-color: $ab-background;
+
+        .sidedrawer-header-brand {
+            color: $ab-color;
+        }
+    }
+
+    .sidedrawer-content {
+        background-color: $side-drawer-background;
+        height: 100%;
+
+        ListView {
+            height: 100%;
+        }
+    }
+
+    .sidedrawer-list-item {
+        Label {
+            vertical-align: center;
+            color: $blue-dark;
+        }
+
+        &.selected {
+            background-color: $item-active-background;
+
+            Label {
+                color: $item-active-color;
+            }
+        }
+    }
+}
