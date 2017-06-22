@@ -30,10 +30,11 @@
     height: 100%;
 }
 
-/* Action bar overrides*/
+/* Action bar*/
 ActionBar .fa {
-    vertical-align: center;
     height: 100%;
+    padding: 40px;
+    vertical-align: center;
 }
 
 ActionBar .action-bar-title {
