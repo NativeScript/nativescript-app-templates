@@ -5,6 +5,7 @@
   "main": "app.js",
   "name": "tns-template-master-detail-ts",
   "displayName": "Master-Detail",
+  "templateType": "App template",
   "version": "1.0.0",
   "description": "Simple Master-Detail template for Vanilla NativeScript apps using TypeScript",
   "author": "Telerik <support@telerik.com>",
@@ -21,7 +22,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/NativeScript/template-master-detail-ts"
+    "url": "https://github.com/NativeScript/template-master-detail-ts.git"
   },
   "homepage": "https://github.com/NativeScript/template-master-detail-ts",
   "android": {
