@@ -5,6 +5,7 @@
   "main": "app.js",
   "name": "tns-template-drawer-navigation",
   "displayName": "Drawer Navigation",
+  "templateType": "App template",
   "version": "1.0.0",
   "description": "Simple template with Drawer navigation for Vanilla NativeScript apps using JavaScript",
   "author": "Telerik <support@telerik.com>",
@@ -22,7 +23,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/NativeScript/template-drawer-navigation"
+    "url": "https://github.com/NativeScript/template-drawer-navigation.git"
   },
   "homepage": "https://github.com/NativeScript/template-drawer-navigation",
   "android": {
