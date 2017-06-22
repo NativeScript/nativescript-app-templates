@@ -2,12 +2,17 @@
   "private": true,
   "name": "nativescript-ng-ui-kit-master-detail",
   "displayName": "Master-Detail",
+  "templateType": "App template",
   "main": "main.js",
   "version": "1.0.0",
   "description": "Simple Master-Detail template for NativeScript apps with Firebase data and support for editing using Angular",
   "license": "SEE LICENSE IN <your-license-filename>",
   "readme": "NativeScript Application",
-  "repository": "<fill-your-repository-here>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NativeScript/template-master-detail-ng.git"
+  },
+  "homepage": "https://github.com/NativeScript/template-master-detail-ng",
   "android": {
     "v8Flags": "--expose_gc"
   },
