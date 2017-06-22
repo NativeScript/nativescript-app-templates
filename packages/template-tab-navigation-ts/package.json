@@ -5,6 +5,7 @@
   "main": "app.js",
   "name": "tns-template-tab-navigation-ts",
   "displayName": "Tab navigation",
+  "templateType": "App template",
   "version": "1.0.0",
   "description": "Simple template with Tab navigation for Vanilla NativeScript apps using TypeScript",
   "author": "Telerik <support@telerik.com>",
@@ -22,7 +23,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/NativeScript/template-tab-navigation-ts"
+    "url": "https://github.com/NativeScript/template-tab-navigation-ts.git"
   },
   "homepage": "https://github.com/NativeScript/template-tab-navigation-ts",
   "android": {
