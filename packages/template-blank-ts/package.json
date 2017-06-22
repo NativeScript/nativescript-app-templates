@@ -5,6 +5,7 @@
   "main": "app.js",
   "name": "tns-template-blank-ts",
   "displayName": "Tab navigation",
+  "templateType": "App template",
   "version": "1.0.0",
   "description": "Blank template for Vanilla NativeScript apps using TypeScript",
   "author": "Telerik <support@telerik.com>",
@@ -20,7 +21,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/NativeScript/template-blank-ts"
+    "url": "https://github.com/NativeScript/template-blank-ts.git"
   },
   "homepage": "https://github.com/NativeScript/template-blank-ts",
   "android": {
