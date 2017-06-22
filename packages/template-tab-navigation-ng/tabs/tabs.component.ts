@@ -5,7 +5,7 @@ import { isAndroid } from "platform";
     selector: "TabsComponent",
     moduleId: module.id,
     templateUrl: "./tabs.component.html",
-    styleUrls:['./tabs.component.css']
+    styleUrls: ["./tabs.component.css"]
 })
 export class TabsComponent implements OnInit {
     constructor() {
@@ -16,8 +16,7 @@ export class TabsComponent implements OnInit {
 
     }
 
-    getIconSource(icon :string): string {
-        return isAndroid ? "res://tab_"+ icon :
-            "res://tabIcons/tab_"+ icon;
+    getIconSource(icon: string): string {
+        return isAndroid ? "res://tab_" + icon : "res://tabIcons/tab_" + icon;
     }
 }
