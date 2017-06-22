@@ -5,6 +5,7 @@
   "main": "main.js",
   "name": "tns-template-blank-ng",
   "displayName": "Blank",
+  "templateType": "App template",
   "version": "1.0.0",
   "description": "Blank template for NativeScript apps using Angular",
   "author": "Telerik <support@telerik.com>",
@@ -21,7 +22,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/NativeScript/template-blank-ng"
+    "url": "https://github.com/NativeScript/template-blank-ng.git"
   },
   "homepage": "https://github.com/NativeScript/template-blank-ng",
   "android": {
