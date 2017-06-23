@@ -2,8 +2,23 @@
     <Label class="action-bar-title" text="Tabs"></Label>
 </ActionBar>
 
-<TabView #tabview sdkExampleTitle sdkToggleNavButton>
+<!--
+The TabView component provides a simple way to navigate between different views by
+tapping on some of the tabs or by swiping between the views.
+Learn more about the TabView component in this documentation article:
+http://docs.nativescript.org/angular/code-samples/ui/tab-view
+-->
+<TabView>
+    <!--
+    To add a new TabView item, add a new layout component with a tabItem Angular directive.
+    Assign the tabItem directive an object that declares the tab item button's title and icon source.
+    -->
     <StackLayout *tabItem="{title: 'Home', iconSource: getIconSource('home')}">
+        <!--
+        You can declare the layout and components of each view inside the TabView items directly.
+        In this case the view contents and back end logic are separated in nested components.
+        You can find these components in their respective folders /home, /browse etc.
+        -->
         <Home></Home>
     </StackLayout>
     <StackLayout *tabItem="{title: 'Browse', iconSource: getIconSource('browse')}">
