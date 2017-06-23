@@ -1,0 +1,7 @@
+<!--
+This is the component view that represents the 'Settings' tab.
+Feel free to customize layouts and components to change how the tab view looks.
+-->
+<StackLayout loaded="onLoaded">
+    <Label text="Settings page"/>
+</StackLayout>
