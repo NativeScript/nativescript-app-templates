@@ -17,26 +17,31 @@ export class MyDrawerViewModel extends Observable {
         this._navigationItems = [
             {
                 title: "Home",
+                name: "home",
                 route: "home/home-page",
                 icon: "\uf015"
             },
             {
                 title: "Browse",
+                name: "browse",
                 route: "browse/browse-page",
                 icon: "\uf1ea"
             },
             {
                 title: "Search",
+                name: "search",
                 route: "search/search-page",
                 icon: "\uf002"
             },
             {
                 title: "Featured",
+                name: "featured",
                 route: "featured/featured-page",
                 icon: "\uf005"
             },
             {
                 title: "Settings",
+                name: "settings",
                 route: "settings/settings-page",
                 icon: "\uf013"
             }

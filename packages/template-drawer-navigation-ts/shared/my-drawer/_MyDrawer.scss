@@ -55,5 +55,10 @@ $sidedrawer-header-image-offset-bottom: 5;
                 color: $item-active-color;
             }
         }
+
+        &.sidedrawer-list-item-settings {
+            border-top-width: 1px;
+            border-top-color: $blue-50;
+        }
     }
 }
