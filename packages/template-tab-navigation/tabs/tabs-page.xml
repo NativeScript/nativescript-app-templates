@@ -1,46 +1,55 @@
-<!--
-The markup in NativeScript apps contains a series of user interface components, each
-of which NativeScript renders with a platform-specific iOS or Android native control.
-You can find a full list of user interface components you can use in your app at
-https://docs.nativescript.org/ui/components.
--->
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page"
-  xmlns:home="/home"
-  xmlns:search="/search"
-  xmlns:browse="/browse"
-  xmlns:featured="/featured"
-  xmlns:settings="/settings">
-    <!--
-    The ActionBar is the NativeScript common abstraction over the Android ActionBar and iOS NavigationBar.
-    http://docs.nativescript.org/ui/action-bar
-    -->
+  xmlns:home="/tabs/home"
+  xmlns:search="/tabs/search"
+  xmlns:browse="/tabs/browse"
+  xmlns:featured="/tabs/featured"
+  xmlns:settings="/tabs/settings">
     <Page.actionBar>
         <ActionBar title="Rent a car" icon="" class="action-bar">
         </ActionBar>
     </Page.actionBar>
 
+    <!--
+    The TabView component provides a simple way to navigate between different views by
+    tapping on some of the tabs or by swiping between the views.
+    Learn more about the TabView component in this documentation article:
+    http://docs.nativescript.org/cookbook/ui/tab-view
+    -->
     <TabView>
       <TabView.items>
+        <!--
+        To add a new TabView item, simply add a new <TabViewItem> component to the <TabView.items> collection.
+        Assign the <TabViewItem> component a "title" that will be displayed as the text of the tab item button.
+        -->
         <TabViewItem title="Home">
           <TabViewItem.view>
+            <!--
+            You can declare the layout and components of each view inside the <TabViewItem.view> directly.
+            In this case the view contents and back end logic are separated in custom components.
+            You can find these components in their respective folders /home, /browse etc.
+            -->
             <home:HomeView/>
           </TabViewItem.view>
         </TabViewItem>
+
         <TabViewItem title="Browse">
           <TabViewItem.view>
              <browse:BrowseView/>
           </TabViewItem.view>
         </TabViewItem>
+
         <TabViewItem title="Search">
           <TabViewItem.view>
              <search:SearchView/>
           </TabViewItem.view>
         </TabViewItem>
+
         <TabViewItem title="Featured">
           <TabViewItem.view>
              <featured:FeaturedView/>
           </TabViewItem.view>
         </TabViewItem>
+
         <TabViewItem title="Settings">
           <TabViewItem.view>
              <settings:SettingsView/>

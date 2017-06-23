@@ -1,3 +1,0 @@
-<StackLayout orientation="vertical" loaded="loaded" navigatingTo="onNavigatingTo">
-    <Label text="Featured page"/>
-</StackLayout>

@@ -1,0 +1,7 @@
+<!--
+This is the component view that represents the 'Featured' tab.
+Feel free to customize layouts and components to change how the tab view looks.
+-->
+<StackLayout loaded="onLoaded">
+    <Label text="Featured page"/>
+</StackLayout>
