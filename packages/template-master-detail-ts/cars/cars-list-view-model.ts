@@ -1,7 +1,9 @@
-import { Car } from "./shared/car-model";
+import { Observable } from "data/observable";
+import { ObservableArray } from "data/observable-array";
+import firebase = require("nativescript-plugin-firebase");
+
 import { Config } from "../shared/config";
-import { Observable } from 'data/observable';
-import { ObservableArray } from 'data/observable-array';
+import { Car } from "./shared/car-model";
 
 export class CarsListViewModel extends Observable {
     private _isLoading: boolean;
@@ -26,36 +28,39 @@ export class CarsListViewModel extends Observable {
     set isLoading(value: boolean) {
         if (this._isLoading !== value) {
             this._isLoading = value;
-            this.notifyPropertyChange('isLoading', value)
+            this.notifyPropertyChange("isLoading", value);
         }
     }
 
     load(): void {
+        const path = "cars";
+
         this.isLoading = true;
 
-        fetch(Config.apiUrl + "Cars")
-            .then(this.handleErrors)
-            .then((response: any) => {
-                return response.json();
-            }).then((data) => {
-                data.Result.forEach((carJson) => {
-                    this._cars.push(new Car(carJson));
-                });
+        const onValueEvent = (snapshot: any) => {
+            this.handleSnapshot(snapshot.value);
 
-                this.isLoading = false;
-            });
+            this.isLoading = false;
+        };
+        firebase.addValueEventListener(onValueEvent, `/${path}`);
     }
 
-    empty(): void {
+    private handleSnapshot(data: any) {
+        this.empty();
+
+        if (data) {
+            for (const id in data) {
+                if (data.hasOwnProperty(id)) {
+                    const result = Object.assign({ id }, ...data[id]);
+                    this._cars.push(new Car(result));
+                }
+            }
+        }
+    }
+
+    private empty(): void {
         while (this._cars.length) {
             this._cars.pop();
         }
-    }
-
-    private handleErrors(response): void {
-        if (!response.ok) {
-            throw Error(response.statusText);
-        }
-        return response;
     }
 }

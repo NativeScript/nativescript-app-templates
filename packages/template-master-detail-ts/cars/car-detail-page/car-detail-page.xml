@@ -10,55 +10,37 @@ https://docs.nativescript.org/ui/components.
     http://docs.nativescript.org/ui/action-bar
     -->
     <ActionBar title="{{ car.name }}" icon="" class="action-bar">
-        <NavigationButton tap="onGoBack" android.systemIcon="ic_menu_back"/>
+        <NavigationButton tap="onBackButtonTap" android.systemIcon="ic_menu_back" />
+        <ActionItem tap="onEditButtonTap" text="Edit" ios.position="right" android.position="right" />
     </ActionBar>
 
-    <GridLayout>
-        <ScrollView>
-            <StackLayout>
-                <Image src="{{ car.imageUrl }}" stretch="aspectFit"/>
+    <GridLayout rows="auto, auto">
+        <Image src="{{ car.imageUrl }}" stretch="aspectFit" />
 
-                <StackLayout>
-                    <Label text="Price"/>
-                    <Label>
-                        <FormattedString>
-                            <Span text="€" fontAttributes="Bold"></Span>
-                            <Span text="{{ car.price }}" fontAttributes="Bold"></Span>
-                            <Span text="/day" fontAttributes="Bold"></Span>
-                        </FormattedString>
-                    </Label>
-                </StackLayout>
+        <GridLayout row="1" rows="* , *, *, *, *, *" columns="*, 2*">
+            <Label text="Price"/>
+            <Label col="1">
+                <FormattedString>
+                    <Span text="€"></Span>
+                    <Span text="{{ car.price }}"></Span>
+                    <Span text="/day"></Span>
+                </FormattedString>
+            </Label>
 
-                <StackLayout>
-                    <Label text="Class"/>
-                    <Label text="{{ car.class }}"/>
-                </StackLayout>
+            <Label text="Class" row="1" />
+            <Label text="{{ car.class }}" row="1" col="1" />
+            
+            <Label text="Doors" row="2" />
+            <Label text="{{ car.doors }}" row="2" col="1" />
 
-                <StackLayout>
-                    <Label text="Transmission"/>
-                    <Label text="{{ car.transmission }}"/>
-                </StackLayout>
+            <Label text="Seats" row="3" />
+            <Label text="{{ car.seats }}" row="3" col="1" />
 
-                <StackLayout>
-                    <Label text="Doors"/>
-                    <Label text="{{ car.doors }}"/>
-                </StackLayout>
+            <Label text="Transmission" row="4" />
+            <Label text="{{ car.transmission }}" row="4" col="1" />
 
-                <StackLayout>
-                    <Label text="Luggage"/>
-                    <Label text="{{ car.luggage }}"/>
-                </StackLayout>
-
-                <StackLayout>
-                    <Label text="Seats"/>
-                    <Label text="{{ car.seats }}"/>
-                </StackLayout>
-
-                <StackLayout>
-                    <Label text="Other information"/>
-                    <Label text="{{ car.description }}" textWrap="true"/>
-                </StackLayout>
-            </StackLayout>
-        </ScrollView>
+            <Label text="Luggage" row="5" />
+            <Label text="{{ car.luggage }}" row="5" col="1" />
+        </GridLayout>
     </GridLayout>
 </Page>

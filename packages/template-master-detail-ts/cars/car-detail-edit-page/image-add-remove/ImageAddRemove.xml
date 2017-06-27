@@ -1,0 +1,5 @@
+<GridLayout height="100" width="100" class="thumb" backgroundImage="{{ car.imageUrl }}" tap="onImageAddRemoveTap">
+    <GridLayout width="100" backgroundColor="#96000000">
+        <Label text="{{ addRemoveText }}" class="fa" horizontalAlignment="center" verticalAlignment="center" />
+    </GridLayout>
+</GridLayout>
