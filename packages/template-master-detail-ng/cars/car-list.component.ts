@@ -30,6 +30,7 @@ export class CarListComponent implements OnInit {
             .finally(() => this._isLoading = false)
             .subscribe((cars: Array<Car>) => {
                 this._cars = new ObservableArray(cars);
+                this._isLoading = false;
             });
     }
 
