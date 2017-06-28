@@ -7,7 +7,6 @@ https://docs.nativescript.org/ui/components.
 <Page 
     navigatingTo="onNavigatingTo"
     xmlns:customImg="cars/car-detail-edit-page/image-add-remove"
-    xmlns:customLst="cars/car-detail-edit-page/list-selector"
     xmlns="http://schemas.nativescript.org/tns.xsd"
     class="page">
     <!--
