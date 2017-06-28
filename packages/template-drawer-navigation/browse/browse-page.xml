@@ -1,11 +1,18 @@
 <Page
+    class="page"
     navigatingTo="onNavigatingTo"  
     xmlns:nsDrawer="nativescript-telerik-ui/sidedrawer"
     xmlns:myDrawer="shared/my-drawer"
     xmlns="http://www.nativescript.org/tns.xsd">
 
-    <ActionBar title="Browse">
-        <ActionItem android.systemIcon="ic_menu_account_list" tap="onDrawerButtonTap" />
+    <ActionBar class="action-bar">
+        <NavigationButton visibility="collapsed"></NavigationButton>
+        <ActionItem tap="onDrawerButtonTap"
+            ios.position="left"
+            android.position="actionBar">
+            <Label text="&#xf0c9;" class="fa"></Label>
+        </ActionItem>
+        <Label class="action-bar-title" text="Browse"></Label>
     </ActionBar>
 
     <!--
@@ -44,8 +51,7 @@
         Always wrap content in a layout component.
         -->
         <nsDrawer:RadSideDrawer.mainContent>
-            <StackLayout>
-                <Label text="Browse Page"/>
+            <StackLayout class="appPage browsePage">
             </StackLayout>
         </nsDrawer:RadSideDrawer.mainContent>
     </nsDrawer:RadSideDrawer>

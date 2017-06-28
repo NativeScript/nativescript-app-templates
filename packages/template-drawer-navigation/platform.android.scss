@@ -1,0 +1,15 @@
+// Import the theme’s variables. If you’re using a color scheme
+// other than “light”, switch the path to the alternative scheme,
+// for example '~nativescript-theme-core/scss/dark'.
+@import '~nativescript-theme-core/scss/light';
+
+// Custom common variables
+@import 'app-variables';
+
+@import '~nativescript-theme-core/scss/platforms/index.android';
+
+// Place any CSS rules you want to apply only on Android here
+//Action bar
+ActionBar .fa {
+    padding: 40px;
+}

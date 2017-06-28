@@ -4,8 +4,14 @@
     xmlns:myDrawer="shared/my-drawer"
     xmlns="http://www.nativescript.org/tns.xsd">
 
-    <ActionBar title="Settings">
-        <ActionItem android.systemIcon="ic_menu_account_list" tap="onDrawerButtonTap" />
+    <ActionBar class="action-bar">
+        <NavigationButton visibility="collapsed"></NavigationButton>
+        <ActionItem tap="onDrawerButtonTap"
+            ios.position="left"
+            android.position="actionBar">
+            <Label text="&#xf0c9;" class="fa"></Label>
+        </ActionItem>
+        <Label class="action-bar-title" text="Settings"></Label>
     </ActionBar>
 
     <!--
@@ -44,8 +50,7 @@
         Always wrap content in a layout component.
         -->
         <nsDrawer:RadSideDrawer.mainContent>
-            <StackLayout>
-                <Label text="Settings Page"/>
+            <StackLayout class="appPage settingsPage">
             </StackLayout>
         </nsDrawer:RadSideDrawer.mainContent>
     </nsDrawer:RadSideDrawer>
