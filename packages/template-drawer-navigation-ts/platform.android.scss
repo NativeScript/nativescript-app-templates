@@ -9,3 +9,7 @@
 @import '~nativescript-theme-core/scss/platforms/index.android';
 
 // Place any CSS rules you want to apply only on Android here
+/* Action bar*/
+ActionBar .fa {
+    padding: 40px;
+}

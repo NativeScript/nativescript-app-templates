@@ -12,6 +12,7 @@ $sidedrawer-header-image-offset-bottom: 5;
 .sidedrawer {
     &.sidedrawer-left {
         .sidedrawer-header-image {
+            color: $background-dark;
             height: $sidedrawer-header-image-size;
             width: $sidedrawer-header-image-size;
             font-size: $sidedrawer-header-image-size;
