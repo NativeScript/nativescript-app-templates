@@ -9,4 +9,7 @@
 @import '~nativescript-theme-core/scss/platforms/index.ios';
 
 // Place any CSS rules you want to apply only on iOS here
-
+//Action bar
+ActionBar .fa {
+    padding: 40px 40px 40px 0;
+}
