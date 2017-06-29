@@ -47,7 +47,7 @@
     "zone.js": "~0.8.2"
   },
   "devDependencies": {
-    "nativescript-dev-sass": "^1.1.1",
+    "nativescript-dev-sass": "^1.2.0",
     "nativescript-dev-typescript": "~0.4.0",
     "typescript": "~2.2.1",
     "node-sass": "*"

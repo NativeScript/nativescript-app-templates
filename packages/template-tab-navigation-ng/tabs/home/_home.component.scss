@@ -3,7 +3,4 @@
 // for example '~nativescript-theme-core/scss/dark'.
 @import '~nativescript-theme-core/scss/light';
 // Custom common variables
-@import 'app-variables';
-@import '~nativescript-theme-core/scss/platforms/index.ios';
-
-// Place any CSS rules you want to apply only on iOS here
+@import '../../app-variables';

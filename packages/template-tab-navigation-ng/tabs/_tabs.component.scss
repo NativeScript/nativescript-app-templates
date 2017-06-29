@@ -2,14 +2,5 @@
 // other than “light”, switch the path to the alternative scheme,
 // for example '~nativescript-theme-core/scss/dark'.
 @import '~nativescript-theme-core/scss/light';
-
-// Start custom common variables
-@import '../sass/app-variables';
-@import '../sass/app-classes';
-// End custom common variables
-
-TabView {
-    font-family: "FontAwesome";
-    selected-tab-text-color: $item-active-color;
-    android-selected-tab-text-color: $item-active-color;
-}
+// Custom common variables
+@import '../app-variables';
