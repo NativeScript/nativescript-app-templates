@@ -8,6 +8,10 @@ import { Car } from "../shared/car.model";
 import { CarService } from "../shared/car.service";
 import { carClassList, carDoorList, carSeatList, carTransmissionList } from "./constants";
 
+/* ***********************************************************
+* This is the item detail edit component.
+* This component gets the selected data item, provides options to edit the item and saves the changes.
+*************************************************************/
 @Component({
     moduleId: module.id,
     selector: "CarDetailEdit",
@@ -55,10 +59,18 @@ export class CarDetailEditComponent implements OnInit, AfterViewInit {
         this._carImageUriToUpload = null;
     }
 
+    /* ***********************************************************
+    * Use the "ngOnInit" handler to get the data item id parameter passed through navigation.
+    * Get the data item details from the data service using this id and assign it to the
+    * private property that holds it inside the component.
+    *************************************************************/
     ngOnInit(): void {
         let carId = "";
 
-        // use switchMap to get the latest activatedRoute instance
+        /* ***********************************************************
+        * Learn more about how to get navigation parameters in this documentation article:
+        * http://docs.nativescript.org/angular/core-concepts/angular-navigation.html#passing-parameter
+        *************************************************************/
         this._pageRoute.activatedRoute
             .switchMap((activatedRoute) => activatedRoute.params)
             .forEach((params) => {
@@ -113,18 +125,23 @@ export class CarDetailEditComponent implements OnInit, AfterViewInit {
         this._car.luggage = value;
     }
 
+    /* ***********************************************************
+    * The edit cancel button navigates back to the item details page.
+    *************************************************************/
     onCancelButtonTap(): void {
         this._routerExtensions.backToPreviousPage();
     }
 
+    /* ***********************************************************
+    * The edit done button uses the data service to save the updated values of the data item details.
+    * Check out the data service as cars/shared/car.service.ts
+    *************************************************************/
     onDoneButtonTap(): void {
         let queue = Promise.resolve();
 
         this._isUpdating = true;
 
-        // TODO: car image should be required field
         if (this._isCarImageDirty && this._carImageUriToUpload) {
-            // no need to explicitly delete old image as upload to an existing remote path overwrites it
             queue = queue
                 .then(() => this._carService.uploadImage(this._car.imageStoragePath, this._carImageUriToUpload))
                 .then((uploadedFile: any) => {

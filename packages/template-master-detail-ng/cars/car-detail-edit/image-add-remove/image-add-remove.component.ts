@@ -6,6 +6,10 @@ import * as platform from "tns-core-modules/platform";
 const faPlusIcon = "\uf067";
 const faThrashIcon = "\uf014";
 
+/* ***********************************************************
+* The ImageAddRemove custom component uses an imagepicker plugin to let the user select
+* an image and provides custom logic and design to the process.
+*************************************************************/
 @Component({
     selector: "ImageAddRemove",
     moduleId: module.id,

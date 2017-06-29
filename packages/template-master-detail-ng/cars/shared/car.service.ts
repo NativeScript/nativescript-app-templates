@@ -6,6 +6,14 @@ import firebase = require("nativescript-plugin-firebase");
 import { Config } from "../../shared/config";
 import { Car } from "./car.model";
 
+/* ***********************************************************
+* This is the master detail data service. It handles all the data operations
+* of retrieving and updating the data. In this case, it is connected to Firebase and
+* is using the {N} Firebase plugin. Learn more about it here:
+* https://github.com/EddyVerbruggen/nativescript-plugin-firebase
+* The {N} Firebase plugin needs some initialization steps before the app starts.
+* Check out how it is imported in the main.ts file and the actual script in /shared/firebase.common.ts file.
+*************************************************************/
 @Injectable()
 export class CarService {
     private _cars: Array<Car>;

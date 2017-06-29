@@ -8,6 +8,12 @@ import { ListSelectorModalViewComponent } from "./list-selector-modal-view.compo
 
 const capitalizeFirstLetter = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
+/* ***********************************************************
+* The ListSelector custom component uses a {N} modal page to let the user select and option
+* from a list. You can also check out the list-selector-modal-view.component.ts to see the
+* contents of the modal page. Learn more about modal pages in this documentation article:
+* https://docs.nativescript.org/angular/code-samples/modal-page
+*************************************************************/
 @Component({
     moduleId: module.id,
     providers: [ModalDialogService],
