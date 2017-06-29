@@ -13,9 +13,9 @@ Feel free to customize layouts and components to change how your app drawer look
         <ListView [items]="navigationItems" separatorColor="transparent" (itemTap)="onNavigationItemTap($event)">
             <ng-template let-item="item" let-i="index" let-odd="odd" let-even="even">
                 <GridLayout columns="auto, *" rows="50"
-                    class="sidedrawer-list-item" 
+                    class="sidedrawer-list-item sidedrawer-list-item-{{item.name}}" 
                     [class.selected]="isPageSelected(item.title)">
-                    <Label row="0" col="0" [text]="item.icon" class="fa p-l-15 p-r-5"></Label>
+                    <Label row="0" col="0" [text]="item.icon" class="fa p-l-15 p-r-10"></Label>
                     <Label row="0" col="1" [text]="item.title" textWrap="true"></Label>
                 </GridLayout>
             </ng-template>
