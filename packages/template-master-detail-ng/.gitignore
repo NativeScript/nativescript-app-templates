@@ -3,6 +3,7 @@ npm-debug.log
 
 *.js.map
 **/*.js
+!tools/*.js
 hooks/
 lib/
 node_modules/
