@@ -41,5 +41,8 @@
     "nativescript-dev-sass": "^1.2.0",
     "tslint": "^5.4.3",
     "node-sass": "*"
+  },
+  "scripts":{
+    "preinstall" : "node tools/preinstall.js"
   }
 }
