@@ -17,14 +17,12 @@ const faThrashIcon = "\uf014";
     styleUrls: ["./image-add-remove.component.css"]
 })
 export class ImageAddRemoveComponent {
-    @Input() imageUrl: string;
+    @Input() imageUrl: string = "";
     @Output() selectionChanged: EventEmitter<any> = new EventEmitter();
 
-    private _addRemoveText: string;
+    private _addRemoveText: string = faThrashIcon;
 
-    constructor() {
-        this._addRemoveText = faThrashIcon;
-    }
+    constructor() { }
 
     onImageAddRemoveTap(): void {
         if (this.imageUrl) {

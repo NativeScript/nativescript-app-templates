@@ -19,45 +19,21 @@ import { carClassList, carDoorList, carSeatList, carTransmissionList } from "./c
 })
 export class CarDetailEditComponent implements OnInit, AfterViewInit {
     private _car: Car;
-    private _carClasses: Array<string>;
-    private _carDoors: Array<number>;
-    private _carSeats: Array<string>;
-    private _carTransmissions: Array<string>;
+    private _carClasses: Array<string> = [];
+    private _carDoors: Array<number> = [];
+    private _carSeats: Array<string> = [];
+    private _carTransmissions: Array<string> = [];
     private _carLuggageMinValue: number;
     private _carLuggageMaxValue: number;
-    private _carImageUriToUpload: string;
-    private _isCarImageDirty: boolean;
-    private _isUpdating: boolean;
+    private _carImageUriToUpload: string = null;
+    private _isCarImageDirty: boolean = false;
+    private _isUpdating: boolean = false;
 
     constructor(
         private _carService: CarService,
         private _pageRoute: PageRoute,
         private _routerExtensions: RouterExtensions
-    ) {
-        this._carClasses = [];
-        for (const classItem of carClassList) {
-            this._carClasses.push(classItem);
-        }
-
-        this._carDoors = [];
-        for (const doorItem of carDoorList) {
-            this._carDoors.push(doorItem);
-        }
-
-        this._carSeats = [];
-        for (const seatItem of carSeatList) {
-            this._carSeats.push(seatItem);
-        }
-
-        this._carTransmissions = [];
-        for (const transmissionItem of carTransmissionList) {
-            this._carTransmissions.push(transmissionItem);
-        }
-
-        this._isUpdating = false;
-        this._isCarImageDirty = false;
-        this._carImageUriToUpload = null;
-    }
+    ) { }
 
     /* ***********************************************************
     * Use the "ngOnInit" handler to get the data item id parameter passed through navigation.
@@ -65,12 +41,13 @@ export class CarDetailEditComponent implements OnInit, AfterViewInit {
     * private property that holds it inside the component.
     *************************************************************/
     ngOnInit(): void {
-        let carId = "";
+        this.initializeEditOptions();
 
         /* ***********************************************************
         * Learn more about how to get navigation parameters in this documentation article:
         * http://docs.nativescript.org/angular/core-concepts/angular-navigation.html#passing-parameter
         *************************************************************/
+        let carId = "";
         this._pageRoute.activatedRoute
             .switchMap((activatedRoute) => activatedRoute.params)
             .forEach((params) => {
@@ -164,6 +141,24 @@ export class CarDetailEditComponent implements OnInit, AfterViewInit {
         if (args.newValue) {
             this._isCarImageDirty = true;
             this._carImageUriToUpload = args.newValue;
+        }
+    }
+
+    private initializeEditOptions(): void {
+        for (const classItem of carClassList) {
+            this._carClasses.push(classItem);
+        }
+
+        for (const doorItem of carDoorList) {
+            this._carDoors.push(doorItem);
+        }
+
+        for (const seatItem of carSeatList) {
+            this._carSeats.push(seatItem);
+        }
+
+        for (const transmissionItem of carTransmissionList) {
+            this._carTransmissions.push(transmissionItem);
         }
     }
 }

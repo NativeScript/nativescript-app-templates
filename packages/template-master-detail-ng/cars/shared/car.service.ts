@@ -16,11 +16,9 @@ import { Car } from "./car.model";
 *************************************************************/
 @Injectable()
 export class CarService {
-    private _cars: Array<Car>;
+    private _cars: Array<Car> = [];
 
-    constructor(private _ngZone: NgZone) {
-        this._cars = [];
-    }
+    constructor(private _ngZone: NgZone) { }
 
     getCarById(id: string) {
         if (!id) {

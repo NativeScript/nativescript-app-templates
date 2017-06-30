@@ -16,16 +16,13 @@ import { CarService } from "./shared/car.service";
     templateUrl: "./car-list.component.html"
 })
 export class CarListComponent implements OnInit {
-    private _isLoading: boolean;
-    private _cars: ObservableArray<Car>;
+    private _isLoading: boolean = false;
+    private _cars: ObservableArray<Car> = new ObservableArray<Car>([]);
 
     constructor(
         private _carService: CarService,
         private _routerExtensions: RouterExtensions
-    ) {
-        this._cars = new ObservableArray<Car>([]);
-        this._isLoading = false;
-    }
+    ) { }
 
     /* ***********************************************************
     * Use the "ngOnInit" handler to get the data and assign it to the
