@@ -52,5 +52,8 @@
     "nativescript-dev-typescript": "~0.4.0",
     "typescript": "~2.2.1",
     "node-sass": "*"
+  },
+  "scripts":{
+    "preinstall" : "node tools/preinstall.js"
   }
 }
