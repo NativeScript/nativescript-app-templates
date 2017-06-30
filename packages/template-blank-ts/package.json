@@ -4,7 +4,7 @@
   },
   "main": "app.js",
   "name": "tns-template-blank-ts",
-  "displayName": "Tab navigation",
+  "displayName": "Blank",
   "templateType": "App template",
   "version": "1.0.0",
   "description": "Blank template for Vanilla NativeScript apps using TypeScript",
