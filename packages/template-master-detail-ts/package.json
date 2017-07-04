@@ -29,21 +29,20 @@
     "nativescript-imagepicker": "^3.0.1",
     "nativescript-permissions": "^1.2.3",
     "nativescript-plugin-firebase": "^3.12.0",
-    "nativescript-telerik-ui": "^2.0.1",
+    "nativescript-telerik-ui": "^3.0.0",
     "nativescript-theme-core": "~1.0.2",
-    "tns-core-modules": "~3.0.0"
+    "tns-core-modules": "~3.1.0"
   },
   "devDependencies": {
     "babel-traverse": "6.4.5",
     "babel-types": "6.4.5",
     "babylon": "6.4.5",
     "lazy": "1.0.11",
-    "nativescript-dev-android-snapshot": "^0.*.*",
-    "nativescript-dev-typescript": "~0.4.0",
+    "nativescript-dev-typescript": "~0.5.0",
     "tslint": "^5.4.3",
     "typescript": "~2.2.1"
   },
-  "scripts":{
-    "preinstall" : "node tools/preinstall.js"
+  "scripts": {
+    "preinstall": "node tools/preinstall.js"
   }
 }

@@ -11,6 +11,7 @@ JavaScript modules defined in other files.
 */
 
 import { EventData } from "data/observable";
+import { ListViewEventData } from "nativescript-telerik-ui/listview";
 import { topmost } from "ui/frame";
 import { Page } from "ui/page";
 
@@ -42,8 +43,8 @@ export function onNavigatingTo(args: EventData) {
     viewModel.load();
 }
 
-export function onCarItemTap(args) {
-    const tappedCarItem = args.object.bindingContext;
+export function onCarItemTap(args: ListViewEventData) {
+    const tappedCarItem = args.view.bindingContext;
 
     topmost().navigate({
         moduleName: "cars/car-detail-page/car-detail-page",
