@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ObservableArray } from "data/observable-array";
 import { RouterExtensions } from "nativescript-angular/router";
+import { ListViewEventData } from "nativescript-telerik-ui/listview";
 
 import { Car } from "./shared/car.model";
 import { CarService } from "./shared/car.service";
@@ -59,8 +60,8 @@ export class CarListComponent implements OnInit {
     * Learn more about navigating with a parameter in this documentation article:
     * http://docs.nativescript.org/angular/core-concepts/angular-navigation.html#passing-parameter
     *************************************************************/
-    onCarItemTap(args): void {
-        const tappedCarItem = args.object.bindingContext;
+    onCarItemTap(args: ListViewEventData): void {
+        const tappedCarItem = args.view.bindingContext;
 
         this._routerExtensions.navigate(["/cars/detail", tappedCarItem.id]);
     }

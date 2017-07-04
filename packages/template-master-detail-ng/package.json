@@ -16,7 +16,6 @@
   "android": {
     "v8Flags": "--expose_gc"
   },
-
   "dependencies": {
     "@angular/animations": "~4.1.0",
     "@angular/common": "~4.1.0",
@@ -26,20 +25,20 @@
     "@angular/http": "~4.1.0",
     "@angular/platform-browser": "~4.1.0",
     "@angular/router": "~4.1.0",
-    "nativescript-angular": "~3.0.0",
+    "nativescript-angular": "~3.1.0",
     "nativescript-imagepicker": "^3.0.1",
     "nativescript-permissions": "^1.2.3",
     "nativescript-plugin-firebase": "^3.11.4",
-    "nativescript-telerik-ui": "^2.0.1",
+    "nativescript-telerik-ui": "^3.0.0",
     "nativescript-theme-core": "~1.0.2",
     "reflect-metadata": "~0.1.8",
     "rxjs": "~5.3.0",
-    "tns-core-modules": "~3.0.0",
+    "tns-core-modules": "~3.1.0",
     "zone.js": "~0.8.2"
   },
   "devDependencies": {
     "codelyzer": "^3.0.1",
-    "nativescript-dev-typescript": "~0.4.0",
+    "nativescript-dev-typescript": "~0.5.0",
     "tslint": "^5.4.3",
     "typescript": "~2.2.1"
   },
