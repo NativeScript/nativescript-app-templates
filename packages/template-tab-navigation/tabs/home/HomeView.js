@@ -1,7 +1,7 @@
-var HomeViewModel = require("./home-view-model");
+const HomeViewModel = require("./home-view-model");
 
 function onLoaded(args) {
-    var component = args.object;
+    const component = args.object;
     component.bindingContext = new HomeViewModel();
 }
 

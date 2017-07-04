@@ -1,7 +1,7 @@
-var FeaturedViewModel = require("./featured-view-model");
+const FeaturedViewModel = require("./featured-view-model");
 
 function onLoaded(args) {
-    var component = args.object;
+    const component = args.object;
     component.bindingContext = new FeaturedViewModel();
 }
 

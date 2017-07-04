@@ -1,7 +1,7 @@
-var SettingsViewModel = require("./settings-view-model");
+const SettingsViewModel = require("./settings-view-model");
 
 function onLoaded(args) {
-    var component = args.object;
+    const component = args.object;
     component.bindingContext = new SettingsViewModel();
 }
 

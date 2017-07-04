@@ -1,7 +1,7 @@
-var SearchViewModel = require("./search-view-model");
+const SearchViewModel = require("./search-view-model");
 
 function onLoaded(args) {
-    var component = args.object;
+    const component = args.object;
     component.bindingContext = new SearchViewModel();
 }
 

@@ -1,5 +1,5 @@
 require("./bundle-config");
-var application = require("application");
+const application = require("application");
 
 application.start({ moduleName: "./tabs/tabs-page" });
 
