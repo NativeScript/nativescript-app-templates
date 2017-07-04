@@ -30,10 +30,8 @@
     "v8Flags": "--expose_gc"
   },
   "dependencies": {
-    "nativescript-telerik-ui": "^2.0.1",
-    "nativescript-theme-core": "~1.0.2"
-  },
-  "devDependencies": {
-    "nativescript-dev-android-snapshot": "^0.*.*"
+    "nativescript-telerik-ui": "^3.0.0",
+    "nativescript-theme-core": "~1.0.2",
+    "tns-core-modules": "~3.1.0"
   }
 }

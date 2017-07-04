@@ -46,7 +46,7 @@ function onNavigatingTo(args) {
 }
 
 function onCarItemTap(args) {
-    var tappedCarItem = args.object.bindingContext;
+    var tappedCarItem = args.view.bindingContext;
 
     frameModule.topmost().navigate({
         moduleName: "cars/car-detail-page/car-detail-page",
