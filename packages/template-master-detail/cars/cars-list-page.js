@@ -9,11 +9,11 @@ NativeScript adheres to the CommonJS specification for dealing with
 JavaScript modules. The CommonJS require() function is how you import
 JavaScript modules defined in other files.
 */
-var observableModule = require("data/observable");
-var CarsListViewModel = require("./cars-list-view-model");
-var frameModule = require("ui/frame");
+const topmost = require("ui/frame").topmost;
 
-var carsListViewModel = new CarsListViewModel();
+const CarsListViewModel = require("./cars-list-view-model");
+
+const viewModel = new CarsListViewModel();
 
 function onNavigatingTo(args) {
     /*
@@ -21,7 +21,7 @@ function onNavigatingTo(args) {
     view the API reference of the Page to see what’s available at
     https://docs.nativescript.org/api-reference/classes/_ui_page_.page.html
     */
-    var page = args.object;
+    const page = args.object;
 
     /*
     A page’s bindingContext is an object that should be used to perform
@@ -33,7 +33,7 @@ function onNavigatingTo(args) {
     You can learn more about data binding in NativeScript at
     https://docs.nativescript.org/core-concepts/data-binding.
     */
-    page.bindingContext = carsListViewModel;
+    page.bindingContext = viewModel;
 
     /*
     Using onNavigatingTo event will trigger fetching on remote data for every page navigation.
@@ -41,24 +41,17 @@ function onNavigatingTo(args) {
     on every page nacigation. 
     */
 
-    carsListViewModel.empty();
-    carsListViewModel.load();
+    viewModel.load();
 }
 
 function onCarItemTap(args) {
-    var tappedCarItem = args.view.bindingContext;
+    const tappedCarItem = args.object.bindingContext;
 
-    frameModule.topmost().navigate({
+    topmost().navigate({
         moduleName: "cars/car-detail-page/car-detail-page",
         context: tappedCarItem
     });
 }
 
-/*
-Exporting a function in a NativeScript code-behind file makes it accessible
-to the file’s corresponding XML file. In this case, exporting the onNavigatingTo
-function here makes the navigatingTo="onNavigatingTo" binding in this page’s XML
-file work.
-*/
 exports.onNavigatingTo = onNavigatingTo;
 exports.onCarItemTap = onCarItemTap;

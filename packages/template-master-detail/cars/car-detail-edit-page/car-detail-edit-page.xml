@@ -1,0 +1,83 @@
+<!--
+The markup in NativeScript apps contains a series of user interface components, each
+of which NativeScript renders with a platform-specific iOS or Android native control.
+You can find a full list of user interface components you can use in your app at
+https://docs.nativescript.org/ui/components.
+-->
+<Page 
+    navigatingTo="onNavigatingTo"
+    xmlns:customImg="cars/car-detail-edit-page/image-add-remove"
+    xmlns="http://schemas.nativescript.org/tns.xsd"
+    class="page">
+    <!--
+    The ActionBar is the NativeScript common abstraction over the Android ActionBar and iOS NavigationBar.
+    http://docs.nativescript.org/ui/action-bar
+    -->
+    <ActionBar title="Edit Car Details" icon="" class="action-bar">
+        <!--HACK - we should remove the navigation button-->
+        <NavigationButton visibility="collapsed" />
+        <ActionItem tap="onCancelButtonTap" text="Cancel" ios.position="left" android.position="left" />
+        <ActionItem tap="onDoneButtonTap" text="Done" ios.position="right" android.position="right" />
+    </ActionBar>
+
+    <GridLayout>
+        <ScrollView>
+            <StackLayout>
+                <Label text="CAR MAKE" />
+                <TextField text="{{ car.name }}" hint="Enter your car make" />
+
+                <GridLayout columns="auto, *">
+                    <Label text="PRICE PER DAY" />
+                    <Label col="1" horizontalAlignment="right">
+                        <FormattedString>
+                            <Span text="€" />
+                            <Span text="{{ car.price }}" />
+                        </FormattedString>
+                    </Label>
+                </GridLayout>
+                <Slider value="{{ car.price }}" />
+
+                <Label text="ADD OR REMOVE IMAGE" />
+                <customImg:ImageAddRemove imageUrl="{{ car.imageUrl }}" />
+
+                <Label text="CLASS" />
+                <GridLayout columns="*, auto" tap="onSelectorTap" tag="class">
+                    <Label text="{{ car.class }}" />
+                    <Label text="&#xf054;" class="fa" col="1" horizontalAlignment="center" verticalAlignment="center" />
+                </GridLayout>
+
+                <Label text="DOORS" />
+                <GridLayout columns="*, auto" tap="onSelectorTap" tag="doors">
+                    <Label text="{{ car.doors }}" />
+                    <Label text="&#xf054;" class="fa" col="1" horizontalAlignment="center" verticalAlignment="center" />
+                </GridLayout>
+
+                <Label text="SEATS" />
+                <GridLayout columns="*, auto" tap="onSelectorTap" tag="seats">
+                    <Label text="{{ car.seats }}" />
+                    <Label text="&#xf054;" class="fa" col="1" horizontalAlignment="center" verticalAlignment="center" />
+                </GridLayout>
+
+                <Label text="TRANSMISSION" />
+                <GridLayout columns="*, auto" tap="onSelectorTap" tag="transmission">
+                    <Label text="{{ car.transmission }}" />
+                    <Label text="&#xf054;" class="fa" col="1" horizontalAlignment="center" verticalAlignment="center" />
+                </GridLayout>
+
+                <GridLayout columns="auto, *">
+                    <Label text="LUGGAGE" />
+                    <Label col="1" horizontalAlignment="right">
+                        <FormattedString>
+                            <Span text="{{ car.luggage }}" />
+                            <Span text=" Bag(s)" />
+                        </FormattedString>
+                    </Label>
+                </GridLayout>
+                <Slider minValue="{{ carLuggageMinValue }}" maxValue="{{ carLuggageMaxValue }}" value="{{ car.luggage }}" />
+
+            </StackLayout>
+        </ScrollView>
+
+        <ActivityIndicator busy="{{ isUpdating }}" />
+    </GridLayout>
+</Page>

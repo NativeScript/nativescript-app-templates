@@ -1,7 +1,7 @@
-var Observable = require("data/observable").Observable;
+const Observable = require("data/observable").Observable;
 
 function CarDetailViewModel(carModel) {
-    var viewModel = new Observable();
+    const viewModel = new Observable();
 
     viewModel.car = carModel;
 

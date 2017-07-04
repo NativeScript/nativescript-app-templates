@@ -6,39 +6,55 @@ https://docs.nativescript.org/ui/components.
 -->
 <Page navigatingTo="onNavigatingTo" class="page"
     xmlns:lv="nativescript-telerik-ui/listview"
-    xmlns="http://schemas.nativescript.org/tns.xsd">
+    xmlns="http://schemas.nativescript.org/tns.xsd" >
     <!--
     The ActionBar is the NativeScript common abstraction over the Android ActionBar and iOS NavigationBar.
     http://docs.nativescript.org/ui/action-bar
     -->
-    <ActionBar title="Car Rental" icon="" class="action-bar">
+    <ActionBar title="Browse" icon="" class="action-bar">
     </ActionBar>
 
     <GridLayout>
         <lv:RadListView items="{{ cars }}" itemTap="onCarItemTap">
             <lv:RadListView.listViewLayout>
-                <lv:ListViewLinearLayout scrollDirection="Vertical"/>
+                <lv:ListViewLinearLayout scrollDirection="Vertical" />
             </lv:RadListView.listViewLayout>
 
             <lv:RadListView.itemTemplate>
-                <GridLayout columns="*, *, *" rows="*,*,*,*">
-                    <Image src="{{ imageUrl }}" stretch="aspectFill" col="0" rowSpan="4"/>
-                    <Label text="{{ name }}" col="1" colSpan="2" row="0"/>
-
-                    <Label row="1" col="1" text="Class"/>
-                    <Label row="1" col="2" text="{{ class }}"/>
-
-                    <Label row="2" col="1" text="Transmission"/>
-                    <Label row="2" col="2" text="{{ transmission }}"/>
-
-                    <Label row="3" col="1" colSpan="2">
-                        <FormattedString>
-                            <Span text="€" fontAttributes="Bold"></Span>
-                            <Span text="{{ price }}" fontAttributes="Bold"></Span>
-                            <Span text="/day" fontAttributes="Bold"></Span>
-                        </FormattedString>
-                    </Label>
-                </GridLayout>
+                <StackLayout>
+                    <GridLayout rows="*, 3*" columns="*, *">
+                        <Label text="{{ name }}" />
+                        <Label col="1" horizontalAlignment="right">
+                            <FormattedString>
+                                <Span text="€"></Span>
+                                <Span text="{{ price }}"></Span>
+                                <Span text="/day"></Span>
+                            </FormattedString>
+                        </Label>
+                        <Image row="1" src="{{ imageUrl }}" stretch="aspectFill" />
+                        <StackLayout row="1" col="1" verticalAlignment="center">
+                            <Label>
+                                <FormattedString>
+                                    <Span text="&#xf1b9; " class="fa" />
+                                    <Span text="{{ class }}" />
+                                </FormattedString>
+                            </Label>
+                            <Label>
+                                <FormattedString>
+                                    <Span text="&#xf085; " class="fa" />
+                                    <Span text="{{ transmission }}" />
+                                    <Span text=" Transmission" />
+                                </FormattedString>
+                            </Label>
+                            <Label>
+                                <FormattedString>
+                                    <Span text="&#xf2dc; " class="fa" />
+                                    <Span text="{{ hasAC ? 'Yes' : 'No' }}" />
+                                </FormattedString>
+                            </Label>
+                        </StackLayout>
+                    </GridLayout>
+                </StackLayout>
             </lv:RadListView.itemTemplate>
         </lv:RadListView>
 

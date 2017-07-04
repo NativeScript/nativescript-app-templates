@@ -18,3 +18,14 @@ of writing your own CSS rules. For a full list of class names in the theme
 refer to http://docs.nativescript.org/ui/theme.
 */
 @import 'nativescript-theme-core/css/core.light.css';
+.fa {
+    font-family: FontAwesome, fontawesome-webfont;
+}
+
+/* TODO: ImageAddRemove specific, should not be global */
+.thumb {
+    background-size: 100% 110%;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    font-size: 20em;
+}

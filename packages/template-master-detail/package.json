@@ -1,7 +1,4 @@
 {
-  "nativescript": {
-    "id": "org.nativescript.MasterDetail"
-  },
   "main": "app.js",
   "name": "tns-template-master-detail",
   "displayName": "Master-Detail",
@@ -30,8 +27,17 @@
     "v8Flags": "--expose_gc"
   },
   "dependencies": {
+    "nativescript-imagepicker": "^3.0.1",
+    "nativescript-permissions": "^1.2.3",
+    "nativescript-plugin-firebase": "^3.12.0",
     "nativescript-telerik-ui": "^3.0.0",
     "nativescript-theme-core": "~1.0.2",
     "tns-core-modules": "~3.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.1.1"
+  },
+  "scripts":{
+    "preinstall" : "node tools/preinstall.js"
   }
 }

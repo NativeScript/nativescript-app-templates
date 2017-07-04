@@ -1,43 +1,41 @@
-var config = require("../shared/config");
-var fetchModule = require("fetch");
-var Observable = require("data/observable").Observable;
-var ObservableArray = require("data/observable-array").ObservableArray;
+const Observable = require("data/observable").Observable;
+const ObservableArray = require("data/observable-array").ObservableArray;
+const firebase = require("nativescript-plugin-firebase");
+
+const Car = require("./shared/car-model");
 
 function CarsListViewModel() {
-    var viewModel = new Observable();
+    const viewModel = new Observable();
 
     viewModel.isLoading = false;
     viewModel.cars = new ObservableArray([]);
 
     viewModel.load = function () {
+        const path = "cars";
+
         this.set("isLoading", true);
 
-        fetch(config.apiUrl + "Cars")
-            .then(handleErrors)
-            .then(function (response) {
-                return response.json();
-            }).then(function (data) {
-                data.Result.forEach(function (car) {
-                    viewModel.cars.push({
-                        name: car.Name,
-                        id: car.Id,
-                        hasAC: car.AC,
-                        description: car.Description,
-                        seats: car.Seats,
-                        luggage: car.Luggage,
-                        class: car.Class,
-                        doors: car.Doors,
-                        price: car.Price,
-                        transmission: car.Transmission,
-                        imageUrl: car.ImageUrl
-                    });
-                });
+        const onValueEvent = (snapshot) => {
+            this._handleSnapshot(snapshot.value);
+            this.set("isLoading", false);
+        };
+        firebase.addValueEventListener(onValueEvent, `/${path}`);
+    };
 
-                viewModel.set("isLoading", false);
-            });
-    }
+    viewModel._handleSnapshot = function (data) {
+        this._empty();
 
-    viewModel.empty = function () {
+        if (data) {
+            for (const id in data) {
+                if (data.hasOwnProperty(id)) {
+                    const result = Object.assign({ id }, data[id]);
+                    viewModel.cars.push(new Car(result));
+                }
+            }
+        }
+    };
+
+    viewModel._empty = function () {
         while (this.cars.length) {
             this.cars.pop();
         }
@@ -46,11 +44,4 @@ function CarsListViewModel() {
     return viewModel;
 }
 
-function handleErrors(response) {
-    if (!response.ok) {
-        console.log(JSON.stringify(response));
-        throw Error(response.statusText);
-    }
-    return response;
-}
 module.exports = CarsListViewModel;

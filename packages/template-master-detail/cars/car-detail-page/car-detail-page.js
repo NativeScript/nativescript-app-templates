@@ -1,5 +1,6 @@
-var CarDetailViewModel = require("./car-detail-view-model");
-var frameModule = require("ui/frame");
+const topmost = require("ui/frame").topmost;
+
+const CarDetailViewModel = require("./car-detail-view-model");
 
 function onNavigatingTo(args) {
     /*
@@ -7,7 +8,7 @@ function onNavigatingTo(args) {
     view the API reference of the Page to see what’s available at
     https://docs.nativescript.org/api-reference/classes/_ui_page_.page.html
     */
-    var page = args.object;
+    const page = args.object;
 
     /*
     A page’s bindingContext is an object that should be used to perform
@@ -22,8 +23,17 @@ function onNavigatingTo(args) {
     page.bindingContext = new CarDetailViewModel(page.navigationContext);
 }
 
-function onGoBack() {
-    frameModule.topmost().goBack();
+function onBackButtonTap() {
+    topmost().goBack();
+}
+
+function onEditButtonTap(args) {
+    const tappedCarItem = args.object.bindingContext;
+
+    topmost().navigate({
+        moduleName: "cars/car-detail-edit-page/car-detail-edit-page",
+        context: tappedCarItem.car
+    });
 }
 
 /*
@@ -33,4 +43,5 @@ function here makes the navigatingTo="onNavigatingTo" binding in this page’s X
 file work.
 */
 exports.onNavigatingTo = onNavigatingTo;
-exports.onGoBack = onGoBack;
+exports.onBackButtonTap = onBackButtonTap;
+exports.onEditButtonTap = onEditButtonTap;
