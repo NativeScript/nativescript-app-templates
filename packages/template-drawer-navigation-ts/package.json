@@ -30,19 +30,18 @@
     "v8Flags": "--expose_gc"
   },
   "dependencies": {
-    "nativescript-telerik-ui": "^2.0.1",
+    "nativescript-telerik-ui": "^3.0.0",
     "nativescript-theme-core": "~1.0.2",
-    "tns-core-modules": "~3.0.0"
+    "tns-core-modules": "~3.1.0"
   },
   "devDependencies": {
-    "nativescript-dev-typescript": "~0.4.0",
-    "nativescript-dev-android-snapshot": "^0.*.*",
+    "nativescript-dev-typescript": "~0.5.0",
     "typescript": "~2.2.1",
     "nativescript-dev-sass": "^1.2.0",
     "tslint": "^5.4.3",
     "node-sass": "*"
   },
-  "scripts":{
-    "preinstall" : "node tools/preinstall.js"
+  "scripts": {
+    "preinstall": "node tools/preinstall.js"
   }
 }
