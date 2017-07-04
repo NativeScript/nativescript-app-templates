@@ -1,12 +1,12 @@
-var frameModule = require("ui/frame");
+const frameModule = require("ui/frame");
 
-var MyDrawerViewModel = require("./MyDrawer-view-model");
+const MyDrawerViewModel = require("./MyDrawer-view-model");
 
 /* ***********************************************************
 * Use the "loaded" event handler of the wrapping layout element to bind the view model to your view.
 *************************************************************/
 function onLoaded(args) {
-    var component = args.object;
+    const component = args.object;
 
     component.bindingContext = new MyDrawerViewModel();
 }
@@ -17,8 +17,8 @@ function onLoaded(args) {
 * based on the tapped navigationItem's route.
 *************************************************************/
 function onNavigationItemTap(args) {
-    var navigationItemView = args.view;
-    var navigationItemRoute = navigationItemView.bindingContext.route;
+    const navigationItemView = args.view;
+    const navigationItemRoute = navigationItemView.bindingContext.route;
 
     frameModule.topmost().navigate({
         moduleName: navigationItemRoute,

@@ -1,9 +1,9 @@
-var frameModule = require("ui/frame");
+const frameModule = require("ui/frame");
 
-var SearchViewModel = require("./search-view-model");
+const SearchViewModel = require("./search-view-model");
 
 function onNavigatingTo(args) {
-    var page = args.object;
+    const page = args.object;
     page.bindingContext = new SearchViewModel();
 }
 
@@ -13,7 +13,7 @@ function onNavigatingTo(args) {
 * use the showDrawer() function to open the app drawer section.
 *************************************************************/
 function onDrawerButtonTap() {
-    var sideDrawer = frameModule.topmost().getViewById("sideDrawer");
+    const sideDrawer = frameModule.topmost().getViewById("sideDrawer");
     sideDrawer.showDrawer();
 }
 
