@@ -39,20 +39,20 @@
     "@angular/http": "~4.1.0",
     "@angular/platform-browser": "~4.1.0",
     "@angular/router": "~4.1.0",
-    "nativescript-angular": "~3.0.0",
+    "nativescript-angular": "~3.1.0",
     "nativescript-theme-core": "~1.0.2",
     "reflect-metadata": "~0.1.8",
     "rxjs": "~5.3.0",
-    "tns-core-modules": "~3.0.0",
+    "tns-core-modules": "~3.1.0",
     "zone.js": "~0.8.2"
   },
   "devDependencies": {
     "nativescript-dev-sass": "^1.2.0",
-    "nativescript-dev-typescript": "~0.4.0",
+    "nativescript-dev-typescript": "~0.5.0",
     "typescript": "~2.2.1",
     "node-sass": "*"
   },
-  "scripts":{
-    "preinstall" : "node tools/preinstall.js"
+  "scripts": {
+    "preinstall": "node tools/preinstall.js"
   }
 }
