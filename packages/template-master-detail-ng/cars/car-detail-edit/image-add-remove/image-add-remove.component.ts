@@ -3,9 +3,6 @@ import * as imagePicker from "nativescript-imagepicker";
 import * as permissions from "nativescript-permissions";
 import * as platform from "tns-core-modules/platform";
 
-const faPlusIcon = "\uf067";
-const faThrashIcon = "\uf014";
-
 /* ***********************************************************
 * The ImageAddRemove custom component uses an imagepicker plugin to let the user select
 * an image and provides custom logic and design to the process.
@@ -20,19 +17,12 @@ export class ImageAddRemoveComponent {
     @Input() imageUrl: string = "";
     @Output() selectionChanged: EventEmitter<any> = new EventEmitter();
 
-    private _addRemoveText: string = faThrashIcon;
-
-    constructor() { }
-
     onImageAddRemoveTap(): void {
         if (this.imageUrl) {
-            this._addRemoveText = faPlusIcon;
             this.handleImageChange(null);
 
             return;
         }
-
-        this._addRemoveText = faThrashIcon;
 
         const context = imagePicker.create({
             mode: "single"
@@ -71,9 +61,5 @@ export class ImageAddRemoveComponent {
 
         this.imageUrl = newValue;
         this.selectionChanged.emit({ oldValue, newValue });
-    }
-
-    get addRemoveText(): string {
-        return this._addRemoveText;
     }
 }

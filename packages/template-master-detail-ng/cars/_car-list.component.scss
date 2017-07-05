@@ -1,0 +1,19 @@
+// Import the theme’s variables. If you’re using a color scheme
+// other than “light”, switch the path to the alternative scheme,
+// for example '~nativescript-theme-core/scss/dark'.
+@import '~nativescript-theme-core/scss/light';
+// Start custom common variables
+@import '../app-variables';
+// End custom common variables
+
+// Custom styles
+
+.list-group {
+    background-color: $blue-10;
+
+    .list-group-item {
+        padding: 15px 15px;
+        margin: 8px 0;
+        background-color: $background-light;
+    }
+}

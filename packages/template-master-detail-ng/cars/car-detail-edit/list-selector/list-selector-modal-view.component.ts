@@ -4,7 +4,8 @@ import { ModalDialogParams } from "nativescript-angular/modal-dialog";
 @Component({
     selector: "ListSelectorModalView",
     moduleId: module.id,
-    templateUrl: "./list-selector-modal-view.component.html"
+    templateUrl: "./list-selector-modal-view.component.html",
+    styleUrls: ["./list-selector-modal-view.component.css"]
 })
 export class ListSelectorModalViewComponent {
     private _items: Array<any>;
