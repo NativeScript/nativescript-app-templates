@@ -1,34 +1,39 @@
-/*
-In NativeScript, a file with the same name as an XML file is known as
-a code-behind file. The code-behind is a great place to place your view
-logic, and to set up your page’s data binding.
-*/
-
 import { EventData } from "data/observable";
+import { topmost } from "ui/frame";
 import { Page } from "ui/page";
+
 import { CarDetailViewModel } from "./car-detail-view-model";
 
-import frameModule = require("ui/frame");
+/* ***********************************************************
+* This is the item details code behind in the master-detail structure.
+* This code behind retrieves the passed parameter from the master list component,
+* finds the data item by this parameter and displays the detailed data item information.
+*************************************************************/
 
-// Event handler for Page "navigatingTo" event attached in main-page.xml
+/* ***********************************************************
+* Use the "onNavigatingTo" handler to initialize the page binding context.
+*************************************************************/
 export function onNavigatingTo(args: EventData) {
-    /*
-    This gets a reference this page’s <Page> UI component. You can
-    view the API reference of the Page to see what’s available at
-    https://docs.nativescript.org/api-reference/classes/_ui_page_.page.html
-    */
     const page = <Page>args.object;
+
     page.bindingContext = new CarDetailViewModel(page.navigationContext);
 }
 
+/* ***********************************************************
+* The back button is essential for a master-detail feature.
+*************************************************************/
 export function onBackButtonTap(): void {
-    frameModule.topmost().goBack();
+    topmost().goBack();
 }
 
+/* ***********************************************************
+* The master-detail template comes with an example of an item edit page.
+* Check out the edit page in the /cars/car-detail-edit-page folder.
+*************************************************************/
 export function onEditButtonTap(args): void {
     const tappedCarItem = args.object.bindingContext;
 
-    frameModule.topmost().navigate({
+    topmost().navigate({
         moduleName: "cars/car-detail-edit-page/car-detail-edit-page",
         context: tappedCarItem.car
     });

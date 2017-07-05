@@ -5,16 +5,15 @@ import firebase = require("nativescript-plugin-firebase");
 import { Config } from "../shared/config";
 import { Car } from "./shared/car-model";
 
+/* ***********************************************************
+* This is the master list view model.
+*************************************************************/
 export class CarsListViewModel extends Observable {
-    private _isLoading: boolean;
-    private _cars: ObservableArray<Car>;
+    private _isLoading: boolean = false;
+    private _cars: ObservableArray<Car> = new ObservableArray<Car>([]);
 
     constructor() {
         super();
-
-        // Initialize default values.
-        this._cars = new ObservableArray<Car>([]);
-        this._isLoading = false;
     }
 
     get cars(): ObservableArray<Car> {

@@ -1,20 +1,17 @@
-<!--
-The markup in NativeScript apps contains a series of user interface components, each
-of which NativeScript renders with a platform-specific iOS or Android native control.
-You can find a full list of user interface components you can use in your app at
-https://docs.nativescript.org/ui/components.
--->
 <Page navigatingTo="onNavigatingTo" class="page"
     xmlns:lv="nativescript-telerik-ui/listview"
     xmlns="http://schemas.nativescript.org/tns.xsd" >
-    <!--
-    The ActionBar is the NativeScript common abstraction over the Android ActionBar and iOS NavigationBar.
-    http://docs.nativescript.org/ui/action-bar
-    -->
+
     <ActionBar title="Browse" icon="" class="action-bar">
     </ActionBar>
 
     <GridLayout>
+        <!--
+        RadListView is a UI component part of the Progress NativeScript UI set of components.
+        Learn more about the RadListView UI component and how it can be customized in this documentation article:
+        http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/ListView/getting-started
+        This component is used to display the master list in the master-detail structure.
+        -->
         <lv:RadListView items="{{ cars }}" itemTap="onCarItemTap">
             <lv:RadListView.listViewLayout>
                 <lv:ListViewLinearLayout scrollDirection="Vertical" />
