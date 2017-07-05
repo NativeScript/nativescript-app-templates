@@ -7,6 +7,7 @@
     "newline-before-return": true,
     "no-angle-bracket-type-assertion": false,
     "no-consecutive-blank-lines": [true, 1],
+    "no-console": [false],
     "no-irregular-whitespace": true,
     "no-unnecessary-initializer": true,
     "no-var-requires": false,
