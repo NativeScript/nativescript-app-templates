@@ -17,7 +17,9 @@
         "brace-style": [
             "error",
             "stroustrup",
-            { "allowSingleLine": true }
+            {
+                "allowSingleLine": true
+            }
         ],
         "camelcase": "error",
         "comma-dangle": "error",
@@ -41,7 +43,6 @@
         "id-blacklist": "error",
         "id-match": "error",
         "keyword-spacing": "error",
-        "linebreak-style": "error",
         "max-depth": "error",
         "max-nested-callbacks": "error",
         "max-statements-per-line": "error",
