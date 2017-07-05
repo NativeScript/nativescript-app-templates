@@ -1,5 +1,5 @@
 <ActionBar class="action-bar">
-    <Label class="action-bar-title" text="Tabs"></Label>
+    <Label class="action-bar-title" [text]="title"></Label>
 </ActionBar>
 
 <!--
@@ -8,7 +8,7 @@ tapping on some of the tabs or by swiping between the views.
 Learn more about the TabView component in this documentation article:
 http://docs.nativescript.org/angular/code-samples/ui/tab-view
 -->
-<TabView>
+<TabView (selectedIndexChanged)="onSelectedIndexChanged($event)">
     <!--
     To add a new TabView item, add a new layout component with a tabItem Angular directive.
     Assign the tabItem directive an object that declares the tab item button's title and icon source.
