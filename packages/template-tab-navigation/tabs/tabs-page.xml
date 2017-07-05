@@ -5,7 +5,7 @@
   xmlns:featured="/tabs/featured"
   xmlns:settings="/tabs/settings">
     <Page.actionBar>
-        <ActionBar title="Rent a car" icon="" class="action-bar">
+        <ActionBar title="{{ title }}" icon="" class="action-bar">
         </ActionBar>
     </Page.actionBar>
 
@@ -15,7 +15,7 @@
     Learn more about the TabView component in this documentation article:
     http://docs.nativescript.org/cookbook/ui/tab-view
     -->
-    <TabView>
+    <TabView selectedIndexChanged="onSelectedIndexChanged">
       <TabView.items>
         <!--
         To add a new TabView item, simply add a new <TabViewItem> component to the <TabView.items> collection.
