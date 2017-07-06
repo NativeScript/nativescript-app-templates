@@ -11,7 +11,7 @@ export function onShownModally(args: ShownModallyData): void {
 }
 
 export function onItemSelected(args): void {
-    viewModel.selectItem(args.itemIndex);
+    viewModel.selectItem(args.index);
 }
 
 export function onCancelButtonTap(): void {
