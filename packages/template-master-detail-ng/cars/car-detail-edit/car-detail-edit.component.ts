@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { PageRoute, RouterExtensions } from "nativescript-angular/router";
 import "rxjs/add/operator/switchMap";
 import { isAndroid } from "tns-core-modules/platform";
@@ -18,14 +18,12 @@ import { carClassList, carDoorList, carSeatList, carTransmissionList } from "./c
     templateUrl: "./car-detail-edit.component.html",
     styleUrls: ["./car-detail-edit.component.css"]
 })
-export class CarDetailEditComponent implements OnInit, AfterViewInit {
+export class CarDetailEditComponent implements OnInit {
     private _car: Car;
     private _carClasses: Array<string> = [];
     private _carDoors: Array<number> = [];
     private _carSeats: Array<string> = [];
     private _carTransmissions: Array<string> = [];
-    private _carLuggageMinValue: number;
-    private _carLuggageMaxValue: number;
     private _carImageUriToUpload: string = null;
     private _isCarImageDirty: boolean = false;
     private _isUpdating: boolean = false;
@@ -58,11 +56,6 @@ export class CarDetailEditComponent implements OnInit, AfterViewInit {
         this._car = this._carService.getCarById(carId);
     }
 
-    ngAfterViewInit(): void {
-        this._carLuggageMinValue = 0;
-        this._carLuggageMaxValue = 5;
-    }
-
     get isAndroid(): boolean {
         return isAndroid;
     }
@@ -89,14 +82,6 @@ export class CarDetailEditComponent implements OnInit, AfterViewInit {
 
     get carTransmissions(): Array<string> {
         return this._carTransmissions;
-    }
-
-    get carLuggageMinValue(): number {
-        return this._carLuggageMinValue;
-    }
-
-    get carLuggageMaxValue(): number {
-        return this._carLuggageMaxValue;
     }
 
     set carLuggageValue(value: number) {

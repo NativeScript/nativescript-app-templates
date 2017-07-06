@@ -76,10 +76,7 @@
                         <Span text=" Bag(s)"></Span>
                     </FormattedString>
                 </Label>
-            	<!-- Currently setting (or binding) minValue / maxValue properties resets the slider value -->
-                <!-- On the other hand [even collapsed] the "Android" hack triggers segmentation fault on iOS hence the ngIf -->
-                <Slider *ngIf="!isAndroid" row="1" colSpan="2" minValue="0" maxValue="5" [(ngModel)]="car.luggage"></Slider>
-                <Slider *ngIf="isAndroid" row="1" colSpan="2" [minValue]="carLuggageMinValue" [maxValue]="carLuggageMaxValue" [(ngModel)]="car.luggage"></Slider>
+                <Slider row="1" colSpan="2" minValue="0" maxValue="5" [(ngModel)]="car.luggage"></Slider>
             </GridLayout>
 
         </StackLayout>
