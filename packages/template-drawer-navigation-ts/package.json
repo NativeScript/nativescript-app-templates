@@ -36,10 +36,10 @@
   },
   "devDependencies": {
     "nativescript-dev-typescript": "~0.5.0",
-    "typescript": "~2.2.1",
     "nativescript-dev-sass": "^1.2.0",
-    "tslint": "^5.4.3",
-    "node-sass": "*"
+    "node-sass": "*",
+    "tslint": "^5.4.3",    
+    "typescript": "~2.2.1"    
   },
   "scripts": {
     "preinstall": "node tools/preinstall.js"
