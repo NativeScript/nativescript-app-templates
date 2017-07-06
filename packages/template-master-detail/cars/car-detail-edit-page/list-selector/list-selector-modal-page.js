@@ -10,7 +10,7 @@ function onShownModally(args) {
 }
 
 function onItemSelected(args) {
-    viewModel.selectItem(args.itemIndex);
+    viewModel.selectItem(args.index);
 }
 
 function onCancelButtonTap() {
