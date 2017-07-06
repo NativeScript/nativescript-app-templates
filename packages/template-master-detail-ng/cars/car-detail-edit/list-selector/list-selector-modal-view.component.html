@@ -4,39 +4,24 @@
 
 <GridLayout rows="auto, *, auto" height="200" verticalAlignment="top" class="list-modal-view">
     <Label [text]="title" ios:visibility="collapsed" class="h3" class="list-modal-header"></Label>
-    <RadListView
-        android:visibility="collapsed"
-        class="list-modal-list" 
-        row="1" 
-        [items]="items" 
-        selectionBehavior="Press" 
-        (itemSelected)="onItemSelected($event)">
-        <ng-template tkListItemTemplate let-item="item" >
-            <GridLayout columns="*,auto" class="list-modal-item">
-                <Label [text]="item.value"></Label>
-                <Label col="1" text="&#xf00c;" class="fa list-modal-view-check" [visibility]="item.isSelected ? 'visible' : 'collapsed'"></Label>
-            </GridLayout>
-        </ng-template>
-    </RadListView>
-    <RadListView ios:visibility="collapsed"
-        class="list-modal-list" 
-        row="1" 
-        [items]="items" 
-        selectionBehavior="Press" 
-        (itemSelected)="onItemSelected($event)">
-        <ng-template tkListItemTemplate let-item="item" >
-            <GridLayout columns="auto,*" class="list-modal-item">
-                <Label 
-                    text="&#xf10c;"
-                    class="fa list-modal-view-icon" 
-                    verticalAlignment="center" 
-                    [visibility]="item.isSelected ? 'collapsed' : 'visible'"></Label>
-                <Label 
-                    text="&#xf05d;"
-                    class="fa list-modal-view-icon selected" 
-                    verticalAlignment="center" 
-                    [visibility]="item.isSelected ? 'visible' : 'collapsed'"></Label>
-                <Label col="1" [text]="item.value"></Label>
+    <RadListView row="1" [items]="items" (itemSelected)="onItemSelected($event)" selectionBehavior="Press" class="list-modal-list">
+        <ng-template tkListItemTemplate let-item="item">
+            <GridLayout>
+                <GridLayout android:visibility="collapsed" columns="*,auto" class="list-modal-item">
+                    <Label [text]="item.value"></Label>
+                    <Label col="1" text="&#xf00c;" 
+                        class="fa list-modal-view-check" 
+                        [visibility]="item.isSelected ? 'visible' : 'collapsed'"></Label>
+                </GridLayout>
+                <GridLayout ios:visibility="collapsed" columns="auto,*" class="list-modal-item">
+                    <Label text="&#xf10c;" 
+                        class="fa list-modal-view-icon" verticalAlignment="center" 
+                        [visibility]="item.isSelected ? 'collapsed' : 'visible'"></Label>
+                    <Label text="&#xf05d;" 
+                        class="fa list-modal-view-icon selected" verticalAlignment="center" 
+                        [visibility]="item.isSelected ? 'visible' : 'collapsed'"></Label>
+                    <Label col="1" [text]="item.value"></Label>
+                </GridLayout>
             </GridLayout>
         </ng-template>
     </RadListView>

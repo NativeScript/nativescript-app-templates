@@ -29,9 +29,9 @@ export class ListSelectorModalViewComponent {
         const oldSelectedItem = this._items[this._selectedIndex];
         oldSelectedItem.isSelected = false;
 
-        const newSelectedItem = this._items[args.itemIndex];
+        const newSelectedItem = this._items[args.index];
         newSelectedItem.isSelected = true;
-        this._selectedIndex = args.itemIndex;
+        this._selectedIndex = args.index;
 
         this._params.closeCallback(newSelectedItem.value);
     }
