@@ -17,9 +17,7 @@
         "brace-style": [
             "error",
             "stroustrup",
-            {
-                "allowSingleLine": true
-            }
+            { "allowSingleLine": true }
         ],
         "camelcase": "error",
         "comma-dangle": "error",
@@ -162,7 +160,10 @@
         ],
         "object-property-newline": "error",
         "object-shorthand": "off",
-        "one-var": "off",
+        "one-var": [
+            "error",
+            "never"
+        ],
         "one-var-declaration-per-line": "off",
         "operator-assignment": "off",
         "operator-linebreak": [
