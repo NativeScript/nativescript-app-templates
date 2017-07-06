@@ -13,6 +13,7 @@
     "no-var-requires": false,
     "object-literal-key-quotes": [true, "as-needed"],
     "object-literal-sort-keys": false,
+    "one-variable-per-declaration": [true, "ignore-for-loop"],
     "trailing-comma": [true, {
       "multiline": "never",
       "singleline": "never"
