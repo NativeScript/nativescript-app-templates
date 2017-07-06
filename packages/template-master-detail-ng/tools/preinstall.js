@@ -12,29 +12,26 @@ console.log("creating tslint.json to enable linting...");
 const tslintConfig = "tslint.json";
 copyConfig(tslintConfig);
 
-// Remove assets folder
-console.log('Removing assets folder');
-const assetsDir = path.join(__dirname, 'assets');
-deleteFolder(assetsDir);
+// Remove tools folder including this script
+console.log('Removing tools directory');
+deleteFolder(__dirname);
 
 function copyConfig(configFilename) {
     const oldPath = path.join(__dirname, configFilename);
     const newPath = path.join(getAppRootFolder(), configFilename);
-    fs.rename(oldPath, newPath, (err) => {
-        if (err) {
-            console.log(err);
-        }
-    });
+    fs.renameSync(oldPath, newPath);
 }
 
 function deleteFolder(folderPath) {
     if (fs.statSync(folderPath).isDirectory()) {
         fs.readdirSync(folderPath).forEach(function (file) {
             let content = path.join(folderPath, file);
+            let contentDirs = fs.statSync(content).isDirectory();
 
-            if (fs.statSync(content).isDirectory()) {
-                delFodler(content);
+            if (contentDirs) {
+                deleteFolder(content);
             } else {
+
                 fs.unlinkSync(content);
             }
         });
@@ -45,3 +42,4 @@ function deleteFolder(folderPath) {
 function getAppRootFolder() {
     return "../../../";
 }
+
