@@ -3,30 +3,35 @@ const alert = require("ui/dialogs").alert;
 
 const CarDetailEditViewModel = require("./car-detail-edit-view-model");
 
+/* ***********************************************************
+* This is the item detail edit code behind.
+* This code behind gets the selected data item, provides options to edit the item and saves the changes.
+*************************************************************/
 let viewModel;
 
+/* ***********************************************************
+* Use the "onNavigatingTo" handler to get the data item id parameter passed through navigation.
+* Use it to initialize the view model and assign it to the view.
+*************************************************************/
 function onNavigatingTo(args) {
-    /*
-    This gets a reference this page’s <Page> UI component. You can
-    view the API reference of the Page to see what’s available at
-    https://docs.nativescript.org/api-reference/classes/_ui_page_.page.html
-    */
     const page = args.object;
 
-    /*
-    You can learn more about data binding in NativeScript at
-    https://docs.nativescript.org/core-concepts/data-binding.
-    */
     if (!page.bindingContext) {
         viewModel = new CarDetailEditViewModel(page.navigationContext);
         page.bindingContext = viewModel;
     }
 }
 
+/* ***********************************************************
+* The edit cancel button navigates back to the item details page.
+*************************************************************/
 function onCancelButtonTap() {
     topmost().goBack();
 }
 
+/* ***********************************************************
+* The edit done button calls the view model save changes logic.
+*************************************************************/
 function onDoneButtonTap() {
     viewModel.saveChanges()
         .then(() => topmost().navigate({ moduleName: "cars/cars-list-page" }))
@@ -55,12 +60,6 @@ function onSelectorTap(args) {
     }, false);
 }
 
-/*
-Exporting a function in a NativeScript code-behind file makes it accessible
-to the file’s corresponding XML file. In this case, exporting the onNavigatingTo
-function here makes the navigatingTo="onNavigatingTo" binding in this page’s XML
-file work.
-*/
 exports.onNavigatingTo = onNavigatingTo;
 exports.onCancelButtonTap = onCancelButtonTap;
 exports.onDoneButtonTap = onDoneButtonTap;

@@ -1,18 +1,8 @@
-<!--
-The markup in NativeScript apps contains a series of user interface components, each
-of which NativeScript renders with a platform-specific iOS or Android native control.
-You can find a full list of user interface components you can use in your app at
-https://docs.nativescript.org/ui/components.
--->
 <Page 
     navigatingTo="onNavigatingTo"
     xmlns:customImg="cars/car-detail-edit-page/image-add-remove"
     xmlns="http://schemas.nativescript.org/tns.xsd"
     class="page">
-    <!--
-    The ActionBar is the NativeScript common abstraction over the Android ActionBar and iOS NavigationBar.
-    http://docs.nativescript.org/ui/action-bar
-    -->
     <ActionBar title="Edit Car Details" icon="" class="action-bar">
         <!--HACK - we should remove the navigation button-->
         <NavigationButton visibility="collapsed" />
@@ -38,6 +28,10 @@ https://docs.nativescript.org/ui/components.
                 <Slider value="{{ car.price }}" />
 
                 <Label text="ADD OR REMOVE IMAGE" />
+                <!--
+                ImageAddRemove is a custom component, that wraps an imagepicker plugin and provides custom design and logic
+                on top of it. Check out the custom component at /cars/car-detail-edit-page/image-add-remove.
+                -->
                 <customImg:ImageAddRemove imageUrl="{{ car.imageUrl }}" />
 
                 <Label text="CLASS" />

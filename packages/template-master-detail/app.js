@@ -1,12 +1,12 @@
-/*
-In NativeScript, the app.js file is the entry point to your application.
-You can use this file to perform app-level initialization, but the primary
-purpose of the file is to pass control to the app’s first module.
-*/
 require("./bundle-config");
+
 const app = require("application");
 
-// Firebase initialization
+/* ***********************************************************
+* The {N} Firebase plugin needs some initialization steps before it is ready
+* for use. Check out the initialization script at /shared/firebase.common.ts
+* along with more information about it.
+*************************************************************/
 require("./shared/firebase.common");
 
 app.start({ moduleName: "cars/cars-list-page" });

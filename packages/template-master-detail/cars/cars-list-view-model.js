@@ -4,6 +4,9 @@ const firebase = require("nativescript-plugin-firebase");
 
 const Car = require("./shared/car-model");
 
+/* ***********************************************************
+* This is the master list view model.
+*************************************************************/
 function CarsListViewModel() {
     const viewModel = new Observable();
 
