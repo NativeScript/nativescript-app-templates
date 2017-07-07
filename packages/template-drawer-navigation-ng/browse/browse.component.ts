@@ -14,7 +14,7 @@ export class BrowseComponent implements OnInit {
     * It is used in the "onDrawerButtonTap" function below to manipulate the drawer.
     *************************************************************/
     @ViewChild("drawer") drawerComponent: RadSideDrawerComponent;
-    
+
     private _sideDrawerTransition: DrawerTransitionBase;
 
     /* ***********************************************************

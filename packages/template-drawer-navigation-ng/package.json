@@ -48,10 +48,12 @@
     "zone.js": "~0.8.2"
   },
   "devDependencies": {
+    "codelyzer": "^3.0.1",
     "nativescript-dev-sass": "^1.2.0",
     "nativescript-dev-typescript": "~0.5.0",
-    "typescript": "~2.2.1",
-    "node-sass": "*"
+    "node-sass": "*",
+    "tslint": "^5.4.3",
+    "typescript": "~2.2.1"
   },
   "scripts": {
     "preinstall": "node tools/preinstall.js"
