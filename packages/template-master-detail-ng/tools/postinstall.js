@@ -1,18 +1,21 @@
 const fs = require("fs");
 const path = require("path");
-const packageJsonPath = path.join(process.cwd(), _getAppRootFolder(), "package.json");
+const packageJsonPath = path.join(process.cwd(), getAppRootFolder(), "package.json");
 const packageJson = require(packageJsonPath);
 
-console.log("Updating package.json scripts for linting");
-modifyPackageJson();
+console.log("Updating package.json scripts for linting...");
+addLintScriptCommand();
+
+console.log("Update google services configuration for firebase...");
+updateFirebaseConfigAppId();
 
 // Remove tools folder including this script
-console.log("Removing tools directory");
+console.log("Removing tools directory...");
 deleteFolder(__dirname);
 
-function modifyPackageJson() {
+function addLintScriptCommand() {
     if (!packageJson) {
-        console.error(`${packageJsonPath} not found`);
+        console.error(`${packageJsonPath} not found.`);
 
         return;
     }
@@ -25,6 +28,46 @@ function modifyPackageJson() {
 
     const updatedContent = JSON.stringify(packageJson);
     fs.writeFile(packageJsonPath, updatedContent, (err) => {
+        if (err) {
+            console.error(err);
+        }
+    });
+}
+
+function updateFirebaseConfigAppId() {
+    if (!packageJson) {
+        console.error(`${packageJsonPath} not found.`);
+
+        return;
+    }
+
+    const googleServicesJsonPath = path.join(process.cwd(), "App_Resources", "Android", "google-services.json");
+    const googleServiceInfoPlistPath = path.join(process.cwd(), "App_Resources", "iOS", "GoogleService-Info.plist");
+
+    if (packageJson.nativescript.id) {
+        replaceAppId(googleServicesJsonPath, packageJson.nativescript.id);
+        replaceAppId(googleServiceInfoPlistPath, packageJson.nativescript.id);
+    }
+}
+
+function replaceAppId(filePath, appId) {
+    const appIdPlaceholder = "__PACKAGE__";
+    let content;
+
+    try {
+        // synchronous read because of the synchronous deleteFolder(...)
+        content = fs.readFileSync(filePath, "utf8");
+    }
+    catch (err) {
+        console.error(err);
+    }
+
+    if (!content) {
+        return;
+    }
+
+    const updatedContent = content.replace(appIdPlaceholder, appId);
+    fs.writeFile(filePath, updatedContent, (err) => {
         if (err) {
             console.error(err);
         }
@@ -49,6 +92,6 @@ function deleteFolder(folderPath) {
     }
 }
 
-function _getAppRootFolder() {
+function getAppRootFolder() {
     return "../../";
 }

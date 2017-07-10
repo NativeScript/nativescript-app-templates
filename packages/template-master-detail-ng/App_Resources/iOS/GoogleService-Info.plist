@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>org.nativescript.masterdetail</string>
+	<string>__PACKAGE__</string>
 	<key>PROJECT_ID</key>
 	<string>car-rental-b26b7</string>
 	<key>STORAGE_BUCKET</key>
