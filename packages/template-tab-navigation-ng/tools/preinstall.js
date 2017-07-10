@@ -1,11 +1,10 @@
-"use strict";
 const fs = require("fs");
 const path = require("path");
 
 console.log("preinstall script running...");
 
-console.log("creating tslint.json to enable linting...");
 const tslintConfig = "tslint.json";
+console.log(`creating ${tslintConfig} to enable linting...`);
 copyConfig(tslintConfig);
 
 function copyConfig(configFilename) {
@@ -19,5 +18,5 @@ function copyConfig(configFilename) {
 }
 
 function getAppRootFolder() {
-    return "../../../";
+    return path.join("..", "..", "..");
 }
