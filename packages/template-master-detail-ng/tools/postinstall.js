@@ -3,8 +3,12 @@ const path = require("path");
 const packageJsonPath = path.join(process.cwd(), getAppRootFolder(), "package.json");
 const packageJson = require(packageJsonPath);
 
+console.log("postinstall script running...");
+
 console.log("Updating package.json scripts for linting...");
-addLintScriptCommand();
+// results of glob parameter expansion can vary depending on shell, and its configuration
+// quote the parameter to use node glob syntax (using double quotes if you need it to run in Windows)
+addScriptCommand("lint", "tslint \"app/**/*.ts\"");
 
 console.log("Update google services configuration for firebase...");
 updateFirebaseConfigAppId();
@@ -13,7 +17,7 @@ updateFirebaseConfigAppId();
 console.log("Removing tools directory...");
 deleteFolder(__dirname);
 
-function addLintScriptCommand() {
+function addScriptCommand(commandName, command) {
     if (!packageJson) {
         console.error(`${packageJsonPath} not found.`);
 
@@ -24,7 +28,7 @@ function addLintScriptCommand() {
         packageJson.scripts = {};
     }
 
-    packageJson.scripts.lint = "tslint ./app/**/*.ts";
+    packageJson.scripts[commandName] = command;
 
     const updatedContent = JSON.stringify(packageJson);
     fs.writeFile(packageJsonPath, updatedContent, (err) => {
@@ -93,5 +97,5 @@ function deleteFolder(folderPath) {
 }
 
 function getAppRootFolder() {
-    return "../../";
+    return path.join("..", "..");
 }
