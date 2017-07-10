@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:33002893899:android:1aa8448c56b58a16",
         "android_client_info": {
-          "package_name": "org.nativescript.masterdetail"
+          "package_name": "__PACKAGE__"
         }
       },
       "oauth_client": [
