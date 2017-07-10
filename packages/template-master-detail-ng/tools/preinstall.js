@@ -14,7 +14,11 @@ copyConfig(tslintConfig);
 function copyConfig(configFilename) {
     const oldPath = path.join(__dirname, configFilename);
     const newPath = path.join(getAppRootFolder(), configFilename);
-    fs.renameSync(oldPath, newPath);
+    fs.rename(oldPath, newPath, (err) => {
+        if (err) {
+            console.error(err);
+        }
+    });
 }
 
 function getAppRootFolder() {
