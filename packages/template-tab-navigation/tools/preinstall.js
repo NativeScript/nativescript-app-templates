@@ -26,5 +26,5 @@ function copyConfig(configFilename) {
 }
 
 function getAppRootFolder() {
-    return "../../../";
+    return path.join("..", "..", "..");
 }
