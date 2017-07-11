@@ -21,7 +21,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/NativeScript/template-blank.git"
+    "url": "https://github.com/NativeScript/template-blank"
   },
   "homepage": "https://github.com/NativeScript/template-blank",
   "android": {
