@@ -5,7 +5,7 @@ function Car(options) {
 
     viewModel.id = options.id;
     viewModel.name = options.name;
-    viewModel.hasAC = options.ac;
+    viewModel.hasAC = options.hasAC;
     viewModel.description = options.description;
     viewModel.seats = options.seats;
     viewModel.luggage = Number(options.luggage);

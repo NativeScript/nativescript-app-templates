@@ -1,6 +1,6 @@
 const firebase = require("nativescript-plugin-firebase");
 
-const config = require("../shared/config");
+const config = require("./config");
 
 /* ***********************************************************
 * The {N} Firebase plugin initialization is explained in the plugin readme here:
