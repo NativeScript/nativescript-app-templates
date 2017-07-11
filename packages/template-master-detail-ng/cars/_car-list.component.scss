@@ -7,13 +7,19 @@
 // End custom common variables
 
 // Custom styles
-
 .list-group {
-    background-color: $blue-10;
-
     .list-group-item {
-        padding: 15px 15px;
-        margin: 8px 0;
-        background-color: $background-light;
+        padding: 0 0 8 0;
+        background-color: $blue-10;
+
+        .list-group-item-content {
+            padding-top: 8;
+            padding-left: 15;
+            background-color: $background-light;
+        }
+
+        .fa {
+            color: $accent-dark;
+        }
     }
 }

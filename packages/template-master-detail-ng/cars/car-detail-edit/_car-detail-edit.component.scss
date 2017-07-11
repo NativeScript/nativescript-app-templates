@@ -6,19 +6,19 @@
 @import '../../app-variables';
 
 // Custom styles
-$text-primary-font-size: $app-font-size + 2;
+$text-primary-font-size: $base-font-size + 2;
 .car-list {
-    font-size: $app-font-size;
+    font-size: $base-font-size;
 
     .car-list-even,
     .car-list-odd {
         padding: 10 15;
         border-bottom-width: $border-width;
         border-color: $blue-20;
-        font-size: $app-font-size;
+        font-size: $base-font-size;
 
         label {
-          font-size: $app-font-size;  
+          font-size: $base-font-size;  
         }
 
         .text-primary {
@@ -28,5 +28,6 @@ $text-primary-font-size: $app-font-size + 2;
 
     .car-list-odd {
         background-color: $blue-10;
+        color: $blue-50;
     }
 }

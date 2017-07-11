@@ -25,8 +25,9 @@ NavigationButton {
     color: $ab-color;
 }
 
-.slider {
+Slider{
   background-color: $accent;
+  color: $accent;  
 }
 
 .text {
@@ -37,8 +38,13 @@ NavigationButton {
     color: $accent-dark;
 }
 
+.text-secondary {
+    color: $blue-50;
+}
+
 .page {
+
     label {
-        font-size: $app-font-size;
+        font-size: $base-font-size;
     }
 }

@@ -12,7 +12,7 @@
     -->
         <ng-template tkListItemTemplate let-car="item">
             <StackLayout class="list-group-item">
-                <GridLayout rows="*, *, *" columns="*, *" class="p-l-15">
+                <GridLayout rows="*, *, *" columns="*, *" class="list-group-item-content">
                     <Label [text]="car.name" class="text-primary"></Label>
                     <Label col="1" horizontalAlignment="right" class="list-group-item-text m-r-5">
                         <FormattedString>
@@ -29,14 +29,14 @@
                         <Label class="p-b-10">
                             <!-- set fontFamily="system" to workaround "Service exited due to Segmentation fault: 11" error -->
                             <FormattedString ios:fontFamily="system">
-                                <Span text="&#xf1b9;  " class="fa text-primary"></Span>
+                                <Span text="&#xf1b9;   " class="fa text-primary"></Span>
                                 <Span [text]="car.class"></Span>
                             </FormattedString>
                         </Label>
                         <Label class="p-b-10">
                             <!-- set fontFamily="system" to workaround "Service exited due to Segmentation fault: 11" error -->
                             <FormattedString ios:fontFamily="system">
-                                <Span text="&#xf085;  " class="fa text-primary"></Span>
+                                <Span text="&#xf085;   " class="fa text-primary"></Span>
                                 <Span [text]="car.transmission"></Span>
                                 <Span text=" Transmission"></Span>
                             </FormattedString>
@@ -44,7 +44,7 @@
                         <Label>
                             <!-- set fontFamily="system" to workaround "Service exited due to Segmentation fault: 11" error -->
                             <FormattedString ios:fontFamily="system">
-                                <Span text="&#xf2dc;  " class="fa text-primary"></Span>
+                                <Span text="&#xf2dc;   " class="fa text-primary"></Span>
                                 <Span [text]="car.hasAC ? 'Yes' : 'No'"></Span>
                             </FormattedString>
                         </Label>
