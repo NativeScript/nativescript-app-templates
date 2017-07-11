@@ -5,8 +5,7 @@ import { RadSideDrawerComponent } from "nativescript-telerik-ui/sidedrawer/angul
 @Component({
     selector: "Search",
     moduleId: module.id,
-    templateUrl: "./search.component.html",
-    styleUrls: ["./search.component.css"]
+    templateUrl: "./search.component.html"
 })
 export class SearchComponent implements OnInit {
     /* ***********************************************************

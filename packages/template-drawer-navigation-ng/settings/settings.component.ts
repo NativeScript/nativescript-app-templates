@@ -5,8 +5,7 @@ import { RadSideDrawerComponent } from "nativescript-telerik-ui/sidedrawer/angul
 @Component({
     selector: "Settings",
     moduleId: module.id,
-    templateUrl: "./settings.component.html",
-    styleUrls: ["./settings.component.css"]
+    templateUrl: "./settings.component.html"
 })
 export class SettingsComponent implements OnInit {
     /* ***********************************************************
