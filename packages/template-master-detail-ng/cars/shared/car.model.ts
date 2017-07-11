@@ -15,7 +15,7 @@ export class Car {
     constructor(options: any) {
         this.id = options.id;
         this.name = options.name;
-        this.hasAC = options.ac;
+        this.hasAC = options.hasAC;
         this.description = options.description;
         this.seats = options.seats;
         this.luggage = Number(options.luggage);
