@@ -24,7 +24,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/NativeScript/template-drawer-navigation-ng.git"
+    "url": "https://github.com/NativeScript/template-drawer-navigation-ng"
   },
   "homepage": "https://github.com/NativeScript/template-drawer-navigation-ng",
   "android": {
