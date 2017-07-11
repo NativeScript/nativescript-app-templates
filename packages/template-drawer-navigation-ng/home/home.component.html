@@ -1,10 +1,13 @@
 <ActionBar class="action-bar">
-    <!--HACK - we should remove the navigation button-->
-    <NavigationButton visibility="collapsed"></NavigationButton>
-    <ActionItem (tap)="onDrawerButtonTap()"
-        ios.position="left"
-        android.position="actionBar">
-        <Label text="&#xf0c9;" class="fa"></Label>
+    <!-- 
+    Use the NavigationButton as a side-drawer button in Android because ActionItems are shown on the right side of the ActionBar
+    -->
+    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+    <!-- 
+    Use the ActionItem for IOS with position set to left. Using the NavigationButton as a side-drawer button in iOS is not possible, because its function is to always navigate back in the application.
+    -->
+    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
+        ios.position="left">
     </ActionItem>
     <Label class="action-bar-title" text="Home"></Label>
 </ActionBar>
