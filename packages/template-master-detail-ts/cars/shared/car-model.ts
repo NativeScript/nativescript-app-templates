@@ -20,7 +20,7 @@ export class Car extends Observable {
 
         this.id = options.id;
         this.name = options.name;
-        this.hasAC = options.ac;
+        this.hasAC = options.hasAC;
         this.description = options.description;
         this._seats = options.seats;
         this.luggage = Number(options.luggage);
