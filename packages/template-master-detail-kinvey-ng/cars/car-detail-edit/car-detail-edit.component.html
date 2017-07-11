@@ -1,0 +1,87 @@
+<ActionBar class="action-bar">
+    <!--HACK - we should remove the navigation button-->
+    <NavigationButton visibility="collapsed"></NavigationButton>
+    <ActionItem ios.position="left" android.position="left" (tap)="onCancelButtonTap()">
+        <Label text="Cancel" class="action-item p-r-15"></Label>
+    </ActionItem>
+    <Label class="action-bar-title" text="Edit Car Details" horizontalAlignment="center"></Label>
+    <ActionItem ios.position="right" android.position="right" (tap)="onDoneButtonTap()">
+        <Label text="Done" class="action-item p-r-15"></Label>
+    </ActionItem>
+</ActionBar>
+
+<GridLayout class="page" >
+    <ScrollView>
+        <StackLayout class="car-list">
+
+            <Label text="CAR MAKE" class="car-list-odd"></Label>
+
+            <TextField [(ngModel)]="car.name" hint="Enter your car make" class="car-list-even"></TextField>
+
+            <GridLayout rows="*, 55, *" columns="auto, *" class="car-list-odd">
+                <Label text="PRICE PER DAY"></Label>
+                <Label col="1" horizontalAlignment="right" class="text-primary">
+                    <FormattedString>
+                        <Span text="€"></Span>
+                        <Span [text]="car.price"></Span>
+                    </FormattedString>
+                </Label>
+
+                <Slider row="1" [(ngModel)]="car.price" colSpan="2"></Slider>
+
+                <Label row="2" text="ADD OR REMOVE IMAGE" colSpan="2"></Label>
+            </GridLayout>
+            
+            <StackLayout class="car-list-even">
+                <!--
+                ImageAddRemove is a custom component, that wraps an imagepicker plugin and provides custom design and logic
+                on top of it. Check out the custom component at /cars/car-detail-edit/image-add-remove.
+                -->
+                <ImageAddRemove [imageUrl]="car.imageUrl" (selectionChanged)="onImageAddRemove($event)"></ImageAddRemove>
+            </StackLayout>
+
+            <Label class="car-list-odd" text="CLASS"></Label>
+
+            <StackLayout class="car-list-even">
+                <!--
+                ListSelector is a custom component, that provides custom design and logic for picking an option from a list.
+                Check out the custom component at /cars/car-detail-edit/list-selector.
+                -->
+                <ListSelector [selectedValue]="car.class" [items]="carClasses" tag="class"></ListSelector>
+            </StackLayout>
+
+            <Label class="car-list-odd" text="DOORS"></Label>
+
+            <StackLayout class="car-list-even">
+                <ListSelector [selectedValue]="car.doors" [items]="carDoors" tag="doors"></ListSelector>
+            </StackLayout>
+
+            <Label class="car-list-odd" text="SEATS"></Label>
+
+            <StackLayout class="car-list-even">
+                <ListSelector [selectedValue]="car.seats" [items]="carSeats" tag="seats"></ListSelector>
+            </StackLayout>
+
+            <Label class="car-list-odd" text="TRANSMISSION"></Label>
+
+            <StackLayout class="car-list-even">
+                <ListSelector [selectedValue]="car.transmission" [items]="carTransmissions" tag="transmission"></ListSelector>
+            </StackLayout>
+
+            <GridLayout rows="*, 55" columns="auto, *" class="car-list-odd">
+                <Label text="LUGGAGE"></Label>
+                <Label col="1" horizontalAlignment="right" class="text-primary">
+                    <FormattedString>
+                        <Span [text]="car.luggage"></Span>
+                        <Span text=" Bag(s)"></Span>
+                    </FormattedString>
+                </Label>
+                <Slider row="1" colSpan="2" minValue="0" maxValue="5" [(ngModel)]="car.luggage"></Slider>
+            </GridLayout>
+
+        </StackLayout>
+
+    </ScrollView>
+
+    <ActivityIndicator [busy]="isUpdating"></ActivityIndicator>
+</GridLayout>
