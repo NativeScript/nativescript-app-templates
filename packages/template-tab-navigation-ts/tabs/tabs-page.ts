@@ -1,6 +1,6 @@
 import { EventData } from "data/observable";
+import { SelectedIndexChangedEventData, TabView, TabViewItem } from "tns-core-modules/ui/tab-view";
 import { Page } from "ui/page";
-import { TabView, TabViewItem, SelectedIndexChangedEventData } from "tns-core-modules/ui/tab-view";
 
 import { TabsViewModel } from "./tabs-view-model";
 
