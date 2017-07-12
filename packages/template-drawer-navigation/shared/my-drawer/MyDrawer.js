@@ -8,7 +8,7 @@ const MyDrawerViewModel = require("./MyDrawer-view-model");
 function onLoaded(args) {
     const component = args.object;
 
-    component.bindingContext = new MyDrawerViewModel();
+    component.bindingContext = new MyDrawerViewModel(component.selectedPage);
 }
 
 /* ***********************************************************

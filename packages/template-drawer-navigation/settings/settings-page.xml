@@ -41,7 +41,7 @@
                 Learn more about custom components and how they can be used in this documentation article:
                 http://docs.nativescript.org/ui/basics#custom-components
                 -->
-                <myDrawer:MyDrawer />
+                <myDrawer:MyDrawer selectedPage="Settings"/>
             </StackLayout>
         </nsDrawer:RadSideDrawer.drawerContent>
 

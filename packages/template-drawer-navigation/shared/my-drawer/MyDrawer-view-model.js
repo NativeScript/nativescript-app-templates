@@ -3,7 +3,7 @@ const Observable = require("data/observable").Observable;
 /* ***********************************************************
 * Keep data that is displayed in your app drawer in the MyDrawer custom component view model.
 *************************************************************/
-function MyDrawerViewModel() {
+function MyDrawerViewModel(selectedPage) {
     const viewModel = new Observable();
 
     /* ***********************************************************
@@ -15,27 +15,32 @@ function MyDrawerViewModel() {
         {
             title: "Home",
             route: "home/home-page",
-            icon: "\uf015"
+            icon: "\uf015",
+            isSelected: selectedPage === "Home"
         },
         {
             title: "Browse",
             route: "browse/browse-page",
-            icon: "\uf1ea"
+            icon: "\uf1ea",
+            isSelected: selectedPage === "Browse"
         },
         {
             title: "Search",
             route: "search/search-page",
-            icon: "\uf002"
+            icon: "\uf002",
+            isSelected: selectedPage === "Search"
         },
         {
             title: "Featured",
             route: "featured/featured-page",
-            icon: "\uf005"
+            icon: "\uf005",
+            isSelected: selectedPage === "Featured"
         },
         {
             title: "Settings",
             route: "settings/settings-page",
-            icon: "\uf013"
+            icon: "\uf013",
+            isSelected: selectedPage === "Settings"
         }
     ];
 
