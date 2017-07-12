@@ -8,10 +8,11 @@ import { MyDrawerViewModel } from "./MyDrawer-view-model";
 /* ***********************************************************
 * Use the "loaded" event handler of the wrapping layout element to bind the view model to your view.
 *************************************************************/
-export function onLoaded(args: EventData): void {
-    const component = <StackLayout> args.object;
+export function onLoaded(args): void {
+    const component = <StackLayout>args.object;
+    const componentTitle = args.object.selectedPage;
 
-    component.bindingContext = new MyDrawerViewModel();
+    component.bindingContext = new MyDrawerViewModel(componentTitle);
 }
 
 /* ***********************************************************
