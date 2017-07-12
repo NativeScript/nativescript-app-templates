@@ -23,11 +23,11 @@
                 <Label col="1" horizontalAlignment="right" class="text-primary">
                     <FormattedString>
                         <Span text="€"></Span>
-                        <Span [text]="car.price"></Span>
+                        <Span [text]="pricePerDay"></Span>
                     </FormattedString>
                 </Label>
 
-                <Slider row="1" [(ngModel)]="car.price" colSpan="2"></Slider>
+                <Slider row="1" [(ngModel)]="pricePerDay" colSpan="2"></Slider>
 
                 <Label row="2" text="ADD OR REMOVE IMAGE" colSpan="2"></Label>
             </GridLayout>
@@ -72,11 +72,11 @@
                 <Label text="LUGGAGE"></Label>
                 <Label col="1" horizontalAlignment="right" class="text-primary">
                     <FormattedString>
-                        <Span [text]="car.luggage"></Span>
+                        <Span [text]="luggageValue"></Span>
                         <Span text=" Bag(s)"></Span>
                     </FormattedString>
                 </Label>
-                <Slider row="1" colSpan="2" minValue="0" maxValue="5" [(ngModel)]="car.luggage"></Slider>
+                <Slider row="1" colSpan="2" minValue="0" maxValue="5" [(ngModel)]="luggageValue"></Slider>
             </GridLayout>
 
         </StackLayout>
