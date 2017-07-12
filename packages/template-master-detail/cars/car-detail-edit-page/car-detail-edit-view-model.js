@@ -4,6 +4,8 @@ const permissions = require("nativescript-permissions");
 const platform = require("tns-core-modules/platform");
 const firebase = require("nativescript-plugin-firebase");
 
+const RoundingValueConverter = require("./roundingValueConverter");
+
 const faPlusIcon = "\uf067";
 const faThrashIcon = "\uf014";
 
@@ -13,11 +15,11 @@ function CarDetailEditViewModel(carModel) {
     viewModel.car = carModel;
     viewModel.addRemoveText = faThrashIcon;
 
-    viewModel.carLuggageMinValue = 0;
-    viewModel.carLuggageMaxValue = 5;
-
     viewModel.isUpdating = false;
     viewModel._isCarImageDirty = false;
+
+    // set up value converter to force iOS UISlider to work with discrete steps
+    viewModel.roundingValueConverter = new RoundingValueConverter();
 
     viewModel.onImageAddRemove = function () {
         if (this.car.imageUrl) {

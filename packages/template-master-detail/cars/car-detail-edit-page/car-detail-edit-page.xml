@@ -25,7 +25,7 @@
                         </FormattedString>
                     </Label>
                 </GridLayout>
-                <Slider value="{{ car.price }}" />
+                <Slider value="{{ car.price, car.price | roundingValueConverter }}" />
 
                 <Label text="ADD OR REMOVE IMAGE" />
                 <!--
@@ -67,7 +67,7 @@
                         </FormattedString>
                     </Label>
                 </GridLayout>
-                <Slider minValue="{{ carLuggageMinValue }}" maxValue="{{ carLuggageMaxValue }}" value="{{ car.luggage }}" />
+                <Slider minValue="0" maxValue="5" value="{{ car.luggage, car.luggage | roundingValueConverter }}" />
 
             </StackLayout>
         </ScrollView>
