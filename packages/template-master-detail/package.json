@@ -38,6 +38,7 @@
     "eslint": "^4.1.1"
   },
   "scripts":{
-    "preinstall" : "node tools/preinstall.js"
+    "preinstall" : "node tools/preinstall.js",
+    "postinstall": "node tools/postinstall.js"
   }
 }
