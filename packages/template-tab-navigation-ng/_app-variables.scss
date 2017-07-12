@@ -26,9 +26,13 @@ $midnight-light: #14418B !default;
 $night-dark: #023141 !default;
 $night-light: #01526C !default;
 
+$page-icon-color: #D7D7D7 !default;
+
 // Sizes
 $button-height: 36 !default;
 $small-button-height: 28 !default;
+
+$page-content-placeholder-font-size: 20;
 
 /**
  * Theme variables overrides
@@ -41,6 +45,3 @@ $ab-color: $background-light;
 $item-active-color: $accent-dark;
 $item-active-icon-color: $accent-dark;
 $item-active-background: $background-dark;
-
-//Side-drawer
-$side-drawer-background: $background-light;
