@@ -5,6 +5,7 @@ import * as platform from "tns-core-modules/platform";
 import firebase = require("nativescript-plugin-firebase");
 
 import { Car } from "../shared/car-model";
+import { RoundingValueConverter } from "./RoundingValueConverter";
 
 const faPlusIcon = "\uf067";
 const faThrashIcon = "\uf014";
@@ -20,9 +21,8 @@ const editableProperties = [
 ];
 
 export class CarDetailEditViewModel extends Observable {
+    private _roundingValueConverter: RoundingValueConverter;
     private _addRemoveText: string;
-    private _carLuggageMinValue: number;
-    private _carLuggageMaxValue: number;
     private _isUpdating: boolean;
     private _isCarImageDirty: boolean;
 
@@ -31,11 +31,15 @@ export class CarDetailEditViewModel extends Observable {
 
         this._addRemoveText = faThrashIcon;
 
-        this._carLuggageMinValue = 0;
-        this._carLuggageMaxValue = 5;
-
         this._isUpdating = false;
         this._isCarImageDirty = false;
+
+        // set up value converter to force iOS UISlider to work with discrete steps
+        this._roundingValueConverter = new RoundingValueConverter();
+    }
+
+    get roundingValueConverter(): RoundingValueConverter {
+        return this._roundingValueConverter;
     }
 
     get isUpdating(): boolean {
@@ -62,14 +66,6 @@ export class CarDetailEditViewModel extends Observable {
             this._addRemoveText = value;
             this.notifyPropertyChange("addRemoveText", value);
         }
-    }
-
-    get carLuggageMinValue(): number {
-        return this._carLuggageMinValue;
-    }
-
-    get carLuggageMaxValue(): number {
-        return this._carLuggageMaxValue;
     }
 
     onImageAddRemove(): void {
