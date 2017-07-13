@@ -1,0 +1,47 @@
+// Colors
+$background-dark: #F8F8F8 !default;
+$background-light: #FFFFFF !default;
+
+$blue-dark: #022734 !default;
+$blue-light: #02556E !default;
+$blue-50: rgba($blue-dark, 0.5) !default;
+$blue-20: rgba($blue-dark, 0.2) !default;
+$blue-10: rgba($blue-dark, 0.1) !default;
+
+$accent-dark: #3A53FF !default;
+$accent-light: #4781FE !default;
+
+$success-dark: #06CE6A !default;
+$success-light: #00E676 !default;
+
+$warning-dark: #f39c11 !default;
+$warning-light: #F2C112 !default;
+
+$error-dark: #D84039 !default;
+$error-light: #ED473F !default;
+
+$midnight-dark: #0F336D !default;
+$midnight-light: #14418B !default;
+
+$night-dark: #023141 !default;
+$night-light: #01526C !default;
+
+$page-icon-color: #D7D7D7 !default;
+
+// Sizes
+$button-height: 36 !default;
+$small-button-height: 28 !default;
+
+$page-content-placeholder-font-size: 20;
+
+/**
+ * Theme variables overrides
+ **/
+
+// ActionBar
+$ab-background: $accent-dark;
+$ab-color: $background-light;
+
+$item-active-color: $accent-dark;
+$item-active-icon-color: $accent-dark;
+$item-active-background: $background-dark;

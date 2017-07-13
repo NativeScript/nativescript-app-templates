@@ -5,7 +5,8 @@
   xmlns:featured="/tabs/featured"
   xmlns:settings="/tabs/settings">
     <Page.actionBar>
-        <ActionBar title="{{ title }}" icon="" class="action-bar">
+        <ActionBar class="action-bar">
+          <Label text="{{ title }}" class="action-bar-title" />
         </ActionBar>
     </Page.actionBar>
 
@@ -21,7 +22,7 @@
         To add a new TabView item, simply add a new <TabViewItem> component to the <TabView.items> collection.
         Assign the <TabViewItem> component a "title" that will be displayed as the text of the tab item button.
         -->
-        <TabViewItem title="Home">
+        <TabViewItem title="Home" iconSource="{{ iconPath + 'home'}}">
           <TabViewItem.view>
             <!--
             You can declare the layout and components of each view inside the <TabViewItem.view> directly.
@@ -32,25 +33,25 @@
           </TabViewItem.view>
         </TabViewItem>
 
-        <TabViewItem title="Browse">
+        <TabViewItem title="Browse" iconSource="{{ iconPath + 'browse'}}">
           <TabViewItem.view>
              <browse:BrowseView/>
           </TabViewItem.view>
         </TabViewItem>
 
-        <TabViewItem title="Search">
+        <TabViewItem title="Search" iconSource="{{ iconPath + 'search'}}">
           <TabViewItem.view>
              <search:SearchView/>
           </TabViewItem.view>
         </TabViewItem>
 
-        <TabViewItem title="Featured">
+        <TabViewItem title="Featured" iconSource="{{ iconPath + 'favorites'}}">
           <TabViewItem.view>
              <featured:FeaturedView/>
           </TabViewItem.view>
         </TabViewItem>
 
-        <TabViewItem title="Settings">
+        <TabViewItem title="Settings" iconSource="{{ iconPath + 'settings'}}">
           <TabViewItem.view>
              <settings:SettingsView/>
           </TabViewItem.view>

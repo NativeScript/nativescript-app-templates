@@ -31,7 +31,9 @@
     "tns-core-modules": "~3.1.0"
   },
   "devDependencies": {
-    "eslint": "^4.1.1"
+    "eslint": "^4.1.1",
+    "nativescript-dev-sass": "^1.2.0",
+    "node-sass": "*"
   },
   "scripts": {
     "preinstall": "node tools/preinstall.js",
