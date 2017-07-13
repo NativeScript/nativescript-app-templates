@@ -22,17 +22,27 @@
 .fa {
    font-family: "FontAwesome";
 }
+// Common page class
+.page-content {
+    
+    .page-placeholder {
+        color: $page-icon-color;
+        font-size: $page-content-placeholder-font-size;
+        vertical-align: center;
+        horizontal-align: center;
+    }
 
-/* Commoon page class*/
-.appPage {
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    height: 100%;
+    .page-icon {
+        font-size: 72;
+        vertical-align: top;
+        horizontal-align: center;
+        color: $page-icon-color;
+        margin-top: 20%;
+    }
 }
 
 /* Action bar*/
 ActionBar .action-bar-title {
     horizontal-align: center;
 }
-
 

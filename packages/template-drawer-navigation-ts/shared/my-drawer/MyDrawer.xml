@@ -14,7 +14,7 @@ Feel free to customize layouts and components to change how your app drawer look
             <ListView.itemTemplate>
                     <GridLayout columns="auto, *" rows="50" 
                         class="{{ 'sidedrawer-list-item sidedrawer-list-item-' + name + (isSelected ? ' selected':'') }}">
-                        <Label row="0" col="0" text="{{ icon }}" class="fa p-l-15 p-r-10"/>
+                        <Label row="0" col="0" text="{{ icon }}" class="fa"/>
                         <Label row="0" col="1" text="{{ title }}" textWrap="true"/>
                     </GridLayout>
             </ListView.itemTemplate>
