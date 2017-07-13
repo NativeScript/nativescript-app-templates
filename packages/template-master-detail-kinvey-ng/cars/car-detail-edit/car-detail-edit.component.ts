@@ -86,6 +86,24 @@ export class CarDetailEditComponent implements OnInit, AfterViewInit {
         return this._car;
     }
 
+    get pricePerDay(): number {
+        return this._car.price;
+    }
+
+    set pricePerDay(value: number) {
+        // force iOS UISlider to work with discrete steps
+        this._car.price = Math.round(value);
+    }
+
+    get luggageValue(): number {
+        return this._car.luggage;
+    }
+
+    set luggageValue(value: number) {
+        // force iOS UISlider to work with discrete steps
+        this._car.luggage = Math.round(value);
+    }
+
     get carClasses(): Array<string> {
         return this._carClasses;
     }
