@@ -1,4 +1,5 @@
 import { Observable } from "data/observable";
+import { isAndroid } from "platform";
 
 export class TabsViewModel extends Observable {
 
@@ -17,5 +18,9 @@ export class TabsViewModel extends Observable {
             this._title = value;
             this.notifyPropertyChange("title", value);
         }
+    }
+
+    get iconPath(): string {
+        return isAndroid ? "res://" : "res://tabIcons/";
     }
 }
