@@ -133,7 +133,7 @@ export class CarDetailEditComponent implements OnInit {
         queue.then(() => this._carService.update(this._car))
             .then(() => {
                 this._isUpdating = false;
-                this._routerExtensions.backToPreviousPage();
+                this._routerExtensions.navigate(["/cars"], { clearHistory: true });
             })
             .catch((errorMessage: any) => {
                 this._isUpdating = false;
