@@ -64,6 +64,6 @@ export class CarListComponent implements OnInit {
     onCarItemTap(args: ListViewEventData): void {
         const tappedCarItem = args.view.bindingContext;
 
-        this._routerExtensions.navigate(["/cars/detail", tappedCarItem.id]);
+        this._routerExtensions.navigate(["/cars/car-detail", tappedCarItem.id]);
     }
 }

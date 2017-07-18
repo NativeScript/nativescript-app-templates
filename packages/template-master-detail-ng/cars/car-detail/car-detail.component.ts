@@ -61,6 +61,6 @@ export class CarDetailComponent implements OnInit {
     * Check out the edit page in the /cars/car-detail-edit folder.
     *************************************************************/
     onEditButtonTap(): void {
-        this._routerExtensions.navigate(["/cars/detail-edit", this._car.id]);
+        this._routerExtensions.navigate(["/cars/car-detail-edit", this._car.id]);
     }
 }
