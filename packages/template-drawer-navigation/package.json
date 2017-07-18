@@ -3,7 +3,7 @@
   "name": "tns-template-drawer-navigation",
   "displayName": "Drawer Navigation",
   "templateType": "App template",
-  "version": "1.0.0",
+  "version": "3.1.0",
   "description": "Simple template with Drawer navigation for Vanilla NativeScript apps using JavaScript",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
