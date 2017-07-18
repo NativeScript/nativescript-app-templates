@@ -34,38 +34,38 @@
             
             <StackLayout class="car-list-even">
                 <!--
-                ImageAddRemove is a custom component, that wraps an imagepicker plugin and provides custom design and logic
-                on top of it. Check out the custom component at /cars/car-detail-edit/image-add-remove.
+                MyImageAddRemove is a custom component, that wraps an imagepicker plugin and provides custom design and logic
+                on top of it. Check out the custom component at /cars/car-detail-edit/my-image-add-remove.
                 -->
-                <ImageAddRemove [imageUrl]="car.imageUrl" (selectionChanged)="onImageAddRemove($event)"></ImageAddRemove>
+                <MyImageAddRemove [imageUrl]="car.imageUrl" (selectionChanged)="onImageAddRemove($event)"></MyImageAddRemove>
             </StackLayout>
 
             <Label class="car-list-odd" text="CLASS"></Label>
 
             <StackLayout class="car-list-even">
                 <!--
-                ListSelector is a custom component, that provides custom design and logic for picking an option from a list.
-                Check out the custom component at /cars/car-detail-edit/list-selector.
+                MyListSelector is a custom component, that provides custom design and logic for picking an option from a list.
+                Check out the custom component at /cars/car-detail-edit/my-list-selector.
                 -->
-                <ListSelector [selectedValue]="car.class" [items]="carClasses" tag="class"></ListSelector>
+                <MyListSelector [selectedValue]="car.class" [items]="carClasses" tag="class"></MyListSelector>
             </StackLayout>
 
             <Label class="car-list-odd" text="DOORS"></Label>
 
             <StackLayout class="car-list-even">
-                <ListSelector [selectedValue]="car.doors" [items]="carDoors" tag="doors"></ListSelector>
+                <MyListSelector [selectedValue]="car.doors" [items]="carDoors" tag="doors"></MyListSelector>
             </StackLayout>
 
             <Label class="car-list-odd" text="SEATS"></Label>
 
             <StackLayout class="car-list-even">
-                <ListSelector [selectedValue]="car.seats" [items]="carSeats" tag="seats"></ListSelector>
+                <MyListSelector [selectedValue]="car.seats" [items]="carSeats" tag="seats"></MyListSelector>
             </StackLayout>
 
             <Label class="car-list-odd" text="TRANSMISSION"></Label>
 
             <StackLayout class="car-list-even">
-                <ListSelector [selectedValue]="car.transmission" [items]="carTransmissions" tag="transmission"></ListSelector>
+                <MyListSelector [selectedValue]="car.transmission" [items]="carTransmissions" tag="transmission"></MyListSelector>
             </StackLayout>
 
             <GridLayout rows="*, 55" columns="auto, *" class="car-list-odd">

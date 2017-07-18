@@ -4,16 +4,16 @@ import * as permissions from "nativescript-permissions";
 import * as platform from "tns-core-modules/platform";
 
 /* ***********************************************************
-* The ImageAddRemove custom component uses an imagepicker plugin to let the user select
+* The MyImageAddRemove custom component uses an imagepicker plugin to let the user select
 * an image and provides custom logic and design to the process.
 *************************************************************/
 @Component({
-    selector: "ImageAddRemove",
+    selector: "MyImageAddRemove",
     moduleId: module.id,
-    templateUrl: "./image-add-remove.component.html",
-    styleUrls: ["./image-add-remove.component.css"]
+    templateUrl: "./my-image-add-remove.component.html",
+    styleUrls: ["./my-image-add-remove.component.css"]
 })
-export class ImageAddRemoveComponent {
+export class MyImageAddRemoveComponent {
     @Input() imageUrl: string = "";
     @Output() selectionChanged: EventEmitter<any> = new EventEmitter();
 
