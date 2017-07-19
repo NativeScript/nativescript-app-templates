@@ -2,8 +2,8 @@ import { Component, Input, OnInit, ViewContainerRef } from "@angular/core";
 import { ModalDialogOptions, ModalDialogService } from "nativescript-angular/modal-dialog";
 import { PageRoute } from "nativescript-angular/router";
 
-import { Car } from "../../shared/car.model";
-import { CarService } from "../../shared/car.service";
+import { CarEditModel } from "../../shared/car-edit.model";
+import { CarEditService } from "../../shared/car-edit.service";
 import { MyListSelectorModalViewComponent } from "./my-list-selector-modal-view.component";
 
 const capitalizeFirstLetter = (s) => s.charAt(0).toUpperCase() + s.slice(1);
@@ -25,13 +25,13 @@ export class MyListSelectorComponent implements OnInit {
     @Input() items: Array<string>;
     @Input() tag: string;
 
-    private _car: Car;
+    private _carEditModel: CarEditModel;
 
     constructor(
         private _pageRoute: PageRoute,
         private _modalService: ModalDialogService,
         private _vcRef: ViewContainerRef,
-        private _carService: CarService) { }
+        private _carEditService: CarEditService) { }
 
     ngOnInit(): void {
         let carId = "";
@@ -43,7 +43,7 @@ export class MyListSelectorComponent implements OnInit {
                 carId = params.id;
             });
 
-        this._car = this._carService.getCarById(carId);
+        this._carEditModel = this._carEditService.getEditableCarById(carId);
     }
 
     onSelectorTap(): void {
@@ -62,7 +62,7 @@ export class MyListSelectorComponent implements OnInit {
         this._modalService.showModal(MyListSelectorModalViewComponent, options)
             .then((selectedValue: string) => {
                 if (selectedValue) {
-                    this._car[this.tag] = selectedValue;
+                    this._carEditModel[this.tag] = selectedValue;
                 }
             });
     }

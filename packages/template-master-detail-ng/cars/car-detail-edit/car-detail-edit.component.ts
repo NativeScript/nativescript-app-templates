@@ -4,7 +4,8 @@ import "rxjs/add/operator/switchMap";
 import { isAndroid } from "tns-core-modules/platform";
 import { alert } from "ui/dialogs";
 
-import { Car } from "../shared/car.model";
+import { CarEditModel } from "../shared/car-edit.model";
+import { CarEditService } from "../shared/car-edit.service";
 import { CarService } from "../shared/car.service";
 import { carClassList, carDoorList, carSeatList, carTransmissionList } from "./constants";
 
@@ -19,7 +20,7 @@ import { carClassList, carDoorList, carSeatList, carTransmissionList } from "./c
     styleUrls: ["./car-detail-edit.component.css"]
 })
 export class CarDetailEditComponent implements OnInit {
-    private _car: Car;
+    private _carEditModel: CarEditModel;
     private _carClasses: Array<string> = [];
     private _carDoors: Array<number> = [];
     private _carSeats: Array<string> = [];
@@ -30,6 +31,7 @@ export class CarDetailEditComponent implements OnInit {
 
     constructor(
         private _carService: CarService,
+        private _carEditService: CarEditService,
         private _pageRoute: PageRoute,
         private _routerExtensions: RouterExtensions
     ) { }
@@ -47,13 +49,14 @@ export class CarDetailEditComponent implements OnInit {
         * http://docs.nativescript.org/angular/core-concepts/angular-navigation.html#passing-parameter
         *************************************************************/
         let carId = "";
+
         this._pageRoute.activatedRoute
             .switchMap((activatedRoute) => activatedRoute.params)
             .forEach((params) => {
                 carId = params.id;
             });
 
-        this._car = this._carService.getCarById(carId);
+        this._carEditModel = this._carEditService.startEdit(carId);
     }
 
     get isAndroid(): boolean {
@@ -64,26 +67,26 @@ export class CarDetailEditComponent implements OnInit {
         return this._isUpdating;
     }
 
-    get car(): Car {
-        return this._car;
+    get car(): CarEditModel {
+        return this._carEditModel;
     }
 
     get pricePerDay(): number {
-        return this._car.price;
+        return this._carEditModel.price;
     }
 
     set pricePerDay(value: number) {
         // force iOS UISlider to work with discrete steps
-        this._car.price = Math.round(value);
+        this._carEditModel.price = Math.round(value);
     }
 
     get luggageValue(): number {
-        return this._car.luggage;
+        return this._carEditModel.luggage;
     }
 
     set luggageValue(value: number) {
         // force iOS UISlider to work with discrete steps
-        this._car.luggage = Math.round(value);
+        this._carEditModel.luggage = Math.round(value);
     }
 
     get carClasses(): Array<string> {
@@ -103,7 +106,7 @@ export class CarDetailEditComponent implements OnInit {
     }
 
     set carLuggageValue(value: number) {
-        this._car.luggage = value;
+        this._carEditModel.luggage = value;
     }
 
     /* ***********************************************************
@@ -124,13 +127,14 @@ export class CarDetailEditComponent implements OnInit {
 
         if (this._isCarImageDirty && this._carImageUriToUpload) {
             queue = queue
-                .then(() => this._carService.uploadImage(this._car.imageStoragePath, this._carImageUriToUpload))
+                .then(() =>
+                    this._carService.uploadImage(this._carEditModel.imageStoragePath, this._carImageUriToUpload))
                 .then((uploadedFile: any) => {
-                    this._car.imageUrl = uploadedFile.url;
+                    this._carEditModel.imageUrl = uploadedFile.url;
                 });
         }
 
-        queue.then(() => this._carService.update(this._car))
+        queue.then(() => this._carService.update(this._carEditModel))
             .then(() => {
                 this._isUpdating = false;
                 this._routerExtensions.navigate(["/cars"], { clearHistory: true });

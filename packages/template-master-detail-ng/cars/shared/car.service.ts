@@ -44,8 +44,8 @@ export class CarService {
         }).catch(this.handleErrors);
     }
 
-    update(editObject: any) {
-        return firebase.update("/cars/" + editObject.id, editObject);
+    update(editModel: any) {
+        return firebase.update("/cars/" + editModel.id, editModel);
     }
 
     uploadImage(remoteFullPath: string, localFullPath: string) {
