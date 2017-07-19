@@ -1,0 +1,33 @@
+// Import the theme’s variables. If you’re using a color scheme
+// other than “light”, switch the path to the alternative scheme,
+// for example '~nativescript-theme-core/scss/dark'.
+@import '~nativescript-theme-core/scss/light';
+// Custom common variables
+@import '../../app-variables';
+
+// Custom styles
+$text-primary-font-size: $base-font-size + 2;
+.car-list {
+    font-size: $base-font-size;
+
+    .car-list-even,
+    .car-list-odd {
+        padding: 10 15;
+        border-bottom-width: $border-width;
+        border-color: $blue-20;
+        font-size: $base-font-size;
+
+        label {
+          font-size: $base-font-size;  
+        }
+
+        .text-primary {
+           font-size: $text-primary-font-size; 
+        }
+    }
+
+    .car-list-odd {
+        background-color: $blue-10;
+        color: $blue-50;
+    }
+}

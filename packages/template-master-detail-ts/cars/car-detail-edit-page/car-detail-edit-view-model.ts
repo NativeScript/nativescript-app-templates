@@ -5,10 +5,9 @@ import * as platform from "tns-core-modules/platform";
 import firebase = require("nativescript-plugin-firebase");
 
 import { Car } from "../shared/car-model";
-import { RoundingValueConverter } from "./RoundingValueConverter";
+import { RoundingValueConverter } from "./roundingValueConverter";
+import { VisibilityValueConverter } from "./visibilityValueConverter";
 
-const faPlusIcon = "\uf067";
-const faThrashIcon = "\uf014";
 const editableProperties = [
     "doors",
     "imageUrl",
@@ -22,24 +21,28 @@ const editableProperties = [
 
 export class CarDetailEditViewModel extends Observable {
     private _roundingValueConverter: RoundingValueConverter;
-    private _addRemoveText: string;
+    private _visibilityValueConverter: VisibilityValueConverter;
     private _isUpdating: boolean;
     private _isCarImageDirty: boolean;
 
     constructor(private _car: Car) {
         super();
 
-        this._addRemoveText = faThrashIcon;
-
         this._isUpdating = false;
         this._isCarImageDirty = false;
 
         // set up value converter to force iOS UISlider to work with discrete steps
         this._roundingValueConverter = new RoundingValueConverter();
+
+        this._visibilityValueConverter = new VisibilityValueConverter();
     }
 
     get roundingValueConverter(): RoundingValueConverter {
         return this._roundingValueConverter;
+    }
+
+    get visibilityValueConverter(): VisibilityValueConverter {
+        return this._visibilityValueConverter;
     }
 
     get isUpdating(): boolean {
@@ -55,17 +58,6 @@ export class CarDetailEditViewModel extends Observable {
 
     get car(): Car {
         return this._car;
-    }
-
-    get addRemoveText(): string {
-        return this._addRemoveText;
-    }
-
-    set addRemoveText(value: string) {
-        if (this._addRemoveText !== value) {
-            this._addRemoveText = value;
-            this.notifyPropertyChange("addRemoveText", value);
-        }
     }
 
     onImageAddRemove(): void {
@@ -150,6 +142,5 @@ export class CarDetailEditViewModel extends Observable {
 
         this._isCarImageDirty = true;
         this.car.imageUrl = value;
-        this.addRemoveText = this.car.imageUrl ? faThrashIcon : faPlusIcon;
     }
 }
