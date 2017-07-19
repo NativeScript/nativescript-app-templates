@@ -4,12 +4,15 @@ import * as permissions from "nativescript-permissions";
 import * as platform from "tns-core-modules/platform";
 import firebase = require("nativescript-plugin-firebase");
 
+import { CarEditModel } from "../shared/car-edit-model";
 import { Car } from "../shared/car-model";
 import { RoundingValueConverter } from "./roundingValueConverter";
 import { VisibilityValueConverter } from "./visibilityValueConverter";
 
 const editableProperties = [
+    "id",
     "doors",
+    "imageStoragePath",
     "imageUrl",
     "luggage",
     "name",
@@ -24,9 +27,12 @@ export class CarDetailEditViewModel extends Observable {
     private _visibilityValueConverter: VisibilityValueConverter;
     private _isUpdating: boolean;
     private _isCarImageDirty: boolean;
+    private _carEditModel: CarEditModel;
 
-    constructor(private _car: Car) {
+    constructor(car: Car) {
         super();
+
+        this._carEditModel = this.cloneEditableSubset(car);
 
         this._isUpdating = false;
         this._isCarImageDirty = false;
@@ -56,8 +62,8 @@ export class CarDetailEditViewModel extends Observable {
         }
     }
 
-    get car(): Car {
-        return this._car;
+    get car(): CarEditModel {
+        return this._carEditModel;
     }
 
     onImageAddRemove(): void {
@@ -104,20 +110,12 @@ export class CarDetailEditViewModel extends Observable {
         }
 
         return queue.then(() => {
-            const carEditObject = this.cloneEditObject(this.car);
-
-            return firebase.update("/cars/" + this.car.id, carEditObject);
+            return firebase.update("/cars/" + this.car.id, this.car);
         }).then(() => this.isUpdating = false)
             .catch((errorMessage: any) => {
                 this.isUpdating = false;
                 throw errorMessage;
             });
-    }
-
-    private cloneEditObject(car: Car) {
-        // clone only editable properties
-        // otherwise private properties (with leading underscore) from Car model will be sent to firebase
-        return editableProperties.reduce((a, e) => (a[e] = car[e], a), {});
     }
 
     private startSelection(context): void {
@@ -142,5 +140,11 @@ export class CarDetailEditViewModel extends Observable {
 
         this._isCarImageDirty = true;
         this.car.imageUrl = value;
+    }
+
+    private cloneEditableSubset(car: Car): CarEditModel {
+        const clone = editableProperties.reduce((a, e) => (a[e] = car[e], a), {});
+
+        return new CarEditModel(clone);
     }
 }
