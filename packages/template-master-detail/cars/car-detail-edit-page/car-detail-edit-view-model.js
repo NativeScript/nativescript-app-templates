@@ -4,15 +4,28 @@ const permissions = require("nativescript-permissions");
 const platform = require("tns-core-modules/platform");
 const firebase = require("nativescript-plugin-firebase");
 
+const CarEditModel = require("../shared/car-edit-model");
 const RoundingValueConverter = require("./roundingValueConverter");
 
 const faPlusIcon = "\uf067";
 const faThrashIcon = "\uf014";
+const editableProperties = [
+    "id",
+    "doors",
+    "imageStoragePath",
+    "imageUrl",
+    "luggage",
+    "name",
+    "price",
+    "seats",
+    "transmission",
+    "class"
+];
 
 function CarDetailEditViewModel(carModel) {
     const viewModel = new Observable();
 
-    viewModel.car = carModel;
+    viewModel.car = cloneEditableSubset(carModel);
     viewModel.addRemoveText = faThrashIcon;
 
     viewModel.isUpdating = false;
@@ -103,6 +116,12 @@ function CarDetailEditViewModel(carModel) {
     };
 
     return viewModel;
+}
+
+function cloneEditableSubset(car) {
+    const clone = editableProperties.reduce((a, e) => (a[e] = car[e], a), {}); // eslint-disable-line no-return-assign, no-sequences
+
+    return new CarEditModel(clone);
 }
 
 module.exports = CarDetailEditViewModel;
