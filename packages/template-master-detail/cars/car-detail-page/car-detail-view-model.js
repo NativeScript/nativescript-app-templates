@@ -1,12 +1,12 @@
-const Observable = require("data/observable").Observable;
+const observableModule = require("data/observable");
 
 /* ***********************************************************
 * This is the item details view model.
 *************************************************************/
 function CarDetailViewModel(carModel) {
-    const viewModel = new Observable();
-
-    viewModel.car = carModel;
+    const viewModel = observableModule.fromObject({
+        car: carModel
+    });
 
     return viewModel;
 }

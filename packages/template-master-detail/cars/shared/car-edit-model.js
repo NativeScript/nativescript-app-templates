@@ -1,18 +1,16 @@
-const Observable = require("data/observable").Observable;
-
 function CarEditModel(options) {
-    const viewModel = new Observable();
-
-    viewModel.id = options.id;
-    viewModel.name = options.name;
-    viewModel.seats = options.seats;
-    viewModel.luggage = Number(options.luggage);
-    viewModel.class = options.class;
-    viewModel.doors = Number(options.doors);
-    viewModel.price = Number(options.price);
-    viewModel.transmission = options.transmission;
-    viewModel.imageUrl = options.imageUrl;
-    viewModel.imageStoragePath = options.imageStoragePath;
+    const model = {
+        id: options.id,
+        name: options.name,
+        seats: options.seats,
+        luggage: Number(options.luggage),
+        class: options.class,
+        doors: Number(options.doors),
+        price: Number(options.price),
+        transmission: options.transmission,
+        imageUrl: options.imageUrl,
+        imageStoragePath: options.imageStoragePath
+    };
 
     return viewModel;
 }
