@@ -1,11 +1,10 @@
-function RoundingValueConverter() {}
-
-RoundingValueConverter.prototype.toView = function (value) {
-    return value;
+const roundingValueConverter = {
+    toView: function (value) {
+        return value;
+    },
+    toModel: function (value) {
+        return Math.round(value);
+    }
 };
 
-RoundingValueConverter.prototype.toModel = function (value) {
-    return Math.round(value);
-};
-
-module.exports = RoundingValueConverter;
+module.exports = roundingValueConverter;

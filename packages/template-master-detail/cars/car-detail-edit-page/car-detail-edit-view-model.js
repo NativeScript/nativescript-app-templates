@@ -2,34 +2,26 @@ const observableModule = require("data/observable");
 const imagePicker = require("nativescript-imagepicker");
 const permissions = require("nativescript-permissions");
 const platform = require("tns-core-modules/platform");
-const firebase = require("nativescript-plugin-firebase");
 
-const CarEditModel = require("../shared/car-edit-model");
-const RoundingValueConverter = require("./roundingValueConverter");
+const CarService = require("../shared/car-service");
+const roundingValueConverter = require("./roundingValueConverter");
 
 const faPlusIcon = "\uf067";
 const faThrashIcon = "\uf014";
-const editableProperties = [
-    "id",
-    "doors",
-    "imageStoragePath",
-    "imageUrl",
-    "luggage",
-    "name",
-    "price",
-    "seats",
-    "transmission",
-    "class"
-];
 
 function CarDetailEditViewModel(carModel) {
     const viewModel = observableModule.fromObject({
         addRemoveText: faThrashIcon,
-        car: cloneEditableSubset(carModel),
-        isUpdating: false,
-        // set up value converter to force iOS UISlider to work with discrete steps
-        roundingValueConverter: new RoundingValueConverter(),
 
+        // car will be fresh editable copy due to the observable.fromObject(...) wrapping
+        car: observableModule.fromObject(carModel),
+
+        isUpdating: false,
+
+        // set up value converter to force iOS UISlider to work with discrete steps
+        roundingValueConverter: roundingValueConverter,
+
+        _carService: CarService.getInstance(),
         _isCarImageDirty: false,
 
         onImageAddRemove: function () {
@@ -67,20 +59,18 @@ function CarDetailEditViewModel(carModel) {
                         const localFullPath = this.car.imageUrl;
                         const remoteFullPath = this.car.imageStoragePath;
 
-                        return firebase.uploadFile({
-                            localFullPath,
-                            remoteFullPath,
-                            onProgress: null
-                        });
+                        return this._carService.uploadImage(remoteFullPath, localFullPath);
                     })
                     .then((uploadedFile) => {
+                        // do not raise property change event here
                         this.car.imageUrl = uploadedFile.url;
+
                         this._isCarImageDirty = false;
                     });
             }
 
             return queue
-                .then(() => firebase.update(`/cars/${this.car.id}`, this.car))
+                .then(() => this._carService.update(this.car))
                 .then(() => this.set("isUpdating", false))
                 .catch((errorMessage) => {
                     this.set("isUpdating", false);
@@ -101,7 +91,11 @@ function CarDetailEditViewModel(carModel) {
             }
 
             this._isCarImageDirty = true;
+
+            // raise property change event here so binding in
+            // /cars/car-detail-edit-page/my-image-add-remove/MyImageAddRemove.xml works correctly
             this.car.set("imageUrl", value);
+
             this.set("addRemoveText", this.car.imageUrl ? faThrashIcon : faPlusIcon);
         },
 
@@ -115,12 +109,6 @@ function CarDetailEditViewModel(carModel) {
     });
 
     return viewModel;
-}
-
-function cloneEditableSubset(car) {
-    const clone = editableProperties.reduce((a, e) => (a[e] = car[e], a), {}); // eslint-disable-line no-return-assign, no-sequences
-
-    return new CarEditModel(clone);
 }
 
 module.exports = CarDetailEditViewModel;
