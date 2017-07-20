@@ -1,10 +1,6 @@
-import { Kinvey } from "kinvey-nativescript-sdk";
-
-export class Car implements Kinvey.Entity {
+export class CarEditModel {
     id: string;
     name: string;
-    hasAC: boolean;
-    description: string;
     seats: string;
     luggage: number;
     class: string;
@@ -17,8 +13,6 @@ export class Car implements Kinvey.Entity {
     constructor(options: any) {
         this.id = options.id;
         this.name = options.name;
-        this.hasAC = options.ac;
-        this.description = options.description;
         this.seats = options.seats;
         this.luggage = Number(options.luggage);
         this.class = options.class;

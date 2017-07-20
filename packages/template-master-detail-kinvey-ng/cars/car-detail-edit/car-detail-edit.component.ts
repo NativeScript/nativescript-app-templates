@@ -1,77 +1,62 @@
-import { AfterViewInit, Component, OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { PageRoute, RouterExtensions } from "nativescript-angular/router";
 import "rxjs/add/operator/switchMap";
 import { isAndroid } from "tns-core-modules/platform";
 import { alert } from "ui/dialogs";
 
-import { Car } from "../shared/car.model";
+import { CarEditModel } from "../shared/car-edit.model";
+import { CarEditService } from "../shared/car-edit.service";
 import { CarService } from "../shared/car.service";
 import { carClassList, carDoorList, carSeatList, carTransmissionList } from "./constants";
 
+/* ***********************************************************
+* This is the item detail edit component.
+* This component gets the selected data item, provides options to edit the item and saves the changes.
+*************************************************************/
 @Component({
     moduleId: module.id,
     selector: "CarDetailEdit",
     templateUrl: "./car-detail-edit.component.html",
     styleUrls: ["./car-detail-edit.component.css"]
 })
-export class CarDetailEditComponent implements OnInit, AfterViewInit {
-    private _car: Car;
-    private _carClasses: Array<string>;
-    private _carDoors: Array<number>;
-    private _carSeats: Array<string>;
-    private _carTransmissions: Array<string>;
-    private _carLuggageMinValue: number;
-    private _carLuggageMaxValue: number;
-    private _carImageUriToUpload: string;
-    private _isCarImageDirty: boolean;
-    private _isUpdating: boolean;
+export class CarDetailEditComponent implements OnInit {
+    private _carEditModel: CarEditModel;
+    private _carClasses: Array<string> = [];
+    private _carDoors: Array<number> = [];
+    private _carSeats: Array<string> = [];
+    private _carTransmissions: Array<string> = [];
+    private _carImageUriToUpload: string = null;
+    private _isCarImageDirty: boolean = false;
+    private _isUpdating: boolean = false;
 
     constructor(
         private _carService: CarService,
+        private _carEditService: CarEditService,
         private _pageRoute: PageRoute,
         private _routerExtensions: RouterExtensions
-    ) {
-        this._carClasses = [];
-        for (const classItem of carClassList) {
-            this._carClasses.push(classItem);
-        }
+    ) { }
 
-        this._carDoors = [];
-        for (const doorItem of carDoorList) {
-            this._carDoors.push(doorItem);
-        }
-
-        this._carSeats = [];
-        for (const seatItem of carSeatList) {
-            this._carSeats.push(seatItem);
-        }
-
-        this._carTransmissions = [];
-        for (const transmissionItem of carTransmissionList) {
-            this._carTransmissions.push(transmissionItem);
-        }
-
-        this._isUpdating = false;
-        this._isCarImageDirty = false;
-        this._carImageUriToUpload = null;
-    }
-
+    /* ***********************************************************
+    * Use the "ngOnInit" handler to get the data item id parameter passed through navigation.
+    * Get the data item details from the data service using this id and assign it to the
+    * private property that holds it inside the component.
+    *************************************************************/
     ngOnInit(): void {
+        this.initializeEditOptions();
+
+        /* ***********************************************************
+        * Learn more about how to get navigation parameters in this documentation article:
+        * http://docs.nativescript.org/angular/core-concepts/angular-navigation.html#passing-parameter
+        *************************************************************/
         let carId = "";
 
-        // use switchMap to get the latest activatedRoute instance
         this._pageRoute.activatedRoute
             .switchMap((activatedRoute) => activatedRoute.params)
             .forEach((params) => {
                 carId = params.id;
             });
 
-        this._car = this._carService.getCarById(carId);
-    }
-
-    ngAfterViewInit(): void {
-        this._carLuggageMinValue = 0;
-        this._carLuggageMaxValue = 5;
+        this._carEditModel = this._carEditService.startEdit(carId);
     }
 
     get isAndroid(): boolean {
@@ -82,26 +67,26 @@ export class CarDetailEditComponent implements OnInit, AfterViewInit {
         return this._isUpdating;
     }
 
-    get car(): Car {
-        return this._car;
+    get car(): CarEditModel {
+        return this._carEditModel;
     }
 
     get pricePerDay(): number {
-        return this._car.price;
+        return this._carEditModel.price;
     }
 
     set pricePerDay(value: number) {
         // force iOS UISlider to work with discrete steps
-        this._car.price = Math.round(value);
+        this._carEditModel.price = Math.round(value);
     }
 
     get luggageValue(): number {
-        return this._car.luggage;
+        return this._carEditModel.luggage;
     }
 
     set luggageValue(value: number) {
         // force iOS UISlider to work with discrete steps
-        this._car.luggage = Math.round(value);
+        this._carEditModel.luggage = Math.round(value);
     }
 
     get carClasses(): Array<string> {
@@ -120,38 +105,36 @@ export class CarDetailEditComponent implements OnInit, AfterViewInit {
         return this._carTransmissions;
     }
 
-    get carLuggageMinValue(): number {
-        return this._carLuggageMinValue;
-    }
-
-    get carLuggageMaxValue(): number {
-        return this._carLuggageMaxValue;
-    }
-
     set carLuggageValue(value: number) {
-        this._car.luggage = value;
+        this._carEditModel.luggage = value;
     }
 
+    /* ***********************************************************
+    * The edit cancel button navigates back to the item details page.
+    *************************************************************/
     onCancelButtonTap(): void {
         this._routerExtensions.backToPreviousPage();
     }
 
+    /* ***********************************************************
+    * The edit done button uses the data service to save the updated values of the data item details.
+    * Check out the data service as cars/shared/car.service.ts
+    *************************************************************/
     onDoneButtonTap(): void {
         let queue = Promise.resolve();
 
         this._isUpdating = true;
 
-        // TODO: car image should be required field
         if (this._isCarImageDirty && this._carImageUriToUpload) {
-            // no need to explicitly delete old image as upload to an existing remote path overwrites it
             queue = queue
-                .then(() => this._carService.uploadImage(this._car.imageStoragePath, this._carImageUriToUpload))
+                .then(() =>
+                    this._carService.uploadImage(this._carEditModel.imageStoragePath, this._carImageUriToUpload))
                 .then((uploadedFile: any) => {
-                    this._car.imageUrl = uploadedFile.url;
+                    this._carEditModel.imageUrl = uploadedFile.url;
                 });
         }
 
-        queue.then(() => this._carService.update(this._car))
+        queue.then(() => this._carService.update(this._carEditModel))
             .then(() => {
                 this._isUpdating = false;
                 this._routerExtensions.navigate(["/cars"], { clearHistory: true });
@@ -166,6 +149,24 @@ export class CarDetailEditComponent implements OnInit, AfterViewInit {
         if (args.newValue) {
             this._isCarImageDirty = true;
             this._carImageUriToUpload = args.newValue;
+        }
+    }
+
+    private initializeEditOptions(): void {
+        for (const classItem of carClassList) {
+            this._carClasses.push(classItem);
+        }
+
+        for (const doorItem of carDoorList) {
+            this._carDoors.push(doorItem);
+        }
+
+        for (const seatItem of carSeatList) {
+            this._carSeats.push(seatItem);
+        }
+
+        for (const transmissionItem of carTransmissionList) {
+            this._carTransmissions.push(transmissionItem);
         }
     }
 }

@@ -22,7 +22,7 @@ export class CarService {
         }
 
         return this.allCars.filter((car) => {
-            return car._id === id;
+            return car.id === id;
         })[0];
     }
 
@@ -37,8 +37,11 @@ export class CarService {
                 return stream.toPromise();
             }).then((data) => {
                 this.allCars = [];
-                data.forEach((car) => {
-                    this.allCars.push(new Car(car));
+                data.forEach((carData) => {
+                    const car = new Car(carData);
+                    car.id = carData._id;
+
+                    this.allCars.push(car);
                 });
 
                 observer.next(this.allCars);
@@ -46,11 +49,16 @@ export class CarService {
         });
     }
 
-    update(editObject: Car) {
-        return this.carsStore.save(editObject);
+    update(editModel: Car) {
+        const updateModel = <any>editModel;
+        updateModel._id = editModel.id;
+
+        return this.carsStore.save(updateModel);
     }
 
     uploadImage(remoteFullPath: string, localFullPath: string) {
+        // TODO: Rework upload of image after kinvey-navitescript-sdk is fixed.
+
         let imageFile = fs.File.fromPath(localFullPath);
         let binarySource = imageFile.readSync(err => { console.log("Error raeding binary:" + err); });
 
