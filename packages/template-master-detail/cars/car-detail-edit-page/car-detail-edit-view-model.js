@@ -5,13 +5,11 @@ const platform = require("tns-core-modules/platform");
 
 const CarService = require("../shared/car-service");
 const roundingValueConverter = require("./roundingValueConverter");
+const visibilityValueConverter = require("./visibilityValueConverter");
 
-const faPlusIcon = "\uf067";
-const faThrashIcon = "\uf014";
 
 function CarDetailEditViewModel(carModel) {
     const viewModel = observableModule.fromObject({
-        addRemoveText: faThrashIcon,
 
         // car will be fresh editable copy due to the observable.fromObject(...) wrapping
         car: observableModule.fromObject(carModel),
@@ -20,6 +18,8 @@ function CarDetailEditViewModel(carModel) {
 
         // set up value converter to force iOS UISlider to work with discrete steps
         roundingValueConverter: roundingValueConverter,
+        // set up value converter to force visibility binding update in the template
+        visibilityValueConverter: visibilityValueConverter,
 
         _carService: CarService.getInstance(),
         _isCarImageDirty: false,
@@ -95,8 +95,6 @@ function CarDetailEditViewModel(carModel) {
             // raise property change event here so binding in
             // /cars/car-detail-edit-page/my-image-add-remove/MyImageAddRemove.xml works correctly
             this.car.set("imageUrl", value);
-
-            this.set("addRemoveText", this.car.imageUrl ? faThrashIcon : faPlusIcon);
         },
 
         _startSelection: function (context) {
