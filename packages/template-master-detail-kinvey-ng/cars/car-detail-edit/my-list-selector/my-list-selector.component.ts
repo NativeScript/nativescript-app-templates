@@ -2,8 +2,8 @@ import { Component, Input, OnInit, ViewContainerRef } from "@angular/core";
 import { ModalDialogOptions, ModalDialogService } from "nativescript-angular/modal-dialog";
 import { PageRoute } from "nativescript-angular/router";
 
-import { CarEditModel } from "../../shared/car-edit.model";
 import { CarEditService } from "../../shared/car-edit.service";
+import { Car } from "../../shared/car.model";
 import { MyListSelectorModalViewComponent } from "./my-list-selector-modal-view.component";
 
 const capitalizeFirstLetter = (s) => s.charAt(0).toUpperCase() + s.slice(1);
@@ -25,7 +25,7 @@ export class MyListSelectorComponent implements OnInit {
     @Input() items: Array<string>;
     @Input() tag: string;
 
-    private _carEditModel: CarEditModel;
+    private _carEditModel: Car;
 
     constructor(
         private _pageRoute: PageRoute,

@@ -12,11 +12,11 @@ var imageSource = require("image-source");
 @Injectable()
 export class CarService {
     private allCars: Array<Car> = [];
-    private carsStore = Kinvey.DataStore.collection<Car>("cars");
+    private carsStore = Kinvey.DataStore.collection<any>("cars");
 
     constructor(private _ngZone: NgZone) { }
 
-    getCarById(id: string) {
+    getCarById(id: string): Car {
         if (!id) {
             return;
         }
@@ -37,7 +37,7 @@ export class CarService {
                 return stream.toPromise();
             }).then((data) => {
                 this.allCars = [];
-                data.forEach((carData) => {
+                data.forEach((carData: any) => {
                     const car = new Car(carData);
                     car.id = carData._id;
 
@@ -49,14 +49,14 @@ export class CarService {
         });
     }
 
-    update(editModel: Car) {
+    update(editModel: Car): Promise<any> {
         const updateModel = <any>editModel;
         updateModel._id = editModel.id;
 
         return this.carsStore.save(updateModel);
     }
 
-    uploadImage(remoteFullPath: string, localFullPath: string) {
+    uploadImage(remoteFullPath: string, localFullPath: string): Promise<any> {
         // TODO: Rework upload of image after kinvey-navitescript-sdk is fixed.
 
         let imageFile = fs.File.fromPath(localFullPath);
@@ -71,7 +71,7 @@ export class CarService {
         return Kinvey.Files.upload(imageFile, metadata);
     }
 
-    private syncDataStore() {
+    private syncDataStore(): Promise<any> {
         return this.carsStore.pendingSyncEntities().then((pendingEntities: any[]) => {
             let queue = Promise.resolve();
 
