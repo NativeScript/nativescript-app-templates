@@ -2,7 +2,7 @@
     <!-- https://github.com/NativeScript/NativeScript/issues/1130 -->
 </ActionBar>
 
-<GridLayout rows="auto, *, auto" height="200" verticalAlignment="top" class="list-modal-view">
+<GridLayout rows="auto, *, auto" verticalAlignment="top" class="list-modal-view">
     <Label [text]="title" ios:visibility="collapsed" class="h3" class="list-modal-header"></Label>
     <RadListView row="1" [items]="items" (itemSelected)="onItemSelected($event)" selectionBehavior="Press" class="list-modal-list">
         <ng-template tkListItemTemplate let-item="item">

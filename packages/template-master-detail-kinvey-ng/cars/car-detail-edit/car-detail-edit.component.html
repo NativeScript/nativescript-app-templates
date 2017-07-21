@@ -10,7 +10,7 @@
     </ActionItem>
 </ActionBar>
 
-<GridLayout class="page">
+<GridLayout class="page page-content" >
     <ScrollView>
         <StackLayout class="car-list">
 
@@ -31,14 +31,13 @@
 
                 <Label row="2" text="ADD OR REMOVE IMAGE" colSpan="2"></Label>
             </GridLayout>
-
+            
             <StackLayout class="car-list-even">
                 <!--
                 MyImageAddRemove is a custom component, that wraps an imagepicker plugin and provides custom design and logic
                 on top of it. Check out the custom component at /cars/car-detail-edit/my-image-add-remove.
                 -->
-                <MyImageAddRemove [imageUrl]="car.imageUrl" (selectionChanged)="onImageAddRemove($event)">
-                </MyImageAddRemove>
+                <MyImageAddRemove [imageUrl]="car.imageUrl" (selectionChanged)="onImageAddRemove($event)"></MyImageAddRemove>
             </StackLayout>
 
             <Label class="car-list-odd" text="CLASS"></Label>

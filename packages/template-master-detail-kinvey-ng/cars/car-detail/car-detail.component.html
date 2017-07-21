@@ -1,13 +1,18 @@
 <ActionBar class="action-bar">
     <NavigationButton android.systemIcon="ic_menu_back" (tap)="onBackButtonTap()">
     </NavigationButton>
-    <Label class="action-bar-title" [text]="car.name" horizontalAlignment="center"></Label>
-    <ActionItem ios.position="right" android.position="right" (tap)="onEditButtonTap()">
+    <Label class="action-bar-title" 
+        [text]="car.name" 
+        horizontalAlignment="center"></Label>
+    <ActionItem 
+        ios.position="right" 
+        android.position="right" 
+        (tap)="onEditButtonTap()">
         <Label text="Edit" class="action-item p-r-15"></Label>
     </ActionItem>
 </ActionBar>
 
-<GridLayout rows="auto,auto" class="page">
+<GridLayout rows="auto,auto" class="page page-content">
     <Image [src]="car.imageUrl" class="m-b-15"></Image>
 
     <GridLayout row="1" rows="*,*,*,*,*,*" columns="*,2*">
