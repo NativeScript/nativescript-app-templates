@@ -2,7 +2,6 @@ export class Car {
     id: string;
     name: string;
     hasAC: boolean;
-    description: string;
     seats: string;
     luggage: number;
     class: string;
@@ -16,7 +15,6 @@ export class Car {
         this.id = options.id;
         this.name = options.name;
         this.hasAC = options.hasAC;
-        this.description = options.description;
         this.seats = options.seats;
         this.luggage = Number(options.luggage);
         this.class = options.class;

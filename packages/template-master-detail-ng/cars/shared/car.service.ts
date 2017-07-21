@@ -6,6 +6,17 @@ import firebase = require("nativescript-plugin-firebase");
 import { Config } from "../../shared/config";
 import { Car } from "./car.model";
 
+const editableProperties = [
+    "doors",
+    "imageUrl",
+    "luggage",
+    "name",
+    "price",
+    "seats",
+    "transmission",
+    "class"
+];
+
 /* ***********************************************************
 * This is the master detail data service. It handles all the data operations
 * of retrieving and updating the data. In this case, it is connected to Firebase and
@@ -16,11 +27,15 @@ import { Car } from "./car.model";
 *************************************************************/
 @Injectable()
 export class CarService {
+    private static cloneUpdateModel(car: Car): object {
+        return editableProperties.reduce((a, e) => (a[e] = car[e], a), {});
+    }
+
     private _cars: Array<Car> = [];
 
     constructor(private _ngZone: NgZone) { }
 
-    getCarById(id: string) {
+    getCarById(id: string): Car {
         if (!id) {
             return;
         }
@@ -44,11 +59,13 @@ export class CarService {
         }).catch(this.handleErrors);
     }
 
-    update(editModel: any) {
-        return firebase.update("/cars/" + editModel.id, editModel);
+    update(carModel: Car): Promise<any> {
+        const updateModel = CarService.cloneUpdateModel(carModel);
+
+        return firebase.update("/cars/" + carModel.id, updateModel);
     }
 
-    uploadImage(remoteFullPath: string, localFullPath: string) {
+    uploadImage(remoteFullPath: string, localFullPath: string): Promise<any> {
         return firebase.uploadFile({
             localFullPath,
             remoteFullPath,
@@ -56,7 +73,7 @@ export class CarService {
         });
     }
 
-    private handleSnapshot(data: any) {
+    private handleSnapshot(data: any): Array<Car> {
         this._cars = [];
 
         if (data) {
@@ -71,7 +88,7 @@ export class CarService {
         return this._cars;
     }
 
-    private handleErrors(error: Response) {
+    private handleErrors(error: Response): Observable<any> {
         return Observable.throw(error);
     }
 }
