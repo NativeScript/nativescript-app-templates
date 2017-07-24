@@ -3,28 +3,30 @@ import * as imagePicker from "nativescript-imagepicker";
 import * as permissions from "nativescript-permissions";
 import * as platform from "tns-core-modules/platform";
 
+import { ObservableProperty } from "../../shared/observable-property-decorator";
 import { Car } from "../shared/car-model";
 import { CarService } from "../shared/car-service";
 import { RoundingValueConverter } from "./roundingValueConverter";
 import { VisibilityValueConverter } from "./visibilityValueConverter";
 
 export class CarDetailEditViewModel extends Observable {
+    @ObservableProperty() car: Car;
+    @ObservableProperty() isUpdating: boolean;
+
     private _roundingValueConverter: RoundingValueConverter;
     private _visibilityValueConverter: VisibilityValueConverter;
-    private _isUpdating: boolean;
     private _isCarImageDirty: boolean;
-    private _car: Car;
     private _carService: CarService;
 
     constructor(car: Car) {
         super();
 
         // get a fresh editable copy of car model
-        this._car = new Car(car);
+        this.car = new Car(car);
 
         this._carService = CarService.getInstance();
 
-        this._isUpdating = false;
+        this.isUpdating = false;
         this._isCarImageDirty = false;
 
         // set up value converter to force iOS UISlider to work with discrete steps
@@ -39,21 +41,6 @@ export class CarDetailEditViewModel extends Observable {
 
     get visibilityValueConverter(): VisibilityValueConverter {
         return this._visibilityValueConverter;
-    }
-
-    get isUpdating(): boolean {
-        return this._isUpdating;
-    }
-
-    set isUpdating(value: boolean) {
-        if (this._isUpdating !== value) {
-            this._isUpdating = value;
-            this.notifyPropertyChange("isUpdating", value);
-        }
-    }
-
-    get car(): Car {
-        return this._car;
     }
 
     onImageAddRemove(): void {

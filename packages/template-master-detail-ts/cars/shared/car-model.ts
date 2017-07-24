@@ -1,16 +1,18 @@
 import { Observable } from "data/observable";
 
+import { ObservableProperty } from "../../shared/observable-property-decorator";
+
 export class Car extends Observable {
-    id: string;
-    imageStoragePath: string;
-    name: string;
-    seats: string;
-    luggage: number;
-    class: string;
-    doors: number;
-    price: number;
-    transmission: string;
-    imageUrl: string;
+    @ObservableProperty() id: string;
+    @ObservableProperty() imageStoragePath: string;
+    @ObservableProperty() name: string;
+    @ObservableProperty() seats: string;
+    @ObservableProperty() luggage: number;
+    @ObservableProperty() class: string;
+    @ObservableProperty() doors: number;
+    @ObservableProperty() price: number;
+    @ObservableProperty() transmission: string;
+    @ObservableProperty() imageUrl: string;
 
     constructor(options: any) {
         super();
