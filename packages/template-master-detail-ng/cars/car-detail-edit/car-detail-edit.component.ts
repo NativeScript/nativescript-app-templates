@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { PageRoute, RouterExtensions } from "nativescript-angular/router";
 import "rxjs/add/operator/switchMap";
-import { isAndroid } from "tns-core-modules/platform";
 import { alert } from "ui/dialogs";
 
 import { CarEditService } from "../shared/car-edit.service";
@@ -57,10 +56,6 @@ export class CarDetailEditComponent implements OnInit {
             });
 
         this._car = this._carEditService.startEdit(carId);
-    }
-
-    get isAndroid(): boolean {
-        return isAndroid;
     }
 
     get isUpdating(): boolean {
@@ -121,6 +116,13 @@ export class CarDetailEditComponent implements OnInit {
     * Check out the data service as cars/shared/car.service.ts
     *************************************************************/
     onDoneButtonTap(): void {
+        /* ***********************************************************
+        * By design this app is set up to work with read-only sample data.
+        * Follow the steps in the "Firebase database setup" section in app/readme.md file
+        * and uncomment the code block below to make it editable.
+        *************************************************************/
+
+        /* ***********************************************************
         let queue = Promise.resolve();
 
         this._isUpdating = true;
@@ -143,6 +145,15 @@ export class CarDetailEditComponent implements OnInit {
                 this._isUpdating = false;
                 alert({ title: "Oops!", message: "Something went wrong. Please try again.", okButtonText: "Ok" });
             });
+        *************************************************************/
+
+        /* ***********************************************************
+        * Comment out the code block below if you made the app editable.
+        *************************************************************/
+        const readOnlyMessage = "Check out the \"Firebase database setup\" section in the readme file to make it editable."; // tslint:disable-line:max-line-length
+        const queue = Promise.resolve();
+        queue.then(() => alert({ title: "Read-Only Template!", message: readOnlyMessage, okButtonText: "Ok" }))
+            .then(() => this._routerExtensions.navigate(["/cars"], { clearHistory: true }));
     }
 
     onImageAddRemove(args): void {
