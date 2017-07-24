@@ -35,10 +35,26 @@ export function onCancelButtonTap(): void {
 * The edit done button calls the view model save changes logic.
 *************************************************************/
 export function onDoneButtonTap(): void {
+    /* ***********************************************************
+    * By design this app is set up to work with read-only sample data.
+    * Follow the steps in the "Firebase database setup" section in app/readme.md file
+    * and uncomment the code block below to make it editable.
+    *************************************************************/
+
+    /* ***********************************************************
     viewModel.saveChanges()
         .then(() => topmost().navigate({ moduleName: "cars/cars-list-page" }))
         .catch((errorMessage: any) =>
             alert({ title: "Oops!", message: "Something went wrong. Please try again.", okButtonText: "Ok" }));
+    *************************************************************/
+
+    /* ***********************************************************
+    * Comment out the code block below if you made the app editable.
+    *************************************************************/
+    const readOnlyMessage = "Check out the \"Firebase database setup\" section in the readme file to make it editable."; // tslint:disable-line:max-line-length
+    const queue = Promise.resolve();
+    queue.then(() => alert({ title: "Read-Only Template!", message: readOnlyMessage, okButtonText: "Ok" }))
+        .then(() => topmost().navigate({ moduleName: "cars/cars-list-page" }));
 }
 
 export function onSelectorTap(args): void {

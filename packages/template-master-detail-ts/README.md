@@ -34,6 +34,9 @@ There is one model to represent the data items:
 ### Firebase integration
 The template uses the [{N} Firebase plugin](https://github.com/EddyVerbruggen/nativescript-plugin-firebase). The initialization is done before the app starts in the `/app.ts` file. The initialization script is located at `/shared/firebase.common.ts`.
 
+### [Optional] Firebase database setup
+By design the app is connected to a read-only copy of the sample data in Firebase. If you want to see the "edit" functionality in action you will have to clone the sample data and update the app configuration to point to your own Firebase setup. You can find detailed instructions how to achieve that [here](https://github.com/NativeScript/template-master-detail-ts/blob/master/tools/firebase/firebase-database-setup.md).
+
 ### Styling
 This template is set up to use SASS for styling. All classes used are based on the {N} core theme – consult the [documentation](https://docs.nativescript.org/angular/ui/theme.html#theme) to understand how to customize it. Check it out to see what classes you can use on which component.
 
