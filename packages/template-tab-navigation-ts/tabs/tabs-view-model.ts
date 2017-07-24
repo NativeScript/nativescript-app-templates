@@ -1,23 +1,13 @@
 import { Observable } from "data/observable";
 import { isAndroid } from "platform";
 
-export class TabsViewModel extends Observable {
+import { ObservableProperty } from "../shared/observable-property-decorator";
 
-    private _title: string;
+export class TabsViewModel extends Observable {
+    @ObservableProperty() title: string;
 
     constructor() {
         super();
-    }
-
-    get title(): string {
-        return this._title;
-    }
-
-    set title(value: string) {
-        if (this._title !== value) {
-            this._title = value;
-            this.notifyPropertyChange("title", value);
-        }
     }
 
     get iconPath(): string {
