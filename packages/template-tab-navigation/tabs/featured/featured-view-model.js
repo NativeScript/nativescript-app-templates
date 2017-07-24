@@ -1,7 +1,9 @@
-const Observable = require("data/observable").Observable;
+const observableModule = require("data/observable");
 
 function FeaturedViewModel() {
-    const viewModel = new Observable();
+    const viewModel = observableModule.fromObject({
+
+    });
 
     return viewModel;
 }

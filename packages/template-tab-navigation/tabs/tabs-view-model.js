@@ -1,11 +1,11 @@
-const Observable = require("data/observable").Observable;
+const observableModule = require("data/observable");
 const platform = require("platform");
 
 function TabsViewModel() {
-    const viewModel = new Observable();
-
-    viewModel.title = "";
-    viewModel.iconPath = platform.isAndroid ? "res://" : "res://tabIcons/";
+    const viewModel = observableModule.fromObject({
+        iconPath: platform.isAndroid ? "res://" : "res://tabIcons/",
+        title: ""
+    });
 
     return viewModel;
 }
