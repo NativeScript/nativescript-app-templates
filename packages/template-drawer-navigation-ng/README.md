@@ -3,7 +3,7 @@ App templates help you jump start your native cross-platform apps with built-in 
 
 App template featuring a Side Drawer component for navigation.
 
-<img src="/tools/assets/drawer-ios.png" height="400" /> <img src="/tools/assets/drawer-android.png" height="400" />
+<img src="/tools/assets/phone-drawer-ios.png" height="400" /> <img src="/tools/assets/phone-drawer-android.png" height="400" />
 
 ## Key Features
 - Side drawer navigation
