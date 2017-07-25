@@ -1,14 +1,12 @@
 import { EventData } from "data/observable";
 import { RadSideDrawer } from "nativescript-telerik-ui/sidedrawer";
-import { getViewById } from "ui/core/view";
+import { topmost } from "ui/frame";
 import { Page } from "ui/page";
 
 import { HomeViewModel } from "./home-view-model";
 
-let page;
-
 export function onNavigatingTo(args: EventData) {
-    page = <Page>args.object;
+    const page = <Page>args.object;
     page.bindingContext = new HomeViewModel();
 }
 
@@ -18,6 +16,6 @@ export function onNavigatingTo(args: EventData) {
 * use the showDrawer() function to open the app drawer section.
 *************************************************************/
 export function onDrawerButtonTap() {
-    const sideDrawer = <RadSideDrawer>getViewById(page, "sideDrawer");
+    const sideDrawer = <RadSideDrawer>topmost().getViewById("sideDrawer");
     sideDrawer.showDrawer();
 }
