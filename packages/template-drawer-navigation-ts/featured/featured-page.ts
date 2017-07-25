@@ -8,7 +8,7 @@ import { FeaturedViewModel } from "./featured-view-model";
 let page;
 
 export function onNavigatingTo(args: EventData) {
-    page = <Page> args.object;
+    page = <Page>args.object;
     page.bindingContext = new FeaturedViewModel();
 }
 
@@ -18,6 +18,6 @@ export function onNavigatingTo(args: EventData) {
 * use the showDrawer() function to open the app drawer section.
 *************************************************************/
 export function onDrawerButtonTap() {
-    const sideDrawer = <RadSideDrawer> getViewById(page, "sideDrawer");
+    const sideDrawer = <RadSideDrawer>getViewById(page, "sideDrawer");
     sideDrawer.showDrawer();
 }
