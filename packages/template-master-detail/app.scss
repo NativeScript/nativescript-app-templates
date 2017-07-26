@@ -17,7 +17,7 @@
 
 //Font icon
 .fa {
-    font-family: "FontAwesome";
+   font-family: "FontAwesome";
 }
 //Action bar
 .action-item,
@@ -25,14 +25,9 @@ NavigationButton {
     color: $ab-color;
 }
 
-.action-item {
-    vertical-align: center;
-    height: 100%;
-}
-
 Slider{
-    background-color: $accent;
-    color: $accent;  
+  background-color: $accent;
+  color: $accent;  
 }
 
 .text {

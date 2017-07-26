@@ -32,7 +32,13 @@ function onCarItemTap(args) {
 
     topmost().navigate({
         moduleName: "cars/car-detail-page/car-detail-page",
-        context: tappedCarItem
+        context: tappedCarItem,
+        animated: true,
+        transition: {
+            name: "slide",
+            duration: 200,
+            curve: "ease"
+        }
     });
 }
 

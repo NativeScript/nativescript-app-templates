@@ -33,7 +33,13 @@ function onEditButtonTap(args) {
 
     topmost().navigate({
         moduleName: "cars/car-detail-edit-page/car-detail-edit-page",
-        context: tappedCarItem.car
+        context: tappedCarItem.car,
+        animated: true,
+        transition: {
+            name: "slideTop",
+            duration: 200,
+            curve: "ease"
+        }
     });
 }
 

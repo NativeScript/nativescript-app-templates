@@ -10,7 +10,7 @@
             tap="onEditButtonTap" 
             ios.position="right" 
             android.position="right">
-            <Label text="Edit" class="action-item p-r-15"></Label>
+            <Label text="Edit" verticalAlignment="center" class="action-item"></Label>
         </ActionItem>
     </ActionBar>
 

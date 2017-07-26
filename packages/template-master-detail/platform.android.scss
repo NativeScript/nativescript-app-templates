@@ -9,3 +9,7 @@
 @import '~nativescript-theme-core/scss/platforms/index.android';
 
 // Place any CSS rules you want to apply only on Android here
+.action-item {
+    padding-right: 10;
+    height: 100%;
+}

@@ -41,7 +41,15 @@ function onDoneButtonTap() {
 
     /* ***********************************************************
     viewModel.saveChanges()
-        .then(() => topmost().navigate({ moduleName: "cars/cars-list-page" }))
+        .then(() => topmost().navigate({ 
+            moduleName: "cars/cars-list-page",
+            animated: true,
+            transition: {
+                name: "slideBottom",
+                duration: 200,
+                curve: "ease"
+            }
+        }))
         .catch(() =>
             alert({
                 title: "Oops!",
@@ -60,7 +68,15 @@ function onDoneButtonTap() {
             message: readOnlyMessage,
             okButtonText: "Ok"
         }))
-        .then(() => topmost().navigate({ moduleName: "cars/cars-list-page" }));
+        .then(() => topmost().navigate({
+            moduleName: "cars/cars-list-page",
+            animated: true,
+            transition: {
+                name: "slideBottom",
+                duration: 200,
+                curve: "ease"
+            }
+        }));
 }
 
 function onSelectorTap(args) {
