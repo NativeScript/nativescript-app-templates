@@ -12,13 +12,13 @@
             tap="onCancelButtonTap" 
             ios.position="left" 
             android.position="left">
-            <Label text="Cancel" class="action-item p-r-15"></Label>
+            <Label text="Cancel" verticalAlignment="center" class="action-item"></Label>
         </ActionItem>
         <ActionItem 
             tap="onDoneButtonTap" 
             ios.position="right" 
             android.position="right">
-            <Label text="Done" class="action-item p-r-15"></Label>
+            <Label text="Done" verticalAlignment="center" class="action-item"></Label>
         </ActionItem>
     </ActionBar>
 

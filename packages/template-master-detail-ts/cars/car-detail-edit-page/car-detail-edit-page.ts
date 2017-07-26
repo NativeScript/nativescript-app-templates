@@ -43,7 +43,15 @@ export function onDoneButtonTap(): void {
 
     /* ***********************************************************
     viewModel.saveChanges()
-        .then(() => topmost().navigate({ moduleName: "cars/cars-list-page" }))
+        .then(() => topmost().navigate({
+            moduleName: "cars/cars-list-page",
+            animated: true,
+            transition: {
+                name: "slideBottom",
+                duration: 200,
+                curve: "ease"
+            }
+        }))
         .catch((errorMessage: any) =>
             alert({ title: "Oops!", message: "Something went wrong. Please try again.", okButtonText: "Ok" }));
     *************************************************************/
@@ -54,7 +62,15 @@ export function onDoneButtonTap(): void {
     const readOnlyMessage = "Check out the \"Firebase database setup\" section in the readme file to make it editable."; // tslint:disable-line:max-line-length
     const queue = Promise.resolve();
     queue.then(() => alert({ title: "Read-Only Template!", message: readOnlyMessage, okButtonText: "Ok" }))
-        .then(() => topmost().navigate({ moduleName: "cars/cars-list-page" }));
+        .then(() => topmost().navigate({
+            moduleName: "cars/cars-list-page",
+            animated: true,
+            transition: {
+                name: "slideBottom",
+                duration: 200,
+                curve: "ease"
+            }
+        }));
 }
 
 export function onSelectorTap(args): void {
