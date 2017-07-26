@@ -139,7 +139,15 @@ export class CarDetailEditComponent implements OnInit {
         queue.then(() => this._carService.update(this._car))
             .then(() => {
                 this._isUpdating = false;
-                this._routerExtensions.navigate(["/cars"], { clearHistory: true });
+                this._routerExtensions.navigate(["/cars"], {
+                    clearHistory: true,
+                    animated: true,
+                    transition: {
+                        name: "slideBottom",
+                        duration: 200,
+                        curve: "ease"
+                    }
+                });
             })
             .catch((errorMessage: any) => {
                 this._isUpdating = false;
@@ -153,7 +161,15 @@ export class CarDetailEditComponent implements OnInit {
         const readOnlyMessage = "Check out the \"Firebase database setup\" section in the readme file to make it editable."; // tslint:disable-line:max-line-length
         const queue = Promise.resolve();
         queue.then(() => alert({ title: "Read-Only Template!", message: readOnlyMessage, okButtonText: "Ok" }))
-            .then(() => this._routerExtensions.navigate(["/cars"], { clearHistory: true }));
+            .then(() => this._routerExtensions.navigate(["/cars"], {
+                clearHistory: true,
+                animated: true,
+                transition: {
+                    name: "slideBottom",
+                    duration: 200,
+                    curve: "ease"
+                }
+            }));
     }
 
     onImageAddRemove(args): void {
