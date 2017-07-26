@@ -4,7 +4,7 @@
   "displayName": "Master-Detail",
   "templateType": "App template",
   "main": "main.js",
-  "version": "1.0.0",
+  "version": "3.1.0",
   "description": "Simple Master-Detail template for NativeScript apps with Firebase data using Angular",
   "license": "SEE LICENSE IN <your-license-filename>",
   "readme": "NativeScript Application",
