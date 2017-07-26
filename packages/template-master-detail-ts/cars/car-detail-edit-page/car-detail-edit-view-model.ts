@@ -81,7 +81,6 @@ export class CarDetailEditViewModel extends Observable {
                     return this._carService.uploadImage(remoteFullPath, localFullPath);
                 })
                 .then((uploadedFile: any) => {
-                    // do not raise property change event here
                     this.car.imageUrl = uploadedFile.url;
 
                     this._isCarImageDirty = false;
@@ -118,9 +117,6 @@ export class CarDetailEditViewModel extends Observable {
         }
 
         this._isCarImageDirty = true;
-
-        // raise property change event here so binding in
-        // /cars/car-detail-edit-page/my-image-add-remove/MyImageAddRemove.xml works correctly
-        this.car.set("imageUrl", value);
+        this.car.imageUrl = value;
     }
 }

@@ -66,7 +66,7 @@ export function onSelectorTap(args): void {
 
     page.showModal(modalPagePath, context, (value: string) => {
         if (value) {
-            viewModel.car.set(tag, value);
+            viewModel.car[tag] = value;
         }
     }, false);
 }
