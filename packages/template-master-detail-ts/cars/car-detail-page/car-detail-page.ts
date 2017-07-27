@@ -1,6 +1,5 @@
-import { EventData } from "data/observable";
 import { topmost } from "ui/frame";
-import { Page } from "ui/page";
+import { NavigatedData, Page } from "ui/page";
 
 import { CarDetailViewModel } from "./car-detail-view-model";
 
@@ -13,7 +12,16 @@ import { CarDetailViewModel } from "./car-detail-view-model";
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize the page binding context.
 *************************************************************/
-export function onNavigatingTo(args: EventData) {
+export function onNavigatingTo(args: NavigatedData): void {
+    /* ***********************************************************
+    * The "onNavigatingTo" event handler lets you detect if the user navigated with a back button.
+    * Skipping the re-initialization on back navigation means the user will see the
+    * page in the same data state that he left it in before navigating.
+    *************************************************************/
+    if (args.isBackNavigation) {
+        return;
+    }
+
     const page = <Page>args.object;
 
     page.bindingContext = new CarDetailViewModel(page.navigationContext);
@@ -31,11 +39,11 @@ export function onBackButtonTap(): void {
 * Check out the edit page in the /cars/car-detail-edit-page folder.
 *************************************************************/
 export function onEditButtonTap(args): void {
-    const tappedCarItem = args.object.bindingContext;
+    const bindingContext = <CarDetailViewModel>args.object.bindingContext;
 
     topmost().navigate({
         moduleName: "cars/car-detail-edit-page/car-detail-edit-page",
-        context: tappedCarItem.car,
+        context: bindingContext.car,
         animated: true,
         transition: {
             name: "slideTop",
