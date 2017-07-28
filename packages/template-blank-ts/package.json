@@ -33,7 +33,6 @@
   },
   "devDependencies": {
     "nativescript-dev-typescript": "~0.5.0",
-    "nativescript-dev-android-snapshot": "^0.*.*",
     "typescript": "~2.2.1",
     "tslint": "^5.4.3"
   }
