@@ -7,32 +7,37 @@ const CarDetailEditViewModel = require("./car-detail-edit-view-model");
  * This is the item detail edit code behind.
  * This code behind gets the selected data item, provides options to edit the item and saves the changes.
  *************************************************************/
-let viewModel;
 
 /* ***********************************************************
  * Use the "onNavigatingTo" handler to get the data item id parameter passed through navigation.
  * Use it to initialize the view model and assign it to the view.
  *************************************************************/
 function onNavigatingTo(args) {
+    /* ***********************************************************
+    * The "onNavigatingTo" event handler lets you detect if the user navigated with a back button.
+    * Skipping the re-initialization on back navigation means the user will see the
+    * page in the same data state that he left it in before navigating.
+    *************************************************************/
+    if (args.isBackNavigation) {
+        return;
+    }
+
     const page = args.object;
 
-    if (!page.bindingContext) {
-        viewModel = new CarDetailEditViewModel(page.navigationContext);
-        page.bindingContext = viewModel;
-    }
+    page.bindingContext = new CarDetailEditViewModel(page.navigationContext);
 }
 
 /* ***********************************************************
  * The edit cancel button navigates back to the item details page.
  *************************************************************/
-function onCancelButtonTap() {
+function onCancelButtonTap(args) {
     topmost().goBack();
 }
 
 /* ***********************************************************
  * The edit done button calls the view model save changes logic.
  *************************************************************/
-function onDoneButtonTap() {
+function onDoneButtonTap(args) {
     /* ***********************************************************
      * By design this app is set up to work with read-only sample data.
      * Follow the steps in the "Firebase database setup" section in app/readme.md file
@@ -40,7 +45,10 @@ function onDoneButtonTap() {
      *************************************************************/
 
     /* ***********************************************************
-    viewModel.saveChanges()
+    const actionItem = args.object;
+    const bindingContext = actionItem.bindingContext;
+
+    bindingContext.saveChanges()
         .then(() => topmost().navigate({ 
             moduleName: "cars/cars-list-page",
             animated: true,
@@ -80,18 +88,20 @@ function onDoneButtonTap() {
 }
 
 function onSelectorTap(args) {
-    const tag = args.object.tag;
-    const selectedValue = viewModel.car[tag];
+    const gridLayout = args.object;
+    const tag = gridLayout.tag;
+    const bindingContext = gridLayout.bindingContext;
+    const selectedValue = bindingContext.car[tag];
     const context = {
         tag,
         selectedValue
     };
     const modalPagePath = "cars/car-detail-edit-page/list-selector/list-selector-modal-page";
-    const page = args.object.page;
+    const page = gridLayout.page;
 
     page.showModal(modalPagePath, context, (value) => {
         if (value) {
-            viewModel.car.set(tag, value);
+            bindingContext.car.set(tag, value);
         }
     }, false);
 }
