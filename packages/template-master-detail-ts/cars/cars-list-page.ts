@@ -1,5 +1,4 @@
 import { ListViewEventData } from "nativescript-telerik-ui/listview";
-import { isAndroid } from "tns-core-modules/platform";
 import { topmost } from "ui/frame";
 import { NavigatedData, Page } from "ui/page";
 
@@ -23,15 +22,6 @@ export function onNavigatingTo(args: NavigatedData): void {
     *************************************************************/
     if (args.isBackNavigation) {
         return;
-    }
-
-    /* ***********************************************************
-    * Caching pages on navigation means that their entire state will be saved including scroll position.
-    * For iOS this happens by default. For Android you have to specify this explicitly once on the first
-    * page that is loaded in a frame.
-    *************************************************************/
-    if (isAndroid) {
-        topmost().android.cachePagesOnNavigate = true;
     }
 
     const page = <Page>args.object;
