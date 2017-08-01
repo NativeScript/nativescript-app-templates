@@ -51,11 +51,9 @@ export class CarDetailComponent implements OnInit {
 
     /* ***********************************************************
     * The back button is essential for a master-detail feature.
-    * Note the "clearHistory" option that is used here. It ensures the
-    * correct operation of the native OS back navigation.
     *************************************************************/
     onBackButtonTap(): void {
-        this._routerExtensions.navigate(["/cars"], { clearHistory: true });
+        this._routerExtensions.backToPreviousPage();
     }
 
     /* ***********************************************************
@@ -63,6 +61,14 @@ export class CarDetailComponent implements OnInit {
     * Check out the edit page in the /cars/car-detail-edit folder.
     *************************************************************/
     onEditButtonTap(): void {
-        this._routerExtensions.navigate(["/cars/car-detail-edit", this._car.id]);
+        this._routerExtensions.navigate(["/cars/car-detail-edit", this._car.id],
+        {
+            animated: true,
+            transition: {
+                name: "slideTop",
+                duration: 200,
+                curve: "ease"
+            }
+        });
     }
 }

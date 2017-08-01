@@ -1,4 +1,4 @@
-import { Injectable, NgZone } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { Http } from "@angular/http";
 import { BehaviorSubject, Observable } from "rxjs/Rx";
 
@@ -8,13 +8,12 @@ import { Car } from "./car.model";
 
 import * as fs from "file-system";
 
-var imageSource = require("image-source");
 @Injectable()
 export class CarService {
     private allCars: Array<Car> = [];
     private carsStore = Kinvey.DataStore.collection<any>("cars");
 
-    constructor(private _ngZone: NgZone) { }
+    constructor() { }
 
     getCarById(id: string): Car {
         if (!id) {
@@ -28,7 +27,6 @@ export class CarService {
 
     load(): Observable<any> {
         return new Observable((observer: any) => {
-
             this.login().then(() => {
                 return this.syncDataStore();
             }).then(() => {
@@ -38,8 +36,8 @@ export class CarService {
             }).then((data) => {
                 this.allCars = [];
                 data.forEach((carData: any) => {
+                    carData.id = carData._id;
                     const car = new Car(carData);
-                    car.id = carData._id;
 
                     this.allCars.push(car);
                 });
@@ -57,42 +55,58 @@ export class CarService {
     }
 
     uploadImage(remoteFullPath: string, localFullPath: string): Promise<any> {
-        // TODO: Rework upload of image after kinvey-navitescript-sdk is fixed.
-
-        let imageFile = fs.File.fromPath(localFullPath);
-        let binarySource = imageFile.readSync(err => { console.log("Error raeding binary:" + err); });
+        const imageFile = fs.File.fromPath(localFullPath);
+        const imageContent = imageFile.readSync();
 
         const metadata = {
-            filename: 'image.jpg',
-            mimeType: 'image/jpeg',
-            public: true
+            filename: imageFile.name,
+            mimeType: this.getMimeType(imageFile.extension),
+            size: imageContent.length
         };
 
-        return Kinvey.Files.upload(imageFile, metadata);
+        return Kinvey.Files.upload(imageFile, metadata, { timeout: 2147483647 })
+            .then((uploadedFile: any) => {
+                const query = new Kinvey.Query();
+                query.equalTo("_id", uploadedFile._id);
+
+                return Kinvey.Files.find(query);
+            })
+            .then((files: Array<any>) => {
+                if (files && files.length) {
+                    const file = files[0];
+                    file.url = file._downloadURL;
+
+                    return file;
+                } else {
+                    Promise.reject(new Error("No items with the given ID could be found."));
+                }
+            });
     }
 
     private syncDataStore(): Promise<any> {
-        return this.carsStore.pendingSyncEntities().then((pendingEntities: any[]) => {
-            let queue = Promise.resolve();
+        return this.carsStore.pendingSyncEntities()
+            .then((pendingEntities: Array<any>) => {
+                let queue = Promise.resolve();
 
-            if (pendingEntities && pendingEntities.length) {
-                queue = queue
-                    .then(() => this.carsStore.push())
-                    .then((entities: Kinvey.PushResult<Car>[]) => {
+                if (pendingEntities && pendingEntities.length) {
+                    queue = queue
+                        .then(() => this.carsStore.push())
+                        .then((entities: Array<Kinvey.PushResult<Car>>) => {
 
-                        /* ***********************************************************
-                        * Each item in the array of pushed entities will look like the following
-                        * { _id: '<entity id before push>', entity: <entity after push> }
-                        * It could also possibly have an error property if the push failed.
-                        * { _id: '<entity id before push>', entity: <entity after push>, error: <reason push failed> }
-                        * Learn more about in this documentation article:
-                        * http://devcenter.kinvey.com/nativescript/guides/datastore#push
-                        *************************************************************/
-                    });
-            }
+                            /* ***********************************************************
+                            * Each item in the array of pushed entities will look like the following
+                            * { _id: '<entity id before push>', entity: <entity after push> }
+                            * It could also possibly have an error property if the push failed.
+                            * { _id: '<entity id before push>', entity: <entity after push>, 
+                            * error: <reason push failed> }
+                            * Learn more about in this documentation article:
+                            * http://devcenter.kinvey.com/nativescript/guides/datastore#push
+                            *************************************************************/
+                        });
+                }
 
-            return queue;
-        });
+                return queue;
+            });
     }
 
     private login(): Promise<any> {
@@ -107,5 +121,11 @@ export class CarService {
         console.log(error);
 
         return Observable.throw(error);
+    }
+
+    private getMimeType(imageExtension: string): string {
+        const extension = imageExtension === "jpg" ? "jpeg" : imageExtension;
+
+        return "image/" + extension.replace(/\./g, "");
     }
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { PageRoute, RouterExtensions } from "nativescript-angular/router";
 import "rxjs/add/operator/switchMap";
-import { isAndroid } from "tns-core-modules/platform";
 import { alert } from "ui/dialogs";
 
 import { CarEditService } from "../shared/car-edit.service";
@@ -57,10 +56,6 @@ export class CarDetailEditComponent implements OnInit {
             });
 
         this._car = this._carEditService.startEdit(carId);
-    }
-
-    get isAndroid(): boolean {
-        return isAndroid;
     }
 
     get isUpdating(): boolean {
@@ -121,28 +116,58 @@ export class CarDetailEditComponent implements OnInit {
     * Check out the data service as cars/shared/car.service.ts
     *************************************************************/
     onDoneButtonTap(): void {
-        let queue = Promise.resolve();
+        /* ***********************************************************
+        * By design this app is set up to work with read-only sample data.
+        * Follow the steps in the "Kinvey database setup" section in app/readme.md file
+        * and uncomment the code block below to make it editable.
+        *************************************************************/
 
-        this._isUpdating = true;
+        // let queue = Promise.resolve();
 
-        if (this._isCarImageDirty && this._carImageUriToUpload) {
-            queue = queue
-                .then(() =>
-                    this._carService.uploadImage(this._car.imageStoragePath, this._carImageUriToUpload))
-                .then((uploadedFile: any) => {
-                    this._car.imageUrl = uploadedFile.url;
-                });
-        }
+        // this._isUpdating = true;
 
-        queue.then(() => this._carService.update(this._car))
-            .then(() => {
-                this._isUpdating = false;
-                this._routerExtensions.navigate(["/cars"], { clearHistory: true });
-            })
-            .catch((errorMessage: any) => {
-                this._isUpdating = false;
-                alert({ title: "Oops!", message: "Something went wrong. Please try again.", okButtonText: "Ok" });
-            });
+        // if (this._isCarImageDirty && this._carImageUriToUpload) {
+        //     queue = queue
+        //         .then(() =>
+        //             this._carService.uploadImage(this._car.imageStoragePath, this._carImageUriToUpload))
+        //         .then((uploadedFile: any) => {
+        //             this._car.imageUrl = uploadedFile.url;
+        //         });
+        // }
+
+        // queue.then(() => this._carService.update(this._car))
+        //     .then(() => {
+        //         this._isUpdating = false;
+        //         this._routerExtensions.navigate(["/cars"], {
+        //             clearHistory: true,
+        //             animated: true,
+        //             transition: {
+        //                 name: "slideBottom",
+        //                 duration: 200,
+        //                 curve: "ease"
+        //             }
+        //         });
+        //     })
+        //     .catch((errorMessage: any) => {
+        //         this._isUpdating = false;
+        //         alert({ title: "Oops!", message: "Something went wrong. Please try again.", okButtonText: "Ok" });
+        //     });
+
+        /* ***********************************************************
+        * Comment out the code block below if you made the app editable.
+        *************************************************************/
+        const readOnlyMessage = "Check out the \"Kinvey database setup\" section in the readme file to make it editable."; // tslint:disable-line:max-line-length
+        const queue = Promise.resolve();
+        queue.then(() => alert({ title: "Read-Only Template!", message: readOnlyMessage, okButtonText: "Ok" }))
+            .then(() => this._routerExtensions.navigate(["/cars"], {
+                clearHistory: true,
+                animated: true,
+                transition: {
+                    name: "slideBottom",
+                    duration: 200,
+                    curve: "ease"
+                }
+            }));
     }
 
     onImageAddRemove(args): void {
