@@ -8,9 +8,9 @@ import { MyDrawerViewModel } from "./MyDrawer-view-model";
 /* ***********************************************************
 * Use the "loaded" event handler of the wrapping layout element to bind the view model to your view.
 *************************************************************/
-export function onLoaded(args): void {
+export function onLoaded(args: EventData): void {
     const component = <StackLayout>args.object;
-    const componentTitle = args.object.selectedPage;
+    const componentTitle = component.get("selectedPage");
 
     component.bindingContext = new MyDrawerViewModel(componentTitle);
 }
@@ -21,11 +21,10 @@ export function onLoaded(args): void {
 * based on the tapped navigationItem's route.
 *************************************************************/
 export function onNavigationItemTap(args: ItemEventData): void {
-    const navigationItemView = args.view;
-    const navigationItemRoute = navigationItemView.bindingContext.route;
+    const navigationItem = args.view.bindingContext;
 
     topmost().navigate({
-        moduleName: navigationItemRoute,
+        moduleName: navigationItem.route,
         transition: {
             name: "slide"
         }
