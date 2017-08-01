@@ -7,8 +7,9 @@ const MyDrawerViewModel = require("./MyDrawer-view-model");
  *************************************************************/
 function onLoaded(args) {
     const component = args.object;
+    const componentTitle = component.selectedPage;
 
-    component.bindingContext = new MyDrawerViewModel(component.selectedPage);
+    component.bindingContext = new MyDrawerViewModel(componentTitle);
 }
 
 /* ***********************************************************
@@ -17,11 +18,10 @@ function onLoaded(args) {
  * based on the tapped navigationItem's route.
  *************************************************************/
 function onNavigationItemTap(args) {
-    const navigationItemView = args.view;
-    const navigationItemRoute = navigationItemView.bindingContext.route;
+    const navigationItem = args.view.bindingContext;
 
     frameModule.topmost().navigate({
-        moduleName: navigationItemRoute,
+        moduleName: navigationItem.route,
         transition: {
             name: "slide"
         }

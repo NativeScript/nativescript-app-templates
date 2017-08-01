@@ -141,6 +141,14 @@
         "no-unneeded-ternary": "off",
         "no-unsafe-negation": "error",
         "no-unused-expressions": "error",
+        "no-unused-vars": [
+            "error",
+            {
+                "vars": "all",
+                "args": "none",
+                "ignoreRestSiblings": false
+            }
+        ],
         "no-use-before-define": "off",
         "no-useless-call": "off",
         "no-useless-computed-key": "error",
