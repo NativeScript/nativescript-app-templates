@@ -1,16 +1,21 @@
 const TabsViewModel = require("./tabs-view-model");
 
-const viewModel = new TabsViewModel();
-
+/* ***********************************************************
+* Use the "onNavigatingTo" handler to initialize data for the whole tab
+* navigation layout as a whole.
+*************************************************************/
 function onNavigatingTo(args) {
     /* ***********************************************************
-     * Use the "onNavigatingTo" handler to initialize data for the whole tab
-     * navigation layout as a whole.
-     *************************************************************/
+    * The "onNavigatingTo" event handler lets you detect if the user navigated with a back button.
+    * Skipping the re-initialization on back navigation means the user will see the
+    * page in the same data state that he left it in before navigating.
+    *************************************************************/
+    if (args.isBackNavigation) {
+        return;
+    }
 
     const page = args.object;
-
-    page.bindingContext = viewModel;
+    page.bindingContext = new TabsViewModel();
 }
 
 /* ***********************************************************
@@ -19,9 +24,11 @@ function onNavigatingTo(args) {
  * https://docs.nativescript.org/cookbook/ui/tab-view#using-selectedindexchanged-event-from-xml
  *************************************************************/
 function onSelectedIndexChanged(args) {
-    const selectedTabViewItem = args.object.items[args.newIndex];
+    const tabView = args.object;
+    const bindingContext = tabView.bindingContext;
+    const selectedTabViewItem = tabView.items[args.newIndex];
 
-    viewModel.set("title", selectedTabViewItem.title);
+    bindingContext.set("title", selectedTabViewItem.title);
 }
 
 exports.onSelectedIndexChanged = onSelectedIndexChanged;
