@@ -1,4 +1,7 @@
-# NOTE: This template is currently WIP (work in progress). Do not use it in production!
+# NOTE: This template is currently a work in progress. We do not recommend using it for a production app just yet.
+
+# Known Issues:
+- To use this template with iOS Simulator you need to manually enable `Keychain Sharing` in the target settings’ Capabilities tab in XCode
 
 # NativeScript with Angular Master Detail Template
 App templates help you jump start your native cross-platform apps with built-in UI elements and best practices. Save time writing boilerplate code over and over again when you create new apps.
