@@ -20,10 +20,10 @@ import { carClassList, carDoorList, carSeatList, carTransmissionList } from "./c
 })
 export class CarDetailEditComponent implements OnInit {
     private _car: Car;
-    private _carClasses: Array<string> = [];
-    private _carDoors: Array<number> = [];
-    private _carSeats: Array<string> = [];
-    private _carTransmissions: Array<string> = [];
+    private _carClassOptions: Array<string> = [];
+    private _carDoorOptions: Array<number> = [];
+    private _carSeatOptions: Array<string> = [];
+    private _carTransmissionOptions: Array<string> = [];
     private _carImageUriToUpload: string = null;
     private _isCarImageDirty: boolean = false;
     private _isUpdating: boolean = false;
@@ -84,20 +84,20 @@ export class CarDetailEditComponent implements OnInit {
         this._car.luggage = Math.round(value);
     }
 
-    get carClasses(): Array<string> {
-        return this._carClasses;
+    get carClassOptions(): Array<string> {
+        return this._carClassOptions;
     }
 
-    get carDoors(): Array<number> {
-        return this._carDoors;
+    get carDoorOptions(): Array<number> {
+        return this._carDoorOptions;
     }
 
-    get carSeats(): Array<string> {
-        return this._carSeats;
+    get carSeatOptions(): Array<string> {
+        return this._carSeatOptions;
     }
 
-    get carTransmissions(): Array<string> {
-        return this._carTransmissions;
+    get carTransmissionOptions(): Array<string> {
+        return this._carTransmissionOptions;
     }
 
     set carLuggageValue(value: number) {
@@ -179,19 +179,19 @@ export class CarDetailEditComponent implements OnInit {
 
     private initializeEditOptions(): void {
         for (const classItem of carClassList) {
-            this._carClasses.push(classItem);
+            this._carClassOptions.push(classItem);
         }
 
         for (const doorItem of carDoorList) {
-            this._carDoors.push(doorItem);
+            this._carDoorOptions.push(doorItem);
         }
 
         for (const seatItem of carSeatList) {
-            this._carSeats.push(seatItem);
+            this._carSeatOptions.push(seatItem);
         }
 
         for (const transmissionItem of carTransmissionList) {
-            this._carTransmissions.push(transmissionItem);
+            this._carTransmissionOptions.push(transmissionItem);
         }
     }
 }
