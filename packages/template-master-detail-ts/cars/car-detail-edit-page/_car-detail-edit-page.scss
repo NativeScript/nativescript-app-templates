@@ -30,4 +30,9 @@ $text-primary-font-size: $base-font-size + 2;
         background-color: $blue-10;
         color: $blue-50;
     }
+
+    .car-list-price {
+        width: 35;
+        text-align: right;
+    }
 }

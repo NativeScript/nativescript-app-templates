@@ -28,9 +28,9 @@
                 <Label text="CAR MAKE" class="car-list-odd" />
                 <TextField text="{{ car.name }}" hint="Enter your car make" class="car-list-even" />
 
-                <GridLayout rows="*, 55, *" columns="auto, *" class="car-list-odd" >
+                <GridLayout rows="*, 55, *" columns="*, auto" class="car-list-odd" >
                     <Label text="PRICE PER DAY" />
-                    <Label col="1" horizontalAlignment="right" class="text-primary">
+                    <Label col="1" horizontalAlignment="right" class="text-primary car-list-price">
                         <FormattedString>
                             <Span text="€" />
                             <Span text="{{ car.price }}" />
@@ -74,7 +74,7 @@
                     <Label text="&#xf054;" class="fa text-secondary" col="1" horizontalAlignment="center" verticalAlignment="center" />
                 </GridLayout>
                 
-                <GridLayout rows="*, 55" columns="auto, *" class="car-list-odd" >
+                <GridLayout rows="*, 55" columns="*, auto" class="car-list-odd" >
                     <Label text="LUGGAGE" />
                     <Label col="1" horizontalAlignment="right" class="text-primary">
                         <FormattedString>
