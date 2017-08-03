@@ -3,7 +3,6 @@
   "main": "app.js",
   "name": "tns-template-master-detail-kinvey-ts",
   "displayName": "Master-Detail",
-  "templateType": "App template",
   "version": "3.1.0",
   "description": "Simple Master-Detail template for Vanilla NativeScript apps with Kinvey data and support for editing using TypeScript",
   "author": "Telerik <support@telerik.com>",
