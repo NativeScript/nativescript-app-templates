@@ -18,9 +18,9 @@
 
             <TextField [(ngModel)]="car.name" hint="Enter your car make" class="car-list-even"></TextField>
 
-            <GridLayout rows="*, 55, *" columns="auto, *" class="car-list-odd">
+            <GridLayout rows="*, 55, *" columns="*, auto" class="car-list-odd">
                 <Label text="PRICE PER DAY"></Label>
-                <Label col="1" horizontalAlignment="right" class="text-primary">
+                <Label col="1" horizontalAlignment="right" class="text-primary car-list-price">
                     <FormattedString>
                         <Span text="€"></Span>
                         <Span [text]="pricePerDay"></Span>
@@ -68,7 +68,7 @@
                 <MyListSelector [selectedValue]="car.transmission" [items]="carTransmissionOptions" tag="transmission"></MyListSelector>
             </StackLayout>
 
-            <GridLayout rows="*, 55" columns="auto, *" class="car-list-odd">
+            <GridLayout rows="*, 55" columns="*, auto" class="car-list-odd">
                 <Label text="LUGGAGE"></Label>
                 <Label col="1" horizontalAlignment="right" class="text-primary">
                     <FormattedString>
