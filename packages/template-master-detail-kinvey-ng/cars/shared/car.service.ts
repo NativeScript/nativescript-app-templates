@@ -13,8 +13,6 @@ export class CarService {
     private allCars: Array<Car> = [];
     private carsStore = Kinvey.DataStore.collection<any>("cars");
 
-    constructor() { }
-
     getCarById(id: string): Car {
         if (!id) {
             return;
@@ -97,7 +95,7 @@ export class CarService {
                             * Each item in the array of pushed entities will look like the following
                             * { _id: '<entity id before push>', entity: <entity after push> }
                             * It could also possibly have an error property if the push failed.
-                            * { _id: '<entity id before push>', entity: <entity after push>, 
+                            * { _id: '<entity id before push>', entity: <entity after push>,
                             * error: <reason push failed> }
                             * Learn more about in this documentation article:
                             * http://devcenter.kinvey.com/nativescript/guides/datastore#push

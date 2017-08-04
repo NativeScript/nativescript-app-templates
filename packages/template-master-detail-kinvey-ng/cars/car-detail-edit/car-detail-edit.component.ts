@@ -24,7 +24,6 @@ export class CarDetailEditComponent implements OnInit {
     private _carDoorOptions: Array<number> = [];
     private _carSeatOptions: Array<string> = [];
     private _carTransmissionOptions: Array<string> = [];
-    private _carImageUriToUpload: string = null;
     private _isCarImageDirty: boolean = false;
     private _isUpdating: boolean = false;
 
@@ -100,8 +99,13 @@ export class CarDetailEditComponent implements OnInit {
         return this._carTransmissionOptions;
     }
 
-    set carLuggageValue(value: number) {
-        this._car.luggage = value;
+    get carImageUrl(): string {
+        return this._car.imageUrl;
+    }
+
+    set carImageUrl(value: string) {
+        this._car.imageUrl = value;
+        this._isCarImageDirty = true;
     }
 
     /* ***********************************************************
@@ -122,36 +126,34 @@ export class CarDetailEditComponent implements OnInit {
         * and uncomment the code block below to make it editable.
         *************************************************************/
 
-        // let queue = Promise.resolve();
+        /* ***********************************************************
+        let queue = Promise.resolve();
 
-        // this._isUpdating = true;
+        this._isUpdating = true;
 
-        // if (this._isCarImageDirty && this._carImageUriToUpload) {
-        //     queue = queue
-        //         .then(() =>
-        //             this._carService.uploadImage(this._car.imageStoragePath, this._carImageUriToUpload))
-        //         .then((uploadedFile: any) => {
-        //             this._car.imageUrl = uploadedFile.url;
-        //         });
-        // }
+        if (this._isCarImageDirty && this._car.imageUrl) {
+            queue = queue
+                .then(() => this._carService.uploadImage(this._car.imageStoragePath, this._car.imageUrl));
+        }
 
-        // queue.then(() => this._carService.update(this._car))
-        //     .then(() => {
-        //         this._isUpdating = false;
-        //         this._routerExtensions.navigate(["/cars"], {
-        //             clearHistory: true,
-        //             animated: true,
-        //             transition: {
-        //                 name: "slideBottom",
-        //                 duration: 200,
-        //                 curve: "ease"
-        //             }
-        //         });
-        //     })
-        //     .catch((errorMessage: any) => {
-        //         this._isUpdating = false;
-        //         alert({ title: "Oops!", message: "Something went wrong. Please try again.", okButtonText: "Ok" });
-        //     });
+        queue.then(() => this._carService.update(this._car))
+            .then(() => {
+                this._isUpdating = false;
+                this._routerExtensions.navigate(["/cars"], {
+                    clearHistory: true,
+                    animated: true,
+                    transition: {
+                        name: "slideBottom",
+                        duration: 200,
+                        curve: "ease"
+                    }
+                });
+            })
+            .catch((errorMessage: any) => {
+                this._isUpdating = false;
+                alert({ title: "Oops!", message: "Something went wrong. Please try again.", okButtonText: "Ok" });
+            });
+        *************************************************************/
 
         /* ***********************************************************
         * Comment out the code block below if you made the app editable.
@@ -168,13 +170,6 @@ export class CarDetailEditComponent implements OnInit {
                     curve: "ease"
                 }
             }));
-    }
-
-    onImageAddRemove(args): void {
-        if (args.newValue) {
-            this._isCarImageDirty = true;
-            this._carImageUriToUpload = args.newValue;
-        }
     }
 
     private initializeEditOptions(): void {

@@ -37,7 +37,7 @@
                 MyImageAddRemove is a custom component, that wraps an imagepicker plugin and provides custom design and logic
                 on top of it. Check out the custom component at /cars/car-detail-edit/my-image-add-remove.
                 -->
-                <MyImageAddRemove [imageUrl]="car.imageUrl" (selectionChanged)="onImageAddRemove($event)"></MyImageAddRemove>
+                <MyImageAddRemove [(imageUrl)]="carImageUrl"></MyImageAddRemove>
             </StackLayout>
 
             <Label class="car-list-odd" text="CLASS"></Label>
@@ -47,25 +47,25 @@
                 MyListSelector is a custom component, that provides custom design and logic for picking an option from a list.
                 Check out the custom component at /cars/car-detail-edit/my-list-selector.
                 -->
-                <MyListSelector [selectedValue]="car.class" [items]="carClassOptions" tag="class"></MyListSelector>
+                <MyListSelector [(selectedValue)]="car.class" [items]="carClassOptions" tag="class"></MyListSelector>
             </StackLayout>
 
             <Label class="car-list-odd" text="DOORS"></Label>
 
             <StackLayout class="car-list-even">
-                <MyListSelector [selectedValue]="car.doors" [items]="carDoorOptions" tag="doors"></MyListSelector>
+                <MyListSelector [(selectedValue)]="car.doors" [items]="carDoorOptions" tag="doors"></MyListSelector>
             </StackLayout>
 
             <Label class="car-list-odd" text="SEATS"></Label>
 
             <StackLayout class="car-list-even">
-                <MyListSelector [selectedValue]="car.seats" [items]="carSeatOptions" tag="seats"></MyListSelector>
+                <MyListSelector [(selectedValue)]="car.seats" [items]="carSeatOptions" tag="seats"></MyListSelector>
             </StackLayout>
 
             <Label class="car-list-odd" text="TRANSMISSION"></Label>
 
             <StackLayout class="car-list-even">
-                <MyListSelector [selectedValue]="car.transmission" [items]="carTransmissionOptions" tag="transmission"></MyListSelector>
+                <MyListSelector [(selectedValue)]="car.transmission" [items]="carTransmissionOptions" tag="transmission"></MyListSelector>
             </StackLayout>
 
             <GridLayout rows="*, 55" columns="*, auto" class="car-list-odd">
