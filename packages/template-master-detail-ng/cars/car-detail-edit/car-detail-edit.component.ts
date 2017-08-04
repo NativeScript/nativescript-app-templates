@@ -24,7 +24,6 @@ export class CarDetailEditComponent implements OnInit {
     private _carDoorOptions: Array<number> = [];
     private _carSeatOptions: Array<string> = [];
     private _carTransmissionOptions: Array<string> = [];
-    private _carImageUriToUpload: string = null;
     private _isCarImageDirty: boolean = false;
     private _isUpdating: boolean = false;
 
@@ -100,8 +99,13 @@ export class CarDetailEditComponent implements OnInit {
         return this._carTransmissionOptions;
     }
 
-    set carLuggageValue(value: number) {
-        this._car.luggage = value;
+    get carImageUrl(): string {
+        return this._car.imageUrl;
+    }
+
+    set carImageUrl(value: string) {
+        this._car.imageUrl = value;
+        this._isCarImageDirty = true;
     }
 
     /* ***********************************************************
@@ -127,13 +131,9 @@ export class CarDetailEditComponent implements OnInit {
 
         this._isUpdating = true;
 
-        if (this._isCarImageDirty && this._carImageUriToUpload) {
+        if (this._isCarImageDirty && this._car.imageUrl) {
             queue = queue
-                .then(() =>
-                    this._carService.uploadImage(this._car.imageStoragePath, this._carImageUriToUpload))
-                .then((uploadedFile: any) => {
-                    this._car.imageUrl = uploadedFile.url;
-                });
+                .then(() => this._carService.uploadImage(this._car.imageStoragePath, this._car.imageUrl));
         }
 
         queue.then(() => this._carService.update(this._car))
@@ -170,13 +170,6 @@ export class CarDetailEditComponent implements OnInit {
                     curve: "ease"
                 }
             }));
-    }
-
-    onImageAddRemove(args): void {
-        if (args.newValue) {
-            this._isCarImageDirty = true;
-            this._carImageUriToUpload = args.newValue;
-        }
     }
 
     private initializeEditOptions(): void {

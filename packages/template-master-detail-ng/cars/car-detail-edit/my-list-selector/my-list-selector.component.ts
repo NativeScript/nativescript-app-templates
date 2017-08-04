@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewContainerRef } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output, ViewContainerRef } from "@angular/core";
 import { ModalDialogOptions, ModalDialogService } from "nativescript-angular/modal-dialog";
 import { PageRoute } from "nativescript-angular/router";
 
@@ -21,9 +21,10 @@ const capitalizeFirstLetter = (s) => s.charAt(0).toUpperCase() + s.slice(1);
     templateUrl: "./my-list-selector.component.html"
 })
 export class MyListSelectorComponent implements OnInit {
-    @Input() selectedValue: string;
-    @Input() items: Array<string>;
     @Input() tag: string;
+    @Input() items: Array<string>;
+    @Input() selectedValue: string;
+    @Output() selectedValueChange = new EventEmitter<string>();
 
     private _carEditModel: Car;
 
@@ -62,7 +63,8 @@ export class MyListSelectorComponent implements OnInit {
         this._modalService.showModal(MyListSelectorModalViewComponent, options)
             .then((selectedValue: string) => {
                 if (selectedValue) {
-                    this._carEditModel[this.tag] = selectedValue;
+                    this.selectedValue = selectedValue;
+                    this.selectedValueChange.emit(this.selectedValue);
                 }
             });
     }

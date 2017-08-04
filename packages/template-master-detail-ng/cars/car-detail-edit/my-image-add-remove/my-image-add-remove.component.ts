@@ -15,7 +15,7 @@ import * as platform from "tns-core-modules/platform";
 })
 export class MyImageAddRemoveComponent {
     @Input() imageUrl: string = "";
-    @Output() selectionChanged: EventEmitter<any> = new EventEmitter();
+    @Output() imageUrlChange = new EventEmitter<string>();
 
     onImageAddRemoveTap(): void {
         if (this.imageUrl) {
@@ -60,6 +60,6 @@ export class MyImageAddRemoveComponent {
         }
 
         this.imageUrl = newValue;
-        this.selectionChanged.emit({ oldValue, newValue });
+        this.imageUrlChange.emit(this.imageUrl);
     }
 }
