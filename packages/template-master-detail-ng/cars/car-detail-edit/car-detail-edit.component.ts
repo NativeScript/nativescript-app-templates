@@ -133,7 +133,10 @@ export class CarDetailEditComponent implements OnInit {
 
         if (this._isCarImageDirty && this._car.imageUrl) {
             queue = queue
-                .then(() => this._carService.uploadImage(this._car.imageStoragePath, this._car.imageUrl));
+                .then(() => this._carService.uploadImage(this._car.imageStoragePath, this._car.imageUrl))
+                .then((uploadedFile: any) => {
+                    this._car.imageUrl = uploadedFile.url;
+                });
         }
 
         queue.then(() => this._carService.update(this._car))
