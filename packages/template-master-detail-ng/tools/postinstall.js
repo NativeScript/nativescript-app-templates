@@ -1,91 +1,128 @@
 const fs = require("fs");
 const path = require("path");
-const packageJsonPath = path.join(process.cwd(), getAppRootFolder(), "package.json");
-const packageJson = require(packageJsonPath);
+const exec = require("child_process").exec;
 
 console.log("postinstall script running...");
 
-console.log("Updating package.json scripts for linting...");
-// results of glob parameter expansion can vary depending on shell, and its configuration
-// quote the parameter to use node glob syntax (using double quotes if you need it to run in Windows)
-addScriptCommand("lint", "tslint \"app/**/*.ts\"");
+getPackageJson()
+    .then((packageJsonData) => Promise.all([
+        // results of glob parameter expansion can vary depending on shell, and its configuration
+        // quote the parameter to use node glob syntax (using double quotes if you need it to run in Windows)
+        addScriptCommand(packageJsonData, {
+            commandName: "lint",
+            command: "tslint \"app/**/*.ts\"",
+            message: "Updating package.json scripts for linting..."
+        }),
+        updateFirebaseConfigAppId(packageJsonData)
+    ]))
+    .catch((err) => {
+        console.error(err);
+    })
+    .then(() => {
+        // Remove tools folder including this script
+        console.log("Removing tools directory...");
+        deleteFolderSync(__dirname);
+    });
 
-console.log("Update google services configuration for firebase...");
-updateFirebaseConfigAppId();
+function getPackageJson() {
+    return getAppRootFolder()
+        .then((appRootFolder) => {
+            const packageJsonPath = path.join(appRootFolder, "package.json");
+            const packageJson = require(packageJsonPath);
 
-// Remove tools folder including this script
-console.log("Removing tools directory...");
-deleteFolder(__dirname);
+            if (!packageJson) {
+                throw new Error("package.json file not found");
+            }
 
-function addScriptCommand(commandName, command) {
-    if (!packageJson) {
-        console.error(`${packageJsonPath} not found.`);
+            return {
+                packageJson,
+                packageJsonPath
+            };
+        });
+}
 
-        return;
-    }
+function getAppRootFolder() {
+    return new Promise((resolve, reject) => {
+        // npm prefix returns the closest parent directory to contain a package.json file
+        exec("cd .. && npm prefix", (err, stdout) => {
+            if (err) {
+                return reject(err);
+            }
 
-    if (!packageJson.scripts) {
-        packageJson.scripts = {};
-    }
-
-    packageJson.scripts[commandName] = command;
-
-    const updatedContent = JSON.stringify(packageJson);
-    fs.writeFile(packageJsonPath, updatedContent, (err) => {
-        if (err) {
-            console.error(err);
-        }
+            resolve(stdout.toString().trim());
+        });
     });
 }
 
-function updateFirebaseConfigAppId() {
-    if (!packageJson) {
-        console.error(`${packageJsonPath} not found.`);
+function addScriptCommand(packageJsonData, options) {
+    return new Promise((resolve, reject) => {
+        if (options.message) {
+            console.log(options.message);
+        }
 
-        return;
-    }
+        const { packageJson, packageJsonPath } = packageJsonData;
+        if (!packageJson.scripts) {
+            packageJson.scripts = {};
+        }
+
+        packageJson.scripts[options.commandName] = options.command;
+
+        const updatedContent = JSON.stringify(packageJson);
+        fs.writeFile(packageJsonPath, updatedContent, (err) => {
+            if (err) {
+                return reject(err);
+            }
+
+            resolve();
+        });
+    });
+}
+
+function updateFirebaseConfigAppId(packageJsonData) {
+    console.log("Updating google services configuration for firebase...");
 
     const googleServicesJsonPath = path.join(process.cwd(), "App_Resources", "Android", "google-services.json");
     const googleServiceInfoPlistPath = path.join(process.cwd(), "App_Resources", "iOS", "GoogleService-Info.plist");
 
-    if (packageJson.nativescript.id) {
-        replaceAppId(googleServicesJsonPath, packageJson.nativescript.id);
-        replaceAppId(googleServiceInfoPlistPath, packageJson.nativescript.id);
+    const packageJson = packageJsonData.packageJson;
+    if (!packageJson.nativescript || !packageJson.nativescript.id) {
+        return Promise.reject(new Error("cannot find nativescript node in package.json file"));
     }
+
+    return Promise.all([
+        replaceAppId(googleServicesJsonPath, packageJson.nativescript.id),
+        replaceAppId(googleServiceInfoPlistPath, packageJson.nativescript.id)
+    ]);
 }
 
 function replaceAppId(filePath, appId) {
-    const appIdPlaceholder = "__PACKAGE__";
-    let content;
+    return new Promise((resolve, reject) => {
+        fs.readFile(filePath, "utf8", (err, content) => {
+            if (err) {
+                return reject(err);
+            }
 
-    try {
-        // synchronous read because of the synchronous deleteFolder(...)
-        content = fs.readFileSync(filePath, "utf8");
-    }
-    catch (err) {
-        console.error(err);
-    }
+            const appIdPlaceholder = "__PACKAGE__";
+            const updatedContent = content.replace(appIdPlaceholder, appId);
+            fs.writeFile(filePath, updatedContent, (err) => {
+                if (err) {
+                    return reject(err);
+                }
 
-    if (!content) {
-        return;
-    }
-
-    const updatedContent = content.replace(appIdPlaceholder, appId);
-    fs.writeFile(filePath, updatedContent, (err) => {
-        if (err) {
-            console.error(err);
-        }
+                resolve();
+            });
+        });
     });
 }
 
-function deleteFolder(folderPath) {
+function deleteFolderSync(folderPath) {
     if (fs.statSync(folderPath).isDirectory()) {
         fs.readdirSync(folderPath).forEach((file) => {
             const content = path.join(folderPath, file);
             const contentDirs = fs.statSync(content).isDirectory();
 
             if (contentDirs) {
-                deleteFolder(content);
+                deleteFolderSync(content);
             }
             else {
                 fs.unlinkSync(content);
@@ -94,8 +131,4 @@ function deleteFolder(folderPath) {
 
         fs.rmdirSync(folderPath);
     }
-}
-
-function getAppRootFolder() {
-    return path.join("..", "..");
 }
