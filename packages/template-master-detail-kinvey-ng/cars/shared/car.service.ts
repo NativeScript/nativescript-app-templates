@@ -8,8 +8,24 @@ import { Car } from "./car.model";
 
 import * as fs from "file-system";
 
+const editableProperties = [
+    "class",
+    "doors",
+    "hasAC",
+    "transmission",
+    "luggage",
+    "name",
+    "price",
+    "seats",
+    "imageUrl"
+];
+
 @Injectable()
 export class CarService {
+    private static cloneUpdateModel(car: Car): object {
+        return editableProperties.reduce((a, e) => (a[e] = car[e], a), { _id: car.id });
+    }
+
     private allCars: Array<Car> = [];
     private carsStore = Kinvey.DataStore.collection<any>("cars");
 
@@ -28,7 +44,9 @@ export class CarService {
             this.login().then(() => {
                 return this.syncDataStore();
             }).then(() => {
-                const stream = this.carsStore.find();
+                const sortByNameQuery = new Kinvey.Query();
+                sortByNameQuery.ascending("name");
+                const stream = this.carsStore.find(sortByNameQuery);
 
                 return stream.toPromise();
             }).then((data) => {
@@ -45,9 +63,8 @@ export class CarService {
         });
     }
 
-    update(editModel: Car): Promise<any> {
-        const updateModel = <any>editModel;
-        updateModel._id = editModel.id;
+    update(carModel: Car): Promise<any> {
+        const updateModel = CarService.cloneUpdateModel(carModel);
 
         return this.carsStore.save(updateModel);
     }
