@@ -1,10 +1,10 @@
 {
   "main": "app.js",
   "name": "tns-template-tab-navigation",
-  "displayName": "Tab navigation",
+  "displayName": "Tabs",
   "templateType": "App template",
   "version": "3.1.0",
-  "description": "Simple template with Tab navigation for Vanilla NativeScript apps using JavaScript",
+  "description": "Tabbed interface template",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
   "keywords": [
