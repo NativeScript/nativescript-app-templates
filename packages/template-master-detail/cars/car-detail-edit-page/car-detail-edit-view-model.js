@@ -1,12 +1,9 @@
 const observableModule = require("data/observable");
 const imagePicker = require("nativescript-imagepicker");
-const permissions = require("nativescript-permissions");
-const platform = require("tns-core-modules/platform");
 
 const CarService = require("../shared/car-service");
 const roundingValueConverter = require("./roundingValueConverter");
 const visibilityValueConverter = require("./visibilityValueConverter");
-
 
 function CarDetailEditViewModel(carModel) {
     const viewModel = observableModule.fromObject({
@@ -35,14 +32,11 @@ function CarDetailEditViewModel(carModel) {
                 mode: "single"
             });
 
-            let queue = Promise.resolve();
-
-            // lower SDK versions will grant permission from AndroidManifest file
-            if (platform.device.os === "Android" && Number(platform.device.sdkVersion) >= 23) {
-                queue = queue.then(() => permissions.requestPermission("android.permission.READ_EXTERNAL_STORAGE"));
-            }
-
-            queue.then(() => this._startSelection(context))
+            context
+                .authorize()
+                .then(() => context.present())
+                .then((selection) => selection.forEach(
+                    (selectedImage) => this._handleImageChange(selectedImage.fileUri)))
                 .catch((errorMessage) => console.log(errorMessage));
         },
 
@@ -95,14 +89,6 @@ function CarDetailEditViewModel(carModel) {
             // raise property change event here so binding in
             // /cars/car-detail-edit-page/my-image-add-remove/MyImageAddRemove.xml works correctly
             this.car.set("imageUrl", value);
-        },
-
-        _startSelection: function (context) {
-            context
-                .authorize()
-                .then(() => context.present())
-                .then((selection) => selection.forEach((selectedImage) => this._handleImageChange(selectedImage.fileUri)))
-                .catch((errorMessage) => console.log(errorMessage));
         }
     });
 
