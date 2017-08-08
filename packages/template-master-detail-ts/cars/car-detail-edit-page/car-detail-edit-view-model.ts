@@ -1,7 +1,5 @@
 import { Observable } from "data/observable";
 import * as imagePicker from "nativescript-imagepicker";
-import * as permissions from "nativescript-permissions";
-import * as platform from "tns-core-modules/platform";
 
 import { ObservableProperty } from "../../shared/observable-property-decorator";
 import { Car } from "../shared/car-model";
@@ -54,15 +52,12 @@ export class CarDetailEditViewModel extends Observable {
             mode: "single"
         });
 
-        let queue = Promise.resolve();
-
-        // lower SDK versions will grant permission from AndroidManifest file
-        if (platform.device.os === "Android" && Number(platform.device.sdkVersion) >= 23) {
-            queue = queue.then(() => permissions.requestPermission("android.permission.READ_EXTERNAL_STORAGE"));
-        }
-
-        queue.then(() => this.startSelection(context))
-            .catch((errorMessage: any) => console.log(errorMessage));
+        context
+            .authorize()
+            .then(() => context.present())
+            .then((selection) => selection.forEach(
+                (selectedImage) => this.handleImageChange(selectedImage.fileUri))
+            ).catch((errorMessage: any) => console.log(errorMessage));
     }
 
     saveChanges(): Promise<any> {
@@ -94,14 +89,6 @@ export class CarDetailEditViewModel extends Observable {
                 this.isUpdating = false;
                 throw errorMessage;
             });
-    }
-
-    private startSelection(context): void {
-        context
-            .authorize()
-            .then(() => context.present())
-            .then((selection) => selection.forEach((selectedImage) => this.handleImageChange(selectedImage.fileUri)))
-            .catch((errorMessage: any) => console.log(errorMessage));
     }
 
     private handleImageChange(value): void {

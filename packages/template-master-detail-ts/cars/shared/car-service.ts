@@ -67,8 +67,7 @@ export class CarService {
         if (data) {
             for (const id in data) {
                 if (data.hasOwnProperty(id)) {
-                    const result = Object.assign({ id }, ...data[id]);
-                    this._cars.push(new Car(result));
+                    this._cars.push(new Car(data[id]));
                 }
             }
         }
