@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Http } from "@angular/http";
-import { BehaviorSubject, Observable } from "rxjs/Rx";
+import { Observable } from "rxjs/Rx";
 
 import { Kinvey } from "kinvey-nativescript-sdk";
 import { Config } from "../../shared/config";

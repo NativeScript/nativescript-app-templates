@@ -4,9 +4,19 @@
   "displayName": "Master-Detail-Kinvey",
   "main": "main.js",
   "version": "1.0.0",
-  "description": "Simple Master-Detail template for NativeScript apps with Kinvey data and support for editing using Angular",
+  "description": "Master-detail interface to display collection of items from Kinvey and inspect and edit selected item properties. ",
   "license": "SEE LICENSE IN <your-license-filename>",
-  "readme": "NativeScript Application",
+  "keywords": [
+    "telerik",
+    "mobile",
+    "nativescript",
+    "{N}",
+    "tns",
+    "appbuilder",
+    "template",
+    "master-detail",
+    "kinvey"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/NativeScript/template-master-detail-kinvey-ng"

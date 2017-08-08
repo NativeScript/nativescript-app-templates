@@ -39,9 +39,6 @@ There is one model to represent the data items:
 The template also provides a data service:
 - `/cars/shared/car.service.ts` - serves as a data layer for the master-detail data items. Wraps the functions that are used to make operations on the Kinvey database.
 
-template also provides a data service:
-- `/cars/shared/car.service.ts` - serves as a data layer for the master-detail data items. Wraps the functions that are used to make operations on the Kinvey database.
-
 ### Kinvey integration
 The templates uses the [{N} Kinvey plugin](https://github.com/Kinvey/nativescript-sdk). The initialization is done before the app starts in the `/main.ts` file. The initialization script is located at `/shared/kinvey.common.ts`.
 
