@@ -1,7 +1,5 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 import * as imagePicker from "nativescript-imagepicker";
-import * as permissions from "nativescript-permissions";
-import * as platform from "tns-core-modules/platform";
 
 /* ***********************************************************
 * The MyImageAddRemove custom component uses an imagepicker plugin to let the user select
@@ -28,23 +26,12 @@ export class MyImageAddRemoveComponent {
             mode: "single"
         });
 
-        let queue = Promise.resolve();
-
-        // lower SDK versions will grant permission from AndroidManifest file
-        if (platform.device.os === "Android" && Number(platform.device.sdkVersion) >= 23) {
-            queue = queue.then(() => permissions.requestPermission("android.permission.READ_EXTERNAL_STORAGE"));
-        }
-
-        queue.then(() => this.startSelection(context))
-            .catch((errorMessage: any) => console.log(errorMessage));
-    }
-
-    startSelection(context): void {
         context
             .authorize()
             .then(() => context.present())
-            .then((selection) => selection.forEach((selectedImage) => this.handleImageChange(selectedImage.fileUri)))
-            .catch((errorMessage: any) => console.log(errorMessage));
+            .then((selection) => selection.forEach(
+                (selectedImage) => this.handleImageChange(selectedImage.fileUri))
+            ).catch((errorMessage: any) => console.log(errorMessage));
     }
 
     handleImageChange(newValue): void {

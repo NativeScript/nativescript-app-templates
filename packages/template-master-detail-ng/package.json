@@ -25,8 +25,7 @@
     "@angular/platform-browser": "~4.1.0",
     "@angular/router": "~4.1.0",
     "nativescript-angular": "~3.1.0",
-    "nativescript-imagepicker": "^3.0.1",
-    "nativescript-permissions": "^1.2.3",
+    "nativescript-imagepicker": "~3.0.3",
     "nativescript-plugin-firebase": "^3.11.4",
     "nativescript-telerik-ui": "^3.0.0",
     "nativescript-theme-core": "~1.0.2",
@@ -48,4 +47,3 @@
     "postinstall": "node tools/postinstall.js"
   }
 }
-
