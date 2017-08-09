@@ -1,0 +1,30 @@
+@import 'list-selector-modal-page';
+
+// Place any CSS rules you want to apply only on Android here
+// Custom styles
+.list-modal-view {
+    
+    .list-modal-header {
+        padding: 15;
+    }
+
+    .list-modal-item {
+        padding: 0 15 10 15;
+    }
+
+    .list-modal-view-icon {
+        margin-right: 15;
+        margin-top: 2;
+
+        &.selected {
+           color: $accent-dark; 
+        }
+    }
+
+    .btn.btn-outline {
+        border-color: transparent;
+        font-size: 12;
+        padding-right: 0;
+        text-align: right;
+    }
+}

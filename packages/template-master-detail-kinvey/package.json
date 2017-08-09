@@ -1,0 +1,46 @@
+{
+  "main": "app.js",
+  "name": "tns-template-master-detail-kinvey",
+  "displayName": "Master-Detail with Kinvey",
+  "version": "3.1.0",
+  "description": "Master-detail interface to display collection of items from Kinvey and inspect and edit selected item properties. ",
+  "author": "Telerik <support@telerik.com>",
+  "license": "Apache-2.0",
+  "keywords": [
+    "telerik",
+    "mobile",
+    "nativescript",
+    "{N}",
+    "tns",
+    "appbuilder",
+    "template",
+    "master-details",
+    "detail",
+    "kinvey"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NativeScript/template-master-detail-kinvey"
+  },
+  "homepage": "https://github.com/NativeScript/template-master-detail-kinvey",
+  "android": {
+    "v8Flags": "--expose_gc"
+  },
+  "dependencies": {
+    "nativescript-imagepicker": "~3.0.3",
+    "kinvey-nativescript-sdk": "^3.7.2",
+    "nativescript-telerik-ui": "^3.0.0",
+    "nativescript-theme-core": "~1.0.2",
+    "rxjs": "~5.4.0",
+    "tns-core-modules": "~3.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.1.1",
+    "nativescript-dev-sass": "^1.2.0",
+    "node-sass": "*"
+  },
+  "scripts": {
+    "preinstall": "node tools/preinstall.js",
+    "postinstall": "node tools/postinstall.js"
+  }
+}

@@ -1,0 +1,68 @@
+[
+  {
+    "class": "Luxury",
+    "doors": 2,
+    "hasAC": true,
+    "imageUrl": "https://storage.googleapis.com/29f04f74a3bf48f4a191ef3d3df4f476/c7408d39-543d-436b-82bf-4ba4970f15c0/BMW5Series.jpg",
+    "luggage": 3,
+    "name": "BMW 5 Series",
+    "price": 76,
+    "seats": "2",
+    "transmission": "Automatic"
+  },
+  {
+    "class": "Luxury",
+    "doors": 5,
+    "hasAC": false,
+    "imageUrl": "https://storage.googleapis.com/29f04f74a3bf48f4a191ef3d3df4f476/41f5d875-ef21-44b4-9c9a-73d849c4bcc8/FordKA.jpg",
+    "luggage": 3,
+    "name": "Ford KA",
+    "price": 44,
+    "seats": "4 + 1",
+    "transmission": "Automatic"
+  },
+  {
+    "class": "Mini",
+    "doors": 2,
+    "hasAC": true,
+    "imageUrl": "https://storage.googleapis.com/29f04f74a3bf48f4a191ef3d3df4f476/7c301761-744e-4454-b16f-068a8a0f20d6/Smart.jpg",
+    "luggage": 1,
+    "name": "Smart",
+    "price": 39,
+    "seats": "2",
+    "transmission": "Manual"
+  },
+  {
+    "class": "Standard",
+    "doors": 5,
+    "hasAC": true,
+    "imageUrl": "https://storage.googleapis.com/29f04f74a3bf48f4a191ef3d3df4f476/9be96997-237b-465e-aab7-224d31857226/KiaSorento.jpg",
+    "luggage": 2,
+    "name": "Kia Sorento",
+    "price": 45,
+    "seats": "4 + 1",
+    "transmission": "Manual"
+  },
+  {
+    "class": "Luxury",
+    "doors": 3,
+    "hasAC": true,
+    "imageUrl": "https://storage.googleapis.com/29f04f74a3bf48f4a191ef3d3df4f476/e0e34890-3c0d-445a-98a5-3859181bd152/MazdaMX5.jpg",
+    "luggage": 2,
+    "name": "Mazda MX-5",
+    "price": 53,
+    "seats": "2",
+    "transmission": "Automatic"
+  },
+  {
+    "class": "Luxury",
+    "doors": 3,
+    "hasAC": false,
+    "imageUrl": "https://storage.googleapis.com/29f04f74a3bf48f4a191ef3d3df4f476/1550d82a-8629-4909-8087-ad16eb4d2ff9/MercedesSClassCabriolet.jpg",
+    "luggage": 2,
+    "name": "Mercedes S-Class Cabriolet",
+    "price": 89,
+    "seats": "4",
+    "transmission": "Manual"
+  }
+]
