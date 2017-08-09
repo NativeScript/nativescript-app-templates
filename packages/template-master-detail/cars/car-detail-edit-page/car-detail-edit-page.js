@@ -52,6 +52,7 @@ function onDoneButtonTap(args) {
         .then(() => topmost().navigate({ 
             moduleName: "cars/cars-list-page",
             animated: true,
+            clearHistory: true,
             transition: {
                 name: "slideBottom",
                 duration: 200,
@@ -72,13 +73,14 @@ function onDoneButtonTap(args) {
     const readOnlyMessage = "Check out the \"Firebase database setup\" section in the readme file to make it editable.";
     const queue = Promise.resolve();
     queue.then(() => alert({
-            title: "Read-Only Template!",
-            message: readOnlyMessage,
-            okButtonText: "Ok"
-        }))
+        title: "Read-Only Template!",
+        message: readOnlyMessage,
+        okButtonText: "Ok"
+    }))
         .then(() => topmost().navigate({
             moduleName: "cars/cars-list-page",
             animated: true,
+            clearHistory: true,
             transition: {
                 name: "slideBottom",
                 duration: 200,
