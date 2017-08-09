@@ -12,7 +12,7 @@ getPackageJson()
             commandName: "lint",
             command: "eslint \"app/**/*.js\"",
             message: "Updating package.json scripts for linting..."
-        })
+        });
     })
     .catch((err) => {
         console.error(err);
@@ -73,26 +73,6 @@ function addScriptCommand(packageJsonData, options) {
             }
 
             resolve();
-        });
-    });
-}
-
-function replaceAppId(filePath, appId) {
-    return new Promise((resolve, reject) => {
-        fs.readFile(filePath, "utf8", (err, content) => {
-            if (err) {
-                return reject(err);
-            }
-
-            const appIdPlaceholder = "__PACKAGE__";
-            const updatedContent = content.replace(appIdPlaceholder, appId);
-            fs.writeFile(filePath, updatedContent, (err) => {
-                if (err) {
-                    return reject(err);
-                }
-
-                resolve();
-            });
         });
     });
 }

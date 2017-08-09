@@ -98,7 +98,7 @@ function onSelectorTap(args) {
         tag,
         selectedValue
     };
-    const modalPagePath = "cars/car-detail-edit-page/list-selector/list-selector-modal-page";
+    const modalPagePath = "cars/car-detail-edit-page/list-selector-modal-page/list-selector-modal-page";
     const page = gridLayout.page;
 
     page.showModal(modalPagePath, context, (value) => {
@@ -108,7 +108,15 @@ function onSelectorTap(args) {
     }, false);
 }
 
+function onImageAddRemoveTap(args) {
+    const gridLayout = args.object;
+    const bindingContext = gridLayout.bindingContext;
+
+    bindingContext.onImageAddRemove();
+}
+
 exports.onNavigatingTo = onNavigatingTo;
 exports.onCancelButtonTap = onCancelButtonTap;
 exports.onDoneButtonTap = onDoneButtonTap;
 exports.onSelectorTap = onSelectorTap;
+exports.onImageAddRemoveTap = onImageAddRemoveTap;
