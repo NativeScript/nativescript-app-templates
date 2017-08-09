@@ -1,0 +1,25 @@
+@import 'list-selector-modal-page';
+
+// Place any CSS rules you want to apply only on IOS here
+// Custom styles
+.list-modal-view {
+    height: 100%;
+    padding-top: 20;
+    
+    .list-modal-item {
+        padding: 10 15;
+        margin: 0;
+        border-bottom-width: $border-width;
+        border-color: $blue-20;
+        background-color: $background-light;
+    }
+
+    .list-modal-list {
+        border-top-width: $border-width;
+        border-color: $blue-20;
+    }
+
+    .list-modal-view-check {
+        color: $success-dark;
+    }
+}

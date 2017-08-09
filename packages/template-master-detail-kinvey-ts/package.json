@@ -1,52 +1,51 @@
 {
-  "private": true,
-  "main": "app.js",
-  "name": "tns-template-master-detail-kinvey-ts",
-  "displayName": "Master-Detail",
-  "version": "3.1.0",
-  "description": "Simple Master-Detail template for Vanilla NativeScript apps with Kinvey data and support for editing using TypeScript",
-  "author": "Telerik <support@telerik.com>",
-  "license": "Apache-2.0",
-  "keywords": [
-    "telerik",
-    "mobile",
-    "nativescript",
-    "{N}",
-    "tns",
-    "appbuilder",
-    "template",
-    "master-detail"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/NativeScript/template-master-detail-kinvey-ts"
-  },
-  "homepage": "https://github.com/NativeScript/template-master-detail-kinvey-ts",
-  "android": {
-    "v8Flags": "--expose_gc"
-  },
-  "dependencies": {
-    "nativescript-imagepicker": "^3.0.1",
-    "nativescript-permissions": "^1.2.3",
-    "kinvey-nativescript-sdk": "^3.7.2",
-    "nativescript-telerik-ui": "^3.0.0",
-    "nativescript-theme-core": "~1.0.2",
-    "rxjs": "~5.4.0",
-    "tns-core-modules": "~3.1.0"
-  },
-  "devDependencies": {
-    "babel-traverse": "6.4.5",
-    "babel-types": "6.4.5",
-    "babylon": "6.4.5",
-    "lazy": "1.0.11",
-    "nativescript-dev-sass": "^1.2.0",
-    "nativescript-dev-typescript": "~0.5.0",
-    "node-sass": "*",
-    "tslint": "^5.4.3",
-    "typescript": "~2.2.1"
-  },
-  "scripts": {
-    "preinstall": "node tools/preinstall.js",
-    "postinstall": "node tools/postinstall.js"
-  }
+    "main": "app.js",
+    "name": "tns-template-master-detail-kinvey-ts",
+    "displayName": "Master-Detail-Kinvey",
+    "version": "3.1.0",
+    "description": "Master-detail interface to display collection of items from Kinvey and inspect and edit selected item properties. ",
+    "author": "Telerik <support@telerik.com>",
+    "license": "Apache-2.0",
+    "keywords": [
+        "telerik",
+        "mobile",
+        "nativescript",
+        "{N}",
+        "tns",
+        "appbuilder",
+        "template",
+        "master-detail",
+        "kinvey"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/NativeScript/template-master-detail-kinvey-ts"
+    },
+    "homepage": "https://github.com/NativeScript/template-master-detail-kinvey-ts",
+    "android": {
+        "v8Flags": "--expose_gc"
+    },
+    "dependencies": {
+        "nativescript-imagepicker": "~3.0.3",
+        "kinvey-nativescript-sdk": "^3.7.2",
+        "nativescript-telerik-ui": "^3.0.0",
+        "nativescript-theme-core": "~1.0.2",
+        "rxjs": "~5.4.0",
+        "tns-core-modules": "~3.1.0"
+    },
+    "devDependencies": {
+        "babel-traverse": "6.4.5",
+        "babel-types": "6.4.5",
+        "babylon": "6.4.5",
+        "lazy": "1.0.11",
+        "nativescript-dev-sass": "^1.2.0",
+        "nativescript-dev-typescript": "~0.5.0",
+        "node-sass": "*",
+        "tslint": "^5.4.3",
+        "typescript": "~2.2.1"
+    },
+    "scripts": {
+        "preinstall": "node tools/preinstall.js",
+        "postinstall": "node tools/postinstall.js"
+    }
 }
