@@ -31,6 +31,9 @@ The template has the following pages:
 There is one model to represent the data items:
 - `/cars/shared/car-model.ts`
 
+The template also provides a data service:
+- `/cars/shared/car-service.ts` - serves as a data layer for the master-detail data items. Wraps the functions that are used to make operations on the Firebase database.
+
 ### Firebase integration
 The template uses the [{N} Firebase plugin](https://github.com/EddyVerbruggen/nativescript-plugin-firebase). The initialization is done before the app starts in the `/app.ts` file. The initialization script is located at `/shared/firebase.common.ts`.
 
