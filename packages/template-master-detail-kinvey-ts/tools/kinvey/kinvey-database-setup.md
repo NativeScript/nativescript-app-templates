@@ -27,3 +27,5 @@ export class Config {
 
 ### Set up your Kinvey sample data
  - In Kinvey create **'cars'** data collection, from the environment sidebar of your app, and import the [sample JSON data](https://github.com/NativeScript/template-master-detail-kinvey-ts/blob/master/tools/kinvey/car-rental-export-public.json) to it.
+ - Navigate to 'cars' collection settings page and set permissions to Public, in order to allow your "system" user to both read and modify data.
+ 
