@@ -75,7 +75,8 @@ export class CarService {
         const metadata = {
             filename: imageFile.name,
             mimeType: this.getMimeType(imageFile.extension),
-            size: imageContent.length
+            size: imageContent.length,
+            public: true
         };
 
         return Kinvey.Files.upload(imageFile, metadata, { timeout: 2147483647 })
