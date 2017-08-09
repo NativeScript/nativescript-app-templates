@@ -55,6 +55,7 @@ export function onDoneButtonTap(args: EventData): void {
     bindingContext.saveChanges()
         .then(() => topmost().navigate({
             moduleName: "cars/cars-list-page",
+            clearHistory: true,
             animated: true,
             transition: {
                 name: "slideBottom",
@@ -74,6 +75,7 @@ export function onDoneButtonTap(args: EventData): void {
     queue.then(() => alert({ title: "Read-Only Template!", message: readOnlyMessage, okButtonText: "Ok" }))
         .then(() => topmost().navigate({
             moduleName: "cars/cars-list-page",
+            clearHistory: true,
             animated: true,
             transition: {
                 name: "slideBottom",

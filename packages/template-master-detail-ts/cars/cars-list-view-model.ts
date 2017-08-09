@@ -10,13 +10,16 @@ import { CarService } from "./shared/car-service";
 * This is the master list view model.
 *************************************************************/
 export class CarsListViewModel extends Observable {
-    @ObservableProperty() cars: ObservableArray<Car> = new ObservableArray<Car>([]);
-    @ObservableProperty() isLoading: boolean = false;
+    @ObservableProperty() cars: ObservableArray<Car>;
+    @ObservableProperty() isLoading: boolean;
 
     private _carService: CarService;
 
     constructor() {
         super();
+
+        this.cars = new ObservableArray<Car>([]);
+        this.isLoading = false;
 
         this._carService = CarService.getInstance();
     }

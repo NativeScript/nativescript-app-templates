@@ -22,9 +22,9 @@ export class CarDetailEditViewModel extends Observable {
         // get a fresh editable copy of car model
         this.car = new Car(car);
 
-        this._carService = CarService.getInstance();
-
         this.isUpdating = false;
+        
+        this._carService = CarService.getInstance();
         this._isCarImageDirty = false;
 
         // set up value converter to force iOS UISlider to work with discrete steps
