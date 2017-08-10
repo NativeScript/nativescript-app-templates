@@ -1,8 +1,0 @@
-<GridLayout height="80" width="80" class="thumb" horizontalAlignment="left" backgroundImage="{{ car.imageUrl }}" tap="onImageAddRemoveTap">
-    <GridLayout class="thumb-add" visibility="{{ car.imageUrl, car.imageUrl | visibilityValueConverter }}">
-        <Label text="&#xf030;" class="fa" horizontalAlignment="center" verticalAlignment="center" />
-    </GridLayout>
-    <GridLayout class="thumb-remove" visibility="{{ car.imageUrl, !car.imageUrl | visibilityValueConverter }}">
-        <Label text="&#xf014;" class="fa" horizontalAlignment="center" verticalAlignment="center" />
-    </GridLayout>
-</GridLayout>

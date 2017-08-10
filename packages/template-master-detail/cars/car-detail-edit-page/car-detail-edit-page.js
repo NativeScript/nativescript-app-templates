@@ -14,10 +14,10 @@ const CarDetailEditViewModel = require("./car-detail-edit-view-model");
  *************************************************************/
 function onNavigatingTo(args) {
     /* ***********************************************************
-    * The "onNavigatingTo" event handler lets you detect if the user navigated with a back button.
-    * Skipping the re-initialization on back navigation means the user will see the
-    * page in the same data state that he left it in before navigating.
-    *************************************************************/
+     * The "onNavigatingTo" event handler lets you detect if the user navigated with a back button.
+     * Skipping the re-initialization on back navigation means the user will see the
+     * page in the same data state that he left it in before navigating.
+     *************************************************************/
     if (args.isBackNavigation) {
         return;
     }
@@ -73,10 +73,10 @@ function onDoneButtonTap(args) {
     const readOnlyMessage = "Check out the \"Firebase database setup\" section in the readme file to make it editable.";
     const queue = Promise.resolve();
     queue.then(() => alert({
-        title: "Read-Only Template!",
-        message: readOnlyMessage,
-        okButtonText: "Ok"
-    }))
+            title: "Read-Only Template!",
+            message: readOnlyMessage,
+            okButtonText: "Ok"
+        }))
         .then(() => topmost().navigate({
             moduleName: "cars/cars-list-page",
             animated: true,
@@ -98,7 +98,7 @@ function onSelectorTap(args) {
         tag,
         selectedValue
     };
-    const modalPagePath = "cars/car-detail-edit-page/list-selector/list-selector-modal-page";
+    const modalPagePath = "cars/list-selector-modal-page/list-selector-modal-page";
     const page = gridLayout.page;
 
     page.showModal(modalPagePath, context, (value) => {
@@ -108,7 +108,15 @@ function onSelectorTap(args) {
     }, false);
 }
 
+function onImageAddRemoveTap(args) {
+    const gridLayout = args.object;
+    const bindingContext = gridLayout.bindingContext;
+
+    bindingContext.onImageAddRemove();
+}
+
 exports.onNavigatingTo = onNavigatingTo;
 exports.onCancelButtonTap = onCancelButtonTap;
 exports.onDoneButtonTap = onDoneButtonTap;
 exports.onSelectorTap = onSelectorTap;
+exports.onImageAddRemoveTap = onImageAddRemoveTap;
