@@ -36,3 +36,22 @@ $text-primary-font-size: $base-font-size + 2;
         text-align: right;
     }
 }
+
+.thumb {
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-size: 20em;
+    
+    .thumb-add {
+        background-color: transparent;
+        color: $blue-20;
+        border-radius: $border-radius;
+        border-width: $border-width;
+        border-color: $blue-20;
+    }
+
+    .thumb-remove {
+        color: $background-light;
+        background-color: $blue-20;
+    }
+}
