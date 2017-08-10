@@ -98,7 +98,7 @@ function onSelectorTap(args) {
         tag,
         selectedValue
     };
-    const modalPagePath = "cars/car-detail-edit-page/list-selector-modal-page/list-selector-modal-page";
+    const modalPagePath = "cars/list-selector-modal-page/list-selector-modal-page";
     const page = gridLayout.page;
 
     page.showModal(modalPagePath, context, (value) => {
