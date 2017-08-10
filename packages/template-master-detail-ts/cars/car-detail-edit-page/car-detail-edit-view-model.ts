@@ -23,7 +23,7 @@ export class CarDetailEditViewModel extends Observable {
         this.car = new Car(car);
 
         this.isUpdating = false;
-        
+
         this._carService = CarService.getInstance();
         this._isCarImageDirty = false;
 
