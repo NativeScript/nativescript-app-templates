@@ -1,6 +1,5 @@
 <Page 
     navigatingTo="onNavigatingTo"
-    xmlns:customImg="cars/car-detail-edit-page/my-image-add-remove"
     xmlns="http://schemas.nativescript.org/tns.xsd"
     class="page">
 
@@ -43,11 +42,17 @@
                 </GridLayout>
                 
                 <StackLayout class="car-list-even">
-                    <!--
-                MyImageAddRemove is a custom component, that wraps an imagepicker plugin and provides custom design and logic
-                on top of it. Check out the custom component at /cars/car-detail-edit-page/my-image-add-remove.
-                    -->
-                    <customImg:MyImageAddRemove />
+                    <GridLayout height="80" width="80" class="thumb" horizontalAlignment="left" 
+                        backgroundImage="{{ car.imageUrl }}" tap="onImageAddRemoveTap">
+                        <GridLayout class="thumb-add" 
+                            visibility="{{ car.imageUrl, car.imageUrl | visibilityValueConverter }}">
+                            <Label text="&#xf030;" class="fa" horizontalAlignment="center" verticalAlignment="center" />
+                        </GridLayout>
+                        <GridLayout class="thumb-remove" 
+                            visibility="{{ car.imageUrl, !car.imageUrl | visibilityValueConverter }}">
+                            <Label text="&#xf014;" class="fa" horizontalAlignment="center" verticalAlignment="center" />
+                        </GridLayout>
+                    </GridLayout>
                 </StackLayout>
 
                 <Label text="CLASS" class="car-list-odd" />

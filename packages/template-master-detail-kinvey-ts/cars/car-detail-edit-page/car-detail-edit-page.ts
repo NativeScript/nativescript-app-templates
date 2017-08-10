@@ -91,7 +91,7 @@ export function onSelectorTap(args: EventData): void {
     const bindingContext = <CarDetailEditViewModel>gridLayout.bindingContext;
     const selectedValue = bindingContext.car[tag];
     const context = { tag, selectedValue };
-    const modalPagePath = "cars/car-detail-edit-page/list-selector/list-selector-modal-page";
+    const modalPagePath = "cars/list-selector-modal-page/list-selector-modal-page";
     const page = <Page>gridLayout.page;
 
     page.showModal(modalPagePath, context, (value: string) => {
@@ -99,4 +99,11 @@ export function onSelectorTap(args: EventData): void {
             bindingContext.car[tag] = value;
         }
     }, false);
+}
+
+export function onImageAddRemoveTap(args: EventData): void {
+    const gridLayout = <GridLayout>args.object;
+    const bindingContext = <CarDetailEditViewModel>gridLayout.bindingContext;
+
+    bindingContext.onImageAddRemove();
 }
