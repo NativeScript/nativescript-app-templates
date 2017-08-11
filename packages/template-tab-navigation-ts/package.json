@@ -6,7 +6,7 @@
   "name": "tns-template-tab-navigation-ts",
   "displayName": "Tabs",
   "templateType": "App template",
-  "version": "3.1.0",
+  "version": "3.1.4",
   "description": "Tabbed interface template",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
@@ -40,8 +40,8 @@
     "tslint": "^5.4.3",
     "typescript": "~2.2.1"
   },
-  "scripts":{
-    "preinstall" : "node tools/preinstall.js",
+  "scripts": {
+    "preinstall": "node tools/preinstall.js",
     "postinstall": "node tools/postinstall.js"
   }
 }
