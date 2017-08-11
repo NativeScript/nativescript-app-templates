@@ -1,7 +1,7 @@
 {
-  "private": true,
   "name": "tns-template-master-detail-kinvey-ng",
-  "displayName": "Master-Detail-Kinvey",
+  "displayName": "Master-Detail with Kinvey",
+  "templateType": "App template",
   "main": "main.js",
   "version": "1.0.0",
   "description": "Master-detail interface to display collection of items from Kinvey and inspect and edit selected item properties. ",
