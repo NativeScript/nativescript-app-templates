@@ -14,10 +14,10 @@ const CarDetailEditViewModel = require("./car-detail-edit-view-model");
  *************************************************************/
 function onNavigatingTo(args) {
     /* ***********************************************************
-    * The "onNavigatingTo" event handler lets you detect if the user navigated with a back button.
-    * Skipping the re-initialization on back navigation means the user will see the
-    * page in the same data state that he left it in before navigating.
-    *************************************************************/
+     * The "onNavigatingTo" event handler lets you detect if the user navigated with a back button.
+     * Skipping the re-initialization on back navigation means the user will see the
+     * page in the same data state that he left it in before navigating.
+     *************************************************************/
     if (args.isBackNavigation) {
         return;
     }
@@ -49,7 +49,7 @@ function onDoneButtonTap(args) {
     const bindingContext = actionItem.bindingContext;
 
     bindingContext.saveChanges()
-        .then(() => topmost().navigate({ 
+        .then(() => topmost().navigate({
             moduleName: "cars/cars-list-page",
             animated: true,
             clearHistory: true,
@@ -73,10 +73,10 @@ function onDoneButtonTap(args) {
     const readOnlyMessage = "Check out the \"Kinvey database setup\" section in the readme file to make it editable.";
     const queue = Promise.resolve();
     queue.then(() => alert({
-        title: "Read-Only Template!",
-        message: readOnlyMessage,
-        okButtonText: "Ok"
-    }))
+            title: "Read-Only Template!",
+            message: readOnlyMessage,
+            okButtonText: "Ok"
+        }))
         .then(() => topmost().navigate({
             moduleName: "cars/cars-list-page",
             animated: true,
