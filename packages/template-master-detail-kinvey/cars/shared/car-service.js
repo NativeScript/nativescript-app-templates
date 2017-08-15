@@ -30,9 +30,7 @@ function CarService() {
     this.load = function () {
         return new Observable((observer) => {
             this._login().then(() => this._syncDataStore()).then(() => {
-                const sortByNameQuery = new Kinvey.Query();
-                sortByNameQuery.ascending("name");
-                const stream = this._carsStore.find(sortByNameQuery);
+                const stream = this._carsStore.find();
 
                 return stream.toPromise();
             }).then((data) => {

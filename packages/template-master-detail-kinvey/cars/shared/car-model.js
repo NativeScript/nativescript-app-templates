@@ -10,7 +10,7 @@ function Car(options) {
         doors: Number(options.doors),
         price: Number(options.price),
         transmission: options.transmission,
-        imageUrl: options.imageUrl,
+        imageUrl: encodeURI(options.imageUrl),
         imageStoragePath: options.imageStoragePath
     };
 
