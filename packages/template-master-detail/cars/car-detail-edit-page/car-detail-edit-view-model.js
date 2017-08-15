@@ -1,9 +1,12 @@
 const observableModule = require("data/observable");
+const { knownFolders, path } = require("file-system");
 const imagePicker = require("nativescript-imagepicker");
 
 const CarService = require("../shared/car-service");
 const roundingValueConverter = require("./roundingValueConverter");
 const visibilityValueConverter = require("./visibilityValueConverter");
+
+const tempImageFolderName = "nsimagepicker";
 
 function CarDetailEditViewModel(carModel) {
     const viewModel = observableModule.fromObject({
@@ -20,25 +23,6 @@ function CarDetailEditViewModel(carModel) {
 
         _carService: CarService.getInstance(),
         _isCarImageDirty: false,
-
-        onImageAddRemove: function () {
-            if (this.car.imageUrl) {
-                this._handleImageChange(null);
-
-                return;
-            }
-
-            const context = imagePicker.create({
-                mode: "single"
-            });
-
-            context
-                .authorize()
-                .then(() => context.present())
-                .then((selection) => selection.forEach(
-                    (selectedImage) => this._handleImageChange(selectedImage.fileUri)))
-                .catch((errorMessage) => console.log(errorMessage));
-        },
 
         saveChanges: function () {
             let queue = Promise.resolve();
@@ -72,27 +56,59 @@ function CarDetailEditViewModel(carModel) {
                 });
         },
 
-        _handleImageChange: function (value) {
-            const oldValue = this.car.imageUrl;
+        onImageAddRemove: function () {
+            if (this.car.imageUrl) {
+                this._handleImageChange(null);
 
-            if (value) {
-                // iOS simulator fileUri looks like file:///Users/...
-                value = value.replace("file://", "");
-            }
-
-            if (oldValue === value) {
                 return;
             }
 
-            this._isCarImageDirty = true;
+            clearImageTempFolder();
 
-            // raise property change event here so binding in
-            // /cars/car-detail-edit-page/my-image-add-remove/MyImageAddRemove.xml works correctly
-            this.car.set("imageUrl", value);
+            this._pickImage();
+        },
+
+        _pickImage: function () {
+            const context = imagePicker.create({
+                mode: "single"
+            });
+
+            context
+                .authorize()
+                .then(() => context.present())
+                .then((selection) => selection.forEach(
+                    (selectedAsset) => {
+                        selectedAsset.getImage({ maxHeight: 768 })
+                            .then((imageSource) => this._handleImageChange(imageSource));
+                    })).catch((errorMessage) => console.log(errorMessage));
+        },
+
+        _handleImageChange: function (source) {
+            let raisePropertyChange = true;
+            let tempImagePath = null;
+            if (source) {
+                tempImagePath = path.join(getImageTempFolder().path, `${Date.now()}.jpg`);
+                raisePropertyChange = source.saveToFile(tempImagePath, "jpeg");
+            }
+
+            if (raisePropertyChange) {
+                // raise property change event here so binding in
+                // /cars/car-detail-edit-page/my-image-add-remove/MyImageAddRemove.xml works correctly
+                this.car.set("imageUrl", tempImagePath);
+                this._isCarImageDirty = true;
+            }
         }
     });
 
     return viewModel;
+}
+
+function getImageTempFolder() {
+    return knownFolders.temp().getFolder(tempImageFolderName);
+}
+
+function clearImageTempFolder() {
+    getImageTempFolder().clear();
 }
 
 module.exports = CarDetailEditViewModel;
