@@ -43,9 +43,7 @@ export class CarService {
             this.login().then(() => {
                 return this.syncDataStore();
             }).then(() => {
-                const sortByNameQuery = new Kinvey.Query();
-                sortByNameQuery.ascending("name");
-                const stream = this.carsStore.find(sortByNameQuery);
+                const stream = this.carsStore.find();
 
                 return stream.toPromise();
             }).then((data) => {
