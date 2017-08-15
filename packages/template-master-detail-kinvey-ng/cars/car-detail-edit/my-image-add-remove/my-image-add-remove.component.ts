@@ -1,5 +1,9 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Folder, knownFolders, path } from "file-system";
+import { ImageSource } from "image-source";
 import * as imagePicker from "nativescript-imagepicker";
+
+const tempImageFolderName = "nsimagepicker";
 
 /* ***********************************************************
 * The MyImageAddRemove custom component uses an imagepicker plugin to let the user select
@@ -12,6 +16,14 @@ import * as imagePicker from "nativescript-imagepicker";
     styleUrls: ["./my-image-add-remove.component.css"]
 })
 export class MyImageAddRemoveComponent {
+    static get imageTempFolder(): Folder {
+        return knownFolders.temp().getFolder(tempImageFolderName);
+    }
+
+    private static clearImageTempFolder(): void {
+        MyImageAddRemoveComponent.imageTempFolder.clear();
+    }
+
     @Input() imageUrl: string = "";
     @Output() imageUrlChange = new EventEmitter<string>();
 
@@ -22,6 +34,12 @@ export class MyImageAddRemoveComponent {
             return;
         }
 
+        MyImageAddRemoveComponent.clearImageTempFolder();
+
+        this.pickImage();
+    }
+
+    pickImage(): void {
         const context = imagePicker.create({
             mode: "single"
         });
@@ -30,23 +48,25 @@ export class MyImageAddRemoveComponent {
             .authorize()
             .then(() => context.present())
             .then((selection) => selection.forEach(
-                (selectedImage) => this.handleImageChange(selectedImage.fileUri))
+                (selectedAsset: imagePicker.SelectedAsset) => {
+                    selectedAsset.getImage({ maxHeight: 768 })
+                        .then((imageSource: ImageSource) => this.handleImageChange(imageSource));
+                })
             ).catch((errorMessage: any) => console.log(errorMessage));
     }
 
-    handleImageChange(newValue): void {
-        const oldValue = this.imageUrl;
+    private handleImageChange(source: ImageSource): void {
+        let raisePropertyChange = true;
+        let tempImagePath = null;
 
-        if (newValue) {
-            // iOS simulator fileUri looks like file:///Users/...
-            newValue = newValue.replace("file://", "");
+        if (source) {
+            tempImagePath = path.join(MyImageAddRemoveComponent.imageTempFolder.path, `${Date.now()}.jpg`);
+            raisePropertyChange = source.saveToFile(tempImagePath, "jpeg");
         }
 
-        if (oldValue === newValue) {
-            return;
+        if (raisePropertyChange) {
+            this.imageUrl = tempImagePath;
+            this.imageUrlChange.emit(this.imageUrl);
         }
-
-        this.imageUrl = newValue;
-        this.imageUrlChange.emit(this.imageUrl);
     }
 }
