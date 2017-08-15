@@ -27,7 +27,7 @@ export class Car extends Observable {
         this.doors = Number(options.doors);
         this.price = Number(options.price);
         this.transmission = options.transmission;
-        this.imageUrl = options.imageUrl;
+        this.imageUrl = encodeURI(options.imageUrl);
         this.imageStoragePath = options.imageStoragePath;
     }
 }
