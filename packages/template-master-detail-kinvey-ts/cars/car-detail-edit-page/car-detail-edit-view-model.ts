@@ -1,4 +1,6 @@
 import { Observable } from "data/observable";
+import { Folder, knownFolders, path } from "file-system";
+import { ImageSource } from "image-source";
 import * as imagePicker from "nativescript-imagepicker";
 
 import { ObservableProperty } from "../../shared/observable-property-decorator";
@@ -7,7 +9,17 @@ import { CarService } from "../shared/car-service";
 import { RoundingValueConverter } from "./roundingValueConverter";
 import { VisibilityValueConverter } from "./visibilityValueConverter";
 
+const tempImageFolderName = "nsimagepicker";
+
 export class CarDetailEditViewModel extends Observable {
+    static get imageTempFolder(): Folder {
+        return knownFolders.temp().getFolder(tempImageFolderName);
+    }
+
+    private static clearImageTempFolder(): void {
+        CarDetailEditViewModel.imageTempFolder.clear();
+    }
+
     @ObservableProperty() car: Car;
     @ObservableProperty() isUpdating: boolean;
 
@@ -41,25 +53,6 @@ export class CarDetailEditViewModel extends Observable {
         return this._visibilityValueConverter;
     }
 
-    onImageAddRemove(): void {
-        if (this.car.imageUrl) {
-            this.handleImageChange(null);
-
-            return;
-        }
-
-        const context = imagePicker.create({
-            mode: "single"
-        });
-
-        context
-            .authorize()
-            .then(() => context.present())
-            .then((selection) => selection.forEach(
-                (selectedImage) => this.handleImageChange(selectedImage.fileUri))
-            ).catch((errorMessage: any) => console.log(errorMessage));
-    }
-
     saveChanges(): Promise<any> {
         let queue = Promise.resolve();
 
@@ -91,19 +84,46 @@ export class CarDetailEditViewModel extends Observable {
             });
     }
 
-    private handleImageChange(value): void {
-        const oldValue = this.car.imageUrl;
+    onImageAddRemove(): void {
+        if (this.car.imageUrl) {
+            this.handleImageChange(null);
 
-        if (value) {
-            // iOS simulator fileUri looks like file:///Users/...
-            value = value.replace("file://", "");
-        }
-
-        if (oldValue === value) {
             return;
         }
 
-        this._isCarImageDirty = true;
-        this.car.imageUrl = value;
+        CarDetailEditViewModel.clearImageTempFolder();
+
+        this.pickImage();
+    }
+
+    private pickImage(): void {
+        const context = imagePicker.create({
+            mode: "single"
+        });
+
+        context
+            .authorize()
+            .then(() => context.present())
+            .then((selection) => selection.forEach(
+                (selectedAsset: imagePicker.SelectedAsset) => {
+                    selectedAsset.getImage({ maxHeight: 768 })
+                        .then((imageSource: ImageSource) => this.handleImageChange(imageSource));
+                })
+            ).catch((errorMessage: any) => console.log(errorMessage));
+    }
+
+    private handleImageChange(source: ImageSource): void {
+        let raisePropertyChange = true;
+        let tempImagePath = null;
+
+        if (source) {
+            tempImagePath = path.join(CarDetailEditViewModel.imageTempFolder.path, `${Date.now()}.jpg`);
+            raisePropertyChange = source.saveToFile(tempImagePath, "jpeg");
+        }
+
+        if (raisePropertyChange) {
+            this.car.imageUrl = tempImagePath;
+            this._isCarImageDirty = true;
+        }
     }
 }
