@@ -4,8 +4,8 @@
 
     <ActionBar class="action-bar">
         <!-- Should remove the navigation button -->
-        <NavigationButton ios:visibility="collapsed"></NavigationButton>
-        <Label class="action-bar-title" text="Browse" horizontalAlignment="center"></Label>
+        <NavigationButton ios:visibility="collapsed" />
+        <Label class="action-bar-title" text="Browse" horizontalAlignment="center" />
     </ActionBar>
 
     <GridLayout class="page-content">
@@ -27,13 +27,13 @@
                         <Label text="{{ name }}" class="text-primary" />
                         <Label col="1" horizontalAlignment="right" class="list-group-item-text m-r-5">
                             <FormattedString>
-                                <Span text="€"></Span>
-                                <Span text="{{ price }}"></Span>
-                                <Span text="/day"></Span>
+                                <Span text="€" />
+                                <Span text="{{ price }}" />
+                                <Span text="/day" />
                             </FormattedString>
                         </Label>
 
-                        <StackLayout row="1" class="hr-light m-t-5 m-b-5" colSpan="2"></StackLayout>
+                        <StackLayout row="1" class="hr-light m-t-5 m-b-5" colSpan="2" />
 
                         <Image row="2" src="{{ imageUrl }}" stretch="aspectFill" class="m-r-5" height="120" />
 
@@ -64,6 +64,6 @@
             </lv:RadListView.itemTemplate>
         </lv:RadListView>
 
-        <ActivityIndicator busy="{{ isLoading }}"/>
+        <ActivityIndicator busy="{{ isLoading }}" />
     </GridLayout>
 </Page>
