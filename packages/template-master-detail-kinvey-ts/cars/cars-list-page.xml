@@ -4,8 +4,8 @@
 
     <ActionBar class="action-bar">
         <!-- Should remove the navigation button -->
-        <NavigationButton ios:visibility="collapsed"></NavigationButton>
-        <Label class="action-bar-title" text="Browse" horizontalAlignment="center"></Label>
+        <NavigationButton ios:visibility="collapsed" />
+        <Label class="action-bar-title" text="Browse" horizontalAlignment="center" />
     </ActionBar>
 
     <GridLayout class="page-content">
@@ -64,6 +64,6 @@
             </lv:RadListView.itemTemplate>
         </lv:RadListView>
 
-        <ActivityIndicator busy="{{ isLoading }}"/>
+        <ActivityIndicator busy="{{ isLoading }}" />
     </GridLayout>
 </Page>
