@@ -5,18 +5,12 @@
     <ActionBar class="action-bar">
         <!--HACK - we should remove the navigation button-->
         <NavigationButton visibility="collapsed" />
-        <Label class="action-bar-title" text="Edit Car Details" horizontalAlignment="center"></Label>
-        <ActionItem 
-            tap="onCancelButtonTap" 
-            ios.position="left" 
-            android.position="left">
-            <Label text="Cancel" verticalAlignment="center" class="action-item"></Label>
+        <Label class="action-bar-title" text="Edit Car Details" horizontalAlignment="center" />
+        <ActionItem tap="onCancelButtonTap" ios.position="left" android.position="left">
+            <Label text="Cancel" verticalAlignment="center" class="action-item" />
         </ActionItem>
-        <ActionItem 
-            tap="onDoneButtonTap" 
-            ios.position="right" 
-            android.position="right">
-            <Label text="Done" verticalAlignment="center" class="action-item"></Label>
+        <ActionItem tap="onDoneButtonTap" ios.position="right" android.position="right">
+            <Label text="Done" verticalAlignment="center" class="action-item" />
         </ActionItem>
     </ActionBar>
 
