@@ -27,9 +27,11 @@
                     </FormattedString>
                 </Label>
 
-                <Slider row="1" [(ngModel)]="pricePerDay" colSpan="2"></Slider>
+                <StackLayout row="1" colSpan="2" verticalAlignment="center">
+                    <Slider [(ngModel)]="pricePerDay"></Slider>
+                </StackLayout>
 
-                <Label row="2" text="ADD OR REMOVE IMAGE" colSpan="2"></Label>
+                <Label text="ADD OR REMOVE IMAGE" row="2" colSpan="2"></Label>
             </GridLayout>
 
             <StackLayout class="car-list-even">
