@@ -30,9 +30,11 @@
                         </FormattedString>
                     </Label>
 
-                    <Slider row="1" colSpan="2" value="{{ car.price, car.price | roundingValueConverter }}" />
+                    <StackLayout row="1" colSpan="2" verticalAlignment="center">
+                        <Slider value="{{ car.price, car.price | roundingValueConverter }}" />
+                    </StackLayout>
 
-                    <Label row="2" colSpan="2" text="ADD OR REMOVE IMAGE" />
+		            <Label text="ADD OR REMOVE IMAGE" row="2" colSpan="2" />
                 </GridLayout>
                 
                 <StackLayout class="car-list-even">
