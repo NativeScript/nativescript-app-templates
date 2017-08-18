@@ -17,8 +17,18 @@ This Master-Detail template is a fundamental building block for any app that dis
 Execute the following command to create an app from this template:
 
 ```
+tns create my-app-name --template tns-template-master-detail
+```
+
+> Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm] (https://www.npmjs.com/package/tns-template-master-detail).
+
+If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
+
+```
 tns create my-app-name --template https://github.com/NativeScript/template-master-detail
 ```
+
+**NB:** Please, have in mind that the master branch may refer to dependencies that are not on NPM yet!
 
 ## Walkthrough
 
