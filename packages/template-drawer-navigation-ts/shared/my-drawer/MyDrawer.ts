@@ -26,7 +26,7 @@ export function onNavigationItemTap(args: ItemEventData): void {
     topmost().navigate({
         moduleName: navigationItem.route,
         transition: {
-            name: "slide"
+            name: "fade"
         }
     });
 }
