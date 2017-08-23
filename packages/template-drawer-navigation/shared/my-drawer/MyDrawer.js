@@ -23,7 +23,7 @@ function onNavigationItemTap(args) {
     frameModule.topmost().navigate({
         moduleName: navigationItem.route,
         transition: {
-            name: "slide"
+            name: "fade"
         }
     });
 }
