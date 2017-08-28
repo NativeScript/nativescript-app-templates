@@ -27,8 +27,7 @@
         <item name="colorAccent">@color/ns_accent</item>
     </style>
 
-    <style name="AppTheme" parent="AppThemeBase">
-        <item name="android:windowTranslucentStatus">true</item>
+    <style name="AppTheme" parent="AppThemeBase">>
     </style>
 
     <!-- theme for actioon-bar -->
