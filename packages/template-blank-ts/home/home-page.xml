@@ -1,8 +1,8 @@
-<Page
-    navigatingTo="onNavigatingTo"  
+<Page class="page"
+    navigatingTo="onNavigatingTo" 
     xmlns="http://www.nativescript.org/tns.xsd">
     
-    <ActionBar title="Home">
+    <ActionBar class="action-bar" title="Home">
     </ActionBar>
 
     <GridLayout>
