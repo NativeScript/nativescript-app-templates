@@ -10,3 +10,4 @@ platforms/
 tmp/
 typings/
 .idea
+/.project
