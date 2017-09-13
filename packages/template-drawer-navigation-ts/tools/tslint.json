@@ -9,6 +9,7 @@
     "no-consecutive-blank-lines": [true, 1],
     "no-console": [false],
     "no-irregular-whitespace": true,
+    "no-submodule-imports": false,
     "no-unnecessary-initializer": true,
     "no-var-requires": false,
     "object-literal-key-quotes": [true, "as-needed"],
