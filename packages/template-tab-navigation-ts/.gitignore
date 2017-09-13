@@ -12,3 +12,4 @@ tmp/
 typings/
 .idea
 .cloud
+/.project
