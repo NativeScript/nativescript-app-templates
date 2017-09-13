@@ -36,21 +36,21 @@
     "@angular/router": "4.2.5",
     "kinvey-nativescript-sdk": "3.8.0",
     "nativescript-angular": "4.2.0",
-    "nativescript-imagepicker": "3.0.4",
-    "nativescript-telerik-ui": "3.0.4",
+    "nativescript-imagepicker": "3.0.6",
+    "nativescript-telerik-ui": "3.1.0",
     "nativescript-theme-core": "1.0.4",
     "reflect-metadata": "0.1.10",
     "rxjs": "5.4.3",
-    "tns-core-modules": "3.1.1",
-    "zone.js": "0.8.16"
+    "tns-core-modules": "3.2.0",
+    "zone.js": "0.8.17"
   },
   "devDependencies": {
-    "codelyzer": "3.1.2",
+    "codelyzer": "3.2.0",
     "nativescript-dev-sass": "1.3.0",
     "nativescript-dev-typescript": "0.5.0",
     "node-sass": "4.5.3",
-    "tslint": "5.6.0",
-    "typescript": "2.4.2"
+    "tslint": "5.7.0",
+    "typescript": "2.5.2"
   },
   "scripts": {
     "preinstall": "node tools/preinstall.js",
