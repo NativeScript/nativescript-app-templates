@@ -1,9 +1,7 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page"
   xmlns:home="/tabs/home"
   xmlns:search="/tabs/search"
-  xmlns:browse="/tabs/browse"
-  xmlns:featured="/tabs/featured"
-  xmlns:settings="/tabs/settings">
+  xmlns:browse="/tabs/browse">
     <Page.actionBar>
         <ActionBar class="action-bar">
           <Label text="{{ title }}" class="action-bar-title" />
@@ -22,7 +20,7 @@
         To add a new TabView item, simply add a new <TabViewItem> component to the <TabView.items> collection.
         Assign the <TabViewItem> component a "title" that will be displayed as the text of the tab item button.
         -->
-        <TabViewItem title="Home" iconSource="{{ iconPath + 'home'}}">
+        <TabViewItem title="Home" ios:iconSource="res://tabIcons/home">
           <TabViewItem.view>
             <!--
             You can declare the layout and components of each view inside the <TabViewItem.view> directly.
@@ -33,27 +31,15 @@
           </TabViewItem.view>
         </TabViewItem>
 
-        <TabViewItem title="Browse" iconSource="{{ iconPath + 'browse'}}">
+        <TabViewItem title="Browse" ios:iconSource="res://tabIcons/browse">
           <TabViewItem.view>
              <browse:BrowseView/>
           </TabViewItem.view>
         </TabViewItem>
 
-        <TabViewItem title="Search" iconSource="{{ iconPath + 'search'}}">
+        <TabViewItem title="Search" ios:iconSource="res://tabIcons/search">
           <TabViewItem.view>
              <search:SearchView/>
-          </TabViewItem.view>
-        </TabViewItem>
-
-        <TabViewItem title="Featured" iconSource="{{ iconPath + 'favorites'}}">
-          <TabViewItem.view>
-             <featured:FeaturedView/>
-          </TabViewItem.view>
-        </TabViewItem>
-
-        <TabViewItem title="Settings" iconSource="{{ iconPath + 'settings'}}">
-          <TabViewItem.view>
-             <settings:SettingsView/>
           </TabViewItem.view>
         </TabViewItem>
       </TabView.items>

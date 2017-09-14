@@ -9,8 +9,4 @@ export class TabsViewModel extends Observable {
     constructor() {
         super();
     }
-
-    get iconPath(): string {
-        return isAndroid ? "res://" : "res://tabIcons/";
-    }
 }

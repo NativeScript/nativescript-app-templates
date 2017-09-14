@@ -1,8 +1,0 @@
-<!--
-This is the component view that represents the 'Settings' tab.
-Feel free to customize layouts and components to change how the tab view looks.
--->
-<GridLayout class="page-content" loaded="onLoaded">
-    <Label class="page-icon fa" text="&#xf013;"></Label>
-    <Label class="page-placeholder" text="<!-- Page content goes here -->"></Label>
-</GridLayout>
