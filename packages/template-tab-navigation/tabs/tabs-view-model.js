@@ -3,7 +3,6 @@ const platform = require("platform");
 
 function TabsViewModel() {
     const viewModel = observableModule.fromObject({
-        iconPath: platform.isAndroid ? "res://" : "res://tabIcons/",
         title: ""
     });
 

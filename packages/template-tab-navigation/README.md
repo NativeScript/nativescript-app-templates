@@ -35,12 +35,10 @@ tns create my-app-name --template https://github.com/NativeScript/template-tab-n
 There is one main folder that holds the tabs page:
 - `/tabs/tabs-page.js` - sets up the tab navigation page layout and references the navigatable views contents via custom components.
 
-There are five blank custom components used for the tab views located in these folders:
+There are three blank custom components used for the tab views located in these folders:
 - `/tabs/browse`
-- `/tabs/featured`
 - `/tabs/home`
 - `/tabs/search`
-- `/tabs/settings`
 
 ### Styling
 This template is set up to use SASS for styling. All classes used are based on the {N} core theme – consult the [documentation](https://docs.nativescript.org/angular/ui/theme.html#theme) to understand how to customize it. Check it out to see what classes you can use on which component.

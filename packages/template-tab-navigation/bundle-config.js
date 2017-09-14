@@ -5,8 +5,6 @@ if (global.TNS_WEBPACK) {
     //register application modules
     global.registerModule("tabs/tabs-page", () => require("./tabs/tabs-page"));
     global.registerModule("browse/Browse", () => require("./browse/BrowseView"));
-    global.registerModule("featured/Featured", () => require("./featured/FeaturedView"));
     global.registerModule("home/Home", () => require("./home/HomeView"));
     global.registerModule("search/Search", () => require("./search/SearchView"));
-    global.registerModule("settings/Settings", () => require("./settings/SettingsView"));
 }
