@@ -35,4 +35,12 @@ $text-primary-font-size: $base-font-size + 2;
         width: 30;
         text-align: right;
     }
+
+    TextField.ng-invalid {
+        placeholder-color: $error;
+    }
+ 
+    .ng-invalid-image {
+        color: $error;
+    }
 }
