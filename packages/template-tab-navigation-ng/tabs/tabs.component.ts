@@ -42,7 +42,7 @@ export class TabsComponent implements OnInit {
     * You can find all resources in /App_Resources/os
     *************************************************************/
     getIconSource(icon: string): string {
-        return isAndroid ? "res://" + icon : "res://tabIcons/" + icon;
+        return isAndroid ? "" : "res://tabIcons/" + icon;
     }
 
     /* ***********************************************************
