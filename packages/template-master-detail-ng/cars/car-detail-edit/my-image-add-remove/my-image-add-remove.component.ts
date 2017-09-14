@@ -1,9 +1,17 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, forwardRef, Input, Output } from "@angular/core";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 import { Folder, knownFolders, path } from "file-system";
 import { ImageSource } from "image-source";
 import * as imagePicker from "nativescript-imagepicker";
 
 const tempImageFolderName = "nsimagepicker";
+const noop = () => { }; // tslint:disable-line no-empty
+
+const MY_IMAGE_ADD_REMOVE_CONTROL_VALUE_ACCESSOR = {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => MyImageAddRemoveComponent), // tslint:disable-line no-forward-ref
+    multi: true
+};
 
 /* ***********************************************************
 * The MyImageAddRemove custom component uses an imagepicker plugin to let the user select
@@ -13,9 +21,10 @@ const tempImageFolderName = "nsimagepicker";
     selector: "MyImageAddRemove",
     moduleId: module.id,
     templateUrl: "./my-image-add-remove.component.html",
-    styleUrls: ["./my-image-add-remove.component.css"]
+    styleUrls: ["./my-image-add-remove.component.css"],
+    providers: [MY_IMAGE_ADD_REMOVE_CONTROL_VALUE_ACCESSOR]
 })
-export class MyImageAddRemoveComponent {
+export class MyImageAddRemoveComponent implements ControlValueAccessor {
     static get imageTempFolder(): Folder {
         return knownFolders.temp().getFolder(tempImageFolderName);
     }
@@ -24,8 +33,38 @@ export class MyImageAddRemoveComponent {
         MyImageAddRemoveComponent.imageTempFolder.clear();
     }
 
-    @Input() imageUrl: string = "";
-    @Output() imageUrlChange = new EventEmitter<string>();
+    // placeholder for the callback later provided by the ControlValueAccessor
+    private propagateChange: (_: any) => void = noop;
+
+    private innerImageUrl: string = "";
+
+    get imageUrl(): string {
+        return this.innerImageUrl;
+    }
+
+    set imageUrl(value: string) {
+        if (this.innerImageUrl !== value) {
+            this.innerImageUrl = value;
+            this.propagateChange(value);
+        }
+    }
+
+    // ControlValueAccessor implementation
+    writeValue(value: string) {
+        if (this.innerImageUrl !== value) {
+            this.innerImageUrl = value;
+        }
+    }
+
+    // ControlValueAccessor implementation
+    registerOnChange(fn: any): void {
+        this.propagateChange = fn;
+    }
+
+    // ControlValueAccessor implementation
+    // tslint:disable-next-line:no-empty
+    registerOnTouched(fn: any): void {
+    }
 
     onImageAddRemoveTap(): void {
         if (this.imageUrl) {
@@ -66,7 +105,6 @@ export class MyImageAddRemoveComponent {
 
         if (raisePropertyChange) {
             this.imageUrl = tempImagePath;
-            this.imageUrlChange.emit(this.imageUrl);
         }
     }
 }
