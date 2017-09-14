@@ -1,5 +1,3 @@
-# NOTE: This template is currently a work in progress. We do not recommend using it for a production app just yet.
-
 # Known Issues:
 - To use this template with iOS Simulator you need to manually enable `Keychain Sharing` in the target settings’ Capabilities tab in XCode
 
