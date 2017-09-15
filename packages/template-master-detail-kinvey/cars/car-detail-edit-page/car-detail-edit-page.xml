@@ -9,8 +9,10 @@
         <ActionItem tap="onCancelButtonTap" ios.position="left" android.position="left">
             <Label text="Cancel" verticalAlignment="center" class="action-item" />
         </ActionItem>
-        <ActionItem tap="onDoneButtonTap" ios.position="right" android.position="right">
-            <Label text="Done" verticalAlignment="center" class="action-item" />
+        <ActionItem ios.position="right" android.position="right">
+            <Label text="Done" class="action-item" verticalAlignment="center" tap="onDoneButtonTap" 
+                isEnabled="{{ car.isModelValid }}"
+                isUserInteractionEnabled="{{ car.isModelValid }}" />
         </ActionItem>
     </ActionBar>
 
@@ -18,7 +20,8 @@
         <ScrollView>
             <StackLayout class="car-list">
                 <Label text="CAR MAKE" class="car-list-odd" />
-                <TextField text="{{ car.name }}" hint="Enter your car make" class="car-list-even" />
+                <TextField text="{{ car.name }}" hint="Car make field is required" 
+                    class="{{ car.name, car.name ? 'car-list-even' : 'car-list-even invalid-text' }}" />
 
                 <GridLayout rows="*, 55, *" columns="*, auto" class="car-list-odd" >
                     <Label text="PRICE PER DAY" />
@@ -48,6 +51,8 @@
                             <Label text="&#xf014;" class="fa" horizontalAlignment="center" verticalAlignment="center" />
                         </GridLayout>
                     </GridLayout>
+                    <Label visibility="{{ car.imageUrl, car.imageUrl | visibilityValueConverter }}" 
+                        class="invalid-image" text="Image field is required" />
                 </StackLayout>
 
                 <Label text="CLASS" class="car-list-odd" />
@@ -74,7 +79,7 @@
                     <Label text="&#xf054;" class="fa text-secondary" col="1" horizontalAlignment="center" verticalAlignment="center" />
                 </GridLayout>
                 
-                <GridLayout rows="*, 55" columns="*, auto" class="car-list-odd" >
+                <GridLayout rows="*, 55" columns="*, auto" class="car-list-odd">
                     <Label text="LUGGAGE" />
                     <Label col="1" horizontalAlignment="right" class="text-primary">
                         <FormattedString>

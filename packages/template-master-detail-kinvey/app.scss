@@ -25,9 +25,13 @@ NavigationButton {
     color: $ab-color;
 }
 
-Slider{
+.action-item:disabled {
+    color: $ab-color-50;
+}
+
+Slider {
   background-color: $accent;
-  color: $accent;  
+  color: $accent;
 }
 
 .text {
