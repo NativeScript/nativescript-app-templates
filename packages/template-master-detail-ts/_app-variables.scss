@@ -38,10 +38,12 @@ $base-font-size: 11;
 /**
  * Theme variables overrides
  **/
+$error: $error-light;
 
 // ActionBar
 $ab-background: $accent-dark;
 $ab-color: $background-light;
+$ab-color-50: rgba($ab-color, 0.5) !default;
 
 $item-active-color: $accent-dark;
 $item-active-icon-color: $accent-dark;

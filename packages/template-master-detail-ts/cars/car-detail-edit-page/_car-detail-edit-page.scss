@@ -35,6 +35,14 @@ $text-primary-font-size: $base-font-size + 2;
         width: 35;
         text-align: right;
     }
+
+    TextField.invalid-text {
+        placeholder-color: $error;
+    }
+ 
+    .invalid-image {
+        color: $error;
+    }
 }
 
 .thumb {
