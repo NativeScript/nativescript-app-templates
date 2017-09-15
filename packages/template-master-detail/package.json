@@ -29,14 +29,14 @@
   "dependencies": {
     "nativescript-imagepicker": "3.0.6",
     "nativescript-plugin-firebase": "4.1.1",
-    "nativescript-telerik-ui": "3.1.0",
+    "nativescript-telerik-ui": "3.1.1",
     "nativescript-theme-core": "1.0.4",
     "rxjs": "5.4.3",
     "tns-core-modules": "3.2.0"
   },
   "devDependencies": {
     "eslint": "4.6.1",
-    "nativescript-dev-sass": "1.3.0",
+    "nativescript-dev-sass": "1.3.2",
     "node-sass": "4.5.3"
   },
   "scripts": {
