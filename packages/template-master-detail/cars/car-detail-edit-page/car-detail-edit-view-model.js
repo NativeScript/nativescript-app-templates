@@ -100,6 +100,14 @@ function CarDetailEditViewModel(carModel) {
         }
     });
 
+    viewModel.car.addEventListener(observableModule.Observable.propertyChangeEvent, (propertyChangeData) => {
+        const propertyName = propertyChangeData.propertyName;
+        if (propertyName === "name" || propertyName === "imageUrl") {
+            // update dependent property
+            viewModel.car.set("isModelValid", !!viewModel.car.name && !!viewModel.car.imageUrl);
+        }
+    });
+
     return viewModel;
 }
 

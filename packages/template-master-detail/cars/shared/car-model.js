@@ -11,7 +11,8 @@ function Car(options) {
         price: Number(options.price),
         transmission: options.transmission,
         imageUrl: options.imageUrl,
-        imageStoragePath: options.imageStoragePath
+        imageStoragePath: options.imageStoragePath,
+        isModelValid: !!options.name && !!options.imageUrl
     };
 
     return model;
