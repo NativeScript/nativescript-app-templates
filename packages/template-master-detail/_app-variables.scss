@@ -3,7 +3,7 @@
 // for example '~nativescript-theme-core/scss/dark'.
 @import '~nativescript-theme-core/scss/light';
 
-// Colors
+// Custom colors
 $background-dark: #F8F8F8 !default;
 $background-light: #FFFFFF !default;
 
@@ -32,32 +32,47 @@ $night-dark: #023141 !default;
 $night-light: #01526C !default;
 
 // Sizes
-$button-height: 36 !default;
-$small-button-height: 28 !default;
+$base-font-size: 11;
 
 $border-width: 1;
 $border-radius: 3;
 
-$base-font-size: 11;
 
 /**
  * Theme variables overrides
- **/
+**/
+
+// Colors
+$background: #fff;
+$primary: lighten(#000, 13%);
+$secondary: lighten(#000, 46%);
+$disabled: lighten(#000, 62%);
+$accent: $accent-dark;
 $error: $error-light;
 
+// SideDrawer
+$item-color-android : #737373;
+$item-active-background: #F8F8F8;
+$item-active-color: $accent;
+$item-active-icon-color: $item-active-color;
+$item-color-ios: $blue-dark;
+$item-color-android: $blue-dark;
+
+$side-drawer-header-background: #fafafa;
+$side-drawer-header-brand: #737373;
+$side-drawer-background: #FFFFFF;
+
 // ActionBar
-$ab-background: $accent-dark;
-$ab-color: $background-light;
-$ab-color-50: rgba($ab-color, 0.5) !default;
+$ab-background: $accent;
+$ab-color: $white;
 
-$item-active-color: $accent-dark;
-$item-active-icon-color: $accent-dark;
-$item-active-background: $background-dark;
-
-$accent: $accent-dark;
+// Buttons
+$btn-color-inverse: $white;
+$btn-color: $accent;
+$btn-color-secondary: darken($btn-color, 10%);
+$btn-color-outline-highlighted: lighten($btn-color, 10%);
 
 //Text colors
 $headings-color: $blue-dark;
 $secondary: $blue-dark;
 $text-color: $blue-dark;
-$btn-color: $accent-dark;

@@ -12,7 +12,7 @@ NavigationButton {
 }
 
 .action-item:disabled {
-    color: $ab-color-50;
+    color: rgba($ab-color, 0.5);
 }
 
 Slider {
