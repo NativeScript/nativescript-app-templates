@@ -2,7 +2,8 @@
     navigatingTo="onNavigatingTo" 
     xmlns="http://www.nativescript.org/tns.xsd">
     
-    <ActionBar class="action-bar" title="Home">
+    <ActionBar class="action-bar">
+        <Label class="action-bar-title" text="Home"></Label>
     </ActionBar>
 
     <GridLayout>
