@@ -16,7 +16,7 @@ Feel free to customize layouts and components to change how your app drawer look
                     class="sidedrawer-list-item sidedrawer-list-item-{{item.name}}" 
                     [class.selected]="isPageSelected(item.title)">
                     <Label row="0" col="0" [text]="item.icon" class="fa"></Label>
-                    <Label row="0" col="1" [text]="item.title" textWrap="true"></Label>
+                    <Label row="0" col="1" [text]="item.title" class="p-r-10"></Label>
                 </GridLayout>
             </ng-template>
         </ListView>
