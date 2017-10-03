@@ -126,7 +126,7 @@ export class CarDetailEditComponent implements OnInit {
         * and uncomment the code block below to make it editable.
         *************************************************************/
 
-        /* ***********************************************************
+        /* ************************************************************
         let queue = Promise.resolve();
 
         this._isUpdating = true;
@@ -156,7 +156,7 @@ export class CarDetailEditComponent implements OnInit {
                 this._isUpdating = false;
                 alert({ title: "Oops!", message: "Something went wrong. Please try again.", okButtonText: "Ok" });
             });
-        *************************************************************/
+        **************************************************************/
 
         /* ***********************************************************
         * Comment out the code block below if you made the app editable.
