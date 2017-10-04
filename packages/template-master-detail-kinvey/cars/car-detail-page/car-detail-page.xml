@@ -11,7 +11,8 @@
     <GridLayout class="page-content">
         <ScrollView>
             <GridLayout rows="auto, auto">
-                <Image src="{{ car.imageUrl }}" stretch="aspectFit" height="200" class="m-b-15" />
+                <Image src="{{ car.imageUrl }}" stretch="aspectFit" class="m-b-15"
+                    height="200" decodeHeight="200" />
 
                 <GridLayout row="1" rows="* , *, *, *, *, *" columns="*, 2*">
                     <Label text="Price" class="p-l-15 p-b-10 text-secondary" />
