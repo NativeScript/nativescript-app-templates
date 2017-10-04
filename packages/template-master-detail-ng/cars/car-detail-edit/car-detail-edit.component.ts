@@ -46,15 +46,13 @@ export class CarDetailEditComponent implements OnInit {
         * Learn more about how to get navigation parameters in this documentation article:
         * http://docs.nativescript.org/angular/core-concepts/angular-navigation.html#passing-parameter
         *************************************************************/
-        let carId = "";
-
         this._pageRoute.activatedRoute
             .switchMap((activatedRoute) => activatedRoute.params)
             .forEach((params) => {
-                carId = params.id;
-            });
+                const carId = params.id;
 
-        this._car = this._carEditService.startEdit(carId);
+                this._car = this._carEditService.startEdit(carId);
+            });
     }
 
     get isUpdating(): boolean {

@@ -30,8 +30,6 @@ export class CarDetailComponent implements OnInit {
     * private property that holds it inside the component.
     *************************************************************/
     ngOnInit(): void {
-        let carId = "";
-
         /* ***********************************************************
         * Learn more about how to get navigation parameters in this documentation article:
         * http://docs.nativescript.org/angular/core-concepts/angular-navigation.html#passing-parameter
@@ -39,10 +37,10 @@ export class CarDetailComponent implements OnInit {
         this._pageRoute.activatedRoute
             .switchMap((activatedRoute) => activatedRoute.params)
             .forEach((params) => {
-                carId = params.id;
-            });
+                const carId = params.id;
 
-        this._car = this._carService.getCarById(carId);
+                this._car = this._carService.getCarById(carId);
+            });
     }
 
     get car(): Car {
@@ -62,13 +60,13 @@ export class CarDetailComponent implements OnInit {
     *************************************************************/
     onEditButtonTap(): void {
         this._routerExtensions.navigate(["/cars/car-detail-edit", this._car.id],
-        {
-            animated: true,
-            transition: {
-                name: "slideTop",
-                duration: 200,
-                curve: "ease"
-            }
-        });
+            {
+                animated: true,
+                transition: {
+                    name: "slideTop",
+                    duration: 200,
+                    curve: "ease"
+                }
+            });
     }
 }
