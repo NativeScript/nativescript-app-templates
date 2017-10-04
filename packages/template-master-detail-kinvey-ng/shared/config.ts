@@ -1,6 +1,6 @@
 export class Config {
-    static kinveyAppKey = "kid_Sy8CV9v7W";
-    static kinveyAppSecret = "94d5019e0f45412b9dc419f94e019ca0";
+    static kinveyAppKey = "kid_By1mL8fnb";
+    static kinveyAppSecret = "4b0c01a98ce942e89d04acecdfa8dcaa";
     static kinveyUsername = "admin";
     static kinveyPassword = "admin";
 }
