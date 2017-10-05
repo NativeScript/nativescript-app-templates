@@ -29,7 +29,7 @@ function CarService() {
 
     this.load = function () {
         return new Observable((observer) => {
-            this._login().then(() => this._syncDataStore()).then(() => {
+            this._login().then(() => this._carsStore.sync()).then(() => {
                 const sortByNameQuery = new Kinvey.Query();
                 sortByNameQuery.ascending("name");
                 const stream = this._carsStore.find(sortByNameQuery);
@@ -83,32 +83,6 @@ function CarService() {
                 else {
                     Promise.reject(new Error("No items with the given ID could be found."));
                 }
-            });
-    };
-
-    this._syncDataStore = function () {
-        return this._carsStore.pendingSyncEntities()
-            .then((pendingEntities) => {
-                let queue = Promise.resolve();
-
-                if (pendingEntities && pendingEntities.length) {
-                    queue = queue
-                        .then(() => this._carsStore.push())
-                        .then((entities) => {
-
-                            /* ***********************************************************
-                            * Each item in the array of pushed entities will look like the following
-                            * { _id: '<entity id before push>', entity: <entity after push> }
-                            * It could also possibly have an error property if the push failed.
-                            * { _id: '<entity id before push>', entity: <entity after push>,
-                            * error: <reason push failed> }
-                            * Learn more about in this documentation article:
-                            * http://devcenter.kinvey.com/nativescript/guides/datastore#push
-                            *************************************************************/
-                        });
-                }
-
-                return queue;
             });
     };
 
