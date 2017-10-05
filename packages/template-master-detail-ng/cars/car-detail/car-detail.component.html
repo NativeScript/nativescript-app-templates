@@ -9,13 +9,14 @@
 
 <GridLayout class="page page-content">
     <ScrollView>
-        <GridLayout rows="auto,auto">
-            <Image [src]="car.imageUrl" stretch="aspectFit" height="200" decodeHeight="200"
-                class="m-b-15"></Image>
+        <GridLayout rows="auto, auto, auto">
+            <Image [src]="car.imageUrl" stretch="aspectFill" height="200" class="m-b-15" decodeHeight="200"></Image>
 
-            <GridLayout row="1" rows="*,*,*,*,*,*" columns="*,2*">
+            <StackLayout row="1" class="hr-light m-t-15 m-b-15"></StackLayout>
 
-                <Label text="Price" class="p-l-15 p-b-10 text-secondary"></Label>
+            <GridLayout row="2" rows="*,*,*,*,*,*" columns="*,2*">
+
+                <Label text="Price" class="p-l-15 p-b-10 m-r-20 text-secondary"></Label>
                 <Label col="1" class="text p-b-10">
                     <FormattedString>
                         <Span text="&euro;"></Span>
@@ -24,19 +25,19 @@
                     </FormattedString>
                 </Label>
 
-                <Label text="Class" class="p-l-15 p-b-10 text-secondary" row="1"></Label>
+                <Label text="Class" class="p-l-15 p-b-10 m-r-20 text-secondary" row="1"></Label>
                 <Label [text]="car.class" row="1" col="1" class="text p-b-10"></Label>
 
-                <Label text="Doors" class="p-l-15 p-b-10 text-secondary" row="2"></Label>
+                <Label text="Doors" class="p-l-15 p-b-10 m-r-20 text-secondary" row="2"></Label>
                 <Label [text]="car.doors" row="2" col="1" class="text p-b-10"></Label>
 
-                <Label text="Seats" class="p-l-15 p-b-10 text-secondary" row="3"></Label>
+                <Label text="Seats" class="p-l-15 p-b-10 m-r-20 text-secondary" row="3"></Label>
                 <Label [text]="car.seats" row="3" col="1" class="text p-b-10"></Label>
 
-                <Label text="Transmission" class="p-l-15 p-b-10 text-secondary" row="4"></Label>
+                <Label text="Transmission" class="p-l-15 m-r-20 p-b-10 text-secondary" row="4"></Label>
                 <Label [text]="car.transmission" row="4" col="1" class="text p-b-10"></Label>
 
-                <Label text="Luggage" class="p-l-15 p-b-10 text-secondary" row="5"></Label>
+                <Label text="Luggage" class="p-l-15 p-b-10 m-r-20 text-secondary" row="5"></Label>
                 <Label [text]="car.luggage" row="5" col="1" class="text p-b-10"></Label>
             </GridLayout>
         </GridLayout>

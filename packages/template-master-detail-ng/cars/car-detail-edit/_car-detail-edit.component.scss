@@ -2,24 +2,13 @@
 @import '../../app-variables';
 
 // Custom styles
-$text-primary-font-size: $base-font-size + 2;
 .car-list {
-    font-size: $base-font-size;
 
     .car-list-even,
     .car-list-odd {
         padding: 10 15;
         border-bottom-width: $border-width;
         border-color: $blue-20;
-        font-size: $base-font-size;
-
-        label {
-          font-size: $base-font-size;  
-        }
-
-        .text-primary {
-           font-size: $text-primary-font-size; 
-        }
     }
 
     .car-list-odd {
