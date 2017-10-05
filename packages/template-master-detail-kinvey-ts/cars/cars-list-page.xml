@@ -24,19 +24,18 @@
                 <StackLayout class="list-group-item">
 
                     <GridLayout rows="*, *, *" columns="*, *" class="list-group-item-content">
-                        <Label text="{{ name }}" class="text-primary" />
+                        <Label text="{{ name }}" class="text-primary font-weight-bold" />
                         <Label col="1" horizontalAlignment="right" class="list-group-item-text m-r-5">
                             <FormattedString>
-                                <Span text="€"></Span>
-                                <Span text="{{ price }}"></Span>
-                                <Span text="/day"></Span>
+                                <Span text="€" />
+                                <Span text="{{ price }}" />
+                                <Span text="/day" />
                             </FormattedString>
                         </Label>
 
-                        <StackLayout row="1" class="hr-light m-t-5 m-b-5" colSpan="2"></StackLayout>
+                        <StackLayout row="1" class="hr-light m-t-5 m-b-5" colSpan="2" />
 
-                        <Image row="2" src="{{ imageUrl }}" stretch="aspectFit" height="120" decodeHeight="120"
-                            class="m-r-5" />
+                        <Image row="2" src="{{ imageUrl }}" stretch="aspectFill" height="120" class="m-r-20" decodeHeight="120"/>
 
                         <StackLayout row="2" col="1" verticalAlignment="center" class="list-group-item-text">
                             <Label class="p-b-10">
