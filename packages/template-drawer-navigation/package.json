@@ -3,7 +3,7 @@
   "name": "tns-template-drawer-navigation",
   "displayName": "Navigation Drawer",
   "templateType": "App template",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "Side navigation template",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
