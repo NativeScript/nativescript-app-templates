@@ -1,7 +1,7 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
-import { NativeScriptUIListViewModule } from "nativescript-telerik-ui/listview/angular";
+import { NativeScriptUIListViewModule } from "nativescript-pro-ui/listview/angular";
 
 import { CarDetailEditComponent } from "./car-detail-edit/car-detail-edit.component";
 import { MyImageAddRemoveComponent } from "./car-detail-edit/my-image-add-remove/my-image-add-remove.component";
