@@ -1,5 +1,5 @@
 <Page class="page" navigatingTo="onNavigatingTo"
-    xmlns:lv="nativescript-telerik-ui/listview"
+    xmlns:lv="nativescript-pro-ui/listview"
     xmlns="http://schemas.nativescript.org/tns.xsd" >
 
     <ActionBar class="action-bar">
