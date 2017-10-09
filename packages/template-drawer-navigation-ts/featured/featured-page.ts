@@ -1,5 +1,5 @@
 import { EventData } from "data/observable";
-import { RadSideDrawer } from "nativescript-telerik-ui/sidedrawer";
+import { RadSideDrawer } from "nativescript-pro-ui/sidedrawer";
 import { topmost } from "ui/frame";
 import { NavigatedData, Page } from "ui/page";
 
