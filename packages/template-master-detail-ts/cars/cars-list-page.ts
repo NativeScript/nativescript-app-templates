@@ -1,4 +1,4 @@
-import { ListViewEventData } from "nativescript-telerik-ui/listview";
+import { ListViewEventData } from "nativescript-pro-ui/listview";
 import { topmost } from "ui/frame";
 import { NavigatedData, Page } from "ui/page";
 

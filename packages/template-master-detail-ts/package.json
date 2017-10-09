@@ -28,7 +28,7 @@
   "dependencies": {
     "nativescript-imagepicker": "3.0.6",
     "nativescript-plugin-firebase": "4.1.1",
-    "nativescript-telerik-ui": "3.1.1",
+    "nativescript-pro-ui": "3.1.4",
     "nativescript-theme-core": "1.0.4",
     "rxjs": "5.4.3",
     "tns-core-modules": "3.2.0"
