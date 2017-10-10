@@ -25,7 +25,7 @@
     "@angular/platform-browser": "4.2.5",
     "@angular/router": "4.2.5",
     "nativescript-angular": "4.2.0",
-    "nativescript-imagepicker": "3.0.6",
+    "nativescript-imagepicker": "3.0.7",
     "nativescript-plugin-firebase": "4.1.1",
     "nativescript-pro-ui": "3.1.4",
     "nativescript-theme-core": "1.0.4",
