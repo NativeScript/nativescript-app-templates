@@ -36,7 +36,7 @@
     "@angular/router": "4.2.5",
     "kinvey-nativescript-sdk": "3.8.0",
     "nativescript-angular": "4.2.0",
-    "nativescript-imagepicker": "3.0.6",
+    "nativescript-imagepicker": "3.0.7",
     "nativescript-pro-ui": "3.1.4",
     "nativescript-theme-core": "1.0.4",
     "reflect-metadata": "0.1.10",
