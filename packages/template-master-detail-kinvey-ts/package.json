@@ -27,7 +27,7 @@
     "v8Flags": "--expose_gc"
   },
   "dependencies": {
-    "nativescript-imagepicker": "3.0.6",
+    "nativescript-imagepicker": "3.0.7",
     "kinvey-nativescript-sdk": "3.8.0",
     "nativescript-pro-ui": "3.1.4",
     "nativescript-theme-core": "1.0.4",
