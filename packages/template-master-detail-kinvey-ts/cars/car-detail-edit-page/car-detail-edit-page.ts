@@ -48,7 +48,7 @@ export function onDoneButtonTap(args: EventData): void {
     * and uncomment the code block below to make it editable.
     *************************************************************/
 
-    /* ***********************************************************
+    /* ***********************uncomment here*********************
     const actionItem = <ActionItem>args.object;
     const bindingContext = <CarDetailEditViewModel>actionItem.bindingContext;
 
@@ -65,7 +65,7 @@ export function onDoneButtonTap(args: EventData): void {
         }))
         .catch((errorMessage: any) =>
             alert({ title: "Oops!", message: "Something went wrong. Please try again.", okButtonText: "Ok" }));
-    *************************************************************/
+    *********************uncomment here*************************/
 
     /* ***********************************************************
     * Comment out the code block below if you made the app editable.
