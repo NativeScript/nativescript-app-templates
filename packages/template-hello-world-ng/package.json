@@ -5,7 +5,7 @@
     },
     "name": "tns-template-hello-world-ng",
     "main": "main.js",
-    "version": "3.1.2",
+    "version": "3.2.0",
     "author": "Telerik <support@telerik.com>",
     "description": "NativeScript Angular Hello World template",
     "license": "Apache-2.0",
@@ -29,22 +29,22 @@
     },
     "dependencies": {
         "nativescript-theme-core": "~1.0.2",
-        "nativescript-angular": "~4.2.0",
-        "tns-core-modules": "~3.1.0",
-        "@angular/animations": "~4.2.0",
-        "@angular/core": "~4.2.0",
-        "@angular/common": "~4.2.0",
-        "@angular/compiler": "~4.2.0",
-        "@angular/http": "~4.2.0",
-        "@angular/platform-browser": "~4.2.0",
-        "@angular/forms": "~4.2.0",
-        "@angular/router": "~4.2.0",
+        "nativescript-angular": "~4.4.0",
+        "tns-core-modules": "~3.2.0",
+        "@angular/animations": "~4.4.1",
+        "@angular/common": "~4.4.1",
+        "@angular/compiler": "~4.4.1",
+        "@angular/core": "~4.4.1",
+        "@angular/http": "~4.4.1",
+        "@angular/platform-browser": "~4.4.1",
+        "@angular/forms": "~4.4.1",
+        "@angular/router": "~4.4.1",
         "rxjs": "~5.4.2",
         "reflect-metadata": "~0.1.8",
         "zone.js": "~0.8.2"
     },
     "devDependencies": {
-        "typescript": "~2.4.2",
+        "typescript": "~2.5.1",
         "nativescript-dev-typescript": "~0.5.0"
     }
 }
