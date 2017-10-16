@@ -13,15 +13,16 @@ function onLoaded(args) {
 }
 
 /* ***********************************************************
- * Use the "itemTap" event handler of the <ListView> component for handling list item taps.
- * The "itemTap" event handler of the app drawer <ListView> is used to navigate the app
+ * Use the "tap" event handler of the <GridLayout> component for handling navigation item taps.
+ * The "tap" event handler of the app drawer <GridLayout> item is used to navigate the app
  * based on the tapped navigationItem's route.
  *************************************************************/
 function onNavigationItemTap(args) {
-    const navigationItem = args.view.bindingContext;
+    const component = args.object;
+    const componentRoute = component.route;
 
     frameModule.topmost().navigate({
-        moduleName: navigationItem.route,
+        moduleName: componentRoute,
         transition: {
             name: "fade"
         }
