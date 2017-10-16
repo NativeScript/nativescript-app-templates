@@ -5,10 +5,6 @@
 $sidedrawer-header-image-size: 60;
 $sidedrawer-header-image-offset-top: 20;
 $sidedrawer-header-image-offset-bottom: 5;
-$sidedrawer-list-item-offset-left: 15;
-$sidedrawer-list-icon-offset: 10;
-$sidedrawer-list-icon-size: 20;
-
 
 .sidedrawer {
     &.sidedrawer-left {
@@ -37,37 +33,5 @@ $sidedrawer-list-icon-size: 20;
 
     .sidedrawer-content {
         background-color: $side-drawer-background;
-        height: 100%;
-
-        ListView {
-            height: 100%;
-        }
-    }
-
-    .sidedrawer-list-item {
-        padding-left: $sidedrawer-list-item-offset-left;
-
-        Label {
-            vertical-align: center;
-            color: $blue-dark;
-        }
-
-        .fa {
-            width: $sidedrawer-list-icon-size;
-            margin-right: $sidedrawer-list-icon-offset;
-        }
-
-        &.selected {
-            background-color: $item-active-background;
-
-            Label {
-                color: $item-active-color;
-            }
-        }
-
-        &.sidedrawer-list-item-settings {
-            border-top-width: 1px;
-            border-top-color: $blue-50;
-        }
     }
 }
