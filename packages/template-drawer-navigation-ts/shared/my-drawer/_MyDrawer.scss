@@ -35,11 +35,6 @@ $sidedrawer-list-icon-size: 20;
 
     .sidedrawer-content {
         background-color: $side-drawer-background;
-        height: 100%;
-
-        ListView {
-            height: 100%;
-        }
     }
 
     .sidedrawer-list-item {
@@ -61,11 +56,6 @@ $sidedrawer-list-icon-size: 20;
             Label {
                 color: $item-active-color;
             }
-        }
-
-        &.sidedrawer-list-item-settings {
-            border-top-width: 1px;
-            border-top-color: $blue-50;
         }
     }
 }

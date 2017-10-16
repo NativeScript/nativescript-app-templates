@@ -2,22 +2,47 @@
 The MyDrawer custom component view is where you define what will be displayed in the app drawer.
 Feel free to customize layouts and components to change how your app drawer looks.
 -->
-<StackLayout class="sidedrawer sidedrawer-left" loaded="onLoaded">
+<GridLayout rows="auto, *" class="sidedrawer sidedrawer-left" loaded="onLoaded"
+    xmlns:myDrawer="shared/my-drawer">
     <StackLayout class="sidedrawer-header">
-        <Label class="sidedrawer-header-image fa" text="&#xf2bd;"></Label>
-        <Label class="sidedrawer-header-brand" text="User Name"></Label>
-        <Label class="footnote" text="username@mail.com"></Label>
+        <Label class="sidedrawer-header-image fa" text="&#xf2bd;" />
+        <Label class="sidedrawer-header-brand" text="User Name" />
+        <Label class="footnote" text="username@mail.com" />
     </StackLayout>
 
-    <StackLayout class="sidedrawer-content">
-        <ListView id="listview" separatorColor="transparent" items="{{ navigationItems }}" itemTap="onNavigationItemTap">
-            <ListView.itemTemplate>
-                    <GridLayout columns="auto, *" rows="50" 
-                        class="{{ 'sidedrawer-list-item sidedrawer-list-item-' + name + (isSelected ? ' selected':'') }}">
-                        <Label row="0" col="0" text="{{ icon }}" class="fa"/>
-                        <Label row="0" col="1" text="{{ title }}" class="p-r-10"/>
-                    </GridLayout>
-            </ListView.itemTemplate>
-        </ListView>
-    </StackLayout>
-</StackLayout>
+    <ScrollView row="1">
+        <StackLayout class="sidedrawer-content" row="1">
+            <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Home' ? ' selected': '') }}"
+                route="home/home-page" tap="onNavigationItemTap">
+                <Label row="0" col="0" text="&#xf015;" class="fa" />
+                <Label row="0" col="1" text="Home" class="p-r-10" />
+            </GridLayout>
+
+            <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Browse' ? ' selected': '') }}"
+                route="browse/browse-page" tap="onNavigationItemTap">
+                <Label row="0" col="0" text="&#xf1ea;" class="fa" />
+                <Label row="0" col="1" text="Browse" class="p-r-10" />
+            </GridLayout>
+
+            <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Search' ? ' selected': '') }}"
+                route="search/search-page" tap="onNavigationItemTap">
+                <Label row="0" col="0" text="&#xf002;" class="fa" />
+                <Label row="0" col="1" text="Search" class="p-r-10" />
+            </GridLayout>
+
+            <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Featured' ? ' selected': '') }}"
+                route="featured/featured-page" tap="onNavigationItemTap">
+                <Label row="0" col="0" text="&#xf005;" class="fa" />
+                <Label row="0" col="1" text="Featured" class="p-r-10" />
+            </GridLayout>
+
+            <StackLayout class="hr-light"></StackLayout>
+
+            <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Settings' ? ' selected': '') }}"
+                route="settings/settings-page" tap="onNavigationItemTap">
+                <Label row="0" col="0" text="&#xf013;" class="fa" />
+                <Label row="0" col="1" text="Settings" class="p-r-10" />
+            </GridLayout>
+        </StackLayout>
+    </ScrollView>
+</GridLayout>
