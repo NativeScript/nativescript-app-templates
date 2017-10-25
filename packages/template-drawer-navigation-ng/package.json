@@ -31,21 +31,21 @@
     "v8Flags": "--expose_gc"
   },
   "dependencies": {
-    "@angular/animations": "4.2.5",
-    "@angular/common": "4.2.5",
-    "@angular/compiler": "4.2.5",
-    "@angular/core": "4.2.5",
-    "@angular/forms": "4.2.5",
-    "@angular/http": "4.2.5",
-    "@angular/platform-browser": "4.2.5",
-    "@angular/router": "4.2.5",
-    "nativescript-angular": "4.2.0",
+    "@angular/animations": "4.4.6",
+    "@angular/common": "4.4.6",
+    "@angular/compiler": "4.4.6",
+    "@angular/core": "4.4.6",
+    "@angular/forms": "4.4.6",
+    "@angular/http": "4.4.6",
+    "@angular/platform-browser": "4.4.6",
+    "@angular/router": "4.4.6",
+    "nativescript-angular": "4.4.1",
     "nativescript-pro-ui": "3.1.4",
     "nativescript-theme-core": "1.0.4",
     "reflect-metadata": "0.1.10",
     "rxjs": "5.4.3",
     "tns-core-modules": "3.2.0",
-    "zone.js": "0.8.17"
+    "zone.js": "0.8.18"
   },
   "devDependencies": {
     "codelyzer": "3.2.0",
