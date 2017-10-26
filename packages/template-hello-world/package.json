@@ -1,7 +1,7 @@
 {
 	"name": "tns-template-hello-world",
 	"main": "app.js",
-	"version": "3.2.0",
+	"version": "3.3.0",
 	"author": "Telerik <support@telerik.com>",
 	"description": "Nativescript hello-world project template",
 	"license": "Apache-2.0",
@@ -27,6 +27,6 @@
 	},
 	"dependencies": {
 		"nativescript-theme-core": "~1.0.2",
-		"tns-core-modules": "~3.2.0"
+		"tns-core-modules": "~3.3.0"
 	}
 }
