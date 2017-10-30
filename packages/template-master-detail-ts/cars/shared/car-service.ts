@@ -22,7 +22,7 @@ export class CarService {
     private static _instance: CarService = new CarService();
 
     private static cloneUpdateModel(car: Car): object {
-        return editableProperties.reduce((a, e) => (a[e] = car[e], a), {});
+        return editableProperties.reduce((a, e) => (a[e] = car[e], a), {}); // tslint:disable-line:ban-comma-operator
     }
 
     private _cars: Array<Car> = [];
