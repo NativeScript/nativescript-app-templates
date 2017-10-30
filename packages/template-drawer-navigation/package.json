@@ -29,10 +29,10 @@
   "dependencies": {
     "nativescript-pro-ui": "3.1.4",
     "nativescript-theme-core": "1.0.4",
-    "tns-core-modules": "3.2.0"
+    "tns-core-modules": "3.3.0"
   },
   "devDependencies": {
-    "eslint": "4.6.1",
+    "eslint": "4.9.0",
     "nativescript-dev-sass": "1.3.2",
     "node-sass": "4.5.3"
   },
