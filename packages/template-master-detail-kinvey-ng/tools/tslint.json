@@ -17,6 +17,7 @@
     "no-consecutive-blank-lines": [true, 1],
     "no-console": [false],
     "no-forward-ref": true,
+    "no-implicit-dependencies": false,
     "no-input-rename": true,
     "no-irregular-whitespace": true,
     "no-output-rename": true,

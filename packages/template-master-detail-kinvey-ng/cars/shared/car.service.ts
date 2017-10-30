@@ -22,6 +22,7 @@ const editableProperties = [
 @Injectable()
 export class CarService {
     private static cloneUpdateModel(car: Car): object {
+        // tslint:disable-next-line:ban-comma-operator
         return editableProperties.reduce((a, e) => (a[e] = car[e], a), { _id: car.id });
     }
 
