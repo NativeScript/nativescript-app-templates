@@ -27,7 +27,7 @@
     "v8Flags": "--expose_gc"
   },
   "dependencies": {
-    "nativescript-pro-ui": "3.1.4",
+    "nativescript-pro-ui": "3.2.0",
     "nativescript-theme-core": "1.0.4",
     "tns-core-modules": "3.3.0"
   },
