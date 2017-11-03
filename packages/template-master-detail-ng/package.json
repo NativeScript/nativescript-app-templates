@@ -40,7 +40,7 @@
     "nativescript-dev-typescript": "0.5.1",
     "node-sass": "4.5.3",
     "tslint": "5.8.0",
-    "typescript": "2.5.3"
+    "typescript": "2.4.2"
   },
   "scripts": {
     "preinstall": "node tools/preinstall.js",
