@@ -6,7 +6,7 @@
   "name": "tns-template-tab-navigation-ng",
   "displayName": "Tabs",
   "templateType": "App template",
-  "version": "3.3.1",
+  "version": "3.3.2",
   "description": "Tabbed interface template",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
