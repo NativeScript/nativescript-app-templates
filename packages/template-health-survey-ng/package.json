@@ -1,36 +1,41 @@
 {
-	"description": "NativeScript Application",
-	"license": "SEE LICENSE IN <your-license-filename>",
-	"readme": "NativeScript Application",
-	"repository": "<fill-your-repository-here>",
-	"nativescript": {
-		"id": "org.nativescript.ResearchKit",
-		"tns-android": {
-			"version": "3.3.0"
-		}
-	},
-	"dependencies": {
-		"@angular/animations": "4.4.6",
-		"@angular/common": "4.4.6",
-		"@angular/compiler": "4.4.6",
-		"@angular/core": "4.4.6",
-		"@angular/forms": "4.4.6",
-		"@angular/http": "4.4.6",
-		"@angular/platform-browser": "4.4.6",
-		"@angular/router": "4.4.6",
-		"nativescript-angular": "4.4.1",
-		"nativescript-theme-core": "1.0.4",
-		"reflect-metadata": "0.1.10",
-		"rxjs": "5.5.2",
-		"tns-core-modules": "3.3.0",
-		"zone.js": "0.8.18"
-	},
-	"devDependencies": {
-		"babel-traverse": "6.4.5",
-		"babel-types": "6.4.5",
-		"babylon": "6.4.5",
-		"lazy": "1.0.11",
-		"nativescript-dev-typescript": "0.5.1",
-		"typescript": "2.4.2"
-	}
+    "description": "NativeScript Application",
+    "license": "SEE LICENSE IN <your-license-filename>",
+    "readme": "NativeScript Application",
+    "repository": "<fill-your-repository-here>",
+    "nativescript": {
+        "id": "org.nativescript.ResearchKit",
+        "tns-android": {
+            "version": "3.3.0"
+        }
+    },
+    "dependencies": {
+        "@angular/animations": "4.4.6",
+        "@angular/common": "4.4.6",
+        "@angular/compiler": "4.4.6",
+        "@angular/core": "4.4.6",
+        "@angular/forms": "4.4.6",
+        "@angular/http": "4.4.6",
+        "@angular/platform-browser": "4.4.6",
+        "@angular/router": "4.4.6",
+        "codelyzer": "^3.2.2",
+        "nativescript-angular": "4.4.1",
+        "nativescript-theme-core": "1.0.4",
+        "reflect-metadata": "0.1.10",
+        "rxjs": "5.5.2",
+        "tns-core-modules": "3.3.0",
+        "tslint": "^5.8.0",
+        "zone.js": "0.8.18"
+    },
+    "devDependencies": {
+        "babel-traverse": "6.4.5",
+        "babel-types": "6.4.5",
+        "babylon": "6.4.5",
+        "lazy": "1.0.11",
+        "nativescript-dev-typescript": "0.5.1",
+        "typescript": "2.4.2"
+    },
+    "scripts": {
+        "lint": "tslint \"app/**/*.ts\""
+    }
 }
