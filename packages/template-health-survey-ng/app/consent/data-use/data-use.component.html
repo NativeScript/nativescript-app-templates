@@ -1,6 +1,16 @@
 <ActionBar class="action-bar">
-    <Label class="action-bar-title" text="Home"></Label>
+    <Label class="action-bar-title" text=""></Label>
 </ActionBar>
 
-<StackLayout class="page">
-</StackLayout>
+<GridLayout class="page p-t-15" rows="*, auto">
+    <ScrollView row="0">
+        <StackLayout class="m-l-15 m-r-15">
+            <Image class="headerImage m-x-auto" stretch="aspectFit" src="~/resources/images/image.png"></Image>
+            <Label text="Data Use" class="h1 text-center" textWrap="true"></Label>
+            <Label text="Lorem ipsum dolor sit amet, consectertur adipiscing elit consectertur adipiscing elit." class="h4 text-center"
+                textWrap="true"></Label>
+            <Label text="Lorem ipsum dolor sit amet" class="h4 text-center hyperlinkText" textWrap="true"></Label>
+        </StackLayout>
+    </ScrollView>
+    <Button row="1" style.padding="0 15 0 15" text="Next" class="btn-outline btn-rounded-sm m-x-auto m-b-30" (tap)="onNextButtonTap()"></Button>
+</GridLayout>

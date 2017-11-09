@@ -1,0 +1,21 @@
+.hyperlinkText {
+    color: rgb(101, 169, 243);
+}
+
+.headerImage {
+    margin: 20;
+    height: 120;
+    animation-name: headerImageSlideAnimation;
+    animation-duration: 0.4;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes headerImageSlideAnimation {
+    from {
+        transform: translate(-200, 0);
+    }
+    to {
+        transform: translate(0, 0);
+    }
+}

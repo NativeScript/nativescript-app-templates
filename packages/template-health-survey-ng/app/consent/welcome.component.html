@@ -1,6 +1,12 @@
 <ActionBar class="action-bar">
-    <Label class="action-bar-title" text="Home"></Label>
+    <Label class="action-bar-title" text=""></Label>
 </ActionBar>
 
-<StackLayout class="page">
-</StackLayout>
+<ScrollView class="page p-t-15">
+    <StackLayout verticalAlignment="center" class="m-l-15 m-r-15">
+        <Label text="Welcome" class="h1 text-center"></Label>
+        <Label text="Lorem ipsum dolor sit amet, consectertur adipiscing elit." class="h4 text-center" textWrap="true"></Label>
+        <Label text="Lorem ipsum dolor sit amet" class="h4 text-center hyperlinkText" textWrap="true"></Label>
+        <Button style.padding="0 15 0 15" text="Get Started" class="btn-outline btn-rounded-sm m-x-auto m-t-30" (tap)="onGetStartedButtonTap()"></Button>
+    </StackLayout>
+</ScrollView>

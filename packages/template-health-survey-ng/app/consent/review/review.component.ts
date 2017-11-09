@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { RouterExtensions } from "nativescript-angular/router";
 
 /* ***********************************************************
 * Before you can navigate to this page from your app, you need to reference this page's module in the
@@ -10,10 +11,11 @@ import { Component, OnInit } from "@angular/core";
 @Component({
     selector: "Review",
     moduleId: module.id,
-    templateUrl: "./review.component.html"
+    templateUrl: "./review.component.html",
+    styleUrls: ["../consent-common.css", "../consent.css"]
 })
 export class ReviewComponent implements OnInit {
-    constructor() {
+    constructor(private _routerExtensions: RouterExtensions) {
         /* ***********************************************************
         * Use the constructor to inject app services that you need in this component.
         *************************************************************/
@@ -23,5 +25,29 @@ export class ReviewComponent implements OnInit {
         /* ***********************************************************
         * Use the "ngOnInit" handler to initialize data for this component.
         *************************************************************/
+    }
+
+    onDisagreeButtonTap() {
+        this._routerExtensions.navigate(["/login"],
+            {
+                animated: true,
+                transition: {
+                    name: "slideRight",
+                    duration: 200,
+                    curve: "ease"
+                }
+            });
+    }
+
+    onAgreeButtonTap() {
+        this._routerExtensions.navigate(["/consent/consent"],
+            {
+                animated: true,
+                transition: {
+                    name: "slideRight",
+                    duration: 200,
+                    curve: "ease"
+                }
+            });
     }
 }
