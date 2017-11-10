@@ -28,8 +28,21 @@ export class WelcomeComponent implements OnInit {
     }
 
     onGetStartedButtonTap() {
-        this._routerExtensions.navigate(["/consent/sharing-options"], // data-gathering
+        this._routerExtensions.navigate(["/consent/data-gathering"],
             {
+                animated: true,
+                transition: {
+                    name: "slideRight",
+                    duration: 200,
+                    curve: "ease"
+                }
+            });
+    }
+
+    onCancelButtonTap() {
+        this._routerExtensions.navigate(["/login"],
+            {
+                clearHistory: true,
                 animated: true,
                 transition: {
                     name: "slideRight",

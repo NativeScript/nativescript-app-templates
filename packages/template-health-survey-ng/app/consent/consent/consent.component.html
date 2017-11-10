@@ -1,12 +1,16 @@
 <ActionBar class="action-bar">
     <Label class="action-bar-title" text=""></Label>
+    <ActionItem (tap)="onCancelButtonTap()">
+        <Button text="Cancel" class="text-center action-item hyperlinkText"></Button>
+    </ActionItem>
 </ActionBar>
 
 <GridLayout class="page p-t-15" rows="*, auto">
     <ScrollView row="0">
         <StackLayout class="m-x-15">
             <Label text="Consent" class="h1 text-center" textWrap="true"></Label>
-            <Label text="Lorem ipsum dolor sit amet, consectertur adipiscing elit.Lorem ipsum dolor sit amet, consectertur adipiscing elit ipsum dolor sit amet, consectertur." class="h4 text-center" textWrap="true"></Label>
+            <Label text="Lorem ipsum dolor sit amet, consectertur adipiscing elit.Lorem ipsum dolor sit amet, consectertur adipiscing elit ipsum dolor sit amet, consectertur."
+                class="h4 text-center" textWrap="true"></Label>
         </StackLayout>
     </ScrollView>
     <Button row="1" style.padding="0 15 0 15" text="Next" class="btn-outline btn-rounded-sm m-x-auto m-b-30" (tap)="onNextButtonTap()"></Button>

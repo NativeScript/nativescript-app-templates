@@ -38,4 +38,17 @@ export class DataUseComponent implements OnInit {
                 }
             });
     }
+
+    onCancelButtonTap() {
+        this._routerExtensions.navigate(["/login"],
+            {
+                clearHistory: true,
+                animated: true,
+                transition: {
+                    name: "slideRight",
+                    duration: 200,
+                    curve: "ease"
+                }
+            });
+    }
 }
