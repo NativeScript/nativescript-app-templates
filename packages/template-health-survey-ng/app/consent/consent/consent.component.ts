@@ -27,7 +27,7 @@ export class ConsentComponent implements OnInit {
         *************************************************************/
     }
 
-    onNextButtonTap() {
+    onDoneButtonTap() {
         this._routerExtensions.navigate(["/survey"],
             {
                 animated: true,

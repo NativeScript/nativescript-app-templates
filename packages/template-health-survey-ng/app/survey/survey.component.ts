@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { RouterExtensions } from "nativescript-angular/router";
 
 /* ***********************************************************
 * Before you can navigate to this page from your app, you need to reference this page's module in the
@@ -13,7 +14,10 @@ import { Component, OnInit } from "@angular/core";
     templateUrl: "./survey.component.html"
 })
 export class SurveyComponent implements OnInit {
-    constructor() {
+    isAnswerSelected: boolean = false;
+    answer: boolean = false;
+
+    constructor(private _routerExtensions: RouterExtensions) {
         /* ***********************************************************
         * Use the constructor to inject app services that you need in this component.
         *************************************************************/
@@ -23,5 +27,32 @@ export class SurveyComponent implements OnInit {
         /* ***********************************************************
         * Use the "ngOnInit" handler to initialize data for this component.
         *************************************************************/
+    }
+
+    onDoneButtonTap() {
+        // TODO: Implement
+    }
+
+    onYesTap() {
+        this.isAnswerSelected = true;
+        this.answer = true;
+    }
+
+    onNoTap() {
+        this.isAnswerSelected = true;
+        this.answer = false;
+    }
+
+    onCancelButtonTap() {
+        this._routerExtensions.navigate(["/login"],
+            {
+                clearHistory: true,
+                animated: true,
+                transition: {
+                    name: "slideRight",
+                    duration: 200,
+                    curve: "ease"
+                }
+            });
     }
 }

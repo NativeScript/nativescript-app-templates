@@ -1,6 +1,32 @@
 <ActionBar class="action-bar">
-    <Label class="action-bar-title" text="Home"></Label>
+    <Label class="action-bar-title" text="Step 1 of 1" class="font-weight-bold"></Label>
+    <ActionItem (tap)="onCancelButtonTap()">
+        <Button text="Cancel" class="text-center action-item hyperlinkText"></Button>
+    </ActionItem>
 </ActionBar>
 
-<StackLayout class="page">
-</StackLayout>
+<GridLayout class="page p-t-15" rows="*, auto">
+    <StackLayout>
+        <ScrollView row="0">
+            <StackLayout class="m-x-15">
+                <Label text="Your question here." class="h1 text-center" textWrap="true"></Label>
+                <Label text="Additional text can go here." class="h4 text-center" textWrap="true"></Label>
+            </StackLayout>
+        </ScrollView>
+
+        <StackLayout class="p-t-30">
+            <StackLayout class="hr-light"></StackLayout>
+            <Label text="Yes" textWrap="true" class="p-x-10 p-y-15 font-weight-bold" [color]="isAnswerSelected && answer? 'green':'gray'" (tap)="onYesTap()"></Label>
+            <StackLayout class="hr-light"></StackLayout>
+            <Label text="No" textWrap="true" class="p-x-10 p-y-15 font-weight-bold" [color]="isAnswerSelected && !answer? 'green':'gray'" (tap)="onNoTap()"></Label>
+            <StackLayout class="hr-light"></StackLayout>
+        </StackLayout>
+    </StackLayout>
+
+    <StackLayout row="1" class="m-b-10">
+        <Button style.padding="0 15 0 15" text="Done" class="btn-outline btn-rounded-sm m-x-auto m-b-10" (tap)="onDoneButtonTap()"
+            [isEnabled]="isAnswerSelected" [isUserInteractionEnabled]="isAnswerSelected"></Button>
+        <Label text="Skip this question" class="h4 text-center hyperlinkText" (tap)="onSkipButtonTap()"></Label>
+    </StackLayout>
+
+</GridLayout>
