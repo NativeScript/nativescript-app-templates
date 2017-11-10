@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { RouterExtensions } from "nativescript-angular/router";
 
 /* ***********************************************************
 * Before you can navigate to this page from your app, you need to reference this page's module in the
@@ -10,10 +11,11 @@ import { Component, OnInit } from "@angular/core";
 @Component({
     selector: "Consent",
     moduleId: module.id,
-    templateUrl: "./consent.component.html"
+    templateUrl: "./consent.component.html",
+    styleUrls: ["../consent-common.css", "../consent.css"]
 })
 export class ConsentComponent implements OnInit {
-    constructor() {
+    constructor(private _routerExtensions: RouterExtensions) {
         /* ***********************************************************
         * Use the constructor to inject app services that you need in this component.
         *************************************************************/
@@ -23,5 +25,17 @@ export class ConsentComponent implements OnInit {
         /* ***********************************************************
         * Use the "ngOnInit" handler to initialize data for this component.
         *************************************************************/
+    }
+
+    onNextButtonTap() {
+        this._routerExtensions.navigate(["/survey"],
+            {
+                animated: true,
+                transition: {
+                    name: "slideRight",
+                    duration: 200,
+                    curve: "ease"
+                }
+            });
     }
 }
