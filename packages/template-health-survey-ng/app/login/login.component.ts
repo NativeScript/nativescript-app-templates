@@ -1,7 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
+import { RadDataFormComponent } from "nativescript-pro-ui/dataform/angular";
 
 import { LoginForm } from "./login-form.model";
+import { LoginService } from "./login.service";
 
 @Component({
     selector: "Login",
@@ -9,6 +11,7 @@ import { LoginForm } from "./login-form.model";
     templateUrl: "./login.component.html"
 })
 export class LoginComponent implements OnInit {
+    @ViewChild("loginFormElement") loginFormElement: RadDataFormComponent;
     private _loginForm: LoginForm;
 
     constructor(private routerExtensions: RouterExtensions) {
@@ -23,9 +26,14 @@ export class LoginComponent implements OnInit {
     }
 
     onSigninButtonTap(): void {
-        /* ***********************************************************
-        * Call your custom sign in logic using the email and password data.
-        *************************************************************/
+        if (this.loginFormElement.dataForm.hasValidationErrors()) {
+            return;
+        }
+
+        LoginService.login(this._loginForm.email, this._loginForm.password)
+            .catch(function (error) {
+                alert(error);
+            });
     }
 
     onRegisterButtonTap(): void {

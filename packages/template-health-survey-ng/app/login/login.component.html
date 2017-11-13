@@ -8,14 +8,17 @@
             <Label class="h1 text-center" text="Login"></Label>
             <Label class="h4 text-center" text="Additional text can go here"></Label>
 
-            <RadDataForm [source]="loginForm">
+            <RadDataForm #loginFormElement [source]="loginForm">
                 <TKEntityProperty tkDataFormProperty name="email" displayName="Email" hintText="healthsurvey@nativescript.com" required="true"
                     index="0">
-                    <TKPropertyEditor tkEntityPropertyEditor type="Text"></TKPropertyEditor>
+                    <TKPropertyEditor tkEntityPropertyEditor type="Email"></TKPropertyEditor>
+                    <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Email is required."></TKNonEmptyValidator>
+                    <TKEmailValidator tkEntityPropertyValidators errorMessage="Email is not valid."></TKEmailValidator>
                 </TKEntityProperty>
 
                 <TKEntityProperty tkDataFormProperty name="password" displayName="Password" hintText="Enter password" required="true" index="1">
                     <TKPropertyEditor tkEntityPropertyEditor type="Password"></TKPropertyEditor>
+                    <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Password is required."></TKNonEmptyValidator>
                 </TKEntityProperty>
             </RadDataForm>
         </StackLayout>
