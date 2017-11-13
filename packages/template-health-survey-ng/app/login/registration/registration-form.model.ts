@@ -1,11 +1,11 @@
 export class RegistrationForm {
-    public email: string;
-    public password: string;
-    public passwordConfirm: string;
-    public firstName: string;
-    public lastName: string;
-    public gender: string;
-    public birthDate: string;
+    email: string;
+    password: string;
+    passwordConfirm: string;
+    firstName: string;
+    lastName: string;
+    gender: string;
+    birthDate: string;
 
     constructor() {
         this.email = "";
@@ -16,4 +16,4 @@ export class RegistrationForm {
         this.gender = null;
         this.birthDate = null;
     }
-};
+}

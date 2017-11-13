@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 
-import { AdditionalInfoForm } from "./additional-info-form.model";
 import { RegistrationForm } from "./registration-form.model";
 
 @Component({
@@ -33,5 +32,9 @@ export class RegistrationComponent implements OnInit {
         /* ***********************************************************
         * Call your custom signup logic using the email and password data.
         *************************************************************/
+    }
+
+    onRegisterButtonTap() {
+        // TODO: Implement
     }
 }

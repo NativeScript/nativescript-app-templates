@@ -55,4 +55,8 @@ export class SurveyComponent implements OnInit {
                 }
             });
     }
+
+    onSkipButtonTap() {
+        // TODO: Implement
+    }
 }
