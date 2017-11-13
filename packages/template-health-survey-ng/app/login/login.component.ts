@@ -1,11 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { RouterExtensions } from "nativescript-angular/router";
 
-/* ***********************************************************
-* Before you can navigate to this page from your app, you need to reference this page's module in the
-* global app router module. Add the following object to the global array of routes:
-* { path: "login", loadChildren: "./login/login.module#LoginModule" }
-* Note that this simply points the path to the page module file. If you move the page, you need to update the route too.
-*************************************************************/
+import { LoginForm } from "./login-form.model";
 
 @Component({
     selector: "Login",
@@ -13,41 +9,34 @@ import { Component, OnInit } from "@angular/core";
     templateUrl: "./login.component.html"
 })
 export class LoginComponent implements OnInit {
-    email: string;
-    password: string;
+    private _loginForm: LoginForm;
 
-    constructor() {
-        /* ***********************************************************
-        * Use the constructor to inject app services that you need in this component.
-        *************************************************************/
+    constructor(private routerExtensions: RouterExtensions) {
     }
 
     ngOnInit(): void {
-        /* ***********************************************************
-        * Use the "ngOnInit" handler to initialize data for this component.
-        *************************************************************/
+        this._loginForm = new LoginForm();
     }
 
-    onLoginWithSocialProviderButtonTap(): void {
-        /* ***********************************************************
-        * For log in with social provider you can add your custom logic or
-        * use NativeScript plugin for log in with Facebook
-        * http://market.nativescript.org/plugins/nativescript-facebook
-        *************************************************************/
+    get loginForm(): LoginForm {
+        return this._loginForm;
     }
 
     onSigninButtonTap(): void {
-        const email = this.email;
-        const password = this.password;
-
         /* ***********************************************************
         * Call your custom sign in logic using the email and password data.
         *************************************************************/
     }
 
-    onForgotPasswordTap(): void {
-        /* ***********************************************************
-        * Call your Forgot Password logic here.
-        *************************************************************/
+    onRegisterButtonTap(): void {
+        this.routerExtensions.navigate(["/login/registration"],
+            {
+                animated: true,
+                transition: {
+                    name: "slide",
+                    duration: 200,
+                    curve: "ease"
+                }
+            });
     }
 }

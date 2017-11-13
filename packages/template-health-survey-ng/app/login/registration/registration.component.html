@@ -1,18 +1,50 @@
 <ActionBar class="action-bar">
-    <Label class="action-bar-title" text="Sign up"></Label>
+    <Label class="action-bar-title" text=""></Label>
 </ActionBar>
 <ScrollView>
     <StackLayout class="page p-t-15">
-        <Button class="btn btn-outline" (tap)="onSignupWithSocialProviderButtonTap()" text="Sign up with Social Provider"></Button>
-        
-        <Label class="m-t-10 text-center" text="or"></Label>
+        <Label class="h1 text-center" text="Registration"></Label>
+        <Label class="h4 text-center" text="Additional text can go here"></Label>
 
-        <TextField class="m-t-10 m-b-10 m-x-15" hint="Name" autocorrect="false" autocapitalization="none" [(ngModel)]="name"></TextField>
-        <TextField class="m-t-10 m-b-10 m-x-15" hint="Email Address" keyboardType="email" autocorrect="false" autocapitalization="none"
-            [(ngModel)]="email"></TextField>
-        <TextField class="m-t-10 m-b-10 m-x-15" hint="Password" secure="true" autocorrect="false" autocapitalization="none"
-            [(ngModel)]="password"></TextField>
+        <RadDataForm [source]="registrationForm">
+            <TKPropertyGroup tkDataFormGroups collapsible="false" name="" titleHidden="true" hidden="false">
+                <TKEntityProperty tkPropertyGroupProperties name="email" displayName="Email" hintText="healthsurvey@nativescript.com" required="true"
+                    index="0">
+                    <TKPropertyEditor tkEntityPropertyEditor type="Text"></TKPropertyEditor>
+                </TKEntityProperty>
 
-        <Button class="btn btn-primary" text="SIGN UP" (tap)="onSignupButtonTap()"></Button>
+                <TKEntityProperty tkPropertyGroupProperties name="password" displayName="Password" hintText="Enter password" required="true"
+                    index="1">
+                    <TKPropertyEditor tkEntityPropertyEditor type="Password"></TKPropertyEditor>
+                </TKEntityProperty>
+
+                <TKEntityProperty tkPropertyGroupProperties name="passwordConfirm" displayName="Confirm" hintText="Enter password again"
+                    required="true" index="2">
+                    <TKPropertyEditor tkEntityPropertyEditor type="Password"></TKPropertyEditor>
+                </TKEntityProperty>
+            </TKPropertyGroup>
+
+            <TKPropertyGroup tkDataFormGroups collapsible="false" name="ADDITIONAL INFORMATION" hidden="false">
+                <TKEntityProperty tkPropertyGroupProperties name="firstName" displayName="First name" hintText="John" required="true" index="3">
+                    <TKPropertyEditor tkEntityPropertyEditor type="Text"></TKPropertyEditor>
+                </TKEntityProperty>
+
+                <TKEntityProperty tkPropertyGroupProperties name="lastName" displayName="Last name" hintText="Doe" required="true" index="4">
+                    <TKPropertyEditor tkEntityPropertyEditor type="Text"></TKPropertyEditor>
+                </TKEntityProperty>
+
+                <TKEntityProperty tkPropertyGroupProperties name="gender" displayName="Gender" hintText="Pick a gender" required="true" index="5"
+                    valuesProvider="Male, Female">
+                    <TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
+                </TKEntityProperty>
+
+                <TKEntityProperty tkPropertyGroupProperties name="birthDate" displayName="Date of Birth" hintText="Pick a date" required="true"
+                    index="6">
+                    <TKPropertyEditor tkEntityPropertyEditor type="DatePicker"></TKPropertyEditor>
+                </TKEntityProperty>
+            </TKPropertyGroup>
+        </RadDataForm>
+
+        <Button style.padding="0 15 0 15" class="btn-outline btn-rounded-sm m-x-auto m-t-30 m-b-30" text="Register" (tap)="onRegisterButtonTap()"></Button>
     </StackLayout>
 </ScrollView>
