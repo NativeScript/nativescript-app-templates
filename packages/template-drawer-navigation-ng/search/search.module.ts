@@ -1,5 +1,5 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
-import { NativeScriptModule } from "nativescript-angular/nativescript.module";
+import { NativeScriptCommonModule } from "nativescript-angular/common";
 
 import { SharedModule } from "../shared/shared.module";
 import { SearchRoutingModule } from "./search-routing.module";
@@ -7,7 +7,7 @@ import { SearchComponent } from "./search.component";
 
 @NgModule({
     imports: [
-        NativeScriptModule,
+        NativeScriptCommonModule,
         SearchRoutingModule,
         SharedModule
     ],
