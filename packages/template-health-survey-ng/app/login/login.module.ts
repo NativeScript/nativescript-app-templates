@@ -1,5 +1,5 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
-import { NativeScriptModule } from "nativescript-angular/nativescript.module";
+import { NativeScriptCommonModule } from "nativescript-angular/common";
 import { NativeScriptUIDataFormModule } from "nativescript-pro-ui/dataform/angular";
 
 import { LoginRoutingModule } from "./login-routing.module";
@@ -8,8 +8,8 @@ import { RegistrationComponent } from "./registration/registration.component";
 
 @NgModule({
     imports: [
-        NativeScriptModule,
         LoginRoutingModule,
+        NativeScriptCommonModule,
         NativeScriptUIDataFormModule
     ],
     declarations: [

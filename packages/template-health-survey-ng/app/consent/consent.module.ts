@@ -1,5 +1,6 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
-import { NativeScriptModule } from "nativescript-angular/nativescript.module";
+import { NativeScriptCommonModule } from "nativescript-angular/common";
+import { NativeScriptUIDataFormModule } from "nativescript-pro-ui/dataform/angular";
 
 import { ConsentRoutingModule } from "./consent-routing.module";
 import { ConsentComponent } from "./consent/consent.component";
@@ -14,8 +15,9 @@ import { WithdrawingComponent } from "./withdrawing/withdrawing.component";
 
 @NgModule({
     imports: [
-        NativeScriptModule,
-        ConsentRoutingModule
+        ConsentRoutingModule,
+        NativeScriptCommonModule,
+        NativeScriptUIDataFormModule
     ],
     declarations: [
         WelcomeComponent,

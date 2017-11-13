@@ -7,11 +7,24 @@
 
 <GridLayout class="page p-t-15" rows="*, auto">
     <ScrollView row="0">
-        <StackLayout class="m-x-15">
+        <StackLayout class="p-t-15">
             <Label text="Consent" class="h1 text-center" textWrap="true"></Label>
             <Label text="Lorem ipsum dolor sit amet, consectertur adipiscing elit.Lorem ipsum dolor sit amet, consectertur adipiscing elit ipsum dolor sit amet, consectertur."
                 class="h4 text-center" textWrap="true"></Label>
+
+            <RadDataForm #consentFormElement [source]="consentForm" commitMode="immediate">
+                <TKEntityProperty tkDataFormProperty name="firstName" hintText="Required" required="true" index="0" validationMode="immediate">
+                    <TKPropertyEditor tkEntityPropertyEditor type="Text"></TKPropertyEditor>
+                    <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="This field is required"></TKNonEmptyValidator>
+                </TKEntityProperty>
+
+                <TKEntityProperty tkDataFormProperty name="lastName" hintText="Required" required="true" index="1" validationMode="immediate">
+                    <TKPropertyEditor tkEntityPropertyEditor type="Text"></TKPropertyEditor>
+                    <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="This field is required"></TKNonEmptyValidator>
+                </TKEntityProperty>
+            </RadDataForm>
         </StackLayout>
     </ScrollView>
+
     <Button row="1" style.padding="0 15 0 15" text="Done" class="btn-outline btn-rounded-sm m-x-auto m-b-30" (tap)="onDoneButtonTap()"></Button>
 </GridLayout>
