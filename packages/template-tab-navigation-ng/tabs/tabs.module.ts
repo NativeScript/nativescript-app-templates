@@ -1,5 +1,5 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
-import { NativeScriptModule } from "nativescript-angular/nativescript.module";
+import { NativeScriptCommonModule } from "nativescript-angular/common";
 
 import { BrowseComponent } from "./browse/browse.component";
 import { HomeComponent } from "./home/home.component";
@@ -9,7 +9,7 @@ import { TabsComponent } from "./tabs.component";
 
 @NgModule({
     imports: [
-        NativeScriptModule,
+        NativeScriptCommonModule,
         TabsRoutingModule
     ],
     declarations: [
