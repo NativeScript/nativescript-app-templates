@@ -5,7 +5,9 @@ import { NativeScriptUIListViewModule } from "nativescript-pro-ui/listview/angul
 
 import { CareCardComponent } from "./care-card/care-card.component";
 import { CircularStatusComponent } from "./care-card/circular-status/circular-status.component";
+import { ConnectDetailComponent } from "./connect/connect-detail/connect-detail.component";
 import { ConnectComponent } from "./connect/connect.component";
+import { ConnectService } from "./connect/shared/connect.service";
 import { TabsRoutingModule } from "./tabs-routing.module";
 import { TabsComponent } from "./tabs.component";
 
@@ -19,8 +21,12 @@ import { TabsComponent } from "./tabs.component";
     declarations: [
         CareCardComponent,
         ConnectComponent,
+        ConnectDetailComponent,
         CircularStatusComponent,
         TabsComponent
+    ],
+    providers: [
+        ConnectService
     ],
     schemas: [
         NO_ERRORS_SCHEMA

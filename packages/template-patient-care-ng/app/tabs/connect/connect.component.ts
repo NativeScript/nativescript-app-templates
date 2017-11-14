@@ -1,8 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 import { RadDataFormComponent } from "nativescript-pro-ui/dataform/angular";
+import { ListViewEventData } from "nativescript-pro-ui/listview";
 
-import { ConnectItem } from "./connect-item.model";
+import { ConnectItem } from "./shared/connect-item.model";
+import { ConnectService } from "./shared/connect.service";
 
 @Component({
     selector: "Connect",
@@ -14,7 +16,8 @@ export class ConnectComponent implements OnInit {
     private _inboxItems: Array<ConnectItem>;
     private _careTeamItems: Array<ConnectItem>;
 
-    constructor(private routerExtensions: RouterExtensions) {
+    constructor(private _routerExtensions: RouterExtensions,
+                private _connectService: ConnectService) {
     }
 
     get inboxItems(): Array<ConnectItem> {
@@ -26,18 +29,24 @@ export class ConnectComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        const items = [
-            new ConnectItem("Dr. Maria Ruiz", "MR", "Physician"),
-            new ConnectItem("Bill James, RN", "BJ", "Nurse"),
-            new ConnectItem("Dr. Maria Ruiz", "MR", "Physician"),
-            new ConnectItem("Bill James, RN", "BJ", "Nurse"),
-            new ConnectItem("Dr. Maria Ruiz", "MR", "Physician"),
-            new ConnectItem("Bill James, RN", "BJ", "Nurse"),
-            new ConnectItem("Dr. Maria Ruiz", "MR", "Physician"),
-            new ConnectItem("Bill James, RN", "BJ", "Nurse")
-        ];
+        this._connectService.load()
+            .subscribe((connectItems: Array<ConnectItem>) => {
+                this._inboxItems = connectItems;
+                this._careTeamItems = connectItems;
+            });
+    }
 
-        this._inboxItems = items;
-        this._careTeamItems = items;
+    onCareTeamItemTap(args: ListViewEventData): void {
+        const tappedTeamItem = args.view.bindingContext;
+        console.log(JSON.stringify(tappedTeamItem));
+        this._routerExtensions.navigate(["tabs/connect-detail", tappedTeamItem.id],
+            {
+                animated: true,
+                transition: {
+                    name: "slide",
+                    duration: 200,
+                    curve: "ease"
+                }
+            });
     }
 }

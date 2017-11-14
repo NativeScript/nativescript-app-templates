@@ -28,7 +28,7 @@
                 </ng-template>
             </RadListView>
 
-            <RadListView [items]="careTeamItems">
+            <RadListView [items]="careTeamItems" (itemTap)="onCareTeamItemTap($event)">
                 <ng-template tkListItemTemplate let-teamItem="item">
                     <GridLayout rows="auto, auto, auto" columns="auto, *, auto" class="p-t-10 p-l-10">
                         <Label row="0" rowSpan="2" col="0" verticalAlignment="center" class="careTeamItemAvatar p-5 m-r-10 text-center" [text]="teamItem.shortName"></Label>
