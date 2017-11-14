@@ -1,7 +1,63 @@
 <ActionBar class="action-bar">
-    <Label class="action-bar-title" text=""></Label>
+    <Label class="action-bar-title" text="Connect"></Label>
 </ActionBar>
 
-<GridLayout class="page" rows="*, auto">
+<GridLayout class="page" rows="auto, *">
+    <StackLayout row="0" class="mainHeader">
+        <StackLayout class="hr-light m-b-10"></StackLayout>
+        <Label backgroundColor="gray" color="white" class="text-center background-circle m-b-15 h2 m-x-auto p-y-10 p-x-12" text="JA"></Label>
+        <Label class="h3 text-center" text="John Appleased"></Label>
+        <Label class="h5 text-center" text="70 M"></Label>
+        <StackLayout class="hr-light m-t-10"></StackLayout>
+    </StackLayout>
+    <ScrollView row="1">
+        <StackLayout>
+            <RadListView [items]="inboxItems">
+                <ng-template tkListItemTemplate let-inboxItem="item" let-index="index">
+                    <StackLayout orientation="horizontal" class="p-t-10">
+                        <Label text="@" class="m-x-10"></Label>
+                        <StackLayout>
+                            <Label [text]="inboxItem.name" class="text-left font-weight-normal m-b-10"></Label>
+                            <StackLayout class="hr-light" *ngIf="index !== inboxItems.length - 1"></StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </ng-template>
 
+                <ng-template tkListViewHeader>
+                    <StackLayout>
+                        <StackLayout class="hr-light"></StackLayout>
+                        <GridLayout class="listHeader p-t-25 p-l-10 p-b-5">
+                            <Label text="inbox" class="text-uppercase"></Label>
+                        </GridLayout>
+                        <StackLayout class="hr-light"></StackLayout>
+                    </StackLayout>
+                </ng-template>
+            </RadListView>
+
+            <RadListView [items]="careTeamItems">
+                <ng-template tkListItemTemplate let-teamItem="item">
+                    <StackLayout>
+                        <StackLayout orientation="horizontal" class="m-10">
+                            <Label backgroundColor="gray" color="white" verticalAlignment="center" class="p-5 text-center" [text]="teamItem.shortName"></Label>
+                            <StackLayout class="m-y-5 m-l-5">
+                                <Label [text]="teamItem.name" class="font-weight-bold"></Label>
+                                <Label [text]="teamItem.title" class="text-muted"></Label>
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout class="hr-light m-l-20"></StackLayout>
+                    </StackLayout>
+                </ng-template>
+
+                <ng-template tkListViewHeader>
+                    <StackLayout>
+                        <StackLayout class="hr-light"></StackLayout>
+                        <GridLayout class="listHeader p-t-25 p-l-10 p-b-5">
+                            <Label text="care team" class="text-uppercase"></Label>
+                        </GridLayout>
+                        <StackLayout class="hr-light"></StackLayout>
+                    </StackLayout>
+                </ng-template>
+            </RadListView>
+        </StackLayout>
+    </ScrollView>
 </GridLayout>
