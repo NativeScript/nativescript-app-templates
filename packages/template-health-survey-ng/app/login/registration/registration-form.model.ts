@@ -2,18 +2,18 @@ export class RegistrationForm {
     email: string;
     password: string;
     passwordConfirm: string;
-    firstName: string;
-    lastName: string;
+    givenName: string;
+    familyName: string;
     gender: string;
-    birthDate: string;
+    dateOfBirth: string;
 
     constructor() {
         this.email = "";
         this.password = "";
         this.passwordConfirm = "";
-        this.firstName = "";
-        this.lastName = "";
-        this.gender = null;
-        this.birthDate = null;
+        this.givenName = "";
+        this.familyName = "";
+        this.gender = "male";
+        this.dateOfBirth = null;
     }
 }

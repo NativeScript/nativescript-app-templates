@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
+import { Kinvey } from "kinvey-nativescript-sdk";
 import { RouterExtensions } from "nativescript-angular/router";
 import { RadDataFormComponent } from "nativescript-pro-ui/dataform/angular";
 
@@ -31,7 +32,7 @@ export class LoginComponent implements OnInit {
         }
 
         LoginService.login(this._loginForm.email, this._loginForm.password)
-            .catch(function (error) {
+            .catch((error: Kinvey.BaseError) => {
                 alert(error);
             });
     }
