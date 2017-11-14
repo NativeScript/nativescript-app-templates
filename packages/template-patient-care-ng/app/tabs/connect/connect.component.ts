@@ -8,7 +8,7 @@ import { ConnectItem } from "./connect-item.model";
     selector: "Connect",
     moduleId: module.id,
     templateUrl: "./connect.component.html",
-    styleUrls: ["./connect-common.css", "./connect.css"]
+    styleUrls: ["./connect-common.css"]
 })
 export class ConnectComponent implements OnInit {
     private _inboxItems: Array<ConnectItem>;
