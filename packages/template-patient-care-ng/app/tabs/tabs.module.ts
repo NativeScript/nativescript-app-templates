@@ -4,7 +4,8 @@ import { NativeScriptUIGaugesModule } from "nativescript-pro-ui/gauges/angular";
 import { NativeScriptUIListViewModule } from "nativescript-pro-ui/listview/angular";
 
 import { CareCardComponent } from "./care-card/care-card.component";
-import { CircularStatusComponent } from "./care-card/circular-status/circular-status.component";
+import { CareDashboardComponent } from "./care-card/care-dashboard/care-dashboard.component";
+import { CircularStatusComponent } from "./care-card/care-dashboard/circular-status/circular-status.component";
 import { ConnectDetailComponent } from "./connect/connect-detail/connect-detail.component";
 import { ConnectComponent } from "./connect/connect.component";
 import { ConnectService } from "./connect/shared/connect.service";
@@ -20,9 +21,10 @@ import { TabsComponent } from "./tabs.component";
     ],
     declarations: [
         CareCardComponent,
+        CareDashboardComponent,
+        CircularStatusComponent,
         ConnectComponent,
         ConnectDetailComponent,
-        CircularStatusComponent,
         TabsComponent
     ],
     providers: [

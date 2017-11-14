@@ -12,6 +12,7 @@ export class CircularStatusComponent implements OnInit, OnChanges {
     @ViewChild("label") labelElement: ElementRef;
     @ViewChild("button") buttonElement: ElementRef;
 
+    @Input() kCol: number;
     @Input() value: number;
     @Input() inProgressIcon: string;
     @Input() completionIcon: string;

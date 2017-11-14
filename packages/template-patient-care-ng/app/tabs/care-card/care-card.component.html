@@ -1,15 +1,11 @@
-<GridLayout class="page" rows="100, *, 3*" columns="*, *, *">
+<GridLayout class="page" rows="3*, auto, 5*">
 
-    <StackLayout row="0" colSpan="3" orientation="horizontal" horizontalAlignment="stretch">
-        <StackLayout *ngFor="let value of values" height="55" width="50">
-            <Label text="M" horizontalAlignment="center" verticalAlignment="center"></Label>
-            <CircularStatus [value]="value" completionIcon="&#xf058;"></CircularStatus>
-        </StackLayout>
+    <CareDashboard></CareDashboard>
+
+    <StackLayout row="1" class="hr-dark"></StackLayout>
+
+    <StackLayout row="2" backgroundColor="#f3e6e6">
+        <Label text="PHYSICAL ACTIVITY LIST PLACEHOLDER" horizontalAlignment="center" verticalAlignment="center"></Label>
     </StackLayout>
 
-    <StackLayout row="1" col="1">
-        <CircularStatus [value]="value" inProgressIcon="&#xf21e;" completionIcon="&#xf058;"></CircularStatus>
-        <!-- <CircularStatus [value]="value" inProgressIcon="&#xf21e;" completionIcon="&#xf00c;"></CircularStatus> -->
-        <!-- <CircularStatus [value]="value" inProgressIcon="&#xf21e;" completionIcon="&#xf005;"></CircularStatus> -->
-    </StackLayout>
 </GridLayout>
