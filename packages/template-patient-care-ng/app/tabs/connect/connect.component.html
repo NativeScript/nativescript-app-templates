@@ -1,7 +1,7 @@
 <GridLayout class="page" rows="auto, *">
     <StackLayout row="0" class="mainHeader">
         <StackLayout class="hr-light m-b-10"></StackLayout>
-        <Label backgroundColor="gray" color="white" class="text-center background-circle m-b-15 h2 m-x-auto p-y-10 p-x-12" text="JA"></Label>
+        <Label backgroundColor="gray" color="white" class="text-center m-b-15 h2 m-x-auto p-10" text="JA"></Label>
         <Label class="h3 text-center" text="John Appleased"></Label>
         <Label class="h5 text-center" text="70 M"></Label>
         <StackLayout class="hr-light m-t-10"></StackLayout>
@@ -11,7 +11,7 @@
             <RadListView [items]="inboxItems">
                 <ng-template tkListItemTemplate let-inboxItem="item" let-index="index">
                     <StackLayout orientation="horizontal" class="p-t-10">
-                        <Label text="@" class="m-x-10"></Label>
+                        <Label text="&#xf0e5;" class="fa m-x-10 m-t-5"></Label>
                         <StackLayout>
                             <Label [text]="inboxItem.name" class="text-left font-weight-normal m-b-10"></Label>
                             <StackLayout class="hr-light" *ngIf="index !== inboxItems.length - 1"></StackLayout>
@@ -22,9 +22,7 @@
                 <ng-template tkListViewHeader>
                     <StackLayout>
                         <StackLayout class="hr-light"></StackLayout>
-                        <GridLayout class="listHeader p-t-25 p-l-10 p-b-5">
-                            <Label text="inbox" class="text-uppercase"></Label>
-                        </GridLayout>
+                        <Label text="inbox" class="text-uppercase listHeader p-t-25 p-l-10 p-b-5"></Label>
                         <StackLayout class="hr-light"></StackLayout>
                     </StackLayout>
                 </ng-template>
@@ -32,24 +30,19 @@
 
             <RadListView [items]="careTeamItems">
                 <ng-template tkListItemTemplate let-teamItem="item">
-                    <StackLayout>
-                        <StackLayout orientation="horizontal" class="m-10">
-                            <Label backgroundColor="gray" color="white" verticalAlignment="center" class="p-5 text-center" [text]="teamItem.shortName"></Label>
-                            <StackLayout class="m-y-5 m-l-5">
-                                <Label [text]="teamItem.name" class="font-weight-bold"></Label>
-                                <Label [text]="teamItem.title" class="text-muted"></Label>
-                            </StackLayout>
-                        </StackLayout>
-                        <StackLayout class="hr-light m-l-20"></StackLayout>
-                    </StackLayout>
+                    <GridLayout rows="auto, auto, auto" columns="auto, *, auto" class="p-t-10 p-l-10">
+                        <Label row="0" rowSpan="2" col="0" verticalAlignment="center" class="careTeamItemAvatar p-5 m-r-10 text-center" [text]="teamItem.shortName"></Label>
+                        <Label row="0" col="1" class="m-y-5" [text]="teamItem.name" class="font-weight-bold"></Label>
+                        <Label row="1" col="1" class="m-y-5" [text]="teamItem.title" class="text-muted"></Label>
+                        <Label row="0" rowSpan="3" col="2" text="&#xf105;" class="fa m-r-10 m-b-10" verticalAlignment="center"></Label>
+                        <StackLayout row="2" colSpan="3" class="hr-light m-t-10"></StackLayout>
+                    </GridLayout>
                 </ng-template>
 
                 <ng-template tkListViewHeader>
                     <StackLayout>
                         <StackLayout class="hr-light"></StackLayout>
-                        <GridLayout class="listHeader p-t-25 p-l-10 p-b-5">
-                            <Label text="care team" class="text-uppercase"></Label>
-                        </GridLayout>
+                        <Label text="care team" class="text-uppercase listHeader p-t-25 p-l-10 p-b-5"></Label>
                         <StackLayout class="hr-light"></StackLayout>
                     </StackLayout>
                 </ng-template>
