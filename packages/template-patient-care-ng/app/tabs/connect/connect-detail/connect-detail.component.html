@@ -18,22 +18,22 @@
         <Label text="contact info" class="text-uppercase listHeader p-t-25 p-l-10 p-b-5"></Label>
         <StackLayout class="hr-light"></StackLayout>
 
-        <GridLayout rows="auto, auto, auto" columns="*, auto" class="p-t-10 p-l-10">
+        <GridLayout rows="auto, auto, auto" columns="*, auto" class="p-t-10 p-l-10" (tap)="onCallButtonTap(connectItem.phone)">
             <Label row="0" col="0" class="m-y-5" text="phone" class="contactAttributeTitle"></Label>
             <Label row="1" col="0" class="m-y-5" [text]="connectItem.phone" class="font-weight-bold"></Label>
             <Label row="0" rowSpan="3" col="1" text="&#xf095;" class="fa m-r-10 m-b-10 contactIcon" verticalAlignment="center"></Label>
             <StackLayout row="2" colSpan="2" class="hr-light m-t-10"></StackLayout>
         </GridLayout>
 
-        <GridLayout rows="auto, auto, auto" columns="*, auto" class="p-t-10 p-l-10">
-            <Label row="0" col="0" class="m-y-5" text="phone" class="contactAttributeTitle"></Label>
+        <GridLayout rows="auto, auto, auto" columns="*, auto" class="p-t-10 p-l-10" (tap)="onSendMessageButtonTap(connectItem.phone)">
+            <Label row="0" col="0" class="m-y-5" text="text" class="contactAttributeTitle"></Label>
             <Label row="1" col="0" class="m-y-5" [text]="connectItem.phone" class="font-weight-bold"></Label>
             <Label row="0" rowSpan="3" col="1" text="&#xf0e5;" class="fa m-r-10 m-b-10 contactIcon" verticalAlignment="center"></Label>
             <StackLayout row="2" colSpan="2" class="hr-light m-t-10"></StackLayout>
         </GridLayout>
 
-        <GridLayout rows="auto, auto, auto" columns="*, auto" class="p-t-10 p-l-10">
-            <Label row="0" col="0" class="m-y-5" text="phone" class="contactAttributeTitle"></Label>
+        <GridLayout rows="auto, auto, auto" columns="*, auto" class="p-t-10 p-l-10" (tap)="onSendEmailButtonTap(connectItem.email)">
+            <Label row="0" col="0" class="m-y-5" text="email" class="contactAttributeTitle"></Label>
             <Label row="1" col="0" class="m-y-5" [text]="connectItem.email" class="font-weight-bold"></Label>
             <Label row="0" rowSpan="3" col="1" text="&#xf003;" class="fa m-r-10 m-b-10 contactIcon" verticalAlignment="center"></Label>
             <StackLayout row="2" colSpan="2" class="hr-light m-t-10"></StackLayout>

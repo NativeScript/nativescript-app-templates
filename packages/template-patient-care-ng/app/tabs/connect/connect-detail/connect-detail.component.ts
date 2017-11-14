@@ -1,9 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { PageRoute, RouterExtensions } from "nativescript-angular/router";
+import * as email from "nativescript-email";
 import "rxjs/add/operator/switchMap";
 
 import { ConnectItem } from "../shared/connect-item.model";
 import { ConnectService } from "../shared/connect.service";
+
+const phoneModule = require("nativescript-phone");
 
 @Component({
     selector: "ConnectDetail",
@@ -44,5 +47,27 @@ export class ConnectDetailComponent implements OnInit {
     *************************************************************/
     onBackButtonTap(): void {
         this._routerExtensions.backToPreviousPage();
+    }
+
+    onCallButtonTap(phone: string) {
+        phone = phone.replace(/\s/g, "");
+        phoneModule.dial(phone, true);
+    }
+
+    onSendMessageButtonTap(phone: string) {
+        phone = phone.replace(/\s/g, "");
+        phoneModule.sms([phone], "");
+    }
+
+    onSendEmailButtonTap(emailAddress: string) {
+        const composeOptions: email.ComposeOptions = {
+            to: [emailAddress]
+        };
+
+        email.available().then((available: boolean) => {
+            if (available) {
+                email.compose(composeOptions);
+            }
+        });
     }
 }
