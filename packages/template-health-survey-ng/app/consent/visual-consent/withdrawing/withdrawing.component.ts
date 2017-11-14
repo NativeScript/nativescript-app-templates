@@ -1,15 +1,20 @@
 import { Component, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 
+import { ConsentTaskService } from "../../shared/consent-task.service";
+import { VisualConsentStep } from "../../shared/visual-consent-step.model";
+
 @Component({
     selector: "Withdrawing",
     moduleId: module.id,
     templateUrl: "./withdrawing.component.html",
-    styleUrls: ["../consent-common.css", "../consent.css"]
+    styleUrls: ["../../consent-common.css"]
 })
 export class WithdrawingComponent implements OnInit {
-    constructor(private _routerExtensions: RouterExtensions) {
-    }
+    constructor(
+        private _routerExtensions: RouterExtensions,
+        private _consentTaskService: ConsentTaskService
+    ) { }
 
     ngOnInit(): void {
         /* ***********************************************************
@@ -18,7 +23,9 @@ export class WithdrawingComponent implements OnInit {
     }
 
     onNextButtonTap() {
-        this._routerExtensions.navigate(["/consent/sharing-options"],
+        this._consentTaskService.addStep(new VisualConsentStep("visualConsentStep"));
+
+        this._routerExtensions.navigate(["/consent/consent-sharing"],
             {
                 animated: true,
                 transition: {

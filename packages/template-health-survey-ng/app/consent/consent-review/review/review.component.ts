@@ -5,7 +5,7 @@ import { RouterExtensions } from "nativescript-angular/router";
     selector: "Review",
     moduleId: module.id,
     templateUrl: "./review.component.html",
-    styleUrls: ["../consent-common.css", "../consent.css"]
+    styleUrls: ["../../consent-common.css"]
 })
 export class ReviewComponent implements OnInit {
     constructor(private _routerExtensions: RouterExtensions) {
@@ -43,7 +43,7 @@ export class ReviewComponent implements OnInit {
     }
 
     onAgreeButtonTap() {
-        this._routerExtensions.navigate(["/consent/consent"],
+        this._routerExtensions.navigate(["/consent/consent-review/consent"],
             {
                 animated: true,
                 transition: {

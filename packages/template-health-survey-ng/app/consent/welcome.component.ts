@@ -18,7 +18,7 @@ export class WelcomeComponent implements OnInit {
     }
 
     onGetStartedButtonTap() {
-        this._routerExtensions.navigate(["/consent/data-gathering"],
+        this._routerExtensions.navigate(["/consent/visual-consent/data-gathering"],
             {
                 animated: true,
                 transition: {

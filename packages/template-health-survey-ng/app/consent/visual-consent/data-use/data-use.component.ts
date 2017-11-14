@@ -2,12 +2,12 @@ import { Component, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 
 @Component({
-    selector: "SharingOptions",
+    selector: "DataUse",
     moduleId: module.id,
-    templateUrl: "./sharing-options.component.html",
-    styleUrls: ["../consent-common.css", "../consent.css"]
+    templateUrl: "./data-use.component.html",
+    styleUrls: ["../../consent-common.css"]
 })
-export class SharingOptionsComponent implements OnInit {
+export class DataUseComponent implements OnInit {
     constructor(private _routerExtensions: RouterExtensions) {
     }
 
@@ -17,11 +17,8 @@ export class SharingOptionsComponent implements OnInit {
         *************************************************************/
     }
 
-    onOptionTap(selectedIndex: number) {
-
-        // TODO: Save sharing option.
-
-        this._routerExtensions.navigate(["/consent/review"],
+    onNextButtonTap() {
+        this._routerExtensions.navigate(["/consent/visual-consent/time-commitment"],
             {
                 animated: true,
                 transition: {

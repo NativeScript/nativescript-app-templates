@@ -2,16 +2,17 @@ import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptCommonModule } from "nativescript-angular/common";
 import { NativeScriptUIDataFormModule } from "nativescript-pro-ui/dataform/angular";
 
+import { ConsentComponent } from "./consent-review/consent/consent.component";
+import { ReviewComponent } from "./consent-review/review/review.component";
 import { ConsentRoutingModule } from "./consent-routing.module";
-import { ConsentComponent } from "./consent/consent.component";
-import { DataGatheringComponent } from "./data-gathering/data-gathering.component";
-import { DataUseComponent } from "./data-use/data-use.component";
-import { ReviewComponent } from "./review/review.component";
-import { SharingOptionsComponent } from "./sharing-options/sharing-options.component";
-import { StudySurveyComponent } from "./study-survey/study-survey.component";
-import { TimeCommitmentComponent } from "./time-commitment/time-commitment.component";
+import { ConsentSharingComponent } from "./consent-sharing/consent-sharing.component";
+import { ConsentTaskService } from "./shared/consent-task.service";
+import { DataGatheringComponent } from "./visual-consent/data-gathering/data-gathering.component";
+import { DataUseComponent } from "./visual-consent/data-use/data-use.component";
+import { StudySurveyComponent } from "./visual-consent/study-survey/study-survey.component";
+import { TimeCommitmentComponent } from "./visual-consent/time-commitment/time-commitment.component";
+import { WithdrawingComponent } from "./visual-consent/withdrawing/withdrawing.component";
 import { WelcomeComponent } from "./welcome.component";
-import { WithdrawingComponent } from "./withdrawing/withdrawing.component";
 
 @NgModule({
     imports: [
@@ -25,10 +26,13 @@ import { WithdrawingComponent } from "./withdrawing/withdrawing.component";
         DataGatheringComponent,
         DataUseComponent,
         ReviewComponent,
-        SharingOptionsComponent,
+        ConsentSharingComponent,
         StudySurveyComponent,
         TimeCommitmentComponent,
         WithdrawingComponent
+    ],
+    providers: [
+        ConsentTaskService
     ],
     schemas: [
         NO_ERRORS_SCHEMA

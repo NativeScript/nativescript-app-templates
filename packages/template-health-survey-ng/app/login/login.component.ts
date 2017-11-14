@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
     @ViewChild("loginFormElement") loginFormElement: RadDataFormComponent;
     private _loginForm: LoginForm;
 
-    constructor(private routerExtensions: RouterExtensions) {
+    constructor(private _routerExtensions: RouterExtensions) {
     }
 
     ngOnInit(): void {
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
 
         LoginService.login(this._loginForm.email, this._loginForm.password)
             .then((user: Kinvey.User) => {
-                this.routerExtensions.navigate(["/consent"],
+                this._routerExtensions.navigate(["/consent"],
                     {
                         clearHistory: true,
                         animated: true,
@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
     }
 
     onRegisterButtonTap(): void {
-        this.routerExtensions.navigate(["/login/registration"],
+        this._routerExtensions.navigate(["/login/registration"],
             {
                 animated: true,
                 transition: {

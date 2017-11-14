@@ -2,12 +2,12 @@ import { Component, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 
 @Component({
-    selector: "DataUse",
+    selector: "StudySurvey",
     moduleId: module.id,
-    templateUrl: "./data-use.component.html",
-    styleUrls: ["../consent-common.css", "../consent.css"]
+    templateUrl: "./study-survey.component.html",
+    styleUrls: ["../../consent-common.css"]
 })
-export class DataUseComponent implements OnInit {
+export class StudySurveyComponent implements OnInit {
     constructor(private _routerExtensions: RouterExtensions) {
     }
 
@@ -18,7 +18,7 @@ export class DataUseComponent implements OnInit {
     }
 
     onNextButtonTap() {
-        this._routerExtensions.navigate(["/consent/time-commitment"],
+        this._routerExtensions.navigate(["/consent/visual-consent/withdrawing"],
             {
                 animated: true,
                 transition: {

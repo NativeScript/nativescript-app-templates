@@ -5,7 +5,7 @@ import { RouterExtensions } from "nativescript-angular/router";
     selector: "TimeCommitment",
     moduleId: module.id,
     templateUrl: "./time-commitment.component.html",
-    styleUrls: ["../consent-common.css", "../consent.css"]
+    styleUrls: ["../../consent-common.css"]
 })
 export class TimeCommitmentComponent implements OnInit {
     constructor(private _routerExtensions: RouterExtensions) {
@@ -18,7 +18,7 @@ export class TimeCommitmentComponent implements OnInit {
     }
 
     onNextButtonTap() {
-        this._routerExtensions.navigate(["/consent/study-survey"],
+        this._routerExtensions.navigate(["/consent/visual-consent/study-survey"],
             {
                 animated: true,
                 transition: {

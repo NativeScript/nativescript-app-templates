@@ -5,7 +5,7 @@ import { RouterExtensions } from "nativescript-angular/router";
     selector: "DataGathering",
     moduleId: module.id,
     templateUrl: "./data-gathering.component.html",
-    styleUrls: ["../consent-common.css", "../consent.css"]
+    styleUrls: ["../../consent-common.css"]
 })
 export class DataGatheringComponent implements OnInit {
     constructor(private _routerExtensions: RouterExtensions) {
@@ -18,7 +18,7 @@ export class DataGatheringComponent implements OnInit {
     }
 
     onNextButtonTap() {
-        this._routerExtensions.navigate(["/consent/data-use"],
+        this._routerExtensions.navigate(["/consent/visual-consent/data-use"],
             {
                 animated: true,
                 transition: {

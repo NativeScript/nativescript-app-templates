@@ -2,26 +2,26 @@ import { NgModule } from "@angular/core";
 import { Routes } from "@angular/router";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 
-import { ConsentComponent } from "./consent/consent.component";
-import { DataGatheringComponent } from "./data-gathering/data-gathering.component";
-import { DataUseComponent } from "./data-use/data-use.component";
-import { ReviewComponent } from "./review/review.component";
-import { SharingOptionsComponent } from "./sharing-options/sharing-options.component";
-import { StudySurveyComponent } from "./study-survey/study-survey.component";
-import { TimeCommitmentComponent } from "./time-commitment/time-commitment.component";
+import { ConsentComponent } from "./consent-review/consent/consent.component";
+import { ReviewComponent } from "./consent-review/review/review.component";
+import { ConsentSharingComponent } from "./consent-sharing/consent-sharing.component";
+import { DataGatheringComponent } from "./visual-consent/data-gathering/data-gathering.component";
+import { DataUseComponent } from "./visual-consent/data-use/data-use.component";
+import { StudySurveyComponent } from "./visual-consent/study-survey/study-survey.component";
+import { TimeCommitmentComponent } from "./visual-consent/time-commitment/time-commitment.component";
+import { WithdrawingComponent } from "./visual-consent/withdrawing/withdrawing.component";
 import { WelcomeComponent } from "./welcome.component";
-import { WithdrawingComponent } from "./withdrawing/withdrawing.component";
 
 const routes: Routes = [
     { path: "", component: WelcomeComponent },
-    { path: "consent", component: ConsentComponent },
-    { path: "data-gathering", component: DataGatheringComponent },
-    { path: "data-use", component: DataUseComponent },
-    { path: "review", component: ReviewComponent },
-    { path: "sharing-options", component: SharingOptionsComponent },
-    { path: "study-survey", component: StudySurveyComponent },
-    { path: "time-commitment", component: TimeCommitmentComponent },
-    { path: "withdrawing", component: WithdrawingComponent }
+    { path: "consent-review/consent", component: ConsentComponent },
+    { path: "consent-review/review", component: ReviewComponent },
+    { path: "consent-sharing", component: ConsentSharingComponent },
+    { path: "visual-consent/data-gathering", component: DataGatheringComponent },
+    { path: "visual-consent/data-use", component: DataUseComponent },
+    { path: "visual-consent/study-survey", component: StudySurveyComponent },
+    { path: "visual-consent/time-commitment", component: TimeCommitmentComponent },
+    { path: "visual-consent/withdrawing", component: WithdrawingComponent }
 ];
 
 @NgModule({
