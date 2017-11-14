@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { Kinvey } from "kinvey-nativescript-sdk";
+import { RouterExtensions } from "nativescript-angular/router";
 import { RadDataFormComponent } from "nativescript-pro-ui/dataform/angular";
 
-import { LoginService } from "../login.service";
+import { LoginService } from "../shared/login.service";
 import { RegistrationForm } from "./registration-form.model";
 
 @Component({
@@ -14,10 +15,7 @@ export class RegistrationComponent implements OnInit {
     @ViewChild("registrationFormElement") registrationFormElement: RadDataFormComponent;
     private _registrationForm: RegistrationForm;
 
-    constructor() {
-        /* ***********************************************************
-        * Use the constructor to inject app services that you need in this component.
-        *************************************************************/
+    constructor(private routerExtensions: RouterExtensions) {
     }
 
     ngOnInit(): void {
@@ -37,6 +35,18 @@ export class RegistrationComponent implements OnInit {
         }
 
         LoginService.signup(this._registrationForm)
+            .then((user: Kinvey.User) => {
+                this.routerExtensions.navigate(["/consent"],
+                    {
+                        clearHistory: true,
+                        animated: true,
+                        transition: {
+                            name: "slide",
+                            duration: 200,
+                            curve: "ease"
+                        }
+                    });
+            })
             .catch((error: Kinvey.BaseError) => {
                 alert(error);
             });

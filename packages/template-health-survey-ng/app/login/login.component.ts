@@ -4,7 +4,7 @@ import { RouterExtensions } from "nativescript-angular/router";
 import { RadDataFormComponent } from "nativescript-pro-ui/dataform/angular";
 
 import { LoginForm } from "./login-form.model";
-import { LoginService } from "./login.service";
+import { LoginService } from "./shared/login.service";
 
 @Component({
     selector: "Login",
@@ -32,6 +32,18 @@ export class LoginComponent implements OnInit {
         }
 
         LoginService.login(this._loginForm.email, this._loginForm.password)
+            .then((user: Kinvey.User) => {
+                this.routerExtensions.navigate(["/consent"],
+                    {
+                        clearHistory: true,
+                        animated: true,
+                        transition: {
+                            name: "slide",
+                            duration: 200,
+                            curve: "ease"
+                        }
+                    });
+            })
             .catch((error: Kinvey.BaseError) => {
                 alert(error);
             });
