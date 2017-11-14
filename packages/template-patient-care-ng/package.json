@@ -1,12 +1,14 @@
 {
+    "name": "sample-my-pro-ng",
+    "version": "0.1.0",
     "description": "NativeScript Application",
     "license": "SEE LICENSE IN <your-license-filename>",
     "readme": "NativeScript Application",
     "repository": "<fill-your-repository-here>",
     "nativescript": {
-        "id": "org.nativescript.ResearchKit",
+        "id": "org.nativescript.samplemypro",
         "tns-android": {
-            "version": "3.3.0"
+            "version": "3.3.1"
         }
     },
     "dependencies": {
@@ -34,8 +36,8 @@
         "lazy": "1.0.11",
         "nativescript-dev-typescript": "0.5.1",
         "typescript": "2.4.2",
-        "codelyzer": "^3.2.2",
-        "tslint": "^5.8.0"
+        "codelyzer": "3.2.2",
+        "tslint": "5.8.0"
     },
     "scripts": {
         "lint": "tslint \"app/**/*.ts\""

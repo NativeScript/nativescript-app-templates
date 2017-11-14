@@ -3,8 +3,8 @@ import { Routes } from "@angular/router";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 const routes: Routes = [
-    { path: "", redirectTo: "/connect", pathMatch: "full" },
-    { path: "connect", loadChildren: "./connect/connect.module#ConnectModule" }
+    { path: "", redirectTo: "/care-card", pathMatch: "full" },
+    { path: "care-card", loadChildren: "./care-card/care-card.module#CareCardModule" }
 ];
 
 @NgModule({

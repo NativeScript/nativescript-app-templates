@@ -1,0 +1,28 @@
+<GridLayout>
+    <RadRadialGauge>
+
+        <RadialScale tkRadialGaugeScales startAngle="-90" sweepAngle="360">
+            <ScaleStyle tkRadialScaleStyle ticksVisible="false" labelsVisible="false" lineThickness="0">
+            </ScaleStyle>
+
+            <RadialBarIndicator tkRadialScaleIndicators minimum="0" maximum="100">
+                <BarIndicatorStyle tkRadialBarIndicatorStyle fillColor="#efeff4" cap="Round" barWidth="0.16">
+                </BarIndicatorStyle>
+            </RadialBarIndicator>
+
+            <RadialBarIndicator tkRadialScaleIndicators minimum="0" [maximum]="value" isAnimated="true" animationDuration="1000">
+                <BarIndicatorStyle tkRadialBarIndicatorStyle fillColor="#ed3f40" cap="Round" barWidth="0.16">
+                </BarIndicatorStyle>
+            </RadialBarIndicator>
+        </RadialScale>
+
+    </RadRadialGauge>
+
+    <!-- <Label *ngIf="value === 100" [text]="statusIcon" [ngClass]="{'fa': true, 'central-indicator': true, 'in-progress': (value < 100), 'completed': true}"></Label> -->
+    <Label #label [text]="inProgressIcon" class="fa central-indicator in-progress"></Label>
+    <Label #button [text]="completionIcon" class="fa central-indicator completed"></Label>
+    
+    <!-- <Button #button [text]="completionIcon" class="fa central-indicator completed">
+    </Button> -->
+
+</GridLayout>

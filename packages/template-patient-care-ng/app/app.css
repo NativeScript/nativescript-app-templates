@@ -11,3 +11,7 @@ refer to http://docs.nativescript.org/ui/theme.
 */
 
 @import 'nativescript-theme-core/css/core.light.css';
+
+.fa {
+    font-family: "FontAwesome";
+}
