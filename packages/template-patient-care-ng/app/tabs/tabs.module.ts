@@ -8,7 +8,10 @@ import { CareDashboardComponent } from "./care-card/care-dashboard/care-dashboar
 import { CircularStatusComponent } from "./care-card/care-dashboard/circular-status/circular-status.component";
 import { ConnectDetailComponent } from "./connect/connect-detail/connect-detail.component";
 import { ConnectComponent } from "./connect/connect.component";
+
+import { CareCardService } from "./care-card/shared/care-card.service";
 import { ConnectService } from "./connect/shared/connect.service";
+
 import { TabsRoutingModule } from "./tabs-routing.module";
 import { TabsComponent } from "./tabs.component";
 
@@ -28,6 +31,7 @@ import { TabsComponent } from "./tabs.component";
         TabsComponent
     ],
     providers: [
+        CareCardService,
         ConnectService
     ],
     schemas: [

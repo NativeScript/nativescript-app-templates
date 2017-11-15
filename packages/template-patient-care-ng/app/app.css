@@ -15,3 +15,8 @@ refer to http://docs.nativescript.org/ui/theme.
 .fa {
     font-family: "FontAwesome";
 }
+
+.listHeader {
+    background-color: rgb(238, 238, 238);
+    color: gray;
+}
