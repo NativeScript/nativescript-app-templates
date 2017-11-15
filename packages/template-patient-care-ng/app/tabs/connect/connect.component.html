@@ -31,10 +31,10 @@
             <RadListView [items]="careTeamItems" (itemTap)="onCareTeamItemTap($event)">
                 <ng-template tkListItemTemplate let-teamItem="item">
                     <GridLayout rows="auto, auto, auto" columns="auto, *, auto" class="p-t-10 p-l-10">
-                        <Label row="0" rowSpan="2" col="0" verticalAlignment="center" class="careTeamItemAvatar p-5 m-r-10 text-center" [text]="teamItem.shortName"></Label>
+                        <Label row="0" rowSpan="2" col="0" class="careTeamItemAvatar p-5 m-r-10 m-y-auto text-center" [text]="teamItem.shortName"></Label>
                         <Label row="0" col="1" class="m-y-5" [text]="teamItem.name" class="font-weight-bold"></Label>
                         <Label row="1" col="1" class="m-y-5" [text]="teamItem.title" class="text-muted"></Label>
-                        <Label row="0" rowSpan="3" col="2" text="&#xf105;" class="fa m-r-10 m-b-10" verticalAlignment="center"></Label>
+                        <Label row="0" rowSpan="3" col="2" text="&#xf105;" class="fa m-r-10 m-b-10 m-y-auto"></Label>
                         <StackLayout row="2" colSpan="3" class="hr-light m-t-10"></StackLayout>
                     </GridLayout>
                 </ng-template>
