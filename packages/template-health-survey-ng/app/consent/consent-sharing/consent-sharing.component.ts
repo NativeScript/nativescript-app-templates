@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 
+import { ConsentSharingStep } from "../../shared/consent-sharing-step.model";
 import { TaskService } from "../../shared/task.service";
-import { ConsentSharingStep } from "../shared/consent-sharing-step.model";
 
 @Component({
     selector: "ConsentSharing",

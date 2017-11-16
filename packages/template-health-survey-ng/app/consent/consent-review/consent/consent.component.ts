@@ -3,8 +3,8 @@ import { Kinvey } from "kinvey-nativescript-sdk";
 import { RouterExtensions } from "nativescript-angular/router";
 import { RadDataFormComponent } from "nativescript-pro-ui/dataform/angular";
 
+import { ConsentReviewStep } from "../../../shared/consent-review-step.model";
 import { TaskService } from "../../../shared/task.service";
-import { ConsentReviewStep } from "../../shared/consent-review-step.model";
 import { ConsentForm } from "./consent-form.model";
 
 @Component({

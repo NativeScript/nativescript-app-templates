@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 
 import { TaskService } from "../../../shared/task.service";
-import { VisualConsentStep } from "../../shared/visual-consent-step.model";
+import { VisualConsentStep } from "../../../shared/visual-consent-step.model";
 
 @Component({
     selector: "Withdrawing",
