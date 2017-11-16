@@ -3,8 +3,8 @@ import { Kinvey } from "kinvey-nativescript-sdk";
 import { RouterExtensions } from "nativescript-angular/router";
 import { RadDataFormComponent } from "nativescript-pro-ui/dataform/angular";
 
+import { TaskService } from "../../../shared/task.service";
 import { ConsentReviewStep } from "../../shared/consent-review-step.model";
-import { ConsentTaskService } from "../../shared/consent-task.service";
 import { ConsentForm } from "./consent-form.model";
 
 @Component({
@@ -19,7 +19,7 @@ export class ConsentComponent implements OnInit {
 
     constructor(
         private _routerExtensions: RouterExtensions,
-        private _consentTaskService: ConsentTaskService
+        private _taskService: TaskService
     ) { }
 
     ngOnInit(): void {
@@ -31,28 +31,26 @@ export class ConsentComponent implements OnInit {
     }
 
     onDoneButtonTap() {
+        if (this.consentFormElement.dataForm.hasValidationErrors()) {
+            return;
+        }
+
         const givenName = this._consentForm.firstName;
         const familyName = this._consentForm.lastName;
         const consentReviewStep = new ConsentReviewStep("consentReviewStep", givenName, familyName);
 
-        this._consentTaskService.addStep(consentReviewStep);
+        this._taskService.addStep(consentReviewStep);
+        this._taskService.pushTask("consentTask");
 
-        this._consentTaskService.push()
-            .catch((error: Kinvey.BaseError) => {
-                alert(error);
+        this._routerExtensions.navigate(["/survey"],
+            {
+                animated: true,
+                transition: {
+                    name: "slideRight",
+                    duration: 200,
+                    curve: "ease"
+                }
             });
-
-        if (!this.consentFormElement.dataForm.hasValidationErrors()) {
-            this._routerExtensions.navigate(["/survey"],
-                {
-                    animated: true,
-                    transition: {
-                        name: "slideRight",
-                        duration: 200,
-                        curve: "ease"
-                    }
-                });
-        }
     }
 
     onCancelButtonTap() {

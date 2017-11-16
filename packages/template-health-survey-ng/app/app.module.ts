@@ -4,6 +4,7 @@ import { NSModuleFactoryLoader } from "nativescript-angular/router";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { TaskService } from "./shared/task.service";
 
 @NgModule({
     bootstrap: [
@@ -17,6 +18,7 @@ import { AppComponent } from "./app.component";
         AppComponent
     ],
     providers: [
+        TaskService,
         { provide: NgModuleFactoryLoader, useClass: NSModuleFactoryLoader }
     ],
     schemas: [

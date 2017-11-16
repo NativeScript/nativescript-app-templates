@@ -6,7 +6,6 @@ import { ConsentComponent } from "./consent-review/consent/consent.component";
 import { ReviewComponent } from "./consent-review/review/review.component";
 import { ConsentRoutingModule } from "./consent-routing.module";
 import { ConsentSharingComponent } from "./consent-sharing/consent-sharing.component";
-import { ConsentTaskService } from "./shared/consent-task.service";
 import { DataGatheringComponent } from "./visual-consent/data-gathering/data-gathering.component";
 import { DataUseComponent } from "./visual-consent/data-use/data-use.component";
 import { StudySurveyComponent } from "./visual-consent/study-survey/study-survey.component";
@@ -30,9 +29,6 @@ import { WelcomeComponent } from "./welcome.component";
         StudySurveyComponent,
         TimeCommitmentComponent,
         WithdrawingComponent
-    ],
-    providers: [
-        ConsentTaskService
     ],
     schemas: [
         NO_ERRORS_SCHEMA
