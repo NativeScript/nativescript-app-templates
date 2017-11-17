@@ -6,22 +6,24 @@
 </ActionBar>
 
 <GridLayout class="page p-t-15" rows="*, auto">
-    <StackLayout>
-        <ScrollView row="0">
+    <ScrollView row="0">
+        <StackLayout>
             <StackLayout class="m-x-15">
                 <Label text="Your question here." class="h1 text-center" textWrap="true"></Label>
                 <Label text="Additional text can go here." class="h4 text-center" textWrap="true"></Label>
             </StackLayout>
-        </ScrollView>
 
-        <StackLayout class="p-t-30">
-            <StackLayout class="hr-light"></StackLayout>
-            <Label text="Yes" textWrap="true" class="p-x-10 p-y-15 font-weight-bold" [color]="isAnswerSelected && answer? 'green':'gray'" (tap)="onYesTap()"></Label>
-            <StackLayout class="hr-light"></StackLayout>
-            <Label text="No" textWrap="true" class="p-x-10 p-y-15 font-weight-bold" [color]="isAnswerSelected && !answer? 'green':'gray'" (tap)="onNoTap()"></Label>
-            <StackLayout class="hr-light"></StackLayout>
+            <StackLayout class="p-t-30">
+                <StackLayout class="hr-light"></StackLayout>
+                <Label text="Yes" textWrap="true" class="p-x-10 p-y-15 font-weight-bold" [color]="isAnswerSelected && answer? 'green':'gray'"
+                    (tap)="onYesTap()"></Label>
+                <StackLayout class="hr-light"></StackLayout>
+                <Label text="No" textWrap="true" class="p-x-10 p-y-15 font-weight-bold" [color]="isAnswerSelected && !answer? 'green':'gray'"
+                    (tap)="onNoTap()"></Label>
+                <StackLayout class="hr-light"></StackLayout>
+            </StackLayout>
         </StackLayout>
-    </StackLayout>
+    </ScrollView>
 
     <StackLayout row="1" class="m-b-10">
         <Button style.padding="0 15 0 15" text="Done" class="btn-outline btn-rounded-sm m-x-auto m-b-10" (tap)="onDoneButtonTap()"

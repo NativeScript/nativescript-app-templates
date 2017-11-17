@@ -1,12 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 
-/* ***********************************************************
-* Before you can navigate to this page from your app, you need to reference this page's module in the
-* global app router module. Add the following object to the global array of routes:
-* { path: "survey", loadChildren: "./survey/survey.module#SurveyModule" }
-* Note that this simply points the path to the page module file. If you move the page, you need to update the route too.
-*************************************************************/
+import { StudyStep } from "../shared/study-step.model";
+import { TaskService } from "../shared/task.service";
 
 @Component({
     selector: "Survey",
@@ -14,22 +10,22 @@ import { RouterExtensions } from "nativescript-angular/router";
     templateUrl: "./survey.component.html"
 })
 export class SurveyComponent implements OnInit {
-    isAnswerSelected: boolean = false;
-    answer: boolean = false;
+    isAnswerSelected: boolean;
+    answer: boolean;
 
-    constructor(private _routerExtensions: RouterExtensions) {
-        /* ***********************************************************
-        * Use the constructor to inject app services that you need in this component.
-        *************************************************************/
-    }
+    constructor(
+        private _routerExtensions: RouterExtensions,
+        private _taskService: TaskService
+    ) { }
 
     ngOnInit(): void {
-        /* ***********************************************************
-        * Use the "ngOnInit" handler to initialize data for this component.
-        *************************************************************/
+        this.isAnswerSelected = false;
+        this.answer = false;
     }
 
     onDoneButtonTap() {
+        this._taskService.addStep(new StudyStep("booleanQuestionStep", this.answer));
+        this._taskService.pushTask("booleanQuestionTask");
         // TODO: Implement
     }
 
