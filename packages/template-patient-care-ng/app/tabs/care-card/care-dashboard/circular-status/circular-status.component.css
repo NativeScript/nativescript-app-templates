@@ -1,18 +1,8 @@
 .in-progress {
-    /* font-size: 48px; */
-    font-size: 42.5%;
+    font-size: 42px;
     color: #ed3f40;
 }
 
 .completed {
-    /* font-size: 138px; */
-    font-size: 32%;
     color: #ed3f40;
 }
-
-/* .completed {
-    font-size: 102px;
-    color: #ffffff;
-    background-color: #ed3f40; 
-    clip-path: circle(100% at 50% 50%);
-} */
