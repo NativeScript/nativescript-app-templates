@@ -13,12 +13,14 @@ import { LoginService } from "./shared/login.service";
 })
 export class LoginComponent implements OnInit {
     @ViewChild("loginFormElement") loginFormElement: RadDataFormComponent;
+    isLoading: boolean;
+
     private _loginForm: LoginForm;
 
-    constructor(private _routerExtensions: RouterExtensions) {
-    }
+    constructor(private _routerExtensions: RouterExtensions) { }
 
     ngOnInit(): void {
+        this.isLoading = false;
         this._loginForm = new LoginForm();
     }
 
@@ -30,6 +32,8 @@ export class LoginComponent implements OnInit {
         if (this.loginFormElement.dataForm.hasValidationErrors()) {
             return;
         }
+
+        this.isLoading = true;
 
         LoginService.login(this._loginForm.email, this._loginForm.password)
             .then((user: Kinvey.User) => {
@@ -43,8 +47,11 @@ export class LoginComponent implements OnInit {
                             curve: "ease"
                         }
                     });
+
+                this.isLoading = false;
             })
             .catch((error: Kinvey.BaseError) => {
+                this.isLoading = false;
                 alert(error);
             });
     }

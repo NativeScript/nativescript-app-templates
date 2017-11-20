@@ -8,7 +8,7 @@
             <Label class="h1 text-center" text="Login"></Label>
             <Label class="h4 text-center" text="Additional text can go here"></Label>
 
-            <RadDataForm #loginFormElement [source]="loginForm">
+            <RadDataForm #loginFormElement [source]="loginForm" [isReadOnly]="isLoading">
                 <TKEntityProperty tkDataFormProperty name="email" displayName="Email" hintText="healthsurvey@nativescript.com" required="true"
                     index="0">
                     <TKPropertyEditor tkEntityPropertyEditor type="Email"></TKPropertyEditor>
@@ -28,4 +28,6 @@
         <Button style.padding="0 15 0 15" class="btn-active btn-outline btn-rounded-sm m-l-5 m-r-5" text="Login" (tap)="onSigninButtonTap()"></Button>
         <Button style.padding="0 15 0 15" class="btn-active btn-outline btn-rounded-sm m-l-5 m-r-5" text="Register" (tap)="onRegisterButtonTap()"></Button>
     </StackLayout>
+
+    <ActivityIndicator rowSpan="2" class="activity-indicator" [busy]="isLoading"></ActivityIndicator>
 </GridLayout>

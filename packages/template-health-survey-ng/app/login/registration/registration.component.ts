@@ -16,6 +16,8 @@ import { RegistrationForm } from "./registration-form.model";
 })
 export class RegistrationComponent implements OnInit {
     @ViewChild("registrationFormElement") registrationFormElement: RadDataFormComponent;
+    isLoading: boolean;
+
     private _registrationForm: RegistrationForm;
 
     constructor(
@@ -24,6 +26,7 @@ export class RegistrationComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
+        this.isLoading = false;
         this._registrationForm = new RegistrationForm();
     }
 
@@ -38,6 +41,8 @@ export class RegistrationComponent implements OnInit {
         if (hasValidationErrors || hasPasswordConfirmValidationErrors) {
             return;
         }
+
+        this.isLoading = true;
 
         this._taskService.addStep(new RegistrationStep("registrationStep", this._registrationForm));
 
@@ -56,8 +61,11 @@ export class RegistrationComponent implements OnInit {
                             curve: "ease"
                         }
                     });
+
+                this.isLoading = false;
             })
             .catch((error: Kinvey.BaseError) => {
+                this.isLoading = false;
                 alert(error);
             });
     }
@@ -67,8 +75,6 @@ export class RegistrationComponent implements OnInit {
         const passwordConfirm = this.registrationFormElement.dataForm.getPropertyByName("passwordConfirm");
 
         if (password.valueCandidate !== passwordConfirm.valueCandidate) {
-            console.log(password);
-            console.log(passwordConfirm);
             passwordConfirm.errorMessage = "Password does not match the confirm password.";
             this.registrationFormElement.dataForm.notifyValidated("passwordConfirm", false);
 
