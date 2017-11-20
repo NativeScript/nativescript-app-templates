@@ -5,7 +5,7 @@ import { RouterExtensions } from "nativescript-angular/router";
     selector: "Welcome",
     moduleId: module.id,
     templateUrl: "./welcome.component.html",
-    styleUrls: ["./consent-common.css", "./consent.css"]
+    styleUrls: ["./consent-common.css"]
 })
 export class WelcomeComponent implements OnInit {
     constructor(private _routerExtensions: RouterExtensions) {
