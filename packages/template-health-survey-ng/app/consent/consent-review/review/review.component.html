@@ -1,7 +1,7 @@
 <ActionBar class="action-bar">
     <Label class="action-bar-title" text=""></Label>
     <ActionItem (tap)="onCancelButtonTap()" ios.position="right">
-        <Button text="Cancel" class="text-center action-item hyperlinkText"></Button>
+        <Button text="Cancel" class="action-item text-center text-primary"></Button>
     </ActionItem>
 </ActionBar>
 
@@ -21,7 +21,7 @@
 
     <GridLayout rows="auto, *" columns="*, *" row="1" class="m-b-10">
         <StackLayout row="0" colSpan="2" class="hr-light"></StackLayout>
-        <Label row="1" col="0" text="Disagree" class="h3 text-left hyperlinkText m-10" (tap)="onDisagreeButtonTap()"></Label>
-        <Label row="1" col="1" text="Agree" class="h3 text-right hyperlinkText m-10" (tap)="onAgreeButtonTap()"></Label>
+        <Label row="1" col="0" text="Disagree" class="h3 text-left text-primary m-10" (tap)="onDisagreeButtonTap()"></Label>
+        <Label row="1" col="1" text="Agree" class="h3 text-right text-primary m-10" (tap)="onAgreeButtonTap()"></Label>
     </GridLayout>
 </GridLayout>

@@ -11,8 +11,9 @@ refer to http://docs.nativescript.org/ui/theme.
 */
 
 @import 'nativescript-theme-core/css/core.light.css';
-.hyperlinkText {
-    color: rgb(101, 169, 243);
+
+.text-primary {
+    color: #30bcff;
 }
 
 .btn-outline[isEnabled=false] {
