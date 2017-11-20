@@ -12,7 +12,7 @@ export class LoginService {
             loginQueue = Kinvey.User.logout();
         }
 
-        return loginQueue.then(() => Kinvey.User.login(username, password));
+        return loginQueue.then(() => Kinvey.User.login(username.toLowerCase(), password));
     }
 
     static signup(registrationForm: RegistrationForm): Promise<any> {
@@ -23,7 +23,7 @@ export class LoginService {
         }
 
         return registerQueue.then(() => Kinvey.User.signup({
-            username: registrationForm.email,
+            username: registrationForm.email.toLowerCase(),
             password: registrationForm.password,
             givenName: registrationForm.givenName,
             familyName: registrationForm.familyName,
