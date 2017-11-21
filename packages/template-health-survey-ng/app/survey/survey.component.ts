@@ -23,12 +23,6 @@ export class SurveyComponent implements OnInit {
         this.answer = false;
     }
 
-    onDoneButtonTap() {
-        this._taskService.addStep(new StudyStep("booleanQuestionStep", this.answer));
-        this._taskService.pushTask("booleanQuestionTask");
-        // TODO: Implement
-    }
-
     onYesTap() {
         this.isAnswerSelected = true;
         this.answer = true;
@@ -37,6 +31,22 @@ export class SurveyComponent implements OnInit {
     onNoTap() {
         this.isAnswerSelected = true;
         this.answer = false;
+    }
+
+    onDoneButtonTap() {
+        this._taskService.addStep(new StudyStep("booleanQuestionStep", this.answer));
+        this._taskService.pushTask("booleanQuestionTask");
+
+        this._routerExtensions.navigate(["/survey/complete"],
+            {
+                clearHistory: true,
+                animated: true,
+                transition: {
+                    name: "slideRight",
+                    duration: 200,
+                    curve: "ease"
+                }
+            });
     }
 
     onCancelButtonTap() {

@@ -1,6 +1,7 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 
+import { SurveyCompleteComponent } from "./survey-complete/survey-complete.component";
 import { SurveyRoutingModule } from "./survey-routing.module";
 import { SurveyComponent } from "./survey.component";
 
@@ -10,7 +11,8 @@ import { SurveyComponent } from "./survey.component";
         SurveyRoutingModule
     ],
     declarations: [
-        SurveyComponent
+        SurveyComponent,
+        SurveyCompleteComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA
