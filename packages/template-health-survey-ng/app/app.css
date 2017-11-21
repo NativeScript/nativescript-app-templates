@@ -21,3 +21,11 @@ refer to http://docs.nativescript.org/ui/theme.
     background-color: transparent;
     border-color: rgb(216, 212, 212);
 }
+
+.fa {
+    font-family: "FontAwesome";
+}
+
+.f-s-100 {
+    font-size: 100;
+}

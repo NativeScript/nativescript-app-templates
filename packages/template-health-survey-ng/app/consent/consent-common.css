@@ -9,9 +9,9 @@
 
 @keyframes headerImageSlideAnimation {
     from {
-        transform: translate(-200, 0);
+        transform: scale(0, 0);
     }
     to {
-        transform: translate(0, 0);
+        transform: scale(1, 1);
     }
 }
