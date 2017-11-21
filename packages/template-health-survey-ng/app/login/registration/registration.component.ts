@@ -73,7 +73,11 @@ export class RegistrationComponent implements OnInit {
             })
             .catch((error: Kinvey.BaseError) => {
                 this.isLoading = false;
-                alert(error);
+                alert({
+                    title: "Registration failed",
+                    message: error.message,
+                    okButtonText: "Ok"
+                });
             });
     }
 
