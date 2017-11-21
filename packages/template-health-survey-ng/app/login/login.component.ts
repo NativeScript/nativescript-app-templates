@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { Kinvey } from "kinvey-nativescript-sdk";
 import { RouterExtensions } from "nativescript-angular/router";
 import { RadDataFormComponent } from "nativescript-pro-ui/dataform/angular";
+import { Page } from "ui/page";
 
 import { LoginForm } from "./login-form.model";
 import { LoginService } from "./shared/login.service";
@@ -17,10 +18,15 @@ export class LoginComponent implements OnInit {
 
     private _loginForm: LoginForm;
 
-    constructor(private _routerExtensions: RouterExtensions) { }
+    constructor(
+        private _page: Page,
+        private _routerExtensions: RouterExtensions
+    ) { }
 
     ngOnInit(): void {
         this.isLoading = false;
+
+        this._page.actionBarHidden = true;
         this._loginForm = new LoginForm();
     }
 

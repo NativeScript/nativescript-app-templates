@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { Kinvey } from "kinvey-nativescript-sdk";
 import { RouterExtensions } from "nativescript-angular/router";
 import { RadDataFormComponent } from "nativescript-pro-ui/dataform/angular";
+import { isAndroid } from "platform";
+import { Page } from "ui/page";
 
 import { RegistrationStep } from "../../shared/registration-step.model";
 import { SignUpStep } from "../../shared/sign-up-step.model";
@@ -21,12 +23,17 @@ export class RegistrationComponent implements OnInit {
     private _registrationForm: RegistrationForm;
 
     constructor(
+        private _page: Page,
         private _routerExtensions: RouterExtensions,
         private _taskService: TaskService
     ) { }
 
     ngOnInit(): void {
         this.isLoading = false;
+
+        if (isAndroid) {
+            this._page.actionBarHidden = true;
+        }
         this._registrationForm = new RegistrationForm();
     }
 
