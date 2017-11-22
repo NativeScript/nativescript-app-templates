@@ -1,11 +1,44 @@
-<GridLayout class="page" rows="180, auto, *">
+<GridLayout class="page" rows="180, auto, auto, 5*">
 
     <CareDashboard></CareDashboard>
 
-    <StackLayout row="1" class="hr-dark"></StackLayout>
+    <StackLayout row="1" class="hr-light"></StackLayout>
 
-    <ScrollView row="2">
-            <StackLayout>
-            </StackLayout>
-        </ScrollView>
+    <StackLayout orientation="horizontal" row="2">
+        <Button text="prev day" (tap)="prevDayButtonTap()">
+        </Button>
+        <Button text="next day" (tap)="nextDayButtonTap()">
+        </Button>
+    </StackLayout>
+
+    <ScrollView row="3">
+        <StackLayou>
+            <RadListView [items]="physicalEvents">
+                <ng-template tkListItemTemplate let-eventHolder="item">
+                    <GridLayout rows="auto, auto, auto" columns="auto, *" class="p-t-10 p-l-10">
+                        <Label row="0" col="0" class="m-y-5" [text]="eventHolder.activity.title" class="text-left font-weight-bold"></Label>
+                        <Label row="0" col="1" class="m-y-5" [text]="eventHolder.activity.text" class="text-left text-muted m-l-5"></Label>
+
+                        <StackLayout row="1" colSpan="3" orientation="horizontal" class="m-b-15">
+                            <StackLayout *ngFor="let event of eventHolder.events">
+                                <Label [text]="event.isExecuted ? '&#xf111;':'&#xf10c;'" fontSize="25" class="fa m-r-5 m-y-auto" [color]="eventHolder.activity.tintColor"
+                                    (tap)="onActivityEventTap(eventHolder, event)"></Label>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <!-- <Label row="0" rowSpan="2" col="2" text="&#xf105;" class="fa m-r-10 m-b-10 m-y-auto"></Label> -->
+                        <StackLayout row="2" colSpan="3" class="hr-light"></StackLayout>
+                    </GridLayout>
+                </ng-template>
+
+                <ng-template tkListViewHeader>
+                    <StackLayout>
+                        <StackLayout class="hr-light"></StackLayout>
+                        <Label text="Physical Activity" class="font-weight-bold listHeader p-l-10 p-y-5"></Label>
+                        <StackLayout class="hr-light"></StackLayout>
+                    </StackLayout>
+                </ng-template>
+            </RadListView>
+        </StackLayou>
+    </ScrollView>
 </GridLayout>

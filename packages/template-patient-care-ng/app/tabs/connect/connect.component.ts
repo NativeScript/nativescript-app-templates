@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
-import { RadDataFormComponent } from "nativescript-pro-ui/dataform/angular";
 import { ListViewEventData } from "nativescript-pro-ui/listview";
 
 import { ConnectItem } from "./shared/connect-item.model";
@@ -16,8 +15,10 @@ export class ConnectComponent implements OnInit {
     private _inboxItems: Array<ConnectItem>;
     private _careTeamItems: Array<ConnectItem>;
 
-    constructor(private _routerExtensions: RouterExtensions,
-                private _connectService: ConnectService) {
+    constructor(
+        private _routerExtensions: RouterExtensions,
+        private _connectService: ConnectService
+    ) {
     }
 
     get inboxItems(): Array<ConnectItem> {
@@ -29,8 +30,8 @@ export class ConnectComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this._connectService.load()
-            .subscribe((connectItems: Array<ConnectItem>) => {
+        this._connectService.loadConnectItems()
+            .then((connectItems: Array<ConnectItem>) => {
                 this._inboxItems = connectItems;
                 this._careTeamItems = connectItems;
             });
