@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { Kinvey } from "kinvey-nativescript-sdk";
 import { Observable } from "rxjs/Rx";
 
 // tslint:disable-next-line:max-line-length
@@ -7,14 +8,19 @@ import { CarePlanEvent, CarePlanEventsHolder } from "./care-plan-event.model";
 
 @Injectable()
 export class CareCardService {
-    events: Array<CarePlanEventsHolder>;
+    private _events: Array<CarePlanEventsHolder>;
+    private activityStore = Kinvey.DataStore.collection<any>("Activity");
 
     constructor() {
-        this.events = new Array<CarePlanEventsHolder>();
+        this._events = new Array<CarePlanEventsHolder>();
+    }
+
+    get events(): Array<CarePlanEventsHolder> {
+        return this._events;
     }
 
     findEventHolder(eventHolder: CarePlanEventsHolder): CarePlanEventsHolder {
-        const event = this.events.find((currentEvent) => {
+        const event = this._events.find((currentEvent) => {
             return currentEvent.date === eventHolder.date &&
                 currentEvent.activity.identifier === eventHolder.activity.identifier;
         });
@@ -22,59 +28,24 @@ export class CareCardService {
         return event;
     }
 
-    getAllActivities() {
-        const activities = [
-            new CarePlanActivity(CarePlanIdentifierType.backPain,
-                CarePlanActivityType.assesment,
-                "Pain",
-                "Lower Back",
-                "blue",
-                [1, 1, 1, 1, 1, 1, 1]
-            ),
+    getAllActivities(): Promise<any> {
+        return this.activityStore.find().toPromise()
+            .then((data) => {
+                const activities = [];
 
-            new CarePlanActivity(CarePlanIdentifierType.mood,
-                CarePlanActivityType.assesment,
-                "Mood",
-                "",
-                "green",
-                [1, 1, 1, 1, 1, 1, 1]
-            ),
+                data.forEach((activityData: any) => {
+                    const activity = new CarePlanActivity(activityData);
+                    activities.push(activity);
+                });
 
-            new CarePlanActivity(CarePlanIdentifierType.bloodGlucose,
-                CarePlanActivityType.assesment,
-                "Blood Glucose",
-                "After dinner",
-                "purple",
-                [1, 1, 1, 1, 1, 1, 1]
-            ),
-
-            new CarePlanActivity(CarePlanIdentifierType.weight,
-                CarePlanActivityType.assesment,
-                "Weight",
-                "Early morning",
-                "yellow",
-                [1, 1, 1, 1, 1, 1, 1]
-            ),
-
-            new CarePlanActivity(CarePlanIdentifierType.hamstringStretch,
-                CarePlanActivityType.physical,
-                "Hamstring Stretch",
-                "15 mins",
-                "blue",
-                [3, 2, 1, 2, 2, 1, 1],
-                "Gentle hamstring stretches on both legs."
-            ),
-
-            new CarePlanActivity(CarePlanIdentifierType.outdoorWalk,
-                CarePlanActivityType.physical,
-                "Outdoor Walk",
-                "5 mins",
-                "purple",
-                [2, 2, 1, 1, 2, 1, 1],
-                "Take a leisurely walk."
-            )
-        ];
-
-        return activities;
+                return activities;
+            })
+            .catch((error: Kinvey.BaseError) => {
+                alert({
+                    title: "Opps something went wrong.",
+                    message: error.message,
+                    okButtonText: "Ok"
+                });
+            });
     }
 }

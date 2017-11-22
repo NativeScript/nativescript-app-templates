@@ -11,34 +11,71 @@
         </Button>
     </StackLayout>
 
-    <ScrollView row="3">
-        <StackLayou>
-            <RadListView [items]="physicalEvents">
-                <ng-template tkListItemTemplate let-eventHolder="item">
-                    <GridLayout rows="auto, auto, auto" columns="auto, *" class="p-t-10 p-l-10">
-                        <Label row="0" col="0" class="m-y-5" [text]="eventHolder.activity.title" class="text-left font-weight-bold"></Label>
-                        <Label row="0" col="1" class="m-y-5" [text]="eventHolder.activity.text" class="text-left text-muted m-l-5"></Label>
+    <ActivityIndicator row="3" class="activity-indicator" [busy]="isLoading"></ActivityIndicator>
+    <ScrollView *ngIf="!isLoading" row="3">
+        <StackLayout>
+            <!-- NOTE: use *ngFor directive only if visualizing a known small number of items; 
+                        otherwise consider using ListView that supports virtualization -->
+            <StackLayout class="hr-light"></StackLayout>
+            <Label text="Physical Activity" class="font-weight-bold listHeader p-l-10 p-y-5"></Label>
+            <StackLayout class="hr-light"></StackLayout>
+            <StackLayout *ngFor="let physicalItem of physicalEvents; let index = index;" orientation="horizontal" (tap)="onItemTap(physicalItem)">
+                <GridLayout rows="auto, auto, auto" columns="auto, *" class="p-t-10 p-l-10">
+                    <Label row="0" col="0" class="m-y-5" [text]="physicalItem.activity.title" class="text-left font-weight-bold"></Label>
+                    <Label row="0" col="1" class="m-y-5" [text]="physicalItem.activity.text" class="text-left text-muted m-l-5"></Label>
 
-                        <StackLayout row="1" colSpan="3" orientation="horizontal" class="m-b-15">
-                            <StackLayout *ngFor="let event of eventHolder.events">
-                                <Label [text]="event.isExecuted ? '&#xf111;':'&#xf10c;'" fontSize="25" class="fa m-r-5 m-y-auto" [color]="eventHolder.activity.tintColor"
-                                    (tap)="onActivityEventTap(eventHolder, event)"></Label>
-                            </StackLayout>
+                    <StackLayout row="1" colSpan="3" orientation="horizontal" class="m-b-15">
+                        <StackLayout *ngFor="let event of physicalItem.events">
+                            <Label [text]="event.isExecuted ? '&#xf111;':'&#xf10c;'" fontSize="25" class="fa m-r-5 m-y-auto" [color]="physicalItem.activity.tintColor"
+                                (tap)="onActivityEventTap(physicalItem, event)"></Label>
                         </StackLayout>
-
-                        <!-- <Label row="0" rowSpan="2" col="2" text="&#xf105;" class="fa m-r-10 m-b-10 m-y-auto"></Label> -->
-                        <StackLayout row="2" colSpan="3" class="hr-light"></StackLayout>
-                    </GridLayout>
-                </ng-template>
-
-                <ng-template tkListViewHeader>
-                    <StackLayout>
-                        <StackLayout class="hr-light"></StackLayout>
-                        <Label text="Physical Activity" class="font-weight-bold listHeader p-l-10 p-y-5"></Label>
-                        <StackLayout class="hr-light"></StackLayout>
                     </StackLayout>
-                </ng-template>
-            </RadListView>
-        </StackLayou>
+                    <StackLayout *ngIf="index !== physicalEvents.length - 1" row="2" colSpan="3" class="hr-light"></StackLayout>
+                </GridLayout>
+            </StackLayout>
+
+            <StackLayout class="hr-light"></StackLayout>
+            <Label text="Assessments" class="font-weight-bold listHeader p-l-10 p-y-5"></Label>
+            <StackLayout class="hr-light"></StackLayout>
+            <StackLayout *ngFor="let assessmentItem of assessmentEvents; let index = index;" orientation="horizontal" (tap)="onItemTap(assessmentItem)">
+                <GridLayout rows="auto, auto, auto" columns="auto, *" class="p-t-10 p-l-10">
+                    <Label row="0" col="0" class="m-y-5" [text]="assessmentItem.activity.title" class="text-left font-weight-bold"></Label>
+                    <Label row="1" col="0" class="m-y-5" [text]="assessmentItem.activity.text" class="text-left text-muted m-b-15"></Label>
+
+                    <!-- <Label row="0" rowSpan="2" col="2" text="&#xf105;" class="fa m-r-10 m-b-10 m-y-auto"></Label> -->
+                    <StackLayout *ngIf="index !== assessmentEvents.length - 1" row="2" colSpan="3" class="hr-light"></StackLayout>
+                </GridLayout>
+            </StackLayout>
+
+            <StackLayout class="hr-light"></StackLayout>
+            <Label text="Medications" class="font-weight-bold listHeader p-l-10 p-y-5"></Label>
+            <StackLayout class="hr-light"></StackLayout>
+            <StackLayout *ngFor="let medicationItem of medicationEvents; let index = index;" orientation="horizontal" (tap)="onItemTap(medicationItem)">
+                <GridLayout rows="auto, auto, auto" columns="auto, *" class="p-t-10 p-l-10">
+                    <Label row="0" col="0" class="m-y-5" [text]="medicationItem.activity.title" class="text-left font-weight-bold"></Label>
+                    <Label row="0" col="1" class="m-y-5" [text]="medicationItem.activity.text" class="text-left text-muted m-l-5"></Label>
+
+                    <StackLayout row="1" colSpan="3" orientation="horizontal" class="m-b-15">
+                        <StackLayout *ngFor="let event of medicationItem.events">
+                            <Label [text]="event.isExecuted ? '&#xf111;':'&#xf10c;'" fontSize="25" class="fa m-r-5 m-y-auto" [color]="medicationItem.activity.tintColor"
+                                (tap)="onActivityEventTap(medicationItem, event)"></Label>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout *ngIf="index !== medicationEvents.length - 1" row="2" colSpan="3" class="hr-light"></StackLayout>
+                </GridLayout>
+            </StackLayout>
+
+            <StackLayout class="hr-light"></StackLayout>
+            <Label text="Other" class="font-weight-bold listHeader p-l-10 p-y-5"></Label>
+            <StackLayout class="hr-light"></StackLayout>
+            <StackLayout *ngFor="let otherItem of otherEvents; let index = index;" orientation="horizontal" (tap)="onItemTap(otherItem)">
+                <GridLayout rows="auto, auto, auto" columns="auto, *" class="p-t-10 p-l-10">
+                    <Label row="0" col="0" class="m-y-5" [text]="otherItem.activity.title" class="text-left font-weight-bold"></Label>
+                    <Label row="1" col="0" class="m-y-5" [text]="otherItem.activity.text" class="text-left text-muted m-b-15"></Label>
+
+                    <StackLayout *ngIf="index !== otherEvents.length - 1" row="2" colSpan="3" class="hr-light"></StackLayout>
+                </GridLayout>
+            </StackLayout>
+        </StackLayout>
     </ScrollView>
 </GridLayout>

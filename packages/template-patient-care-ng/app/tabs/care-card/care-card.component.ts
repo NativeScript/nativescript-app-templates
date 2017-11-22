@@ -13,9 +13,12 @@ import { CarePlanEvent, CarePlanEventsHolder } from "./shared/care-plan-event.mo
     templateUrl: "./care-card.component.html"
 })
 export class CareCardComponent implements OnInit {
+    isLoading: boolean;
+
     private _physicalEvents: Array<CarePlanEventsHolder>;
-    private _optionalEvents: Array<CarePlanEventsHolder>;
+    private _otherEvents: Array<CarePlanEventsHolder>;
     private _assessmentEvents: Array<CarePlanEventsHolder>;
+    private _medicationEvents: Array<CarePlanEventsHolder>;
 
     private _allActivities: Array<CarePlanActivity>;
 
@@ -36,12 +39,30 @@ export class CareCardComponent implements OnInit {
         return this._assessmentEvents;
     }
 
+    get otherEvents(): Array<CarePlanEventsHolder> {
+        return this._otherEvents;
+    }
+
+    get medicationEvents(): Array<CarePlanEventsHolder> {
+        return this._medicationEvents;
+    }
+
     ngOnInit(): void {
+        this.isLoading = true;
+
+        this._physicalEvents = new Array<CarePlanEventsHolder>();
+        this._assessmentEvents = new Array<CarePlanEventsHolder>();
+        this._otherEvents = new Array<CarePlanEventsHolder>();
+        this._medicationEvents = new Array<CarePlanEventsHolder>();
+
         this._currentDayOfWeek = this.getDayOfWeek(this._currentDate);
 
-        this._allActivities = this._careCardService.getAllActivities();
-
-        this.getEvents(this._allActivities, this._currentDayOfWeek);
+        this._careCardService.getAllActivities()
+            .then((activities: Array<any>) => {
+                this.isLoading = false;
+                this._allActivities = activities;
+                this.getEvents(this._allActivities, this._currentDayOfWeek);
+            });
     }
 
     nextDayButtonTap() {
@@ -79,6 +100,8 @@ export class CareCardComponent implements OnInit {
     private getEvents(activities: Array<CarePlanActivity>, currentDayOfWeek: number) {
         this._physicalEvents = new Array<CarePlanEventsHolder>();
         this._assessmentEvents = new Array<CarePlanEventsHolder>();
+        this._otherEvents = new Array<CarePlanEventsHolder>();
+        this._medicationEvents = new Array<CarePlanEventsHolder>();
 
         activities.forEach((activity) => {
             const occurrencesForDay: number = activity.schedule[currentDayOfWeek] || 0;
@@ -93,11 +116,17 @@ export class CareCardComponent implements OnInit {
                 this._physicalEvents.push(eventHolder);
             } else if (activity.groupIdentifier === CarePlanActivityType.assesment) {
                 this._assessmentEvents.push(eventHolder);
+            } else if (activity.groupIdentifier === CarePlanActivityType.medication) {
+                this._medicationEvents.push(eventHolder);
+            } else if (activity.groupIdentifier === CarePlanActivityType.other) {
+                this._otherEvents.push(eventHolder);
             }
         });
 
         this.mapEvents(this._physicalEvents, currentDayOfWeek);
         this.mapEvents(this._assessmentEvents, currentDayOfWeek);
+        this.mapEvents(this._medicationEvents, currentDayOfWeek);
+        this.mapEvents(this._otherEvents, currentDayOfWeek);
     }
 
     private mapEvents(eventsCollection: Array<CarePlanEventsHolder>, currentDayOfWeek: number) {
