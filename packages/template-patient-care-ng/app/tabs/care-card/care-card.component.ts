@@ -10,8 +10,7 @@ import { CarePlanEvent, CarePlanEventsHolder } from "./shared/care-plan-event.mo
 @Component({
     selector: "CareCard",
     moduleId: module.id,
-    templateUrl: "./care-card.component.html",
-    styleUrls: ["./care-card-common.css"]
+    templateUrl: "./care-card.component.html"
 })
 export class CareCardComponent implements OnInit {
     private _physicalEvents: Array<CarePlanEventsHolder>;
