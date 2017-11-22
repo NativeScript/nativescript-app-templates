@@ -19,7 +19,7 @@
             <StackLayout class="hr-light"></StackLayout>
             <Label text="Physical Activity" class="font-weight-bold listHeader p-l-10 p-y-5"></Label>
             <StackLayout class="hr-light"></StackLayout>
-            <StackLayout *ngFor="let physicalItem of physicalEvents; let index = index;" orientation="horizontal" (tap)="onItemTap(physicalItem)">
+            <StackLayout *ngFor="let physicalItem of physicalEvents; let index = index;" orientation="horizontal">
                 <GridLayout rows="auto, auto, auto" columns="auto, *" class="p-t-10 p-l-10">
                     <Label row="0" col="0" class="m-y-5" [text]="physicalItem.activity.title" class="text-left font-weight-bold"></Label>
                     <Label row="0" col="1" class="m-y-5" [text]="physicalItem.activity.text" class="text-left text-muted m-l-5"></Label>
@@ -37,7 +37,7 @@
             <StackLayout class="hr-light"></StackLayout>
             <Label text="Assessments" class="font-weight-bold listHeader p-l-10 p-y-5"></Label>
             <StackLayout class="hr-light"></StackLayout>
-            <StackLayout *ngFor="let assessmentItem of assessmentEvents; let index = index;" orientation="horizontal" (tap)="onItemTap(assessmentItem)">
+            <StackLayout *ngFor="let assessmentItem of assessmentEvents; let index = index;" orientation="horizontal">
                 <GridLayout rows="auto, auto, auto" columns="auto, *" class="p-t-10 p-l-10">
                     <Label row="0" col="0" class="m-y-5" [text]="assessmentItem.activity.title" class="text-left font-weight-bold"></Label>
                     <Label row="1" col="0" class="m-y-5" [text]="assessmentItem.activity.text" class="text-left text-muted m-b-15"></Label>
@@ -50,7 +50,7 @@
             <StackLayout class="hr-light"></StackLayout>
             <Label text="Medications" class="font-weight-bold listHeader p-l-10 p-y-5"></Label>
             <StackLayout class="hr-light"></StackLayout>
-            <StackLayout *ngFor="let medicationItem of medicationEvents; let index = index;" orientation="horizontal" (tap)="onItemTap(medicationItem)">
+            <StackLayout *ngFor="let medicationItem of medicationEvents; let index = index;" orientation="horizontal">
                 <GridLayout rows="auto, auto, auto" columns="auto, *" class="p-t-10 p-l-10">
                     <Label row="0" col="0" class="m-y-5" [text]="medicationItem.activity.title" class="text-left font-weight-bold"></Label>
                     <Label row="0" col="1" class="m-y-5" [text]="medicationItem.activity.text" class="text-left text-muted m-l-5"></Label>
@@ -68,7 +68,7 @@
             <StackLayout class="hr-light"></StackLayout>
             <Label text="Other" class="font-weight-bold listHeader p-l-10 p-y-5"></Label>
             <StackLayout class="hr-light"></StackLayout>
-            <StackLayout *ngFor="let otherItem of otherEvents; let index = index;" orientation="horizontal" (tap)="onItemTap(otherItem)">
+            <StackLayout *ngFor="let otherItem of otherEvents; let index = index;" orientation="horizontal">
                 <GridLayout rows="auto, auto, auto" columns="auto, *" class="p-t-10 p-l-10">
                     <Label row="0" col="0" class="m-y-5" [text]="otherItem.activity.title" class="text-left font-weight-bold"></Label>
                     <Label row="1" col="0" class="m-y-5" [text]="otherItem.activity.text" class="text-left text-muted m-b-15"></Label>

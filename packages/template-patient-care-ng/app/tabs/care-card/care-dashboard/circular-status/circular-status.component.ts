@@ -73,7 +73,7 @@ export class CircularStatusComponent implements OnChanges {
         if (changes.kFontSize) {
             // TODO: Reconsider this approach
             // HACK: customizing the "completion" font size results in proper rendering for the small/large case
-            this.completionLabel.style.fontSize = changes.kFontSize.currentValue;
+            this.completionLabel.fontSize = changes.kFontSize.currentValue;
         }
     }
 
@@ -85,12 +85,12 @@ export class CircularStatusComponent implements OnChanges {
             this.animation.cancel();
         }
 
+        this.completionLabel.opacity = 0;
+        this.progressLabel.opacity = 1;
+
         if (currentValue === 100) {
             // catch animation cancelled error (and do nothing)
             this.animation.play().catch(() => void 0);
-        } else {
-            this.completionLabel.opacity = 0;
-            this.progressLabel.opacity = 1;
         }
     }
 }
