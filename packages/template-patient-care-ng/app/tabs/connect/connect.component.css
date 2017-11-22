@@ -3,7 +3,12 @@
 }
 
 .careTeamItemAvatar {
-    width: 35;
-    color:white;
+    width: 36;
+    color: white;
     background-color: gray;
+}
+
+.inboxItemAvatar {
+    font-size: 24;
+    vertical-align: top;
 }

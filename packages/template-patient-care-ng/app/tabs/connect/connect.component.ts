@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
-import { ListViewEventData } from "nativescript-pro-ui/listview";
 
 import { ConnectItem } from "./shared/connect-item.model";
 import { ConnectService } from "./shared/connect.service";
@@ -9,16 +8,16 @@ import { ConnectService } from "./shared/connect.service";
     selector: "Connect",
     moduleId: module.id,
     templateUrl: "./connect.component.html",
-    styleUrls: ["./connect-common.css"]
+    styleUrls: ["./connect.component.css"]
 })
 export class ConnectComponent implements OnInit {
     private _inboxItems: Array<ConnectItem>;
     private _careTeamItems: Array<ConnectItem>;
+    private _friendsFamilyItems: Array<ConnectItem>;
 
     constructor(
         private _routerExtensions: RouterExtensions,
-        private _connectService: ConnectService
-    ) {
+        private _connectService: ConnectService) {
     }
 
     get inboxItems(): Array<ConnectItem> {
@@ -29,18 +28,23 @@ export class ConnectComponent implements OnInit {
         return this._careTeamItems;
     }
 
+    get friendsFamilyItems(): Array<ConnectItem> {
+        return this._friendsFamilyItems;
+    }
+
     ngOnInit(): void {
         this._connectService.loadConnectItems()
             .then((connectItems: Array<ConnectItem>) => {
-                this._inboxItems = connectItems;
-                this._careTeamItems = connectItems;
+                this._inboxItems = connectItems.filter((item) => item.title === "Physician");
+                this._careTeamItems = connectItems.filter(
+                    (item) => item.title === "Physician" || item.title === "Nurse");
+                this._friendsFamilyItems = connectItems.filter(
+                    (item) => item.title !== "Physician" && item.title !== "Nurse");
             });
     }
 
-    onCareTeamItemTap(args: ListViewEventData): void {
-        const tappedTeamItem = args.view.bindingContext;
-        console.log(JSON.stringify(tappedTeamItem));
-        this._routerExtensions.navigate(["tabs/connect-detail", tappedTeamItem.id],
+    onItemTap(connectItem: ConnectItem): void {
+        this._routerExtensions.navigate(["tabs/connect-detail", connectItem.id],
             {
                 animated: true,
                 transition: {

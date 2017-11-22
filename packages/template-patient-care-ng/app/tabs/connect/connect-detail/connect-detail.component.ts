@@ -1,18 +1,17 @@
 import { Component, OnInit } from "@angular/core";
 import { PageRoute, RouterExtensions } from "nativescript-angular/router";
 import * as email from "nativescript-email";
+import * as phoneModule from "nativescript-phone";
 import "rxjs/add/operator/switchMap";
 
 import { ConnectItem } from "../shared/connect-item.model";
 import { ConnectService } from "../shared/connect.service";
 
-const phoneModule = require("nativescript-phone");
-
 @Component({
     selector: "ConnectDetail",
     moduleId: module.id,
     templateUrl: "./connect-detail.component.html",
-    styleUrls: ["../connect-common.css", "connect-detail-common.css"]
+    styleUrls: ["../connect.component.css", "connect-detail.component.css"]
 })
 export class ConnectDetailComponent implements OnInit {
     private _connectItem: ConnectItem;
