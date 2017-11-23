@@ -1,15 +1,3 @@
-
-export enum CarePlanIdentifierType {
-    outdoorWalk,
-    hamstringStretch,
-    takeMedication,
-    backPain,
-    mood,
-    bloodGlucose,
-    weight,
-    caffeine
-}
-
 export enum CarePlanActivityType {
     physical = "Physical Activity",
     assesment = "Assessment",
@@ -18,7 +6,6 @@ export enum CarePlanActivityType {
 }
 
 export class CarePlanActivity {
-    identifier: CarePlanIdentifierType;
     groupIdentifier: CarePlanActivityType;
     title: string;
     text: string;
@@ -29,7 +16,6 @@ export class CarePlanActivity {
     type: number;
 
     constructor(options: any) {
-        this.identifier = (<any>CarePlanIdentifierType)[options._id];
         this.groupIdentifier = this.getGroupIdentifierType(options.groupIdentifier);
         this.title = options.title;
         this.text = options.text;

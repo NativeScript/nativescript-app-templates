@@ -3,9 +3,11 @@ import { CarePlanActivity, CarePlanActivityType } from "./care-plan-activity.mod
 export class CarePlanEvent {
     date: Date;
     activity: CarePlanActivity;
-    isExecuted: boolean;
+    value: number;
 
     constructor(date, activity) {
+        this.value = 0;
+
         this.date = date;
         this.activity = activity;
     }

@@ -3,6 +3,7 @@ import { NativeScriptCommonModule } from "nativescript-angular/common";
 import { NativeScriptUIGaugesModule } from "nativescript-pro-ui/gauges/angular";
 import { NativeScriptUIListViewModule } from "nativescript-pro-ui/listview/angular";
 
+import { ActivityDetailComponent } from "./care-card/activity-detail/activity-detail.component";
 import { CareCardComponent } from "./care-card/care-card.component";
 import { CareDashboardComponent } from "./care-card/care-dashboard/care-dashboard.component";
 import { CircularStatusComponent } from "./care-card/care-dashboard/circular-status/circular-status.component";
@@ -27,6 +28,7 @@ import { TabsComponent } from "./tabs.component";
         CareDashboardComponent,
         CircularStatusComponent,
         ConnectComponent,
+        ActivityDetailComponent,
         ConnectDetailComponent,
         TabsComponent
     ],

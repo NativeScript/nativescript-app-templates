@@ -3,13 +3,15 @@ import { Kinvey } from "kinvey-nativescript-sdk";
 import { Observable } from "rxjs/Rx";
 
 // tslint:disable-next-line:max-line-length
-import { CarePlanActivity, CarePlanActivityType, CarePlanIdentifierType } from "./care-plan-activity.model";
+import { CarePlanActivity, CarePlanActivityType } from "./care-plan-activity.model";
 import { CarePlanEvent, CarePlanEventsHolder } from "./care-plan-event.model";
 
 @Injectable()
 export class CareCardService {
     private _events: Array<CarePlanEventsHolder>;
-    private activityStore = Kinvey.DataStore.collection<any>("Activity");
+    private _activities: Array<CarePlanActivity>;
+
+    private _activityStore = Kinvey.DataStore.collection<any>("Activity");
 
     constructor() {
         this._events = new Array<CarePlanEventsHolder>();
@@ -19,17 +21,25 @@ export class CareCardService {
         return this._events;
     }
 
+    getActivity(title: string): CarePlanActivity {
+        const activity = this._activities.find((currentActivity) => {
+            return currentActivity.title === title;
+        });
+
+        return activity;
+    }
+
     findEventHolder(eventHolder: CarePlanEventsHolder): CarePlanEventsHolder {
         const event = this._events.find((currentEvent) => {
             return currentEvent.date === eventHolder.date &&
-                currentEvent.activity.identifier === eventHolder.activity.identifier;
+                currentEvent.activity.title === eventHolder.activity.title;
         });
 
         return event;
     }
 
     getAllActivities(): Promise<any> {
-        return this.activityStore.find().toPromise()
+        return this._activityStore.find().toPromise()
             .then((data) => {
                 const activities = [];
 
@@ -37,6 +47,8 @@ export class CareCardService {
                     const activity = new CarePlanActivity(activityData);
                     activities.push(activity);
                 });
+
+                this._activities = activities;
 
                 return activities;
             })

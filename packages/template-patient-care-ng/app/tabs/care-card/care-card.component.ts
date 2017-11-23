@@ -4,7 +4,7 @@ import { ListViewEventData } from "nativescript-pro-ui/listview";
 import { Observable } from "rxjs/Rx";
 
 import { CareCardService } from "./shared/care-card.service";
-import { CarePlanActivity, CarePlanActivityType, CarePlanIdentifierType } from "./shared/care-plan-activity.model";
+import { CarePlanActivity, CarePlanActivityType } from "./shared/care-plan-activity.model";
 import { CarePlanEvent, CarePlanEventsHolder } from "./shared/care-plan-event.model";
 
 @Component({
@@ -78,15 +78,14 @@ export class CareCardComponent implements OnInit {
     }
 
     onActivityEventTap(eventHolder: CarePlanEventsHolder, event: CarePlanEvent) {
-        event.isExecuted = !event.isExecuted;
-
+        event.value = event.value === 0 ? 1 : 0;
         this.upsertEvent(eventHolder);
     }
 
-    onActivityTap(args: ListViewEventData): void {
-        const tappedTeamItem = args.view.bindingContext;
-
-        this._routerExtensions.navigate(["tabs/connect-detail", tappedTeamItem.id],
+    onActivityTap(eventHolder: CarePlanEventsHolder) {
+        this._routerExtensions.navigate([
+            "tabs/activity-detail",
+            eventHolder.activity.title],
             {
                 animated: true,
                 transition: {
