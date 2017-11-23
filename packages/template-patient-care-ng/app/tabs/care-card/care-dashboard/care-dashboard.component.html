@@ -3,12 +3,12 @@
     <StackLayout orientation="horizontal" class="m-x-auto m-t-5">
         <StackLayout *ngFor="let item of careState" height="52" width="52" (tap)="onItemTap(item.date)">
             <Label [text]="item.date | date:'EEE' | slice:0:1" class="m-x-auto m-y-auto"></Label>
-            <CircularStatus [value]="item.value" kFontSize="33" completionIcon="&#xf058;"></CircularStatus>
+            <CircularStatus [value]="item.value" kCompletionIconFontSize="33" completionIcon="&#xf058;"></CircularStatus>
         </StackLayout>
     </StackLayout>
 
     <GridLayout columns="*, 2*, 3*, *" class="m-t-10">
-        <CircularStatus kFontSize="111" kCol="1" [value]="selectedState.value" inProgressIcon="&#xf21e;" completionIcon="&#xf058;"></CircularStatus>
+        <CircularStatus kCol="1" [value]="selectedState.value" kCompletionIconFontSize="111" inProgressIcon="&#xf21e;" completionIcon="&#xf058;"></CircularStatus>
         <StackLayout col="2" class="m-y-auto m-l-10">
             <Label [text]="selectedState.date | date:'longDate'" class="footnote text-muted"></Label>
             <Label [text]="'Your care overview is ' + selectedState.value + '% complete'" textWrap="true" class="h3 font-weight-bold"></Label>

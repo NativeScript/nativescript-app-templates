@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnChanges, SimpleChange, SimpleChanges, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, Input, OnChanges, SimpleChange, SimpleChanges, ViewChild } from "@angular/core"; // tslint:disable-line:max-line-length
 import { Animation } from "ui/animation/animation";
 import { AnimationCurve } from "ui/enums";
 import { Label } from "ui/label";
@@ -11,12 +11,12 @@ const radialAnimationDurationMilliseconds = 1000;
     templateUrl: "./circular-status.component.html",
     styleUrls: ["./circular-status.component.css"]
 })
-export class CircularStatusComponent implements OnChanges {
+export class CircularStatusComponent implements AfterViewInit, OnChanges {
 
     @ViewChild("progressLabel") progressLabelElement: ElementRef;
     @ViewChild("completionLabel") completionLabelElement: ElementRef;
 
-    @Input() kFontSize: number;
+    @Input() kCompletionIconFontSize: number;
     @Input() kCol: number;
     @Input() value: number;
     @Input() inProgressIcon: string;
@@ -30,67 +30,42 @@ export class CircularStatusComponent implements OnChanges {
         return radialAnimationDurationMilliseconds;
     }
 
-    private get progressLabel(): Label {
-        if (!this._progresslabel) {
-            this._progresslabel = <Label>(this.progressLabelElement.nativeElement);
-        }
+    ngAfterViewInit(): void {
+        this._progresslabel = <Label>(this.progressLabelElement.nativeElement);
+        this._completionLabel = <Label>(this.completionLabelElement.nativeElement);
 
-        return this._progresslabel;
-    }
+        this._animation = new Animation([{
+            target: this._progresslabel,
+            opacity: 0,
+            duration: 0,
+            delay: this.radialAnimationDuration
+        }, {
+            target: this._completionLabel,
+            opacity: 1,
+            duration: 200,
+            curve: AnimationCurve.easeIn
+        }], true);
 
-    private get completionLabel(): Label {
-        if (!this._completionLabel) {
-            this._completionLabel = <Label>(this.completionLabelElement.nativeElement);
-        }
-
-        return this._completionLabel;
-    }
-
-    private get animation(): Animation {
-        if (!this._animation) {
-            this._animation = new Animation([{
-                target: this.progressLabel,
-                opacity: 0,
-                duration: 0,
-                delay: this.radialAnimationDuration
-            }, {
-                target: this.completionLabel,
-                opacity: 1,
-                duration: 200,
-                delay: this.radialAnimationDuration,
-                curve: AnimationCurve.easeIn
-            }]);
-        }
-
-        return this._animation;
+        this.updateAnimation(this.value);
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (changes.value) {
-            this.updateAnimation(changes.value);
-        }
-
-        if (changes.kFontSize) {
-            // TODO: Reconsider this approach
-            // HACK: customizing the "completion" font size results in proper rendering for the small/large case
-            this.completionLabel.fontSize = changes.kFontSize.currentValue;
+        if (this._animation && changes.value) {
+            this.updateAnimation(changes.value.currentValue || 0);
         }
     }
 
-    private updateAnimation(valueChange: SimpleChange): void {
-        const currentValue = Number(valueChange.currentValue || 0);
-        const previousValue = Number(valueChange.previousValue || 0);
-
-        if (this.animation.isPlaying) {
-            this.animation.cancel();
+    private updateAnimation(value: number): void {
+        if (this._animation.isPlaying) {
+            this._animation.cancel();
         }
 
-        this.completionLabel.opacity = 0;
-        this.progressLabel.opacity = 1;
+        this._completionLabel.opacity = 0;
+        this._progresslabel.opacity = 1;
 
-        if (currentValue === 100) {
+        if (value === 100) {
             // catch animation cancelled error (and do nothing)
-            this.animation.play().catch(() => void 0);
+            setTimeout(() => this._animation.play().catch(() => void 0));
         }
     }
 }
