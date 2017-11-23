@@ -3,11 +3,11 @@ import { Routes } from "@angular/router";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 import { ActivityDetailComponent } from "./care-card/activity-detail/activity-detail.component";
+import { CareComponent } from "./care.component";
 import { ConnectDetailComponent } from "./connect/connect-detail/connect-detail.component";
-import { TabsComponent } from "./tabs.component";
 
 const routes: Routes = [
-    { path: "", component: TabsComponent },
+    { path: "", component: CareComponent },
     { path: "connect-detail/:id", component: ConnectDetailComponent },
     { path: "activity-detail/:title", component: ActivityDetailComponent }
 ];
@@ -16,4 +16,4 @@ const routes: Routes = [
     imports: [NativeScriptRouterModule.forChild(routes)],
     exports: [NativeScriptRouterModule]
 })
-export class TabsRoutingModule { }
+export class CareRoutingModule { }

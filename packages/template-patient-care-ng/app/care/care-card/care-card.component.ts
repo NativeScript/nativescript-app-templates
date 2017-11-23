@@ -84,7 +84,7 @@ export class CareCardComponent implements OnInit {
 
     onActivityTap(eventHolder: CarePlanEventsHolder) {
         this._routerExtensions.navigate([
-            "tabs/activity-detail",
+            "care/activity-detail",
             eventHolder.activity.title],
             {
                 animated: true,

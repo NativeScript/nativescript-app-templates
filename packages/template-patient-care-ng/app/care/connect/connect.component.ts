@@ -44,7 +44,7 @@ export class ConnectComponent implements OnInit {
     }
 
     onItemTap(connectItem: ConnectItem): void {
-        this._routerExtensions.navigate(["tabs/connect-detail", connectItem.id],
+        this._routerExtensions.navigate(["care/connect-detail", connectItem.id],
             {
                 animated: true,
                 transition: {

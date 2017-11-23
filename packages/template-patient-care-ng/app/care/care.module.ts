@@ -6,31 +6,31 @@ import { NativeScriptUIListViewModule } from "nativescript-pro-ui/listview/angul
 import { ActivityDetailComponent } from "./care-card/activity-detail/activity-detail.component";
 import { CareCardComponent } from "./care-card/care-card.component";
 import { CareDashboardComponent } from "./care-card/care-dashboard/care-dashboard.component";
-import { CircularStatusComponent } from "./care-card/care-dashboard/circular-status/circular-status.component";
+import { RadialRatingComponent } from "./care-card/care-dashboard/radial-rating/radial-rating.component";
 import { ConnectDetailComponent } from "./connect/connect-detail/connect-detail.component";
 import { ConnectComponent } from "./connect/connect.component";
 
 import { CareCardService } from "./care-card/shared/care-card.service";
 import { ConnectService } from "./connect/shared/connect.service";
 
-import { TabsRoutingModule } from "./tabs-routing.module";
-import { TabsComponent } from "./tabs.component";
+import { CareRoutingModule } from "./care-routing.module";
+import { CareComponent } from "./care.component";
 
 @NgModule({
     imports: [
         NativeScriptCommonModule,
         NativeScriptUIGaugesModule,
         NativeScriptUIListViewModule,
-        TabsRoutingModule
+        CareRoutingModule
     ],
     declarations: [
         CareCardComponent,
         CareDashboardComponent,
-        CircularStatusComponent,
+        RadialRatingComponent,
         ConnectComponent,
         ActivityDetailComponent,
         ConnectDetailComponent,
-        TabsComponent
+        CareComponent
     ],
     providers: [
         CareCardService,
@@ -40,4 +40,4 @@ import { TabsComponent } from "./tabs.component";
         NO_ERRORS_SCHEMA
     ]
 })
-export class TabsModule { }
+export class CareModule { }

@@ -49,7 +49,7 @@ export class RegistrationComponent implements OnInit {
 
         LoginService.signup(this._registrationForm)
             .then((user: Kinvey.User) => {
-                this._routerExtensions.navigate(["/tabs"],
+                this._routerExtensions.navigate(["/care"],
                     {
                         clearHistory: true,
                         animated: true,

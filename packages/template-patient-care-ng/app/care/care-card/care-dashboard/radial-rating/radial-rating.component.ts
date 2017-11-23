@@ -6,12 +6,12 @@ import { Label } from "ui/label";
 const radialAnimationDurationMilliseconds = 1000;
 
 @Component({
-    selector: "CircularStatus",
+    selector: "RadialRating",
     moduleId: module.id,
-    templateUrl: "./circular-status.component.html",
-    styleUrls: ["./circular-status.component.css"]
+    templateUrl: "./radial-rating.component.html",
+    styleUrls: ["./radial-rating.component.css"]
 })
-export class CircularStatusComponent implements AfterViewInit, OnChanges {
+export class RadialRatingComponent implements AfterViewInit, OnChanges {
 
     @ViewChild("progressLabel") progressLabelElement: ElementRef;
     @ViewChild("completionLabel") completionLabelElement: ElementRef;

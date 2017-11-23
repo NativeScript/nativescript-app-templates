@@ -39,7 +39,7 @@ export class ActivityDetailComponent implements OnInit {
     }
 
     onDoneButtonTap(): void {
-
+        // TODO:
     }
 
     onBackButtonTap(): void {
