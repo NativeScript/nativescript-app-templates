@@ -1,17 +1,17 @@
 <StackLayout class="page">
 
     <StackLayout orientation="horizontal" class="m-x-auto m-t-5">
-        <StackLayout *ngFor="let item of careState" height="52" width="52" (tap)="onItemTap(item.date)">
+        <StackLayout *ngFor="let item of weeklyState" height="52" width="52" (tap)="onItemTap(item.date)">
             <Label [text]="item.date | date:'EEE' | slice:0:1" class="m-x-auto m-y-auto"></Label>
             <RadialRating [value]="item.value" kCompletionIconFontSize="33" completionIcon="&#xf058;"></RadialRating>
         </StackLayout>
     </StackLayout>
 
     <GridLayout columns="*, 2*, 3*, *" class="m-t-10">
-        <RadialRating kCol="1" [value]="selectedState.value" kCompletionIconFontSize="111" inProgressIcon="&#xf21e;" completionIcon="&#xf058;"></RadialRating>
+        <RadialRating kCol="1" [value]="selectedValue" kCompletionIconFontSize="111" inProgressIcon="&#xf21e;" completionIcon="&#xf058;"></RadialRating>
         <StackLayout col="2" class="m-y-auto m-l-10">
-            <Label [text]="selectedState.date | date:'longDate'" class="footnote text-muted"></Label>
-            <Label [text]="'Your care overview is ' + selectedState.value + '% complete'" textWrap="true" class="h3 font-weight-bold"></Label>
+            <Label [text]="selectedDate | date:'longDate'" class="footnote text-muted"></Label>
+            <Label [text]="'Your care overview is ' + selectedValue + '% complete'" textWrap="true" class="h3 font-weight-bold"></Label>
         </StackLayout>
     </GridLayout>
 
