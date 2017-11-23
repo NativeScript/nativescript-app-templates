@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 
 @Component({
     selector: "CareDashboard",
@@ -6,17 +6,29 @@ import { Component, OnInit } from "@angular/core";
     templateUrl: "./care-dashboard.component.html"
 })
 export class CareDashboardComponent implements OnInit {
+    @Output() selectedDateChange = new EventEmitter<Date>();
 
     careState: Array<any>;
     selectedState: any;
 
+    private _selectedDate: Date;
+
     ngOnInit(): void {
         this.careState = this.getCareState();
-        this.selectedState = this.careState[new Date().getDay()];
+        this.selectedDate = new Date();
     }
 
     onItemTap(itemDate: Date): void {
         this.selectedState = this.careState[itemDate.getDay()];
+    }
+
+    get selectedDate(): Date {
+        return this.selectedState.date;
+    }
+
+    set selectedDate(date: Date) {
+        this.selectedState = this.careState[date.getDay()];
+        this.selectedDateChange.emit(date);
     }
 
     // TODO: Extract when we have an idea of the CareKit Kinvey backend
