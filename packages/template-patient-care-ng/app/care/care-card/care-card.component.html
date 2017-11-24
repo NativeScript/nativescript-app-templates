@@ -1,15 +1,7 @@
 <GridLayout class="page" rows="180, auto, auto, 5*">
 
-    <CareDashboard></CareDashboard>
-
+    <CareDashboard (selectedDateChange)="onSelectedDateChanged($event)"></CareDashboard>
     <StackLayout row="1" class="hr-light"></StackLayout>
-
-    <StackLayout orientation="horizontal" row="2">
-        <Button text="prev day" (tap)="prevDayButtonTap()">
-        </Button>
-        <Button text="next day" (tap)="nextDayButtonTap()">
-        </Button>
-    </StackLayout>
 
     <ActivityIndicator row="3" class="activity-indicator" [busy]="isLoading"></ActivityIndicator>
     <ScrollView *ngIf="!isLoading" row="3">
@@ -61,7 +53,7 @@
 
                     <StackLayout row="1" colSpan="3" orientation="horizontal" class="m-b-15">
                         <StackLayout *ngFor="let event of medicationItem.events">
-                            <Label [text]="event.isExecuted ? '&#xf111;':'&#xf10c;'" fontSize="25" class="fa m-r-5 m-y-auto" [color]="medicationItem.activity.tintColor"
+                            <Label [text]="event.value === 1 ? '&#xf111;':'&#xf10c;'" fontSize="25" class="fa m-r-5 m-y-auto" [color]="medicationItem.activity.tintColor"
                                 (tap)="onActivityEventTap(medicationItem, event)"></Label>
                         </StackLayout>
                     </StackLayout>

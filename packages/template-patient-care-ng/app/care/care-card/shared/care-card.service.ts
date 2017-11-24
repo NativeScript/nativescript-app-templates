@@ -30,9 +30,9 @@ export class CareCardService {
         return activity;
     }
 
-    findEventHolder(title: string, date: number): CarePlanEventsHolder {
+    findEventHolder(title: string, date: Date): CarePlanEventsHolder {
         const event = this._events.find((currentEvent) => {
-            return currentEvent.date === date && currentEvent.activity.title === title;
+            return currentEvent.date.toDateString() === date.toDateString() && currentEvent.activity.title === title;
         });
 
         return event;
@@ -70,8 +70,10 @@ export class CareCardService {
         let eventToUpdate = this.findEventHolder(eventHolder.activity.title, eventHolder.date);
 
         if (eventToUpdate) {
+            console.log("UPDATE");
             eventToUpdate = eventHolder;
         } else {
+            console.log("PUSH");
             this.events.push(eventHolder);
         }
     }

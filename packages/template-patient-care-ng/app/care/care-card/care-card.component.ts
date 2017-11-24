@@ -21,9 +21,7 @@ export class CareCardComponent implements OnInit {
     private _medicationEvents: Array<CarePlanEventsHolder>;
 
     private _allActivities: Array<CarePlanActivity>;
-
-    private _currentDayOfWeek: number;
-    private _currentDate: Date = new Date();
+    private _selectedDate: Date;
 
     constructor(
         private _routerExtensions: RouterExtensions,
@@ -55,26 +53,21 @@ export class CareCardComponent implements OnInit {
         this._otherEvents = new Array<CarePlanEventsHolder>();
         this._medicationEvents = new Array<CarePlanEventsHolder>();
 
-        this._currentDayOfWeek = this.getDayOfWeek(this._currentDate);
-
         this._careCardService.getAllActivities()
             .then((activities: Array<any>) => {
                 this.isLoading = false;
                 this._allActivities = activities;
-                this.getEvents(this._allActivities, this._currentDayOfWeek);
+
+                this.getEvents(this._allActivities, this._selectedDate);
             });
     }
 
-    nextDayButtonTap() {
-        this._currentDayOfWeek++;
+    onSelectedDateChanged(date: Date) {
+        this._selectedDate = date;
 
-        this.getEvents(this._allActivities, this._currentDayOfWeek);
-    }
-
-    prevDayButtonTap() {
-        this._currentDayOfWeek--;
-
-        this.getEvents(this._allActivities, this._currentDayOfWeek);
+        if (this._allActivities) {
+            this.getEvents(this._allActivities, this._selectedDate);
+        }
     }
 
     onActivityEventTap(eventHolder: CarePlanEventsHolder, event: CarePlanEvent) {
@@ -86,7 +79,7 @@ export class CareCardComponent implements OnInit {
         this._routerExtensions.navigate([
             "care/activity-detail",
             eventHolder.activity.title,
-            this._currentDayOfWeek],
+            this._selectedDate.toISOString()],
             {
                 animated: true,
                 transition: {
@@ -97,18 +90,19 @@ export class CareCardComponent implements OnInit {
             });
     }
 
-    private getEvents(activities: Array<CarePlanActivity>, currentDayOfWeek: number) {
+    private getEvents(activities: Array<CarePlanActivity>, selectedDate: Date) {
         this._physicalEvents = new Array<CarePlanEventsHolder>();
         this._assessmentEvents = new Array<CarePlanEventsHolder>();
         this._otherEvents = new Array<CarePlanEventsHolder>();
         this._medicationEvents = new Array<CarePlanEventsHolder>();
 
         activities.forEach((activity) => {
-            const occurrencesForDay: number = activity.schedule[currentDayOfWeek] || 0;
-            const eventHolder = new CarePlanEventsHolder(activity, currentDayOfWeek);
+            const day: number = selectedDate.getDay();
+            const occurrencesForDay: number = activity.schedule[day] || 0;
+            const eventHolder = new CarePlanEventsHolder(activity, selectedDate);
 
             for (let index = 0; index < occurrencesForDay; index++) {
-                const event = new CarePlanEvent(activity, this._currentDate);
+                const event = new CarePlanEvent(activity, selectedDate);
                 eventHolder.events.push(event);
             }
 
@@ -123,24 +117,20 @@ export class CareCardComponent implements OnInit {
             }
         });
 
-        this.mapEvents(this._physicalEvents, currentDayOfWeek);
-        this.mapEvents(this._assessmentEvents, currentDayOfWeek);
-        this.mapEvents(this._medicationEvents, currentDayOfWeek);
-        this.mapEvents(this._otherEvents, currentDayOfWeek);
+        this.mapEvents(this._physicalEvents, selectedDate);
+        this.mapEvents(this._assessmentEvents, selectedDate);
+        this.mapEvents(this._medicationEvents, selectedDate);
+        this.mapEvents(this._otherEvents, selectedDate);
     }
 
-    private mapEvents(eventsCollection: Array<CarePlanEventsHolder>, currentDayOfWeek: number) {
+    private mapEvents(eventsCollection: Array<CarePlanEventsHolder>, selectedDate: Date) {
         eventsCollection.forEach((eventHolder) => {
             // tslint:disable-next-line:max-line-length
-            const savedEventHolder = this._careCardService.findEventHolder(eventHolder.activity.title, eventHolder.date);
+            const savedEventHolder = this._careCardService.findEventHolder(eventHolder.activity.title, selectedDate);
 
             if (savedEventHolder) {
                 eventHolder.events = savedEventHolder.events;
             }
         });
-    }
-
-    private getDayOfWeek(date: Date): number {
-        return 0;
     }
 }

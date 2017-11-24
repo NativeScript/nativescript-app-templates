@@ -16,7 +16,7 @@ export class ActivityDetailComponent implements OnInit {
     isReadonlyActivity: boolean;
     value: number;
 
-    private _selectedDate: number;
+    private _selectedDate: Date;
     private _activity: CarePlanActivity;
     private eventHolder: CarePlanEventsHolder;
 
@@ -35,7 +35,7 @@ export class ActivityDetailComponent implements OnInit {
             .switchMap((activatedRoute) => activatedRoute.params)
             .forEach((params) => {
                 this._activity = this._careCardService.getActivity(params.title);
-                this._selectedDate = Number(params.date);
+                this._selectedDate = new Date(params.date);
 
                 this.eventHolder = this._careCardService.findEventHolder(this.activity.title, this._selectedDate);
 
