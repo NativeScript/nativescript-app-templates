@@ -9,7 +9,7 @@ import { ConnectDetailComponent } from "./connect/connect-detail/connect-detail.
 const routes: Routes = [
     { path: "", component: CareComponent },
     { path: "connect-detail/:id", component: ConnectDetailComponent },
-    { path: "activity-detail/:title", component: ActivityDetailComponent }
+    { path: "activity-detail/:title/:date", component: ActivityDetailComponent }
 ];
 
 @NgModule({

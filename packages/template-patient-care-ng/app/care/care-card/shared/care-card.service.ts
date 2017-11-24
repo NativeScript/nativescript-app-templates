@@ -15,6 +15,7 @@ export class CareCardService {
 
     constructor() {
         this._events = new Array<CarePlanEventsHolder>();
+        this._activities = Array<CarePlanActivity>();
     }
 
     get events(): Array<CarePlanEventsHolder> {
@@ -29,36 +30,50 @@ export class CareCardService {
         return activity;
     }
 
-    findEventHolder(eventHolder: CarePlanEventsHolder): CarePlanEventsHolder {
+    findEventHolder(title: string, date: number): CarePlanEventsHolder {
         const event = this._events.find((currentEvent) => {
-            return currentEvent.date === eventHolder.date &&
-                currentEvent.activity.title === eventHolder.activity.title;
+            return currentEvent.date === date && currentEvent.activity.title === title;
         });
 
         return event;
     }
 
     getAllActivities(): Promise<any> {
-        return this._activityStore.find().toPromise()
-            .then((data) => {
-                const activities = [];
+        if (this._activities.length) {
+            return Promise.resolve(this._activities);
+        } else {
 
-                data.forEach((activityData: any) => {
-                    const activity = new CarePlanActivity(activityData);
-                    activities.push(activity);
+            return this._activityStore.find().toPromise()
+                .then((data) => {
+                    const activities = [];
+
+                    data.forEach((activityData: any) => {
+                        const activity = new CarePlanActivity(activityData);
+                        activities.push(activity);
+                    });
+
+                    this._activities = activities;
+
+                    return activities;
+                })
+                .catch((error: Kinvey.BaseError) => {
+                    alert({
+                        title: "Opps something went wrong.",
+                        message: error.message,
+                        okButtonText: "Ok"
+                    });
                 });
+        }
+    }
 
-                this._activities = activities;
+    upsertEvent(eventHolder: CarePlanEventsHolder) {
+        let eventToUpdate = this.findEventHolder(eventHolder.activity.title, eventHolder.date);
 
-                return activities;
-            })
-            .catch((error: Kinvey.BaseError) => {
-                alert({
-                    title: "Opps something went wrong.",
-                    message: error.message,
-                    okButtonText: "Ok"
-                });
-            });
+        if (eventToUpdate) {
+            eventToUpdate = eventHolder;
+        } else {
+            this.events.push(eventHolder);
+        }
     }
 
     getWeeklyOverview(selectedDate: Date): Array<any> {

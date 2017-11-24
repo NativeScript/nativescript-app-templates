@@ -1,5 +1,6 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptCommonModule } from "nativescript-angular/common";
+import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { NativeScriptUIGaugesModule } from "nativescript-pro-ui/gauges/angular";
 import { NativeScriptUIListViewModule } from "nativescript-pro-ui/listview/angular";
 
@@ -21,6 +22,7 @@ import { CareComponent } from "./care.component";
         NativeScriptCommonModule,
         NativeScriptUIGaugesModule,
         NativeScriptUIListViewModule,
+        NativeScriptFormsModule,
         CareRoutingModule
     ],
     declarations: [

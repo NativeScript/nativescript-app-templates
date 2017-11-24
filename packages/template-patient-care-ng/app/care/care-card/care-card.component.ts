@@ -79,13 +79,14 @@ export class CareCardComponent implements OnInit {
 
     onActivityEventTap(eventHolder: CarePlanEventsHolder, event: CarePlanEvent) {
         event.value = event.value === 0 ? 1 : 0;
-        this.upsertEvent(eventHolder);
+        this._careCardService.upsertEvent(eventHolder);
     }
 
     onActivityTap(eventHolder: CarePlanEventsHolder) {
         this._routerExtensions.navigate([
             "care/activity-detail",
-            eventHolder.activity.title],
+            eventHolder.activity.title,
+            this._currentDayOfWeek],
             {
                 animated: true,
                 transition: {
@@ -107,7 +108,7 @@ export class CareCardComponent implements OnInit {
             const eventHolder = new CarePlanEventsHolder(activity, currentDayOfWeek);
 
             for (let index = 0; index < occurrencesForDay; index++) {
-                const event = new CarePlanEvent(this._currentDate, activity);
+                const event = new CarePlanEvent(activity, this._currentDate);
                 eventHolder.events.push(event);
             }
 
@@ -130,22 +131,13 @@ export class CareCardComponent implements OnInit {
 
     private mapEvents(eventsCollection: Array<CarePlanEventsHolder>, currentDayOfWeek: number) {
         eventsCollection.forEach((eventHolder) => {
-            const savedEventHolder = this._careCardService.findEventHolder(eventHolder);
+            // tslint:disable-next-line:max-line-length
+            const savedEventHolder = this._careCardService.findEventHolder(eventHolder.activity.title, eventHolder.date);
 
             if (savedEventHolder) {
                 eventHolder.events = savedEventHolder.events;
             }
         });
-    }
-
-    private upsertEvent(eventHolder: CarePlanEventsHolder) {
-        let eventToUpdate = this._careCardService.findEventHolder(eventHolder);
-
-        if (eventToUpdate) {
-            eventToUpdate = eventHolder;
-        } else {
-            this._careCardService.events.push(eventHolder);
-        }
     }
 
     private getDayOfWeek(date: Date): number {

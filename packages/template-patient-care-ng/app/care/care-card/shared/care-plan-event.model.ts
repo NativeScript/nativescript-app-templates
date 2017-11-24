@@ -1,11 +1,11 @@
 import { CarePlanActivity, CarePlanActivityType } from "./care-plan-activity.model";
 
 export class CarePlanEvent {
-    date: Date;
+    date: number;
     activity: CarePlanActivity;
     value: number;
 
-    constructor(date, activity) {
+    constructor(activity, date) {
         this.value = 0;
 
         this.date = date;
