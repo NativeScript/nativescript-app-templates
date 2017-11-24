@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 
-import { StudyStep } from "../shared/study-step.model";
-import { TaskService } from "../shared/task.service";
+import { StudyStep } from "../core/task-manager/steps";
+import { TaskManagerService } from "../core/task-manager/task-manager.service";
 
 @Component({
     selector: "Survey",
@@ -15,7 +15,7 @@ export class SurveyComponent implements OnInit {
 
     constructor(
         private _routerExtensions: RouterExtensions,
-        private _taskService: TaskService
+        private _taskManagerService: TaskManagerService
     ) { }
 
     ngOnInit(): void {
@@ -34,8 +34,8 @@ export class SurveyComponent implements OnInit {
     }
 
     onDoneButtonTap() {
-        this._taskService.addStep(new StudyStep("booleanQuestionStep", this.answer));
-        this._taskService.pushTask("booleanQuestionTask");
+        this._taskManagerService.addStep(new StudyStep("booleanQuestionStep", this.answer));
+        this._taskManagerService.pushTask("booleanQuestionTask");
 
         this._routerExtensions.navigate(["/survey/complete"],
             {

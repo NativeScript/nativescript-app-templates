@@ -5,9 +5,8 @@ import { RadDataFormComponent } from "nativescript-pro-ui/dataform/angular";
 import { isAndroid } from "platform";
 import { Page } from "ui/page";
 
-import { RegistrationStep } from "../../shared/registration-step.model";
-import { SignUpStep } from "../../shared/sign-up-step.model";
-import { TaskService } from "../../shared/task.service";
+import { RegistrationStep, SignUpStep } from "../../core/task-manager/steps";
+import { TaskManagerService } from "../../core/task-manager/task-manager.service";
 import { LoginService } from "../shared/login.service";
 import { RegistrationForm } from "./registration-form.model";
 
@@ -25,7 +24,7 @@ export class RegistrationComponent implements OnInit {
     constructor(
         private _page: Page,
         private _routerExtensions: RouterExtensions,
-        private _taskService: TaskService
+        private _taskManagerService: TaskManagerService
     ) { }
 
     ngOnInit(): void {
@@ -51,12 +50,12 @@ export class RegistrationComponent implements OnInit {
 
         this.isLoading = true;
 
-        this._taskService.addStep(new RegistrationStep("registrationStep", this._registrationForm));
+        this._taskManagerService.addStep(new RegistrationStep("registrationStep", this._registrationForm));
 
         LoginService.signup(this._registrationForm)
             .then((user: Kinvey.User) => {
-                this._taskService.addStep(new SignUpStep("signUp"));
-                this._taskService.pushTask("accountCreationTask");
+                this._taskManagerService.addStep(new SignUpStep("signUp"));
+                this._taskManagerService.pushTask("accountCreationTask");
 
                 this._routerExtensions.navigate(["/consent"],
                     {

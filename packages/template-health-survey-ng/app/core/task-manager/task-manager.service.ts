@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Kinvey } from "kinvey-nativescript-sdk";
 
 @Injectable()
-export class TaskService {
+export class TaskManagerService {
     steps: { [identifier: string]: any } = {};
 
     addStep(step: any) {

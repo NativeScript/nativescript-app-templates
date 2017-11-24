@@ -1,14 +1,12 @@
-import { RegistrationForm } from "../login/registration/registration-form.model";
-
 export class RegistrationStep {
     results: Array<any>;
     saveable: boolean;
     identifier: string;
 
-    constructor(identifier: string, registrationForm: RegistrationForm) {
+    constructor(identifier: string, registrationData: any) {
         this.results = [
             {
-                textAnswer: registrationForm.email,
+                textAnswer: registrationData.email,
                 questionType: "Text",
                 saveable: false,
                 identifier: "ORKRegistrationFormItemEmail"
@@ -24,20 +22,20 @@ export class RegistrationStep {
                 identifier: "ORKRegistrationFormItemConfirmPassword"
             },
             {
-                textAnswer: registrationForm.givenName,
+                textAnswer: registrationData.givenName,
                 questionType: "Text",
                 saveable: false,
                 identifier: "ORKRegistrationFormItemGivenName"
             },
             {
-                textAnswer: registrationForm.familyName,
+                textAnswer: registrationData.familyName,
                 questionType: "Text",
                 saveable: false,
                 identifier: "ORKRegistrationFormItemFamilyName"
             },
             {
                 choiceAnswers: [
-                    registrationForm.gender
+                    registrationData.gender
                 ],
                 questionType: "SingleChoice",
                 saveable: false,
@@ -47,7 +45,7 @@ export class RegistrationStep {
                 calendar: "Gregorian",
                 questionType: "Date",
                 saveable: false,
-                dateAnswer: registrationForm.dateOfBirth,
+                dateAnswer: registrationData.dateOfBirth,
                 identifier: "ORKRegistrationFormItemDOB"
             }
         ];

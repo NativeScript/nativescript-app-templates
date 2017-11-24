@@ -3,8 +3,8 @@ import { Kinvey } from "kinvey-nativescript-sdk";
 import { RouterExtensions } from "nativescript-angular/router";
 import { RadDataFormComponent } from "nativescript-pro-ui/dataform/angular";
 
-import { ConsentReviewStep } from "../../../shared/consent-review-step.model";
-import { TaskService } from "../../../shared/task.service";
+import { ConsentReviewStep } from "../../../core/task-manager/steps";
+import { TaskManagerService } from "../../../core/task-manager/task-manager.service";
 import { ConsentForm } from "./consent-form.model";
 
 @Component({
@@ -19,7 +19,7 @@ export class ConsentComponent implements OnInit {
 
     constructor(
         private _routerExtensions: RouterExtensions,
-        private _taskService: TaskService
+        private _taskManagerService: TaskManagerService
     ) { }
 
     ngOnInit(): void {
@@ -39,8 +39,8 @@ export class ConsentComponent implements OnInit {
         const familyName = this._consentForm.lastName;
         const consentReviewStep = new ConsentReviewStep("consentReviewStep", givenName, familyName);
 
-        this._taskService.addStep(consentReviewStep);
-        this._taskService.pushTask("consentTask");
+        this._taskManagerService.addStep(consentReviewStep);
+        this._taskManagerService.pushTask("consentTask");
 
         this._routerExtensions.navigate(["/survey"],
             {
