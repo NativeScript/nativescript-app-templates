@@ -1,62 +1,55 @@
 {
-    "description": "NativeScript Application",
-    "license": "SEE LICENSE IN <your-license-filename>",
-    "readme": "NativeScript Application",
-    "repository": "<fill-your-repository-here>",
-    "nativescript": {
-        "id": "org.nativescript.ResearchKit",
-        "tns-android": {
-            "version": "3.3.0"
-        }
-    },
-    "dependencies": {
-        "@angular/animations": "4.4.6",
-        "@angular/common": "4.4.6",
-        "@angular/compiler": "4.4.6",
-        "@angular/core": "4.4.6",
-        "@angular/forms": "4.4.6",
-        "@angular/http": "4.4.6",
-        "@angular/platform-browser": "4.4.6",
-        "@angular/router": "4.4.6",
-        "nativescript-angular": "4.4.1",
-        "kinvey-nativescript-sdk": "3.9.2",
-        "nativescript-pro-ui": "3.2.0",
-        "nativescript-theme-core": "1.0.4",
-        "reflect-metadata": "0.1.10",
-        "rxjs": "5.5.2",
-        "tns-core-modules": "3.3.0",
-        "zone.js": "0.8.18"
-    },
-    "devDependencies": {
-        "@angular/compiler-cli": "4.4.6",
-        "@ngtools/webpack": "~1.6.0",
-        "babel-traverse": "6.4.5",
-        "babel-types": "6.4.5",
-        "babylon": "6.4.5",
-        "codelyzer": "3.2.2",
-        "copy-webpack-plugin": "4.0.1",
-        "extract-text-webpack-plugin": "3.0.0",
-        "lazy": "1.0.11",
-        "nativescript-css-loader": "~0.26.0",
-        "nativescript-dev-typescript": "0.5.1",
-        "nativescript-dev-webpack": "0.8.0",
-        "nativescript-worker-loader": "0.8.1",
-        "raw-loader": "0.5.1",
-        "resolve-url-loader": "2.1.0",
-        "tslint": "5.8.0",
-        "typescript": "2.4.2",
-        "webpack": "3.2.0",
-        "webpack-bundle-analyzer": "2.8.2",
-        "webpack-sources": "1.0.1"
-    },
-    "scripts": {
-        "lint": "tslint \"app/**/*.ts\"",
-        "ns-bundle": "ns-bundle",
-        "start-android-bundle": "npm run ns-bundle --android --run-app",
-        "start-ios-bundle": "npm run ns-bundle --ios --run-app",
-        "build-android-bundle": "npm run ns-bundle --android --build-app",
-        "build-ios-bundle": "npm run ns-bundle --ios --build-app",
-        "publish-ios-bundle": "npm run ns-bundle --ios --publish-app",
-        "generate-android-snapshot": "generate-android-snapshot --targetArchs arm,arm64,ia32 --install"
-    }
+  "name": "tns-template-health-survey-ng",
+  "displayName": "Health Survey with Kinvey",
+  "templateType": "App template",
+  "main": "main.js",
+  "version": "3.3.1",
+  "description": "Health survey template that saves data to Kinvey database.",
+  "license": "SEE LICENSE IN <your-license-filename>",
+  "keywords": [
+    "telerik",
+    "mobile",
+    "nativescript",
+    "{N}",
+    "tns",
+    "appbuilder",
+    "template",
+    "kinvey"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NativeScript/template-health-survey-ng"
+  },
+  "homepage": "https://github.com/NativeScript/template-health-survey-ng",
+  "android": {
+    "v8Flags": "--expose_gc"
+  },
+  "dependencies": {
+    "@angular/animations": "4.4.6",
+    "@angular/common": "4.4.6",
+    "@angular/compiler": "4.4.6",
+    "@angular/core": "4.4.6",
+    "@angular/forms": "4.4.6",
+    "@angular/http": "4.4.6",
+    "@angular/platform-browser": "4.4.6",
+    "@angular/router": "4.4.6",
+    "kinvey-nativescript-sdk": "3.9.2",
+    "nativescript-angular": "4.4.1",
+    "nativescript-pro-ui": "3.2.0",
+    "nativescript-theme-core": "1.0.4",
+    "reflect-metadata": "0.1.10",
+    "rxjs": "5.5.2",
+    "tns-core-modules": "3.3.0",
+    "zone.js": "0.8.18"
+  },
+  "devDependencies": {
+    "codelyzer": "3.2.2",
+    "nativescript-dev-typescript": "0.5.1",
+    "tslint": "5.8.0",
+    "typescript": "2.4.2"
+  },
+  "scripts": {
+    "preinstall": "node tools/preinstall.js",
+    "postinstall": "node tools/postinstall.js"
+  }
 }

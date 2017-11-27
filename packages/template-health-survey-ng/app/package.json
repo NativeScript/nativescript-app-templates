@@ -1,8 +1,0 @@
-{
-  "android": {
-    "v8Flags": "--expose_gc"
-  },
-  "main": "main.js",
-  "name": "tns-template-blank-ng",
-  "version": "3.3.2"
-}
