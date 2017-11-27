@@ -1,7 +1,7 @@
 <StackLayout class="page">
 
     <StackLayout orientation="horizontal" class="m-x-auto m-t-5">
-        <StackLayout *ngFor="let item of weeklyState" height="52" width="52" (tap)="onItemTap(item.date)">
+        <StackLayout *ngFor="let item of weeklyState" height="52" width="52" (tap)="onItemTap(item)">
             <Label [text]="item.date | date:'EEE' | slice:0:1" class="m-x-auto m-y-auto"></Label>
             <RadialRating [value]="item.value" kCompletionIconFontSize="33" completionIcon="&#xf058;"></RadialRating>
         </StackLayout>

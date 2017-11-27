@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from "@angular/core";
 
 import { CareCardService } from "../shared/care-card.service";
 
@@ -7,8 +7,9 @@ import { CareCardService } from "../shared/care-card.service";
     moduleId: module.id,
     templateUrl: "./care-dashboard.component.html"
 })
-export class CareDashboardComponent implements OnInit {
+export class CareDashboardComponent implements OnInit, OnChanges {
     @Output() selectedDateChange = new EventEmitter<Date>();
+    @Input() selectedDateValue: number;
 
     weeklyState: Array<any>;
 
@@ -18,11 +19,19 @@ export class CareDashboardComponent implements OnInit {
 
     ngOnInit(): void {
         this.selectedDate = new Date();
-        this.weeklyState = this._careCardService.getWeeklyOverview(this.selectedDate);
+        this.weeklyState = this.getWeeklyOverview(this._selectedDate);
     }
 
-    onItemTap(itemDate: Date): void {
-        this.selectedDate = itemDate;
+    onItemTap(weekItem: any): void {
+        this.selectedDate = weekItem.date;
+
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes.selectedDateValue && changes.selectedDateValue.currentValue != null) {
+            const newValue = changes.selectedDateValue.currentValue;
+            this.updateWeekItemValue(this.selectedDate, newValue);
+        }
     }
 
     get selectedDate(): Date {
@@ -36,5 +45,74 @@ export class CareDashboardComponent implements OnInit {
 
     get selectedValue(): number {
         return this.weeklyState[this._selectedDate.getDay()].value;
+    }
+
+    private updateWeekItemValue(selectedDate: Date, value: number): void {
+        const weekItemToUpdate = this.weeklyState.find((weekItem) => {
+            return weekItem.date.toDateString() === selectedDate.toDateString();
+        });
+
+        if (weekItemToUpdate) {
+            weekItemToUpdate.value = value;
+        }
+    }
+
+    private getWeeklyOverview(selectedDate: Date): Array<any> {
+        const sunday = this.getLastSunday(selectedDate);
+        const monday = new Date(sunday);
+        monday.setDate(sunday.getDate() + 1);
+
+        const tuesday = new Date(sunday);
+        tuesday.setDate(sunday.getDate() + 2);
+
+        const wednesday = new Date(sunday);
+        wednesday.setDate(sunday.getDate() + 3);
+
+        const thursday = new Date(sunday);
+        thursday.setDate(sunday.getDate() + 4);
+
+        const friday = new Date(sunday);
+        friday.setDate(sunday.getDate() + 5);
+
+        const saturday = new Date(sunday);
+        saturday.setDate(sunday.getDate() + 6);
+
+        return [
+            {
+                date: sunday,
+                value: 0
+            },
+            {
+                date: monday,
+                value: 0
+            },
+            {
+                date: tuesday,
+                value: 0
+            },
+            {
+                date: wednesday,
+                value: 0
+            },
+            {
+                date: thursday,
+                value: 0
+            },
+            {
+                date: friday,
+                value: 0
+            },
+            {
+                date: saturday,
+                value: 0
+            }
+        ];
+    }
+
+    private getLastSunday(date: Date): Date {
+        const result = new Date(date);
+        result.setDate(date.getDate() - date.getDay());
+
+        return result;
     }
 }

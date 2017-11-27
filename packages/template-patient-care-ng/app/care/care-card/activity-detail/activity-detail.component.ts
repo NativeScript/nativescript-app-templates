@@ -4,7 +4,7 @@ import "rxjs/add/operator/switchMap";
 
 import { CareCardService } from "../shared/care-card.service";
 import { CarePlanActivity, CarePlanActivityType } from "../shared/care-plan-activity.model";
-import { CarePlanEvent, CarePlanEventsHolder } from "../shared/care-plan-event.model";
+import { CarePlanEvent } from "../shared/care-plan-event.model";
 
 @Component({
     selector: "ActivityDetails",
@@ -18,7 +18,7 @@ export class ActivityDetailComponent implements OnInit {
 
     private _selectedDate: Date;
     private _activity: CarePlanActivity;
-    private eventHolder: CarePlanEventsHolder;
+    private event: CarePlanEvent;
 
     constructor(
         private _careCardService: CareCardService,
@@ -37,10 +37,11 @@ export class ActivityDetailComponent implements OnInit {
                 this._activity = this._careCardService.getActivity(params.title);
                 this._selectedDate = new Date(params.date);
 
-                this.eventHolder = this._careCardService.findEventHolder(this.activity.title, this._selectedDate);
+                const events = this._careCardService.findEvents(params.title, this._selectedDate);
 
-                if (this.eventHolder && this.eventHolder.events.length) {
-                    this.value = this.eventHolder.events[0].value;
+                if (events && events.length) {
+                    this.event = events[0];
+                    this.value = this.event.value;
                 }
 
                 this.isReadonlyActivity = this._activity.type !== 1;
@@ -49,16 +50,15 @@ export class ActivityDetailComponent implements OnInit {
 
     onDoneButtonTap(): void {
         if (this.value > 0) {
-            if (this.eventHolder && this.eventHolder.events.length) {
-                this.eventHolder.events[0].value = this.value;
+            if (this.event) {
+                this.event.value = this.value;
             } else {
-                this.eventHolder = new CarePlanEventsHolder(this._activity, this._selectedDate);
-                const event = new CarePlanEvent(this._activity, this._selectedDate);
-                event.value = this.value;
-                this.eventHolder.events.push(event);
+                this.event = new CarePlanEvent(this._activity, this._selectedDate, 0);
             }
 
-            this._careCardService.upsertEvent(this.eventHolder);
+            this.event.value = this.value;
+
+            this._careCardService.upsertEvent(this.event, 1);
             this.navigateToCareCard();
         }
     }

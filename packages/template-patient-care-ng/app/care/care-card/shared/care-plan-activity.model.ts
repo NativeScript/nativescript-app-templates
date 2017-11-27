@@ -1,6 +1,8 @@
+import { CarePlanEvent } from "./care-plan-event.model";
+
 export enum CarePlanActivityType {
     physical = "Physical Activity",
-    assesment = "Assessment",
+    assessment = "Assessment",
     medication = "Medications",
     other = "Other"
 }
@@ -14,8 +16,11 @@ export class CarePlanActivity {
     schedule: Array<number>;
     resultResettable: boolean;
     type: number;
+    events: Array<CarePlanEvent>;
 
     constructor(options: any) {
+        this.events = new Array<CarePlanEvent>();
+
         this.groupIdentifier = this.getGroupIdentifierType(options.groupIdentifier);
         this.title = options.title;
         this.text = options.text;
@@ -29,8 +34,8 @@ export class CarePlanActivity {
     private getGroupIdentifierType(groupIdentifier: string): CarePlanActivityType {
         if (groupIdentifier === CarePlanActivityType.physical.toString()) {
             return CarePlanActivityType.physical;
-        } else if (groupIdentifier === CarePlanActivityType.assesment.toString()) {
-            return CarePlanActivityType.assesment;
+        } else if (groupIdentifier === CarePlanActivityType.assessment.toString()) {
+            return CarePlanActivityType.assessment;
         } else if (groupIdentifier === CarePlanActivityType.medication.toString()) {
             return CarePlanActivityType.medication;
         } else {
