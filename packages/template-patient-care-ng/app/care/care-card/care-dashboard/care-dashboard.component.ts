@@ -18,13 +18,17 @@ export class CareDashboardComponent implements OnInit, OnChanges {
     constructor(private _careCardService: CareCardService) { }
 
     ngOnInit(): void {
-        this.selectedDate = new Date();
+        this.selectedDate = this._careCardService.selectedDate;
         this.weeklyState = this.getWeeklyOverview(this._selectedDate);
+
+        this.weeklyState.forEach((weekItem) => {
+            weekItem.value = this._careCardService.getOverviewValue(weekItem.date);
+            console.log(weekItem.value);
+        });
     }
 
     onItemTap(weekItem: any): void {
         this.selectedDate = weekItem.date;
-
     }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -41,6 +45,7 @@ export class CareDashboardComponent implements OnInit, OnChanges {
     set selectedDate(date: Date) {
         this._selectedDate = date;
         this.selectedDateChange.emit(date);
+        this._careCardService.selectedDate = date;
     }
 
     get selectedValue(): number {

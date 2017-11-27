@@ -10,12 +10,21 @@ import { CarePlanEvent } from "./care-plan-event.model";
 export class CareCardService {
     private _events: Array<CarePlanEvent>;
     private _activities: Array<CarePlanActivity>;
-
+    private _selectedDate: Date;
     private _activityStore = Kinvey.DataStore.collection<any>("Activity");
 
     constructor() {
+        this._selectedDate = new Date();
         this._events = new Array<CarePlanEvent>();
         this._activities = Array<CarePlanActivity>();
+    }
+
+    get selectedDate(): Date {
+        return this._selectedDate;
+    }
+
+    set selectedDate(date: Date) {
+        this._selectedDate = date;
     }
 
     get events(): Array<CarePlanEvent> {
@@ -82,6 +91,7 @@ export class CareCardService {
 
     getOverviewValue(date: Date): number {
         const activities = this._activities;
+        let overviewValue: number = 0;
         let totalEventsCount: number = 0;
         let savedEventsCount: number = 0;
 
@@ -96,6 +106,12 @@ export class CareCardService {
             });
         });
 
-        return (savedEventsCount / totalEventsCount) * 100;
+        overviewValue = (savedEventsCount / totalEventsCount) * 100;
+
+        if (overviewValue) {
+            return overviewValue;
+        } else {
+            return 0;
+        }
     }
 }
