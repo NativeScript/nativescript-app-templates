@@ -15,11 +15,6 @@ refer to http://docs.nativescript.org/ui/theme.
     font-family: "FontAwesome";
 }
 
-.listHeader {
-    background-color: rgb(238, 238, 238);
-    color: gray;
-}
-
 .mainHeader {
-    background-color: rgb(245, 241, 241);
+    background-color: rgb(245, 244, 246);
 }

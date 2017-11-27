@@ -8,7 +8,7 @@ import { ConnectService } from "./shared/connect.service";
     selector: "Connect",
     moduleId: module.id,
     templateUrl: "./connect.component.html",
-    styleUrls: ["./connect.component.css"]
+    styleUrls: ["./connect.component.css", "../care-common.css"]
 })
 export class ConnectComponent implements OnInit {
     private _inboxItems: Array<ConnectItem>;

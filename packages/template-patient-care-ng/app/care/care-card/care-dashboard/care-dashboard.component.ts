@@ -5,7 +5,8 @@ import { CareCardService } from "../shared/care-card.service";
 @Component({
     selector: "CareDashboard",
     moduleId: module.id,
-    templateUrl: "./care-dashboard.component.html"
+    templateUrl: "./care-dashboard.component.html",
+    styleUrls: ["./care-dashboard.component.css"]
 })
 export class CareDashboardComponent implements OnInit, OnChanges {
     @Output() selectedDateChange = new EventEmitter<Date>();
@@ -23,7 +24,6 @@ export class CareDashboardComponent implements OnInit, OnChanges {
 
         this.weeklyState.forEach((weekItem) => {
             weekItem.value = this._careCardService.getOverviewValue(weekItem.date);
-            console.log(weekItem.value);
         });
     }
 

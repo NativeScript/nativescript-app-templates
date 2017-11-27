@@ -2,8 +2,8 @@
     <Label class="action-bar-title" [text]="title"></Label>
 </ActionBar>
 
-<TabView (selectedIndexChanged)="onSelectedIndexChanged($event)">
-    <StackLayout *tabItem="{title: 'Care Card', iconSource: getIconSource('home')}">
+<TabView class="selectedTab" (selectedIndexChanged)="onSelectedIndexChanged($event)">
+    <StackLayout *tabItem="{title: 'Care Contents', iconSource: getIconSource('home')}">
         <CareCard></CareCard>
     </StackLayout>
     <StackLayout *tabItem="{title: 'Insights', iconSource: getIconSource('insights')}">

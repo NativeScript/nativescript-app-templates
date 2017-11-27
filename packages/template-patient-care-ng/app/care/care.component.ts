@@ -5,7 +5,8 @@ import { SelectedIndexChangedEventData, TabView, TabViewItem } from "tns-core-mo
 @Component({
     selector: "CareComponent",
     moduleId: module.id,
-    templateUrl: "./care.component.html"
+    templateUrl: "./care.component.html",
+    styleUrls: ["./care.component.css"]
 })
 export class CareComponent implements OnInit {
 

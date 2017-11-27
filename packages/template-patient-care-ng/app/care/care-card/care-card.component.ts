@@ -10,7 +10,8 @@ import { CarePlanEvent } from "./shared/care-plan-event.model";
 @Component({
     selector: "CareCard",
     moduleId: module.id,
-    templateUrl: "./care-card.component.html"
+    templateUrl: "./care-card.component.html",
+    styleUrls: ["../care-common.css"]
 })
 export class CareCardComponent implements OnInit {
     isLoading: boolean;
@@ -26,9 +27,7 @@ export class CareCardComponent implements OnInit {
 
     constructor(
         private _routerExtensions: RouterExtensions,
-        private _careCardService: CareCardService
-    ) {
-    }
+        private _careCardService: CareCardService) { }
 
     get physicalActivities(): Array<CarePlanActivity> {
         return this._physicalActivities;

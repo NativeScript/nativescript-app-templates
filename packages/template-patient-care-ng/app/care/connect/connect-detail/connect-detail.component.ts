@@ -11,7 +11,7 @@ import { ConnectService } from "../shared/connect.service";
     selector: "ConnectDetail",
     moduleId: module.id,
     templateUrl: "./connect-detail.component.html",
-    styleUrls: ["../connect.component.css", "connect-detail.component.css"]
+    styleUrls: [ "./connect-detail.component.css", "../connect.component.css", "../../care-common.css"]
 })
 export class ConnectDetailComponent implements OnInit {
     private _connectItem: ConnectItem;
