@@ -96,14 +96,17 @@ export class CareCardService {
         let savedEventsCount: number = 0;
 
         activities.forEach((activity) => {
-            const savedEvents = this.findEvents(activity.title, date);
-            totalEventsCount += activity.events.length;
+            if (activity.type !== 2) {
+                const day: number = date.getDay();
+                const savedEvents = this.findEvents(activity.title, date);
+                totalEventsCount += activity.schedule[day] || 0;
 
-            savedEvents.forEach((savedEvent) => {
-                if (savedEvent.value !== 0) {
-                    savedEventsCount++;
-                }
-            });
+                savedEvents.forEach((savedEvent) => {
+                    if (savedEvent.value !== 0) {
+                        savedEventsCount++;
+                    }
+                });
+            }
         });
 
         overviewValue = (savedEventsCount / totalEventsCount) * 100;

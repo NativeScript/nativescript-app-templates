@@ -71,6 +71,7 @@ export class ActivityDetailComponent implements OnInit {
         this._routerExtensions.navigate([
             "care"],
             {
+                clearHistory: true,
                 animated: true,
                 transition: {
                     name: "slide",
