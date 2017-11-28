@@ -5,7 +5,18 @@
   "main": "main.js",
   "version": "3.3.2",
   "description": "Master-detail interface to display collection of items from Firebase and inspect and edit selected item properties. ",
-  "license": "SEE LICENSE IN <your-license-filename>",
+  "license": "Apache-2.0",
+  "keywords": [
+    "telerik",
+    "mobile",
+    "nativescript",
+    "{N}",
+    "tns",
+    "appbuilder",
+    "template",
+    "master-details",
+    "detail"
+  ],
   "readme": "NativeScript Application",
   "repository": {
     "type": "git",
