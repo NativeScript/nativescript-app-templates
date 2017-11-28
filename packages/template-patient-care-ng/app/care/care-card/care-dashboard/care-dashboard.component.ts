@@ -1,6 +1,8 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from "@angular/core";
+import { Component, Input, OnDestroy, OnInit } from "@angular/core";
+import { Subscription } from "rxjs/Subscription";
 
 import { CareCardService } from "../shared/care-card.service";
+import { CarePlanEvent } from "../shared/care-plan-event.model";
 
 @Component({
     selector: "CareDashboard",
@@ -8,48 +10,57 @@ import { CareCardService } from "../shared/care-card.service";
     templateUrl: "./care-dashboard.component.html",
     styleUrls: ["./care-dashboard.component.css"]
 })
-export class CareDashboardComponent implements OnInit, OnChanges {
-    @Output() selectedDateChange = new EventEmitter<Date>();
-    @Input() selectedDateValue: number;
-
+export class CareDashboardComponent implements OnInit, OnDestroy {
     weeklyState: Array<any>;
 
     private _selectedDate: Date;
+    private _dateSubscription: Subscription;
+    private _eventSubscription: Subscription;
 
     constructor(private _careCardService: CareCardService) { }
 
     ngOnInit(): void {
-        this.selectedDate = this._careCardService.selectedDate;
-        this.weeklyState = this.getWeeklyOverview(this._selectedDate);
+        this.weeklyState = this.initializeWeeklyData();
 
-        this.weeklyState.forEach((weekItem) => {
-            weekItem.value = this._careCardService.getOverviewValue(weekItem.date);
+        this._dateSubscription = this._careCardService.selectedDate$.subscribe((date: Date) => {
+            this._selectedDate = date;
+        });
+
+        this._eventSubscription = this._careCardService.events$.subscribe((event: CarePlanEvent) => {
+            // TODO: Is this check necessary?
+            // TODO check why fired twice
+            if (event && event.date.toDateString() === this._selectedDate.toDateString()) {
+                const value = this._careCardService.getOverviewValue(this._selectedDate);
+                this.updateWeekItemValue(this._selectedDate, value);
+            }
         });
     }
 
-    onItemTap(weekItem: any): void {
-        this.selectedDate = weekItem.date;
-    }
-
-    ngOnChanges(changes: SimpleChanges): void {
-        if (changes.selectedDateValue && changes.selectedDateValue.currentValue != null) {
-            const newValue = changes.selectedDateValue.currentValue;
-            this.updateWeekItemValue(this.selectedDate, newValue);
-        }
+    ngOnDestroy(): void {
+        this._dateSubscription.unsubscribe();
+        this._eventSubscription.unsubscribe();
     }
 
     get selectedDate(): Date {
         return this._selectedDate;
     }
 
-    set selectedDate(date: Date) {
-        this._selectedDate = date;
-        this.selectedDateChange.emit(date);
-        this._careCardService.selectedDate = date;
-    }
-
     get selectedValue(): number {
         return this.weeklyState[this._selectedDate.getDay()].value;
+    }
+
+    initializeWeeklyData(): Array<any> {
+        const data = this.getWeeklyOverview();
+        data.forEach((weekItem) => {
+            // TODO: getOverviewValue is not syncronous!
+            weekItem.value = this._careCardService.getOverviewValue(weekItem.date);
+        });
+
+        return data;
+    }
+
+    onItemTap(weekItem: any): void {
+        this._careCardService.updateSelectedDate(weekItem.date);
     }
 
     private updateWeekItemValue(selectedDate: Date, value: number): void {
@@ -62,8 +73,8 @@ export class CareDashboardComponent implements OnInit, OnChanges {
         }
     }
 
-    private getWeeklyOverview(selectedDate: Date): Array<any> {
-        const sunday = this.getLastSunday(selectedDate);
+    private getWeeklyOverview(): Array<any> {
+        const sunday = this.getLastSunday(new Date());
         const monday = new Date(sunday);
         monday.setDate(sunday.getDate() + 1);
 

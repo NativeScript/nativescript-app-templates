@@ -1,78 +1,50 @@
 import { Injectable } from "@angular/core";
 import { Kinvey } from "kinvey-nativescript-sdk";
+import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { Observable } from "rxjs/Rx";
 
-// tslint:disable-next-line:max-line-length
 import { CarePlanActivity, CarePlanActivityType } from "./care-plan-activity.model";
 import { CarePlanEvent } from "./care-plan-event.model";
 
 @Injectable()
 export class CareCardService {
+    selectedDate$: Observable<Date>;
+    events$: Observable<CarePlanEvent>;
+
     private _events: Array<CarePlanEvent>;
+
+    private _selectedDateItemSource: BehaviorSubject<Date>;
+    private _eventsItemSource: BehaviorSubject<CarePlanEvent>;
     private _activities: Array<CarePlanActivity>;
-    private _selectedDate: Date;
     private _activityStore = Kinvey.DataStore.collection<any>("Activity");
+    private _activitiesPromise: Promise<any>;
 
     constructor() {
-        this._selectedDate = new Date();
+        this._activities = new Array<CarePlanActivity>();
+
         this._events = new Array<CarePlanEvent>();
-        this._activities = Array<CarePlanActivity>();
-    }
 
-    get selectedDate(): Date {
-        return this._selectedDate;
-    }
+        // Observable selectedDate source
+        this._selectedDateItemSource = new BehaviorSubject<Date>(new Date());
 
-    set selectedDate(date: Date) {
-        this._selectedDate = date;
-    }
+        // Observable events source
+        this._eventsItemSource = new BehaviorSubject<CarePlanEvent>(null);
 
-    get events(): Array<CarePlanEvent> {
-        return this._events;
-    }
+        // Observable selectedDate stream
+        this.selectedDate$ = this._selectedDateItemSource.asObservable();
 
-    getActivity(title: string): CarePlanActivity {
-        const activity = this._activities.find((currentActivity) => {
-            return currentActivity.title === title;
+        // Observable events stream
+        this.events$ = this._eventsItemSource.asObservable();
+
+        this.getActivities().then((activities: Array<CarePlanActivity>) => {
+            this._activities = activities;
+
+            this.updateSelectedDate(new Date());
         });
-
-        return activity;
     }
 
-    findEvents(title: string, date: Date): Array<CarePlanEvent> {
-        const event = this._events.filter((currentEvent) => {
-            return currentEvent.date.toDateString() === date.toDateString() && currentEvent.activity.title === title;
-        });
-
-        return event;
-    }
-
-    getAllActivities(): Promise<any> {
-        if (this._activities.length) {
-            return Promise.resolve(this._activities);
-        } else {
-
-            return this._activityStore.find().toPromise()
-                .then((data) => {
-                    const activities = [];
-
-                    data.forEach((activityData: any) => {
-                        const activity = new CarePlanActivity(activityData);
-                        activities.push(activity);
-                    });
-
-                    this._activities = activities;
-
-                    return activities;
-                })
-                .catch((error: Kinvey.BaseError) => {
-                    alert({
-                        title: "Opps something went wrong.",
-                        message: error.message,
-                        okButtonText: "Ok"
-                    });
-                });
-        }
+    updateSelectedDate(date: Date) {
+        this._selectedDateItemSource.next(date);
     }
 
     upsertEvent(event: CarePlanEvent, eventsCount: number) {
@@ -87,6 +59,24 @@ export class CareCardService {
         } else {
             this._events.push(event);
         }
+
+        this._eventsItemSource.next(event);
+    }
+
+    findEvents(title: string, date: Date): Array<CarePlanEvent> {
+        const event = this._events.filter((currentEvent) => {
+            return currentEvent.date.toDateString() === date.toDateString() && currentEvent.activity.title === title;
+        });
+
+        return event;
+    }
+
+    getActivity(title: string): CarePlanActivity {
+        const activity = this._activities.find((currentActivity) => {
+            return currentActivity.title === title;
+        });
+
+        return activity;
     }
 
     getOverviewValue(date: Date): number {
@@ -116,5 +106,98 @@ export class CareCardService {
         } else {
             return 0;
         }
+    }
+
+    createActivitiesWithEvents(selectedDate: Date) {
+        const physicalActivities = new Array<CarePlanActivity>();
+        const assessmentActivities = new Array<CarePlanActivity>();
+        const otherActivities = new Array<CarePlanActivity>();
+        const medicationActivities = new Array<CarePlanActivity>();
+
+        return this.getActivities()
+            .then((activities: Array<CarePlanActivity>) => {
+                for (const activity of activities) {
+                    activity.events = new Array<CarePlanEvent>();
+
+                    if (activity.type !== 2) {
+                        activity.events = this.getActivityEvents(activity, selectedDate);
+                    }
+
+                    if (activity.groupIdentifier === CarePlanActivityType.physical) {
+                        physicalActivities.push(activity);
+                    } else if (activity.groupIdentifier === CarePlanActivityType.assessment) {
+                        assessmentActivities.push(activity);
+                    } else if (activity.groupIdentifier === CarePlanActivityType.medication) {
+                        medicationActivities.push(activity);
+                    } else if (activity.groupIdentifier === CarePlanActivityType.other) {
+                        otherActivities.push(activity);
+                    }
+                }
+
+                this.mapEvents(physicalActivities, selectedDate);
+                this.mapEvents(assessmentActivities, selectedDate);
+                this.mapEvents(otherActivities, selectedDate);
+                this.mapEvents(medicationActivities, selectedDate);
+
+                return {
+                    physicalActivities,
+                    assessmentActivities,
+                    otherActivities,
+                    medicationActivities
+                };
+            });
+    }
+
+    private mapEvents(activityCollection: Array<CarePlanActivity>, selectedDate: Date) {
+        activityCollection.forEach((activity) => {
+            const savedEvents = this.findEvents(activity.title, selectedDate);
+
+            if (savedEvents.length && activity.events.length) {
+                for (const event of savedEvents) {
+                    activity.events[event.index] = event;
+                }
+            }
+        });
+    }
+
+    private getActivityEvents(activity: CarePlanActivity, selectedDate: Date): Array<CarePlanEvent> {
+        const events = new Array<CarePlanEvent>();
+
+        const day: number = selectedDate.getDay();
+        const occurrencesForDay: number = activity.schedule[day] || 0;
+
+        for (let index = 0; index < occurrencesForDay; index++) {
+            const event = new CarePlanEvent(activity, selectedDate, index);
+            events.push(event);
+        }
+
+        return events;
+    }
+
+    private getActivities(): Promise<any> {
+        if (!this._activitiesPromise) {
+            this._activitiesPromise = this._activityStore.find().toPromise()
+                .then((data) => {
+                    const activities = [];
+
+                    data.forEach((activityData: any) => {
+                        const activity = new CarePlanActivity(activityData);
+                        activities.push(activity);
+                    });
+
+                    this._activities = activities;
+
+                    return activities;
+                })
+                .catch((error: Kinvey.BaseError) => {
+                    alert({
+                        title: "Oops something went wrong.",
+                        message: error.message,
+                        okButtonText: "Ok"
+                    });
+                });
+        }
+
+        return this._activitiesPromise;
     }
 }

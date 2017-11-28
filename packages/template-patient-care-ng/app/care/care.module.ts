@@ -5,6 +5,7 @@ import { NativeScriptUIGaugesModule } from "nativescript-pro-ui/gauges/angular";
 import { NativeScriptUIListViewModule } from "nativescript-pro-ui/listview/angular";
 
 import { ActivityDetailComponent } from "./care-card/activity-detail/activity-detail.component";
+import { ActivityListComponent } from "./care-card/activity/activity-list.component";
 import { CareCardComponent } from "./care-card/care-card.component";
 import { CareDashboardComponent } from "./care-card/care-dashboard/care-dashboard.component";
 import { RadialRatingComponent } from "./care-card/care-dashboard/radial-rating/radial-rating.component";
@@ -31,6 +32,7 @@ import { CareComponent } from "./care.component";
         RadialRatingComponent,
         ConnectComponent,
         ActivityDetailComponent,
+        ActivityListComponent,
         ConnectDetailComponent,
         CareComponent
     ],
