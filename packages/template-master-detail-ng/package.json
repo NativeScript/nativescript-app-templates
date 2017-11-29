@@ -5,6 +5,7 @@
   "main": "main.js",
   "version": "3.3.3",
   "description": "Master-detail interface to display collection of items from Firebase and inspect and edit selected item properties. ",
+  "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
   "keywords": [
     "telerik",
@@ -17,7 +18,6 @@
     "master-details",
     "detail"
   ],
-  "readme": "NativeScript Application",
   "repository": {
     "type": "git",
     "url": "https://github.com/NativeScript/template-master-detail-ng"
