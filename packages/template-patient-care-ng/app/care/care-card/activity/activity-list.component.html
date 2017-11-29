@@ -14,7 +14,7 @@
 
                 <StackLayout *ngIf="physicalItem.events" row="1" colSpan="3" orientation="horizontal" class="m-b-15">
                     <StackLayout *ngFor="let event of physicalItem.events">
-                        <Label [text]="event.value === 1 ? '&#xf111;':'&#xf10c;'" fontSize="25" class="fa m-r-5 m-y-auto" [color]="physicalItem.tintColor"
+                        <Label [text]="event.value === 1 ? '&#xf111;':'&#xf10c;'" fontSize="25" class="fa m-r-5 m-y-auto" [color]="physicalItem.hexColor"
                             (tap)="onActivityEventTap(physicalItem, event)"></Label>
                     </StackLayout>
                 </StackLayout>
@@ -32,7 +32,7 @@
                 <Label row="0" col="0" class="m-y-5" [text]="assessmentItem.title" class="text-left font-weight-bold"></Label>
                 <Label row="1" col="0" class="m-y-5" [text]="assessmentItem.text" class="text-left text-muted m-b-15"></Label>
 
-                <Label *ngIf="assessmentItem.events.length && assessmentItem.events[0].value !== 0" row="0" rowSpan="3" col="2" [text]="assessmentItem.events[0].value" [color]="assessmentItem.tintColor"
+                <Label *ngIf="assessmentItem.events.length && assessmentItem.events[0].value !== 0" row="0" rowSpan="3" col="2" [text]="assessmentItem.events[0].value" [color]="assessmentItem.hexColor"
                     class="fa m-r-10 m-b-10 m-y-auto"></Label>
                 <Label row="0" rowSpan="3" col="3" text="&#xf105;" class="fa text-muted m-r-10 m-b-10 m-y-auto"></Label>
                 <StackLayout *ngIf="index !== assessmentActivities.length - 1" row="2" colSpan="3" class="hr-light"></StackLayout>
@@ -49,7 +49,7 @@
 
                 <StackLayout *ngIf="medicationItem.events.length" row="1" colSpan="3" orientation="horizontal" class="m-b-15">
                     <StackLayout *ngFor="let event of medicationItem.events">
-                        <Label [text]="event.value === 1 ? '&#xf111;':'&#xf10c;'" fontSize="25" class="fa m-r-5 m-y-auto" [color]="medicationItem.tintColor"
+                        <Label [text]="event.value === 1 ? '&#xf111;':'&#xf10c;'" fontSize="25" class="fa m-r-5 m-y-auto" [color]="medicationItem.hexColor"
                             (tap)="onActivityEventTap(medicationItem, event)"></Label>
                     </StackLayout>
                 </StackLayout>
@@ -67,7 +67,7 @@
                 <Label row="0" col="0" class="m-y-5" [text]="otherItem.title" class="text-left font-weight-bold"></Label>
                 <Label row="1" col="0" class="m-y-5" [text]="otherItem.text" class="text-left text-muted m-b-15"></Label>
 
-                <Label *ngIf="otherItem.events.length && otherItem.events[0].value !== 0" row="0" rowSpan="3" col="2" [text]="otherItem.events[0].value" [color]="otherItem.tintColor"
+                <Label *ngIf="otherItem.events.length && otherItem.events[0].value !== 0" row="0" rowSpan="3" col="2" [text]="otherItem.events[0].value" [color]="otherItem.hexColor"
                     class="fa m-r-10 m-b-10 m-y-auto"></Label>
                 <Label row="0" rowSpan="3" col="3" text="&#xf105;" class="fa text-muted m-r-10 m-b-10 m-y-auto"></Label>
                 <StackLayout *ngIf="index !== otherActivities.length - 1" row="2" colSpan="3" class="hr-light"></StackLayout>

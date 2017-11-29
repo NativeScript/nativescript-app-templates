@@ -3,6 +3,7 @@ import { Kinvey } from "kinvey-nativescript-sdk";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { Observable } from "rxjs/Rx";
 
+import { CareCardEventService } from "./care-card-event.service";
 import { CarePlanActivity, CarePlanActivityType } from "./care-plan-activity.model";
 import { CarePlanEvent } from "./care-plan-event.model";
 
@@ -19,7 +20,7 @@ export class CareCardService {
     private _activityStore = Kinvey.DataStore.collection<any>("Activity");
     private _activitiesPromise: Promise<any>;
 
-    constructor() {
+    constructor(private _careCardEventService: CareCardEventService) {
         this._activities = new Array<CarePlanActivity>();
 
         this._events = new Array<CarePlanEvent>();
@@ -58,6 +59,7 @@ export class CareCardService {
             eventToUpdate = event;
         } else {
             this._events.push(event);
+            this._careCardEventService.saveEvent(event);
         }
 
         this._eventsItemSource.next(event);
@@ -89,7 +91,7 @@ export class CareCardService {
             if (activity.type !== 2) {
                 const day: number = date.getDay();
                 const savedEvents = this.findEvents(activity.title, date);
-                totalEventsCount += activity.schedule[day] || 0;
+                totalEventsCount += activity.schedule.occurrences[day] || 0;
 
                 savedEvents.forEach((savedEvent) => {
                     if (savedEvent.value !== 0) {
@@ -164,7 +166,7 @@ export class CareCardService {
         const events = new Array<CarePlanEvent>();
 
         const day: number = selectedDate.getDay();
-        const occurrencesForDay: number = activity.schedule[day] || 0;
+        const occurrencesForDay: number = activity.schedule.occurrences[day] || 0;
 
         for (let index = 0; index < occurrencesForDay; index++) {
             const event = new CarePlanEvent(activity, selectedDate, index);

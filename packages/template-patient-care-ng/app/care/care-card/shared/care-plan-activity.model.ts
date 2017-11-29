@@ -11,24 +11,55 @@ export class CarePlanActivity {
     groupIdentifier: CarePlanActivityType;
     title: string;
     text: string;
-    tintColor: string;
+    tintColor: any;
     instructions: string;
-    schedule: Array<number>;
+    schedule: any;
     resultResettable: boolean;
     type: number;
+    optional: boolean;
+
+    hexColor: string;
     events: Array<CarePlanEvent>;
 
     constructor(options: any) {
-        this.events = new Array<CarePlanEvent>();
-
         this.groupIdentifier = this.getGroupIdentifierType(options.groupIdentifier);
         this.title = options.title;
         this.text = options.text;
-        this.tintColor = options.tintColor ? this.getHexColor(options.tintColor) : "";
-        this.schedule = options.schedule.occurrences;
+        this.tintColor = options.tintColor;
         this.instructions = options.instructions;
+        this.schedule = options.schedule;
         this.resultResettable = options.resultResettable;
         this.type = options.type;
+        this.optional = options.optional;
+
+        this.events = new Array<CarePlanEvent>();
+        this.hexColor = options.tintColor ? this.getHexColor(options.tintColor) : "";
+    }
+
+    getJson() {
+        return {
+            groupIdentifier: this.groupIdentifier.toString(),
+            title: this.title,
+            text: this.text,
+            tintColor: this.tintColor,
+            instructions: this.instructions,
+            schedule: this.schedule,
+            resultResettable: this.resultResettable,
+            type: this.type,
+            optional: this.optional
+        };
+    }
+
+    getNumberOfDaysSinceStart(): number {
+        if (this.schedule && this.schedule.startDate) {
+            let startDate = this.schedule.startDate;
+            const oneDay = 24 * 60 * 60 * 1000;
+            startDate = new Date(startDate.year, startDate.month - 1, startDate.day);
+
+            return Math.round(Math.abs((startDate.getTime() - new Date().getTime()) / (oneDay)));
+        }
+
+        return 0;
     }
 
     private getGroupIdentifierType(groupIdentifier: string): CarePlanActivityType {
