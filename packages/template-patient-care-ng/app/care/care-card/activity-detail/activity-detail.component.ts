@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { PageRoute, RouterExtensions } from "nativescript-angular/router";
 import "rxjs/add/operator/switchMap";
 
+import { CareCardActivityService } from "../shared/care-card-activity.service";
+import { CareCardEventService } from "../shared/care-card-event.service";
 import { CareCardService } from "../shared/care-card.service";
 import { CarePlanActivity, CarePlanActivityType } from "../shared/care-plan-activity.model";
 import { CarePlanEvent } from "../shared/care-plan-event.model";
@@ -21,7 +23,8 @@ export class ActivityDetailComponent implements OnInit {
     private event: CarePlanEvent;
 
     constructor(
-        private _careCardService: CareCardService,
+        private _careCardActivityService: CareCardActivityService,
+        private _careCardEventService: CareCardEventService,
         private _pageRoute: PageRoute,
         private _routerExtensions: RouterExtensions
     ) { }
@@ -34,10 +37,10 @@ export class ActivityDetailComponent implements OnInit {
         this._pageRoute.activatedRoute
             .switchMap((activatedRoute) => activatedRoute.params)
             .forEach((params) => {
-                this._activity = this._careCardService.getActivity(params.title);
+                this._activity = this._careCardActivityService.getActivity(params.title);
                 this._selectedDate = new Date(params.date);
 
-                const events = this._careCardService.findEvents(params.title, this._selectedDate);
+                const events = this._careCardEventService.findEvents(params.title, this._selectedDate);
 
                 if (events && events.length) {
                     this.event = events[0];
@@ -58,7 +61,7 @@ export class ActivityDetailComponent implements OnInit {
 
             this.event.value = this.value;
 
-            this._careCardService.upsertEvent(this.event, 1);
+            this._careCardEventService.upsertEvent(this.event, 1);
             this.navigateToCareCard();
         }
     }

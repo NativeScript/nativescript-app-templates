@@ -2,6 +2,8 @@ import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 import { Subscription } from "rxjs/Subscription";
 
+import { CareCardActivityService } from "../shared/care-card-activity.service";
+import { CareCardEventService } from "../shared/care-card-event.service";
 import { CareCardService } from "../shared/care-card.service";
 import { CarePlanActivity } from "../shared/care-plan-activity.model";
 import { CarePlanEvent } from "../shared/care-plan-event.model";
@@ -26,6 +28,8 @@ export class ActivityListComponent implements OnInit, OnDestroy {
 
     constructor(
         private _routerExtensions: RouterExtensions,
+        private _careCardEventService: CareCardEventService,
+        private _careCardActivityService: CareCardActivityService,
         private _careCardService: CareCardService) { }
 
     ngOnInit(): void {
@@ -38,7 +42,7 @@ export class ActivityListComponent implements OnInit, OnDestroy {
             this._selectedDate = date;
             this.isLoading = true;
 
-            this._careCardService.createActivitiesWithEvents(date)
+            this._careCardActivityService.createActivitiesWithEvents(date)
                 .then(({
                     physicalActivities,
                     assessmentActivities,
@@ -77,7 +81,7 @@ export class ActivityListComponent implements OnInit, OnDestroy {
 
     onActivityEventTap(activity: CarePlanActivity, event: CarePlanEvent) {
         event.value = event.value === 0 ? 1 : 0;
-        this._careCardService.upsertEvent(event, activity.events.length);
+        this._careCardEventService.upsertEvent(event, activity.events.length);
     }
 
     onActivityTap(activity: CarePlanActivity) {

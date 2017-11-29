@@ -1,6 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { Subscription } from "rxjs/Subscription";
 
+import { CareCardEventService } from "../shared/care-card-event.service";
 import { CareCardService } from "../shared/care-card.service";
 import { CarePlanEvent } from "../shared/care-plan-event.model";
 
@@ -17,7 +18,9 @@ export class CareDashboardComponent implements OnInit, OnDestroy {
     private _dateSubscription: Subscription;
     private _eventSubscription: Subscription;
 
-    constructor(private _careCardService: CareCardService) { }
+    constructor(
+        private _careCardService: CareCardService,
+        private _careCardEventService: CareCardEventService) { }
 
     ngOnInit(): void {
         this.weeklyState = this.initializeWeeklyData();
@@ -26,12 +29,13 @@ export class CareDashboardComponent implements OnInit, OnDestroy {
             this._selectedDate = date;
         });
 
-        this._eventSubscription = this._careCardService.events$.subscribe((event: CarePlanEvent) => {
+        this._eventSubscription = this._careCardEventService.events$.subscribe((event: CarePlanEvent) => {
             // TODO: Is this check necessary?
             // TODO check why fired twice
             if (event && event.date.toDateString() === this._selectedDate.toDateString()) {
-                const value = this._careCardService.getOverviewValue(this._selectedDate);
-                this.updateWeekItemValue(this._selectedDate, value);
+                this._careCardService.getOverviewValue(this._selectedDate).then((value) => {
+                    this.updateWeekItemValue(this._selectedDate, value);
+                });
             }
         });
     }
@@ -52,8 +56,9 @@ export class CareDashboardComponent implements OnInit, OnDestroy {
     initializeWeeklyData(): Array<any> {
         const data = this.getWeeklyOverview();
         data.forEach((weekItem) => {
-            // TODO: getOverviewValue is not syncronous!
-            weekItem.value = this._careCardService.getOverviewValue(weekItem.date);
+            this._careCardService.getOverviewValue(weekItem.date).then((value) => {
+                weekItem.value = value;
+            });
         });
 
         return data;
