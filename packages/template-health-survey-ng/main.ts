@@ -3,6 +3,6 @@ import { platformNativeScriptDynamic } from "nativescript-angular/platform";
 
 import { AppModule } from "./app.module";
 
-import "./shared/kinvey/kinvey.common";
+import "./shared/kinvey.common";
 
 platformNativeScriptDynamic().bootstrapModule(AppModule);
