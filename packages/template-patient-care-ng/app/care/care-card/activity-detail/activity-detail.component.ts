@@ -12,7 +12,7 @@ import { CarePlanEvent } from "../shared/care-plan-event.model";
     selector: "ActivityDetails",
     moduleId: module.id,
     templateUrl: "./activity-detail.component.html",
-    styleUrls: ["./activity-detail.component.css"]
+    styleUrls: ["./activity-detail.component.css", "../../care-common.css"]
 })
 export class ActivityDetailComponent implements OnInit {
     isReadonlyActivity: boolean;
