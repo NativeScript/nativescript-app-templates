@@ -53,7 +53,7 @@ export class CareCardService {
                 overviewValue = (savedEventsCount / totalEventsCount) * 100;
 
                 if (overviewValue) {
-                    return overviewValue;
+                    return parseFloat(overviewValue.toFixed(2));
                 } else {
                     return 0;
                 }
