@@ -1,18 +1,27 @@
 {
-    "name": "sample-my-pro-ng",
-    "version": "0.1.0",
-    "description": "NativeScript Application",
+    "name": "tns-template-my-pro-ng",
+    "displayName": "My Pro with Kinvey",
+    "main": "main.js",
+    "version": "1.0.0",
+    "description": "My Pro template that saves data to Kinvey database.",
     "license": "SEE LICENSE IN <your-license-filename>",
-    "readme": "NativeScript Application",
-    "repository": "<fill-your-repository-here>",
-    "nativescript": {
-        "id": "org.nativescript.samplemypro",
-        "tns-android": {
-            "version": "3.3.1"
-        },
-        "tns-ios": {
-            "version": "3.3.0"
-        }
+    "keywords": [
+        "telerik",
+        "mobile",
+        "nativescript",
+        "{N}",
+        "tns",
+        "appbuilder",
+        "template",
+        "kinvey"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/NativeScript/template-my-pro-ng"
+    },
+    "homepage": "https://github.com/NativeScript/template-my-pro-ng",
+    "android": {
+        "v8Flags": "--expose_gc"
     },
     "dependencies": {
         "@angular/animations": "4.4.6",
@@ -45,6 +54,7 @@
         "tslint": "5.8.0"
     },
     "scripts": {
-        "lint": "tslint \"app/**/*.ts\""
+        "preinstall": "node tools/preinstall.js",
+        "postinstall": "node tools/postinstall.js"
     }
 }
