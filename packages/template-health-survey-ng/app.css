@@ -12,14 +12,9 @@ refer to http://docs.nativescript.org/ui/theme.
 
 @import 'nativescript-theme-core/css/core.light.css';
 
+/* Override the theme's text-primary color (with the same color) to take priority for h1-6 classes. */
 .text-primary {
     color: #30bcff;
-}
-
-.btn-outline[isEnabled=false] {
-    color: gray;
-    background-color: transparent;
-    border-color: rgb(216, 212, 212);
 }
 
 .fa {
