@@ -18,3 +18,7 @@ refer to http://docs.nativescript.org/ui/theme.
 .mainHeader {
     background-color: rgb(245, 244, 246);
 }
+
+.btn-margin {
+    margin: 0 5 0 5;
+}

@@ -23,9 +23,10 @@
     <GridLayout *ngIf="!isReadonlyActivity" rows="*, 5*">
         <Label [text]="'Input your ' + activity.title" textWrap="true" class="text-center h2 p-10 m-y-auto"></Label>
 
-        <TextField row="1" class="input m-x-10"  keyboardType="number" verticalAlignment="top" hint="Tap to answer" [(ngModel)]="value"></TextField>
+        <TextField row="1" class="input m-x-10" keyboardType="number" verticalAlignment="top" hint="Tap to answer" [(ngModel)]="value"></TextField>
     </GridLayout>
 
-    <Button *ngIf="!isReadonlyActivity" row="1" style.padding="0 15 0 15" class="btn-active btn-outline btn-rounded-sm m-x-auto m-b-10"
-        text="Done" (tap)="onDoneButtonTap()"></Button>
+    <StackLayout *ngIf="!isReadonlyActivity" row="1" class="m-x-auto m-t-30 m-b-30">
+        <Button class="btn btn-active btn-outline btn-rounded-sm" text="Done" (tap)="onDoneButtonTap()"></Button>
+    </StackLayout>
 </GridLayout>
