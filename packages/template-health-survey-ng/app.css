@@ -16,6 +16,13 @@ refer to http://docs.nativescript.org/ui/theme.
 .text-primary {
     color: #30bcff;
 }
+/* End overrides */
+
+.btn[isEnabled=false] {
+    color: #808080;
+    background-color: transparent;
+    border-color: #d8d4d4;
+}
 
 .fa {
     font-family: "FontAwesome";
@@ -23,4 +30,8 @@ refer to http://docs.nativescript.org/ui/theme.
 
 .f-s-100 {
     font-size: 100;
+}
+
+.btn-margin {
+    margin: 0 5 0 5;
 }

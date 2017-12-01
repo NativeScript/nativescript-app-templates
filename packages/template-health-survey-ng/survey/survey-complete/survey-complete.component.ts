@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
-import { Page } from "ui/page";
 
 @Component({
     selector: "Complete",
@@ -9,12 +8,13 @@ import { Page } from "ui/page";
 })
 export class SurveyCompleteComponent implements OnInit {
     constructor(
-        private _page: Page,
         private _routerExtensions: RouterExtensions
     ) { }
 
     ngOnInit(): void {
-        this._page.actionBarHidden = true;
+        /* ***********************************************************
+        * Use the "ngOnInit" handler to initialize data for this component.
+        *************************************************************/
     }
 
     onCancelButtonTap() {

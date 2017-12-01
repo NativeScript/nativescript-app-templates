@@ -25,9 +25,9 @@
         </StackLayout>
     </ScrollView>
 
-    <StackLayout row="1" class="m-b-10">
-        <Button style.padding="0 15 0 15" text="Done" class="btn-active btn-outline btn-rounded-sm m-x-auto m-b-10" (tap)="onDoneButtonTap()"
-            [isEnabled]="isAnswerSelected" [isUserInteractionEnabled]="isAnswerSelected"></Button>
+    <StackLayout row="1" class="m-x-auto m-b-30">
+        <Button text="Done" class="btn btn-active btn-outline btn-rounded-sm" (tap)="onDoneButtonTap()" [isEnabled]="isAnswerSelected"
+            [isUserInteractionEnabled]="isAnswerSelected"></Button>
     </StackLayout>
 
 </GridLayout>

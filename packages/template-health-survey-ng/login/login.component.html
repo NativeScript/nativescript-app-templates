@@ -23,8 +23,8 @@
     </ScrollView>
 
     <StackLayout row="1" orientation="horizontal" class="m-x-auto m-b-30">
-        <Button style.padding="0 15 0 15" class="btn-active btn-outline btn-rounded-sm m-l-5 m-r-5" text="Login" (tap)="onSigninButtonTap()"></Button>
-        <Button style.padding="0 15 0 15" class="btn-active btn-outline btn-rounded-sm m-l-5 m-r-5" text="Register" (tap)="onRegisterButtonTap()"></Button>
+        <Button class="btn btn-active btn-outline btn-rounded-sm btn-margin" text="Login" (tap)="onSigninButtonTap()"></Button>
+        <Button class="btn btn-active btn-outline btn-rounded-sm btn-margin" text="Register" (tap)="onRegisterButtonTap()"></Button>
     </StackLayout>
 
     <ActivityIndicator rowSpan="2" class="activity-indicator" [busy]="isLoading"></ActivityIndicator>

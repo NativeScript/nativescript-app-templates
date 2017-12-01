@@ -26,5 +26,7 @@
         </StackLayout>
     </ScrollView>
 
-    <Button row="1" style.padding="0 15 0 15" text="Done" class="btn-active btn-outline btn-rounded-sm m-x-auto m-b-30" (tap)="onDoneButtonTap()"></Button>
+    <StackLayout row="1" class="m-x-auto m-t-30">
+        <Button text="Done" class="btn btn-active btn-outline btn-rounded-sm" (tap)="onDoneButtonTap()"></Button>
+    </StackLayout>
 </GridLayout>
