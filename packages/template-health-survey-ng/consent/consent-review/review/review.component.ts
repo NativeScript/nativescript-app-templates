@@ -17,13 +17,12 @@ export class ReviewComponent implements OnInit {
         *************************************************************/
     }
 
-    onCancelButtonTap() {
-        this._routerExtensions.navigate(["/login"],
+    onAgreeButtonTap() {
+        this._routerExtensions.navigate(["/consent/consent-review/consent"],
             {
-                clearHistory: true,
                 animated: true,
                 transition: {
-                    name: "slideRight",
+                    name: "slide",
                     duration: 200,
                     curve: "ease"
                 }
@@ -42,9 +41,10 @@ export class ReviewComponent implements OnInit {
             });
     }
 
-    onAgreeButtonTap() {
-        this._routerExtensions.navigate(["/consent/consent-review/consent"],
+    onCancelButtonTap() {
+        this._routerExtensions.navigate(["/login"],
             {
+                clearHistory: true,
                 animated: true,
                 transition: {
                     name: "slideRight",

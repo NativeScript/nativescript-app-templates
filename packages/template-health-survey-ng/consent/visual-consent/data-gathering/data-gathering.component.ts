@@ -22,7 +22,7 @@ export class DataGatheringComponent implements OnInit {
             {
                 animated: true,
                 transition: {
-                    name: "slideRight",
+                    name: "slide",
                     duration: 200,
                     curve: "ease"
                 }
