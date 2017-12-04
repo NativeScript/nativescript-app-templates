@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { PageRoute, RouterExtensions } from "nativescript-angular/router";
+import { EventData } from "data/observable";
+import { TextField } from "ui/text-field";
 import "rxjs/add/operator/switchMap";
 
 import { CareCardActivityService } from "../shared/care-card-activity.service";
@@ -7,6 +9,8 @@ import { CareCardEventService } from "../shared/care-card-event.service";
 import { CareCardService } from "../shared/care-card.service";
 import { CarePlanActivity, CarePlanActivityType } from "../shared/care-plan-activity.model";
 import { CarePlanEvent } from "../shared/care-plan-event.model";
+
+const IOS_KEYBOARDTYPE_DECIMALPAD: number = 8;
 
 @Component({
     selector: "ActivityDetails",
@@ -49,6 +53,13 @@ export class ActivityDetailComponent implements OnInit {
 
                 this.isReadonlyActivity = this._activity.type !== 1;
             });
+    }
+
+    onNumericFieldLoaded(args: EventData): void {
+        const numericField = <TextField>args.object;
+        if (numericField.ios) {
+            numericField.ios.keyboardType = IOS_KEYBOARDTYPE_DECIMALPAD;
+        }
     }
 
     onDoneButtonTap(): void {

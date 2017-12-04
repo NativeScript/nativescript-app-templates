@@ -35,6 +35,7 @@
         "kinvey-nativescript-sdk": "3.9.2",
         "nativescript-angular": "4.4.1",
         "nativescript-email": "1.5.1",
+        "nativescript-iqkeyboardmanager": "1.1.0",
         "nativescript-phone": "1.3.1",
         "nativescript-pro-ui": "3.2.0",
         "nativescript-theme-core": "1.0.4",
