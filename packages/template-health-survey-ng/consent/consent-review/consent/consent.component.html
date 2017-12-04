@@ -14,12 +14,16 @@
 
             <RadDataForm #consentFormElement [source]="consentForm" commitMode="immediate">
                 <TKEntityProperty tkDataFormProperty name="firstName" hintText="Required" required="true" index="0" validationMode="immediate">
-                    <TKPropertyEditor tkEntityPropertyEditor type="Text"></TKPropertyEditor>
+                    <TKPropertyEditor tkEntityPropertyEditor type="Text">
+                        <TKPropertyEditorStyle tkPropertyEditorStyle labelFontStyle="Bold"></TKPropertyEditorStyle>
+                    </TKPropertyEditor>
                     <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="This field is required"></TKNonEmptyValidator>
                 </TKEntityProperty>
 
                 <TKEntityProperty tkDataFormProperty name="lastName" hintText="Required" required="true" index="1" validationMode="immediate">
-                    <TKPropertyEditor tkEntityPropertyEditor type="Text"></TKPropertyEditor>
+                    <TKPropertyEditor tkEntityPropertyEditor type="Text">
+                        <TKPropertyEditorStyle tkPropertyEditorStyle labelFontStyle="Bold"></TKPropertyEditorStyle>
+                    </TKPropertyEditor>
                     <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="This field is required"></TKNonEmptyValidator>
                 </TKEntityProperty>
             </RadDataForm>
