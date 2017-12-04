@@ -4,6 +4,7 @@ import { RouterExtensions } from "nativescript-angular/router";
 import { RadDataFormComponent } from "nativescript-pro-ui/dataform/angular";
 import { isAndroid } from "platform";
 import { Page } from "ui/page";
+import { layout } from "utils/utils";
 
 import { LoginService } from "../shared/login.service";
 import { RegistrationForm } from "./registration-form.model";
@@ -35,6 +36,27 @@ export class RegistrationComponent implements OnInit {
 
     get registrationForm(): RegistrationForm {
         return this._registrationForm;
+    }
+
+    onGroupUpdate(args) {
+        // Apply padding to group headers.
+        var group = args.group;
+        var desiredPadding = 40;
+
+        if (isAndroid) {
+            let paddingInPixels = desiredPadding * layout.getDisplayDensity();
+            group.getHeaderContainer().setPadding(0, paddingInPixels, 0, 0);
+        }
+        else {
+            var defaultTitleHeight = 30;
+            group.titleView.style.insets = new UIEdgeInsets({
+                top: desiredPadding,
+                left: group.titleView.style.insets.left,
+                bottom: group.titleView.style.insets.bottom,
+                right: group.titleView.style.insets.right
+            });
+            group.titleView.frame = CGRectMake(0, 0, 0, defaultTitleHeight + desiredPadding);
+        }
     }
 
     onRegisterButtonTap(): void {

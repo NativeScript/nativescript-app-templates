@@ -8,7 +8,7 @@
             <Label class="h4 text-center" text="Additional text can go here"></Label>
 
             <StackLayout class="p-t-20">
-                <RadDataForm #registrationFormElement [source]="registrationForm" [isReadOnly]="isLoading">
+                <RadDataForm #registrationFormElement [source]="registrationForm" [isReadOnly]="isLoading" (groupUpdate)="onGroupUpdate($event)">
                     <TKPropertyGroup tkDataFormGroups collapsible="false" name="" titleHidden="true" hidden="false">
                         <TKEntityProperty tkPropertyGroupProperties name="email" displayName="Email" hintText="mypro@nativescript.com" required="true"
                             index="0">
@@ -37,7 +37,7 @@
                     </TKPropertyGroup>
 
                     <TKPropertyGroup tkDataFormGroups collapsible="false" name="ADDITIONAL INFORMATION" hidden="false">
-                        <TKGroupTitleStyle tkPropertyGroupTitleStyle labelFontStyle="Bold"></TKGroupTitleStyle>
+                        <TKGroupTitleStyle tkPropertyGroupTitleStyle labelTextSize="14"></TKGroupTitleStyle>
 
                         <TKEntityProperty tkPropertyGroupProperties name="givenName" displayName="First name" hintText="John" required="true" index="3">
                             <TKPropertyEditor tkEntityPropertyEditor type="Text">
