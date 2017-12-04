@@ -4,10 +4,14 @@ const exec = require("child_process").exec;
 
 console.log("preinstall script running...");
 
+const platformDeclarations = "reference.d.ts";
 const tslintConfig = "tslint.json";
 
 getAppRootFolder()
-    .then((appRootFolder) => copyConfig(tslintConfig, appRootFolder));
+    .then((appRootFolder) => Promise.all([
+        copyConfig(platformDeclarations, appRootFolder),
+        copyConfig(tslintConfig, appRootFolder)
+    ]));
 
 function copyConfig(configFilename, appRootFolder) {
     return new Promise((resolve, reject) => {
