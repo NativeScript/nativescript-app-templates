@@ -7,13 +7,17 @@
             <StackLayout class="p-t-20">
                 <RadDataForm #loginFormElement [source]="loginForm" [isReadOnly]="isLoading">
                     <TKEntityProperty tkDataFormProperty name="email" displayName="Email" hintText="mypro@nativescript.com" required="true" index="0">
-                        <TKPropertyEditor tkEntityPropertyEditor type="Email"></TKPropertyEditor>
+                        <TKPropertyEditor tkEntityPropertyEditor type="Email">
+                            <TKPropertyEditorStyle tkPropertyEditorStyle labelFontStyle="Bold"></TKPropertyEditorStyle>
+                        </TKPropertyEditor>
                         <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Email is required."></TKNonEmptyValidator>
                         <TKEmailValidator tkEntityPropertyValidators errorMessage="Email is not valid."></TKEmailValidator>
                     </TKEntityProperty>
 
                     <TKEntityProperty tkDataFormProperty name="password" displayName="Password" hintText="Enter password" required="true" index="1">
-                        <TKPropertyEditor tkEntityPropertyEditor type="Password"></TKPropertyEditor>
+                        <TKPropertyEditor tkEntityPropertyEditor type="Password">
+                            <TKPropertyEditorStyle tkPropertyEditorStyle labelFontStyle="Bold"></TKPropertyEditorStyle>
+                        </TKPropertyEditor>
                         <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Password is required."></TKNonEmptyValidator>
                     </TKEntityProperty>
                 </RadDataForm>
