@@ -4,25 +4,17 @@ import { Kinvey } from "kinvey-nativescript-sdk";
 import { RegistrationForm } from "../registration/registration-form.model";
 
 @Injectable()
-export class LoginService {
+export class UserService {
     static login(username: string, password: string): Promise<any> {
-        let loginQueue = Promise.resolve();
+        return Kinvey.User.login(username.toLowerCase(), password);
+    }
 
-        if (!!Kinvey.User.getActiveUser()) {
-            loginQueue = Kinvey.User.logout();
-        }
-
-        return loginQueue.then(() => Kinvey.User.login(username.toLowerCase(), password));
+    static logout(): Promise<any> {
+        return Kinvey.User.logout();
     }
 
     static signup(registrationForm: RegistrationForm): Promise<any> {
-        let registerQueue = Promise.resolve();
-
-        if (!!Kinvey.User.getActiveUser()) {
-            registerQueue = Kinvey.User.logout();
-        }
-
-        return registerQueue.then(() => Kinvey.User.signup({
+        return Kinvey.User.signup({
             username: registrationForm.email.toLowerCase(),
             password: registrationForm.password,
             givenName: registrationForm.givenName,
@@ -30,6 +22,6 @@ export class LoginService {
             email: registrationForm.email,
             gender: registrationForm.gender,
             dateOfBirth: registrationForm.dateOfBirth
-        }));
+        });
     }
 }
