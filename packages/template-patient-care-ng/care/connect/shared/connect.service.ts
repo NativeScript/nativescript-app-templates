@@ -1,36 +1,61 @@
 import { Injectable } from "@angular/core";
+import { Kinvey } from "kinvey-nativescript-sdk";
 import { Observable } from "rxjs/Rx";
 
-import { ConnectItem } from "./connect-item.model";
+import { Contact } from "./contact.model";
+import { Patient } from "./patient.model";
 
 @Injectable()
 export class ConnectService {
-    private connectItems: Array<ConnectItem>;
+    private _patientStore = Kinvey.DataStore.collection<any>("Patient");
+    private _contactStore = Kinvey.DataStore.collection<any>("Contact");
 
-    constructor() {
-        this.connectItems = [
-            new ConnectItem("0", "Dr. Maria Ruiz", "MR", "Physician", "888-555-5512", "mruiz2@mac.com"),
-            new ConnectItem("1", "Bill James", "BJ", "Nurse", "888-555-5513", "bjames2@mac.com"),
-            new ConnectItem("2", "Henry Ford", "HF", "Father", "888-555-5514", "hford2@mac.com"),
-            new ConnectItem("3", "Marta Ford", "MF", "Mother", "888-555-5515", "mford2@mac.com"),
-            new ConnectItem("5", "Gerald Ford", "GF", "Brother", "888-555-5516", "gford2@mac.com"),
-            new ConnectItem("6", "Patricia Ford", "PF", "Spouse", "888-555-5517", "pford2@mac.com"),
-            new ConnectItem("7", "James Kerr", "JK", "Friend", "888-555-5518", "jkerr2@mac.com"),
-            new ConnectItem("8", "Jessy Parker", "JP", "Friend", "888-555-5519", "jparker2@mac.com")
-        ];
+    private _patient: Patient;
+    private _patientPromise: Promise<any>;
+
+    getContactByName(name: string): Promise<any> {
+        const query = new Kinvey.Query();
+        query.equalTo("name", name);
+
+        return this._contactStore.find(query).toPromise()
+            .then((contactData) => {
+                if (contactData && contactData.length) {
+                    const contact = new Contact(contactData[0]);
+
+                    return contact;
+                }
+            })
+            .catch((error: Kinvey.BaseError) => {
+                alert({
+                    title: "Oops something went wrong.",
+                    message: error.message,
+                    okButtonText: "Ok"
+                });
+            });
     }
 
-    getItemById(id: string): ConnectItem {
-        if (!id) {
-            return;
+    getPatient(): Promise<any> {
+        if (!this._patientPromise) {
+            this._patientPromise = this._patientStore.find().toPromise()
+                .then((data) => {
+                    const activities = [];
+
+                    if (data && data.length) {
+                        const patient = new Patient(data[0]);
+                        this._patient = patient;
+
+                        return patient;
+                    }
+                })
+                .catch((error: Kinvey.BaseError) => {
+                    alert({
+                        title: "Oops something went wrong.",
+                        message: error.message,
+                        okButtonText: "Ok"
+                    });
+                });
         }
 
-        return this.connectItems.filter((item) => {
-            return item.id === id;
-        })[0];
-    }
-
-    loadConnectItems(): Promise<Array<ConnectItem>> {
-        return Promise.resolve().then(() => Promise.resolve(this.connectItems));
+        return this._patientPromise;
     }
 }

@@ -4,8 +4,8 @@ import * as email from "nativescript-email";
 import * as phoneModule from "nativescript-phone";
 import "rxjs/add/operator/switchMap";
 
-import { ConnectItem } from "../shared/connect-item.model";
 import { ConnectService } from "../shared/connect.service";
+import { Contact, ContactInfo } from "../shared/contact.model";
 
 @Component({
     selector: "ConnectDetail",
@@ -14,7 +14,9 @@ import { ConnectService } from "../shared/connect.service";
     styleUrls: ["../connect.component.css", "../../care-common.css"]
 })
 export class ConnectDetailComponent implements OnInit {
-    private _connectItem: ConnectItem;
+    isLoading: boolean;
+
+    private _contact: Contact;
 
     constructor(
         private _connectService: ConnectService,
@@ -23,42 +25,46 @@ export class ConnectDetailComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
+        this.isLoading = true;
+
         this._pageRoute.activatedRoute
             .switchMap((activatedRoute) => activatedRoute.params)
             .forEach((params) => {
-                const connectItemId = params.id;
+                const contactName = params.id;
 
-                this._connectItem = this._connectService.getItemById(connectItemId);
+                this._connectService.getContactByName(contactName)
+                    .then((contact: Contact) => {
+                        this._contact = contact;
+                        this.isLoading = false;
+                    });
             });
     }
 
-    get connectItem(): ConnectItem {
-        return this._connectItem;
+    get contact(): Contact {
+        return this._contact;
     }
 
     onBackButtonTap(): void {
         this._routerExtensions.backToPreviousPage();
     }
 
-    onCallButtonTap(phone: string) {
-        phone = phone.replace(/\s/g, "");
-        phoneModule.dial(phone, true);
-    }
+    onInfoButtonTap(contactInfo: ContactInfo) {
+        const phone = contactInfo.displayString.replace(/\s/g, "");
 
-    onSendMessageButtonTap(phone: string) {
-        phone = phone.replace(/\s/g, "");
-        phoneModule.sms([phone], "");
-    }
+        if (contactInfo.type === 0) {
+            phoneModule.dial(phone, true);
+        } else if (contactInfo.type === 1) {
+            phoneModule.sms([phone], "");
+        } else {
+            const composeOptions: email.ComposeOptions = {
+                to: [contactInfo.displayString]
+            };
 
-    onSendEmailButtonTap(emailAddress: string) {
-        const composeOptions: email.ComposeOptions = {
-            to: [emailAddress]
-        };
-
-        email.available().then((available: boolean) => {
-            if (available) {
-                email.compose(composeOptions);
-            }
-        });
+            email.available().then((available: boolean) => {
+                if (available) {
+                    email.compose(composeOptions);
+                }
+            });
+        }
     }
 }

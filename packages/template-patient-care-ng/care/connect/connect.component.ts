@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 
-import { ConnectItem } from "./shared/connect-item.model";
 import { ConnectService } from "./shared/connect.service";
+import { Contact } from "./shared/contact.model";
+import { Patient } from "./shared/patient.model";
 
 @Component({
     selector: "Connect",
@@ -11,40 +12,46 @@ import { ConnectService } from "./shared/connect.service";
     styleUrls: ["./connect.component.css", "../care-common.css"]
 })
 export class ConnectComponent implements OnInit {
-    private _inboxItems: Array<ConnectItem>;
-    private _careTeamItems: Array<ConnectItem>;
-    private _friendsFamilyItems: Array<ConnectItem>;
+    isLoading: boolean;
+
+    private _patient: Patient;
+    private _inboxItems: Array<Contact>;
+    private _careTeamItems: Array<Contact>;
+    private _friendsFamilyItems: Array<Contact>;
 
     constructor(
         private _routerExtensions: RouterExtensions,
         private _connectService: ConnectService) {
     }
 
-    get inboxItems(): Array<ConnectItem> {
+    get patient(): Patient {
+        return this._patient;
+    }
+
+    get inboxItems(): Array<Contact> {
         return this._inboxItems;
     }
 
-    get careTeamItems(): Array<ConnectItem> {
-        return this._careTeamItems;
+    get careTeamItems(): Array<Contact> {
+        return this._patient.getContactsByType(0);
     }
 
-    get friendsFamilyItems(): Array<ConnectItem> {
-        return this._friendsFamilyItems;
+    get friendsFamilyItems(): Array<Contact> {
+        return this._patient.getContactsByType(1);
     }
 
     ngOnInit(): void {
-        this._connectService.loadConnectItems()
-            .then((connectItems: Array<ConnectItem>) => {
-                this._inboxItems = connectItems.filter((item) => item.title === "Physician");
-                this._careTeamItems = connectItems.filter(
-                    (item) => item.title === "Physician" || item.title === "Nurse");
-                this._friendsFamilyItems = connectItems.filter(
-                    (item) => item.title !== "Physician" && item.title !== "Nurse");
+        this.isLoading = true;
+
+        this._connectService.getPatient()
+            .then((patient: Patient) => {
+                this.isLoading = false;
+                this._patient = patient;
             });
     }
 
-    onItemTap(connectItem: ConnectItem): void {
-        this._routerExtensions.navigate(["care/connect-detail", connectItem.id],
+    onContactTap(contact: Contact): void {
+        this._routerExtensions.navigate(["care/connect-detail", contact.name],
             {
                 animated: true,
                 transition: {

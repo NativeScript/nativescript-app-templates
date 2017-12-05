@@ -1,51 +1,55 @@
 <GridLayout class="page" rows="auto, *">
-    <StackLayout row="0" class="care-common-main-header">
+    <ActivityIndicator rowSpan="2" class="activity-indicator" [busy]="isLoading"></ActivityIndicator>
+
+    <StackLayout *ngIf="!isLoading" row="0" class="care-common-main-header">
         <StackLayout class="hr-light m-b-15"></StackLayout>
-        <Label class="connect-team-avatar text-center m-b-15 h2 m-x-auto p-10" text="JD"></Label>
-        <Label class="h3 text-center" text="John Doe"></Label>
+        <Label class="connect-team-avatar text-center m-b-15 h2 m-x-auto p-10" [text]="patient.monogram"></Label>
+        <Label class="h3 text-center" [text]="patient.name"></Label>
         <StackLayout class="hr-light m-t-10"></StackLayout>
     </StackLayout>
-    <ScrollView row="1">
+    <ScrollView *ngIf="!isLoading" row="1">
         <StackLayout>
             <!-- NOTE: use *ngFor directive only if visualizing a known small number of items; 
                 otherwise consider using ListView that supports virtualization -->
-            <StackLayout>
+            <!-- <StackLayout>
                 <StackLayout class="hr-light"></StackLayout>
                 <Label text="inbox" class="care-common-list-header text-uppercase t-14 p-l-15 p-t-30 p-b-7"></Label>
                 <StackLayout class="hr-light"></StackLayout>
             </StackLayout>
-            <GridLayout *ngFor="let item of inboxItems; let index = index;" rows="auto, auto" columns="auto, *, auto" class="p-t-10 p-l-15"
-                (tap)="onItemTap(item)">
+            <GridLayout *ngFor="let contact of inboxItems; let index = index;" rows="auto, auto" columns="auto, *, auto"
+                class="p-t-10 p-l-15" (tap)="onContactTap(contact)">
                 <Label row="0" col="0" class="fa t-24 align-top m-x-5 m-y-auto" text="&#xf0e5;"></Label>
-                <Label row="0" col="1" [text]="item.name" class="font-weight-normal m-l-10"></Label>
+                <Label row="0" col="1" [text]="contact.name" class="font-weight-normal m-l-10"></Label>
                 <Label row="0" rowSpan="2" col="2" text="&#xf105;" class="fa text-muted m-r-10 m-b-15 m-y-auto"></Label>
-                <StackLayout row="1" colSpan="3" class="hr-light" *ngIf="index !== inboxItems.length - 1"></StackLayout>
-            </GridLayout>
+                <StackLayout row="1" colSpan="3" class="hr-light"></StackLayout>
+            </GridLayout> -->
+
             <StackLayout>
                 <StackLayout class="hr-light"></StackLayout>
                 <Label text="care team" class="care-common-list-header text-uppercase t-14 p-l-15 p-t-30 p-b-7"></Label>
                 <StackLayout class="hr-light"></StackLayout>
             </StackLayout>
-            <GridLayout *ngFor="let item of careTeamItems; let index = index;" rows="auto, auto, auto" columns="auto, *, auto" class="p-t-10 p-l-15"
-                (tap)="onItemTap(item)">
-                <Label row="0" rowSpan="2" col="0" class="connect-team-avatar p-5 m-r-10 m-y-auto text-center" [text]="item.shortName"></Label>
-                <Label row="0" col="1" [text]="item.name" class="font-weight-bold"></Label>
-                <Label row="1" col="1" [text]="item.title" class="text-muted m-b-10"></Label>
+            <GridLayout *ngFor="let contact of careTeamItems; let index = index;" rows="auto, auto, auto" columns="auto, *, auto"
+                class="p-t-10 p-l-15" (tap)="onContactTap(contact)">
+                <Label row="0" rowSpan="2" col="0" class="connect-team-avatar p-5 m-r-10 m-y-auto text-center" [text]="contact.monogram"></Label>
+                <Label row="0" col="1" [text]="contact.name" class="font-weight-bold"></Label>
+                <Label row="1" col="1" [text]="contact.relation" class="text-muted m-b-10"></Label>
                 <Label row="0" rowSpan="3" col="2" text="&#xf105;" class="fa text-muted m-r-10 m-b-10 m-y-auto"></Label>
                 <StackLayout row="2" colSpan="3" class="hr-light" *ngIf="index !== careTeamItems.length - 1"></StackLayout>
             </GridLayout>
+
             <StackLayout>
                 <StackLayout class="hr-light"></StackLayout>
                 <Label text="friends & family" class="care-common-list-header text-uppercase t-14 p-l-15 p-t-30 p-b-7"></Label>
                 <StackLayout class="hr-light"></StackLayout>
             </StackLayout>
-            <GridLayout *ngFor="let item of friendsFamilyItems" rows="auto, auto, auto" columns="auto, *, auto" class="p-t-10 p-l-15"
-                (tap)="onItemTap(item)">
-                <Label row="0" rowSpan="2" col="0" class="connect-team-avatar p-5 m-r-10 m-y-auto text-center" [text]="item.shortName"></Label>
-                <Label row="0" col="1" [text]="item.name" class="font-weight-bold"></Label>
-                <Label row="1" col="1" [text]="item.title" class="text-muted"></Label>
+            <GridLayout *ngFor="let contact of friendsFamilyItems; let index = index;" rows="auto, auto, auto" columns="auto, *, auto"
+                class="p-t-10 p-l-15 m-b-10" (tap)="onContactTap(contact)">
+                <Label row="0" rowSpan="2" col="0" class="connect-team-avatar p-5 m-r-10 m-y-auto text-center" [text]="contact.monogram"></Label>
+                <Label row="0" col="1" [text]="contact.name" class="font-weight-bold"></Label>
+                <Label row="1" col="1" [text]="contact.relation" class="text-muted"></Label>
                 <Label row="0" rowSpan="3" col="2" text="&#xf105;" class="fa text-muted m-r-10 m-b-10 m-y-auto"></Label>
-                <StackLayout row="2" colSpan="3" class="hr-light m-t-10"></StackLayout>
+                <StackLayout row="2" colSpan="3" class="hr-light m-t-10" *ngIf="index !== friendsFamilyItems.length - 1"></StackLayout>
             </GridLayout>
         </StackLayout>
     </ScrollView>
