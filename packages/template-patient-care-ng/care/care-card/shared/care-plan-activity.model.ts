@@ -1,14 +1,14 @@
 import { CarePlanEvent } from "./care-plan-event.model";
 
-export enum CarePlanActivityType {
-    physical = "Physical Activity",
-    assessment = "Assessment",
-    medication = "Medications",
-    other = "Other"
+export const enum CarePlanActivityGroup {
+    Physical = "Physical Activity",
+    Assessment = "Assessment",
+    Medication = "Medications",
+    Other = "Other"
 }
 
 export class CarePlanActivity {
-    groupIdentifier: CarePlanActivityType;
+    groupIdentifier: CarePlanActivityGroup;
     title: string;
     text: string;
     tintColor: any;
@@ -62,15 +62,15 @@ export class CarePlanActivity {
         return 0;
     }
 
-    private getGroupIdentifierType(groupIdentifier: string): CarePlanActivityType {
-        if (groupIdentifier === CarePlanActivityType.physical.toString()) {
-            return CarePlanActivityType.physical;
-        } else if (groupIdentifier === CarePlanActivityType.assessment.toString()) {
-            return CarePlanActivityType.assessment;
-        } else if (groupIdentifier === CarePlanActivityType.medication.toString()) {
-            return CarePlanActivityType.medication;
+    private getGroupIdentifierType(groupIdentifier: string): CarePlanActivityGroup {
+        if (groupIdentifier === CarePlanActivityGroup.Physical.toString()) {
+            return CarePlanActivityGroup.Physical;
+        } else if (groupIdentifier === CarePlanActivityGroup.Assessment.toString()) {
+            return CarePlanActivityGroup.Assessment;
+        } else if (groupIdentifier === CarePlanActivityGroup.Medication.toString()) {
+            return CarePlanActivityGroup.Medication;
         } else {
-            return CarePlanActivityType.other;
+            return CarePlanActivityGroup.Other;
         }
     }
 

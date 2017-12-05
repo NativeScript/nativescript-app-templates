@@ -5,6 +5,12 @@ import { Observable } from "rxjs/Rx";
 
 import { CarePlanEvent } from "./care-plan-event.model";
 
+export const enum CarePlanEventState {
+    Initial = 0,
+    NotCompleted = 1,
+    Completed = 2
+}
+
 @Injectable()
 export class CareCardEventService {
     events$: Observable<CarePlanEvent>;
@@ -27,7 +33,7 @@ export class CareCardEventService {
 
         if (registeredEvents.length === eventsCount) {
             let eventToUpdate = registeredEvents.find((currentEvent) => {
-                return currentEvent.index === event.index;
+                return currentEvent.occurrenceIndexOfDay === event.occurrenceIndexOfDay;
             });
 
             eventToUpdate = event;
@@ -52,9 +58,15 @@ export class CareCardEventService {
 
         return eventsDataStore.save({
             activity: event.activity.getJson(),
-            date: event.date,
+            date: {
+                year: event.date.getUTCFullYear(),
+                month: event.date.getUTCMonth() + 1,
+                era: 1,
+                day: event.date.getUTCDate()
+            },
             numberOfDaysSinceStart: event.activity.getNumberOfDaysSinceStart(),
-            occurrenceIndexOfDay: event.index
+            occurrenceIndexOfDay: event.occurrenceIndexOfDay,
+            state: CarePlanEventState.Completed
         });
     }
 }

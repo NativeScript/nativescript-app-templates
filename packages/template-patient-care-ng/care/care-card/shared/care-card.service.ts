@@ -3,9 +3,9 @@ import { Kinvey } from "kinvey-nativescript-sdk";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { Observable } from "rxjs/Rx";
 
-import { CareCardActivityService } from "./care-card-activity.service";
+import { CareCardActivityService, CarePlanActivityType } from "./care-card-activity.service";
 import { CareCardEventService } from "./care-card-event.service";
-import { CarePlanActivity, CarePlanActivityType } from "./care-plan-activity.model";
+import { CarePlanActivity } from "./care-plan-activity.model";
 import { CarePlanEvent } from "./care-plan-event.model";
 
 @Injectable()
@@ -37,7 +37,7 @@ export class CareCardService {
                 let savedEventsCount: number = 0;
 
                 activities.forEach((activity) => {
-                    if (activity.type !== 2) {
+                    if (activity.type !== CarePlanActivityType.ReadOnly) {
                         const day: number = date.getDay();
                         const savedEvents = this._careCardEventService.findEvents(activity.title, date);
                         totalEventsCount += activity.schedule.occurrences[day] || 0;

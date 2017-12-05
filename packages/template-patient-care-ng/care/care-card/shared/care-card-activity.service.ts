@@ -5,8 +5,14 @@ import { Observable } from "rxjs/Rx";
 
 import { CareCardEventService } from "./care-card-event.service";
 import { CareCardService } from "./care-card.service";
-import { CarePlanActivity, CarePlanActivityType } from "./care-plan-activity.model";
+import { CarePlanActivity, CarePlanActivityGroup } from "./care-plan-activity.model";
 import { CarePlanEvent } from "./care-plan-event.model";
+
+export const enum CarePlanActivityType {
+    Activity = 0,
+    Assessment = 1,
+    ReadOnly = 2
+}
 
 @Injectable()
 export class CareCardActivityService {
@@ -41,8 +47,6 @@ export class CareCardActivityService {
                         activities.push(activity);
                     });
 
-                    this._activities = activities;
-
                     return activities;
                 })
                 .catch((error: Kinvey.BaseError) => {
@@ -68,17 +72,17 @@ export class CareCardActivityService {
                 for (const activity of activities) {
                     activity.events = new Array<CarePlanEvent>();
 
-                    if (activity.type !== 2) {
+                    if (activity.type !== CarePlanActivityType.ReadOnly) {
                         activity.events = this.getActivityEvents(activity, selectedDate);
                     }
 
-                    if (activity.groupIdentifier === CarePlanActivityType.physical) {
+                    if (activity.groupIdentifier === CarePlanActivityGroup.Physical) {
                         physicalActivities.push(activity);
-                    } else if (activity.groupIdentifier === CarePlanActivityType.assessment) {
+                    } else if (activity.groupIdentifier === CarePlanActivityGroup.Assessment) {
                         assessmentActivities.push(activity);
-                    } else if (activity.groupIdentifier === CarePlanActivityType.medication) {
+                    } else if (activity.groupIdentifier === CarePlanActivityGroup.Medication) {
                         medicationActivities.push(activity);
-                    } else if (activity.groupIdentifier === CarePlanActivityType.other) {
+                    } else if (activity.groupIdentifier === CarePlanActivityGroup.Other) {
                         otherActivities.push(activity);
                     }
                 }
@@ -103,7 +107,7 @@ export class CareCardActivityService {
 
             if (savedEvents.length && activity.events.length) {
                 for (const event of savedEvents) {
-                    activity.events[event.index] = event;
+                    activity.events[event.occurrenceIndexOfDay] = event;
                 }
             }
         });
