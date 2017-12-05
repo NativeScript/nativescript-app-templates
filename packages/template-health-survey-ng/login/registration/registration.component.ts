@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { Kinvey } from "kinvey-nativescript-sdk";
 import { RouterExtensions } from "nativescript-angular/router";
+import { DataFormEventData } from "nativescript-pro-ui/dataform";
 import { RadDataFormComponent } from "nativescript-pro-ui/dataform/angular";
 import { isAndroid } from "platform";
 import { Page } from "ui/page";
@@ -8,7 +9,7 @@ import { layout } from "utils/utils";
 
 import { RegistrationStep, SignUpStep } from "../../core/task-manager/steps";
 import { TaskManagerService } from "../../core/task-manager/task-manager.service";
-import { LoginService } from "../shared/login.service";
+import { UserService } from "../shared/user.service";
 import { RegistrationForm } from "./registration-form.model";
 
 @Component({
@@ -41,17 +42,16 @@ export class RegistrationComponent implements OnInit {
         return this._registrationForm;
     }
 
-    onGroupUpdate(args) {
+    onGroupUpdate(args: DataFormEventData) {
         // Apply padding to group headers.
-        var group = args.group;
-        var desiredPadding = 40;
+        const group = args.group;
+        const desiredPadding = 40;
 
         if (isAndroid) {
-            let paddingInPixels = desiredPadding * layout.getDisplayDensity();
+            const paddingInPixels = desiredPadding * layout.getDisplayDensity();
             group.getHeaderContainer().setPadding(0, paddingInPixels, 0, 0);
-        }
-        else {
-            var defaultTitleHeight = 30;
+        } else {
+            const defaultTitleHeight = 30;
             group.titleView.style.insets = new UIEdgeInsets({
                 top: desiredPadding,
                 left: group.titleView.style.insets.left,
@@ -74,7 +74,7 @@ export class RegistrationComponent implements OnInit {
 
         this._taskManagerService.addStep(new RegistrationStep("registrationStep", this._registrationForm));
 
-        LoginService.signup(this._registrationForm)
+        UserService.signup(this._registrationForm)
             .then((user: Kinvey.User) => {
                 this._taskManagerService.addStep(new SignUpStep("signUp"));
                 this._taskManagerService.pushTask("accountCreationTask");

@@ -6,7 +6,7 @@ import { alert } from "ui/dialogs";
 import { Page } from "ui/page";
 
 import { LoginForm } from "./login-form.model";
-import { LoginService } from "./shared/login.service";
+import { UserService } from "./shared/user.service";
 
 @Component({
     selector: "Login",
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
 
         this.isLoading = true;
 
-        LoginService.login(this._loginForm.email, this._loginForm.password)
+        UserService.login(this._loginForm.email, this._loginForm.password)
             .then((user: Kinvey.User) => {
                 this._routerExtensions.navigate(["/consent"],
                     {
