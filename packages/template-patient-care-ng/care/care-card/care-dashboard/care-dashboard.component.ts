@@ -9,7 +9,7 @@ import { CarePlanEvent } from "../shared/care-plan-event.model";
     selector: "CareDashboard",
     moduleId: module.id,
     templateUrl: "./care-dashboard.component.html",
-    styleUrls: ["./care-dashboard.component.css"]
+    styleUrls: ["./care-dashboard.component.css", "../../care-common.css"]
 })
 export class CareDashboardComponent implements OnInit, OnDestroy {
     weeklyState: Array<any>;

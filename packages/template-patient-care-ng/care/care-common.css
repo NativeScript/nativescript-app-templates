@@ -1,6 +1,8 @@
-.listHeader {
-    padding-top: 30;
-    padding-bottom: 7;
-    background-color: rgb(239, 239, 244);
-    color: rgb(109, 109, 114);
+.care-common-main-header {
+    background-color: #f5f4f6;
+}
+
+.care-common-list-header {
+    background-color: #efeff4;
+    color: #6d6d72;
 }

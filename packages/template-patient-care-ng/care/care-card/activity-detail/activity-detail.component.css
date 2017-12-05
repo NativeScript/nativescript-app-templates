@@ -1,7 +1,7 @@
-.background {
-    background-color: rgb(238, 238, 238);
+.activity-detail-background {
+    background-color: #eeeeee;
 }
 
-.instructions {
-    background-color: white;
+.activity-detail-instructions {
+    background-color: #ffffff;
 }

@@ -6,7 +6,7 @@ import { SelectedIndexChangedEventData, TabView, TabViewItem } from "tns-core-mo
     selector: "CareComponent",
     moduleId: module.id,
     templateUrl: "./care.component.html",
-    styleUrls: ["./care.component.css"]
+    styleUrls: ["./care-common.css"]
 })
 export class CareComponent {
 

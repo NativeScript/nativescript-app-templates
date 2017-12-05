@@ -1,10 +1,13 @@
-.careTeamItemAvatar {
-    width: 36;
-    color: white;
-    background-color: gray;
+.connect-team-avatar {
+    min-width: 36;
+    color: #ffffff;
+    background-color: #808080;
 }
 
-.inboxItemAvatar {
-    font-size: 24;
-    vertical-align: top;
+.connect-contact-attribute-title {
+    color: #62c5f3;
+}
+
+.connect-contact-icon {
+    color: #62c5f3;
 }

@@ -11,12 +11,30 @@ refer to http://docs.nativescript.org/ui/theme.
 */
 
 @import 'nativescript-theme-core/css/core.light.css';
-.fa {
-    font-family: "FontAwesome";
+
+.tab-view {
+    selected-tab-text-color: #ed3f40;
+    android-selected-tab-highlight-color: #ed3f40;
 }
 
-.mainHeader {
-    background-color: rgb(245, 244, 246);
+.p-b-7 {
+    padding-bottom: 7;
+}
+
+.align-top {
+    vertical-align: top;
+}
+
+.t-24 {
+    font-size: 24;
+}
+
+.t-42 {
+    font-size: 42;
+}
+
+.fa {
+    font-family: "FontAwesome";
 }
 
 .btn-margin {

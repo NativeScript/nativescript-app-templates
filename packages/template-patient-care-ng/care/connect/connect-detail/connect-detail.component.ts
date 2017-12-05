@@ -11,7 +11,7 @@ import { ConnectService } from "../shared/connect.service";
     selector: "ConnectDetail",
     moduleId: module.id,
     templateUrl: "./connect-detail.component.html",
-    styleUrls: [ "./connect-detail.component.css", "../connect.component.css", "../../care-common.css"]
+    styleUrls: ["../connect.component.css", "../../care-common.css"]
 })
 export class ConnectDetailComponent implements OnInit {
     private _connectItem: ConnectItem;
@@ -22,11 +22,6 @@ export class ConnectDetailComponent implements OnInit {
         private _routerExtensions: RouterExtensions
     ) { }
 
-    /* ***********************************************************
-    * Use the "ngOnInit" handler to get the data item id parameter passed through navigation.
-    * Get the data item details from the data service using this id and assign it to the
-    * private property that holds it inside the component.
-    *************************************************************/
     ngOnInit(): void {
         this._pageRoute.activatedRoute
             .switchMap((activatedRoute) => activatedRoute.params)
@@ -41,9 +36,6 @@ export class ConnectDetailComponent implements OnInit {
         return this._connectItem;
     }
 
-    /* ***********************************************************
-    * The back button is essential for a master-detail feature.
-    *************************************************************/
     onBackButtonTap(): void {
         this._routerExtensions.backToPreviousPage();
     }
