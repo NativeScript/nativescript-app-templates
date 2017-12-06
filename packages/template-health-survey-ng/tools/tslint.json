@@ -1,5 +1,11 @@
 {
   "extends": "tslint:latest",
+  "linterOptions": {
+    "exclude": [
+      "app/vendor-platform.*.ts",
+      "app/vendor.ts"
+    ]
+  },
   "rulesDirectory": [
     "node_modules/codelyzer"
   ],
