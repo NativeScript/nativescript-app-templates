@@ -13,17 +13,12 @@ export class ConnectService {
     private _patient: Patient;
     private _patientPromise: Promise<any>;
 
-    getContactByName(name: string): Promise<any> {
-        const query = new Kinvey.Query();
-        query.equalTo("name", name);
-
-        return this._contactStore.find(query).toPromise()
+    getContactById(id: string): Promise<any> {
+        return this._contactStore.findById(id).toPromise()
             .then((contactData) => {
-                if (contactData && contactData.length) {
-                    const contact = new Contact(contactData[0]);
+                const contact = new Contact(contactData);
 
-                    return contact;
-                }
+                return contact;
             })
             .catch((error: Kinvey.BaseError) => {
                 alert({

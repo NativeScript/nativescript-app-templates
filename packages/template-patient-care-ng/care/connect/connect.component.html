@@ -11,19 +11,6 @@
         <StackLayout>
             <!-- NOTE: use *ngFor directive only if visualizing a known small number of items; 
                 otherwise consider using ListView that supports virtualization -->
-            <!-- <StackLayout>
-                <StackLayout class="hr-light"></StackLayout>
-                <Label text="inbox" class="care-common-list-header text-uppercase t-14 p-l-15 p-t-30 p-b-7"></Label>
-                <StackLayout class="hr-light"></StackLayout>
-            </StackLayout>
-            <GridLayout *ngFor="let contact of inboxItems; let index = index;" rows="auto, auto" columns="auto, *, auto"
-                class="p-t-10 p-l-15" (tap)="onContactTap(contact)">
-                <Label row="0" col="0" class="fa t-24 align-top m-x-5 m-y-auto" text="&#xf0e5;"></Label>
-                <Label row="0" col="1" [text]="contact.name" class="font-weight-normal m-l-10"></Label>
-                <Label row="0" rowSpan="2" col="2" text="&#xf105;" class="fa text-muted m-r-10 m-b-15 m-y-auto"></Label>
-                <StackLayout row="1" colSpan="3" class="hr-light"></StackLayout>
-            </GridLayout> -->
-
             <StackLayout>
                 <StackLayout class="hr-light"></StackLayout>
                 <Label text="care team" class="care-common-list-header text-uppercase t-14 p-l-15 p-t-30 p-b-7"></Label>

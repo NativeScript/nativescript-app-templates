@@ -30,9 +30,9 @@ export class ConnectDetailComponent implements OnInit {
         this._pageRoute.activatedRoute
             .switchMap((activatedRoute) => activatedRoute.params)
             .forEach((params) => {
-                const contactName = params.id;
+                const contactId = params.id;
 
-                this._connectService.getContactByName(contactName)
+                this._connectService.getContactById(contactId)
                     .then((contact: Contact) => {
                         this._contact = contact;
                         this.isLoading = false;

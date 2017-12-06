@@ -12,6 +12,7 @@ export class ContactInfo {
 
 // tslint:disable-next-line:max-classes-per-file
 export class Contact {
+    id: string;
     name: string;
     monogram: string;
     tintColor: string;
@@ -20,6 +21,7 @@ export class Contact {
     contactInfoItems: Array<ContactInfo>;
 
     constructor(options: any) {
+        this.id = options._id;
         this.name = options.name;
         this.monogram = options.monogram;
         this.relation = options.relation;

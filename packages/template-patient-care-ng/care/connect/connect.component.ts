@@ -15,7 +15,6 @@ export class ConnectComponent implements OnInit {
     isLoading: boolean;
 
     private _patient: Patient;
-    private _inboxItems: Array<Contact>;
     private _careTeamItems: Array<Contact>;
     private _friendsFamilyItems: Array<Contact>;
 
@@ -26,10 +25,6 @@ export class ConnectComponent implements OnInit {
 
     get patient(): Patient {
         return this._patient;
-    }
-
-    get inboxItems(): Array<Contact> {
-        return this._inboxItems;
     }
 
     get careTeamItems(): Array<Contact> {
@@ -51,7 +46,7 @@ export class ConnectComponent implements OnInit {
     }
 
     onContactTap(contact: Contact): void {
-        this._routerExtensions.navigate(["care/connect-detail", contact.name],
+        this._routerExtensions.navigate(["care/connect-detail", contact.id],
             {
                 animated: true,
                 transition: {
