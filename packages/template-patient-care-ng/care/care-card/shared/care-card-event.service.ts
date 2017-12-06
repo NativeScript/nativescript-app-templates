@@ -32,7 +32,40 @@ export class CareCardEventService {
         this.updatedEvent$ = this._updatedEventItemSource.asObservable();
     }
 
-    getEvents(): Promise<any> {
+    upsertEvent(event: CarePlanEvent, eventsCount: number): Promise<any> {
+        return this.findEvents(event.activity.title, event.date)
+            .then((registeredEvents: Array<CarePlanEvent>) => {
+                let promiseQueue = Promise.resolve();
+
+                if (registeredEvents.length === eventsCount) {
+                    let eventToUpdate = registeredEvents.find((currentEvent) => {
+                        return currentEvent.occurrenceIndexOfDay === event.occurrenceIndexOfDay;
+                    });
+
+                    eventToUpdate = event;
+                } else {
+                    this._events.push(event);
+                    promiseQueue = promiseQueue.then(() => this.saveEvent(event));
+                }
+
+                return promiseQueue;
+            })
+            .then(() => this._updatedEventItemSource.next(event));
+    }
+
+    findEvents(title: string, date: Date): Promise<Array<CarePlanEvent>> {
+        return this.getEvents()
+            .then(() => {
+                const filteredEvents = this._events.filter((currentEvent) => {
+                    return currentEvent.date.toDateString() === date.toDateString() &&
+                        currentEvent.activity.title === title;
+                });
+
+                return filteredEvents;
+            });
+    }
+
+    private getEvents(): Promise<any> {
         if (!this._eventsPromise) {
             this._eventsPromise = this._eventsDataStore.find().toPromise()
                 .then((data) => {
@@ -68,39 +101,6 @@ export class CareCardEventService {
         }
 
         return this._eventsPromise;
-    }
-
-    upsertEvent(event: CarePlanEvent, eventsCount: number): Promise<any> {
-        return this.findEvents(event.activity.title, event.date)
-            .then((registeredEvents: Array<CarePlanEvent>) => {
-                let promiseQueue = Promise.resolve();
-
-                if (registeredEvents.length === eventsCount) {
-                    let eventToUpdate = registeredEvents.find((currentEvent) => {
-                        return currentEvent.occurrenceIndexOfDay === event.occurrenceIndexOfDay;
-                    });
-
-                    eventToUpdate = event;
-                } else {
-                    this._events.push(event);
-                    promiseQueue = promiseQueue.then(() => this.saveEvent(event));
-                }
-
-                return promiseQueue;
-            })
-            .then(() => this._updatedEventItemSource.next(event));
-    }
-
-    findEvents(title: string, date: Date): Promise<Array<CarePlanEvent>> {
-        return this.getEvents()
-            .then(() => {
-                const filteredEvents = this._events.filter((currentEvent) => {
-                    return currentEvent.date.toDateString() === date.toDateString() &&
-                        currentEvent.activity.title === title;
-                });
-
-                return filteredEvents;
-            });
     }
 
     private saveEvent(event: CarePlanEvent): Promise<any> {

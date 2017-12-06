@@ -63,6 +63,9 @@ export class ActivityDetailComponent implements OnInit {
     }
 
     onDoneButtonTap(): void {
+        // TextField input comes as numeric string
+        this.value = +this.value;
+
         if (this.value > 0) {
             if (this.event) {
                 this.event.value = this.value;
