@@ -4,7 +4,7 @@ import { PageRoute, RouterExtensions } from "nativescript-angular/router";
 import "rxjs/add/operator/switchMap";
 import { TextField } from "ui/text-field";
 
-import { CareCardActivityService } from "../shared/care-card-activity.service";
+import { CareCardActivityService, CarePlanActivityType } from "../shared/care-card-activity.service";
 import { CareCardEventService } from "../shared/care-card-event.service";
 import { CareCardService } from "../shared/care-card.service";
 import { CarePlanActivity } from "../shared/care-plan-activity.model";
@@ -19,7 +19,7 @@ const IOS_KEYBOARDTYPE_DECIMALPAD: number = 8;
     styleUrls: ["./activity-detail.component.css", "../../care-common.css"]
 })
 export class ActivityDetailComponent implements OnInit {
-    isReadonlyActivity: boolean;
+    isReadOnlyActivity: boolean;
     value: number;
 
     private _selectedDate: Date;
@@ -43,15 +43,15 @@ export class ActivityDetailComponent implements OnInit {
             .forEach((params) => {
                 this._activity = this._careCardActivityService.getActivity(params.title);
                 this._selectedDate = new Date(params.date);
+                this.isReadOnlyActivity = this._activity.type !== CarePlanActivityType.Assessment;
 
-                const events = this._careCardEventService.findEvents(params.title, this._selectedDate);
-
-                if (events && events.length) {
-                    this.event = events[0];
-                    this.value = this.event.value;
-                }
-
-                this.isReadonlyActivity = this._activity.type !== 1;
+                this._careCardEventService.findEvents(params.title, this._selectedDate)
+                    .then((events: Array<CarePlanEvent>) => {
+                        if (events && events.length) {
+                            this.event = events[0];
+                            this.value = this.event.value;
+                        }
+                    });
             });
     }
 
@@ -72,8 +72,8 @@ export class ActivityDetailComponent implements OnInit {
 
             this.event.value = this.value;
 
-            this._careCardEventService.upsertEvent(this.event, 1);
-            this.navigateToCareCard();
+            this._careCardEventService.upsertEvent(this.event, 1)
+                .then(() => this.navigateToCareCard());
         }
     }
 

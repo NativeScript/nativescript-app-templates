@@ -5,7 +5,7 @@
 </ActionBar>
 
 <GridLayout class="page" rows="*, auto">
-    <GridLayout *ngIf="isReadonlyActivity" rows="*, 5*">
+    <GridLayout *ngIf="isReadOnlyActivity" rows="*, 5*">
         <GridLayout rows="*, auto, auto" class="care-common-main-header p-b-10">
             <Label row="1" [text]="activity.title" class="text-center font-weight-bold"></Label>
             <Label row="2" [text]="activity.text" class="text-center text-muted"></Label>
@@ -20,14 +20,14 @@
         </ScrollView>
     </GridLayout>
 
-    <GridLayout *ngIf="!isReadonlyActivity" rows="*, 5*">
+    <GridLayout *ngIf="!isReadOnlyActivity" rows="*, 5*">
         <Label [text]="'Input your ' + activity.title" textWrap="true" class="text-center h2 p-10 m-y-auto"></Label>
 
         <TextField (loaded)="onNumericFieldLoaded($event)" row="1" class="input align-top m-x-10" returnKeyType="done" keyboardType="number"
             hint="Tap to answer" [(ngModel)]="value"></TextField>
     </GridLayout>
 
-    <StackLayout *ngIf="!isReadonlyActivity" row="1" class="m-x-auto m-t-30 m-b-30">
+    <StackLayout *ngIf="!isReadOnlyActivity" row="1" class="m-x-auto m-t-30 m-b-30">
         <Button class="btn btn-active btn-outline btn-rounded-sm" text="Done" (tap)="onDoneButtonTap()"></Button>
     </StackLayout>
 </GridLayout>

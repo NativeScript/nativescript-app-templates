@@ -29,10 +29,20 @@ export class CareDashboardComponent implements OnInit, OnDestroy {
             this._selectedDate = date;
         });
 
-        this._eventSubscription = this._careCardEventService.events$.subscribe((event: CarePlanEvent) => {
-            // TODO: Is this check necessary?
-            // TODO check why fired twice
-            if (event && event.date.toDateString() === this._selectedDate.toDateString()) {
+        this._eventSubscription = this._careCardEventService.updatedEvent$.subscribe((event: CarePlanEvent) => {
+            // TODO: reconsider how to trigger this one-time operation
+            // one option is a separate listener for eventService.getEvents()
+            if (!event) {
+                this.weeklyState.forEach((weekItem) => {
+                    this._careCardService.getOverviewValue(weekItem.date).then((value) => {
+                        this.updateWeekItemValue(weekItem.date, value);
+                    });
+                });
+
+                return;
+            }
+
+            if (event.date.toDateString() === this._selectedDate.toDateString()) {
                 this._careCardService.getOverviewValue(this._selectedDate).then((value) => {
                     this.updateWeekItemValue(this._selectedDate, value);
                 });
@@ -79,58 +89,22 @@ export class CareDashboardComponent implements OnInit, OnDestroy {
     }
 
     private getWeeklyOverview(): Array<any> {
-        const sunday = this.getLastSunday(new Date());
-        const monday = new Date(sunday);
-        monday.setDate(sunday.getDate() + 1);
+        const sunday = this.getPreviousSunday(new Date());
+        const result = [];
+        for (let i = 0; i < 7; i++) {
+            const date = new Date(sunday);
+            date.setDate(sunday.getDate() + i);
 
-        const tuesday = new Date(sunday);
-        tuesday.setDate(sunday.getDate() + 2);
+            result.push({
+                date,
+                value: 0
+            });
+        }
 
-        const wednesday = new Date(sunday);
-        wednesday.setDate(sunday.getDate() + 3);
-
-        const thursday = new Date(sunday);
-        thursday.setDate(sunday.getDate() + 4);
-
-        const friday = new Date(sunday);
-        friday.setDate(sunday.getDate() + 5);
-
-        const saturday = new Date(sunday);
-        saturday.setDate(sunday.getDate() + 6);
-
-        return [
-            {
-                date: sunday,
-                value: 0
-            },
-            {
-                date: monday,
-                value: 0
-            },
-            {
-                date: tuesday,
-                value: 0
-            },
-            {
-                date: wednesday,
-                value: 0
-            },
-            {
-                date: thursday,
-                value: 0
-            },
-            {
-                date: friday,
-                value: 0
-            },
-            {
-                date: saturday,
-                value: 0
-            }
-        ];
+        return result;
     }
 
-    private getLastSunday(date: Date): Date {
+    private getPreviousSunday(date: Date): Date {
         const result = new Date(date);
         result.setDate(date.getDate() - date.getDay());
 

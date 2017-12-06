@@ -23,9 +23,6 @@ export class CareCardActivityService {
 
     constructor(private _careCardEventService: CareCardEventService) {
         this._activities = new Array<CarePlanActivity>();
-        this.getActivities().then((activities: Array<CarePlanActivity>) => {
-            this._activities = activities;
-        });
     }
 
     getActivity(title: string): CarePlanActivity {
@@ -46,6 +43,8 @@ export class CareCardActivityService {
                         const activity = new CarePlanActivity(activityData);
                         activities.push(activity);
                     });
+
+                    this._activities = activities;
 
                     return activities;
                 })
@@ -73,7 +72,7 @@ export class CareCardActivityService {
                     activity.events = new Array<CarePlanEvent>();
 
                     if (activity.type !== CarePlanActivityType.ReadOnly) {
-                        activity.events = this.getActivityEvents(activity, selectedDate);
+                        activity.events = this.createActivityEventPlaceholders(activity, selectedDate);
                     }
 
                     if (activity.groupIdentifier === CarePlanActivityGroup.Physical) {
@@ -87,33 +86,44 @@ export class CareCardActivityService {
                     }
                 }
 
-                this.mapEvents(physicalActivities, selectedDate);
-                this.mapEvents(assessmentActivities, selectedDate);
-                this.mapEvents(otherActivities, selectedDate);
-                this.mapEvents(medicationActivities, selectedDate);
+                const mapEventsPromises = [];
+                mapEventsPromises.push(this.mapEvents(physicalActivities, selectedDate));
+                mapEventsPromises.push(this.mapEvents(assessmentActivities, selectedDate));
+                mapEventsPromises.push(this.mapEvents(otherActivities, selectedDate));
+                mapEventsPromises.push(this.mapEvents(medicationActivities, selectedDate));
 
-                return {
-                    physicalActivities,
-                    assessmentActivities,
-                    otherActivities,
-                    medicationActivities
-                };
+                return Promise.all(mapEventsPromises)
+                    .then(() => ({
+                        physicalActivities,
+                        assessmentActivities,
+                        otherActivities,
+                        medicationActivities
+                    }));
             });
     }
 
     private mapEvents(activityCollection: Array<CarePlanActivity>, selectedDate: Date) {
-        activityCollection.forEach((activity) => {
-            const savedEvents = this._careCardEventService.findEvents(activity.title, selectedDate);
+        const savedEventsPromises = [];
 
-            if (savedEvents.length && activity.events.length) {
-                for (const event of savedEvents) {
-                    activity.events[event.occurrenceIndexOfDay] = event;
-                }
+        activityCollection.forEach((activity) => {
+            if (activity.type === CarePlanActivityType.ReadOnly) {
+                return;
             }
+
+            savedEventsPromises.push(this._careCardEventService.findEvents(activity.title, selectedDate)
+                .then((savedEvents) => {
+                    if (savedEvents.length && activity.events.length) {
+                        for (const event of savedEvents) {
+                            activity.events[event.occurrenceIndexOfDay] = event;
+                        }
+                    }
+                }));
         });
+
+        return Promise.all(savedEventsPromises);
     }
 
-    private getActivityEvents(activity: CarePlanActivity, selectedDate: Date): Array<CarePlanEvent> {
+    private createActivityEventPlaceholders(activity: CarePlanActivity, selectedDate: Date): Array<CarePlanEvent> {
         const events = new Array<CarePlanEvent>();
 
         const day: number = selectedDate.getDay();

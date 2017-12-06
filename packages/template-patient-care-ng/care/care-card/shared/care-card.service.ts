@@ -36,27 +36,37 @@ export class CareCardService {
                 let totalEventsCount: number = 0;
                 let savedEventsCount: number = 0;
 
-                activities.forEach((activity) => {
-                    if (activity.type !== CarePlanActivityType.ReadOnly) {
-                        const day: number = date.getDay();
-                        const savedEvents = this._careCardEventService.findEvents(activity.title, date);
-                        totalEventsCount += activity.schedule.occurrences[day] || 0;
+                const savedEventsPromises = [];
 
-                        savedEvents.forEach((savedEvent) => {
-                            if (savedEvent.value !== 0) {
-                                savedEventsCount++;
-                            }
-                        });
+                activities.forEach((activity) => {
+                    if (activity.type === CarePlanActivityType.ReadOnly) {
+                        return;
                     }
+
+                    const day: number = date.getDay();
+                    totalEventsCount += activity.schedule.occurrences[day] || 0;
+
+                    savedEventsPromises.push(this._careCardEventService.findEvents(activity.title, date));
                 });
 
-                overviewValue = (savedEventsCount / totalEventsCount) * 100;
+                return Promise.all(savedEventsPromises)
+                    .then((values) => {
+                        values.forEach((savedEvents) => {
+                            savedEvents.forEach((savedEvent) => {
+                                if (savedEvent.value !== 0) {
+                                    savedEventsCount++;
+                                }
+                            });
+                        });
 
-                if (overviewValue) {
-                    return parseFloat(overviewValue.toFixed(2));
-                } else {
-                    return 0;
-                }
+                        overviewValue = (savedEventsCount / totalEventsCount) * 100;
+
+                        if (overviewValue) {
+                            return parseFloat(overviewValue.toFixed(2));
+                        } else {
+                            return 0;
+                        }
+                    });
             });
     }
 }
