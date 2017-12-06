@@ -3,6 +3,7 @@ import { RouterExtensions } from "nativescript-angular/router";
 
 import { ConsentSharingStep } from "../../core/task-manager/steps";
 import { TaskManagerService } from "../../core/task-manager/task-manager.service";
+import { AppService } from "../../shared/app.service";
 
 @Component({
     selector: "ConsentSharing",
@@ -12,6 +13,7 @@ import { TaskManagerService } from "../../core/task-manager/task-manager.service
 })
 export class ConsentSharingComponent implements OnInit {
     constructor(
+        public appService: AppService,
         private _routerExtensions: RouterExtensions,
         private _taskManagerService: TaskManagerService
     ) { }
@@ -31,19 +33,6 @@ export class ConsentSharingComponent implements OnInit {
                 animated: true,
                 transition: {
                     name: "slide",
-                    duration: 200,
-                    curve: "ease"
-                }
-            });
-    }
-
-    onCancelButtonTap() {
-        this._routerExtensions.navigate(["/login"],
-            {
-                clearHistory: true,
-                animated: true,
-                transition: {
-                    name: "slideRight",
                     duration: 200,
                     curve: "ease"
                 }

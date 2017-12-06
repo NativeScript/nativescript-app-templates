@@ -3,6 +3,7 @@ import { RouterExtensions } from "nativescript-angular/router";
 
 import { VisualConsentStep } from "../../../core/task-manager/steps";
 import { TaskManagerService } from "../../../core/task-manager/task-manager.service";
+import { AppService } from "../../../shared/app.service";
 
 @Component({
     selector: "Withdrawing",
@@ -12,6 +13,7 @@ import { TaskManagerService } from "../../../core/task-manager/task-manager.serv
 })
 export class WithdrawingComponent implements OnInit {
     constructor(
+        public appService: AppService,
         private _routerExtensions: RouterExtensions,
         private _taskManagerService: TaskManagerService
     ) { }
@@ -30,19 +32,6 @@ export class WithdrawingComponent implements OnInit {
                 animated: true,
                 transition: {
                     name: "slide",
-                    duration: 200,
-                    curve: "ease"
-                }
-            });
-    }
-
-    onCancelButtonTap() {
-        this._routerExtensions.navigate(["/login"],
-            {
-                clearHistory: true,
-                animated: true,
-                transition: {
-                    name: "slideRight",
                     duration: 200,
                     curve: "ease"
                 }

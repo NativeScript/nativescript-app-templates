@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 
+import { AppService } from "../../shared/app.service";
+
 @Component({
     selector: "Complete",
     moduleId: module.id,
@@ -8,6 +10,7 @@ import { RouterExtensions } from "nativescript-angular/router";
 })
 export class SurveyCompleteComponent implements OnInit {
     constructor(
+        public appService: AppService,
         private _routerExtensions: RouterExtensions
     ) { }
 

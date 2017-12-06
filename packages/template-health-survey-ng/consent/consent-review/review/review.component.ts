@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 
+import { AppService } from "../../../shared/app.service";
+
 @Component({
     selector: "Review",
     moduleId: module.id,
@@ -8,7 +10,9 @@ import { RouterExtensions } from "nativescript-angular/router";
     styleUrls: ["../../consent-common.css"]
 })
 export class ReviewComponent implements OnInit {
-    constructor(private _routerExtensions: RouterExtensions) {
+    constructor(
+        public appService: AppService,
+        private _routerExtensions: RouterExtensions) {
     }
 
     ngOnInit(): void {
@@ -32,19 +36,6 @@ export class ReviewComponent implements OnInit {
     onDisagreeButtonTap() {
         this._routerExtensions.navigate(["/login"],
             {
-                animated: true,
-                transition: {
-                    name: "slideRight",
-                    duration: 200,
-                    curve: "ease"
-                }
-            });
-    }
-
-    onCancelButtonTap() {
-        this._routerExtensions.navigate(["/login"],
-            {
-                clearHistory: true,
                 animated: true,
                 transition: {
                     name: "slideRight",

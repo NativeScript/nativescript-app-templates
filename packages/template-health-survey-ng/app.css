@@ -35,3 +35,7 @@ refer to http://docs.nativescript.org/ui/theme.
 .btn-margin {
     margin: 0 5 0 5;
 }
+
+.btn-w-150 {
+    width: 150;
+}

@@ -3,6 +3,7 @@ import { RouterExtensions } from "nativescript-angular/router";
 
 import { StudyStep } from "../core/task-manager/steps";
 import { TaskManagerService } from "../core/task-manager/task-manager.service";
+import { AppService } from "../shared/app.service";
 
 @Component({
     selector: "Survey",
@@ -14,6 +15,7 @@ export class SurveyComponent implements OnInit {
     answer: boolean;
 
     constructor(
+        public appService: AppService,
         private _routerExtensions: RouterExtensions,
         private _taskManagerService: TaskManagerService
     ) { }
@@ -43,19 +45,6 @@ export class SurveyComponent implements OnInit {
                 animated: true,
                 transition: {
                     name: "slide",
-                    duration: 200,
-                    curve: "ease"
-                }
-            });
-    }
-
-    onCancelButtonTap() {
-        this._routerExtensions.navigate(["/login"],
-            {
-                clearHistory: true,
-                animated: true,
-                transition: {
-                    name: "slideRight",
                     duration: 200,
                     curve: "ease"
                 }

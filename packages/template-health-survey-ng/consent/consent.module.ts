@@ -1,7 +1,7 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptCommonModule } from "nativescript-angular/common";
-import { NativeScriptUIDataFormModule } from "nativescript-pro-ui/dataform/angular";
 
+import { SharedModule } from "../shared/shared.module";
 import { ConsentComponent } from "./consent-review/consent/consent.component";
 import { ReviewComponent } from "./consent-review/review/review.component";
 import { ConsentRoutingModule } from "./consent-routing.module";
@@ -17,7 +17,7 @@ import { WelcomeComponent } from "./welcome.component";
     imports: [
         ConsentRoutingModule,
         NativeScriptCommonModule,
-        NativeScriptUIDataFormModule
+        SharedModule
     ],
     declarations: [
         WelcomeComponent,
