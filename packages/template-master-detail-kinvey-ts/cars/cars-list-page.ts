@@ -33,10 +33,10 @@ export function onNavigatingTo(args: NavigatedData): void {
 
 /* ***********************************************************
 * Use the "itemTap" event handler of the <RadListView> to navigate to the
-* item details page. Retrieve a reference for the data item (the id) and pass it
+* item details page. Retrieve a reference for the data item and pass it
 * to the item details page, so that it can identify which data item to display.
-* Learn more about navigating with a parameter in this documentation article:
-* http://docs.nativescript.org/angular/core-concepts/angular-navigation.html#passing-parameter
+* Learn more about navigating and passing context in this documentation article:
+* https://docs.nativescript.org/core-concepts/navigation#navigate-and-pass-context
 *************************************************************/
 export function onCarItemTap(args: ListViewEventData): void {
     const tappedCarItem = <Car>args.view.bindingContext;
