@@ -3,8 +3,8 @@ import { Kinvey } from "kinvey-nativescript-sdk";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { Observable } from "rxjs/Rx";
 
-import { CarePlanActivityType } from "./care-card-activity.service";
-import { CarePlanActivity, CarePlanActivityGroup } from "./care-plan-activity.model";
+import { CarePlanActivityType } from "./care-plan-activity-type.enum";
+import { CarePlanActivity } from "./care-plan-activity.model";
 import { CarePlanEvent } from "./care-plan-event.model";
 
 export const enum CarePlanEventState {

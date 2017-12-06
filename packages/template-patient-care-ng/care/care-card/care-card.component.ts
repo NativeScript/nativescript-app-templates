@@ -6,6 +6,4 @@ import { Component } from "@angular/core";
     templateUrl: "./care-card.component.html",
     styleUrls: ["../care-common.css"]
 })
-export class CareCardComponent {
-
-}
+export class CareCardComponent { }

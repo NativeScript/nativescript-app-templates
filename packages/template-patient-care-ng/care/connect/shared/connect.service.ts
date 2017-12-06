@@ -33,8 +33,6 @@ export class ConnectService {
         if (!this._patientPromise) {
             this._patientPromise = this._patientStore.find().toPromise()
                 .then((data) => {
-                    const activities = [];
-
                     if (data && data.length) {
                         const patient = new Patient(data[0]);
                         this._patient = patient;

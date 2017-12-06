@@ -1,11 +1,5 @@
+import { CarePlanActivityGroup } from "./care-plan-activity-group.enum";
 import { CarePlanEvent } from "./care-plan-event.model";
-
-export const enum CarePlanActivityGroup {
-    Physical = "Physical Activity",
-    Assessment = "Assessment",
-    Medication = "Medications",
-    Other = "Other"
-}
 
 export class CarePlanActivity {
     groupIdentifier: CarePlanActivityGroup;

@@ -1,16 +1,5 @@
-export class ContactInfo {
-    type: number;
-    displayString: string;
-    label: string;
+import { ContactInfo } from "./contact-info.model";
 
-    constructor(options: any) {
-        this.type = options.type;
-        this.displayString = options.displayString;
-        this.label = options.label;
-    }
-}
-
-// tslint:disable-next-line:max-classes-per-file
 export class Contact {
     id: string;
     name: string;

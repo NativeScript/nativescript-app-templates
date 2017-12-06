@@ -56,6 +56,7 @@ export class RegistrationComponent implements OnInit {
                 bottom: group.titleView.style.insets.bottom,
                 right: group.titleView.style.insets.right
             });
+
             group.titleView.frame = CGRectMake(0, 0, 0, defaultTitleHeight + desiredPadding);
         }
     }

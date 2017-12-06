@@ -5,7 +5,8 @@ import * as phoneModule from "nativescript-phone";
 import "rxjs/add/operator/switchMap";
 
 import { ConnectService } from "../shared/connect.service";
-import { Contact, ContactInfo } from "../shared/contact.model";
+import { ContactInfo } from "../shared/contact-info.model";
+import { Contact } from "../shared/contact.model";
 
 @Component({
     selector: "ConnectDetail",

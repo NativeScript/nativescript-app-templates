@@ -1,12 +1,11 @@
 import { Injectable } from "@angular/core";
-import { Kinvey } from "kinvey-nativescript-sdk";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { Observable } from "rxjs/Rx";
 
-import { CareCardActivityService, CarePlanActivityType } from "./care-card-activity.service";
+import { CareCardActivityService } from "./care-card-activity.service";
 import { CareCardEventService } from "./care-card-event.service";
+import { CarePlanActivityType } from "./care-plan-activity-type.enum";
 import { CarePlanActivity } from "./care-plan-activity.model";
-import { CarePlanEvent } from "./care-plan-event.model";
 
 @Injectable()
 export class CareCardService {

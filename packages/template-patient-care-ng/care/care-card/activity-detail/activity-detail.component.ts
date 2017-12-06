@@ -4,9 +4,10 @@ import { PageRoute, RouterExtensions } from "nativescript-angular/router";
 import "rxjs/add/operator/switchMap";
 import { TextField } from "ui/text-field";
 
-import { CareCardActivityService, CarePlanActivityType } from "../shared/care-card-activity.service";
+import { CareCardActivityService } from "../shared/care-card-activity.service";
 import { CareCardEventService } from "../shared/care-card-event.service";
 import { CareCardService } from "../shared/care-card.service";
+import { CarePlanActivityType } from "../shared/care-plan-activity-type.enum";
 import { CarePlanActivity } from "../shared/care-plan-activity.model";
 import { CarePlanEvent } from "../shared/care-plan-event.model";
 
