@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { Kinvey } from "kinvey-nativescript-sdk";
 import { RouterExtensions } from "nativescript-angular/router";
+import { DataFormEventData } from "nativescript-pro-ui/dataform";
 import { RadDataFormComponent } from "nativescript-pro-ui/dataform/angular";
+import { isIOS } from "platform";
 
 import { ConsentReviewStep } from "../../../core/task-manager/steps";
 import { TaskManagerService } from "../../../core/task-manager/task-manager.service";
@@ -30,6 +32,13 @@ export class ConsentComponent implements OnInit {
 
     get consentForm(): ConsentForm {
         return this._consentForm;
+    }
+
+    onEditorUpdate(args: DataFormEventData) {
+        // disable autocorrection for firstName and lastName fields
+        if (isIOS && (args.propertyName === "firstName" || args.propertyName === "lastName")) {
+            args.editor.editor.autocorrectionType = UITextAutocorrectionType.No;
+        }
     }
 
     onDoneButtonTap() {

@@ -3,7 +3,7 @@ import { Kinvey } from "kinvey-nativescript-sdk";
 import { RouterExtensions } from "nativescript-angular/router";
 import { DataFormEventData } from "nativescript-pro-ui/dataform";
 import { RadDataFormComponent } from "nativescript-pro-ui/dataform/angular";
-import { isAndroid } from "platform";
+import { isAndroid, isIOS } from "platform";
 import { Page } from "ui/page";
 import { layout } from "utils/utils";
 
@@ -42,15 +42,25 @@ export class RegistrationComponent implements OnInit {
         return this._registrationForm;
     }
 
+    onEditorUpdate(args: DataFormEventData) {
+        // disable autocapitalization and autocorrection for email field
+        if (isIOS && args.propertyName === "email") {
+            args.editor.editor.autocapitalizationType = UITextAutocapitalizationType.None;
+            args.editor.editor.autocorrectionType = UITextAutocorrectionType.No;
+        }
+
+        // disable autocorrection for givenName and familyName fields
+        if (isIOS && (args.propertyName === "givenName" || args.propertyName === "familyName")) {
+            args.editor.editor.autocorrectionType = UITextAutocorrectionType.No;
+        }
+    }
+
     onGroupUpdate(args: DataFormEventData) {
         // Apply padding to group headers.
         const group = args.group;
         const desiredPadding = 40;
 
-        if (isAndroid) {
-            const paddingInPixels = desiredPadding * layout.getDisplayDensity();
-            group.getHeaderContainer().setPadding(0, paddingInPixels, 0, 0);
-        } else {
+        if (isIOS) {
             const defaultTitleHeight = 30;
             group.titleView.style.insets = new UIEdgeInsets({
                 top: desiredPadding,
@@ -59,6 +69,9 @@ export class RegistrationComponent implements OnInit {
                 right: group.titleView.style.insets.right
             });
             group.titleView.frame = CGRectMake(0, 0, 0, defaultTitleHeight + desiredPadding);
+        } else {
+            const paddingInPixels = desiredPadding * layout.getDisplayDensity();
+            group.getHeaderContainer().setPadding(0, paddingInPixels, 0, 0);
         }
     }
 

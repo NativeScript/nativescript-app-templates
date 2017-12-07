@@ -8,7 +8,7 @@
             <Label class="h4 text-center" text="Additional text can go here"></Label>
 
             <StackLayout class="p-t-20">
-                <RadDataForm #registrationFormElement [source]="registrationForm" [isReadOnly]="isLoading" (groupUpdate)="onGroupUpdate($event)">
+                <RadDataForm #registrationFormElement [source]="registrationForm" [isReadOnly]="isLoading" (editorUpdate)="onEditorUpdate($event)" (groupUpdate)="onGroupUpdate($event)">
                     <TKPropertyGroup tkDataFormGroups collapsible="false" name="" titleHidden="true" hidden="false">
                         <TKEntityProperty tkPropertyGroupProperties name="email" displayName="Email" hintText="example@progress.com" required="true"
                             index="0">

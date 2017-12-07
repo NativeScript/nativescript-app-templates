@@ -12,7 +12,7 @@
             <Label text="Lorem ipsum dolor sit amet, consectertur adipiscing elit.Lorem ipsum dolor sit amet, consectertur adipiscing elit ipsum dolor sit amet, consectertur."
                 class="h4 text-center" textWrap="true"></Label>
 
-            <RadDataForm #consentFormElement [source]="consentForm" commitMode="immediate">
+            <RadDataForm #consentFormElement [source]="consentForm" commitMode="immediate" (editorUpdate)="onEditorUpdate($event)">
                 <TKEntityProperty tkDataFormProperty name="firstName" hintText="Required" required="true" index="0" validationMode="immediate">
                     <TKPropertyEditor tkEntityPropertyEditor type="Text">
                         <TKPropertyEditorStyle tkPropertyEditorStyle labelFontStyle="Bold"></TKPropertyEditorStyle>
