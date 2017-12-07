@@ -9,10 +9,6 @@ export class UserService {
         return Kinvey.User.login(username.toLowerCase(), password);
     }
 
-    static logout(): Promise<any> {
-        return Kinvey.User.logout();
-    }
-
     static signup(registrationForm: RegistrationForm): Promise<any> {
         return Kinvey.User.signup({
             username: registrationForm.email.toLowerCase(),
