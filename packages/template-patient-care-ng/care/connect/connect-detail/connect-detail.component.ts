@@ -15,8 +15,6 @@ import { Contact } from "../shared/contact.model";
     styleUrls: ["../connect.component.css", "../../care-common.css"]
 })
 export class ConnectDetailComponent implements OnInit {
-    isLoading: boolean;
-
     private _contact: Contact;
 
     constructor(
@@ -26,18 +24,12 @@ export class ConnectDetailComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.isLoading = true;
 
         this._pageRoute.activatedRoute
             .switchMap((activatedRoute) => activatedRoute.params)
             .forEach((params) => {
                 const contactId = params.id;
-
-                this._connectService.getContactById(contactId)
-                    .then((contact: Contact) => {
-                        this._contact = contact;
-                        this.isLoading = false;
-                    });
+                this._contact = this._connectService.getContactById(contactId);
             });
     }
 

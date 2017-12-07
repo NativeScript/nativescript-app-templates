@@ -6,10 +6,6 @@ import { TextField } from "ui/text-field";
 
 import { CareCardActivityService } from "../shared/care-card-activity.service";
 import { CareCardEventService } from "../shared/care-card-event.service";
-<<<<<<< HEAD
-import { CareCardService } from "../shared/care-card.service";
-=======
->>>>>>> 3718258ff7fa3c42fba3a72f4b838d1c3fbd14c8
 import { CarePlanActivityType } from "../shared/care-plan-activity-type.enum";
 import { CarePlanActivity } from "../shared/care-plan-activity.model";
 import { CarePlanEvent } from "../shared/care-plan-event.model";

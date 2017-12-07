@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
+import { Kinvey } from "kinvey-nativescript-sdk";
 import { RouterExtensions } from "nativescript-angular/router";
 
 import { ConnectService } from "./shared/connect.service";
 import { Contact } from "./shared/contact.model";
-import { Patient } from "./shared/patient.model";
 
 @Component({
     selector: "Connect",
@@ -14,7 +14,8 @@ import { Patient } from "./shared/patient.model";
 export class ConnectComponent implements OnInit {
     isLoading: boolean;
 
-    private _patient: Patient;
+    private _name: string;
+    private _monogram: string;
     private _careTeamItems: Array<Contact>;
     private _friendsFamilyItems: Array<Contact>;
 
@@ -23,25 +24,60 @@ export class ConnectComponent implements OnInit {
         private _connectService: ConnectService) {
     }
 
-    get patient(): Patient {
-        return this._patient;
+    get name(): string {
+        if (this._name) {
+            return this._name;
+        }
+
+        const activeUser: any = Kinvey.User.getActiveUser();
+
+        if (activeUser) {
+            const givenName = activeUser.data.givenName;
+            const familyName = activeUser.data.familyName;
+
+            if (givenName && familyName) {
+                this._name = `${givenName + " " + familyName}`;
+            }
+
+            return this._name;
+        }
+    }
+
+    get monogram(): string {
+        if (this._monogram) {
+            return this._monogram;
+        }
+
+        const activeUser: any = Kinvey.User.getActiveUser();
+
+        if (activeUser) {
+            const givenName = activeUser.data.givenName;
+            const familyName = activeUser.data.familyName;
+
+            if (givenName && familyName) {
+                this._monogram = givenName.charAt(0) + familyName.charAt(0);
+            }
+
+            return this._monogram;
+        }
     }
 
     get careTeamItems(): Array<Contact> {
-        return this._patient.getContactsByType(0);
+        return this._careTeamItems;
     }
 
     get friendsFamilyItems(): Array<Contact> {
-        return this._patient.getContactsByType(1);
+        return this._friendsFamilyItems;
     }
 
     ngOnInit(): void {
         this.isLoading = true;
 
-        this._connectService.getPatient()
-            .then((patient: Patient) => {
+        this._connectService.getContacts()
+            .then((contacts) => {
                 this.isLoading = false;
-                this._patient = patient;
+                this._careTeamItems = this.getContactsByType(contacts, 0);
+                this._friendsFamilyItems = this.getContactsByType(contacts, 1);
             });
     }
 
@@ -55,5 +91,11 @@ export class ConnectComponent implements OnInit {
                     curve: "ease"
                 }
             });
+    }
+
+    private getContactsByType(contacts: Array<Contact>, type: number): Array<Contact> {
+        return contacts.filter((contact) => {
+            return contact.type === type;
+        });
     }
 }

@@ -3,8 +3,8 @@
 
     <StackLayout *ngIf="!isLoading" row="0" class="care-common-main-header">
         <StackLayout class="hr-light m-b-15"></StackLayout>
-        <Label class="connect-team-avatar text-center m-b-15 h2 m-x-auto p-10" [text]="patient.monogram"></Label>
-        <Label class="h3 text-center" [text]="patient.name"></Label>
+        <Label class="connect-team-avatar text-center m-b-15 h2 m-x-auto p-10" [text]="monogram"></Label>
+        <Label class="h3 text-center" [text]="name"></Label>
         <StackLayout class="hr-light m-t-10"></StackLayout>
     </StackLayout>
     <ScrollView *ngIf="!isLoading" row="1">
