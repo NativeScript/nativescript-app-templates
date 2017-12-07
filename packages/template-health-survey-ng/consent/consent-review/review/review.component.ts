@@ -32,16 +32,4 @@ export class ReviewComponent implements OnInit {
                 }
             });
     }
-
-    onDisagreeButtonTap() {
-        this._routerExtensions.navigate(["/login"],
-            {
-                animated: true,
-                transition: {
-                    name: "slideRight",
-                    duration: 200,
-                    curve: "ease"
-                }
-            });
-    }
 }
