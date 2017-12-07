@@ -1,18 +1,17 @@
 import { Component, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 
-import { StudyStep } from "../core/task-manager/steps";
+import { StudyDateStep } from "../core/task-manager/steps";
 import { TaskManagerService } from "../core/task-manager/task-manager.service";
 import { AppService } from "../shared/app.service";
 
 @Component({
-    selector: "Survey",
+    selector: "SurveyDateQuestion",
     moduleId: module.id,
-    templateUrl: "./survey.component.html"
+    templateUrl: "./survey-date-question.component.html"
 })
-export class SurveyComponent implements OnInit {
-    isAnswerSelected: boolean;
-    answer: boolean;
+export class SurveyDateQuestionComponent implements OnInit {
+    answer: Date;
 
     constructor(
         public appService: AppService,
@@ -21,23 +20,12 @@ export class SurveyComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.isAnswerSelected = false;
-        this.answer = false;
-    }
-
-    onYesTap() {
-        this.isAnswerSelected = true;
-        this.answer = true;
-    }
-
-    onNoTap() {
-        this.isAnswerSelected = true;
-        this.answer = false;
+        this.answer = new Date();
     }
 
     onDoneButtonTap() {
-        this._taskManagerService.addStep(new StudyStep("booleanQuestionStep", this.answer));
-        this._taskManagerService.pushTask("booleanQuestionTask");
+        this._taskManagerService.addStep(new StudyDateStep("dateQuestionStep", this.answer));
+        this._taskManagerService.pushTask("dateQuestionTask");
 
         this._routerExtensions.navigate(["/survey/complete"],
             {

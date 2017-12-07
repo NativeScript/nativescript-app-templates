@@ -21,6 +21,7 @@ export class TaskManagerService {
 
         return tasksDataStore.save({
             identifier: taskIdentifier,
+            saveable: false,
             results: stepsArray
         });
     }
