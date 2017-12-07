@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { Kinvey } from "kinvey-nativescript-sdk";
 import { RouterExtensions } from "nativescript-angular/router";
+import { DataFormEventData } from "nativescript-pro-ui/dataform";
 import { RadDataFormComponent } from "nativescript-pro-ui/dataform/angular";
+import { isIOS } from "platform";
 import { alert } from "ui/dialogs";
 import { Page } from "ui/page";
 
@@ -33,6 +35,14 @@ export class LoginComponent implements OnInit {
 
     get loginForm(): LoginForm {
         return this._loginForm;
+    }
+
+    onEditorUpdate(args: DataFormEventData) {
+        // disable autocapitalization and autocorrection for email field
+        if (isIOS && args.propertyName === "email") {
+            args.editor.editor.autocapitalizationType = UITextAutocapitalizationType.None;
+            args.editor.editor.autocorrectionType = UITextAutocorrectionType.No;
+        }
     }
 
     onSigninButtonTap(): void {

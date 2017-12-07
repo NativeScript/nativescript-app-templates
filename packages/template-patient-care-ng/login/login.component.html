@@ -5,8 +5,9 @@
             <Label class="h4 text-center" text="Additional text can go here"></Label>
 
             <StackLayout class="p-t-20">
-                <RadDataForm #loginFormElement [source]="loginForm" [isReadOnly]="isLoading">
-                    <TKEntityProperty tkDataFormProperty name="email" displayName="Email" hintText="mypro@nativescript.com" required="true" index="0">
+                <RadDataForm #loginFormElement [source]="loginForm" [isReadOnly]="isLoading" (editorUpdate)="onEditorUpdate($event)">
+                    <TKEntityProperty tkDataFormProperty name="email" displayName="Email" hintText="example@progress.com" required="true"
+                        index="0">
                         <TKPropertyEditor tkEntityPropertyEditor type="Email">
                             <TKPropertyEditorStyle tkPropertyEditorStyle labelFontStyle="Bold"></TKPropertyEditorStyle>
                         </TKPropertyEditor>
