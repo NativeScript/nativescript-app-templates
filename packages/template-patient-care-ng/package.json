@@ -1,6 +1,6 @@
 {
-    "name": "tns-template-my-pro-ng",
-    "displayName": "My Pro with Kinvey",
+    "name": "tns-template-patient-care-ng",
+    "displayName": "Patient Care with Kinvey",
     "main": "main.js",
     "version": "1.0.0",
     "description": "My Pro template that saves data to Kinvey database.",
@@ -17,9 +17,9 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/NativeScript/template-my-pro-ng"
+        "url": "https://github.com/NativeScript/template-patient-care-ng"
     },
-    "homepage": "https://github.com/NativeScript/template-my-pro-ng",
+    "homepage": "https://github.com/NativeScript/template-patient-care-ng",
     "android": {
         "v8Flags": "--expose_gc"
     },

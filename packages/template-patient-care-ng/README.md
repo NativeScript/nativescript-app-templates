@@ -4,7 +4,7 @@
 Execute the following command to create an app from this template:
 
 ```
-tns create my-app-name --template https://github.com/NativeScript/template-my-pro-ng
+tns create my-patient-care --template https://github.com/NativeScript/template-patient-care-ng
 ```
 
 ## Get Help
@@ -12,7 +12,7 @@ The NativeScript framework has a vibrant community that can help when you run in
 
 Try [joining the NativeScript community Slack](http://developer.telerik.com/wp-login.php?action=slack-invitation). The Slack channel is a great place to get help troubleshooting problems, as well as connect with other NativeScript developers.
 
-If you have found an issue with this template, please report the problem in the   [Issues](https://github.com/NativeScript/template-my-pro-ng/issues).
+If you have found an issue with this template, please report the problem in the   [Issues](https://github.com/NativeScript/template-patient-care-ng/issues).
 
 ## Contributing
 
