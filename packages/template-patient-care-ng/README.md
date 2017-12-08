@@ -1,4 +1,4 @@
-# My Pro Template
+# Patient Care Template
 
 ## Quick Start
 Execute the following command to create an app from this template:
