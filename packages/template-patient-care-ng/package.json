@@ -3,7 +3,7 @@
     "displayName": "Patient Care with Kinvey",
     "main": "main.js",
     "version": "1.0.0",
-    "description": "My Pro template that saves data to Kinvey database.",
+    "description": "Patient care template that saves data to Kinvey database.",
     "license": "SEE LICENSE IN <your-license-filename>",
     "keywords": [
         "telerik",
