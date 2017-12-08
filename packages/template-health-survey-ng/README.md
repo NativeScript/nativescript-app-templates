@@ -4,8 +4,18 @@
 Execute the following command to create an app from this template:
 
 ```
-tns create my-app-name --template https://github.com/NativeScript/template-health-survey-ng
+tns create my-health-survey --template tns-template-health-survey-ng
 ```
+
+> Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm] (https://www.npmjs.com/package/tns-template-health-survey-ng).
+
+If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
+
+```
+tns create my-health-survey --template https://github.com/NativeScript/template-health-survey-ng
+```
+
+**NB:** Please, have in mind that the master branch may refer to dependencies that are not on NPM yet!
 
 ## Get Help
 The NativeScript framework has a vibrant community that can help when you run into problems.
