@@ -33,8 +33,7 @@
   },
   "devDependencies": {
     "eslint": "4.9.0",
-    "nativescript-dev-sass": "1.3.2",
-    "node-sass": "4.5.3"
+    "nativescript-dev-sass": "1.3.5"
   },
   "scripts": {
     "preinstall": "node tools/preinstall.js",
