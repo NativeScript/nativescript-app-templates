@@ -6,7 +6,7 @@
   "name": "tns-template-blank-ts",
   "displayName": "Blank",
   "templateType": "App template",
-  "version": "3.3.3",
+  "version": "3.3.4",
   "description": "Blank template for Vanilla NativeScript apps using TypeScript",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
