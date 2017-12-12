@@ -1,7 +1,7 @@
-var Observable = require("data/observable").Observable;
+const Observable = require("data/observable").Observable;
 
 function HomeViewModel() {
-    var viewModel = new Observable();
+    const viewModel = new Observable();
 
     return viewModel;
 }
