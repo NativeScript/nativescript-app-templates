@@ -1,5 +1,5 @@
 import firebase = require("nativescript-plugin-firebase");
-import { Observable } from "rxjs/Rx";
+import { Observable } from "rxjs/Observable";
 
 import { Car } from "./car-model";
 
