@@ -25,9 +25,11 @@ export class CarsListViewModel extends Observable {
         this.isLoading = true;
 
         this._carService.load()
-            .finally(() => this.isLoading = false)
-            .subscribe((cars: Array<Car>) => {
+            .then((cars: Array<Car>) => {
                 this.cars = new ObservableArray(cars);
+                this.isLoading = false;
+            })
+            .catch(() => {
                 this.isLoading = false;
             });
     }
