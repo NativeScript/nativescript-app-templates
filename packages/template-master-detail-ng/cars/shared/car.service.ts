@@ -1,7 +1,7 @@
 import { Injectable, NgZone } from "@angular/core";
 import { Http } from "@angular/http";
 import firebase = require("nativescript-plugin-firebase");
-import { Observable } from "rxjs/Rx";
+import { Observable } from "rxjs/Observable";
 
 import { Config } from "../../shared/config";
 import { Car } from "./car.model";
