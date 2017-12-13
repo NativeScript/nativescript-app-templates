@@ -1,4 +1,3 @@
-const Observable = require("rxjs/Rx").Observable;
 const Kinvey = require("kinvey-nativescript-sdk").Kinvey;
 const fs = require("tns-core-modules/file-system");
 
@@ -28,24 +27,22 @@ function CarService() {
     CarService._instance = this;
 
     this.load = function () {
-        return new Observable((observer) => {
-            this._login().then(() => this._carsStore.sync()).then(() => {
-                const sortByNameQuery = new Kinvey.Query();
-                sortByNameQuery.ascending("name");
-                const stream = this._carsStore.find(sortByNameQuery);
+        return this._login().then(() => this._carsStore.sync()).then(() => {
+            const sortByNameQuery = new Kinvey.Query();
+            sortByNameQuery.ascending("name");
+            const stream = this._carsStore.find(sortByNameQuery);
 
-                return stream.toPromise();
-            }).then((data) => {
-                this._allCars = [];
-                data.forEach((carData) => {
-                    carData.id = carData._id;
-                    const car = new Car(carData);
+            return stream.toPromise();
+        }).then((data) => {
+            this._allCars = [];
+            data.forEach((carData) => {
+                carData.id = carData._id;
+                const car = new Car(carData);
 
-                    this._allCars.push(car);
-                });
+                this._allCars.push(car);
+            });
 
-                observer.next(this._allCars);
-            }).catch(this.handleErrors);
+            return this._allCars;
         });
     };
 
@@ -99,10 +96,6 @@ function CarService() {
         const extension = imageExtension === "jpg" ? "jpeg" : imageExtension;
 
         return `image/${extension.replace(/\./g, "")}`;
-    };
-
-    this._handleErrors = function (error) {
-        return Observable.throw(error);
     };
 }
 

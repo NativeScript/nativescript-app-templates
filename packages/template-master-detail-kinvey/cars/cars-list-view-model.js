@@ -17,9 +17,11 @@ function CarsListViewModel() {
             this.set("isLoading", true);
 
             this._carService.load()
-                .finally(() => this.set("isLoading", false))
-                .subscribe((cars) => {
+                .then((cars) => {
                     this.set("cars", new ObservableArray(cars));
+                    this.set("isLoading", false);
+                })
+                .catch(() => {
                     this.set("isLoading", false);
                 });
         }
