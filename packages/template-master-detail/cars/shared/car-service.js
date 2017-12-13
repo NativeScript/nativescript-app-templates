@@ -1,4 +1,4 @@
-const Observable = require("rxjs/Rx").Observable;
+const Observable = require("rxjs/Observable").Observable;
 const firebase = require("nativescript-plugin-firebase");
 
 const Car = require("./car-model");
