@@ -1,11 +1,8 @@
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs/Rx";
-
+import { File } from "file-system";
 import { Kinvey } from "kinvey-nativescript-sdk";
 import { Config } from "../../shared/config";
 import { Car } from "./car.model";
-
-import * as fs from "file-system";
 
 const editableProperties = [
     "class",
@@ -39,27 +36,25 @@ export class CarService {
         })[0];
     }
 
-    load(): Observable<any> {
-        return new Observable((observer: any) => {
-            this.login().then(() => {
-                return this.carsStore.sync();
-            }).then(() => {
-                const sortByNameQuery = new Kinvey.Query();
-                sortByNameQuery.ascending("name");
-                const stream = this.carsStore.find(sortByNameQuery);
+    load(): Promise<any> {
+        return this.login().then(() => {
+            return this.carsStore.sync();
+        }).then(() => {
+            const sortByNameQuery = new Kinvey.Query();
+            sortByNameQuery.ascending("name");
+            const stream = this.carsStore.find(sortByNameQuery);
 
-                return stream.toPromise();
-            }).then((data) => {
-                this.allCars = [];
-                data.forEach((carData: any) => {
-                    carData.id = carData._id;
-                    const car = new Car(carData);
+            return stream.toPromise();
+        }).then((data) => {
+            this.allCars = [];
+            data.forEach((carData: any) => {
+                carData.id = carData._id;
+                const car = new Car(carData);
 
-                    this.allCars.push(car);
-                });
+                this.allCars.push(car);
+            });
 
-                observer.next(this.allCars);
-            }).catch(this.handleErrors);
+            return this.allCars;
         });
     }
 
@@ -70,7 +65,7 @@ export class CarService {
     }
 
     uploadImage(remoteFullPath: string, localFullPath: string): Promise<any> {
-        const imageFile = fs.File.fromPath(localFullPath);
+        const imageFile = File.fromPath(localFullPath);
         const imageContent = imageFile.readSync();
 
         const metadata = {
@@ -105,12 +100,6 @@ export class CarService {
         } else {
             return Kinvey.User.login(Config.kinveyUsername, Config.kinveyPassword);
         }
-    }
-
-    private handleErrors(error: Response) {
-        console.log(error);
-
-        return Observable.throw(error);
     }
 
     private getMimeType(imageExtension: string): string {
