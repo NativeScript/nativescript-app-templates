@@ -5,9 +5,9 @@ purpose of the file is to pass control to the app’s first module.
 */
 
 import "./bundle-config";
-import * as app from 'application';
+import * as application from 'application';
 
-app.start({ moduleName: 'main-page' });
+application.start({ moduleName: 'main-page' });
 
 /*
 Do not place any code after the application has been started as it will not
