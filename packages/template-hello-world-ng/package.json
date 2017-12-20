@@ -5,7 +5,7 @@
     },
     "name": "tns-template-hello-world-ng",
     "main": "main.js",
-    "version": "3.3.0",
+    "version": "3.4.0",
     "author": "Telerik <support@telerik.com>",
     "description": "NativeScript Angular Hello World template",
     "license": "Apache-2.0",
@@ -28,9 +28,9 @@
         "v8Flags": "--expose_gc"
     },
     "dependencies": {
-        "nativescript-theme-core": "~1.0.2",
-        "nativescript-angular": "~4.4.0",
-        "tns-core-modules": "~3.3.0",
+        "nativescript-theme-core": "~1.0.4",
+        "nativescript-angular": "~5.0.0",
+        "tns-core-modules": "~3.4.0",
         "@angular/animations": "~5.0.0",
         "@angular/common": "~5.0.0",
         "@angular/compiler": "~5.0.0",
@@ -39,12 +39,12 @@
         "@angular/platform-browser": "~5.0.0",
         "@angular/forms": "~5.0.0",
         "@angular/router": "~5.0.0",
-        "rxjs": "5.5.2",
+        "rxjs": "~5.5.2",
         "reflect-metadata": "~0.1.8",
         "zone.js": "~0.8.2"
     },
     "devDependencies": {
         "typescript": "~2.4.2",
-        "nativescript-dev-typescript": "~0.5.0"
+        "nativescript-dev-typescript": "~0.6.0"
     }
 }
