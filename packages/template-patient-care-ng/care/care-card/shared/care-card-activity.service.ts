@@ -32,10 +32,12 @@ export class CareCardActivityService {
                 .then((data) => {
                     const activities = [];
 
-                    data.forEach((activityData: any) => {
-                        const activity = new CarePlanActivity(activityData);
-                        activities.push(activity);
-                    });
+                    if (data && data.length) {
+                        data.forEach((activityData: any) => {
+                            const activity = new CarePlanActivity(activityData);
+                            activities.push(activity);
+                        });
+                    }
 
                     this._activities = activities;
 

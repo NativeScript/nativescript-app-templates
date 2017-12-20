@@ -71,21 +71,23 @@ export class CareCardEventService {
                 .then((data) => {
                     const events = [];
 
-                    data.forEach((eventData: any) => {
-                        const activity = new CarePlanActivity(eventData.activity);
+                    if (data && data.length) {
+                        data.forEach((eventData: any) => {
+                            const activity = new CarePlanActivity(eventData.activity);
 
-                        const jsonDate = eventData.date;
-                        const date = new Date(jsonDate.year, jsonDate.month - 1, jsonDate.day);
+                            const jsonDate = eventData.date;
+                            const date = new Date(jsonDate.year, jsonDate.month - 1, jsonDate.day);
 
-                        const occurrenceIndexOfDay = eventData.occurrenceIndexOfDay;
+                            const occurrenceIndexOfDay = eventData.occurrenceIndexOfDay;
 
-                        const result = eventData.result;
-                        const value = result && result.values && result.values.length ? result.values[0] : 1;
+                            const result = eventData.result;
+                            const value = result && result.values && result.values.length ? result.values[0] : 1;
 
-                        const event = new CarePlanEvent(activity, date, occurrenceIndexOfDay, value);
+                            const event = new CarePlanEvent(activity, date, occurrenceIndexOfDay, value);
 
-                        events.push(event);
-                    });
+                            events.push(event);
+                        });
+                    }
 
                     this._events = events;
 

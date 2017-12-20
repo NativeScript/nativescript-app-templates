@@ -20,13 +20,15 @@ export class ConnectService {
     getContacts(): Promise<any> {
         if (!this._contactsPromise) {
             this._contactsPromise = this._contactStore.find().toPromise()
-                .then((contactsData) => {
+                .then((data) => {
                     const contacts = [];
 
-                    contactsData.forEach((contactData: any) => {
-                        const contact = new Contact(contactData);
-                        contacts.push(contact);
-                    });
+                    if (data && data.length) {
+                        data.forEach((contactData: any) => {
+                            const contact = new Contact(contactData);
+                            contacts.push(contact);
+                        });
+                    }
 
                     this._contacts = contacts;
 
