@@ -32,7 +32,7 @@
     "tns-core-modules": "3.4.0"
   },
   "devDependencies": {
-    "nativescript-dev-typescript": "0.6.0",
+    "nativescript-dev-typescript": "0.5.1",
     "typescript": "2.5.3"
   }
 }
