@@ -3,7 +3,7 @@
   "displayName": "Master-Detail with Kinvey",
   "templateType": "App template",
   "main": "main.js",
-  "version": "3.3.5",
+  "version": "3.4.0",
   "description": "Master-detail interface to display collection of items from Kinvey and inspect and edit selected item properties. ",
   "license": "SEE LICENSE IN <your-license-filename>",
   "keywords": [
