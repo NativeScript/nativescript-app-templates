@@ -15,7 +15,7 @@ import { carClassList, carDoorList, carSeatList, carTransmissionList } from "./c
     moduleId: module.id,
     selector: "CarDetailEdit",
     templateUrl: "./car-detail-edit.component.html",
-    styleUrls: ["./car-detail-edit.component.css"]
+    styleUrls: ["./car-detail-edit.component.scss"]
 })
 export class CarDetailEditComponent implements OnInit {
     private _car: Car;

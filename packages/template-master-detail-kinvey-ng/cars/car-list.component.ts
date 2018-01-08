@@ -15,7 +15,7 @@ import { CarService } from "./shared/car.service";
     selector: "CarsList",
     moduleId: module.id,
     templateUrl: "./car-list.component.html",
-    styleUrls: ["./car-list.component.css"]
+    styleUrls: ["./car-list.component.scss"]
 })
 export class CarListComponent implements OnInit {
     private _isLoading: boolean = false;

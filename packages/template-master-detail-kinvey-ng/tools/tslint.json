@@ -1,5 +1,11 @@
 {
   "extends": "tslint:latest",
+  "linterOptions": {
+      "exclude": [
+          "app/*.d.ts",
+          "app/vendor*.ts"
+      ]
+  },
   "rulesDirectory": [
     "node_modules/codelyzer"
   ],
@@ -8,10 +14,8 @@
     "arrow-return-shorthand": true,
     "component-class-suffix": true,
     "directive-class-suffix": true,
-    "invoke-injectable": true,
     "member-access": [true, "no-public"],
     "newline-before-return": true,
-    "no-access-missing-member": true,
     "no-angle-bracket-type-assertion": false,
     "no-attribute-parameter-decorator": true,
     "no-consecutive-blank-lines": [true, 1],
@@ -20,6 +24,7 @@
     "no-implicit-dependencies": false,
     "no-input-rename": true,
     "no-irregular-whitespace": true,
+    "no-output-on-prefix": true,
     "no-output-rename": true,
     "no-submodule-imports": false,
     "no-unnecessary-initializer": true,
@@ -33,8 +38,6 @@
     "use-life-cycle-interface": true,
     "use-output-property-decorator": true,
     "use-pipe-transform-interface": true,
-    "template-to-ng-template": true,
-    "templates-use-public": true,
     "trailing-comma": [true, {
       "multiline": "never",
       "singleline": "never"
