@@ -1,5 +1,11 @@
 {
   "extends": "tslint:latest",
+  "linterOptions": {
+    "exclude": [
+        "app/*.d.ts",
+        "app/vendor*.ts"
+    ]
+  },
   "rules": {
     "array-type": [true, "generic"],
     "arrow-return-shorthand": true,

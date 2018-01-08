@@ -2,7 +2,7 @@
     class="page"
     navigatingTo="onNavigatingTo"  
     xmlns:nsDrawer="nativescript-pro-ui/sidedrawer"
-    xmlns:myDrawer="shared/my-drawer"
+    xmlns:drawer="shared/drawer"
     xmlns="http://schemas.nativescript.org/tns.xsd">
 
     <ActionBar class="action-bar">
@@ -44,11 +44,11 @@
             <StackLayout>
                 <!--
                 Use {N} custom components to reuse UI across your mobile app.
-                The MyDrawer custom component defined in "/shared/my-drawer" holds the contents of the app drawer.
+                The drawer custom component defined in "/shared/drawer" holds the contents of the app drawer.
                 Learn more about custom components and how they can be used in this documentation article:
                 http://docs.nativescript.org/ui/basics#custom-components
                 -->
-                <myDrawer:MyDrawer selectedPage="Featured"/>
+                <drawer:drawer-fragment selectedPage="Featured"/>
             </StackLayout>
         </nsDrawer:RadSideDrawer.drawerContent>
 

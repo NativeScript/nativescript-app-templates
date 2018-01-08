@@ -3,13 +3,13 @@ import { Observable } from "data/observable";
 import { ObservableProperty } from "../../shared/observable-property-decorator";
 
 /* ***********************************************************
-* Keep data that is displayed in your app drawer in the MyDrawer custom component view model.
+* Keep data that is displayed in your app drawer in the drawer custom component view model.
 *************************************************************/
-export class MyDrawerViewModel extends Observable {
+export class DrawerViewModel extends Observable {
     @ObservableProperty() selectedPage: string;
 
     /* ***********************************************************
-    * Use the MyDrawer view model constructor to initialize the properties data values.
+    * Use the drawer view model constructor to initialize the properties data values.
     *************************************************************/
     constructor(selectedPage: string) {
         super();

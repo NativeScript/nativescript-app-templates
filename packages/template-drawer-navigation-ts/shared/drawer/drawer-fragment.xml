@@ -1,9 +1,8 @@
 <!--
-The MyDrawer custom component view is where you define what will be displayed in the app drawer.
+The drawer custom component view is where you define what will be displayed in the app drawer.
 Feel free to customize layouts and components to change how your app drawer looks.
 -->
-<GridLayout rows="auto, *" class="sidedrawer sidedrawer-left" loaded="onLoaded"
-    xmlns:myDrawer="shared/my-drawer">
+<GridLayout rows="auto, *" class="sidedrawer sidedrawer-left" loaded="onLoaded">
     <StackLayout class="sidedrawer-header">
         <Label class="sidedrawer-header-image fa" text="&#xf2bd;" />
         <Label class="sidedrawer-header-brand" text="User Name" />

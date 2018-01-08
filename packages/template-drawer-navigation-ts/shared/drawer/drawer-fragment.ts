@@ -2,7 +2,7 @@ import { EventData } from "data/observable";
 import { topmost } from "ui/frame";
 import { GridLayout } from "ui/layouts/grid-layout";
 
-import { MyDrawerViewModel } from "./MyDrawer-view-model";
+import { DrawerViewModel } from "./drawer-view-model";
 
 /* ***********************************************************
 * Use the "loaded" event handler of the wrapping layout element to bind the view model to your view.
@@ -11,7 +11,7 @@ export function onLoaded(args: EventData): void {
     const component = <GridLayout>args.object;
     const componentTitle = component.get("selectedPage");
 
-    component.bindingContext = new MyDrawerViewModel(componentTitle);
+    component.bindingContext = new DrawerViewModel(componentTitle);
 }
 
 /* ***********************************************************

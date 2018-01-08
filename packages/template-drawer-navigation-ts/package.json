@@ -30,15 +30,16 @@
     "v8Flags": "--expose_gc"
   },
   "dependencies": {
-    "nativescript-pro-ui": "3.2.0",
-    "nativescript-theme-core": "1.0.4",
-    "tns-core-modules": "3.4.0"
+    "nativescript-pro-ui": "~3.3.0",
+    "nativescript-theme-core": "~1.0.4",
+    "tns-core-modules": "~3.4.0"
   },
   "devDependencies": {
-    "nativescript-dev-typescript": "0.5.1",
-    "nativescript-dev-sass": "1.3.5",
-    "tslint": "5.8.0",
-    "typescript": "2.5.3"
+    "nativescript-dev-sass": "~1.3.5",
+    "nativescript-dev-typescript": "~0.6.0",
+    "nativescript-dev-webpack": "~0.9.0",
+    "tslint": "~5.8.0",
+    "typescript": "~2.4.2"
   },
   "scripts": {
     "preinstall": "node tools/preinstall.js",

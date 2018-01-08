@@ -42,7 +42,7 @@ There are five blank components located in these folders:
 Each of these pages has the following components:
 - `ActionBar` - It holds the title and navigation button that opens the drawer.
 - `RadSideDrawer` - The component to display a drawer on the page.
-- `RadSideDrawer.drawerContent` - Part of the RadSideDrawer, it holds a custom component `MyDrawer` that displays the contents of the drawer.
+- `RadSideDrawer.drawerContent` - Part of the RadSideDrawer, it holds a custom component `drawer` that displays the contents of the drawer.
 - `RadSideDrawer.mainContent` - Part of the RadSideDrawer, it holds the main content for the page. You can expand this layout to modify each page.
 
 There is a NativeScript custom component that holds the contents of the drawer.
