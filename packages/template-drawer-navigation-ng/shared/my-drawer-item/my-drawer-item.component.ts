@@ -8,7 +8,7 @@ import { RouterExtensions } from "nativescript-angular/router";
     selector: "MyDrawerItem",
     moduleId: module.id,
     templateUrl: "./my-drawer-item.component.html",
-    styleUrls: ["./my-drawer-item.component.css"]
+    styleUrls: ["./my-drawer-item.component.scss"]
 })
 export class MyDrawerItemComponent implements OnInit {
     @Input() title: string;

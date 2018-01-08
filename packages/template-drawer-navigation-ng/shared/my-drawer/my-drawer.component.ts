@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from "@angular/core";
     selector: "MyDrawer",
     moduleId: module.id,
     templateUrl: "./my-drawer.component.html",
-    styleUrls: ["./my-drawer.component.css"]
+    styleUrls: ["./my-drawer.component.scss"]
 })
 export class MyDrawerComponent implements OnInit {
     /* ***********************************************************
