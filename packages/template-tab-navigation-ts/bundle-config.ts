@@ -3,8 +3,7 @@ if ((<any>global).TNS_WEBPACK) {
     require("bundle-entry-points");
 
     // register application modules
-    global.registerModule("tabs/tabs-page", () => require("./tabs/tabs-page"));
-    global.registerModule("browse/Browse", () => require("./browse/BrowseView"));
-    global.registerModule("home/Home", () => require("./home/HomeView"));
-    global.registerModule("search/Search", () => require("./search/SearchView"));
+    // This will register each `page` postfixed xml, css, js, ts, scss etc. in the app/ folder
+    const context = require.context("~/", true, /(page|fragment)\.(xml|css|js|ts|scss)$/);
+    global.registerWebpackModules(context);
 }
