@@ -27,19 +27,19 @@
             In this case the view contents and back end logic are separated in custom components.
             You can find these components in their respective folders /home, /browse etc.
             -->
-            <home:HomeView/>
+            <home:home-fragment/>
           </TabViewItem.view>
         </TabViewItem>
 
         <TabViewItem title="Browse" ios:iconSource="res://tabIcons/browse">
           <TabViewItem.view>
-             <browse:BrowseView/>
+             <browse:browse-fragment/>
           </TabViewItem.view>
         </TabViewItem>
 
         <TabViewItem title="Search" ios:iconSource="res://tabIcons/search">
           <TabViewItem.view>
-             <search:SearchView/>
+             <search:search-fragment/>
           </TabViewItem.view>
         </TabViewItem>
 
