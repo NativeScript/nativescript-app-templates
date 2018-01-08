@@ -6,10 +6,8 @@ if (global.TNS_WEBPACK) {
     global.registerModule("nativescript-pro-ui/sidedrawer",
         () => require("../node_modules/nativescript-pro-ui/sidedrawer"));
 
-    global.registerModule("shared/my-drawer/MyDrawer", () => require("./shared/my-drawer/MyDrawer"));
-    global.registerModule("home/home-page", () => require("./home/home-page"));
-    global.registerModule("browse/browse-page", () => require("./browse/browse-page"));
-    global.registerModule("featured/featured-page", () => require("./featured/featured-page"));
-    global.registerModule("search/search-page", () => require("./search/search-page"));
-    global.registerModule("settings/settings-page", () => require("./settings/settings-page"));
+    // register application modules
+    // This will register each `page` postfixed xml, css, js, ts, scss in the app/ folder
+    const context = require.context("~/", true, /(page|fragment)\.(xml|css|js|ts|scss)$/);
+    global.registerWebpackModules(context);
 }

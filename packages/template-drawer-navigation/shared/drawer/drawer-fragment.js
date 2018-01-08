@@ -1,6 +1,6 @@
 const frameModule = require("ui/frame");
 
-const MyDrawerViewModel = require("./MyDrawer-view-model");
+const DrawerViewModel = require("./drawer-view-model");
 
 /* ***********************************************************
  * Use the "loaded" event handler of the wrapping layout element to bind the view model to your view.
@@ -9,7 +9,7 @@ function onLoaded(args) {
     const component = args.object;
     const componentTitle = component.selectedPage;
 
-    component.bindingContext = new MyDrawerViewModel(componentTitle);
+    component.bindingContext = new DrawerViewModel(componentTitle);
 }
 
 /* ***********************************************************
