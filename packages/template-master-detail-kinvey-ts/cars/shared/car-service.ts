@@ -2,7 +2,6 @@ import { Config } from "../../shared/config";
 import { Car } from "./car-model";
 
 import { File } from "file-system";
-import { KinveyObservable } from "kinvey-js-sdk";
 import { Kinvey } from "kinvey-nativescript-sdk";
 
 const editableProperties = [
@@ -46,7 +45,7 @@ export class CarService {
         }).then(() => {
             const sortByNameQuery = new Kinvey.Query();
             sortByNameQuery.ascending("name");
-            const stream: KinveyObservable<Array<Car>> = this.carsStore.find(sortByNameQuery);
+            const stream = this.carsStore.find(sortByNameQuery);
 
             return stream.toPromise();
         }).then((data) => {
