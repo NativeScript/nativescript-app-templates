@@ -6,7 +6,7 @@ if (global.TNS_WEBPACK) {
         () => require("../node_modules/nativescript-pro-ui/listview"));
 
     // register application modules
-    global.registerModule("cars/cars-list-page", () => require("./cars/cars-list-page"));
-    global.registerModule("cars/car-detail-page/car-detail-page",
-        () => require("./cars/car-detail-page/car-detail-page"));
+    // This will register each `page` postfixed xml, css, js, ts, scss in the app/ folder
+    const context = require.context("~/", true, /(page|fragment)\.(xml|css|js|ts|scss)$/);
+    global.registerWebpackModules(context);
 }
