@@ -34,7 +34,7 @@
   "devDependencies": {
     "eslint": "~4.9.0",
     "nativescript-dev-sass": "~1.3.5",
-    "nativescript-dev-webpack": "~0.9.0"
+    "nativescript-dev-webpack": "~0.9.1"
   },
   "scripts": {
     "preinstall": "node tools/preinstall.js",
