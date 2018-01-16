@@ -29,8 +29,9 @@
   },
   "dependencies": {
     "nativescript-imagepicker": "~4.0.1",
-    "kinvey-nativescript-sdk": "3.9.2",
+    "kinvey-nativescript-sdk": "3.9.7",
     "nativescript-pro-ui": "~3.3.0",
+    "nativescript-push-notifications": "~1.0.0",
     "nativescript-theme-core": "~1.0.4",
     "tns-core-modules": "~3.4.0"
   },
