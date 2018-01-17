@@ -31,16 +31,16 @@
     "v8Flags": "--expose_gc"
   },
   "dependencies": {
-    "@angular/animations": "~5.1.0",
-    "@angular/common": "~5.1.0",
-    "@angular/compiler": "~5.1.0",
-    "@angular/core": "~5.1.0",
-    "@angular/forms": "~5.1.0",
-    "@angular/http": "~5.1.0",
-    "@angular/platform-browser": "~5.1.0",
-    "@angular/platform-browser-dynamic": "~5.1.0",
-    "@angular/router": "~5.1.0",
-    "nativescript-angular": "~5.1.0",
+    "@angular/animations": "~5.2.0",
+    "@angular/common": "~5.2.0",
+    "@angular/compiler": "~5.2.0",
+    "@angular/core": "~5.2.0",
+    "@angular/forms": "~5.2.0",
+    "@angular/http": "~5.2.0",
+    "@angular/platform-browser": "~5.2.0",
+    "@angular/platform-browser-dynamic": "~5.2.0",
+    "@angular/router": "~5.2.0",
+    "nativescript-angular": "~5.2.0",
     "nativescript-pro-ui": "~3.3.0",
     "nativescript-theme-core": "~1.0.4",
     "reflect-metadata": "~0.1.10",
@@ -54,7 +54,7 @@
     "nativescript-dev-typescript": "~0.6.0",
     "nativescript-dev-webpack": "~0.9.1",
     "tslint": "~5.8.0",
-    "typescript": "~2.4.2"
+    "typescript": "~2.6.2"
   },
   "scripts": {
     "preinstall": "node tools/preinstall.js",
