@@ -13,7 +13,8 @@
         "tns",
         "appbuilder",
         "template",
-        "kinvey"
+        "kinvey",
+        "healthcare"
     ],
     "repository": {
         "type": "git",
