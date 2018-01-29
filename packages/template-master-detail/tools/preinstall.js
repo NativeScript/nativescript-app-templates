@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const exec = require("child_process").exec;
 
-console.log("preinstall script running...");
+console.log("Preinstall script running...");
 
 const firebaseConfig = "firebase.nativescript.json";
 const eslintConfig = ".eslintrc";
@@ -22,7 +22,7 @@ function copyConfig(configFilename, appRootFolder) {
         const sourcePath = path.join(__dirname, configFilename);
         const destPath = path.join(appRootFolder, configFilename);
 
-        console.log(`creating ${path.resolve(destPath)}...`);
+        console.log(`Creating ${path.resolve(destPath)}...`);
         fs.rename(sourcePath, destPath, (err) => {
             if (err) {
                 return reject(err);
