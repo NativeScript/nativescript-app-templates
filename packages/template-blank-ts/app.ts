@@ -7,7 +7,7 @@ purpose of the file is to pass control to the app’s first module.
 import * as app from "application";
 import "./bundle-config";
 
-app.start({ moduleName: "home/home-page" });
+app.run({ moduleName: "app-root" });
 
 /*
 Do not place any code after the application has been started as it will not
