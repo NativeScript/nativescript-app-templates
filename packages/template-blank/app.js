@@ -7,7 +7,7 @@ purpose of the file is to pass control to the app’s first module.
 require("./bundle-config");
 const application = require("application");
 
-application.start({ moduleName: "home/home-page" });
+application.run({ moduleName: "app-root" });
 
 /*
 Do not place any code after the application has been started as it will not
