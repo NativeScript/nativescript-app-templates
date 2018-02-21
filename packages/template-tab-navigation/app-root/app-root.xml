@@ -1,0 +1,37 @@
+<!--
+The TabView component provides a simple way to navigate between different views by
+tapping on some of the tabs or by swiping between the views.
+Learn more about the TabView component in this documentation article:
+http://docs.nativescript.org/cookbook/ui/tab-view
+-->
+<TabView selectedIndexChanged="onSelectedIndexChanged" androidTabsPosition="bottom">
+    <TabView.items>
+    <!--
+    To add a new TabView item, simply add a new <TabViewItem> component to the <TabView.items> collection.
+    Assign the <TabViewItem> component a "title" that will be displayed as the text of the tab item button.
+    -->
+    <TabViewItem title="Home" ios:iconSource="res://tabIcons/home" android:iconSource="res://home">
+        <TabViewItem.view>
+            <!--
+            You can declare the layout and components of each view inside the <TabViewItem.view> directly.
+            In this case the view contents and back end logic are separated in custom components.
+            You can find these components in their respective folders /home, /browse etc.
+            -->
+            <Frame defaultPage="home/home-items-page"></Frame>
+        </TabViewItem.view>
+    </TabViewItem>
+
+    <TabViewItem title="Browse" ios:iconSource="res://tabIcons/browse" android:iconSource="res://browse">
+        <TabViewItem.view>
+            <Frame defaultPage="browse/browse-page"></Frame>
+        </TabViewItem.view>
+    </TabViewItem>
+
+    <TabViewItem title="Search" ios:iconSource="res://tabIcons/search" android:iconSource="res://search">
+        <TabViewItem.view>
+            <Frame defaultPage="search/search-page"></Frame>
+        </TabViewItem.view>
+    </TabViewItem>
+
+    </TabView.items>
+</TabView>

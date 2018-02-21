@@ -1,7 +1,7 @@
 require("./bundle-config");
 const application = require("application");
 
-application.start({ moduleName: "tabs/tabs-page" });
+application.run({ moduleName: "app-root/app-root" });
 
 /*
 Do not place any code after the application has been started as it will not
