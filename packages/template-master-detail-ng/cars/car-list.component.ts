@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ObservableArray } from "data/observable-array";
 import { RouterExtensions } from "nativescript-angular/router";
-import { ListViewEventData } from "nativescript-pro-ui/listview";
+import { ListViewEventData } from "nativescript-ui-listview";
 
 import { Car } from "./shared/car.model";
 import { CarService } from "./shared/car.service";
