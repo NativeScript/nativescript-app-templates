@@ -10,3 +10,6 @@ of writing your own CSS rules. For a full list of class names in the theme
 refer to http://docs.nativescript.org/ui/theme.
 */
 @import '~nativescript-theme-core/css/core.light.css';
+.btn-margin {
+    margin: 0 25 30 25;
+}
