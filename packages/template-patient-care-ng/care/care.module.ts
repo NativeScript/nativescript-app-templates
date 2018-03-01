@@ -1,8 +1,8 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptCommonModule } from "nativescript-angular/common";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
-import { NativeScriptUIGaugesModule } from "nativescript-pro-ui/gauges/angular";
-import { NativeScriptUIListViewModule } from "nativescript-pro-ui/listview/angular";
+import { NativeScriptUIGaugeModule } from "nativescript-ui-gauge/angular";
+import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
 
 import { ActivityDetailComponent } from "./care-card/activity-detail/activity-detail.component";
 import { ActivityListComponent } from "./care-card/activity/activity-list.component";
@@ -23,7 +23,7 @@ import { CareComponent } from "./care.component";
 @NgModule({
     imports: [
         NativeScriptCommonModule,
-        NativeScriptUIGaugesModule,
+        NativeScriptUIGaugeModule,
         NativeScriptUIListViewModule,
         NativeScriptFormsModule,
         CareRoutingModule
