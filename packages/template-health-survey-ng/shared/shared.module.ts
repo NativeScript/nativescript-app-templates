@@ -1,5 +1,5 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
-import { NativeScriptUIDataFormModule } from "nativescript-pro-ui/dataform/angular";
+import { NativeScriptUIDataFormModule } from "nativescript-ui-dataform/angular";
 
 import { AppService } from "./app.service";
 

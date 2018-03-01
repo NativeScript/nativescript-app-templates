@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { Kinvey } from "kinvey-nativescript-sdk";
 import { RouterExtensions } from "nativescript-angular/router";
-import { DataFormEventData } from "nativescript-pro-ui/dataform";
-import { RadDataFormComponent } from "nativescript-pro-ui/dataform/angular";
+import { DataFormEventData } from "nativescript-ui-dataform";
+import { RadDataFormComponent } from "nativescript-ui-dataform/angular";
 import { isIOS } from "platform";
 
 import { ConsentReviewStep } from "../../../core/task-manager/steps";
