@@ -1,5 +1,5 @@
 <Page shownModally="onShownModally" class="page" 
-    xmlns:lv="nativescript-pro-ui/listview"
+    xmlns:lv="nativescript-ui-listview"
     xmlns="http://schemas.nativescript.org/tns.xsd" >
     <ActionBar title="{{ title }}" icon="" class="action-bar">
         <Label text="{{ title }}" />
