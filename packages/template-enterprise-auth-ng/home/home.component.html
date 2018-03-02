@@ -1,10 +1,8 @@
-<GridLayout>
-    <GridLayout rows="*, auto">
-        <StackLayout verticalAlignment="middle">
-            <Label class="text-muted t-30" text="Welcome" horizontalAlignment="center"></Label>
-            <Label class="t-20 m-t-20" [text]="loggedUser" horizontalAlignment="center"></Label>
-        </StackLayout>
+<GridLayout class="page" rows="*, auto">
+    <StackLayout verticalAlignment="middle">
+        <Label class="text-muted t-30" text="Welcome" horizontalAlignment="center"></Label>
+        <Label class="t-20 m-t-20" [text]="loggedUser" horizontalAlignment="center"></Label>
+    </StackLayout>
 
-        <Button row="1" class="btn btn-primary btn-active btn-margin font-weight-bold t-18" (tap)="logout()" text="Log out"></Button>
-    </GridLayout>
+    <Button row="1" class="btn btn-primary btn-active btn-margin font-weight-bold t-18" (tap)="logout()" text="Log out"></Button>
 </GridLayout>

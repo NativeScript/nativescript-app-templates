@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit } from "@angular/core";
 import { Button } from "ui/button";
 import { Kinvey, User } from 'kinvey-nativescript-sdk';
 import { RouterExtensions } from "nativescript-angular/router";
+import { Page } from "tns-core-modules/ui/page"
 
 @Component({
     selector: "Home",
@@ -11,7 +12,8 @@ import { RouterExtensions } from "nativescript-angular/router";
 export class HomeComponent implements OnInit {
     public loggedUser: string;
 
-    constructor(private _routerExtensions: RouterExtensions) {
+    constructor(private _routerExtensions: RouterExtensions, private page: Page) {
+        this.page.actionBarHidden = true;
     }
 
     ngOnInit(): void {

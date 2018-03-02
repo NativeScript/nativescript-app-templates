@@ -1,10 +1,8 @@
-<GridLayout>
-    <GridLayout rows="*, auto">
-        <StackLayout verticalAlignment="middle">
-            <Label class="text-muted t-30" text="Enterprise Auth" horizontalAlignment="center"></Label>
-            <Image class="m-t-20" src="res://lock.png" stretch="none" horizontalAlignment="center"></Image>
-        </StackLayout>
+<GridLayout class="page" rows="*, auto">
+    <StackLayout verticalAlignment="middle">
+        <Label class="text-muted t-30" text="Enterprise Auth" horizontalAlignment="center"></Label>
+        <Image class="m-t-20" src="res://lock" stretch="none" horizontalAlignment="center"></Image>
+    </StackLayout>
 
-        <Button row="1" class="btn btn-primary btn-active btn-margin font-weight-bold t-18" (tap)="login()" text="Log in"></Button>
-    </GridLayout>
+    <Button row="1" class="btn btn-primary btn-active btn-margin font-weight-bold t-18" (tap)="login()" text="Log in"></Button>
 </GridLayout>
