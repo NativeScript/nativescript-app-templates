@@ -1,12 +1,12 @@
 const observableModule = require("data/observable");
 
 /* ***********************************************************
- * Keep data that is displayed in your app drawer in the drawer custom component view model.
+ * Keep data that is displayed in your app root.
  *************************************************************/
-function DrawerViewModel(selectedPage) {
+function AppRootViewModel(selectedPage) {
     const viewModel = observableModule.fromObject({
         /* ***********************************************************
-         * Use the drawer view model to initialize the properties data values.
+         * Use the app root view model to initialize the properties data values.
          *************************************************************/
         selectedPage: selectedPage
     });
@@ -14,4 +14,4 @@ function DrawerViewModel(selectedPage) {
     return viewModel;
 }
 
-module.exports = DrawerViewModel;
+module.exports = AppRootViewModel;

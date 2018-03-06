@@ -1,15 +1,15 @@
+const AppRootViewModel = require("./app-root-view-model");
 const frameModule = require("ui/frame");
-
-const DrawerViewModel = require("./drawer-view-model");
-
+let appRootViewModel;
+let drawerComponent;
 /* ***********************************************************
  * Use the "loaded" event handler of the wrapping layout element to bind the view model to your view.
  *************************************************************/
 function onLoaded(args) {
-    const component = args.object;
-    const componentTitle = component.selectedPage;
+    drawerComponent = args.object;
 
-    component.bindingContext = new DrawerViewModel(componentTitle);
+    appRootViewModel = new AppRootViewModel("Home");
+    drawerComponent.bindingContext = appRootViewModel;
 }
 
 /* ***********************************************************
@@ -20,6 +20,9 @@ function onLoaded(args) {
 function onNavigationItemTap(args) {
     const component = args.object;
     const componentRoute = component.route;
+    const componentTitle = component.title;
+
+    appRootViewModel.set("selectedPage", componentTitle);
 
     frameModule.topmost().navigate({
         moduleName: componentRoute,
@@ -27,6 +30,8 @@ function onNavigationItemTap(args) {
             name: "fade"
         }
     });
+
+    drawerComponent.closeDrawer();
 }
 
 exports.onLoaded = onLoaded;
