@@ -1,17 +1,19 @@
 import { EventData } from "data/observable";
+import { RadSideDrawer } from "nativescript-pro-ui/sidedrawer";
 import { topmost } from "ui/frame";
 import { GridLayout } from "ui/layouts/grid-layout";
 
-import { DrawerViewModel } from "./drawer-view-model";
-
+import { AppRootViewModel } from "./app-root-view-model";
+let appRootViewModel;
+let drawerComponent;
 /* ***********************************************************
 * Use the "loaded" event handler of the wrapping layout element to bind the view model to your view.
 *************************************************************/
 export function onLoaded(args: EventData): void {
-    const component = <GridLayout>args.object;
-    const componentTitle = component.get("selectedPage");
+    drawerComponent = <RadSideDrawer>args.object;
 
-    component.bindingContext = new DrawerViewModel(componentTitle);
+    appRootViewModel = new AppRootViewModel("Home");
+    drawerComponent.bindingContext = appRootViewModel;
 }
 
 /* ***********************************************************
@@ -22,6 +24,9 @@ export function onLoaded(args: EventData): void {
 export function onNavigationItemTap(args: EventData): void {
     const component = <GridLayout>args.object;
     const componentRoute = component.get("route");
+    const componentTitle = component.get("title");
+
+    appRootViewModel.set("selectedPage", componentTitle);
 
     topmost().navigate({
         moduleName: componentRoute,
@@ -29,4 +34,6 @@ export function onNavigationItemTap(args: EventData): void {
             name: "fade"
         }
     });
+
+    drawerComponent.closeDrawer();
 }

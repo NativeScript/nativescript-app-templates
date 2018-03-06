@@ -30,9 +30,9 @@
     "v8Flags": "--expose_gc"
   },
   "dependencies": {
-    "nativescript-pro-ui": "~3.3.0",
+    "nativescript-pro-ui": "3.4.0-rc-2018-1-26-1-2018-1-26-1",
     "nativescript-theme-core": "~1.0.4",
-    "tns-core-modules": "~3.4.0"
+    "tns-core-modules": "next"
   },
   "devDependencies": {
     "nativescript-dev-sass": "~1.3.5",

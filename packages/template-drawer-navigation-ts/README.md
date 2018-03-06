@@ -32,21 +32,28 @@ tns create my-app-name --template https://github.com/NativeScript/template-drawe
 ## Walkthrough
 
 ### Architecture
-There are five blank components located in these folders:
-- `/browse`
-- `/featured`
-- `/home`
-- `/search`
-- `/settings`
+There is a folder that is used for setting RadSideDrawer instance as an application starting point:
+- `/app-root/app-root.ts` - sets up the RadSideDrawer drawer content and defines navigation frame for the pages.
+
+RadSideDrawer has the following component structure:
+- `RadSideDrawer` - The component to display a drawer on the page.
+- `RadSideDrawer.drawerContent` - Part of the RadSideDrawer, it holds a custom component `drawer` that displays the contents of the drawer.
+- `RadSideDrawer.mainContent` - Part of the RadSideDrawer, it holds the main content for the page. You can expand this layout to modify each page.
+
+The template has the following blank pages:
+- `/home/home-page.ts`
+- `/browse/browse-page.ts`
+- `/search/search-page.ts`
+- `/featured/featured-page.ts`
+- `/settings/settings-page.ts`
+
+Each of these blank pages holds an `ActionBar` with title and navigaiton button that opens the drawer.
 
 Each of these pages has the following components:
 - `ActionBar` - It holds the title and navigation button that opens the drawer.
 - `RadSideDrawer` - The component to display a drawer on the page.
 - `RadSideDrawer.drawerContent` - Part of the RadSideDrawer, it holds a custom component `drawer` that displays the contents of the drawer.
 - `RadSideDrawer.mainContent` - Part of the RadSideDrawer, it holds the main content for the page. You can expand this layout to modify each page.
-
-There is a NativeScript custom component that holds the contents of the drawer.
-- `/shared/my-drawer` - It holds the contents of the drawer that are reused on every page. There is a StackLayout for the profile info on top and a ListView for showing the navigation items. Expand this custom component to match what you want to have in your drawer.
 
 ### Styling
 This template is set up to use SASS for styling. All classes used are based on the {N} core theme – consult the [documentation](https://docs.nativescript.org/angular/ui/theme.html#theme) to understand how to customize it. Check it out to see what classes you can use on which component.
