@@ -1,6 +1,6 @@
 {
   "main": "main.js",
-  "name": "tns-template-enterprise-login-ng",
+  "name": "tns-template-enterprise-auth-ng",
   "displayName": "Entertprise Login",
   "templateType": "App template",
   "version": "3.4.3",
@@ -19,9 +19,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/NativeScript/template-enterprise-login-ng"
+    "url": "https://github.com/NativeScript/template-enterprise-auth-ng"
   },
-  "homepage": "https://github.com/NativeScript/template-enterprise-login-ng",
+  "homepage": "https://github.com/NativeScript/template-enterprise-auth-ng",
   "android": {
     "v8Flags": "--expose_gc"
   },

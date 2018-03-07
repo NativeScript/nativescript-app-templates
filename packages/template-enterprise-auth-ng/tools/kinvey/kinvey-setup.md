@@ -1,5 +1,5 @@
 
-NOTE: This guide assumes that you have a working version of the Enterprise Login NativeScript app set up locally.
+NOTE: This guide assumes that you have a working version of the Enterprise Auth NativeScript app set up locally.
 
 ### Modify the app to use your Kinvey project
 
