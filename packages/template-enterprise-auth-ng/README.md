@@ -1,13 +1,13 @@
-# template-enterprise-login-ng
+# template-enterprise-auth-ng
 NativeScript template for creating apps that logs in to an Enterprise system.
 
 This template shows how a NativeScript app can log into a variety of enterprise auth systems using Kinvey's Mobile Identity Connect feature.
 
 
-# NativeScript with Angular Enterprise Login Template
+# NativeScript with Angular Enterprise Auth Template
 App templates help you jump start your native cross-platform apps with built-in UI elements and best practices. Save time writing boilerplate code over and over again when you create new apps.
 
-This Enterprise Login template is a bootstrap for a NativeScript app that can log users into a variety of enterprise auth systems using Kinvey's Mobile Identity Connect feature.
+This Enterprise Auth template is a bootstrap for a NativeScript app that can log users into a variety of enterprise auth systems using Kinvey's Mobile Identity Connect feature.
 
 <img src="/tools/assets/appTemplate-ios.png" height="400" />
 
@@ -21,15 +21,15 @@ This Enterprise Login template is a bootstrap for a NativeScript app that can lo
 Execute the following command to create an app from this template:
 
 ```
-tns create my-app-name --template tns-template-enterprise-login-ng
+tns create my-app-name --template tns-template-enterprise-auth-ng
 ```
 
-> Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm] (https://www.npmjs.com/package/tns-template-enterprise-login-ng).
+> Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm] (https://www.npmjs.com/package/tns-template-enterprise-auth-ng).
 
 If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
 
 ```
-tns create my-app-name --template https://github.com/NativeScript/template-enterprise-login-ng
+tns create my-app-name --template https://github.com/NativeScript/template-enterprise-auth-ng
 ```
 
 ## Walkthrough
@@ -49,7 +49,7 @@ The NativeScript framework has a vibrant community that can help when you run in
 
 Try [joining the NativeScript community Slack](http://developer.telerik.com/wp-login.php?action=slack-invitation). The Slack channel is a great place to get help troubleshooting problems, as well as connect with other NativeScript developers.
 
-If you have found an issue with this template, please report the problem in the   [Issues](https://github.com/NativeScript/template-enterprise-login-ng/issues).
+If you have found an issue with this template, please report the problem in the   [Issues](https://github.com/NativeScript/template-enterprise-auth-ng/issues).
 
 ## Contributing
 
