@@ -1,5 +1,5 @@
 import { EventData } from "data/observable";
-import { RadSideDrawer } from "nativescript-pro-ui/sidedrawer";
+import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import { topmost } from "ui/frame";
 import { GridLayout } from "ui/layouts/grid-layout";
 

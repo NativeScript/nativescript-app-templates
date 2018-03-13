@@ -3,8 +3,8 @@ if ((global).TNS_WEBPACK) {
     require("bundle-entry-points");
 
     // Register application modules
-    global.registerModule("nativescript-pro-ui/sidedrawer",
-        () => require("../node_modules/nativescript-pro-ui/sidedrawer"));
+    global.registerModule("nativescript-ui-sidedrawer",
+        () => require("../node_modules/nativescript-ui-sidedrawer"));
 
     // Register application modules
     // This will register each `root`, `page`, `fragment` postfixed xml, css, js, ts, scss file in the app/ folder
