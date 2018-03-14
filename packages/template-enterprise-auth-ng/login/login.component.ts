@@ -18,7 +18,7 @@ export class LoginComponent {
 
     login() {
         if (Kinvey.User.getActiveUser() == null) {
-            Kinvey.User.loginWithMIC('http://example.com', Kinvey.AuthorizationGrant.AuthorizationCodeLoginPage, { version: 'v2' })
+            Kinvey.User.loginWithMIC('http://example.com')
                 .then((user: Kinvey.User) => {
                     this.navigateHome();
                     console.log("user: " + JSON.stringify(user));
