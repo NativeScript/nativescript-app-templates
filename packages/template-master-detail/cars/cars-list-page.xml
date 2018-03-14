@@ -1,4 +1,4 @@
-<Page class="page" navigatingTo="onNavigatingTo"
+<Page class="page" navigatingTo="onNavigatingTo" navigatingFrom="onNavigatingFrom"
     xmlns:lv="nativescript-ui-listview"
     xmlns="http://schemas.nativescript.org/tns.xsd" >
 
