@@ -15,20 +15,28 @@ import { Car } from "./shared/car-model";
 * Use the "onNavigatingTo" handler to initialize the page binding context.
 *************************************************************/
 export function onNavigatingTo(args: NavigatedData): void {
+    const page = <Page>args.object;
+
     /* ***********************************************************
     * The "onNavigatingTo" event handler lets you detect if the user navigated with a back button.
     * Skipping the re-initialization on back navigation means the user will see the
     * page in the same data state that he left it in before navigating.
     *************************************************************/
-    if (args.isBackNavigation) {
-        return;
+    let viewModel = <CarsListViewModel>page.bindingContext;
+    if (!args.isBackNavigation) {
+        viewModel = new CarsListViewModel();
+        page.bindingContext = viewModel;
     }
 
-    const page = <Page>args.object;
-    const viewModel = new CarsListViewModel();
-
-    page.bindingContext = viewModel;
     viewModel.load();
+}
+
+export function onNavigatingFrom(args: NavigatedData): void {
+    const page = <Page>args.object;
+    const oldViewModel = <CarsListViewModel>page.bindingContext;
+    if (oldViewModel) {
+        oldViewModel.unload();
+    }
 }
 
 /* ***********************************************************

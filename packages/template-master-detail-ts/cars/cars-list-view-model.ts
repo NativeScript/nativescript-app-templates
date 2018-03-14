@@ -1,5 +1,6 @@
 import { Observable } from "data/observable";
 import { ObservableArray } from "data/observable-array";
+import { Subscription } from "rxjs/Subscription";
 
 import { Config } from "../shared/config";
 import { ObservableProperty } from "../shared/observable-property-decorator";
@@ -14,6 +15,7 @@ export class CarsListViewModel extends Observable {
     @ObservableProperty() isLoading: boolean;
 
     private _carService: CarService;
+    private _dataSubscription: Subscription;
 
     constructor() {
         super();
@@ -27,11 +29,22 @@ export class CarsListViewModel extends Observable {
     load(): void {
         this.isLoading = true;
 
-        this._carService.load()
-            .finally(() => this.isLoading = false)
-            .subscribe((cars: Array<Car>) => {
-                this.cars = new ObservableArray(cars);
-                this.isLoading = false;
-            });
+        if (!this._dataSubscription) {
+            this._dataSubscription = this._carService.load()
+                .finally(() => {
+                    this.isLoading = false;
+                })
+                .subscribe((cars: Array<Car>) => {
+                    this.cars = new ObservableArray(cars);
+                    this.isLoading = false;
+                });
+        }
+    }
+
+    unload(): void {
+        if (this._dataSubscription) {
+            this._dataSubscription.unsubscribe();
+            this._dataSubscription = null;
+        }
     }
 }
