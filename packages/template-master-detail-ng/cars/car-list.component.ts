@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ObservableArray } from "data/observable-array";
 import { RouterExtensions } from "nativescript-angular/router";
 import { ListViewEventData } from "nativescript-ui-listview";
+import { Subscription } from "rxjs/Subscription";
 
 import { Car } from "./shared/car.model";
 import { CarService } from "./shared/car.service";
@@ -17,9 +18,10 @@ import { CarService } from "./shared/car.service";
     templateUrl: "./car-list.component.html",
     styleUrls: ["./car-list.component.scss"]
 })
-export class CarListComponent implements OnInit {
+export class CarListComponent implements OnInit, OnDestroy {
     private _isLoading: boolean = false;
     private _cars: ObservableArray<Car> = new ObservableArray<Car>([]);
+    private _dataSubscription: Subscription;
 
     constructor(
         private _carService: CarService,
@@ -38,12 +40,21 @@ export class CarListComponent implements OnInit {
         * The actual data retrieval code is wrapped in a data service.
         * Check out the service in cars/shared/car.service.ts
         *************************************************************/
-        this._carService.load()
-            .finally(() => this._isLoading = false)
-            .subscribe((cars: Array<Car>) => {
-                this._cars = new ObservableArray(cars);
-                this._isLoading = false;
-            });
+        if (!this._dataSubscription) {
+            this._dataSubscription = this._carService.load()
+                .finally(() => this._isLoading = false)
+                .subscribe((cars: Array<Car>) => {
+                    this._cars = new ObservableArray(cars);
+                    this._isLoading = false;
+                });
+        }
+    }
+
+    ngOnDestroy(): void {
+        if (this._dataSubscription) {
+            this._dataSubscription.unsubscribe();
+            this._dataSubscription = null;
+        }
     }
 
     get cars(): ObservableArray<Car> {
@@ -65,13 +76,13 @@ export class CarListComponent implements OnInit {
         const tappedCarItem = args.view.bindingContext;
 
         this._routerExtensions.navigate(["/cars/car-detail", tappedCarItem.id],
-        {
-            animated: true,
-            transition: {
-                name: "slide",
-                duration: 200,
-                curve: "ease"
-            }
-        });
+            {
+                animated: true,
+                transition: {
+                    name: "slide",
+                    duration: 200,
+                    curve: "ease"
+                }
+            });
     }
 }
