@@ -1,8 +1,33 @@
-<GridLayout class="page" rows="*, auto">
-    <StackLayout verticalAlignment="middle">
-        <Label class="text-muted t-30" text="Welcome" horizontalAlignment="center"></Label>
-        <Label class="t-20 m-t-20" [text]="loggedUser" horizontalAlignment="center"></Label>
-    </StackLayout>
+<ActionBar class="action-bar" title="Your Company Name">
+    <ActionItem android.position="actionBar" ios.position="right" (tap)="onProfileButtonTap()">
+        <Label text="&#xf2bd;" class="fa action-button"></Label>
+    </ActionItem>
+</ActionBar>
 
-    <Button row="1" class="btn btn-primary btn-active btn-margin font-weight-bold t-18" (tap)="logout()" text="Log out"></Button>
-</GridLayout>
+<FlexboxLayout class="page">
+    <StackLayout class="flexbox-item">
+        <Label class="t-30 title content" text="Welcome"></Label>
+        <Label class="t-20 content font-weight-bold" [text]="loggedUser" ></Label>
+    </StackLayout>
+    <StackLayout class="hr flexbox-item"></StackLayout>
+    
+    <WrapLayout class="flexbox-item menu">
+        <StackLayout data-name="home" class="menu-item">
+            <Button text="&#xf015;" class="fa menu-icon" (tap)="onMenuButtonTap($event)"></Button>
+            <Label text="Home" class="text-center m-t-16" (tap)="onMenuButtonTap($event)"></Label>
+        </StackLayout>
+        <StackLayout data-name="news" class="menu-item">
+            <Button text="&#xf1ea;" class="fa menu-icon" (tap)="onMenuButtonTap($event)"></Button>
+            <Label text="News" class="text-center m-t-16" (tap)="onMenuButtonTap($event)"></Label>
+        </StackLayout>
+        <StackLayout data-name="favorites" class="menu-item">
+            <Button text="&#xf005;" class="fa menu-icon" (tap)="onMenuButtonTap($event)"></Button>
+            <Label text="Favorites" class="text-center m-t-16" (tap)="onMenuButtonTap($event)"></Label>
+        </StackLayout>
+        <StackLayout data-name="settings" class="menu-item">
+            <Button text="&#xf013;" class="fa menu-icon" (tap)="onMenuButtonTap($event)"></Button>
+            <Label text="Settings" class="text-center m-t-16" (tap)="onMenuButtonTap($event)"></Label>
+        </StackLayout>
+    </WrapLayout>
+    <Button class="btn btn-rounded-sm btn-primary btn-margin font-weight-bold t-18 flexbox-item" (tap)="logout()" text="Log out"></Button>
+</FlexboxLayout>

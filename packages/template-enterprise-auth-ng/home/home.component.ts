@@ -3,6 +3,8 @@ import { Button } from "ui/button";
 import { Kinvey, User } from 'kinvey-nativescript-sdk';
 import { RouterExtensions } from "nativescript-angular/router";
 import { Page } from "tns-core-modules/ui/page"
+import { EventData } from "data/observable";
+import { StackLayout } from "ui/layouts/stack-layout";
 
 @Component({
     selector: "Home",
@@ -13,7 +15,7 @@ export class HomeComponent implements OnInit {
     public loggedUser: string;
 
     constructor(private _routerExtensions: RouterExtensions, private page: Page) {
-        this.page.actionBarHidden = true;
+        this.page.actionBarHidden = false;
     }
 
     ngOnInit(): void {
@@ -37,5 +39,16 @@ export class HomeComponent implements OnInit {
                         }
                     });
             });
+    }
+
+    onMenuButtonTap(args: EventData) {
+        // Navigate to corresponding page
+        const menuButtonParent = (<StackLayout>args.object).parent;
+        alert("Navigate to " + menuButtonParent.get("data-name"));
+    }
+
+    onProfileButtonTap() {
+        // Navigate to profile page here
+        alert("Navigate to profile page");
     }
 }
