@@ -24,7 +24,7 @@ export class LoginComponent {
                     console.log("user: " + JSON.stringify(user));
                 })
                 .catch((error: Kinvey.BaseError) => {
-                    alert("Error!");
+                    alert("An error occurred. Check your Kinvey settings.");
                     console.log("error: " + error);
                 });
         } else {
