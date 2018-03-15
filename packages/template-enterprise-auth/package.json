@@ -27,10 +27,18 @@
   },
   "dependencies": {
     "nativescript-theme-core": "~1.0.4",
-    "tns-core-modules": "next",
-    "kinvey-nativescript-sdk": "^3.9.10"
+    "tns-core-modules": "~3.4.0",
+    "kinvey-nativescript-sdk": "3.10.1"
   },
   "devDependencies": {
     "nativescript-dev-webpack": "~0.9.1"
+  },
+  "pluginsData": {
+    "kinvey-nativescript-sdk": {
+      "config": {
+        "appKey": "",
+        "appSecret": ""
+      }
+    }
   }
 }
