@@ -36,4 +36,5 @@ service firebase.storage {
   }
 }
 ```
+- You need to comment out the readonly section in this car detail edit component and uncomment the actual code: https://github.com/NativeScript/template-master-detail-ng/blob/master/cars/car-detail-edit/car-detail-edit.component.ts
  
