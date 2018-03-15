@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "nativescript-theme-core": "~1.0.4",
-    "nativescript-ui-sidedrawer": "~3.5.0",
+    "nativescript-ui-sidedrawer": "ns40",
     "tns-core-modules": "next"
   },
   "devDependencies": {
