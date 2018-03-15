@@ -1,9 +1,9 @@
 {
   "main": "app.js",
-  "name": "tns-template-enterprise-login-ts",
+  "name": "tns-template-enterprise-auth-ts",
   "displayName": "Enterprise Login",
   "templateType": "App template",
-  "version": "3.4.3",
+  "version": "0.1.0",
   "description": "Login interface implemented using Kinvey Mobile Identity Connect",
   "license": "SEE LICENSE IN <your-license-filename>",
   "keywords": [
@@ -19,20 +19,28 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/NativeScript/template-enterprise-login-ts"
+    "url": "https://github.com/NativeScript/template-enterprise-auth-ts"
   },
-  "homepage": "https://github.com/NativeScript/template-enterprise-login-ts",
+  "homepage": "https://github.com/NativeScript/template-enterprise-auth-ts",
   "android": {
     "v8Flags": "--expose_gc"
   },
   "dependencies": {
     "nativescript-theme-core": "~1.0.4",
-    "tns-core-modules": "next",
-    "kinvey-nativescript-sdk": "^3.9.10"
+    "tns-core-modules": "~3.4.0",
+    "kinvey-nativescript-sdk": "3.10.1"
   },
   "devDependencies": {
     "nativescript-dev-typescript": "~0.6.0",
     "nativescript-dev-webpack": "~0.9.1",
     "typescript": "~2.6.2"
+  },
+  "pluginsData": {
+    "kinvey-nativescript-sdk": {
+      "config": {
+        "appKey": "",
+        "appSecret": ""
+      }
+    }
   }
 }

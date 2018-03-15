@@ -1,4 +1,4 @@
-# template-enterprise-login-ts
+# template-enterprise-auth-ts
 NativeScript template for creating apps that logs in to an Enterprise system.
 
 This template shows how a NativeScript app can log into a variety of enterprise auth systems using Kinvey's Mobile Identity Connect feature.
@@ -21,22 +21,18 @@ This Enterprise Login template is a bootstrap for a NativeScript app that can lo
 Execute the following command to create an app from this template:
 
 ```
-tns create my-app-name --template tns-template-enterprise-login-ts
+tns create my-app-name --template tns-template-enterprise-auth-ts
 ```
 
-> Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm] (https://www.npmjs.com/package/tns-template-enterprise-login-ts).
+> Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm] (https://www.npmjs.com/package/tns-template-enterprise-auth-ts).
 
 If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
 
 ```
-tns create my-app-name --template https://github.com/NativeScript/template-enterprise-login-ts
+tns create my-app-name --template https://github.com/NativeScript/template-enterprise-auth-ts
 ```
 
 ## Walkthrough
-
-### Architecture
-The template has the following components:
-- `/home/home.component.ts` - The home page of the app - provides a Login button which, when clicked, takes the user through the configured login process.
 
 ### Kinvey integration
 The templates uses the [{N} Kinvey plugin](https://github.com/Kinvey/nativescript-sdk). The initialization is done before the app starts in the `/main.ts` file. The initialization script is located at `/shared/kinvey.common.ts`.
@@ -49,7 +45,7 @@ The NativeScript framework has a vibrant community that can help when you run in
 
 Try [joining the NativeScript community Slack](http://developer.telerik.com/wp-login.php?action=slack-invitation). The Slack channel is a great place to get help troubleshooting problems, as well as connect with other NativeScript developers.
 
-If you have found an issue with this template, please report the problem in the   [Issues](https://github.com/NativeScript/template-enterprise-login-ts/issues).
+If you have found an issue with this template, please report the problem in the   [Issues](https://github.com/NativeScript/template-enterprise-auth-ts/issues).
 
 ## Contributing
 

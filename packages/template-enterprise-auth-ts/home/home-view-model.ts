@@ -1,39 +1,28 @@
-import { Observable } from "data/observable";
+import { Observable } from "tns-core-modules/data/observable";
 import { ObservableProperty } from "../shared/observable-property-decorator";
 import { Kinvey } from 'kinvey-nativescript-sdk';
-
+import { topmost } from "tns-core-modules/ui/frame";
 
 export class HomeViewModel extends Observable {
-    @ObservableProperty() buttonText: string = 'Login';
+    @ObservableProperty() loggedUser: string;
 
-    constructor() {
+    constructor(private user: string) {
         super();
+        this.loggedUser = user;
     }
 
-    public submit() {
-        if (Kinvey.User.getActiveUser() == null) {
-            Kinvey.User.loginWithMIC('http://example.com', Kinvey.AuthorizationGrant.AuthorizationCodeLoginPage, { version: 'v2' })
-
-                .then((user: Kinvey.User) => {
-                    alert("Logged in!");
-                    console.log("user: " + JSON.stringify(user));
-                    this.updateButtonText();
-                })
-                .catch((error: Kinvey.BaseError) => {
-                    alert("Error!");
-                    console.log("error: " + error);
+    logout() {
+        Kinvey.User.logout()
+            .then(() => {
+                topmost().navigate({
+                    moduleName: "login/login-page",
+                    animated: true,
+                    transition: {
+                        name: "slideTop",
+                        duration: 350,
+                        curve: "ease"
+                    }
                 });
-        }
-        else {
-            Kinvey.User.logout()
-                .then(() => {
-                    alert("Logged out!");
-                    this.updateButtonText();
-                });
-        }
-    }
-
-    private updateButtonText(): void {
-        this.buttonText = Kinvey.User.getActiveUser() == null ? `Login` : `Logout`;
+            });
     }
 }
