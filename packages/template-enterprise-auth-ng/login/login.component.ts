@@ -14,6 +14,8 @@ export class LoginComponent {
 
     constructor(private _routerExtensions: RouterExtensions, private zone: NgZone, private page: Page) {
         this.page.actionBarHidden = true;
+        this.page.backgroundSpanUnderStatusBar = true;
+        this.page.className = "page-login-container";
     }
 
     login() {
