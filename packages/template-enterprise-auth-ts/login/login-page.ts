@@ -7,5 +7,7 @@ import { LoginViewModel } from "./login-view-model";
 export function onNavigatingTo(args: NavigatedData) {
     const page = <Page>args.object;
     page.actionBarHidden = true;
+    page.backgroundSpanUnderStatusBar = true;
+    page.className = "page-login-container";
     page.bindingContext = new LoginViewModel();
 }

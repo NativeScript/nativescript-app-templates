@@ -7,6 +7,6 @@ import { HomeViewModel } from "./home-view-model";
 *************************************************************/
 export function onNavigatingTo(args: NavigatedData) {
     const page = <Page>args.object;
-    page.actionBarHidden = true;
+    page.actionBarHidden = false;
     page.bindingContext = new HomeViewModel(page.navigationContext);
 }
