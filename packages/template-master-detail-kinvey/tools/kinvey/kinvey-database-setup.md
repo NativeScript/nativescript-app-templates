@@ -27,4 +27,5 @@ module.exports = {
 ### Set up your Kinvey sample data
  - In Kinvey create **'cars'** data collection, from the environment sidebar of your app, and import the [sample JSON data](https://github.com/NativeScript/template-master-detail-kinvey/blob/master/tools/kinvey/car-rental-export-public.json) to it.
  - Navigate to 'cars' collection settings page and set permissions to Public, in order to allow your "system" user to both read and modify data.
+ - You need to comment out the readonly section in this car detail edit page and uncomment the actual code: https://github.com/NativeScript/template-master-detail-kinvey/blob/master/cars/car-detail-edit-page/car-detail-edit-page.js
  
