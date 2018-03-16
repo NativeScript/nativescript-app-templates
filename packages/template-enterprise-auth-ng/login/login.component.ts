@@ -4,6 +4,8 @@ import { Kinvey } from 'kinvey-nativescript-sdk';
 import { RouterExtensions } from "nativescript-angular/router";
 import { NgZone } from "@angular/core";
 import { Page } from "tns-core-modules/ui/page"
+import * as platform from "tns-core-modules/platform";
+import * as color from "tns-core-modules/color";
 
 @Component({
     selector: "Login",
@@ -16,6 +18,7 @@ export class LoginComponent {
         this.page.actionBarHidden = true;
         this.page.backgroundSpanUnderStatusBar = true;
         this.page.className = "page-login-container";
+        this.page.statusBarStyle = "dark";
     }
 
     login() {
