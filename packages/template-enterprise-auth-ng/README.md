@@ -6,7 +6,7 @@ App templates help you jump start your native cross-platform apps with built-in 
 
 This Enterprise Auth template is a bootstrap for a NativeScript app that can log users into a variety of enterprise authentication systems using Kinvey's Mobile Identity Connect feature.
 
-<img src="/tools/assets/appTemplate-ios.png" height="400" />
+<img src="/tools/assets/enterprise-auth-preview.gif" width="312" />
 
 ## Key Features
 - Login/logout interface out-of-the-box
