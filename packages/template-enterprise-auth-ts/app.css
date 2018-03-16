@@ -55,6 +55,7 @@ refer to http://docs.nativescript.org/ui/theme.
 /* Login */
 .page-login-container {
     background-color: #3C59FD;
+    android-status-bar-background: #3C59FD;
 }
 .page-login {
     background-color: #3C59FD;

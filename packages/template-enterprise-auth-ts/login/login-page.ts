@@ -9,5 +9,6 @@ export function onNavigatingTo(args: NavigatedData) {
     page.actionBarHidden = true;
     page.backgroundSpanUnderStatusBar = true;
     page.className = "page-login-container";
+    page.statusBarStyle = "dark";
     page.bindingContext = new LoginViewModel();
 }
