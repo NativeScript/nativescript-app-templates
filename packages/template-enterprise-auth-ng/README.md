@@ -1,13 +1,10 @@
 # template-enterprise-auth-ng
-NativeScript template for creating apps that logs in to an Enterprise system.
-
-This template shows how a NativeScript app can log into a variety of enterprise auth systems using Kinvey's Mobile Identity Connect feature.
-
+NativeScript template for creating mobile apps that use enterprise identity and single sign-on systems to authenticate users. The template leverages [Kinvey's Mobile Identity Connect](https://devcenter.kinvey.com/nativescript/guides/mobile-identity-connect) feature to support various identity providers including SAML, OAuth2, OpenID Connect, Active Directory and more.
 
 # NativeScript with Angular Enterprise Auth Template
 App templates help you jump start your native cross-platform apps with built-in UI elements and best practices. Save time writing boilerplate code over and over again when you create new apps.
 
-This Enterprise Auth template is a bootstrap for a NativeScript app that can log users into a variety of enterprise auth systems using Kinvey's Mobile Identity Connect feature.
+This Enterprise Auth template is a bootstrap for a NativeScript app that can log users into a variety of enterprise authentication systems using Kinvey's Mobile Identity Connect feature.
 
 <img src="/tools/assets/appTemplate-ios.png" height="400" />
 
@@ -54,6 +51,3 @@ If you have found an issue with this template, please report the problem in the 
 ## Contributing
 
 We love PRs, and accept them gladly. Feel free to propose changes and new ideas. We will review and discuss, so that they can be accepted and better integrated.
-
-**NB:** Please, have in mind that the master branch may refer to dependencies that are not on NPM yet!
-
