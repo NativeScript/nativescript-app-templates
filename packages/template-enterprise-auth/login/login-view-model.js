@@ -16,7 +16,7 @@ function LoginViewModel() {
                         console.log("user: " + JSON.stringify(user));
                     })
                     .catch(function (error) {
-                        alert("Error!");
+                        alert("An error occurred. Check your Kinvey settings.");
                         console.log("error: " + error);
                     });
             }

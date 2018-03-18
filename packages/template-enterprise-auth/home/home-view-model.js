@@ -20,6 +20,17 @@ function HomeViewModel(userInfo) {
                         }
                     });
                 });
+        },
+
+        onMenuButtonTap: function(args) {
+            // Navigate to corresponding page
+            const menuButtonParent = args.object.parent;
+            alert("Navigate to " + menuButtonParent.get("data-name"));
+        },
+    
+        onProfileButtonTap: function() {
+            // Navigate to profile page here
+            alert("Navigate to profile page");
         }
     });
 

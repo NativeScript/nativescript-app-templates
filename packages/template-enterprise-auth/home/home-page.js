@@ -6,7 +6,7 @@ const HomeViewModel = require("./home-view-model");
 *************************************************************/
 function onNavigatingTo(args) {
     const page = args.object;
-    page.actionBarHidden = true;
+    page.actionBarHidden = false;
     page.bindingContext = new HomeViewModel(page.navigationContext);
 }
 

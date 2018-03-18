@@ -7,6 +7,9 @@ const LoginViewModel = require("./login-view-model");
 function onNavigatingTo(args) {
     const page = args.object;
     page.actionBarHidden = true;
+    page.backgroundSpanUnderStatusBar = true;
+    page.className = "page-login-container";
+    page.statusBarStyle = "dark";
     page.bindingContext = new LoginViewModel();
 }
 
