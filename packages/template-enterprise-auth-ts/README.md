@@ -26,17 +26,17 @@ tns create my-app-name --template tns-template-enterprise-auth-ts
 If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
 
 ```
-tns create my-app-name --template https://github.com/NativeScript/template-enterprise-auth-ng
+tns create my-app-name --template https://github.com/NativeScript/template-enterprise-auth-ts
 ```
 
 ## Walkthrough
 
 ### Architecture
 The template has the following components:
-- `/home/home.component.ts` - The home page of the app - provides a Login button which, when clicked, takes the user through the configured login process.
+- `/home/home-page.ts` - The home page of the app - provides a Login button which, when clicked, takes the user through the configured login process.
 
 ### Kinvey integration
-The templates uses the [{N} Kinvey plugin](https://github.com/Kinvey/nativescript-sdk). The initialization is done before the app starts in the `/main.ts` file. The initialization script is located at `/shared/kinvey.common.ts`.
+The template uses the [{N} Kinvey plugin](https://github.com/Kinvey/nativescript-sdk). The initialization is done before the app starts in the `/app.ts` file. The initialization script is located at `/shared/kinvey.common.ts`. Once an application is created using the template, the configuration of Kinvey key and secret need to be done in `app/package.json`.
 
 ### [Optional] Kinvey database setup
 By design the app is not associated with any Kinvey account. To make the login work you will need to have one with Kinvey Mobile Identity Connect Auth Service set up. You can find detailed instructions how to achieve that [here](https://devcenter.kinvey.com/nativescript/guides/mobile-identity-connect).
