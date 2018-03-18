@@ -18,10 +18,10 @@ This Enterprise Auth template is a bootstrap for a NativeScript app that can log
 Execute the following command to create an app from this template:
 
 ```
-tns create my-app-name --template tns-template-enterprise-auth-ng
+tns create my-app-name --template tns-template-enterprise-auth-ts
 ```
 
-> Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm] (https://www.npmjs.com/package/tns-template-enterprise-auth-ng).
+> Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm] (https://www.npmjs.com/package/tns-template-enterprise-auth-ts).
 
 If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
 
@@ -46,7 +46,7 @@ The NativeScript framework has a vibrant community that can help when you run in
 
 Try [joining the NativeScript community Slack](http://developer.telerik.com/wp-login.php?action=slack-invitation). The Slack channel is a great place to get help troubleshooting problems, as well as connect with other NativeScript developers.
 
-If you have found an issue with this template, please report the problem in the   [Issues](https://github.com/NativeScript/template-enterprise-auth-ng/issues).
+If you have found an issue with this template, please report the problem in the   [Issues](https://github.com/NativeScript/template-enterprise-auth-ts/issues).
 
 ## Contributing
 
