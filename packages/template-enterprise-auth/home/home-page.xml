@@ -8,10 +8,10 @@
 
     <FlexboxLayout class="page">
         <StackLayout class="flexbox-item">
-            <Label class="t-30 title content" text="Welcome"></Label>
-            <Label class="t-20 content font-weight-bold" text="{{ loggedUser }}" ></Label>
+            <Label class="t-30 title" text="Welcome"></Label>
+            <Label class="t-20 font-weight-bold" text="{{ loggedUser }}" ></Label>
+            <StackLayout class="hr"></StackLayout>
         </StackLayout>
-        <StackLayout class="hr flexbox-item"></StackLayout>
         
         <WrapLayout class="flexbox-item menu">
             <StackLayout data-name="home" class="menu-item">
