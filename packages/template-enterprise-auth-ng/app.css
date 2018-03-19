@@ -41,14 +41,11 @@ refer to http://docs.nativescript.org/ui/theme.
     color: #ffffff;
     padding-right: 10;
 }
-.content {
-    margin-bottom: 4;
-}
 .hr {
     background-color: #3C59FD;
     width: 95%;
-    margin-top: 25;
-    margin-bottom: 20;
+    margin-top: 21;
+    margin-bottom: 25;
     height: 1;
 }
 
@@ -96,6 +93,9 @@ refer to http://docs.nativescript.org/ui/theme.
 .title {
     color: #3C59FD;
     margin-top: 20;
+}
+.flexbox-item Label {
+    margin-bottom: 4;
 }
 .menu-group {
     flex-direction: row;
