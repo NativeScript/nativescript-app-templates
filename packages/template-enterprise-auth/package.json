@@ -3,7 +3,7 @@
   "name": "tns-template-enterprise-auth",
   "displayName": "Enterprise Login",
   "templateType": "App template",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Login interface implemented using Kinvey Mobile Identity Connect",
   "license": "SEE LICENSE IN <your-license-filename>",
   "keywords": [
