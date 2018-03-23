@@ -1,11 +1,12 @@
 {
   "main": "app.js",
   "name": "tns-template-enterprise-auth-ts",
-  "displayName": "Enterprise Login",
+  "displayName": "Enterprise Auth",
   "templateType": "App template",
   "version": "0.1.5",
   "description": "Login interface implemented using Kinvey Mobile Identity Connect",
-  "license": "SEE LICENSE IN <your-license-filename>",
+  "author": "Telerik <support@telerik.com>",
+  "license": "Apache-2.0",
   "keywords": [
     "telerik",
     "mobile",
@@ -15,7 +16,8 @@
     "appbuilder",
     "template",
     "login",
-    "kinvey"
+    "kinvey",
+    "authentication"
   ],
   "repository": {
     "type": "git",
@@ -28,12 +30,17 @@
   "dependencies": {
     "nativescript-theme-core": "~1.0.4",
     "tns-core-modules": "~3.4.0",
-    "kinvey-nativescript-sdk": "3.10.1"
+    "kinvey-nativescript-sdk": "3.10.1",
+    "nativescript-push-notifications": "~1.0.0"
   },
   "devDependencies": {
     "nativescript-dev-typescript": "~0.6.0",
     "nativescript-dev-webpack": "~0.9.1",
     "typescript": "~2.6.2"
+  },
+  "scripts": {
+    "preinstall": "node tools/preinstall.js",
+    "postinstall": "node tools/postinstall.js"
   },
   "pluginsData": {
     "kinvey-nativescript-sdk": {

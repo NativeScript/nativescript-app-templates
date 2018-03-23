@@ -4,6 +4,7 @@ npm-debug.log
 *.js.map
 vendor*.ts
 **/*.js
+!tools/*.js
 hooks/
 lib/
 node_modules/
