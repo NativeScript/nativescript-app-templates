@@ -3,4 +3,6 @@ import { platformNativeScript } from "nativescript-angular/platform-static";
 
 import { AppModuleNgFactory } from "./app.module.ngfactory";
 
+import "./shared/kinvey.common";
+
 platformNativeScript().bootstrapModuleFactory(AppModuleNgFactory);
