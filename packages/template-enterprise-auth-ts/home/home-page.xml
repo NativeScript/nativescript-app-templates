@@ -6,33 +6,31 @@
         </ActionItem>
     </ActionBar>
 
-    <FlexboxLayout class="page">
-
-        <StackLayout class="flexbox-item">
-            <Label class="t-30 title" text="Welcome"></Label>
-            <Label class="t-20 font-weight-bold" text="{{ loggedUser }}" ></Label>
+    <GridLayout rows="auto, *, auto">
+        <StackLayout row="0" class="m-b-25">
+            <Label class="t-30 text-center title" text="Welcome"></Label>
+            <Label class="t-18 text-center font-weight-bold" text="{{ loggedUser }}" ></Label>
             <StackLayout class="hr"></StackLayout>
         </StackLayout>
-        
-        <WrapLayout class="flexbox-item menu">
-            <StackLayout data-name="home" class="menu-item">
+        <GridLayout row="1" rows="auto, auto" columns="*, *" class="menu-container">
+            <StackLayout row="0" col="0" data-name="home" class="menu-item">
                 <Button text="&#xf015;" class="fa menu-icon" tap="{{ onMenuButtonTap }}"></Button>
-                <Label text="Home" class="text-center m-t-16" tap="{{ onMenuButtonTap }}"></Label>
+                <Label text="Home" class="text-center" tap="{{ onMenuButtonTap }}"></Label>
             </StackLayout>
-            <StackLayout data-name="news" class="menu-item">
+            <StackLayout row="0" col="1" data-name="news" class="menu-item">
                 <Button text="&#xf1ea;" class="fa menu-icon" tap="{{ onMenuButtonTap }}"></Button>
-                <Label text="News" class="text-center m-t-16" tap="{{ onMenuButtonTap }}"></Label>
+                <Label text="News" class="text-center" tap="{{ onMenuButtonTap }}"></Label>
             </StackLayout>
-            <StackLayout data-name="favorites" class="menu-item">
+            <StackLayout row="1" col="0" data-name="favorites" class="menu-item">
                 <Button text="&#xf005;" class="fa menu-icon" tap="{{ onMenuButtonTap }}"></Button>
-                <Label text="Favorites" class="text-center m-t-16" tap="{{ onMenuButtonTap }}"></Label>
+                <Label text="Favorites" class="text-center" tap="{{ onMenuButtonTap }}"></Label>
             </StackLayout>
-            <StackLayout data-name="settings" class="menu-item">
+            <StackLayout row="1" col="1" data-name="settings" class="menu-item">
                 <Button text="&#xf013;" class="fa menu-icon" tap="{{ onMenuButtonTap }}"></Button>
-                <Label text="Settings" class="text-center m-t-16" tap="{{ onMenuButtonTap }}"></Label>
+                <Label text="Settings" class="text-center" tap="{{ onMenuButtonTap }}"></Label>
             </StackLayout>
-        </WrapLayout>
-        <Button class="btn btn-rounded-sm btn-primary btn-margin font-weight-bold t-18 flexbox-item" tap="{{ logout }}" text="Log out"></Button>
-    </FlexboxLayout>
+        </GridLayout>
+        <Button row="2" class="btn btn-rounded-sm btn-primary btn-margin font-weight-bold t-18 flexbox-item" tap="{{ logout }}" text="Log out"></Button>
+    </GridLayout>
 
 </Page>
