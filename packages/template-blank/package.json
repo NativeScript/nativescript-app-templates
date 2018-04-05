@@ -32,6 +32,6 @@
     "tns-core-modules": "next"
   },
   "devDependencies": {
-    "nativescript-dev-webpack": "~0.9.1"
+    "nativescript-dev-webpack": "next"
   }
 }

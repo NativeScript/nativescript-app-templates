@@ -1,7 +1,9 @@
-const Observable = require("data/observable").Observable;
+const observableModule = require("data/observable");
 
 function HomeViewModel() {
-    const viewModel = new Observable();
+    const viewModel = observableModule.fromObject({
+        /* Add your view model properties here */
+    });
 
     return viewModel;
 }
