@@ -5,7 +5,7 @@ App templates help you jump start your native cross-platform apps with built-in 
 Execute the following command to create an app from this template:
 
 ```
-tns create my-app-name --template tns-template-blank-ng
+tns create my-blank-ng --template tns-template-blank-ng
 ```
 
 > Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm] (https://www.npmjs.com/package/tns-template-blank-ng).
@@ -13,7 +13,7 @@ tns create my-app-name --template tns-template-blank-ng
 If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
 
 ```
-tns create my-app-name --template https://github.com/NativeScript/template-blank-ng
+tns create my-blank-ng --template https://github.com/NativeScript/template-blank-ng
 ```
 
 **NB:** Please, have in mind that the master branch may refer to dependencies that are not on NPM yet!
@@ -21,6 +21,9 @@ tns create my-app-name --template https://github.com/NativeScript/template-blank
 ## Walkthrough
 
 ### Architecture
+The application component:
+- `app.component.ts` - sets up a page router outlet that lets you navigate between pages.
+
 There is a single blank component that sets up an empty page layout:
 - `/home`
 
