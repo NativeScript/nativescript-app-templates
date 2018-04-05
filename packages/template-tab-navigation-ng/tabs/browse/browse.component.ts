@@ -7,14 +7,10 @@ import { Component, OnInit } from "@angular/core";
 })
 export class BrowseComponent implements OnInit {
     constructor() {
-        /* ***********************************************************
-        * Use the constructor to inject services.
-        *************************************************************/
+        // Use the component constructor to inject providers.
     }
 
     ngOnInit(): void {
-        /* ***********************************************************
-        * Use the "ngOnInit" handler to initialize data for the view.
-        *************************************************************/
+        // Use the "ngOnInit" handler to initialize data for the view.
     }
 }

@@ -7,14 +7,10 @@ import { Component, OnInit } from "@angular/core";
 })
 export class HomeComponent implements OnInit {
     constructor() {
-        /* ***********************************************************
-        * Use the constructor to inject services.
-        *************************************************************/
+        // Use the constructor to inject services.
     }
 
     ngOnInit(): void {
-        /* ***********************************************************
-        * Use the "ngOnInit" handler to initialize data for the view.
-        *************************************************************/
+        // Use the "ngOnInit" handler to initialize data for the view.
     }
 }
