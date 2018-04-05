@@ -3,9 +3,6 @@ const ObservableArray = require("data/observable-array").ObservableArray;
 
 const CarService = require("./shared/car-service");
 
-/* ***********************************************************
- * This is the master list view model.
- *************************************************************/
 function CarsListViewModel() {
     const viewModel = observableModule.fromObject({
         cars: new ObservableArray([]),

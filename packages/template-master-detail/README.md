@@ -11,13 +11,13 @@ This Master-Detail template is a fundamental building block for any app that dis
 - Works offline
 - Customizable theme
 - UX and development best practices
-- Easy to understand code through extensive code comments
+- Easy to understand code
 
 ## Quick Start
 Execute the following command to create an app from this template:
 
 ```
-tns create my-app-name --template tns-template-master-detail
+tns create my-master-detail-js --template tns-template-master-detail
 ```
 
 > Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm] (https://www.npmjs.com/package/tns-template-master-detail).
@@ -25,7 +25,7 @@ tns create my-app-name --template tns-template-master-detail
 If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
 
 ```
-tns create my-app-name --template https://github.com/NativeScript/template-master-detail
+tns create my-master-detail-js --template https://github.com/NativeScript/template-master-detail
 ```
 
 **NB:** Please, have in mind that the master branch may refer to dependencies that are not on NPM yet!
@@ -33,6 +33,9 @@ tns create my-app-name --template https://github.com/NativeScript/template-maste
 ## Walkthrough
 
 ### Architecture
+The application root component is located at:
+- `app-root.xml` - sets up a Frame that lets you navigate between pages.
+
 The template has the following pages:
 - `/cars/cars-list-page.js` - the master list page. It gets the data and displays it in a list. On item tap, it navigates to the item details page.
 - `/cars/car-detail-page/car-detail-page.js` - the item details page. Displays the details of the tapped item. Has an `Edit` button that leads to the edit page.
