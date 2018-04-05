@@ -7,10 +7,6 @@ import { Car } from "../shared/car.model";
 import { CarService } from "../shared/car.service";
 import { carClassList, carDoorList, carSeatList, carTransmissionList } from "./constants";
 
-/* ***********************************************************
-* This is the item detail edit component.
-* This component gets the selected data item, provides options to edit the item and saves the changes.
-*************************************************************/
 @Component({
     moduleId: module.id,
     selector: "CarDetailEdit",
@@ -33,18 +29,9 @@ export class CarDetailEditComponent implements OnInit {
         private _routerExtensions: RouterExtensions
     ) { }
 
-    /* ***********************************************************
-    * Use the "ngOnInit" handler to get the data item id parameter passed through navigation.
-    * Get the data item details from the data service using this id and assign it to the
-    * private property that holds it inside the component.
-    *************************************************************/
     ngOnInit(): void {
         this.initializeEditOptions();
 
-        /* ***********************************************************
-        * Learn more about how to get navigation parameters in this documentation article:
-        * http://docs.nativescript.org/angular/core-concepts/angular-navigation.html#passing-parameter
-        *************************************************************/
         this._pageRoute.activatedRoute
             .switchMap((activatedRoute) => activatedRoute.params)
             .forEach((params) => {
@@ -105,17 +92,10 @@ export class CarDetailEditComponent implements OnInit {
         this._isCarImageDirty = true;
     }
 
-    /* ***********************************************************
-    * The edit cancel button navigates back to the item details page.
-    *************************************************************/
     onCancelButtonTap(): void {
         this._routerExtensions.backToPreviousPage();
     }
 
-    /* ***********************************************************
-    * The edit done button uses the data service to save the updated values of the data item details.
-    * Check out the data service as cars/shared/car.service.ts
-    *************************************************************/
     onDoneButtonTap(): void {
         /* ***********************************************************
         * By design this app is set up to work with read-only sample data.
