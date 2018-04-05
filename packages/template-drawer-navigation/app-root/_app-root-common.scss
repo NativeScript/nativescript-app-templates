@@ -10,8 +10,6 @@ $sidedrawer-list-icon-offset: 10;
 $sidedrawer-list-icon-size: 20;
 .sidedrawer {
     &.sidedrawer-left {
-        background-color: $ab-background;
-
         .sidedrawer-header-image {
             color: $background-dark;
             height: $sidedrawer-header-image-size;
