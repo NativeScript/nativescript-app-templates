@@ -7,6 +7,5 @@
     </ActionBar>
 
     <GridLayout>
-        <!-- Add your page content here -->
     </GridLayout>
 </Page>

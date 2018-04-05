@@ -1,15 +1,12 @@
-/*
-In NativeScript, a file with the same name as an XML file is known as
-a code-behind file. The code-behind is a great place to place your view
-logic, and to set up your page’s data binding.
-*/
-
-import { NavigatedData, Page } from "ui/page";
+import { StackLayout } from "ui/layouts/stack-layout";
+import { NavigatedData } from "ui/page";
 
 import { HomeViewModel } from "./home-view-model";
 
+/* ***********************************************************
+* Use the "onNavigatingTo" handler to initialize the page binding context.
+*************************************************************/
 export function onNavigatingTo(args: NavigatedData) {
-    const page = <Page>args.object;
-
+    const page = <StackLayout>args.object;
     page.bindingContext = new HomeViewModel();
 }
