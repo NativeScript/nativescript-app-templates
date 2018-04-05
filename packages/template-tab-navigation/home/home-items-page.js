@@ -8,8 +8,7 @@ function onNavigatingTo(args) {
 function onItemTap(args) {
     const view = args.object;
     const page = view.page;
-
-    const tappedItem = args.view.bindingContext;
+    const tappedItem = view.bindingContext;
 
     page.frame.navigate({
         moduleName: "home/home-item-detail/home-item-detail-page",

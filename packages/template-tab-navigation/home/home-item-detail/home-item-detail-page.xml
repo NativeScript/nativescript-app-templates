@@ -1,7 +1,3 @@
-<!--
-This is the page that is presented in the 'Search' tab.
-Feel free to customize layouts and components to change how the tab view looks.
--->
 <Page
     class="page"
     navigatingTo="onNavigatingTo"  
@@ -11,6 +7,7 @@ Feel free to customize layouts and components to change how the tab view looks.
         <NavigationButton tap="onBackButtonTap" android.systemIcon="ic_menu_back"/>
         <Label class="action-bar-title" text="{{ name }}"></Label>
     </ActionBar>
+
     <GridLayout>
         <Label class="m-10 h3" text="{{ description }}" verticalAlignment="top" ></Label>
     </GridLayout>

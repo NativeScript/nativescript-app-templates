@@ -10,13 +10,13 @@ App template featuring a TabView component for navigation.
 - Five blank pages hooked to the tab navigation
 - Customizable theme
 - UX and development best practices
-- Easy to understand code through extensive code comments
+- Easy to understand code
 
 ## Quick Start
 Execute the following command to create an app from this template:
 
 ```
-tns create my-app-name --template tns-template-tab-navigation
+tns create my-tab-js --template tns-template-tab-navigation
 ```
 
 > Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm] (https://www.npmjs.com/package/tns-template-tab-navigation).
@@ -24,7 +24,7 @@ tns create my-app-name --template tns-template-tab-navigation
 If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
 
 ```
-tns create my-app-name --template https://github.com/NativeScript/template-tab-navigation
+tns create my-tab-js --template https://github.com/NativeScript/template-tab-navigation
 ```
 
 **NB:** Please, have in mind that the master branch may refer to dependencies that are not on NPM yet!
@@ -32,8 +32,8 @@ tns create my-app-name --template https://github.com/NativeScript/template-tab-n
 ## Walkthrough
 
 ### Architecture
-There is a folder that is used for setting tabs layout as an application starting point:
-- `/app-root/app-root.js` - sets up the tab navigation page layout and references the navigatable pages contents.
+The application root component is located at:
+- `app-root.xml` - sets up the tab navigation page layout and references the navigatable pages contents.
 
 The template has the following pages used for the tab views:
 - `/home/home-items-page.js` - the master home page. Displays a list of items and navigates to the item details page on item tap.

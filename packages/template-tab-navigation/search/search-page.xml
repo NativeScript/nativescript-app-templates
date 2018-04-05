@@ -1,7 +1,3 @@
-<!--
-This is the page that is presented in the 'Search' tab.
-Feel free to customize layouts and components to change how the tab view looks.
--->
 <Page
     class="page"
     navigatingTo="onNavigatingTo"  
@@ -10,8 +6,9 @@ Feel free to customize layouts and components to change how the tab view looks.
     <ActionBar class="action-bar">
         <Label class="action-bar-title" text="Search"></Label>
     </ActionBar>
+
     <GridLayout class="page-content">
-        <Label class="page-icon fa" text="&#xf015;"></Label>
+        <Label class="page-icon fa" text="&#xf002;"></Label>
         <Label class="page-placeholder" text="<!-- Search page content goes here -->"></Label>
     </GridLayout>
 </Page>
