@@ -1,69 +1,57 @@
-
-<nsDrawer:RadSideDrawer id="sideDrawer" xmlns:nsDrawer="nativescript-ui-sidedrawer" loaded="onLoaded">
 <!--
 RadSideDrawer is a UI component part of the Progress NativeScript UI set of components.
 Learn more about the RadSideDrawer UI component and how it can be customized in this documentation article:
 http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawer/getting-started
 -->
-
+<nsDrawer:RadSideDrawer id="sideDrawer" xmlns:nsDrawer="nativescript-ui-sidedrawer" loaded="onLoaded">
     <nsDrawer:RadSideDrawer.drawerTransition>
         <nsDrawer:SlideInOnTopTransition/>
     </nsDrawer:RadSideDrawer.drawerTransition>
 
-    <!--
-    Use the RadSideDrawer.drawerContent component to display the content of the app drawer on this page.
-    Always wrap content in a layout component.
-    -->
     <nsDrawer:RadSideDrawer.drawerContent>
-        <StackLayout>
-            <!--
-            The drawer custom component view is where you define what will be displayed in the app drawer.
-            Feel free to customize layouts and components to change how your app drawer looks.
-            -->
-            <GridLayout rows="auto, *" class="sidedrawer sidedrawer-left">
-                <StackLayout class="sidedrawer-header">
-                    <Label class="sidedrawer-header-image fa" text="&#xf2bd;" />
-                    <Label class="sidedrawer-header-brand" text="User Name" />
-                    <Label class="footnote" text="username@mail.com" />
+        <GridLayout rows="auto, *" class="sidedrawer sidedrawer-left">
+            <StackLayout class="sidedrawer-header">
+                <Label class="sidedrawer-header-image fa" text="&#xf2bd;" />
+                <Label class="sidedrawer-header-brand" text="User Name" />
+                <Label class="footnote" text="username@mail.com" />
+            </StackLayout>
+
+            <ScrollView row="1">
+                <StackLayout class="sidedrawer-content">
+                    <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Home' ? ' selected': '') }}"
+                        route="home/home-page" title="Home" tap="onNavigationItemTap">
+                        <Label row="0" col="0" text="&#xf015;" class="fa" />
+                        <Label row="0" col="1" text="Home" class="p-r-10" />
+                    </GridLayout>
+
+                    <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Browse' ? ' selected': '') }}"
+                        route="browse/browse-page" title="Browse" tap="onNavigationItemTap">
+                        <Label row="0" col="0" text="&#xf1ea;" class="fa" />
+                        <Label row="0" col="1" text="Browse" class="p-r-10" />
+                    </GridLayout>
+
+                    <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Search' ? ' selected': '') }}"
+                        route="search/search-page" title="Search" tap="onNavigationItemTap">
+                        <Label row="0" col="0" text="&#xf002;" class="fa" />
+                        <Label row="0" col="1" text="Search" class="p-r-10" />
+                    </GridLayout>
+
+                    <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Featured' ? ' selected': '') }}"
+                        route="featured/featured-page" title="Featured" tap="onNavigationItemTap">
+                        <Label row="0" col="0" text="&#xf005;" class="fa" />
+                        <Label row="0" col="1" text="Featured" class="p-r-10" />
+                    </GridLayout>
+
+                    <StackLayout class="hr-light"></StackLayout>
+
+                    <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Settings' ? ' selected': '') }}"
+                        route="settings/settings-page" title="Settings" tap="onNavigationItemTap">
+                        <Label row="0" col="0" text="&#xf013;" class="fa" />
+                        <Label row="0" col="1" text="Settings" class="p-r-10" />
+                    </GridLayout>
                 </StackLayout>
-
-                <ScrollView row="1">
-                    <StackLayout class="sidedrawer-content" row="1">
-                        <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Home' ? ' selected': '') }}"
-                            route="home/home-page" title="Home" tap="onNavigationItemTap">
-                            <Label row="0" col="0" text="&#xf015;" class="fa" />
-                            <Label row="0" col="1" text="Home" class="p-r-10" />
-                        </GridLayout>
-
-                        <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Browse' ? ' selected': '') }}"
-                            route="browse/browse-page" title="Browse" tap="onNavigationItemTap">
-                            <Label row="0" col="0" text="&#xf1ea;" class="fa" />
-                            <Label row="0" col="1" text="Browse" class="p-r-10" />
-                        </GridLayout>
-
-                        <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Search' ? ' selected': '') }}"
-                            route="search/search-page" title="Search" tap="onNavigationItemTap">
-                            <Label row="0" col="0" text="&#xf002;" class="fa" />
-                            <Label row="0" col="1" text="Search" class="p-r-10" />
-                        </GridLayout>
-
-                        <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Featured' ? ' selected': '') }}"
-                            route="featured/featured-page" title="Featured" tap="onNavigationItemTap">
-                            <Label row="0" col="0" text="&#xf005;" class="fa" />
-                            <Label row="0" col="1" text="Featured" class="p-r-10" />
-                        </GridLayout>
-
-                        <StackLayout class="hr-light"></StackLayout>
-
-                        <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Settings' ? ' selected': '') }}"
-                            route="settings/settings-page" title="Settings" tap="onNavigationItemTap">
-                            <Label row="0" col="0" text="&#xf013;" class="fa" />
-                            <Label row="0" col="1" text="Settings" class="p-r-10" />
-                        </GridLayout>
-                    </StackLayout>
-                </ScrollView>
-            </GridLayout>
-        </StackLayout>
+            </ScrollView>
+        </GridLayout>
     </nsDrawer:RadSideDrawer.drawerContent>
 
     <nsDrawer:RadSideDrawer.mainContent>

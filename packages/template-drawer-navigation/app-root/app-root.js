@@ -1,28 +1,20 @@
-const AppRootViewModel = require("./app-root-view-model");
+const application = require("application");
 const frameModule = require("ui/frame");
-let appRootViewModel;
-let drawerComponent;
-/* ***********************************************************
- * Use the "loaded" event handler of the wrapping layout element to bind the view model to your view.
- *************************************************************/
-function onLoaded(args) {
-    drawerComponent = args.object;
 
-    appRootViewModel = new AppRootViewModel("Home");
-    drawerComponent.bindingContext = appRootViewModel;
+const AppRootViewModel = require("./app-root-view-model");
+
+function onLoaded(args) {
+    const drawerComponent = args.object;
+    drawerComponent.bindingContext = new AppRootViewModel("Home");
 }
 
-/* ***********************************************************
- * Use the "tap" event handler of the <GridLayout> component for handling navigation item taps.
- * The "tap" event handler of the app drawer <GridLayout> item is used to navigate the app
- * based on the tapped navigationItem's route.
- *************************************************************/
 function onNavigationItemTap(args) {
     const component = args.object;
     const componentRoute = component.route;
     const componentTitle = component.title;
+    const bindingContext = component.bindingContext;
 
-    appRootViewModel.set("selectedPage", componentTitle);
+    bindingContext.set("selectedPage", componentTitle);
 
     frameModule.topmost().navigate({
         moduleName: componentRoute,
@@ -31,6 +23,7 @@ function onNavigationItemTap(args) {
         }
     });
 
+    const drawerComponent = application.getRootView();
     drawerComponent.closeDrawer();
 }
 
