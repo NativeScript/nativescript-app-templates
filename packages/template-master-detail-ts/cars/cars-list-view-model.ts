@@ -27,9 +27,9 @@ export class CarsListViewModel extends Observable {
     }
 
     load(): void {
-        this.isLoading = true;
-
         if (!this._dataSubscription) {
+            this.isLoading = true;
+
             this._dataSubscription = this._carService.load()
                 .finally(() => {
                     this.isLoading = false;
