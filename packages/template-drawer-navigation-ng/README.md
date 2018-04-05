@@ -10,13 +10,13 @@ App template featuring a Side Drawer component for navigation.
 - Five blank pages hooked to the drawer navigation
 - Customizable theme
 - UX and development best practices
-- Easy to understand code through extensive code comments
+- Easy to understand code
 
 ## Quick Start
 Execute the following command to create an app from this template:
 
 ```
-tns create my-app-name --template tns-template-drawer-navigation-ng
+tns create my-drawer-ng --template tns-template-drawer-navigation-ng
 ```
 
 > Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm] (https://www.npmjs.com/package/tns-template-drawer-navigation-ng).
@@ -24,7 +24,7 @@ tns create my-app-name --template tns-template-drawer-navigation-ng
 If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
 
 ```
-tns create my-app-name --template https://github.com/NativeScript/template-drawer-navigation-ng
+tns create my-drawer-ng --template https://github.com/NativeScript/template-drawer-navigation-ng
 ```
 
 **NB:** Please, have in mind that the master branch may refer to dependencies that are not on NPM yet!
@@ -32,6 +32,14 @@ tns create my-app-name --template https://github.com/NativeScript/template-drawe
 ## Walkthrough
 
 ### Architecture
+The RadSideDrawer component is set up as an application starting point in:
+- `/app-component.ts` - sets up the side drawer content and defines a page router outlet for the pages.
+
+RadSideDrawer has the following component structure:
+- `RadSideDrawer` - The component to display a drawer on the page.
+- `tkDrawerContent` directive - Marks the component that will hold the drawer content.
+- `tkMainContent` directive - Marks the component that will hold the app main content.
+
 There are five blank components located in these folders:
 - `/browse`
 - `/featured`
