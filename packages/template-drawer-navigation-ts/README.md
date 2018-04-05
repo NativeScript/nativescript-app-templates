@@ -10,13 +10,13 @@ App template featuring a Side Drawer component for navigation.
 - Five blank pages hooked to the drawer navigation
 - Customizable theme
 - UX and development best practices
-- Easy to understand code through extensive code comments
+- Easy to understand code
 
 ## Quick Start
 Execute the following command to create an app from this template:
 
 ```
-tns create my-app-name --template tns-template-drawer-navigation-ts
+tns create my-drawer-ts --template tns-template-drawer-navigation-ts
 ```
 
 > Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm] (https://www.npmjs.com/package/tns-template-drawer-navigation-ts).
@@ -24,7 +24,7 @@ tns create my-app-name --template tns-template-drawer-navigation-ts
 If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
 
 ```
-tns create my-app-name --template https://github.com/NativeScript/template-drawer-navigation-ts
+tns create my-drawer-ts --template https://github.com/NativeScript/template-drawer-navigation-ts
 ```
 
 **NB:** Please, have in mind that the master branch may refer to dependencies that are not on NPM yet!
