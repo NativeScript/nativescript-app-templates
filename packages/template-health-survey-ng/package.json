@@ -14,7 +14,8 @@
     "appbuilder",
     "template",
     "kinvey",
-    "healthcare"
+    "healthcare",
+    "category-healthcare"
   ],
   "repository": {
     "type": "git",
