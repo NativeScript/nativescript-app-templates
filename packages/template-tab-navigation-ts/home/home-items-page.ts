@@ -11,10 +11,9 @@ export function onNavigatingTo(args: NavigatedData) {
 }
 
 export function onItemTap(args: ItemEventData) {
-    const view = args.view as View;
-    const page = view.page as Page;
-
-    const tappedItem = view.bindingContext as Item;
+    const view = <View>args.view;
+    const page = <Page>view.page;
+    const tappedItem = <Item>view.bindingContext;
 
     page.frame.navigate({
         moduleName: "home/home-item-detail/home-item-detail-page",
