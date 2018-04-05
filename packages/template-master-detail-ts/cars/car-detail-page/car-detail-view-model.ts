@@ -2,9 +2,6 @@ import { Observable } from "data/observable";
 
 import { Car } from "../shared/car-model";
 
-/* ***********************************************************
-* This is the item details view model.
-*************************************************************/
 export class CarDetailViewModel extends Observable {
     constructor(private _car: Car) {
         super();

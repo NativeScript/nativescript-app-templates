@@ -7,21 +7,7 @@ import { NavigatedData, Page } from "ui/page";
 
 import { CarDetailEditViewModel } from "./car-detail-edit-view-model";
 
-/* ***********************************************************
-* This is the item detail edit code behind.
-* This code behind gets the selected data item, provides options to edit the item and saves the changes.
-*************************************************************/
-
-/* ***********************************************************
-* Use the "onNavigatingTo" handler to get the data item id parameter passed through navigation.
-* Use it to initialize the view model and assign it as a view binding context.
-*************************************************************/
 export function onNavigatingTo(args: NavigatedData): void {
-    /* ***********************************************************
-    * The "onNavigatingTo" event handler lets you detect if the user navigated with a back button.
-    * Skipping the re-initialization on back navigation means the user will see the
-    * page in the same data state that he left it in before navigating.
-    *************************************************************/
     if (args.isBackNavigation) {
         return;
     }
@@ -31,16 +17,10 @@ export function onNavigatingTo(args: NavigatedData): void {
     page.bindingContext = new CarDetailEditViewModel(page.navigationContext);
 }
 
-/* ***********************************************************
-* The edit cancel button navigates back to the item details page.
-*************************************************************/
 export function onCancelButtonTap(args: EventData): void {
     topmost().goBack();
 }
 
-/* ***********************************************************
-* The edit done button calls the view model save changes logic.
-*************************************************************/
 export function onDoneButtonTap(args: EventData): void {
     /* ***********************************************************
     * By design this app is set up to work with read-only sample data.

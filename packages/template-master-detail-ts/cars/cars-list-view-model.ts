@@ -7,9 +7,6 @@ import { ObservableProperty } from "../shared/observable-property-decorator";
 import { Car } from "./shared/car-model";
 import { CarService } from "./shared/car-service";
 
-/* ***********************************************************
-* This is the master list view model.
-*************************************************************/
 export class CarsListViewModel extends Observable {
     @ObservableProperty() cars: ObservableArray<Car>;
     @ObservableProperty() isLoading: boolean;
