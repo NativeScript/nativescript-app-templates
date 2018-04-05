@@ -33,14 +33,14 @@ export class CarListComponent implements OnInit, OnDestroy {
     * private property that holds it inside the component.
     *************************************************************/
     ngOnInit(): void {
-        this._isLoading = true;
-
         /* ***********************************************************
         * The data is retrieved remotely from FireBase.
         * The actual data retrieval code is wrapped in a data service.
         * Check out the service in cars/shared/car.service.ts
         *************************************************************/
         if (!this._dataSubscription) {
+            this._isLoading = true;
+
             this._dataSubscription = this._carService.load()
                 .finally(() => this._isLoading = false)
                 .subscribe((cars: Array<Car>) => {
