@@ -15,9 +15,9 @@ function CarsListViewModel() {
         _dataSubscription: null,
 
         load: function () {
-            this.set("isLoading", true);
-
             if (!this._dataSubscription) {
+                this.set("isLoading", true);
+
                 this._dataSubscription = this._carService.load()
                     .finally(() => this.set("isLoading", false))
                     .subscribe((cars) => {
