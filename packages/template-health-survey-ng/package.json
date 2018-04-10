@@ -2,7 +2,7 @@
   "name": "tns-template-health-survey-ng",
   "displayName": "Health Survey with Kinvey",
   "main": "main.js",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Health survey template that saves data to Kinvey database.",
   "license": "SEE LICENSE IN <your-license-filename>",
   "keywords": [
