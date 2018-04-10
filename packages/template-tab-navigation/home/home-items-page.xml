@@ -8,8 +8,10 @@
     </ActionBar>
 
     <ListView items="{{ items }}" itemTap="onItemTap">
-        <StackLayout class="p-10" orientation="horizontal">
-            <Label text="{{ name }}" class="h2" textWrap="true"></Label>
-        </StackLayout>
+        <ListView.itemTemplate>
+            <StackLayout class="p-10" orientation="horizontal">
+                <Label text="{{ name }}" class="h2" textWrap="true"></Label>
+            </StackLayout>
+        </ListView.itemTemplate>
     </ListView>
 </Page>

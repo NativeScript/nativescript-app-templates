@@ -6,7 +6,7 @@ function onNavigatingTo(args) {
 }
 
 function onItemTap(args) {
-    const view = args.object;
+    const view = args.view;
     const page = view.page;
     const tappedItem = view.bindingContext;
 
