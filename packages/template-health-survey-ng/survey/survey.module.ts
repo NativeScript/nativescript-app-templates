@@ -1,6 +1,6 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
-import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { NativeScriptCommonModule } from "nativescript-angular/common";
+import { NativeScriptFormsModule } from "nativescript-angular/forms";
 
 import { SharedModule } from "../shared/shared.module";
 import { SurveyBooleanQuestionComponent } from "./survey-boolean-question.component";
