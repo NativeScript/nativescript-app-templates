@@ -1,37 +1,37 @@
 {
-  "nativescript": {
-    "id": "org.nativescript.Blank"
-  },
-  "main": "app.js",
-  "name": "tns-template-blank",
-  "displayName": "Blank",
-  "templateType": "App template",
-  "version": "3.4.5",
-  "description": "Blank template for Vanilla NativeScript apps using JavaScript",
-  "author": "Telerik <support@telerik.com>",
-  "license": "Apache-2.0",
-  "keywords": [
-    "telerik",
-    "mobile",
-    "nativescript",
-    "{N}",
-    "tns",
-    "appbuilder",
-    "template",
-    "category-general"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/NativeScript/template-blank"
-  },
-  "homepage": "https://github.com/NativeScript/template-blank",
-  "android": {
-    "v8Flags": "--expose_gc"
-  },
-  "dependencies": {
-    "nativescript-theme-core": "~1.0.4"
-  },
-  "devDependencies": {
-    "nativescript-dev-webpack": "next"
-  }
+    "nativescript": {
+        "id": "org.nativescript.Blank"
+    },
+    "main": "app.js",
+    "name": "tns-template-blank",
+    "displayName": "Blank",
+    "templateType": "App template",
+    "version": "3.4.5",
+    "description": "Blank template for Vanilla NativeScript apps using JavaScript",
+    "author": "Telerik <support@telerik.com>",
+    "license": "Apache-2.0",
+    "keywords": [
+        "telerik",
+        "mobile",
+        "nativescript",
+        "{N}",
+        "tns",
+        "appbuilder",
+        "template",
+        "category-general"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/NativeScript/template-blank"
+    },
+    "homepage": "https://github.com/NativeScript/template-blank",
+    "android": {
+        "v8Flags": "--expose_gc"
+    },
+    "dependencies": {
+        "nativescript-theme-core": "~1.0.4"
+    },
+    "devDependencies": {
+        "nativescript-dev-webpack": "~0.10.0"
+    }
 }
