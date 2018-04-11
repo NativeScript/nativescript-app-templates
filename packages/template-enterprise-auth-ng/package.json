@@ -20,7 +20,8 @@
     "template",
     "login",
     "kinvey",
-    "authentication"
+    "authentication",
+    "category-general"
   ],
   "repository": {
     "type": "git",
