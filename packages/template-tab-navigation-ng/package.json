@@ -6,7 +6,7 @@
   "name": "tns-template-tab-navigation-ng",
   "displayName": "Tabs",
   "templateType": "App template",
-  "version": "3.4.3",
+  "version": "3.4.5",
   "description": "Tabbed interface template",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
@@ -20,7 +20,8 @@
     "appbuilder",
     "template",
     "tab",
-    "navigation"
+    "navigation",
+    "category-general"
   ],
   "repository": {
     "type": "git",
@@ -44,7 +45,6 @@
     "nativescript-theme-core": "~1.0.4",
     "reflect-metadata": "~0.1.10",
     "rxjs": "~5.5.5",
-    "tns-core-modules": "next",
     "zone.js": "~0.8.18"
   },
   "devDependencies": {
