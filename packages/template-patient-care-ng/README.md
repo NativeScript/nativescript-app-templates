@@ -1,7 +1,7 @@
 # Patient Care Template
 App templates help you jump start your native cross-platform apps with built-in UI elements and best practices. Save time writing boilerplate code over and over again when you create new apps.
 
-This Patient Care template is a fundamental building block for developers to create powerful apps with HIPAA compliant cloud support from Kinvey that let users regularly track care plans, monitor their progress, and share their insights with care teams.
+This Patient Care template is a fundamental building block for developers to create powerful apps with HIPAA compliant cloud support from Kinvey that let users regularly track care plans, monitor their progress, and share their insights with care teams. The template uses RadListView, RadDataForm and RadRadialGauge components that are part of [Progress NativeScript UI](https://github.com/telerik/nativescript-ui-feedback).
 
 <img src="/tools/assets/phone-care-card-ios.png" height="400" /><img src="/tools/assets/phone-care-connect-ios.png" height="400" />
 
