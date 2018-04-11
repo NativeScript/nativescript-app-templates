@@ -1,48 +1,48 @@
 {
-  "nativescript": {
-    "id": "org.nativescript.DrawerNavigation"
-  },
-  "main": "app.js",
-  "name": "tns-template-drawer-navigation-ts",
-  "displayName": "Navigation Drawer",
-  "templateType": "App template",
-  "version": "3.4.5",
-  "description": "Side navigation template",
-  "author": "Telerik <support@telerik.com>",
-  "license": "Apache-2.0",
-  "keywords": [
-    "telerik",
-    "mobile",
-    "nativescript",
-    "{N}",
-    "tns",
-    "appbuilder",
-    "template",
-    "drawer",
-    "navigation",
-    "category-general"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/NativeScript/template-drawer-navigation-ts"
-  },
-  "homepage": "https://github.com/NativeScript/template-drawer-navigation-ts",
-  "android": {
-    "v8Flags": "--expose_gc"
-  },
-  "dependencies": {
-    "nativescript-theme-core": "~1.0.4",
-    "nativescript-ui-sidedrawer": "ns40"
-  },
-  "devDependencies": {
-    "nativescript-dev-sass": "~1.3.5",
-    "nativescript-dev-typescript": "~0.6.0",
-    "nativescript-dev-webpack": "next",
-    "tslint": "~5.8.0",
-    "typescript": "~2.7.2"
-  },
-  "scripts": {
-    "preinstall": "node tools/preinstall.js",
-    "postinstall": "node tools/postinstall.js"
-  }
+    "nativescript": {
+        "id": "org.nativescript.DrawerNavigation"
+    },
+    "main": "app.js",
+    "name": "tns-template-drawer-navigation-ts",
+    "displayName": "Navigation Drawer",
+    "templateType": "App template",
+    "version": "3.4.5",
+    "description": "Side navigation template",
+    "author": "Telerik <support@telerik.com>",
+    "license": "Apache-2.0",
+    "keywords": [
+        "telerik",
+        "mobile",
+        "nativescript",
+        "{N}",
+        "tns",
+        "appbuilder",
+        "template",
+        "drawer",
+        "navigation",
+        "category-general"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/NativeScript/template-drawer-navigation-ts"
+    },
+    "homepage": "https://github.com/NativeScript/template-drawer-navigation-ts",
+    "android": {
+        "v8Flags": "--expose_gc"
+    },
+    "dependencies": {
+        "nativescript-theme-core": "~1.0.4",
+        "nativescript-ui-sidedrawer": "~4.0.0"
+    },
+    "devDependencies": {
+        "nativescript-dev-sass": "~1.5.0",
+        "nativescript-dev-typescript": "~0.7.0",
+        "nativescript-dev-webpack": "~0.10.0",
+        "tslint": "~5.8.0",
+        "typescript": "~2.7.2"
+    },
+    "scripts": {
+        "preinstall": "node tools/preinstall.js",
+        "postinstall": "node tools/postinstall.js"
+    }
 }
