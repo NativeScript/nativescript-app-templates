@@ -16,7 +16,8 @@
     "appbuilder",
     "template",
     "login",
-    "kinvey"
+    "kinvey",
+    "category-general"
   ],
   "repository": {
     "type": "git",
