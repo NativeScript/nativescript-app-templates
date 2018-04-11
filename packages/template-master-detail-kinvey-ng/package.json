@@ -3,7 +3,7 @@
   "displayName": "Master-Detail with Kinvey",
   "templateType": "App template",
   "main": "main.js",
-  "version": "3.4.3",
+  "version": "3.4.5",
   "description": "Master-detail interface to display collection of items from Kinvey and inspect and edit selected item properties. ",
   "license": "SEE LICENSE IN <your-license-filename>",
   "keywords": [
@@ -15,7 +15,8 @@
     "appbuilder",
     "template",
     "master-detail",
-    "kinvey"
+    "kinvey",
+    "category-general"
   ],
   "repository": {
     "type": "git",
@@ -43,7 +44,6 @@
     "nativescript-ui-listview": "~3.5.0",
     "reflect-metadata": "~0.1.10",
     "rxjs": "~5.5.5",
-    "tns-core-modules": "next",
     "zone.js": "~0.8.18"
   },
   "devDependencies": {
