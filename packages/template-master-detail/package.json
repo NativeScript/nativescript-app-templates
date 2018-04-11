@@ -3,7 +3,7 @@
   "name": "tns-template-master-detail",
   "displayName": "Master-Detail with Firebase",
   "templateType": "App template",
-  "version": "3.4.3",
+  "version": "3.4.5",
   "description": "Master-detail interface to display collection of items from Firebase and inspect and edit selected item properties. ",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
@@ -16,7 +16,8 @@
     "appbuilder",
     "template",
     "master-details",
-    "detail"
+    "detail",
+    "category-general"
   ],
   "repository": {
     "type": "git",
@@ -31,8 +32,7 @@
     "nativescript-plugin-firebase": "~5.2.0",
     "nativescript-theme-core": "~1.0.4",
     "nativescript-ui-listview": "~3.5.0",
-    "rxjs": "~5.5.5",
-    "tns-core-modules": "next"
+    "rxjs": "~5.5.5"
   },
   "devDependencies": {
     "eslint": "~4.9.0",
