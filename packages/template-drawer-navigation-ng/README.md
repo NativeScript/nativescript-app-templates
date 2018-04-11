@@ -1,7 +1,7 @@
 # NativeScript with Angular Drawer Navigation Template
 App templates help you jump start your native cross-platform apps with built-in UI elements and best practices. Save time writing boilerplate code over and over again when you create new apps.
 
-App template featuring a Side Drawer component for navigation.
+App template featuring a RadSideDrawer component for navigation. The RadSideDrawer component is part of [Progress NativeScript UI](https://github.com/telerik/nativescript-ui-feedback).
 
 <img src="/tools/assets/phone-drawer-ios.png" height="400" /> <img src="/tools/assets/phone-drawer-android.png" height="400" />
 
@@ -19,7 +19,7 @@ Execute the following command to create an app from this template:
 tns create my-drawer-ng --template tns-template-drawer-navigation-ng
 ```
 
-> Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm] (https://www.npmjs.com/package/tns-template-drawer-navigation-ng).
+> Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm](https://www.npmjs.com/package/tns-template-drawer-navigation-ng).
 
 If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
 
