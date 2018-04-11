@@ -1,39 +1,39 @@
 {
-  "nativescript": {
-    "id": "org.nativescript.Blank"
-  },
-  "main": "app.js",
-  "name": "tns-template-blank-ts",
-  "displayName": "Blank",
-  "templateType": "App template",
-  "version": "3.4.5",
-  "description": "Blank template for Vanilla NativeScript apps using TypeScript",
-  "author": "Telerik <support@telerik.com>",
-  "license": "Apache-2.0",
-  "keywords": [
-    "telerik",
-    "mobile",
-    "nativescript",
-    "{N}",
-    "tns",
-    "appbuilder",
-    "template",
-    "category-general"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/NativeScript/template-blank-ts"
-  },
-  "homepage": "https://github.com/NativeScript/template-blank-ts",
-  "android": {
-    "v8Flags": "--expose_gc"
-  },
-  "dependencies": {
-    "nativescript-theme-core": "~1.0.4"
-  },
-  "devDependencies": {
-    "nativescript-dev-typescript": "~0.6.0",
-    "nativescript-dev-webpack": "next",
-    "typescript": "~2.7.2"
-  }
+    "nativescript": {
+        "id": "org.nativescript.Blank"
+    },
+    "main": "app.js",
+    "name": "tns-template-blank-ts",
+    "displayName": "Blank",
+    "templateType": "App template",
+    "version": "3.4.5",
+    "description": "Blank template for Vanilla NativeScript apps using TypeScript",
+    "author": "Telerik <support@telerik.com>",
+    "license": "Apache-2.0",
+    "keywords": [
+        "telerik",
+        "mobile",
+        "nativescript",
+        "{N}",
+        "tns",
+        "appbuilder",
+        "template",
+        "category-general"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/NativeScript/template-blank-ts"
+    },
+    "homepage": "https://github.com/NativeScript/template-blank-ts",
+    "android": {
+        "v8Flags": "--expose_gc"
+    },
+    "dependencies": {
+        "nativescript-theme-core": "~1.0.4"
+    },
+    "devDependencies": {
+        "nativescript-dev-typescript": "~0.7.0",
+        "nativescript-dev-webpack": "~0.10.0",
+        "typescript": "~2.7.2"
+    }
 }
