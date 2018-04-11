@@ -1,7 +1,7 @@
 # Health Survey Template
 App templates help you jump start your native cross-platform apps with built-in UI elements and best practices. Save time writing boilerplate code over and over again when you create new apps.
 
-This Health Survey template is a fundamental building block for researchers and developers to create powerful apps for medical research with visual consent flows, customizable survey modules, and HIPAA compliant cloud support from Kinvey.
+This Health Survey template is a fundamental building block for researchers and developers to create powerful apps for medical research with visual consent flows, customizable survey modules, and HIPAA compliant cloud support from Kinvey. The template uses a RadDataForm component to display the Login/Register pages. The RadDataForm component is part of [Progress NativeScript UI](https://github.com/telerik/nativescript-ui-feedback).
 
 <img src="/tools/assets/phone-survey-consent-ios.png" height="400" /><img src="/tools/assets/phone-survey-question-ios.png" height="400" />
 
