@@ -1,7 +1,7 @@
 # NativeScript with Angular Master Detail Template
 App templates help you jump start your native cross-platform apps with built-in UI elements and best practices. Save time writing boilerplate code over and over again when you create new apps.
 
-This Master-Detail template is a fundamental building block for any app that displays collection of objects and their details and need to work both in online and offline mode while utilizing Kinvey as a backend.
+This Master-Detail template is a fundamental building block for any app that displays collection of objects and their details and need to work both in online and offline mode while utilizing Kinvey as a backend. The template uses a RadListView component to display the master list. The RadListView component is part of [Progress NativeScript UI](https://github.com/telerik/nativescript-ui-feedback).
 
 <img src="/tools/assets/phone-masterDetail-ios.png" height="400" /><img src="/tools/assets/phone-masterDetail-detail-ios.png" height="400" />
 
@@ -11,13 +11,13 @@ This Master-Detail template is a fundamental building block for any app that dis
 - Works offline
 - Customizable theme
 - UX and development best practices
-- Easy to understand code through extensive code comments
+- Easy to understand code
 
 ## Quick Start
 Execute the following command to create an app from this template:
 
 ```
-tns create my-app-name --template tns-template-master-detail-kinvey-ng
+tns create my-master-detail-kinvey-ng --template tns-template-master-detail-kinvey-ng
 ```
 
 > Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm] (https://www.npmjs.com/package/tns-template-master-detail-kinvey-ng).
@@ -25,7 +25,7 @@ tns create my-app-name --template tns-template-master-detail-kinvey-ng
 If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
 
 ```
-tns create my-app-name --template https://github.com/NativeScript/template-master-detail-kinvey-ng
+tns create my-master-detail-kinvey-ng --template https://github.com/NativeScript/template-master-detail-kinvey-ng
 ```
 
 ## Walkthrough
