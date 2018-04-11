@@ -6,7 +6,7 @@
   "name": "tns-template-enterprise-auth-ng",
   "displayName": "Entertprise Auth",
   "templateType": "App template",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Login interface implemented using Kinvey Mobile Identity Connect",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
@@ -43,16 +43,16 @@
     "@angular/router": "~5.2.0",
     "kinvey-nativescript-sdk": "3.10.1",
     "nativescript-push-notifications": "~1.0.0",
-    "nativescript-angular": "~5.2.0",
+    "nativescript-angular": "~5.3.0",
     "nativescript-theme-core": "~1.0.4",
     "reflect-metadata": "~0.1.10",
     "rxjs": "~5.5.5",
-    "tns-core-modules": "~3.4.0",
+    "tns-core-modules": "~4.0.0",
     "zone.js": "~0.8.18"
   },
   "devDependencies": {
-    "nativescript-dev-typescript": "~0.6.0",
-    "nativescript-dev-webpack": "~0.9.1",
+    "nativescript-dev-typescript": "~0.7.0",
+    "nativescript-dev-webpack": "~0.10.0",
     "typescript": "~2.6.2"
   },
   "scripts": {
