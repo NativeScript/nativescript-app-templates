@@ -2,9 +2,9 @@ npm-debug.log
 .DS_Store
 
 *.js.map
-**/*.js
+*.js
 !tools/*.js
-**/*.css
+*.css
 hooks/
 lib/
 node_modules/
@@ -13,4 +13,4 @@ tmp/
 typings/
 .idea
 .cloud
-/.project
+.project
