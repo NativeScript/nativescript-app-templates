@@ -2,23 +2,26 @@ const fs = require("fs");
 const path = require("path");
 const exec = require("child_process").exec;
 
-console.log("preinstall script running...");
+console.log("Preinstall script running...");
 
 const platformDeclarations = "reference.d.ts";
 const tslintConfig = "tslint.json";
+const srcGitignore = "dot.gitignore";
+const destGitignore = ".gitignore";
 
 getAppRootFolder()
     .then((appRootFolder) => Promise.all([
-        copyConfig(platformDeclarations, appRootFolder),
-        copyConfig(tslintConfig, appRootFolder)
+        copyFile(appRootFolder, platformDeclarations),
+        copyFile(appRootFolder, tslintConfig),
+        copyFile(appRootFolder, srcGitignore, destGitignore)
     ]));
 
-function copyConfig(configFilename, appRootFolder) {
+function copyFile(appRootFolder, srcFilename, destFilename = srcFilename) {
     return new Promise((resolve, reject) => {
-        const sourcePath = path.join(__dirname, configFilename);
-        const destPath = path.join(appRootFolder, configFilename);
+        const sourcePath = path.join(__dirname, srcFilename);
+        const destPath = path.join(appRootFolder, destFilename);
 
-        console.log(`creating ${path.resolve(destPath)}...`);
+        console.log(`Creating ${path.resolve(destPath)}...`);
         fs.rename(sourcePath, destPath, (err) => {
             if (err) {
                 return reject(err);

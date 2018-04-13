@@ -3,7 +3,7 @@ npm-debug.log
 
 *.js.map
 vendor*.ts
-**/*.js
+*.js
 !tools/*.js
 hooks/
 lib/
@@ -14,4 +14,4 @@ typings/
 .vscode
 .idea
 .cloud
-/.project
+.project
