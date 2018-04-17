@@ -2,19 +2,12 @@ const fs = require("fs");
 const path = require("path");
 const exec = require("child_process").exec;
 
-console.log("postinstall script running...");
+console.log("Postinstall script running...");
 
 getPackageJson()
-    .then((packageJsonData) => Promise.all([
-        // results of glob parameter expansion can vary depending on shell, and its configuration
-        // quote the parameter to use node glob syntax (using double quotes if you need it to run in Windows)
-        addScriptCommand(packageJsonData, {
-            commandName: "lint",
-            command: "tslint \"app/**/*.ts\"",
-            message: "Updating package.json scripts for linting..."
-        }),
+    .then((packageJsonData) => {
         updateFirebaseConfigAppId(packageJsonData)
-    ]))
+    })
     .catch((err) => {
         console.error(err);
     })
@@ -50,30 +43,6 @@ function getAppRootFolder() {
             }
 
             resolve(stdout.toString().trim());
-        });
-    });
-}
-
-function addScriptCommand(packageJsonData, options) {
-    return new Promise((resolve, reject) => {
-        if (options.message) {
-            console.log(options.message);
-        }
-
-        const { packageJson, packageJsonPath } = packageJsonData;
-        if (!packageJson.scripts) {
-            packageJson.scripts = {};
-        }
-
-        packageJson.scripts[options.commandName] = options.command;
-
-        const updatedContent = JSON.stringify(packageJson);
-        fs.writeFile(packageJsonPath, updatedContent, (err) => {
-            if (err) {
-                return reject(err);
-            }
-
-            resolve();
         });
     });
 }
