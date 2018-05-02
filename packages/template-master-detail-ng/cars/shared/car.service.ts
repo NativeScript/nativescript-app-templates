@@ -1,7 +1,8 @@
 import { Injectable, NgZone } from "@angular/core";
 import { Http } from "@angular/http";
 import firebase = require("nativescript-plugin-firebase");
-import { Observable } from "rxjs/Observable";
+import { Observable, throwError } from "rxjs";
+import { catchError } from "rxjs/operators";
 
 import { Config } from "../../shared/config";
 import { Car } from "./car.model";
@@ -56,7 +57,7 @@ export class CarService {
                 });
             };
             firebase.addValueEventListener(onValueEvent, `/${path}`);
-        }).catch(this.handleErrors);
+        }).pipe(catchError(this.handleErrors));
     }
 
     update(carModel: Car): Promise<any> {
@@ -87,7 +88,7 @@ export class CarService {
         return this._cars;
     }
 
-    private handleErrors(error: Response): Observable<any> {
-        return Observable.throw(error);
+    private handleErrors(error: Response): Observable<never> {
+        return throwError(error);
     }
 }

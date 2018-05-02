@@ -2,7 +2,8 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ObservableArray } from "data/observable-array";
 import { RouterExtensions } from "nativescript-angular/router";
 import { ListViewEventData } from "nativescript-ui-listview";
-import { Subscription } from "rxjs/Subscription";
+import { finalize } from "rxjs/operators";
+import { Subscription } from "rxjs";
 
 import { Car } from "./shared/car.model";
 import { CarService } from "./shared/car.service";
@@ -28,7 +29,7 @@ export class CarListComponent implements OnInit, OnDestroy {
             this._isLoading = true;
 
             this._dataSubscription = this._carService.load()
-                .finally(() => this._isLoading = false)
+                .pipe(finalize(() => this._isLoading = false))
                 .subscribe((cars: Array<Car>) => {
                     this._cars = new ObservableArray(cars);
                     this._isLoading = false;

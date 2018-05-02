@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { PageRoute, RouterExtensions } from "nativescript-angular/router";
+import { switchMap } from "rxjs/operators";
 import { alert } from "ui/dialogs";
 
 import { CarEditService } from "../shared/car-edit.service";
@@ -33,7 +34,7 @@ export class CarDetailEditComponent implements OnInit {
         this.initializeEditOptions();
 
         this._pageRoute.activatedRoute
-            .switchMap((activatedRoute) => activatedRoute.params)
+            .pipe(switchMap((activatedRoute) => activatedRoute.params))
             .forEach((params) => {
                 const carId = params.id;
 

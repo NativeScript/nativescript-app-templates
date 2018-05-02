@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewContainerRef } from "@angular/core";
 import { ModalDialogOptions, ModalDialogService } from "nativescript-angular/modal-dialog";
 import { PageRoute } from "nativescript-angular/router";
+import { switchMap } from "rxjs/operators";
 
 import { CarEditService } from "../../shared/car-edit.service";
 import { Car } from "../../shared/car.model";
@@ -39,7 +40,7 @@ export class MyListSelectorComponent implements OnInit {
 
         // use switchMap to get the latest activatedRoute instance
         this._pageRoute.activatedRoute
-            .switchMap((activatedRoute) => activatedRoute.params)
+            .pipe(switchMap((activatedRoute) => activatedRoute.params))
             .forEach((params) => {
                 carId = params.id;
             });
