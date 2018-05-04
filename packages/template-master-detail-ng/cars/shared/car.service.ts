@@ -1,6 +1,6 @@
 import { Injectable, NgZone } from "@angular/core";
 import { Http } from "@angular/http";
-import firebase = require("nativescript-plugin-firebase");
+import * as firebase from "nativescript-plugin-firebase";
 import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
 

@@ -1,4 +1,4 @@
-import firebase = require("nativescript-plugin-firebase");
+import * as firebase from "nativescript-plugin-firebase";
 
 import { Config } from "./config";
 
