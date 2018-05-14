@@ -1,8 +1,9 @@
 import { NgModule, NgModuleFactoryLoader, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 
-import { AppRoutingModule } from "./app-routing.module";
+import { AppRoutingModule, COMPONENTS } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { CoreModule } from "./core/core.module";
 
 @NgModule({
     bootstrap: [
@@ -10,10 +11,12 @@ import { AppComponent } from "./app.component";
     ],
     imports: [
         NativeScriptModule,
-        AppRoutingModule
+        AppRoutingModule,
+        CoreModule
     ],
     declarations: [
-        AppComponent
+        AppComponent,
+        ...COMPONENTS
     ],
     schemas: [
         NO_ERRORS_SCHEMA
