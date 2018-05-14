@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { PageRoute, RouterExtensions } from "nativescript-angular/router";
 import * as email from "nativescript-email";
 import * as phoneModule from "nativescript-phone";
-import "rxjs/add/operator/switchMap";
+import { switchMap } from "rxjs/operators";
 
 import { ConnectService } from "../shared/connect.service";
 import { ContactInfo } from "../shared/contact-info.model";
@@ -26,7 +26,7 @@ export class ConnectDetailComponent implements OnInit {
     ngOnInit(): void {
 
         this._pageRoute.activatedRoute
-            .switchMap((activatedRoute) => activatedRoute.params)
+            .pipe(switchMap((activatedRoute) => activatedRoute.params))
             .forEach((params) => {
                 const contactId = params.id;
                 this._contact = this._connectService.getContactById(contactId);

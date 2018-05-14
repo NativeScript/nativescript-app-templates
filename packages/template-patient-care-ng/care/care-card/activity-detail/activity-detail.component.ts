@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { EventData } from "data/observable";
 import { PageRoute, RouterExtensions } from "nativescript-angular/router";
-import "rxjs/add/operator/switchMap";
+import { switchMap } from "rxjs/operators";
 import { TextField } from "ui/text-field";
 
 import { CareCardActivityService } from "../shared/care-card-activity.service";
@@ -39,7 +39,7 @@ export class ActivityDetailComponent implements OnInit {
 
     ngOnInit(): void {
         this._pageRoute.activatedRoute
-            .switchMap((activatedRoute) => activatedRoute.params)
+            .pipe(switchMap((activatedRoute) => activatedRoute.params))
             .forEach((params) => {
                 this._activity = this._careCardActivityService.getActivity(params.title);
                 this._selectedDate = new Date(params.date);

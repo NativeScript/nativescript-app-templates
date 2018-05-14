@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Kinvey } from "kinvey-nativescript-sdk";
-import { BehaviorSubject } from "rxjs/BehaviorSubject";
-import { Observable } from "rxjs/Rx";
+import { BehaviorSubject, Observable } from "rxjs";
 
 import { CarePlanActivityType } from "./care-plan-activity-type.enum";
 import { CarePlanActivity } from "./care-plan-activity.model";

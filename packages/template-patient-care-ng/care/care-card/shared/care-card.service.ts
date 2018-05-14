@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs/BehaviorSubject";
-import { Observable } from "rxjs/Rx";
+import { BehaviorSubject, Observable } from "rxjs";
 
 import { CareCardActivityService } from "./care-card-activity.service";
 import { CareCardEventService } from "./care-card-event.service";

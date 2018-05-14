@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
-import { Subscription } from "rxjs/Subscription";
+import { Subscription } from "rxjs";
 
 import { CareCardActivityService } from "../shared/care-card-activity.service";
 import { CareCardEventService } from "../shared/care-card-event.service";

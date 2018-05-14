@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Kinvey } from "kinvey-nativescript-sdk";
-import { Observable } from "rxjs/Rx";
+import { Observable } from "rxjs";
 
 import { Contact } from "./contact.model";
 
