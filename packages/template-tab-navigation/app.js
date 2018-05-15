@@ -1,4 +1,3 @@
-require("./bundle-config");
 const application = require("application");
 
 application.run({ moduleName: "app-root" });
