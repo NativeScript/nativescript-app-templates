@@ -36,7 +36,7 @@
     "devDependencies": {
         "nativescript-dev-sass": "~1.5.0",
         "nativescript-dev-typescript": "~0.7.0",
-        "nativescript-dev-webpack": "~0.10.0",
+        "nativescript-dev-webpack": "next",
         "tslint": "~5.8.0",
         "typescript": "~2.7.2"
     },
