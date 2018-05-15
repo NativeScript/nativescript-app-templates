@@ -29,12 +29,12 @@
     },
     "dependencies": {
         "nativescript-theme-core": "~1.0.4",
-        "nativescript-ui-sidedrawer": "~4.0.0"
+        "nativescript-ui-sidedrawer": "~4.1.0"
     },
     "devDependencies": {
-        "eslint": "~4.9.0",
+        "eslint": "~4.19.0",
         "nativescript-dev-sass": "~1.5.0",
-        "nativescript-dev-webpack": "~0.10.0"
+        "nativescript-dev-webpack": "next"
     },
     "scripts": {
         "preinstall": "node tools/preinstall.js",
