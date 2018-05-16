@@ -1,31 +1,37 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
+import { NavigationEnd, Router } from "@angular/router";
 import * as app from "application";
 import { RouterExtensions } from "nativescript-angular/router";
 import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from "nativescript-ui-sidedrawer";
+import { filter } from "rxjs/operators";
 
 @Component({
     selector: "ns-app",
     templateUrl: "app.component.html"
 })
 export class AppComponent implements OnInit {
-    private _selectedPage: string;
+    private _activatedUrl: string;
     private _sideDrawerTransition: DrawerTransitionBase;
 
-    constructor(private routerExtensions: RouterExtensions) {
+    constructor(private router: Router, private routerExtensions: RouterExtensions) {
         // Use the component constructor to inject services.
     }
 
     ngOnInit(): void {
-        this._selectedPage = "Home";
+        this._activatedUrl = "/home";
         this._sideDrawerTransition = new SlideInOnTopTransition();
+
+        this.router.events
+        .pipe(filter((event: any) => event instanceof NavigationEnd))
+        .subscribe((event: NavigationEnd) => this._activatedUrl = event.urlAfterRedirects);
     }
 
     get sideDrawerTransition(): DrawerTransitionBase {
         return this._sideDrawerTransition;
     }
 
-    isPageSelected(pageTitle: string): boolean {
-        return pageTitle === this._selectedPage;
+    isComponentSelected(url: string): boolean {
+        return this._activatedUrl === url;
     }
 
     onNavItemTap(navItemRoute: string): void {
