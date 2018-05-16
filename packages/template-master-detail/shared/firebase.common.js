@@ -1,4 +1,4 @@
-const firebase = require("nativescript-plugin-firebase");
+const init = require("nativescript-plugin-firebase").init;
 
 const config = require("./config");
 
@@ -12,7 +12,7 @@ const config = require("./config");
 * Note that if you change the bundle id of the application, the Firebase configuration
 * will stop working.
 *************************************************************/
-firebase.init({
+init({
     persist: false,
     storageBucket: config.firebaseBucket
 }).then(() => console.log("firebase.init done"),

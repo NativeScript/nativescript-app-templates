@@ -1,5 +1,6 @@
 const observableModule = require("data/observable");
 const ObservableArray = require("data/observable-array").ObservableArray;
+const finalize = require("rxjs/operators").finalize;
 
 const CarService = require("./shared/car-service");
 
@@ -16,7 +17,7 @@ function CarsListViewModel() {
                 this.set("isLoading", true);
 
                 this._dataSubscription = this._carService.load()
-                    .finally(() => this.set("isLoading", false))
+                    .pipe(finalize(() => this.set("isLoading", false)))
                     .subscribe((cars) => {
                         this.set("cars", new ObservableArray(cars));
                         this.set("isLoading", false);
@@ -24,7 +25,7 @@ function CarsListViewModel() {
             }
         },
 
-        unload: function() {
+        unload: function () {
             if (this._dataSubscription) {
                 this._dataSubscription.unsubscribe();
                 this._dataSubscription = null;

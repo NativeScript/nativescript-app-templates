@@ -38,4 +38,5 @@ function onCarItemTap(args) {
 }
 
 exports.onNavigatingTo = onNavigatingTo;
+exports.onNavigatingFrom = onNavigatingFrom;
 exports.onCarItemTap = onCarItemTap;

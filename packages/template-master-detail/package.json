@@ -32,12 +32,12 @@
         "nativescript-plugin-firebase": "~5.2.0",
         "nativescript-theme-core": "~1.0.4",
         "nativescript-ui-listview": "~3.5.0",
-        "rxjs": "~5.5.5"
+        "rxjs": "~6.0.0"
     },
     "devDependencies": {
         "eslint": "~4.9.0",
         "nativescript-dev-sass": "~1.5.0",
-        "nativescript-dev-webpack": "~0.10.0"
+        "nativescript-dev-webpack": "next"
     },
     "scripts": {
         "preinstall": "node tools/preinstall.js",
