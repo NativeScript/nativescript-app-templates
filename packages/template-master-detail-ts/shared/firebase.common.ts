@@ -1,4 +1,4 @@
-import firebase = require("nativescript-plugin-firebase");
+import { init } from "nativescript-plugin-firebase";
 
 import { Config } from "./config";
 
@@ -12,7 +12,7 @@ import { Config } from "./config";
 * Note that if you change the bundle id of the application, the Firebase configuration
 * will stop working.
 *************************************************************/
-firebase.init({
+init({
     persist: false,
     storageBucket: Config.firebaseBucket
 }).then((instance) => console.log("firebase.init done"),

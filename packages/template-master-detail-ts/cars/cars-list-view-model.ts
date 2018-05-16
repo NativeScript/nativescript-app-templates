@@ -1,6 +1,7 @@
 import { Observable } from "data/observable";
 import { ObservableArray } from "data/observable-array";
-import { Subscription } from "rxjs/Subscription";
+import { Subscription } from "rxjs";
+import { finalize } from "rxjs/operators";
 
 import { Config } from "../shared/config";
 import { ObservableProperty } from "../shared/observable-property-decorator";
@@ -28,9 +29,9 @@ export class CarsListViewModel extends Observable {
             this.isLoading = true;
 
             this._dataSubscription = this._carService.load()
-                .finally(() => {
+                .pipe(finalize(() => {
                     this.isLoading = false;
-                })
+                }))
                 .subscribe((cars: Array<Car>) => {
                     this.cars = new ObservableArray(cars);
                     this.isLoading = false;
