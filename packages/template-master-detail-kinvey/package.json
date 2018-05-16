@@ -29,16 +29,15 @@
         "v8Flags": "--expose_gc"
     },
     "dependencies": {
-        "kinvey-nativescript-sdk": "3.9.7",
+        "kinvey-nativescript-sdk": "3.10.3",
         "nativescript-imagepicker": "~5.0.0",
-        "nativescript-push-notifications": "~1.0.0",
         "nativescript-theme-core": "~1.0.4",
         "nativescript-ui-listview": "~3.5.0"
     },
     "devDependencies": {
         "eslint": "~4.9.0",
         "nativescript-dev-sass": "~1.5.0",
-        "nativescript-dev-webpack": "~0.10.0"
+        "nativescript-dev-webpack": "next"
     },
     "scripts": {
         "preinstall": "node tools/preinstall.js",
