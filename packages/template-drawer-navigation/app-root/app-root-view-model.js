@@ -1,9 +1,14 @@
 const observableModule = require("data/observable");
 
-function AppRootViewModel(selectedPage) {
+const SelectedPageService = require("../shared/selected-page-service");
+
+function AppRootViewModel() {
     const viewModel = observableModule.fromObject({
-        selectedPage: selectedPage
+        selectedPage: ""
     });
+
+    SelectedPageService.getInstance().selectedPage$
+    .subscribe((selectedPage) => { viewModel.selectedPage = selectedPage; });
 
     return viewModel;
 }

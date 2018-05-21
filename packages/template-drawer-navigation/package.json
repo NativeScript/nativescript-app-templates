@@ -29,7 +29,8 @@
     },
     "dependencies": {
         "nativescript-theme-core": "~1.0.4",
-        "nativescript-ui-sidedrawer": "~4.1.0"
+        "nativescript-ui-sidedrawer": "~4.1.0",
+        "rxjs": "~6.1.0"
     },
     "devDependencies": {
         "eslint": "~4.19.0",
