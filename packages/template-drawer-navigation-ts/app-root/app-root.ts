@@ -8,7 +8,7 @@ import { AppRootViewModel } from "./app-root-view-model";
 
 export function onLoaded(args: EventData): void {
     const drawerComponent = <RadSideDrawer>args.object;
-    drawerComponent.bindingContext = new AppRootViewModel("Home");
+    drawerComponent.bindingContext = new AppRootViewModel();
 }
 
 export function onNavigationItemTap(args: EventData): void {
