@@ -32,6 +32,6 @@
         "nativescript-theme-core": "~1.0.4"
     },
     "devDependencies": {
-        "nativescript-dev-webpack": "next"
+        "nativescript-dev-webpack": "~0.12.0"
     }
 }
