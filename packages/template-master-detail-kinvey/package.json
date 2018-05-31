@@ -30,7 +30,7 @@
     },
     "dependencies": {
         "kinvey-nativescript-sdk": "3.10.3",
-        "nativescript-imagepicker": "~6.0.0",
+        "nativescript-imagepicker": "~5.0.0",
         "nativescript-theme-core": "~1.0.4",
         "nativescript-ui-listview": "~3.5.0"
     },
