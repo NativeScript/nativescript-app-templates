@@ -5,7 +5,6 @@ purpose of the file is to pass control to the app’s first module.
 */
 
 import * as app from "tns-core-modules/application";
-import "./bundle-config";
 
 /* ***********************************************************
 * The {N} Kinvey plugin needs some initialization steps before it is ready
