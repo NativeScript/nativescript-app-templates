@@ -37,7 +37,7 @@
         "@angular/router": "~6.0.0",
         "jstimezonedetect": "~1.0.6",
         "kinvey-nativescript-sdk": "3.10.3",
-        "nativescript-angular": "next",
+        "nativescript-angular": "~6.0.0",
         "nativescript-iqkeyboardmanager": "~1.3.0",
         "nativescript-theme-core": "~1.0.4",
         "nativescript-ui-dataform": "~3.6.0",
@@ -49,8 +49,8 @@
     "devDependencies": {
         "codelyzer": "~4.3.0",
         "nativescript-dev-typescript": "~0.7.0",
-        "nativescript-dev-webpack": "next",
-        "tns-platform-declarations": "~4.0.0",
+        "nativescript-dev-webpack": "~0.12.0",
+        "tns-platform-declarations": "~4.1.0",
         "tslint": "~5.10.0",
         "typescript": "~2.7.2"
     },
