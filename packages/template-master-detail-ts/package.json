@@ -27,17 +27,17 @@
         "v8Flags": "--expose_gc"
     },
     "dependencies": {
-        "nativescript-imagepicker": "~5.0.0",
-        "nativescript-plugin-firebase": "~5.2.0",
+        "nativescript-imagepicker": "~6.0.0",
+        "nativescript-plugin-firebase": "~6.0.0",
         "nativescript-theme-core": "~1.0.4",
         "nativescript-ui-listview": "~3.5.0",
-        "rxjs": "~6.0.0"
+        "rxjs": "~6.1.0"
     },
     "devDependencies": {
-        "nativescript-dev-sass": "~1.5.0",
+        "nativescript-dev-sass": "~1.6.0",
         "nativescript-dev-typescript": "~0.7.0",
-        "nativescript-dev-webpack": "next",
-        "tslint": "~5.8.0",
+        "nativescript-dev-webpack": "~0.12.0",
+        "tslint": "~5.10.0",
         "typescript": "~2.7.2"
     },
     "scripts": {
