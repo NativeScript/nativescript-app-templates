@@ -3,7 +3,7 @@
     "displayName": "Master-Detail with Firebase",
     "templateType": "App template",
     "main": "main.js",
-    "version": "4.0.0",
+    "version": "4.1.0",
     "description": "Master-detail interface to display collection of items from Firebase and inspect and edit selected item properties. ",
     "author": "Telerik <support@telerik.com>",
     "license": "Apache-2.0",
