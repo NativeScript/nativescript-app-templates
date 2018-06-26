@@ -28,7 +28,7 @@
         "v8Flags": "--expose_gc"
     },
     "dependencies": {
-        "nativescript-imagepicker": "~5.0.0",
+        "nativescript-imagepicker": "~6.0.0",
         "nativescript-plugin-firebase": "~6.0.0",
         "nativescript-theme-core": "~1.0.4",
         "nativescript-ui-listview": "~3.5.0",
@@ -37,7 +37,7 @@
     "devDependencies": {
         "eslint": "~4.9.0",
         "nativescript-dev-sass": "~1.6.0",
-        "nativescript-dev-webpack": "~0.12.0"
+        "nativescript-dev-webpack": "~0.14.0"
     },
     "scripts": {
         "preinstall": "node tools/preinstall.js",
