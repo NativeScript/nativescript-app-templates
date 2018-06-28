@@ -1,5 +1,6 @@
 const observableModule = require("data/observable");
 const { knownFolders, path } = require("file-system");
+const { fromAsset } = require("image-source");
 const imagePicker = require("nativescript-imagepicker");
 
 const CarService = require("../shared/car-service");
@@ -78,7 +79,8 @@ function CarDetailEditViewModel(carModel) {
                 .then(() => context.present())
                 .then((selection) => selection.forEach(
                     (selectedAsset) => {
-                        selectedAsset.getImage({ maxHeight: 768 })
+                        selectedAsset.options.height = 768;
+                        fromAsset(selectedAsset)
                             .then((imageSource) => this._handleImageChange(imageSource));
                     })).catch((errorMessage) => console.log(errorMessage));
         },
