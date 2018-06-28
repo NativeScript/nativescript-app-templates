@@ -1,6 +1,7 @@
 import { Observable } from "data/observable";
 import { Folder, knownFolders, path } from "file-system";
-import { ImageSource } from "image-source";
+import { ImageAsset } from "image-asset";
+import { fromAsset, ImageSource } from "image-source";
 import * as imagePicker from "nativescript-imagepicker";
 
 import { ObservableProperty } from "../../shared/observable-property-decorator";
@@ -105,8 +106,9 @@ export class CarDetailEditViewModel extends Observable {
             .authorize()
             .then(() => context.present())
             .then((selection) => selection.forEach(
-                (selectedAsset: imagePicker.SelectedAsset) => {
-                    selectedAsset.getImage({ maxHeight: 768 })
+                (selectedAsset: ImageAsset) => {
+                    selectedAsset.options.height = 768;
+                    fromAsset(selectedAsset)
                         .then((imageSource: ImageSource) => this.handleImageChange(imageSource));
                 })
             ).catch((errorMessage: any) => console.log(errorMessage));
