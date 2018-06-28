@@ -1,7 +1,8 @@
 import { Component, forwardRef, Input, Output } from "@angular/core";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 import { Folder, knownFolders, path } from "file-system";
-import { ImageSource } from "image-source";
+import { ImageAsset } from "image-asset";
+import { fromAsset, ImageSource } from "image-source";
 import * as imagePicker from "nativescript-imagepicker";
 
 const tempImageFolderName = "nsimagepicker";
@@ -87,8 +88,9 @@ export class MyImageAddRemoveComponent implements ControlValueAccessor {
             .authorize()
             .then(() => context.present())
             .then((selection) => selection.forEach(
-                (selectedAsset: imagePicker.SelectedAsset) => {
-                    selectedAsset.getImage({ maxHeight: 768 })
+                (selectedAsset: ImageAsset) => {
+                    selectedAsset.options.height = 768;
+                    fromAsset(selectedAsset)
                         .then((imageSource: ImageSource) => this.handleImageChange(imageSource));
                 })
             ).catch((errorMessage: any) => console.log(errorMessage));
