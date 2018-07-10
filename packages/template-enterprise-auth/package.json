@@ -24,6 +24,9 @@
     "url": "https://github.com/NativeScript/template-enterprise-auth"
   },
   "homepage": "https://github.com/NativeScript/template-enterprise-auth",
+  "bugs": {
+    "url": "https://github.com/NativeScript/NativeScript/issues"
+  },
   "android": {
     "v8Flags": "--expose_gc"
   },
