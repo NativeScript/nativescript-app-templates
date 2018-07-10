@@ -25,6 +25,9 @@
         "url": "https://github.com/NativeScript/template-blank"
     },
     "homepage": "https://github.com/NativeScript/template-blank",
+    "bugs": {
+        "url": "https://github.com/NativeScript/NativeScript/issues"
+    },
     "android": {
         "v8Flags": "--expose_gc"
     },
