@@ -28,6 +28,9 @@
         "url": "https://github.com/NativeScript/template-tab-navigation-ng"
     },
     "homepage": "https://github.com/NativeScript/template-tab-navigation-ng",
+    "bugs": {
+        "url": "https://github.com/NativeScript/NativeScript/issues"
+    },
     "android": {
         "v8Flags": "--expose_gc"
     },
