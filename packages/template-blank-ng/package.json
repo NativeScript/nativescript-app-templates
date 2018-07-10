@@ -26,6 +26,9 @@
         "url": "https://github.com/NativeScript/template-blank-ng"
     },
     "homepage": "https://github.com/NativeScript/template-blank-ng",
+    "bugs": {
+        "url": "https://github.com/NativeScript/NativeScript/issues"
+    },
     "android": {
         "v8Flags": "--expose_gc"
     },
