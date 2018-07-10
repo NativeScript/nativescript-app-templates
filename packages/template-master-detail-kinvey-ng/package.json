@@ -23,6 +23,9 @@
         "url": "https://github.com/NativeScript/template-master-detail-kinvey-ng"
     },
     "homepage": "https://github.com/NativeScript/template-master-detail-kinvey-ng",
+    "bugs": {
+        "url": "https://github.com/NativeScript/NativeScript/issues"
+    },
     "android": {
         "v8Flags": "--expose_gc"
     },
