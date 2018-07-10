@@ -23,6 +23,9 @@
         "url": "https://github.com/NativeScript/template-master-detail-ts"
     },
     "homepage": "https://github.com/NativeScript/template-master-detail-ts",
+    "bugs": {
+        "url": "https://github.com/NativeScript/NativeScript/issues"
+    },
     "android": {
         "v8Flags": "--expose_gc"
     },
