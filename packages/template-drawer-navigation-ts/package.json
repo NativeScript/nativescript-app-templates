@@ -27,6 +27,9 @@
         "url": "https://github.com/NativeScript/template-drawer-navigation-ts"
     },
     "homepage": "https://github.com/NativeScript/template-drawer-navigation-ts",
+    "bugs": {
+        "url": "https://github.com/NativeScript/NativeScript/issues"
+    },
     "android": {
         "v8Flags": "--expose_gc"
     },
