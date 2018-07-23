@@ -11,3 +11,5 @@ typings/
 .idea
 .project
 webpack.config.js
+
+tools/assets/**
