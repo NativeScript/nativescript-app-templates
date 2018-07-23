@@ -1,6 +1,15 @@
 {
+    "nativescript": {
+        "id": "org.nativescript.HelloWorld",
+        "templateVersion": "v2",
+        "tns-android": {
+            "version": "4.1.3"
+        },
+        "tns-ios": {
+            "version": "4.1.1"
+        }
+    },
     "name": "tns-template-hello-world",
-    "main": "app.js",
     "version": "4.1.0",
     "author": "Telerik <support@telerik.com>",
     "description": "Nativescript hello-world project template",
@@ -19,12 +28,9 @@
         "url": "git://github.com/NativeScript/template-hello-world.git"
     },
     "bugs": {
-        "url": "https://github.com/NativeScript/template-hello-world/issues"
+        "url": "https://github.com/NativeScript/NativeScript/issues"
     },
     "homepage": "https://github.com/NativeScript/template-hello-world",
-    "android": {
-        "v8Flags": "--expose_gc"
-    },
     "dependencies": {
         "nativescript-theme-core": "~1.0.4",
         "tns-core-modules": "~4.1.0"
