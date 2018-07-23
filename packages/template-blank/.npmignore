@@ -10,3 +10,5 @@ tmp/
 typings/
 .idea
 .project
+
+tools/assets/
