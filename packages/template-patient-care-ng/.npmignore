@@ -15,3 +15,5 @@ typings/
 .vscode
 .cloud
 .project
+
+/tools/assets/
