@@ -15,3 +15,5 @@ typings/
 .idea
 .cloud
 .project
+
+tools/assets/**

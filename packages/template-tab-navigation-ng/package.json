@@ -1,8 +1,14 @@
 {
     "nativescript": {
-        "id": "org.nativescript.TabNavigation"
+        "id": "org.nativescript.TabNavigation",
+        "templateVersion": "v2",
+        "tns-android": {
+            "version": "4.1.3"
+        },
+        "tns-ios": {
+            "version": "4.1.1"
+        }
     },
-    "main": "main.js",
     "name": "tns-template-tab-navigation-ng",
     "displayName": "Tabs",
     "templateType": "App template",
@@ -31,8 +37,8 @@
     "bugs": {
         "url": "https://github.com/NativeScript/NativeScript/issues"
     },
-    "android": {
-        "v8Flags": "--expose_gc"
+    "scripts": {
+        "lint": "tslint \"app/**/*.ts\""
     },
     "dependencies": {
         "@angular/animations": "~6.0.6",
@@ -46,6 +52,7 @@
         "@angular/router": "~6.0.6",
         "nativescript-angular": "~6.0.6",
         "nativescript-theme-core": "~1.0.4",
+        "tns-core-modules": "~4.1.0",
         "reflect-metadata": "~0.1.10",
         "rxjs": "~6.1.0",
         "zone.js": "^0.8.4"
@@ -57,9 +64,5 @@
         "nativescript-dev-webpack": "~0.14.0",
         "tslint": "~5.10.0",
         "typescript": "~2.7.2"
-    },
-    "scripts": {
-        "preinstall": "node tools/preinstall.js",
-        "postinstall": "node tools/postinstall.js"
     }
 }
