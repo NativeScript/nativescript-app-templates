@@ -5,7 +5,7 @@ npm-debug.log
 vendor*.ts
 *.js
 !tools/*.js
-hooks/
+!hooks/**/*.js
 lib/
 node_modules/
 platforms/
