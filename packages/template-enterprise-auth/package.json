@@ -1,5 +1,14 @@
 {
-  "main": "app.js",
+  "nativescript": {
+    "id": "org.nativescript.EnterpriseAuth",
+    "templateVersion": "v2",
+    "tns-android": {
+      "version": "4.1.3"
+    },
+    "tns-ios": {
+      "version": "4.1.1"
+    }
+  },
   "name": "tns-template-enterprise-auth",
   "displayName": "Enterprise Auth",
   "templateType": "App template",
@@ -27,9 +36,6 @@
   "bugs": {
     "url": "https://github.com/NativeScript/NativeScript/issues"
   },
-  "android": {
-    "v8Flags": "--expose_gc"
-  },
   "dependencies": {
     "nativescript-theme-core": "~1.0.4",
     "tns-core-modules": "~4.1.0",
@@ -37,17 +43,5 @@
   },
   "devDependencies": {
     "nativescript-dev-webpack": "~0.14.0"
-  },
-  "scripts": {
-    "preinstall": "node tools/preinstall.js",
-    "postinstall": "node tools/postinstall.js"
-  },
-  "pluginsData": {
-    "kinvey-nativescript-sdk": {
-      "config": {
-        "appKey": "",
-        "appSecret": ""
-      }
-    }
   }
 }
