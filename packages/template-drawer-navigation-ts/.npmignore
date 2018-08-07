@@ -4,7 +4,9 @@ npm-debug.log
 *.js.map
 *.js
 !tools/*.js
-!hooks/**/*.js
+!hooks/after-createProject/*.js
+tsconfig.json
+tsconfig.esm.json
 *.css
 lib/
 node_modules/
@@ -14,5 +16,6 @@ typings/
 .idea
 .cloud
 .project
+.vscode
 
 tools/assets/
