@@ -5,8 +5,10 @@ npm-debug.log
 vendor*.ts
 *.js
 !tools/*.js
-!hooks/**/*.js
+!hooks/after-createProject/*.js
 *.css
+tsconfig.json
+tsconfig.esm.json
 lib/
 node_modules/
 platforms/
