@@ -1,6 +1,9 @@
 npm-debug.log
 .DS_Store
 
+webpack.config.js
+hooks/
+!hooks/after-createProject/
 *.js.map
 vendor*.ts
 lib/
@@ -10,5 +13,6 @@ tmp/
 typings/
 .idea
 .project
+.vscode
 
 tools/assets/
