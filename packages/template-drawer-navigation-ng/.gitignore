@@ -5,7 +5,9 @@ npm-debug.log
 vendor*.ts
 *.js
 !tools/*.js
-!hooks/**/*.js
+!hooks/after-createProject/*.js
+tsconfig.json
+tsconfig.esm.json
 *.css
 lib/
 node_modules/
@@ -15,4 +17,4 @@ typings/
 .idea
 .vscode
 .cloud
-/.project
+.project
