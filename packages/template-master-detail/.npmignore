@@ -1,6 +1,9 @@
 npm-debug.log
 .DS_Store
 
+webpack.config.js
+hooks/
+!hooks/after-createProject/
 *.js.map
 *.css
 lib/
@@ -11,5 +14,6 @@ typings/
 .idea
 .cloud
 .project
+.vscode
 
 tools/assets/
