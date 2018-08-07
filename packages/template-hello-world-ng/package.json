@@ -3,14 +3,14 @@
         "id": "org.nativescript.HelloWorld",
         "templateVersion": "v2",
         "tns-android": {
-            "version": "4.1.3"
+            "version": "4.2.0"
         },
         "tns-ios": {
-            "version": "4.1.1"
+            "version": "4.2.0"
         }
     },
     "name": "tns-template-hello-world-ng",
-    "version": "4.1.0",
+    "version": "4.2.0",
     "author": "Telerik <support@telerik.com>",
     "description": "NativeScript Angular Hello World template",
     "license": "Apache-2.0",
@@ -33,20 +33,20 @@
     },
     "homepage": "https://github.com/NativeScript/template-hello-world-ng",
     "dependencies": {
-        "@angular/animations": "~6.0.6",
-        "@angular/common": "~6.0.6",
-        "@angular/compiler": "~6.0.6",
-        "@angular/core": "~6.0.6",
-        "@angular/forms": "~6.0.6",
-        "@angular/http": "~6.0.6",
-        "@angular/platform-browser": "~6.0.6",
-        "@angular/platform-browser-dynamic": "~6.0.6",
-        "@angular/router": "~6.0.6",
-        "nativescript-angular": "~6.0.6",
+        "@angular/animations": "~6.1.0",
+        "@angular/common": "~6.1.0",
+        "@angular/compiler": "~6.1.0",
+        "@angular/core": "~6.1.0",
+        "@angular/forms": "~6.1.0",
+        "@angular/http": "~6.1.0",
+        "@angular/platform-browser": "~6.1.0",
+        "@angular/platform-browser-dynamic": "~6.1.0",
+        "@angular/router": "~6.1.0",
+        "nativescript-angular": "~6.1.0",
         "nativescript-theme-core": "~1.0.4",
         "reflect-metadata": "~0.1.8",
-        "rxjs": "~6.1.0",
-        "tns-core-modules": "~4.1.0",
+        "rxjs": "^6.0.0",
+        "tns-core-modules": "~4.2.0",
         "zone.js": "^0.8.26"
     },
     "devDependencies": {
