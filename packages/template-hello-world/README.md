@@ -23,4 +23,4 @@ tns create my-app-name --template https://github.com/NativeScript/template-hello
 ```
 # Issues
 
-Issues related to `template-hello-world-ts` template should be logged in the https://github.com/NativeScript/NativeScript repository.
+Issues related to `template-hello-world` template should be logged in the https://github.com/NativeScript/NativeScript repository.
