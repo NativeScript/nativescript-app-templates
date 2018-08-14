@@ -22,3 +22,6 @@ If you want to create a new app that uses the source of the template from the `m
 ```
 tns create my-app-name --template https://github.com/NativeScript/template-hello-world-ts.git#master
 ```
+# Issues
+
+Issues related to `template-hello-world-ts` template should be logged in the https://github.com/NativeScript/NativeScript repository.
