@@ -23,3 +23,7 @@ tns create my-app-name --template https://github.com/NativeScript/template-hello
 ```
 
 **NB:** Please, have in mind that the master branch may refer to dependencies that are not on NPM yet!
+
+# Issues
+
+Issues related to `template-hello-world-ng` template should be logged in the https://github.com/NativeScript/NativeScript repository.
