@@ -2,6 +2,6 @@
 import { platformNativeScript } from "nativescript-angular/platform-static";
 
 // "./app.module.ngfactory" is a dynamically generated module when compiled with AoT.
-import { AppModuleNgFactory } from "./app.module.ngfactory";
+import { AppModuleNgFactory } from "./app/app.module.ngfactory";
 
 platformNativeScript().bootstrapModuleFactory(AppModuleNgFactory);
