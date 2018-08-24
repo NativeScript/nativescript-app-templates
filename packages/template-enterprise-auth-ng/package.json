@@ -61,7 +61,7 @@
   },
   "devDependencies": {
     "nativescript-dev-typescript": "~0.7.0",
-    "nativescript-dev-webpack": "~0.15.0",
+    "nativescript-dev-webpack": "rc",
     "typescript": "~2.8.2"
   }
 }
