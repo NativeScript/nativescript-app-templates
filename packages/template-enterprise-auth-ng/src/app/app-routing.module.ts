@@ -5,8 +5,8 @@ import { LoggedInLazyLoadGuard } from "./logged-in-lazy-load.guard";
 
 const routes: Routes = [
     { path: "", redirectTo: "/home", pathMatch: "full" },
-    { path: "login", loadChildren: "./login/login.module#LoginModule" },
-    { path: "home", loadChildren: "./home/home.module#HomeModule", canLoad: [LoggedInLazyLoadGuard] }
+    { path: "login", loadChildren: "~/app/login/login.module#LoginModule" },
+    { path: "home", loadChildren: "~/app/home/home.module#HomeModule", canLoad: [LoggedInLazyLoadGuard] }
 ];
 
 @NgModule({
