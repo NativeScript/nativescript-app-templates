@@ -2,7 +2,7 @@
 
 // Uncomment to add recyclerview-v7 dependency
 //dependencies {
-//	compile 'com.android.support:recyclerview-v7:+'
+//	implementation 'com.android.support:recyclerview-v7:+'
 //}
 
 android {  
