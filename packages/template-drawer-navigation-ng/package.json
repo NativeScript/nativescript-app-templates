@@ -59,6 +59,7 @@
         "zone.js": "~0.8.18"
     },
     "devDependencies": {
+        "@nativescript/schematics": "~0.2.5",
         "codelyzer": "~4.3.0",
         "nativescript-dev-sass": "~1.6.0",
         "nativescript-dev-typescript": "~0.7.0",
