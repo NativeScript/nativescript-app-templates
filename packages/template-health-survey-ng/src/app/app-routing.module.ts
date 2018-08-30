@@ -6,9 +6,9 @@ import { LoggedInLazyLoadGuard } from "./logged-in-lazy-load.guard";
 
 const routes: Routes = [
     { path: "", redirectTo: "/consent", pathMatch: "full" },
-    { path: "login", loadChildren: "./login/login.module#LoginModule" },
-    { path: "consent", loadChildren: "./consent/consent.module#ConsentModule", canLoad: [LoggedInLazyLoadGuard] },
-    { path: "survey", loadChildren: "./survey/survey.module#SurveyModule" }
+    { path: "login", loadChildren: "~/app/login/login.module#LoginModule" },
+    { path: "consent", loadChildren: "~/app/consent/consent.module#ConsentModule", canLoad: [LoggedInLazyLoadGuard] },
+    { path: "survey", loadChildren: "~/app/survey/survey.module#SurveyModule" }
 ];
 
 @NgModule({

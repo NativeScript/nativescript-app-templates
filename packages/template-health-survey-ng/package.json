@@ -60,9 +60,10 @@
         "zone.js": "~0.8.18"
     },
     "devDependencies": {
+        "@nativescript/schematics": "~0.2.5",
         "codelyzer": "~4.3.0",
         "nativescript-dev-typescript": "~0.7.0",
-        "nativescript-dev-webpack": "~0.15.0",
+        "nativescript-dev-webpack": "rc",
         "tns-platform-declarations": "~4.2.0",
         "tslint": "~5.11.0",
         "typescript": "~2.7.2"
