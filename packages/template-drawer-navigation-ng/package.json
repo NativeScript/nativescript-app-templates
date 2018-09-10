@@ -63,7 +63,7 @@
         "codelyzer": "~4.3.0",
         "nativescript-dev-sass": "~1.6.0",
         "nativescript-dev-typescript": "~0.7.0",
-        "nativescript-dev-webpack": "rc",
+        "nativescript-dev-webpack": "~0.16.0",
         "tslint": "~5.11.0",
         "typescript": "~2.7.2"
     }
