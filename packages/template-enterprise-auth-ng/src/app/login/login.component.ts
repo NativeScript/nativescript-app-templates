@@ -1,11 +1,8 @@
 import { Component } from "@angular/core";
-import { Button } from "ui/button";
 import { Kinvey } from 'kinvey-nativescript-sdk';
 import { RouterExtensions } from "nativescript-angular/router";
 import { NgZone } from "@angular/core";
 import { Page } from "tns-core-modules/ui/page"
-import * as platform from "tns-core-modules/platform";
-import * as color from "tns-core-modules/color";
 
 @Component({
     selector: "Login",

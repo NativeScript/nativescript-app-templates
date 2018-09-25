@@ -1,10 +1,9 @@
 import { Component, ElementRef, OnInit } from "@angular/core";
-import { Button } from "ui/button";
 import { Kinvey, User } from 'kinvey-nativescript-sdk';
 import { RouterExtensions } from "nativescript-angular/router";
 import { Page } from "tns-core-modules/ui/page"
-import { EventData } from "data/observable";
-import { StackLayout } from "ui/layouts/stack-layout";
+import { EventData } from "tns-core-modules/data/observable";
+import { StackLayout } from "tns-core-modules/ui/layouts/stack-layout";
 
 @Component({
     selector: "Home",
