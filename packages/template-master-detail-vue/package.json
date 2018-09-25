@@ -1,20 +1,28 @@
 {
-  "name": "car-rental",
-  "version": "1.0.0",
-  "description": "NativeScript Application",
-  "author": "Bundyo <bundyo@gmail.com>",
-  "license": "SEE LICENSE IN <your-license-filename>",
-  "repository": "<fill-your-repository-here>",
   "nativescript": {
-    "id": "org.nativescript.VueMasterDetail",
+    "id": "org.nativescript.MasterDetail",
     "templateVersion": "v2"
+  },
+  "name": "tns-template-master-detail-vue",
+  "version": "0.9.0",
+  "displayName": "Master Detail with Firebase",
+  "description": "NativeScript-Vue Master Detail with Firebase",
+  "author": "Telerik <support@telerik.com>",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NativeScript/template-master-detail-vue"
+  },
+  "homepage": "https://github.com/NativeScript/template-master-detail-vue",
+  "bugs": {
+    "url": "https://github.com/NativeScript/NativeScript/issues"
   },
   "dependencies": {
     "nativescript-imagepicker": "^6.0.4",
     "nativescript-plugin-firebase": "^7.0.1",
     "nativescript-theme-core": "^1.0.4",
     "nativescript-ui-listview": "^3.7.0",
-    "nativescript-vue": "^2.0.0-rc.0",
+    "nativescript-vue": "^2.0.0",
     "tns-core-modules": "^4.2.1"
   },
   "devDependencies": {
@@ -25,7 +33,7 @@
     "lazy": "1.0.11",
     "mini-css-extract-plugin": "^0.4.3",
     "nativescript-dev-webpack": "^0.17.0-2018-09-21-02",
-    "nativescript-vue-template-compiler": "^2.0.0-rc.0",
+    "nativescript-vue-template-compiler": "^2.0.0",
     "nativescript-worker-loader": "~0.9.1",
     "node-sass": "^4.9.3",
     "sass-loader": "^7.1.0",
