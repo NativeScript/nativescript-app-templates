@@ -2,8 +2,8 @@ import { Observable } from "tns-core-modules/data/observable";
 import { ObservableProperty } from "../shared/observable-property-decorator";
 import { Kinvey } from 'kinvey-nativescript-sdk';
 import { topmost } from "tns-core-modules/ui/frame";
-import { EventData } from "data/observable";
-import { StackLayout } from "ui/layouts/stack-layout";
+import { EventData } from "tns-core-modules/data/observable";
+import { StackLayout } from "tns-core-modules/ui/layouts/stack-layout";
 
 export class HomeViewModel extends Observable {
     @ObservableProperty() loggedUser: string;
