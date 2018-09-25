@@ -1,70 +1,40 @@
-# NativeScript with Vue Master Detail Template
+# NativeScript Vue Blank Template
 App templates help you jump start your native cross-platform apps with built-in UI elements and best practices. Save time writing boilerplate code over and over again when you create new apps.
 
-This Master-Detail template is a fundamental building block for any app that displays collection of objects and their details and need to work both in online and offline mode while utilizing Firebase as a backend. The template uses a RadListView component to display the master list. The RadListView component is part of [Progress NativeScript UI](https://github.com/telerik/nativescript-ui-feedback).
+## Quick Start
+Execute the following command to create an app from this template:
 
-<img src="/tools/assets/phone-masterDetail-ios.png" height="400" /><img src="/tools/assets/phone-masterDetail-detail-ios.png" height="400" />
-
-## Key Features
-- Editable master-detail interface
-- Integration with Firebase database
-- Works offline
-- Customizable theme
-- UX and development best practices
-- Easy to understand code
-
-## Usage
-
-``` bash
-# Install dependencies
-npm install
-
-# Build
-tns build <platform> --bundle
-
-# Build, watch for changes and run the application
-tns run <platform> --bundle
-
-# Build, watch for changes and run the application with
-# HMR enabled (Hot Module Replacement)
-# ---
-# make sure you have the latest nativescript cli installed for this to work
-# npm install -g nativescript@next
-tns run <platform> --hmr
-
-# Clean the NativeScript application instance
-tns platform remove <platform>
+```
+tns create my-blank-vue --template tns-template-blank-vue
 ```
 
-### Debugging vs Production
+> Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm](https://www.npmjs.com/package/tns-template-blank-vue).
 
-During usual run, project runs with following settings -
+If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
 
-1. Code is **not** minified
-2. Vue.config.silent is false, so every component creation is logged
-
-```bash
-# Build, watch for changes and debug the application
-tns debug <platform> --bundle
+```
+tns create my-blank-vue --template https://github.com/NativeScript/template-blank-vue
 ```
 
-To minify code, and prevent Vue logs -
+**NB:** Please, have in mind that the master branch may refer to dependencies that are not on NPM yet!
 
-```bash
-# Build for production
-tns build <platform> --bundle --env.production
+## Walkthrough
 
-# Run as production
-tns run <platform> --bundle --env.production
-```
+### Architecture
+There is a single blank component located in:
+- `/components/Home.vue` - sets up an empty page layout.
 
-## Using NativeScript plugins
+**Home** page has the following components:
+- `ActionBar` - It holds the title of the page.
+- `GridLayout` - The main page layout that should contains all the page content.
 
-Installing plugins is the same as official NativeScript [documentation](https://docs.nativescript.org/plugins/plugins#installing-plugins).
+## Get Help
+The NativeScript framework has a vibrant community that can help when you run into problems.
 
-Use `tns plugin add` from the root of the project directory.
+Try [joining the NativeScript community Slack](http://developer.telerik.com/wp-login.php?action=slack-invitation). The Slack channel is a great place to get help troubleshooting problems, as well as connect with other NativeScript developers.
 
-```shell
-tns plugin add <plugin-name>
-```
-For detailed instructions, see https://github.com/nativescript-vue/vue-cli-template
+If you have found an issue with this template, please report the problem in the [NativeScript repository](https://github.com/NativeScript/NativeScript/issues).
+
+## Contributing
+
+We love PRs, and accept them gladly. Feel free to propose changes and new ideas. We will review and discuss, so that they can be accepted and better integrated.
