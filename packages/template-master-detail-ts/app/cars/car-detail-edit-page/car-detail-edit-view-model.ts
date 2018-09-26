@@ -1,7 +1,7 @@
-import { Observable } from "data/observable";
-import { Folder, knownFolders, path } from "file-system";
-import { ImageAsset } from "image-asset";
-import { fromAsset, ImageSource } from "image-source";
+import { Observable } from "tns-core-modules/data/observable";
+import { Folder, knownFolders, path } from "tns-core-modules/file-system";
+import { ImageAsset } from "tns-core-modules/image-asset";
+import { fromAsset, ImageSource } from "tns-core-modules/image-source";
 import * as imagePicker from "nativescript-imagepicker";
 
 import { ObservableProperty } from "../../shared/observable-property-decorator";

@@ -1,5 +1,5 @@
-import { topmost } from "ui/frame";
-import { NavigatedData, Page } from "ui/page";
+import { topmost } from "tns-core-modules/ui/frame";
+import { NavigatedData, Page } from "tns-core-modules/ui/page";
 
 import { CarDetailViewModel } from "./car-detail-view-model";
 

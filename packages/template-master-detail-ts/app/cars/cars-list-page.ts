@@ -1,6 +1,6 @@
 import { ListViewEventData } from "nativescript-ui-listview";
-import { topmost } from "ui/frame";
-import { NavigatedData, Page } from "ui/page";
+import { topmost } from "tns-core-modules/ui/frame";
+import { NavigatedData, Page } from "tns-core-modules/ui/page";
 
 import { CarsListViewModel } from "./cars-list-view-model";
 import { Car } from "./shared/car-model";

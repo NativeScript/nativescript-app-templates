@@ -1,9 +1,8 @@
-import { EventData } from "data/observable";
-import { ActionItem } from "ui/action-bar";
-import { alert } from "ui/dialogs";
-import { topmost } from "ui/frame";
-import { GridLayout } from "ui/layouts/grid-layout";
-import { NavigatedData, Page } from "ui/page";
+import { EventData } from "tns-core-modules/data/observable";
+import { alert } from "tns-core-modules/ui/dialogs";
+import { topmost } from "tns-core-modules/ui/frame";
+import { GridLayout } from "tns-core-modules/ui/layouts/grid-layout";
+import { NavigatedData, Page } from "tns-core-modules/ui/page";
 
 import { CarDetailEditViewModel } from "./car-detail-edit-view-model";
 
