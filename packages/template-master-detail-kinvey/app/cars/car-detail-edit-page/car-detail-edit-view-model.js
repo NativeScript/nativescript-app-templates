@@ -1,6 +1,6 @@
-const observableModule = require("data/observable");
-const { knownFolders, path } = require("file-system");
-const { fromAsset } = require("image-source");
+const observableModule = require("tns-core-modules/data/observable");
+const { knownFolders, path } = require("tns-core-modules/file-system");
+const { fromAsset } = require("tns-core-modules/image-source");
 const imagePicker = require("nativescript-imagepicker");
 
 const CarService = require("../shared/car-service");

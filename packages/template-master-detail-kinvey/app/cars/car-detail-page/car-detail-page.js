@@ -1,4 +1,4 @@
-const topmost = require("ui/frame").topmost;
+const topmost = require("tns-core-modules/ui/frame").topmost;
 
 const CarDetailViewModel = require("./car-detail-view-model");
 

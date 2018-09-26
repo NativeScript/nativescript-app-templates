@@ -1,6 +1,6 @@
 require("./bundle-config");
 
-const app = require("application");
+const app = require("tns-core-modules/application");
 
 /* ***********************************************************
 * The {N} Kinvey plugin needs some initialization steps before it is ready

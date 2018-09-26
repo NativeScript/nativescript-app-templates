@@ -1,5 +1,5 @@
-const topmost = require("ui/frame").topmost;
-const alert = require("ui/dialogs").alert;
+const topmost = require("tns-core-modules/ui/frame").topmost;
+const alert = require("tns-core-modules/ui/dialogs").alert;
 
 const CarDetailEditViewModel = require("./car-detail-edit-view-model");
 
