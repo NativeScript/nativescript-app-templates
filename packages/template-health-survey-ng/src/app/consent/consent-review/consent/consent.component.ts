@@ -3,7 +3,7 @@ import { Kinvey } from "kinvey-nativescript-sdk";
 import { RouterExtensions } from "nativescript-angular/router";
 import { DataFormEventData } from "nativescript-ui-dataform";
 import { RadDataFormComponent } from "nativescript-ui-dataform/angular";
-import { isIOS } from "platform";
+import { isIOS } from "tns-core-modules/platform";
 
 import { ConsentReviewStep } from "../../../core/task-manager/steps";
 import { TaskManagerService } from "../../../core/task-manager/task-manager.service";
