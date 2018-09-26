@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ObservableArray } from "data/observable-array";
+import { ObservableArray } from "tns-core-modules/data/observable-array";
 import { RouterExtensions } from "nativescript-angular/router";
 import { ListViewEventData } from "nativescript-ui-listview";
 

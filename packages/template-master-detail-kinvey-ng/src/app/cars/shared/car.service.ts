@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { File } from "file-system";
+import { File } from "tns-core-modules/file-system";
 import { Kinvey } from "kinvey-nativescript-sdk";
 import { Config } from "../../shared/config";
 import { Car } from "./car.model";

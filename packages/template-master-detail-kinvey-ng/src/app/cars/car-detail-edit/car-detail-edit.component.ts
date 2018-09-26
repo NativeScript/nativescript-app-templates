@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { PageRoute, RouterExtensions } from "nativescript-angular/router";
 import { switchMap } from "rxjs/operators";
-import { alert } from "ui/dialogs";
+import { alert } from "tns-core-modules/ui/dialogs";
 
 import { CarEditService } from "../shared/car-edit.service";
 import { Car } from "../shared/car.model";
