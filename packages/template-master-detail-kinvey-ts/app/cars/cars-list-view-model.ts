@@ -1,5 +1,5 @@
-import { Observable } from "data/observable";
-import { ObservableArray } from "data/observable-array";
+import { Observable } from "tns-core-modules/data/observable";
+import { ObservableArray } from "tns-core-modules/data/observable-array";
 
 import { Config } from "../shared/config";
 import { ObservableProperty } from "../shared/observable-property-decorator";
