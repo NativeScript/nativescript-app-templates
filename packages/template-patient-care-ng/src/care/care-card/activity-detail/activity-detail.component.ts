@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { EventData } from "data/observable";
+import { EventData } from "tns-core-modules/data/observable";
 import { PageRoute, RouterExtensions } from "nativescript-angular/router";
 import { switchMap } from "rxjs/operators";
-import { TextField } from "ui/text-field";
+import { TextField } from "tns-core-modules/ui/text-field";
 
 import { CareCardActivityService } from "../shared/care-card-activity.service";
 import { CareCardEventService } from "../shared/care-card-event.service";

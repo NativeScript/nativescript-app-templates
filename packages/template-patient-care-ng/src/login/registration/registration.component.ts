@@ -3,9 +3,9 @@ import { Kinvey } from "kinvey-nativescript-sdk";
 import { RouterExtensions } from "nativescript-angular/router";
 import { DataFormEventData } from "nativescript-ui-dataform";
 import { RadDataFormComponent } from "nativescript-ui-dataform/angular";
-import { isAndroid, isIOS } from "platform";
-import { Page } from "ui/page";
-import { layout } from "utils/utils";
+import { isAndroid, isIOS } from "tns-core-modules/platform";
+import { Page } from "tns-core-modules/ui/page";
+import { layout } from "tns-core-modules/utils/utils";
 
 import { UserService } from "../shared/user.service";
 import { RegistrationForm } from "./registration-form.model";

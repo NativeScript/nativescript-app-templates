@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, Input, OnChanges, SimpleChange, SimpleChanges, ViewChild } from "@angular/core"; // tslint:disable-line:max-line-length
-import { Animation } from "ui/animation/animation";
-import { AnimationCurve } from "ui/enums";
-import { Label } from "ui/label";
+import { Animation } from "tns-core-modules/ui/animation/animation";
+import { AnimationCurve } from "tns-core-modules/ui/enums";
+import { Label } from "tns-core-modules/ui/label";
 
 const radialAnimationDurationMilliseconds = 1000;
 
