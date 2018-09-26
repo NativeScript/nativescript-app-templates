@@ -1,5 +1,5 @@
-const observableModule = require("data/observable");
-const ObservableArray = require("data/observable-array").ObservableArray;
+const observableModule = require("tns-core-modules/data/observable");
+const ObservableArray = require("tns-core-modules/data/observable-array").ObservableArray;
 const finalize = require("rxjs/operators").finalize;
 
 const CarService = require("./shared/car-service");

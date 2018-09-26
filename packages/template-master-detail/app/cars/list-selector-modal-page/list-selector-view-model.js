@@ -1,5 +1,5 @@
-const observableModule = require("data/observable");
-const ObservableArray = require("data/observable-array").ObservableArray;
+const observableModule = require("tns-core-modules/data/observable");
+const ObservableArray = require("tns-core-modules/data/observable-array").ObservableArray;
 const { carClassList, carDoorList, carSeatList, carTransmissionList } = require("./constants");
 
 function ListSelectorViewModel(context, closeCallback) {

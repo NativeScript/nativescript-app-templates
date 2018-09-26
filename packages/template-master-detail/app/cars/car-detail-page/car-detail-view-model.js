@@ -1,4 +1,4 @@
-const observableModule = require("data/observable");
+const observableModule = require("tns-core-modules/data/observable");
 
 function CarDetailViewModel(carModel) {
     const viewModel = observableModule.fromObject({
