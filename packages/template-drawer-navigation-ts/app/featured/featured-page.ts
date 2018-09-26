@@ -1,7 +1,7 @@
-import * as app from "application";
-import { EventData } from "data/observable";
+import * as app from "tns-core-modules/application";
+import { EventData } from "tns-core-modules/data/observable";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
-import { NavigatedData, Page } from "ui/page";
+import { NavigatedData, Page } from "tns-core-modules/ui/page";
 
 import { FeaturedViewModel } from "./featured-view-model";
 
