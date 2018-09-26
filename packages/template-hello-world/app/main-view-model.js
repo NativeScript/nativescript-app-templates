@@ -1,4 +1,4 @@
-var Observable = require("data/observable").Observable;
+var Observable = require("tns-core-modules/data/observable").Observable;
 
 function getMessage(counter) {
     if (counter <= 0) {
