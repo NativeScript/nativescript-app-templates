@@ -1,5 +1,5 @@
 
-const app = require("application");
+const app = require("tns-core-modules/application");
 
 const SettingsViewModel = require("./settings-view-model");
 

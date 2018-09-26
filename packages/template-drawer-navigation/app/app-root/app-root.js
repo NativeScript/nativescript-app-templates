@@ -1,5 +1,5 @@
-const application = require("application");
-const frameModule = require("ui/frame");
+const application = require("tns-core-modules/application");
+const frameModule = require("tns-core-modules/ui/frame");
 
 const AppRootViewModel = require("./app-root-view-model");
 

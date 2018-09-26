@@ -1,4 +1,4 @@
-const app = require("application");
+const app = require("tns-core-modules/application");
 
 const SearchViewModel = require("./search-view-model");
 

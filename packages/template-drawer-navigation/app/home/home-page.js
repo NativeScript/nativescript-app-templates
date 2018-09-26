@@ -1,4 +1,4 @@
-const app = require("application");
+const app = require("tns-core-modules/application");
 
 const HomeViewModel = require("./home-view-model");
 
