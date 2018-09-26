@@ -1,8 +1,8 @@
 import { Component, forwardRef, Input, Output } from "@angular/core";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
-import { Folder, knownFolders, path } from "file-system";
-import { ImageAsset } from "image-asset";
-import { fromAsset, ImageSource } from "image-source";
+import { Folder, knownFolders, path } from "tns-core-modules/file-system";
+import { ImageAsset } from "tns-core-modules/image-asset";
+import { fromAsset, ImageSource } from "tns-core-modules/image-source";
 import * as imagePicker from "nativescript-imagepicker";
 
 const tempImageFolderName = "nsimagepicker";
