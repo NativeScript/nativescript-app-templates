@@ -1,6 +1,6 @@
-import { View } from "ui/core/view";
-import { ItemEventData } from "ui/list-view";
-import { NavigatedData, Page } from "ui/page";
+import { View } from "tns-core-modules/ui/core/view";
+import { ItemEventData } from "tns-core-modules/ui/list-view";
+import { NavigatedData, Page } from "tns-core-modules/ui/page";
 
 import { HomeViewModel } from "./home-view-model";
 import { Item } from "./shared/item";

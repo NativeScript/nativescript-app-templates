@@ -1,5 +1,5 @@
-import { EventData, View } from "ui/core/view";
-import { NavigatedData, Page } from "ui/page";
+import { EventData, View } from "tns-core-modules/ui/core/view";
+import { NavigatedData, Page } from "tns-core-modules/ui/page";
 import { Item } from "../shared/item";
 
 export function onNavigatingTo(args: NavigatedData) {

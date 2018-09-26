@@ -1,5 +1,4 @@
-import { topmost } from "ui/frame";
-import { NavigatedData, Page } from "ui/page";
+import { NavigatedData, Page } from "tns-core-modules/ui/page";
 import { SearchViewModel } from "./search-view-model";
 
 export function onNavigatingTo(args: NavigatedData) {
