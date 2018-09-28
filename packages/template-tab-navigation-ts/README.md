@@ -19,7 +19,7 @@ Execute the following command to create an app from this template:
 tns create my-tab-ts --template tns-template-tab-navigation-ts
 ```
 
-> Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm] (https://www.npmjs.com/package/tns-template-tab-navigation-ts).
+> Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm](https://www.npmjs.com/package/tns-template-tab-navigation-ts).
 
 If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
 
@@ -32,8 +32,8 @@ tns create my-tab-ts --template https://github.com/NativeScript/template-tab-nav
 ## Walkthrough
 
 ### Architecture
-There is a folder that is used for setting tabs layout as an application starting point:
-- `/app-root/app-root.ts` - sets up the tab navigation page layout and references the navigatable pages contents.
+The application root component is located at:
+- `app-root.xml` - sets up the tab navigation page layout and references the navigatable pages contents.
 
 The template has the following pages used for the tab views:
 - `/home/home-items-page.ts` - the master home page. Displays a list of items and navigates to the item details page on item tap.
