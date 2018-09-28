@@ -1,7 +1,5 @@
 import Vue from "nativescript-vue";
 
-import "./styles.scss";
-
 import Home from "./components/Home";
 
 new Vue({
