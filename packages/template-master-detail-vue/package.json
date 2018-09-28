@@ -4,7 +4,7 @@
     "templateVersion": "v2"
   },
   "name": "tns-template-master-detail-vue",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "displayName": "Master Detail with Firebase",
   "description": "Master-detail interface to display collection of items from Firebase and inspect and edit selected item properties.",
   "author": "Telerik <support@telerik.com>",
@@ -32,7 +32,7 @@
     "css-hot-loader": "^1.4.2",
     "lazy": "1.0.11",
     "mini-css-extract-plugin": "^0.4.3",
-    "nativescript-dev-webpack": "^0.17.0-2018-09-21-02",
+    "nativescript-dev-webpack": "^0.17.0-2018-09-28-110729-02",
     "nativescript-vue-template-compiler": "^2.0.0",
     "nativescript-worker-loader": "~0.9.1",
     "node-sass": "^4.9.3",
