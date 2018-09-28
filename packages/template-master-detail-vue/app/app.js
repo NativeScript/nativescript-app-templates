@@ -7,8 +7,6 @@ import RadListView from "nativescript-ui-listview/vue";
 
 Vue.use(RadListView);
 
-import "./styles.scss";
-
 import cars from "./shared/cars/car-service";
 
 import CarList from "./components/CarList";
