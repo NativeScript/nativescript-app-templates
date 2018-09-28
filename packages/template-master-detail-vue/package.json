@@ -1,10 +1,7 @@
 {
   "nativescript": {
     "id": "org.nativescript.MasterDetail",
-    "templateVersion": "v2",
-    "tns-android": {
-      "version": "5.0.0-2018-09-27-02"
-    }
+    "templateVersion": "v2"
   },
   "name": "tns-template-master-detail-vue",
   "version": "0.9.1",
