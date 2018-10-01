@@ -3,10 +3,6 @@ import config from "./shared/firebase-config";
 
 import Vue from "nativescript-vue";
 
-import { isAndroid } from "tns-core-modules/platform";
-import { android } from "tns-core-modules/application";
-import { topmost } from "tns-core-modules/ui/frame";
-
 import RadListView from "nativescript-ui-listview/vue";
 
 Vue.use(RadListView);
@@ -47,15 +43,5 @@ new Vue({
                 console.log(`firebase.init error: ${error}`);
             }
         );
-
-        if (isAndroid) {
-            android.on("activityBackPressed", args => {
-                if (topmost().canGoBack()) {
-                    args.cancel = true;
-
-                    this.$navigateBack();
-                }
-            })
-        }
     }
 }).$start();
