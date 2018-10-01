@@ -2,7 +2,8 @@ npm-debug.log
 .DS_Store
 
 hooks/
-!hooks/after-createProject/
+!tools/*.js
+!hooks/after-createProject/*.js
 *.js.map
 vendor*.ts
 lib/

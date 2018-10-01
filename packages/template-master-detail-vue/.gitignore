@@ -19,7 +19,8 @@ npm-debug.log
 
 # NativeScript
 hooks/
-!hooks/after-createProject/
+!tools/*.js
+!hooks/after-createProject/*.js
 node_modules/
 platforms/
 
