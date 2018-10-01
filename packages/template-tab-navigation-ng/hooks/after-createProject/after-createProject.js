@@ -2,8 +2,6 @@ const fs = require("fs");
 const path = require("path");
 const exec = require("child_process").exec;
 
-console.log("after-createProject script running...");
-
 const srcGitignore = "dot.gitignore";
 const destGitignore = ".gitignore";
 let appRootFolder;
@@ -13,11 +11,9 @@ findAppRootFolder()
         return copyFile(srcGitignore, destGitignore);
     })
     .then(() => {
-        console.log("Removing tools directory...");
         const toolsDir = path.join(appRootFolder, 'tools');
         deleteFolderSync(toolsDir);
 
-        console.log("Removing after-createProject...");
         deleteFolderSync(__dirname);
     })
     .catch((err) => {
