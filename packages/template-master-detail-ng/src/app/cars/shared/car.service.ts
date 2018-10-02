@@ -67,7 +67,7 @@ export class CarService {
     }
 
     uploadImage(remoteFullPath: string, localFullPath: string): Promise<any> {
-        return firebase.uploadFile({
+        return firebase.storage.uploadFile({
             localFullPath,
             remoteFullPath,
             onProgress: null
