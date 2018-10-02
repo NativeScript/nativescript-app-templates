@@ -52,7 +52,7 @@
         "@angular/router": "~6.1.0",
         "nativescript-angular": "~6.1.0",
         "nativescript-theme-core": "~1.0.4",
-        "nativescript-ui-sidedrawer": "~4.2.0",
+        "nativescript-ui-sidedrawer": "~4.3.0",
         "tns-core-modules": "~4.2.0",
         "reflect-metadata": "~0.1.10",
         "rxjs": "~6.2.0",
