@@ -1,8 +1,6 @@
 const catchError = require("rxjs/operators").catchError;
 const Observable = require("rxjs").Observable;
-const addValueEventListener = require("nativescript-plugin-firebase").addValueEventListener;
-const update = require("nativescript-plugin-firebase").update;
-const uploadFile = require("nativescript-plugin-firebase").uploadFile;
+const firebase = require("nativescript-plugin-firebase");
 
 const Car = require("./car-model");
 
@@ -33,18 +31,18 @@ function CarService() {
                 observer.next(results);
             };
 
-            addValueEventListener(onValueEvent, `/${path}`);
+            firebase.addValueEventListener(onValueEvent, `/${path}`);
         }).pipe(catchError(this._handleErrors));
     };
 
     this.update = function (carModel) {
         const updateModel = cloneUpdateModel(carModel);
 
-        return update(`/cars/${carModel.id}`, updateModel);
+        return firebase.update(`/cars/${carModel.id}`, updateModel);
     };
 
     this.uploadImage = function (remoteFullPath, localFullPath) {
-        return uploadFile({
+        return firebase.storage.uploadFile({
             localFullPath,
             remoteFullPath,
             onProgress: null
