@@ -1,9 +1,8 @@
-import { Observable } from "tns-core-modules/data/observable";
-import { ObservableArray } from "tns-core-modules/data/observable-array";
 import { Subscription } from "rxjs";
 import { finalize } from "rxjs/operators";
+import { Observable } from "tns-core-modules/data/observable";
+import { ObservableArray } from "tns-core-modules/data/observable-array";
 
-import { Config } from "../shared/config";
 import { ObservableProperty } from "../shared/observable-property-decorator";
 import { Car } from "./shared/car-model";
 import { CarService } from "./shared/car-service";

@@ -1,4 +1,4 @@
-import { addValueEventListener, update, uploadFile } from "nativescript-plugin-firebase";
+import * as firebase from "nativescript-plugin-firebase";
 import { Observable } from "rxjs";
 import { catchError } from "rxjs/operators";
 
@@ -44,18 +44,18 @@ export class CarService {
                 const results = this.handleSnapshot(snapshot.value);
                 observer.next(results);
             };
-            addValueEventListener(onValueEvent, `/${path}`);
+            firebase.addValueEventListener(onValueEvent, `/${path}`);
         }).pipe(catchError(this.handleErrors));
     }
 
     update(carModel: Car): Promise<any> {
         const updateModel = CarService.cloneUpdateModel(carModel);
 
-        return update(`/cars/${carModel.id}`, updateModel);
+        return firebase.update(`/cars/${carModel.id}`, updateModel);
     }
 
     uploadImage(remoteFullPath: string, localFullPath: string): Promise<any> {
-        return uploadFile({
+        return firebase.storage.uploadFile({
             localFullPath,
             remoteFullPath,
             onProgress: null
