@@ -36,7 +36,7 @@
         "url": "https://github.com/NativeScript/NativeScript/issues"
     },
     "scripts": {
-        "lint": "tslint \"src/**/*.ts\""
+        "lint": "tslint \"app/**/*.ts\""
     },
     "dependencies": {
         "nativescript-imagepicker": "~6.0.0",
