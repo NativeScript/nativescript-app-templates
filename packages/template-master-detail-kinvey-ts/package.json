@@ -1,56 +1,56 @@
 {
-  "nativescript": {
-    "id": "org.nativescript.MasterDetailKinvey",
-    "templateVersion": "v2",
-    "tns-android": {
-      "version": "4.2.0"
+    "nativescript": {
+        "id": "org.nativescript.MasterDetailKinvey",
+        "templateVersion": "v2",
+        "tns-android": {
+            "version": "4.2.0"
+        },
+        "tns-ios": {
+            "version": "4.2.0"
+        }
     },
-    "tns-ios": {
-      "version": "4.2.0"
+    "name": "tns-template-master-detail-kinvey-ts",
+    "displayName": "Master-Detail with Kinvey",
+    "templateType": "App template",
+    "version": "4.2.1",
+    "description": "Master-detail interface to display collection of items from Kinvey and inspect and edit selected item properties. ",
+    "author": "Telerik <support@telerik.com>",
+    "license": "Apache-2.0",
+    "keywords": [
+        "telerik",
+        "mobile",
+        "nativescript",
+        "{N}",
+        "tns",
+        "appbuilder",
+        "template",
+        "master-detail",
+        "kinvey",
+        "category-general"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/NativeScript/template-master-detail-kinvey-ts"
+    },
+    "homepage": "https://github.com/NativeScript/template-master-detail-kinvey-ts",
+    "bugs": {
+        "url": "https://github.com/NativeScript/NativeScript/issues"
+    },
+    "scripts": {
+        "lint": "tslint \"app/**/*.ts\""
+    },
+    "dependencies": {
+        "kinvey-nativescript-sdk": "3.11.7",
+        "nativescript-imagepicker": "~6.0.0",
+        "nativescript-theme-core": "~1.0.4",
+        "nativescript-ui-listview": "~3.7.0",
+        "tns-core-modules": "~4.2.0"
+    },
+    "devDependencies": {
+        "nativescript-dev-sass": "~1.6.0",
+        "nativescript-dev-typescript": "~0.7.0",
+        "nativescript-dev-webpack": "~0.16.0",
+        "tslint": "~5.11.0",
+        "typescript": "~2.7.2"
     }
-  },
-  "name": "tns-template-master-detail-kinvey-ts",
-  "displayName": "Master-Detail with Kinvey",
-  "templateType": "App template",
-  "version": "4.2.1",
-  "description": "Master-detail interface to display collection of items from Kinvey and inspect and edit selected item properties. ",
-  "author": "Telerik <support@telerik.com>",
-  "license": "Apache-2.0",
-  "keywords": [
-    "telerik",
-    "mobile",
-    "nativescript",
-    "{N}",
-    "tns",
-    "appbuilder",
-    "template",
-    "master-detail",
-    "kinvey",
-    "category-general"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/NativeScript/template-master-detail-kinvey-ts"
-  },
-  "homepage": "https://github.com/NativeScript/template-master-detail-kinvey-ts",
-  "bugs": {
-    "url": "https://github.com/NativeScript/NativeScript/issues"
-  },
-  "scripts": {
-    "lint": "tslint \"app/**/*.ts\""
-  },
-  "dependencies": {
-    "kinvey-nativescript-sdk": "3.11.7",
-    "nativescript-imagepicker": "~6.0.0",
-    "nativescript-theme-core": "~1.0.4",
-    "nativescript-ui-listview": "~3.5.0",
-    "tns-core-modules": "~4.2.0"
-  },
-  "devDependencies": {
-    "nativescript-dev-sass": "~1.6.0",
-    "nativescript-dev-typescript": "~0.7.0",
-    "nativescript-dev-webpack": "~0.16.0",
-    "tslint": "~5.11.0",
-    "typescript": "~2.7.2"
-  }
 }
