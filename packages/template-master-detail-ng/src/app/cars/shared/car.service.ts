@@ -1,10 +1,8 @@
 import { Injectable, NgZone } from "@angular/core";
-import { Http } from "@angular/http";
 import * as firebase from "nativescript-plugin-firebase";
 import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
 
-import { Config } from "../../shared/config";
 import { Car } from "./car.model";
 
 const editableProperties = [
