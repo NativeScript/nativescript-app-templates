@@ -36,7 +36,7 @@
         "url": "https://github.com/NativeScript/NativeScript/issues"
     },
     "scripts": {
-        "lint": "tslint \"app/**/*.ts\""
+        "lint": "tslint \"src/**/*.ts\""
     },
     "dependencies": {
         "@angular/animations": "~6.1.0",
