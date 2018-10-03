@@ -8,7 +8,7 @@
             <ListViewLinearLayout v-tkListViewLayout scrollDirection="Vertical"/>
             <v-template>
                 <GridLayout rows="*, *, *" columns="*, *" class="list-group-item-content">
-                    <Label :text="item.name" class="text-primary font-weight-bold"/>
+                    <Label :text="item.name" class="text-primary list-group-item-text font-weight-bold"/>
                     <Label col="1" horizontalAlignment="right" class="list-group-item-text m-r-5">
                         <FormattedString>
                             <Span text.decode="&euro;"/>
@@ -79,18 +79,17 @@
 
     // Custom styles
     .list-group {
-        .list-group-item {
-            padding: 0 0 8 0;
-            background-color: $blue-10;
+        .list-group-item-content {
+            padding: 8 15 4 15;
+            background-color: $background-light;
+        }
 
-            .list-group-item-content {
-                padding: 8 15 4 15;
-                background-color: $background-light;
-            }
+        .list-group-item-text {
+            margin: 2 3;
+        }
 
-            .fa {
-                color: $accent-dark;
-            }
+        .fa {
+            color: $accent-dark;
         }
     }
 </style>
