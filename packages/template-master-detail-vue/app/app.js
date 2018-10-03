@@ -7,6 +7,8 @@ import RadListView from "nativescript-ui-listview/vue";
 
 Vue.use(RadListView);
 
+Vue.config.silent = (TNS_ENV === 'production');
+
 import cars from "./shared/cars/car-service";
 
 import CarList from "./components/CarList";
