@@ -12,7 +12,7 @@
   "name": "tns-template-enterprise-auth",
   "displayName": "Enterprise Auth",
   "templateType": "App template",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Login interface implemented using Kinvey Mobile Identity Connect",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
