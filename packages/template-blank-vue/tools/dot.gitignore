@@ -1,11 +1,11 @@
 # NativeScript
 hooks/
+!hooks/after-createProject/*.js
 node_modules/
 platforms/
 
 # NativeScript Template
 *.js.map
-*.js
 !webpack.config.js
 *.css
 
