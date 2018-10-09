@@ -17,10 +17,21 @@
   "bugs": {
     "url": "https://github.com/NativeScript/NativeScript/issues"
   },
+  "keywords": [
+    "telerik",
+    "progress",
+    "mobile",
+    "nativescript",
+    "{N}",
+    "tns",
+    "vue",
+    "nativescript-vue",
+    "template",
+    "master-detail",
+    "detail",
+    "category-general"
+  ],
   "dependencies": {
-    "@babel/core": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "babel-loader": "^8.0.2",
     "nativescript-imagepicker": "^6.0.4",
     "nativescript-plugin-firebase": "^7.0.1",
     "nativescript-theme-core": "^1.0.4",
@@ -29,6 +40,9 @@
     "tns-core-modules": "^4.2.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-loader": "^8.0.2",
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^1.0.0",
