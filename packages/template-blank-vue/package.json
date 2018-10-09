@@ -25,6 +25,7 @@
     "{N}",
     "tns",
     "vue",
+    "nativescript-vue",
     "template",
     "master-detail",
     "detail",
