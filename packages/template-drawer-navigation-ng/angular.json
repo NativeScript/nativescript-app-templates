@@ -8,7 +8,7 @@
   "projects": {
     "drawer-navigation": {
       "root": "",
-      "sourceRoot": ".",
+      "sourceRoot": "src",
       "projectType": "application",
       "prefix": "ns"
     }
