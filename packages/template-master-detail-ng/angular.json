@@ -8,7 +8,7 @@
   "projects": {
     "master-detail": {
       "root": "",
-      "sourceRoot": ".",
+      "sourceRoot": "src",
       "projectType": "application",
       "prefix": "ns"
     }
