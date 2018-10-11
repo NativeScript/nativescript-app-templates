@@ -8,7 +8,7 @@
   "projects": {
     "health-survey": {
       "root": "",
-      "sourceRoot": ".",
+      "sourceRoot": "src",
       "projectType": "application",
       "prefix": "ns"
     }
