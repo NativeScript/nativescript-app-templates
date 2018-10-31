@@ -3,10 +3,10 @@
         "id": "org.nativescript.DrawerNavigation",
         "templateVersion": "v2",
         "tns-android": {
-            "version": "4.2.0"
+            "version": "5.0.0"
         },
         "tns-ios": {
-            "version": "4.2.0"
+            "version": "5.0.0"
         }
     },
     "name": "tns-template-drawer-navigation-ts",
@@ -41,14 +41,14 @@
     },
     "dependencies": {
         "nativescript-theme-core": "~1.0.4",
-        "nativescript-ui-sidedrawer": "~4.3.0",
-        "tns-core-modules": "~4.2.0",
+        "nativescript-ui-sidedrawer": "~5.0.0",
+        "tns-core-modules": "~5.0.0",
         "rxjs": "~6.2.0"
     },
     "devDependencies": {
         "nativescript-dev-sass": "~1.6.0",
         "nativescript-dev-typescript": "~0.7.0",
-        "nativescript-dev-webpack": "~0.16.0",
+        "nativescript-dev-webpack": "~0.17.0",
         "tslint": "~5.11.0",
         "typescript": "~2.7.2"
     }
