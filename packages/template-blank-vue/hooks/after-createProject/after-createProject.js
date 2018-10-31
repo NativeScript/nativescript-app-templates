@@ -22,7 +22,6 @@ module.exports = function (hookArgs) {
             const sourcePath = path.join(appRootFolder, 'tools', srcFilename);
             const destPath = path.join(appRootFolder, destFilename);
 
-            console.log(`Creating ${path.resolve(destPath)}...`);
             fs.rename(sourcePath, destPath, (err) => {
                 if (err) {
                     return reject(err);
@@ -49,4 +48,4 @@ module.exports = function (hookArgs) {
             fs.rmdirSync(folderPath);
         }
     }
-};
+}
