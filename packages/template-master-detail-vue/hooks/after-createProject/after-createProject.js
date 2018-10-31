@@ -32,7 +32,6 @@ module.exports = function (hookArgs) {
             const sourcePath = path.join(appRootFolder, 'tools', srcFilename);
             const destPath = path.join(appRootFolder, destFilename);
 
-            console.log(`Creating ${path.resolve(destPath)}...`);
             fs.rename(sourcePath, destPath, (err) => {
                 if (err) {
                     return reject(err);
@@ -51,7 +50,8 @@ module.exports = function (hookArgs) {
 
                 if (contentDirs) {
                     deleteFolderSync(content);
-                } else {
+                }
+                else {
                     fs.unlinkSync(content);
                 }
             });
@@ -87,10 +87,9 @@ module.exports = function (hookArgs) {
                     if (err) {
                         return reject(err);
                     }
-
                     resolve();
                 });
             });
         });
     }
-};
+}
