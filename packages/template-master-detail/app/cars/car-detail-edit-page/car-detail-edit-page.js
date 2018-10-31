@@ -49,7 +49,7 @@ function onDoneButtonTap(args) {
     const bindingContext = actionItem.bindingContext;
 
     bindingContext.saveChanges()
-        .then(() => topmost().navigate({ 
+        .then(() => topmost().navigate({
             moduleName: "cars/cars-list-page",
             animated: true,
             clearHistory: true,
