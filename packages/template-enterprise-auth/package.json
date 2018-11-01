@@ -1,47 +1,47 @@
 {
-  "nativescript": {
-    "id": "org.nativescript.EnterpriseAuth",
-    "templateVersion": "v2",
-    "tns-android": {
-      "version": "4.2.0"
+    "nativescript": {
+        "id": "org.nativescript.EnterpriseAuth",
+        "templateVersion": "v2",
+        "tns-android": {
+            "version": "5.0.0"
+        },
+        "tns-ios": {
+            "version": "5.0.0"
+        }
     },
-    "tns-ios": {
-      "version": "4.2.0"
+    "name": "tns-template-enterprise-auth",
+    "displayName": "Enterprise Auth",
+    "templateType": "App template",
+    "version": "0.3.0",
+    "description": "Login interface implemented using Kinvey Mobile Identity Connect",
+    "author": "Telerik <support@telerik.com>",
+    "license": "Apache-2.0",
+    "keywords": [
+        "telerik",
+        "mobile",
+        "nativescript",
+        "{N}",
+        "tns",
+        "appbuilder",
+        "template",
+        "login",
+        "kinvey",
+        "category-general"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/NativeScript/template-enterprise-auth"
+    },
+    "homepage": "https://github.com/NativeScript/template-enterprise-auth",
+    "bugs": {
+        "url": "https://github.com/NativeScript/NativeScript/issues"
+    },
+    "dependencies": {
+        "nativescript-theme-core": "~1.0.4",
+        "tns-core-modules": "~5.0.0",
+        "kinvey-nativescript-sdk": "3.11.7"
+    },
+    "devDependencies": {
+        "nativescript-dev-webpack": "~0.17.0"
     }
-  },
-  "name": "tns-template-enterprise-auth",
-  "displayName": "Enterprise Auth",
-  "templateType": "App template",
-  "version": "0.2.3",
-  "description": "Login interface implemented using Kinvey Mobile Identity Connect",
-  "author": "Telerik <support@telerik.com>",
-  "license": "Apache-2.0",
-  "keywords": [
-    "telerik",
-    "mobile",
-    "nativescript",
-    "{N}",
-    "tns",
-    "appbuilder",
-    "template",
-    "login",
-    "kinvey",
-    "category-general"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/NativeScript/template-enterprise-auth"
-  },
-  "homepage": "https://github.com/NativeScript/template-enterprise-auth",
-  "bugs": {
-    "url": "https://github.com/NativeScript/NativeScript/issues"
-  },
-  "dependencies": {
-    "nativescript-theme-core": "~1.0.4",
-    "tns-core-modules": "~4.2.0",
-    "kinvey-nativescript-sdk": "3.11.7"
-  },
-  "devDependencies": {
-    "nativescript-dev-webpack": "~0.16.0"
-  }
 }
