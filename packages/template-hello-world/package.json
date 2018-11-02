@@ -10,7 +10,7 @@
         }
     },
     "name": "tns-template-hello-world",
-    "version": "5.0.0",
+    "version": "5.0.1",
     "author": "Telerik <support@telerik.com>",
     "description": "Nativescript hello-world project template",
     "license": "Apache-2.0",
