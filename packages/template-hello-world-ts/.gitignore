@@ -1,0 +1,17 @@
+npm-debug.log
+.DS_Store
+
+*.js.map
+*.js
+tsconfig.json
+tsconfig.tns.json
+tsconfig.esm.json
+lib/
+node_modules/
+platforms/
+tmp/
+typings/
+.idea
+.cloud
+.project
+.vscode
