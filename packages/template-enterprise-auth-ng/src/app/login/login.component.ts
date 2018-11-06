@@ -20,7 +20,7 @@ export class LoginComponent {
 
     login() {
         if (Kinvey.User.getActiveUser() == null) {
-            Kinvey.User.loginWithMIC('http://example.com')
+            Kinvey.User.loginWithMIC()
                 .then((user: Kinvey.User) => {
                     this.navigateHome();
                     console.log("user: " + JSON.stringify(user));
