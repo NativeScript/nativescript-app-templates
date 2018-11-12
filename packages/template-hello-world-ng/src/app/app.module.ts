@@ -3,7 +3,6 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { ItemService } from "./item/item.service";
 import { ItemsComponent } from "./item/items.component";
 import { ItemDetailComponent } from "./item/item-detail.component";
 
@@ -26,9 +25,7 @@ import { ItemDetailComponent } from "./item/item-detail.component";
         ItemsComponent,
         ItemDetailComponent
     ],
-    providers: [
-        ItemService
-    ],
+    providers: [],
     schemas: [
         NO_ERRORS_SCHEMA
     ]
