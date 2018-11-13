@@ -16,7 +16,9 @@ const editableProperties = [
     "imageUrl"
 ];
 
-@Injectable()
+@Injectable({
+    providedIn: "root"
+})
 export class CarService {
     private static cloneUpdateModel(car: Car): object {
         // tslint:disable-next-line:ban-comma-operator
