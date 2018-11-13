@@ -12,11 +12,6 @@ import { RadialRatingComponent } from "./care-card/care-dashboard/radial-rating/
 import { ConnectDetailComponent } from "./connect/connect-detail/connect-detail.component";
 import { ConnectComponent } from "./connect/connect.component";
 
-import { CareCardActivityService } from "./care-card/shared/care-card-activity.service";
-import { CareCardEventService } from "./care-card/shared/care-card-event.service";
-import { CareCardService } from "./care-card/shared/care-card.service";
-import { ConnectService } from "./connect/shared/connect.service";
-
 import { CareRoutingModule } from "./care-routing.module";
 import { CareComponent } from "./care.component";
 
@@ -38,12 +33,7 @@ import { CareComponent } from "./care.component";
         ConnectDetailComponent,
         CareComponent
     ],
-    providers: [
-        CareCardActivityService,
-        CareCardEventService,
-        CareCardService,
-        ConnectService
-    ],
+    providers: [],
     schemas: [
         NO_ERRORS_SCHEMA
     ]

@@ -12,7 +12,9 @@ export const enum CarePlanEventState {
     Completed = 2
 }
 
-@Injectable()
+@Injectable({
+    providedIn: "root"
+})
 export class CareCardEventService {
     updatedEvent$: Observable<CarePlanEvent>;
 

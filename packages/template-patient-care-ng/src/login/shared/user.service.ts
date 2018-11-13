@@ -1,9 +1,7 @@
-import { Injectable } from "@angular/core";
 import { Kinvey } from "kinvey-nativescript-sdk";
 
 import { RegistrationForm } from "../registration/registration-form.model";
 
-@Injectable()
 export class UserService {
     static login(username: string, password: string): Promise<any> {
         return Kinvey.User.login(username.toLowerCase(), password);

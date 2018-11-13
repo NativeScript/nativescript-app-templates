@@ -6,7 +6,9 @@ import { CareCardEventService } from "./care-card-event.service";
 import { CarePlanActivityType } from "./care-plan-activity-type.enum";
 import { CarePlanActivity } from "./care-plan-activity.model";
 
-@Injectable()
+@Injectable({
+    providedIn: "root"
+})
 export class CareCardService {
     selectedDate$: Observable<Date>;
 

@@ -7,7 +7,9 @@ import { CarePlanActivityType } from "./care-plan-activity-type.enum";
 import { CarePlanActivity } from "./care-plan-activity.model";
 import { CarePlanEvent } from "./care-plan-event.model";
 
-@Injectable()
+@Injectable({
+    providedIn: "root"
+})
 export class CareCardActivityService {
     private _activityStore = Kinvey.DataStore.collection<any>("Activity");
 

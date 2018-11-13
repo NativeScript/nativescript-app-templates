@@ -4,7 +4,9 @@ import { Observable } from "rxjs";
 
 import { Contact } from "./contact.model";
 
-@Injectable()
+@Injectable({
+    providedIn: "root"
+})
 export class ConnectService {
     private _contacts: Array<Contact>;
 
