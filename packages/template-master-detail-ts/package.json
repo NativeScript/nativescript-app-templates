@@ -39,17 +39,16 @@
     },
     "dependencies": {
         "nativescript-imagepicker": "~6.0.0",
-        "nativescript-plugin-firebase": "~7.3.0",
+        "nativescript-plugin-firebase": "~7.4.0",
         "nativescript-theme-core": "~1.0.4",
         "nativescript-ui-listview": "~3.7.0",
-        "tns-core-modules": "~5.0.0",
-        "rxjs": "~6.2.0"
+        "tns-core-modules": "~5.0.2",
+        "rxjs": "~6.3.0"
     },
     "devDependencies": {
         "nativescript-dev-sass": "~1.6.0",
         "nativescript-dev-typescript": "~0.7.0",
-        "nativescript-dev-webpack": "~0.17.0",
-        "tslint": "~5.11.0",
-        "typescript": "~2.7.2"
+        "nativescript-dev-webpack": "~0.18.0",
+        "tslint": "~5.11.0"
     }
 }
