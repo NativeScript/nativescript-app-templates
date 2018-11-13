@@ -1,71 +1,70 @@
 {
-    "nativescript": {
-        "id": "org.nativescript.MasterDetail",
-        "templateVersion": "v2",
-        "tns-android": {
-            "version": "5.0.0"
-        },
-        "tns-ios": {
-            "version": "5.0.0"
-        }
+  "nativescript": {
+    "id": "org.nativescript.MasterDetail",
+    "templateVersion": "v2",
+    "tns-android": {
+      "version": "5.0.0"
     },
-    "name": "tns-template-master-detail-ng",
-    "displayName": "Master-Detail with Firebase",
-    "templateType": "App template",
-    "version": "5.0.0",
-    "description": "Master-detail interface to display collection of items from Firebase and inspect and edit selected item properties. ",
-    "author": "Telerik <support@telerik.com>",
-    "license": "Apache-2.0",
-    "keywords": [
-        "telerik",
-        "mobile",
-        "nativescript",
-        "{N}",
-        "tns",
-        "angular",
-        "template",
-        "master-details",
-        "detail",
-        "category-general"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/NativeScript/template-master-detail-ng"
-    },
-    "homepage": "https://github.com/NativeScript/template-master-detail-ng",
-    "bugs": {
-        "url": "https://github.com/NativeScript/NativeScript/issues"
-    },
-    "scripts": {
-        "lint": "tslint \"src/**/*.ts\""
-    },
-    "dependencies": {
-        "@angular/animations": "~6.1.0",
-        "@angular/common": "~6.1.0",
-        "@angular/compiler": "~6.1.0",
-        "@angular/core": "~6.1.0",
-        "@angular/forms": "~6.1.0",
-        "@angular/http": "~6.1.0",
-        "@angular/platform-browser": "~6.1.0",
-        "@angular/platform-browser-dynamic": "~6.1.0",
-        "@angular/router": "~6.1.0",
-        "nativescript-angular": "~6.2.0",
-        "nativescript-imagepicker": "~6.0.0",
-        "nativescript-plugin-firebase": "~7.3.0",
-        "nativescript-theme-core": "~1.0.4",
-        "nativescript-ui-listview": "~3.7.0",
-        "tns-core-modules": "~5.0.0",
-        "reflect-metadata": "~0.1.10",
-        "rxjs": "~6.2.0",
-        "zone.js": "~0.8.18"
-    },
-    "devDependencies": {
-        "@nativescript/schematics": "~0.3.0",
-        "codelyzer": "~4.5.0",
-        "nativescript-dev-sass": "~1.6.0",
-        "nativescript-dev-typescript": "~0.7.0",
-        "nativescript-dev-webpack": "~0.17.0",
-        "tslint": "~5.11.0",
-        "typescript": "~2.7.2"
+    "tns-ios": {
+      "version": "5.0.0"
     }
+  },
+  "name": "tns-template-master-detail-ng",
+  "displayName": "Master-Detail with Firebase",
+  "templateType": "App template",
+  "version": "5.0.0",
+  "description": "Master-detail interface to display collection of items from Firebase and inspect and edit selected item properties. ",
+  "author": "Telerik <support@telerik.com>",
+  "license": "Apache-2.0",
+  "keywords": [
+    "telerik",
+    "mobile",
+    "nativescript",
+    "{N}",
+    "tns",
+    "angular",
+    "template",
+    "master-details",
+    "detail",
+    "category-general"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NativeScript/template-master-detail-ng"
+  },
+  "homepage": "https://github.com/NativeScript/template-master-detail-ng",
+  "bugs": {
+    "url": "https://github.com/NativeScript/NativeScript/issues"
+  },
+  "scripts": {
+    "lint": "tslint \"src/**/*.ts\""
+  },
+  "dependencies": {
+    "@angular/animations": "~7.0.0",
+    "@angular/common": "~7.0.0",
+    "@angular/compiler": "~7.0.0",
+    "@angular/core": "~7.0.0",
+    "@angular/forms": "~7.0.0",
+    "@angular/http": "~7.0.0",
+    "@angular/platform-browser": "~7.0.0",
+    "@angular/platform-browser-dynamic": "~7.0.0",
+    "@angular/router": "~7.0.0",
+    "nativescript-angular": "~7.0.0",
+    "nativescript-imagepicker": "~6.0.0",
+    "nativescript-plugin-firebase": "~7.4.0",
+    "nativescript-theme-core": "~1.0.4",
+    "nativescript-ui-listview": "~3.7.0",
+    "tns-core-modules": "~5.0.2",
+    "reflect-metadata": "~0.1.10",
+    "rxjs": "~6.3.0",
+    "zone.js": "~0.8.18"
+  },
+  "devDependencies": {
+    "@nativescript/schematics": "~0.4.0",
+    "codelyzer": "~4.5.0",
+    "nativescript-dev-sass": "~1.6.0",
+    "nativescript-dev-typescript": "~0.7.0",
+    "nativescript-dev-webpack": "~0.18.0",
+    "tslint": "~5.11.0"
+  }
 }
