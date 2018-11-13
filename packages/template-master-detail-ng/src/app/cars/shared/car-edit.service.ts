@@ -3,7 +3,9 @@ import { Injectable } from "@angular/core";
 import { Car } from "./car.model";
 import { CarService } from "./car.service";
 
-@Injectable()
+@Injectable({
+    providedIn: "root"
+})
 export class CarEditService {
     private _editModel: Car;
 

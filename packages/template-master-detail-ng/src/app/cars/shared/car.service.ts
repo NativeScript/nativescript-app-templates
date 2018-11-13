@@ -24,7 +24,9 @@ const editableProperties = [
 * The {N} Firebase plugin needs some initialization steps before the app starts.
 * Check out how it is imported in the main.ts file and the actual script in /shared/firebase.common.ts file.
 *************************************************************/
-@Injectable()
+@Injectable({
+    providedIn: "root"
+})
 export class CarService {
     private static cloneUpdateModel(car: Car): object {
         return editableProperties.reduce((a, e) => (a[e] = car[e], a), {}); // tslint:disable-line:ban-comma-operator
