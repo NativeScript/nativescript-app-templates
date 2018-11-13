@@ -1,18 +1,14 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptUIDataFormModule } from "nativescript-ui-dataform/angular";
 
-import { AppService } from "./app.service";
-
 @NgModule({
     imports: [
         NativeScriptUIDataFormModule
     ],
-    providers: [
-        AppService
-    ],
     exports: [
         NativeScriptUIDataFormModule
     ],
+    providers: [],
     schemas: [
         NO_ERRORS_SCHEMA
     ]

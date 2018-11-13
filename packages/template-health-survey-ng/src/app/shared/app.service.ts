@@ -2,7 +2,9 @@ import { Injectable } from "@angular/core";
 import { Kinvey } from "kinvey-nativescript-sdk";
 import { RouterExtensions } from "nativescript-angular/router";
 
-@Injectable()
+@Injectable({
+    providedIn: "root"
+})
 export class AppService {
     constructor(private _routerExtensions: RouterExtensions) { }
 

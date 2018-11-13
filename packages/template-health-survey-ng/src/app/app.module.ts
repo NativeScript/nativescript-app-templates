@@ -3,7 +3,6 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { CoreModule } from "./core/core.module";
 import { LoggedInLazyLoadGuard } from "./logged-in-lazy-load.guard";
 
 @NgModule({
@@ -12,7 +11,6 @@ import { LoggedInLazyLoadGuard } from "./logged-in-lazy-load.guard";
     ],
     imports: [
         NativeScriptModule,
-        CoreModule,
         AppRoutingModule
     ],
     declarations: [
