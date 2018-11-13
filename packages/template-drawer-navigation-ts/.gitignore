@@ -7,6 +7,7 @@ npm-debug.log
 !hooks/after-createProject/*.js
 tsconfig.json
 tsconfig.esm.json
+tsconfig.tns.json
 *.css
 lib/
 node_modules/
