@@ -33,9 +33,9 @@
     "homepage": "https://github.com/NativeScript/template-hello-world",
     "dependencies": {
         "nativescript-theme-core": "~1.0.4",
-        "tns-core-modules": "~5.0.0"
+        "tns-core-modules": "~5.0.2"
     },
     "devDependencies": {
-        "nativescript-dev-webpack": "~0.17.0"
+        "nativescript-dev-webpack": "~0.18.0"
     }
 }
