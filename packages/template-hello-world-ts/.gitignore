@@ -4,8 +4,8 @@ npm-debug.log
 *.js.map
 *.js
 tsconfig.json
-tsconfig.tns.json
 tsconfig.esm.json
+tsconfig.tns.json
 lib/
 node_modules/
 platforms/
