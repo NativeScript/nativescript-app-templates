@@ -8,6 +8,7 @@ vendor*.ts
 !hooks/after-createProject/*.js
 tsconfig.json
 tsconfig.esm.json
+tsconfig.tns.json
 lib/
 node_modules/
 platforms/
