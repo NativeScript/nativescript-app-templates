@@ -40,13 +40,13 @@
     "dependencies": {
         "nativescript-theme-core": "~1.0.4",
         "nativescript-vue": "~2.0.0",
-        "tns-core-modules": "~5.0.0"
+        "tns-core-modules": "~5.0.2"
     },
     "devDependencies": {
         "@babel/core": "~7.1.0",
         "@babel/preset-env": "~7.1.0",
         "babel-loader": "~8.0.0",
-        "nativescript-dev-webpack": "~0.17.0",
+        "nativescript-dev-webpack": "~0.18.0",
         "nativescript-vue-template-compiler": "~2.0.0",
         "node-sass": "~4.9.0",
         "vue-loader": "~15.4.0"
