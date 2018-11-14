@@ -42,12 +42,11 @@
     },
     "dependencies": {
         "nativescript-theme-core": "~1.0.4",
-        "tns-core-modules": "~5.0.0",
-        "kinvey-nativescript-sdk": "3.11.7"
+        "tns-core-modules": "~5.0.2",
+        "kinvey-nativescript-sdk": "3.12.3"
     },
     "devDependencies": {
         "nativescript-dev-typescript": "~0.7.0",
-        "nativescript-dev-webpack": "~0.17.0",
-        "typescript": "~2.7.2"
+        "nativescript-dev-webpack": "~0.18.0"
     }
 }

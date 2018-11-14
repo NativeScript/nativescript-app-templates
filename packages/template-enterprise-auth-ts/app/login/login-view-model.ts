@@ -10,7 +10,7 @@ export class LoginViewModel extends Observable {
     login() {
         let activeUser = Kinvey.User.getActiveUser();
         if (activeUser == null) {
-            Kinvey.User.loginWithMIC('http://example.com')
+            Kinvey.User.loginWithMIC()
                 .then((user: Kinvey.User) => {
                     activeUser = user;
                     this.navigateHome(activeUser);
