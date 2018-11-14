@@ -9,7 +9,7 @@ function LoginViewModel() {
             var that = this;
             var activeUser = Kinvey.User.getActiveUser();
             if (activeUser == null) {
-                Kinvey.User.loginWithMIC('http://example.com')
+                Kinvey.User.loginWithMIC()
                     .then(function (user) {
                         activeUser = user;
                         that._navigateHome(activeUser);

@@ -7,7 +7,8 @@
     "kinvey-nativescript-sdk": {
       "config": {
         "appKey": "",
-        "appSecret": ""
+        "appSecret": "",
+        "redirectUri": ""
       }
     }
   }
