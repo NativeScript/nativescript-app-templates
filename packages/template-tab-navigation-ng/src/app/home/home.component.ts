@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { RouterExtensions } from "nativescript-angular/router";
-import { DataService, IDataItem } from "../core/data.service";
+import { DataService, IDataItem } from "../shared/data.service";
 
 @Component({
     selector: "Home",
@@ -10,9 +9,9 @@ import { DataService, IDataItem } from "../core/data.service";
 export class HomeComponent implements OnInit {
     items: Array<IDataItem>;
 
-    constructor(private itemService: DataService, private router: RouterExtensions) { }
+    constructor(private _itemService: DataService) { }
 
     ngOnInit(): void {
-        this.items = this.itemService.getItems();
+        this.items = this._itemService.getItems();
     }
 }
