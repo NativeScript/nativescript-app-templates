@@ -13,19 +13,19 @@ const routes: Routes = [
     {
         path: "home",
         component: NSEmptyOutletComponent,
-        loadChildren: "./app/home/home.module#HomeModule",
+        loadChildren: "~/app/home/home.module#HomeModule",
         outlet: "homeTab"
     },
     {
         path: "browse",
         component: NSEmptyOutletComponent,
-        loadChildren: "./app/browse/browse.module#BrowseModule",
+        loadChildren: "~/app/browse/browse.module#BrowseModule",
         outlet: "browseTab"
     },
     {
         path: "search",
         component: NSEmptyOutletComponent,
-        loadChildren: "./app/search/search.module#SearchModule",
+        loadChildren: "~/app/search/search.module#SearchModule",
         outlet: "searchTab"
     }
 ];
