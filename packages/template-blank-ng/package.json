@@ -3,10 +3,10 @@
         "id": "org.nativescript.Blank",
         "templateVersion": "v2",
         "tns-android": {
-            "version": "5.0.0"
+            "version": "5.1.0"
         },
         "tns-ios": {
-            "version": "5.0.0"
+            "version": "5.1.0"
         }
     },
     "name": "tns-template-blank-ng",
@@ -35,18 +35,18 @@
         "url": "https://github.com/NativeScript/NativeScript/issues"
     },
     "dependencies": {
-        "@angular/animations": "~7.0.0",
-        "@angular/common": "~7.0.0",
-        "@angular/compiler": "~7.0.0",
-        "@angular/core": "~7.0.0",
-        "@angular/forms": "~7.0.0",
-        "@angular/http": "~7.0.0",
-        "@angular/platform-browser": "~7.0.0",
-        "@angular/platform-browser-dynamic": "~7.0.0",
-        "@angular/router": "~7.0.0",
-        "nativescript-angular": "~7.0.0",
+        "@angular/animations": "~7.1.0",
+        "@angular/common": "~7.1.0",
+        "@angular/compiler": "~7.1.0",
+        "@angular/core": "~7.1.0",
+        "@angular/forms": "~7.1.0",
+        "@angular/http": "~7.1.0",
+        "@angular/platform-browser": "~7.1.0",
+        "@angular/platform-browser-dynamic": "~7.1.0",
+        "@angular/router": "~7.1.0",
+        "nativescript-angular": "~7.1.0",
         "nativescript-theme-core": "~1.0.4",
-        "tns-core-modules": "~5.0.2",
+        "tns-core-modules": "~5.1.0",
         "reflect-metadata": "~0.1.10",
         "rxjs": "~6.3.0",
         "zone.js": "~0.8.18"
