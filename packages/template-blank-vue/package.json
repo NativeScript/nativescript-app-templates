@@ -3,10 +3,10 @@
         "id": "org.nativescript.Blank",
         "templateVersion": "v2",
         "tns-android": {
-            "version": "5.0.0"
+            "version": "5.1.0"
         },
         "tns-ios": {
-            "version": "5.0.0"
+            "version": "5.1.0"
         }
     },
     "name": "tns-template-blank-vue",
@@ -40,7 +40,7 @@
     "dependencies": {
         "nativescript-theme-core": "~1.0.4",
         "nativescript-vue": "~2.0.0",
-        "tns-core-modules": "~5.0.2"
+        "tns-core-modules": "~5.1.0"
     },
     "devDependencies": {
         "@babel/core": "~7.1.0",
