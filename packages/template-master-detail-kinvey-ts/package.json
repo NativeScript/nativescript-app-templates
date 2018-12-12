@@ -3,10 +3,10 @@
         "id": "org.nativescript.MasterDetailKinvey",
         "templateVersion": "v2",
         "tns-android": {
-            "version": "5.0.0"
+            "version": "5.1.0"
         },
         "tns-ios": {
-            "version": "5.0.0"
+            "version": "5.1.0"
         }
     },
     "name": "tns-template-master-detail-kinvey-ts",
@@ -43,8 +43,8 @@
         "kinvey-nativescript-sdk": "3.12.3",
         "nativescript-imagepicker": "~6.0.0",
         "nativescript-theme-core": "~1.0.4",
-        "nativescript-ui-listview": "~3.7.0",
-        "tns-core-modules": "~5.0.2"
+        "nativescript-ui-listview": "~5.0.0",
+        "tns-core-modules": "~5.1.0"
     },
     "devDependencies": {
         "nativescript-dev-sass": "~1.6.0",
