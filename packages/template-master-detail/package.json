@@ -3,10 +3,10 @@
         "id": "org.nativescript.MasterDetail",
         "templateVersion": "v2",
         "tns-android": {
-            "version": "5.0.0"
+            "version": "5.1.0"
         },
         "tns-ios": {
-            "version": "5.0.0"
+            "version": "5.1.0"
         }
     },
     "name": "tns-template-master-detail",
@@ -42,8 +42,8 @@
         "nativescript-imagepicker": "~6.0.0",
         "nativescript-plugin-firebase": "~7.4.0",
         "nativescript-theme-core": "~1.0.4",
-        "nativescript-ui-listview": "~3.7.0",
-        "tns-core-modules": "~5.0.2",
+        "nativescript-ui-listview": "~5.0.0",
+        "tns-core-modules": "~5.1.0",
         "rxjs": "~6.3.0"
     },
     "devDependencies": {
