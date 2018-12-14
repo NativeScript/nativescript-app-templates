@@ -14,6 +14,12 @@ If you want to create a new app that uses the source of the template from the `m
 
 ```
 tns create my-blank-vue --template https://github.com/NativeScript/template-blank-vue
+cd my-blank-vue
+npm install
+
+tns run android --bundle
+# or
+tns run ios --bundle
 ```
 
 **NB:** Please, have in mind that the master branch may refer to dependencies that are not on NPM yet!
