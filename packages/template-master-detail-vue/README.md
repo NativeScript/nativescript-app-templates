@@ -58,13 +58,13 @@ tns build <platform> --bundle --env.production
 tns run <platform> --bundle --env.production
 ```
 
-## Using NativeScript plugins
+## Get Help
+The NativeScript framework has a vibrant community that can help when you run into problems.
 
-Installing plugins is the same as official NativeScript [documentation](https://docs.nativescript.org/plugins/plugins#installing-plugins).
+Try [joining the NativeScript community Slack](http://developer.telerik.com/wp-login.php?action=slack-invitation). The Slack channel is a great place to get help troubleshooting problems, as well as connect with other NativeScript developers.
 
-Use `tns plugin add` from the root of the project directory.
+If you have found an issue with this template, please report the problem in the [NativeScript repository](https://github.com/NativeScript/NativeScript/issues).
 
-```shell
-tns plugin add <plugin-name>
-```
-For detailed instructions, see https://github.com/nativescript-vue/vue-cli-template
+## Contributing
+
+We love PRs, and accept them gladly. Feel free to propose changes and new ideas. We will review and discuss, so that they can be accepted and better integrated.
