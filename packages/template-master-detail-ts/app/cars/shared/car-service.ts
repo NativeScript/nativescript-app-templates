@@ -1,5 +1,5 @@
 import * as firebase from "nativescript-plugin-firebase";
-import { Observable } from "rxjs";
+import { Observable, Subscription } from "rxjs";
 import { catchError } from "rxjs/operators";
 
 import { Car } from "./car-model";
@@ -26,6 +26,7 @@ export class CarService {
         return editableProperties.reduce((a, e) => (a[e] = car[e], a), {}); // tslint:disable-line:ban-comma-operator
     }
 
+    private _subscriptionMap = new Map<string, Subscription>();
     private _cars: Array<Car> = [];
 
     constructor() {
@@ -34,6 +35,14 @@ export class CarService {
         }
 
         CarService._instance = this;
+    }
+
+    getSubscription(key: string): Subscription {
+        return this._subscriptionMap.get(key);
+    }
+
+    setSubscription(key: string, value: Subscription): void {
+        this._subscriptionMap.set(key, value);
     }
 
     load(): Observable<any> {

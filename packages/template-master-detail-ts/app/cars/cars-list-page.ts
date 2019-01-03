@@ -6,23 +6,15 @@ import { CarsListViewModel } from "./cars-list-view-model";
 import { Car } from "./shared/car-model";
 
 export function onNavigatingTo(args: NavigatedData): void {
-    const page = <Page>args.object;
-
-    let viewModel = <CarsListViewModel>page.bindingContext;
-    if (!args.isBackNavigation) {
-        viewModel = new CarsListViewModel();
-        page.bindingContext = viewModel;
+    if (args.isBackNavigation) {
+        return;
     }
 
+    const viewModel = new CarsListViewModel();
     viewModel.load();
-}
 
-export function onNavigatingFrom(args: NavigatedData): void {
     const page = <Page>args.object;
-    const oldViewModel = <CarsListViewModel>page.bindingContext;
-    if (oldViewModel) {
-        oldViewModel.unload();
-    }
+    page.bindingContext = viewModel;
 }
 
 export function onCarItemTap(args: ListViewEventData): void {
