@@ -3,23 +3,15 @@ const topmost = require("tns-core-modules/ui/frame").topmost;
 const CarsListViewModel = require("./cars-list-view-model");
 
 function onNavigatingTo(args) {
-    const page = args.object;
-
-    let viewModel = page.bindingContext;
-    if (!args.isBackNavigation) {
-        viewModel = new CarsListViewModel();
-        page.bindingContext = viewModel;
+    if (args.isBackNavigation) {
+        return;
     }
 
+    const viewModel = new CarsListViewModel();
     viewModel.load();
-}
 
-function onNavigatingFrom(args) {
     const page = args.object;
-    const oldViewModel = page.bindingContext;
-    if (oldViewModel) {
-        oldViewModel.unload();
-    }
+    page.bindingContext = viewModel;
 }
 
 function onCarItemTap(args) {
@@ -38,5 +30,4 @@ function onCarItemTap(args) {
 }
 
 exports.onNavigatingTo = onNavigatingTo;
-exports.onNavigatingFrom = onNavigatingFrom;
 exports.onCarItemTap = onCarItemTap;

@@ -21,7 +21,16 @@ function CarService() {
     }
 
     this._cars = [];
+    this._subscriptionMap = new Map();
     CarService._instance = this;
+
+    this.getSubscription = function (key) {
+        return this._subscriptionMap.get(key);
+    };
+
+    this.setSubscription = function (key, value) {
+        this._subscriptionMap.set(key, value);
+    };
 
     this.load = function () {
         return new Observable((observer) => {
