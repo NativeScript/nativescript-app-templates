@@ -46,6 +46,6 @@
     "devDependencies": {
         "eslint": "~5.8.0",
         "nativescript-dev-sass": "~1.6.0",
-        "nativescript-dev-webpack": "~0.18.0"
+        "nativescript-dev-webpack": "~0.19.0"
     }
 }
