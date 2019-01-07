@@ -52,7 +52,7 @@
         "zone.js": "~0.8.18"
     },
     "devDependencies": {
-        "@nativescript/schematics": "~0.4.0",
+        "@nativescript/schematics": "~0.5.0",
         "nativescript-dev-typescript": "~0.7.0",
         "nativescript-dev-webpack": "~0.19.0"
     }
