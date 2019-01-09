@@ -1,5 +1,4 @@
-import { ShownModallyData } from "tns-core-modules/ui/page";
-import { View } from "tns-core-modules/ui/page";
+import { ShownModallyData, View } from "tns-core-modules/ui/page";
 
 import { ListSelectorViewModel } from "./list-selector-view-model";
 

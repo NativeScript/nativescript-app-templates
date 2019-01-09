@@ -1,8 +1,8 @@
 import { Config } from "../../shared/config";
 import { Car } from "./car-model";
 
-import { File } from "tns-core-modules/file-system";
 import { Kinvey } from "kinvey-nativescript-sdk";
+import { File } from "tns-core-modules/file-system";
 
 const editableProperties = [
     "class",
