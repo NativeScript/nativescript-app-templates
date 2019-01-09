@@ -1,0 +1,51 @@
+// Custom common variables
+@import '../../app-variables';
+
+// Custom styles
+.car-list {
+
+    .car-list-even,
+    .car-list-odd {
+        padding: 10 15;
+        border-bottom-width: $border-width;
+        border-color: $blue-20;
+    }
+
+    .car-list-odd {
+        background-color: $blue-10;
+        color: $blue-50;
+    }
+
+    .car-list-price {
+        width: 35;
+        text-align: right;
+    }
+
+    TextField.invalid-text {
+        placeholder-color: $error;
+    }
+ 
+    .invalid-image {
+        color: $error;
+    }
+}
+
+.thumb {
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-size: 25;
+    font-weight: bold;
+    
+    .thumb-add {
+        background-color: transparent;
+        color: $blue-20;
+        border-radius: $border-radius;
+        border-width: $border-width;
+        border-color: $blue-20;
+    }
+
+    .thumb-remove {
+        color: $background-light;
+        background-color: $blue-20;
+    }
+}

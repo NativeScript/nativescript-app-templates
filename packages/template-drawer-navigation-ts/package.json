@@ -1,0 +1,54 @@
+{
+    "nativescript": {
+        "id": "org.nativescript.DrawerNavigation",
+        "templateVersion": "v2",
+        "tns-android": {
+            "version": "5.1.0"
+        },
+        "tns-ios": {
+            "version": "5.1.0"
+        }
+    },
+    "name": "tns-template-drawer-navigation-ts",
+    "displayName": "Navigation Drawer",
+    "templateType": "App template",
+    "version": "5.1.2",
+    "description": "Side navigation template",
+    "author": "Telerik <support@telerik.com>",
+    "license": "Apache-2.0",
+    "keywords": [
+        "telerik",
+        "mobile",
+        "nativescript",
+        "{N}",
+        "tns",
+        "appbuilder",
+        "template",
+        "drawer",
+        "navigation",
+        "category-general"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/NativeScript/template-drawer-navigation-ts"
+    },
+    "homepage": "https://github.com/NativeScript/template-drawer-navigation-ts",
+    "bugs": {
+        "url": "https://github.com/NativeScript/NativeScript/issues"
+    },
+    "scripts": {
+        "lint": "tslint \"app/**/*.ts\""
+    },
+    "dependencies": {
+        "nativescript-theme-core": "~1.0.4",
+        "nativescript-ui-sidedrawer": "~5.1.0",
+        "tns-core-modules": "~5.1.0",
+        "rxjs": "~6.3.0"
+    },
+    "devDependencies": {
+        "nativescript-dev-sass": "~1.6.0",
+        "nativescript-dev-typescript": "~0.7.0",
+        "nativescript-dev-webpack": "~0.19.0",
+        "tslint": "~5.11.0"
+    }
+}

@@ -1,0 +1,36 @@
+<Page shownModally="onShownModally" class="page" 
+    xmlns:lv="nativescript-ui-listview"
+    xmlns="http://schemas.nativescript.org/tns.xsd" >
+    <ActionBar title="{{ title }}" icon="" class="action-bar">
+        <Label text="{{ title }}" />
+    </ActionBar>
+
+    <GridLayout rows="auto, *, auto" verticalAlignment="top" class="list-modal-view">
+        <Label text="{{ title }}" ios:visibility="collapsed" class="h3 list-modal-header" />
+        <lv:RadListView row="1" items="{{ items }}" selectionBehavior="Press" itemSelected="onItemSelected" class="list-modal-list">
+            <lv:RadListView.listViewLayout>
+                <lv:ListViewLinearLayout scrollDirection="Vertical" />
+            </lv:RadListView.listViewLayout>
+
+            <lv:RadListView.itemTemplate>
+                <GridLayout>
+                    <GridLayout android:visibility="collapsed" columns="*,auto" class="list-modal-item">
+                        <Label text="{{ value }}" />
+                        <Label col="1" text="&#xf00c;" class="fa list-modal-view-check" visibility="{{ isSelected ? 'visible' : 'collapsed' }}" />
+                    </GridLayout>
+
+                    <GridLayout ios:visibility="collapsed" columns="auto,*" class="list-modal-item">
+                        <Label text="&#xf10c;" 
+                            class="fa list-modal-view-icon" verticalAlignment="center" 
+                            visibility="{{ isSelected ? 'collapsed' : 'visible' }}" />
+                        <Label text="&#xf192;" 
+                            class="fa list-modal-view-icon selected" verticalAlignment="center" 
+                            visibility="{{ isSelected ? 'visible' : 'collapsed' }}" />
+                        <Label col="1" text="{{value}}" />
+                    </GridLayout>
+                </GridLayout>
+            </lv:RadListView.itemTemplate>
+        </lv:RadListView>
+        <Button class="btn btn-outline" row="3" text="CANCEL" ios:visibility="collapsed" horizontalAlignment="right" tap="onCancelButtonTap" />
+    </GridLayout>
+</Page>

@@ -1,0 +1,54 @@
+{
+    "nativescript": {
+        "id": "org.nativescript.Blank",
+        "templateVersion": "v2",
+        "tns-android": {
+            "version": "5.1.0"
+        },
+        "tns-ios": {
+            "version": "5.1.0"
+        }
+    },
+    "name": "tns-template-blank-vue",
+    "displayName": "Blank",
+    "version": "5.1.2",
+    "description": "Blank template for NativeScript apps using Vue.",
+    "author": "Telerik <support@telerik.com>",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/NativeScript/template-blank-vue"
+    },
+    "homepage": "https://github.com/NativeScript/template-blank-vue",
+    "bugs": {
+        "url": "https://github.com/NativeScript/NativeScript/issues"
+    },
+    "keywords": [
+        "telerik",
+        "progress",
+        "mobile",
+        "nativescript",
+        "{N}",
+        "tns",
+        "vue",
+        "nativescript-vue",
+        "template",
+        "master-detail",
+        "detail",
+        "category-general"
+    ],
+    "dependencies": {
+        "nativescript-theme-core": "~1.0.4",
+        "nativescript-vue": "~2.0.0",
+        "tns-core-modules": "~5.1.0"
+    },
+    "devDependencies": {
+        "@babel/core": "~7.1.0",
+        "@babel/preset-env": "~7.1.0",
+        "babel-loader": "~8.0.0",
+        "nativescript-dev-webpack": "~0.19.0",
+        "nativescript-vue-template-compiler": "~2.0.0",
+        "node-sass": "~4.9.0",
+        "vue-loader": "~15.4.0"
+    }
+}

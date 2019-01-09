@@ -1,0 +1,20 @@
+// Start custom common variables
+@import '../app-variables';
+// End custom common variables
+
+// Custom styles
+.list-group {
+    .list-group-item {
+        padding: 0 0 8 0;
+        background-color: $blue-10;
+
+        .list-group-item-content {
+            padding: 8 15 4 15;
+            background-color: $background-light;
+        }
+
+        .fa {
+            color: $accent-dark;
+        }
+    }
+}

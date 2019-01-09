@@ -1,0 +1,81 @@
+<ActionBar class="action-bar">
+    <Label class="action-bar-title" text=""></Label>
+</ActionBar>
+<GridLayout>
+    <ScrollView>
+        <StackLayout class="page p-t-30">
+            <Label class="h1 text-center" text="Registration"></Label>
+            <Label class="h4 text-center" text="Additional text can go here"></Label>
+
+            <StackLayout class="p-t-20">
+                <RadDataForm #registrationFormElement [source]="registrationForm" [isReadOnly]="isLoading" (editorUpdate)="onEditorUpdate($event)" (groupUpdate)="onGroupUpdate($event)">
+                    <TKPropertyGroup tkDataFormGroups collapsible="false" name="" titleHidden="true" hidden="false">
+                        <TKEntityProperty tkPropertyGroupProperties name="email" displayName="Email" hintText="example@progress.com" required="true"
+                            index="0">
+                            <TKPropertyEditor tkEntityPropertyEditor type="Email">
+                                <TKPropertyEditorStyle tkPropertyEditorStyle labelFontStyle="Bold"></TKPropertyEditorStyle>
+                            </TKPropertyEditor>
+                            <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Email is required."></TKNonEmptyValidator>
+                            <TKEmailValidator tkEntityPropertyValidators errorMessage="Email is not valid."></TKEmailValidator>
+                        </TKEntityProperty>
+
+                        <TKEntityProperty tkPropertyGroupProperties name="password" displayName="Password" hintText="Enter password" required="true"
+                            index="1">
+                            <TKPropertyEditor tkEntityPropertyEditor type="Password">
+                                <TKPropertyEditorStyle tkPropertyEditorStyle labelFontStyle="Bold"></TKPropertyEditorStyle>
+                            </TKPropertyEditor>
+                            <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Password is required."></TKNonEmptyValidator>
+                        </TKEntityProperty>
+
+                        <TKEntityProperty tkPropertyGroupProperties name="passwordConfirm" displayName="Confirm" hintText="Enter password again"
+                            required="true" index="2">
+                            <TKPropertyEditor tkEntityPropertyEditor type="Password">
+                                <TKPropertyEditorStyle tkPropertyEditorStyle labelFontStyle="Bold"></TKPropertyEditorStyle>
+                            </TKPropertyEditor>
+                            <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Password confirm is required."></TKNonEmptyValidator>
+                        </TKEntityProperty>
+                    </TKPropertyGroup>
+
+                    <TKPropertyGroup tkDataFormGroups collapsible="false" name="ADDITIONAL INFORMATION" hidden="false">
+                        <TKGroupTitleStyle tkPropertyGroupTitleStyle labelTextSize="14"></TKGroupTitleStyle>
+
+                        <TKEntityProperty tkPropertyGroupProperties name="givenName" displayName="First name" hintText="John" required="true" index="3">
+                            <TKPropertyEditor tkEntityPropertyEditor type="Text">
+                                <TKPropertyEditorStyle tkPropertyEditorStyle labelFontStyle="Bold"></TKPropertyEditorStyle>
+                            </TKPropertyEditor>
+                            <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="First name is required."></TKNonEmptyValidator>
+                        </TKEntityProperty>
+
+                        <TKEntityProperty tkPropertyGroupProperties name="familyName" displayName="Last name" hintText="Doe" required="true" index="4">
+                            <TKPropertyEditor tkEntityPropertyEditor type="Text">
+                                <TKPropertyEditorStyle tkPropertyEditorStyle labelFontStyle="Bold"></TKPropertyEditorStyle>
+                            </TKPropertyEditor>
+                            <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Last name is required."></TKNonEmptyValidator>
+                        </TKEntityProperty>
+
+                        <TKEntityProperty tkPropertyGroupProperties name="gender" displayName="Gender" hintText="Pick a gender" required="true" index="5"
+                            valuesProvider="male, female">
+                            <TKPropertyEditor tkEntityPropertyEditor type="Picker">
+                                <TKPropertyEditorStyle tkPropertyEditorStyle labelFontStyle="Bold"></TKPropertyEditorStyle>
+                            </TKPropertyEditor>
+                        </TKEntityProperty>
+
+                        <TKEntityProperty tkPropertyGroupProperties name="dateOfBirth" displayName="Date of Birth" hintText="Pick a date" required="true"
+                            index="6">
+                            <TKPropertyEditor tkEntityPropertyEditor type="DatePicker">
+                                <TKPropertyEditorStyle tkPropertyEditorStyle labelFontStyle="Bold"></TKPropertyEditorStyle>
+                            </TKPropertyEditor>
+                            <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Date of birth is required."></TKNonEmptyValidator>
+                        </TKEntityProperty>
+                    </TKPropertyGroup>
+                </RadDataForm>
+            </StackLayout>
+
+            <StackLayout class="m-x-auto m-t-30 m-b-30">
+                <Button class="btn btn-active btn-outline btn-rounded-sm" text="Register" (tap)="onRegisterButtonTap()"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+
+    <ActivityIndicator class="activity-indicator" [busy]="isLoading"></ActivityIndicator>
+</GridLayout>

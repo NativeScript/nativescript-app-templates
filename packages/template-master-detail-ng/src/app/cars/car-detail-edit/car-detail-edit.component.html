@@ -1,0 +1,91 @@
+<ActionBar class="action-bar">
+    <!--HACK - we should remove the navigation button-->
+    <NavigationButton visibility="collapsed"></NavigationButton>
+    <ActionItem ios.position="left" android.position="left" (tap)="onCancelButtonTap()">
+        <Label text="Cancel" class="action-item"></Label>
+    </ActionItem>
+    <Label class="action-bar-title" text="Edit Car Details" horizontalAlignment="center"></Label>
+    <ActionItem ios.position="right" android.position="right">
+        <Label text="Done" class="action-item" verticalAlignment="center" (tap)="onDoneButtonTap()" 
+            [isEnabled]="makeModel.valid && imageModel.valid"
+            [isUserInteractionEnabled]="makeModel.valid && imageModel.valid"></Label>
+    </ActionItem>
+</ActionBar>
+
+<GridLayout class="page page-content">
+    <ScrollView>
+        <StackLayout class="car-list">
+
+            <Label text="CAR MAKE" class="car-list-odd"></Label>
+            <TextField #makeModel="ngModel" hint="Car make field is required" [(ngModel)]="car.name" class="car-list-even" required></TextField>
+            
+            <GridLayout rows="*, 55, *" columns="*, auto" class="car-list-odd">
+                <Label text="PRICE PER DAY"></Label>
+                <Label col="1" horizontalAlignment="right" class="text-primary car-list-price">
+                    <FormattedString>
+                        <Span text="€"></Span>
+                        <Span [text]="pricePerDay"></Span>
+                    </FormattedString>
+                </Label>
+
+                <StackLayout row="1" colSpan="2" verticalAlignment="center">
+                    <Slider [(ngModel)]="pricePerDay"></Slider>
+                </StackLayout>
+
+                <Label text="ADD OR REMOVE IMAGE" row="2" colSpan="2"></Label>
+            </GridLayout>
+
+            <StackLayout class="car-list-even">
+                <!--
+                MyImageAddRemove is a custom component, that wraps an imagepicker plugin and provides custom design and logic
+                on top of it. Check out the custom component at /cars/car-detail-edit/my-image-add-remove.
+                -->
+                <MyImageAddRemove #imageModel="ngModel" [(ngModel)]="carImageUrl" required></MyImageAddRemove>
+                <Label *ngIf="!imageModel.valid" class="ng-invalid-image" text="Image field is required"></Label>
+            </StackLayout>
+
+            <Label class="car-list-odd" text="CLASS"></Label>
+
+            <StackLayout class="car-list-even">
+                <!--
+                MyListSelector is a custom component, that provides custom design and logic for picking an option from a list.
+                Check out the custom component at /cars/car-detail-edit/my-list-selector.
+                -->
+                <MyListSelector [(selectedValue)]="car.class" [items]="carClassOptions" tag="class"></MyListSelector>
+            </StackLayout>
+
+            <Label class="car-list-odd" text="DOORS"></Label>
+
+            <StackLayout class="car-list-even">
+                <MyListSelector [(selectedValue)]="car.doors" [items]="carDoorOptions" tag="doors"></MyListSelector>
+            </StackLayout>
+
+            <Label class="car-list-odd" text="SEATS"></Label>
+
+            <StackLayout class="car-list-even">
+                <MyListSelector [(selectedValue)]="car.seats" [items]="carSeatOptions" tag="seats"></MyListSelector>
+            </StackLayout>
+
+            <Label class="car-list-odd" text="TRANSMISSION"></Label>
+
+            <StackLayout class="car-list-even">
+                <MyListSelector [(selectedValue)]="car.transmission" [items]="carTransmissionOptions" tag="transmission"></MyListSelector>
+            </StackLayout>
+
+            <GridLayout rows="*, 55" columns="*, auto" class="car-list-odd">
+                <Label text="LUGGAGE"></Label>
+                <Label col="1" horizontalAlignment="right" class="text-primary">
+                    <FormattedString>
+                        <Span [text]="luggageValue"></Span>
+                        <Span text=" Bag(s)"></Span>
+                    </FormattedString>
+                </Label>
+                <Slider row="1" colSpan="2" minValue="0" maxValue="5" [(ngModel)]="luggageValue"></Slider>
+            </GridLayout>
+
+        </StackLayout>
+
+    </ScrollView>
+
+    <ActivityIndicator [busy]="isUpdating"></ActivityIndicator>
+</GridLayout>

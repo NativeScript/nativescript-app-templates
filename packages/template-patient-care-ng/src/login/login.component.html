@@ -1,0 +1,35 @@
+<GridLayout class="page" rows="*, auto">
+    <ScrollView row="0">
+        <StackLayout class="p-t-30">
+            <Label class="h1 text-center" text="Login"></Label>
+            <Label class="h4 text-center" text="Additional text can go here"></Label>
+
+            <StackLayout class="p-t-20">
+                <RadDataForm #loginFormElement [source]="loginForm" [isReadOnly]="isLoading" (editorUpdate)="onEditorUpdate($event)">
+                    <TKEntityProperty tkDataFormProperty name="email" displayName="Email" hintText="example@progress.com" required="true"
+                        index="0">
+                        <TKPropertyEditor tkEntityPropertyEditor type="Email">
+                            <TKPropertyEditorStyle tkPropertyEditorStyle labelFontStyle="Bold"></TKPropertyEditorStyle>
+                        </TKPropertyEditor>
+                        <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Email is required."></TKNonEmptyValidator>
+                        <TKEmailValidator tkEntityPropertyValidators errorMessage="Email is not valid."></TKEmailValidator>
+                    </TKEntityProperty>
+
+                    <TKEntityProperty tkDataFormProperty name="password" displayName="Password" hintText="Enter password" required="true" index="1">
+                        <TKPropertyEditor tkEntityPropertyEditor type="Password">
+                            <TKPropertyEditorStyle tkPropertyEditorStyle labelFontStyle="Bold"></TKPropertyEditorStyle>
+                        </TKPropertyEditor>
+                        <TKNonEmptyValidator tkEntityPropertyValidators errorMessage="Password is required."></TKNonEmptyValidator>
+                    </TKEntityProperty>
+                </RadDataForm>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+
+    <StackLayout row="1" orientation="horizontal" class="m-x-auto m-b-30">
+        <Button class="btn btn-active btn-outline btn-rounded-sm btn-margin" text="Login" (tap)="onSigninButtonTap()"></Button>
+        <Button class="btn btn-active btn-outline btn-rounded-sm btn-margin" text="Register" (tap)="onRegisterButtonTap()"></Button>
+    </StackLayout>
+
+    <ActivityIndicator rowSpan="2" class="activity-indicator" [busy]="isLoading"></ActivityIndicator>
+</GridLayout>

@@ -1,0 +1,13 @@
+// Start custom common variables
+@import '../../app-variables';
+// End custom common variables
+// Custom styles
+.list-modal-view {
+    color: $blue-dark;
+    background-color: $blue-10;
+    
+    .list-modal-item {
+        vertical-align: center;
+        margin-bottom: 10;
+    }
+}

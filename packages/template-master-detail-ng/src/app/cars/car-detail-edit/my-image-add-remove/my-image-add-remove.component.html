@@ -1,0 +1,8 @@
+<GridLayout height="80" width="80" class="thumb" horizontalAlignment="left" [backgroundImage]="imageUrl" (tap)="onImageAddRemoveTap()">
+    <GridLayout class="thumb-remove" *ngIf="imageUrl">
+        <Label text="&#xf014;" class="fa" horizontalAlignment="center" verticalAlignment="center"></Label>
+    </GridLayout>
+    <GridLayout class="thumb-add" *ngIf="!imageUrl">
+        <Label text="&#xf030;" class="fa" horizontalAlignment="center" verticalAlignment="center"></Label>
+    </GridLayout>
+</GridLayout>

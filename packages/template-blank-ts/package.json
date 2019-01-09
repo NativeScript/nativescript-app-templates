@@ -1,0 +1,44 @@
+{
+    "nativescript": {
+        "id": "org.nativescript.Blank",
+        "templateVersion": "v2",
+        "tns-android": {
+            "version": "5.1.0"
+        },
+        "tns-ios": {
+            "version": "5.1.0"
+        }
+    },
+    "name": "tns-template-blank-ts",
+    "displayName": "Blank",
+    "templateType": "App template",
+    "version": "5.1.2",
+    "description": "Blank template for Vanilla NativeScript apps using TypeScript",
+    "author": "Telerik <support@telerik.com>",
+    "license": "Apache-2.0",
+    "keywords": [
+        "telerik",
+        "mobile",
+        "nativescript",
+        "{N}",
+        "tns",
+        "template",
+        "category-general"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/NativeScript/template-blank-ts"
+    },
+    "homepage": "https://github.com/NativeScript/template-blank-ts",
+    "bugs": {
+        "url": "https://github.com/NativeScript/NativeScript/issues"
+    },
+    "dependencies": {
+        "nativescript-theme-core": "~1.0.4",
+        "tns-core-modules": "~5.1.0"
+    },
+    "devDependencies": {
+        "nativescript-dev-typescript": "~0.7.0",
+        "nativescript-dev-webpack": "~0.19.0"
+    }
+}

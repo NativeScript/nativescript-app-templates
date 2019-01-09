@@ -1,0 +1,24 @@
+<GridLayout [col]="kCol">
+    <RadRadialGauge>
+
+        <RadialScale tkRadialGaugeScales startAngle="-90" sweepAngle="360">
+            <ScaleStyle tkRadialScaleStyle ticksVisible="false" labelsVisible="false" lineThickness="0">
+            </ScaleStyle>
+
+            <RadialBarIndicator tkRadialScaleIndicators minimum="0" maximum="100">
+                <BarIndicatorStyle tkRadialBarIndicatorStyle fillColor="#efeff4" cap="Round" barWidth="0.16">
+                </BarIndicatorStyle>
+            </RadialBarIndicator>
+
+            <RadialBarIndicator tkRadialScaleIndicators minimum="0" [maximum]="value" isAnimated="true" [animationDuration]="radialAnimationDuration">
+                <BarIndicatorStyle tkRadialBarIndicatorStyle fillColor="#ed3f40" cap="Round" barWidth="0.16">
+                </BarIndicatorStyle>
+            </RadialBarIndicator>
+        </RadialScale>
+
+    </RadRadialGauge>
+
+    <Label #progressLabel [text]="inProgressIcon" class="radial-rating-icon fa t-42 m-x-auto m-y-auto"></Label>
+    <Label #completionLabel [text]="completionIcon" [fontSize]="kCompletionIconFontSize" class="radial-rating-icon fa m-x-auto m-y-auto"></Label>
+
+</GridLayout>

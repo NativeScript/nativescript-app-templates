@@ -1,0 +1,22 @@
+<ActionBar class="action-bar">
+    <Label class="action-bar-title" text="Consent Step 3 of 9" class="font-weight-bold"></Label>
+    <ActionItem (tap)="appService.logOut()" ios.position="right">
+        <Button text="Cancel" class="action-item text-center text-primary"></Button>
+    </ActionItem>
+</ActionBar>
+
+<GridLayout class="page" rows="*, auto">
+    <ScrollView row="0">
+        <StackLayout class="m-x-15 p-t-30">
+            <Label text="&#xf1c0;" class="headerImage fa f-s-100 text-primary m-x-auto"></Label>
+            <Label text="Data Use" class="h1 text-center" textWrap="true"></Label>
+            <Label text="Lorem ipsum dolor sit amet, consectertur adipiscing elit consectertur adipiscing elit." class="h4 text-center"
+                textWrap="true"></Label>
+            <Label text="Lorem ipsum dolor sit amet" class="h4 text-center text-primary" textWrap="true"></Label>
+        </StackLayout>
+    </ScrollView>
+
+    <StackLayout row="1" class="m-x-auto m-b-30">
+        <Button text="Next" class="btn btn-active btn-outline btn-rounded-sm" (tap)="onNextButtonTap()"></Button>
+    </StackLayout>
+</GridLayout>

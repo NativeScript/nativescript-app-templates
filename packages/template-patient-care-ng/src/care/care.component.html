@@ -1,0 +1,15 @@
+<ActionBar class="action-bar">
+    <Label class="action-bar-title" [text]="title"></Label>
+</ActionBar>
+
+<TabView class="tab-view" (selectedIndexChanged)="onSelectedIndexChanged($event)">
+
+    <StackLayout *tabItem="{title: 'Care Contents', iconSource: getIconSource('home')}">
+        <CareCard></CareCard>
+    </StackLayout>
+
+    <StackLayout *tabItem="{title: 'Connect', iconSource: getIconSource('search')}">
+        <Connect></Connect>
+    </StackLayout>
+
+</TabView>

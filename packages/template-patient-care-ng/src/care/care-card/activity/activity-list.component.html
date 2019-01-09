@@ -1,0 +1,81 @@
+<ActivityIndicator [row]="kRow" class="activity-indicator" [busy]="isLoading"></ActivityIndicator>
+
+<ScrollView *ngIf="!isLoading" [row]="kRow">
+    <StackLayout>
+        <!-- NOTE: use *ngFor directive only if visualizing a known small number of items; 
+                    otherwise consider using ListView that supports virtualization -->
+        <StackLayout class="hr-light"></StackLayout>
+        <Label text="Physical Activity" class="care-common-list-header text-uppercase t-14 p-l-15 p-t-30 p-b-7"></Label>
+        <StackLayout class="hr-light"></StackLayout>
+        <StackLayout *ngFor="let physicalItem of physicalActivities; let index = index;" orientation="horizontal">
+            <GridLayout rows="auto, auto" columns="*, auto" class="p-t-10 p-l-15">
+                <GridLayout rows="auto, auto" columns="auto, *">
+                    <Label row="0" col="0" class="m-y-5" [text]="physicalItem.title" class="text-left font-weight-bold"></Label>
+                    <Label row="0" col="1" class="m-y-5" [text]="physicalItem.text" class="text-left text-muted m-l-5"></Label>
+
+                    <StackLayout *ngIf="physicalItem.events" row="1" colSpan="2" orientation="horizontal" class="m-b-15">
+                        <StackLayout *ngFor="let event of physicalItem.events">
+                            <Label [text]="event.value === 1 ? '&#xf111;':'&#xf10c;'" class="fa t-42 m-r-10 m-y-auto" [color]="physicalItem.hexColor"
+                                (tap)="onActivityEventTap(physicalItem, event)"></Label>
+                        </StackLayout>
+                    </StackLayout>
+                </GridLayout>
+
+                <Label col="1" text="&#xf105;" class="fa t-25 text-muted m-y-auto p-t-25 p-r-15 p-b-25 p-l-35" (tap)="onActivityTap(physicalItem)"></Label>
+                <StackLayout *ngIf="index !== physicalActivities.length - 1" row="1" colSpan="2" class="hr-light"></StackLayout>
+            </GridLayout>
+        </StackLayout>
+
+        <StackLayout class="hr-light"></StackLayout>
+        <Label text="Assessments" class="care-common-list-header text-uppercase t-14 p-l-15 p-t-30 p-b-7"></Label>
+        <StackLayout class="hr-light"></StackLayout>
+        <StackLayout *ngFor="let assessmentItem of assessmentActivities; let index = index;" orientation="horizontal">
+            <GridLayout rows="auto, auto, auto" columns="auto, *, auto, auto" class="p-t-10 p-l-15" (tap)="onActivityTap(assessmentItem)">
+                <Label row="0" col="0" class="m-y-5" [text]="assessmentItem.title" class="text-left font-weight-bold m-b-5"></Label>
+                <Label row="1" col="0" class="m-y-5" [text]="assessmentItem.text" class="text-left text-muted m-b-15"></Label>
+
+                <Label *ngIf="assessmentItem.events.length && assessmentItem.events[0].value !== 0" row="0" rowSpan="3" col="2" [text]="assessmentItem.events[0].value"
+                    [color]="assessmentItem.hexColor" class="fa m-r-10 m-b-10 m-y-auto"></Label>
+                <Label row="0" rowSpan="3" col="3" text="&#xf105;" class="fa t-25 text-muted m-r-10 m-b-10 m-y-auto"></Label>
+                <StackLayout *ngIf="index !== assessmentActivities.length - 1" row="2" colSpan="4" class="hr-light"></StackLayout>
+            </GridLayout>
+        </StackLayout>
+
+        <StackLayout class="hr-light"></StackLayout>
+        <Label text="Medications" class="care-common-list-header text-uppercase t-14 p-l-15 p-t-30 p-b-7"></Label>
+        <StackLayout class="hr-light"></StackLayout>
+        <StackLayout *ngFor="let medicationItem of medicationActivities; let index = index;" orientation="horizontal">
+            <GridLayout rows="auto, auto" columns="*, auto" class="p-t-10 p-l-15">
+                <GridLayout rows="auto, auto" columns="auto, *">
+                    <Label row="0" col="0" class="m-y-5" [text]="medicationItem.title" class="text-left font-weight-bold"></Label>
+                    <Label row="0" col="1" class="m-y-5" [text]="medicationItem.text" class="text-left text-muted m-l-5"></Label>
+
+                    <StackLayout *ngIf="medicationItem.events" row="1" colSpan="2" orientation="horizontal" class="m-b-15">
+                        <StackLayout *ngFor="let event of medicationItem.events">
+                            <Label [text]="event.value === 1 ? '&#xf111;':'&#xf10c;'" class="fa t-42 m-r-10 m-y-auto" [color]="medicationItem.hexColor"
+                                (tap)="onActivityEventTap(medicationItem, event)"></Label>
+                        </StackLayout>
+                    </StackLayout>
+                </GridLayout>
+
+                <Label col="1" text="&#xf105;" class="fa t-25 text-muted m-y-auto p-t-25 p-r-15 p-b-25 p-l-35" (tap)="onActivityTap(medicationItem)"></Label>
+                <StackLayout *ngIf="index !== medicationActivities.length - 1" row="1" colSpan="2" class="hr-light"></StackLayout>
+            </GridLayout>
+        </StackLayout>
+
+        <StackLayout class="hr-light"></StackLayout>
+        <Label text="Other" class="care-common-list-header text-uppercase t-14 p-l-15 p-t-30 p-b-7"></Label>
+        <StackLayout class="hr-light"></StackLayout>
+        <StackLayout *ngFor="let otherItem of otherActivities; let index = index;" orientation="horizontal">
+            <GridLayout rows="auto, auto, auto" columns="auto, *, auto, auto" class="p-t-10 p-l-15" (tap)="onActivityTap(otherItem)">
+                <Label row="0" col="0" class="m-y-5" [text]="otherItem.title" class="text-left font-weight-bold m-b-5"></Label>
+                <Label row="1" col="0" class="m-y-5" [text]="otherItem.text" class="text-left text-muted m-b-15"></Label>
+
+                <Label *ngIf="otherItem.events.length && otherItem.events[0].value !== 0" row="0" rowSpan="3" col="2" [text]="otherItem.events[0].value"
+                    [color]="otherItem.hexColor" class="fa m-r-10 m-b-10 m-y-auto"></Label>
+                <Label row="0" rowSpan="3" col="3" text="&#xf105;" class="fa t-25 text-muted m-r-10 m-b-10 m-y-auto"></Label>
+                <StackLayout *ngIf="index !== otherActivities.length - 1" row="2" colSpan="4" class="hr-light"></StackLayout>
+            </GridLayout>
+        </StackLayout>
+    </StackLayout>
+</ScrollView>

@@ -1,0 +1,34 @@
+<ActionBar class="action-bar">
+    <NavigationButton android.systemIcon="ic_menu_back" (tap)="onBackButtonTap()">
+    </NavigationButton>
+    <Label class="action-bar-title" text=""></Label>
+</ActionBar>
+
+<GridLayout class="page" rows="auto, *">
+    <StackLayout row="0" class="care-common-main-header">
+        <StackLayout class="hr-light m-b-10"></StackLayout>
+        <Label class="connect-team-avatar text-center m-b-15 h2 m-x-auto p-10" [text]="contact.monogram"></Label>
+        <Label class="h3 text-center" [text]="contact.name"></Label>
+        <Label class="h5 text-center" [text]="contact.relation"></Label>
+        <StackLayout class="hr-light m-t-10"></StackLayout>
+    </StackLayout>
+
+    <StackLayout row="1">
+        <StackLayout class="hr-light"></StackLayout>
+        <Label text="contact info" class="text-uppercase care-common-list-header p-t-25 p-l-10 p-b-5"></Label>
+        <StackLayout class="hr-light"></StackLayout>
+
+        <GridLayout *ngFor="let contactInfo of contact.contactInfoItems" rows="auto, auto, auto" columns="*, auto" class="p-t-10 p-l-10"
+            (tap)="onInfoButtonTap(contactInfo)">
+
+            <Label row="0" col="0" class="m-y-5" [text]="contactInfo.label" class="connect-contact-attribute-title"></Label>
+            <Label row="1" col="0" class="m-y-5" [text]="contactInfo.displayString" class="font-weight-bold"></Label>
+
+            <Label *ngIf="contactInfo.type === 0" row="0" rowSpan="3" col="1" text="&#xf095;" class="connect-contact-icon fa t-25 m-r-10 m-b-10 m-y-auto"></Label>
+            <Label *ngIf="contactInfo.type === 1" row="0" rowSpan="3" col="1" text="&#xf0e5;" class="connect-contact-icon fa t-25 m-r-10 m-b-10 m-y-auto"></Label>
+            <Label *ngIf="contactInfo.type === 2" row="0" rowSpan="3" col="1" text="&#xf003;" class="connect-contact-icon fa t-25 m-r-10 m-b-10 m-y-auto"></Label>
+
+            <StackLayout row="2" colSpan="2" class="hr-light m-t-10"></StackLayout>
+        </GridLayout>
+    </StackLayout>
+</GridLayout>

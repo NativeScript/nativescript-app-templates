@@ -1,0 +1,18 @@
+<StackLayout>
+
+    <StackLayout orientation="horizontal" class="m-x-auto m-t-5">
+        <StackLayout *ngFor="let item of weeklyState" height="53" width="52" (tap)="onItemTap(item)">
+            <Label [text]="item.date | date:'EEE' | slice:0:1" class="care-dashboard-weekday m-x-auto m-y-auto m-b-2 h4" [class.selected]="item.date.toDateString() === selectedDate.toDateString()"></Label>
+            <RadialRating [value]="item.value" kCompletionIconFontSize="35" completionIcon="&#xf058;"></RadialRating>
+        </StackLayout>
+    </StackLayout>
+
+    <GridLayout columns="*, 2*, 3*, *" class="m-t-10">
+        <RadialRating kCol="1" [value]="selectedValue" kCompletionIconFontSize="111" inProgressIcon="&#xf21e;" completionIcon="&#xf058;"></RadialRating>
+        <StackLayout col="2" class="m-y-auto m-l-10">
+            <Label [text]="selectedDate | date:'longDate'" class="footnote text-muted"></Label>
+            <Label [text]="'Your care overview is ' + selectedValue + '% complete'" textWrap="true" class="h3 font-weight-bold"></Label>
+        </StackLayout>
+    </GridLayout>
+
+</StackLayout>

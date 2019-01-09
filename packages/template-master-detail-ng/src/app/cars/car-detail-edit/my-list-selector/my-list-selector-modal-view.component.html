@@ -1,0 +1,25 @@
+<GridLayout rows="auto, *, auto" verticalAlignment="top" class="list-modal-view">
+    <Label [text]="title" class="h3 list-modal-header"></Label>
+    <RadListView row="1" [items]="items" (itemSelected)="onItemSelected($event)" selectionBehavior="Press" class="list-modal-list">
+        <ng-template tkListItemTemplate let-item="item">
+            <GridLayout>
+                <GridLayout android:visibility="collapsed" columns="*,auto" class="list-modal-item">
+                    <Label [text]="item.value"></Label>
+                    <Label col="1" text="&#xf00c;" 
+                        class="fa list-modal-view-check" 
+                        [visibility]="item.isSelected ? 'visible' : 'collapsed'"></Label>
+                </GridLayout>
+                <GridLayout ios:visibility="collapsed" columns="auto,*" class="list-modal-item">
+                    <Label text="&#xf10c;" 
+                        class="fa list-modal-view-icon" verticalAlignment="center" 
+                        [visibility]="item.isSelected ? 'collapsed' : 'visible'"></Label>
+                    <Label text="&#xf192;" 
+                        class="fa list-modal-view-icon selected" verticalAlignment="center" 
+                        [visibility]="item.isSelected ? 'visible' : 'collapsed'"></Label>
+                    <Label col="1" [text]="item.value"></Label>
+                </GridLayout>
+            </GridLayout>
+        </ng-template>
+    </RadListView>
+    <Button class="btn btn-outline" row="3" text="CANCEL" ios:visibility="collapsed" horizontalAlignment="right" (tap)="onCancelButtonTap()"></Button>
+</GridLayout>

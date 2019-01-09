@@ -1,0 +1,6 @@
+@import 'app.component';
+
+// Place any CSS rules you want to apply only on IOS here
+TabView {
+    selected-tab-text-color: $item-active-color;
+}
