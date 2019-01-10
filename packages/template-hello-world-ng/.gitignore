@@ -2,7 +2,9 @@ npm-debug.log
 .DS_Store
 
 *.js.map
+vendor*.ts
 *.js
+!hooks/after-createProject/*.js
 tsconfig.json
 tsconfig.esm.json
 tsconfig.tns.json
