@@ -4,7 +4,7 @@
       "extent" : "full-screen",
       "idiom" : "iphone",
       "subtype" : "2688h",
-      "filename" : "Phone XS Max - Portarit iOS 12.png",
+      "filename" : "Default-Portrait-XS-Max.png",
       "minimum-system-version" : "12.0",
       "orientation" : "portrait",
       "scale" : "3x"
@@ -13,7 +13,7 @@
       "extent" : "full-screen",
       "idiom" : "iphone",
       "subtype" : "2688h",
-      "filename" : "iPhone XS Max – Landscape iOS 12.png",
+      "filename" : "Default-Landscape-XS-Max.png",
       "minimum-system-version" : "12.0",
       "orientation" : "landscape",
       "scale" : "3x"
@@ -22,7 +22,7 @@
       "extent" : "full-screen",
       "idiom" : "iphone",
       "subtype" : "1792h",
-      "filename" : "iPhone XR - Portarit iOS 12.png",
+      "filename" : "Default-Portrait-XR.png",
       "minimum-system-version" : "12.0",
       "orientation" : "portrait",
       "scale" : "2x"
@@ -31,7 +31,7 @@
       "extent" : "full-screen",
       "idiom" : "iphone",
       "subtype" : "1792h",
-      "filename" : "iPhone XR - Landscape iOS 12.png",
+      "filename" : "Default-Landscape-XR.png",
       "minimum-system-version" : "12.0",
       "orientation" : "landscape",
       "scale" : "2x"
