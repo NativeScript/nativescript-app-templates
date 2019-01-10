@@ -64,6 +64,8 @@
         "nativescript-dev-sass": "~1.6.0",
         "nativescript-dev-typescript": "~0.7.0",
         "nativescript-dev-webpack": "~0.19.0",
-        "tslint": "~5.11.0"
+        "tslint": "~5.11.0",
+        "@angular/compiler-cli": "~7.1.0",
+        "@ngtools/webpack": "~7.1.0"
     }
 }

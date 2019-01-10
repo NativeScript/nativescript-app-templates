@@ -2,8 +2,7 @@
   "extends": "tslint:latest",
   "linterOptions": {
       "exclude": [
-          "app/*.d.ts",
-          "app/vendor*.ts"
+          "app/*.d.ts"
       ]
   },
   "rulesDirectory": [

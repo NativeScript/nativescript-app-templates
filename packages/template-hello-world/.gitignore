@@ -3,6 +3,7 @@ npm-debug.log
 
 webpack.config.js
 hooks/
+!hooks/after-createProject/
 *.js.map
 lib/
 node_modules/
