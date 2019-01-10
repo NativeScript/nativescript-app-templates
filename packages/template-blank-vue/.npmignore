@@ -12,5 +12,6 @@ typings/
 .idea
 .project
 .vscode
+.npmrc
 
 tools/assets/

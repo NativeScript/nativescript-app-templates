@@ -15,5 +15,6 @@ typings/
 .cloud
 .project
 .vscode
+.npmrc
 
 tools/assets/

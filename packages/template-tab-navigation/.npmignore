@@ -15,5 +15,6 @@ typings/
 .project
 webpack.config.js
 .vscode
+.npmrc
 
 tools/assets/**

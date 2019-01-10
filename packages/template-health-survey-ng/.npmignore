@@ -16,5 +16,6 @@ typings/
 .idea
 .cloud
 .project
+.npmrc
 
 tools/assets/
