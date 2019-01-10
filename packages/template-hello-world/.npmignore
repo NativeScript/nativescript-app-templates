@@ -1,0 +1,17 @@
+npm-debug.log
+.DS_Store
+
+webpack.config.js
+hooks/
+!hooks/after-createProject/
+*.js.map
+lib/
+node_modules/
+platforms/
+tmp/
+typings/
+.idea
+.project
+.vscode
+
+tools/assets/
