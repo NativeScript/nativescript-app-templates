@@ -5,7 +5,6 @@ hooks/
 !tools/*.js
 !hooks/after-createProject/*.js
 *.js.map
-vendor*.ts
 lib/
 node_modules/
 platforms/

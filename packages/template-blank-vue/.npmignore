@@ -4,7 +4,6 @@ npm-debug.log
 hooks/
 !hooks/after-createProject/
 *.js.map
-vendor*.ts
 lib/
 node_modules/
 platforms/

@@ -5,7 +5,6 @@ webpack.config.js
 hooks/
 !hooks/after-createProject/
 *.js.map
-vendor*.ts
 lib/
 node_modules/
 platforms/
