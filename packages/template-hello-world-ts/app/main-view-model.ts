@@ -16,15 +16,15 @@ export class HelloWorldModel extends Observable {
     get message(): string {
         return this._message;
     }
-    
+
     set message(value: string) {
         if (this._message !== value) {
             this._message = value;
-            this.notifyPropertyChange("message", value)
+            this.notifyPropertyChange("message", value);
         }
     }
 
-    public onTap() {
+    onTap() {
         this._counter--;
         this.updateMessage();
     }
