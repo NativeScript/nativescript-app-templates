@@ -76,8 +76,7 @@ function CarService() {
                     file.url = file._downloadURL;
 
                     return file;
-                }
-                else {
+                } else {
                     Promise.reject(new Error("No items with the given ID could be found."));
                 }
             });
@@ -86,8 +85,7 @@ function CarService() {
     this._login = function () {
         if (Kinvey.User.getActiveUser()) {
             return Promise.resolve();
-        }
-        else {
+        } else {
             return Kinvey.User.login(Config.kinveyUsername, Config.kinveyPassword);
         }
     };

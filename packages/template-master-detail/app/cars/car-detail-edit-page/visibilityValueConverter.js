@@ -2,8 +2,7 @@ const visibilityValueConverter = {
     toView: function (value) {
         if (value) {
             return "collapsed";
-        }
-        else {
+        } else {
             return "visible";
         }
     },
