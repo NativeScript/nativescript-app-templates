@@ -3,7 +3,7 @@ App templates help you jump start your native cross-platform apps with built-in 
 
 This Master-Detail template is a fundamental building block for any app that displays collection of objects and their details and need to work both in online and offline mode while utilizing Kinvey as a backend. The template uses a RadListView component to display the master list. The RadListView component is part of [Progress NativeScript UI](https://github.com/telerik/nativescript-ui-feedback).
 
-<img src="/tools/assets/phone-masterDetail-ios.png" height="400" /><img src="/tools/assets/phone-masterDetail-detail-ios.png" height="400" />
+<img src="/packages/template-master-detail-kinvey/tools/assets/phone-masterDetail-ios.png" height="400" /><img src="/packages/template-master-detail-kinvey/tools/assets/phone-masterDetail-detail-ios.png" height="400" />
 
 ## Key Features
 - Editable master-detail interface
@@ -25,7 +25,11 @@ tns create my-master-detail-kinvey-js --template tns-template-master-detail-kinv
 If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
 
 ```
-tns create my-master-detail-kinvey-js --template https://github.com/NativeScript/template-master-detail-kinvey
+# clone nativescript-app-templates monorepo locally
+git clone git@github.com:NativeScript/nativescript-app-templates.git
+
+# create app template from local source (all templates are in the 'packages' subfolder of the monorepo)
+tns create my-master-detail-kinvey --template nativescript-app-templates/packages/template-master-detail-kinvey
 ```
 
 ## Walkthrough
