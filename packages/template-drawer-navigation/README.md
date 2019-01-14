@@ -4,7 +4,7 @@ App templates help you jump start your native cross-platform apps with built-in 
 
 App template featuring a RadSideDrawer component for navigation. The RadSideDrawer component is part of [Progress NativeScript UI](https://github.com/telerik/nativescript-ui-feedback).
 
-<img src="/tools/assets/phone-drawer-ios.png" height="400" /> <img src="/tools/assets/phone-drawer-android.png" height="400" />
+<img src="/packages/template-drawer-navigation/tools/assets/phone-drawer-ios.png" height="400" /> <img src="/packages/template-drawer-navigation/tools/assets/phone-drawer-android.png" height="400" />
 
 ## Key Features
 
@@ -27,7 +27,11 @@ tns create my-drawer-js --template tns-template-drawer-navigation
 If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
 
 ``` shell
-tns create my-drawer-js --template https://github.com/NativeScript/template-drawer-navigation
+# clone nativescript-app-templates monorepo locally
+git clone git@github.com:NativeScript/nativescript-app-templates.git
+
+# create app template from local source (all templates are in the 'packages' subfolder of the monorepo)
+tns create my-drawer-js --template nativescript-app-templates/packages/template-drawer-navigation
 ```
 
 **NB:** Please, have in mind that the master branch may refer to dependencies that are not on NPM yet!
