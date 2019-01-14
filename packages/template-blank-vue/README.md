@@ -6,6 +6,13 @@ Execute the following command to create an app from this template:
 
 ```
 tns create my-blank-vue --template tns-template-blank-vue
+
+cd my-blank-vue
+npm install
+
+tns run android --bundle
+# or
+tns run ios --bundle
 ```
 
 > Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm](https://www.npmjs.com/package/tns-template-blank-vue).
@@ -13,7 +20,12 @@ tns create my-blank-vue --template tns-template-blank-vue
 If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
 
 ```
-tns create my-blank-vue --template https://github.com/NativeScript/template-blank-vue
+# clone nativescript-app-templates monorepo locally
+git clone git@github.com:NativeScript/nativescript-app-templates.git
+
+# create app template from local source (all templates are in the 'packages' subfolder of the monorepo)
+tns create my-blank-vue --template nativescript-app-templates/packages/template-blank-vue
+
 cd my-blank-vue
 npm install
 
