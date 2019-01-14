@@ -25,6 +25,7 @@ tns create my-master-detail-kinvey-ng --template tns-template-master-detail-kinv
 If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
 
 ```
+# clone nativescript-app-templates monorepo locally
 git clone git@github.com:NativeScript/nativescript-app-templates.git
 
 # create app template from local source (all templates are in the 'packages' subfolder of the monorepo)
