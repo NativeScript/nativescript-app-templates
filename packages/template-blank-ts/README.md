@@ -13,7 +13,11 @@ tns create my-blank-ts --template tns-template-blank-ts
 If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
 
 ```
-tns create my-blank-ts --template https://github.com/NativeScript/template-blank-ts
+# clone nativescript-app-templates monorepo locally
+git clone git@github.com:NativeScript/nativescript-app-templates.git
+
+# create app template from local source (all templates are in the 'packages' subfolder of the monorepo)
+tns create my-blank-ts --template nativescript-app-templates/packages/template-blank-ts
 ```
 
 **NB:** Please, have in mind that the master branch may refer to dependencies that are not on NPM yet!
