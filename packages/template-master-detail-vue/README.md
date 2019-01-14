@@ -3,7 +3,7 @@ App templates help you jump start your native cross-platform apps with built-in 
 
 This Master-Detail template is a fundamental building block for any app that displays collection of objects and their details and need to work both in online and offline mode while utilizing Firebase as a backend. The template uses a RadListView component to display the master list. The RadListView component is part of [Progress NativeScript UI](https://github.com/telerik/nativescript-ui-feedback).
 
-<img src="/tools/assets/phone-masterDetail-ios.png" height="400" /><img src="/tools/assets/phone-masterDetail-detail-ios.png" height="400" />
+<img src="/packages/template-master-detail-vue/tools/assets/phone-masterDetail-ios.png" height="400" /><img src="/packages/template-master-detail-vue/tools/assets/phone-masterDetail-detail-ios.png" height="400" />
 
 ## Key Features
 - Editable master-detail interface
