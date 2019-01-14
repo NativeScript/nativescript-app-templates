@@ -3,7 +3,7 @@ App templates help you jump start your native cross-platform apps with built-in 
 
 This Health Survey template is a fundamental building block for researchers and developers to create powerful apps for medical research with visual consent flows, customizable survey modules, and HIPAA compliant cloud support from Kinvey. The template uses a RadDataForm component to display the Login/Register pages. The RadDataForm component is part of [Progress NativeScript UI](https://github.com/telerik/nativescript-ui-feedback).
 
-<img src="/tools/assets/phone-survey-consent-ios.png" height="400" /><img src="/tools/assets/phone-survey-question-ios.png" height="400" />
+<img src="/packages/template-health-survey-ng/tools/assets/phone-survey-consent-ios.png" height="400" /><img src="/packages/template-health-survey-ng/tools/assets/phone-survey-question-ios.png" height="400" />
 
 ## Quick Start
 Execute the following command to create an app from this template:
@@ -17,7 +17,11 @@ tns create my-health-survey --template tns-template-health-survey-ng
 If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
 
 ```
-tns create my-health-survey --template https://github.com/NativeScript/template-health-survey-ng
+# clone nativescript-app-templates monorepo locally
+git clone git@github.com:NativeScript/nativescript-app-templates.git
+
+# create app template from local source (all templates are in the 'packages' subfolder of the monorepo)
+tns create my-health-survey --template nativescript-app-templates/packages/template-health-survey-ng
 ```
 
 **NB:** Please, have in mind that the master branch may refer to dependencies that are not on NPM yet!
