@@ -3,7 +3,7 @@ App templates help you jump start your native cross-platform apps with built-in 
 
 App template featuring a TabView component for navigation.
 
-<img src="/tools/assets/phone-tab-ios.png" height="400" /> <img src="/tools/assets/phone-tab-android.png" height="400" />
+<img src="/packages/template-tab-navigation-ng/tools/assets/phone-tab-ios.png" height="400" /> <img src="/packages/template-tab-navigation-ng/tools/assets/phone-tab-android.png" height="400" />
 
 ## Key Features
 - Tab navigation
@@ -24,7 +24,11 @@ tns create my-tab-ng --template tns-template-tab-navigation-ng
 If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
 
 ```
-tns create my-tab-ng --template https://github.com/NativeScript/template-tab-navigation-ng
+# clone nativescript-app-templates monorepo locally
+git clone git@github.com:NativeScript/nativescript-app-templates.git
+
+# create app template from local source (all templates are in the 'packages' subfolder of the monorepo)
+tns create my-tab-ng --template nativescript-app-templates/packages/template-tab-navigation-ng
 ```
 
 **NB:** Please, have in mind that the master branch may refer to dependencies that are not on NPM yet!
