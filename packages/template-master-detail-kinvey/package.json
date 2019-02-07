@@ -31,9 +31,9 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/NativeScript/template-master-detail-kinvey"
+        "url": "https://github.com/NativeScript/nativescript-app-templates"
     },
-    "homepage": "https://github.com/NativeScript/template-master-detail-kinvey",
+    "homepage": "https://github.com/NativeScript/nativescript-app-templates",
     "bugs": {
         "url": "https://github.com/NativeScript/NativeScript/issues"
     },
