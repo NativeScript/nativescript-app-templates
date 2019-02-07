@@ -17,9 +17,9 @@
     "license": "Apache-2.0",
     "repository": {
         "type": "git",
-        "url": "https://github.com/NativeScript/template-blank-vue"
+        "url": "https://github.com/NativeScript/nativescript-app-templates"
     },
-    "homepage": "https://github.com/NativeScript/template-blank-vue",
+    "homepage": "https://github.com/NativeScript/nativescript-app-templates",
     "bugs": {
         "url": "https://github.com/NativeScript/NativeScript/issues"
     },

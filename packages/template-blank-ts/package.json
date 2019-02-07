@@ -27,9 +27,9 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/NativeScript/template-blank-ts"
+        "url": "https://github.com/NativeScript/nativescript-app-templates"
     },
-    "homepage": "https://github.com/NativeScript/template-blank-ts",
+    "homepage": "https://github.com/NativeScript/nativescript-app-templates",
     "bugs": {
         "url": "https://github.com/NativeScript/NativeScript/issues"
     },

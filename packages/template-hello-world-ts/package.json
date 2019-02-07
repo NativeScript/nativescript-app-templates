@@ -26,12 +26,12 @@
     ],
     "repository": {
         "type": "git",
-        "url": "git@github.com:NativeScript/template-hello-world-ts.git"
+        "url": "https://github.com/NativeScript/nativescript-app-templates"
     },
     "bugs": {
         "url": "https://github.com/NativeScript/NativeScript/issues"
     },
-    "homepage": "https://github.com/NativeScript/template-hello-world-ts",
+    "homepage": "https://github.com/NativeScript/nativescript-app-templates",
     "dependencies": {
         "nativescript-theme-core": "~1.0.4",
         "tns-core-modules": "~5.1.0"

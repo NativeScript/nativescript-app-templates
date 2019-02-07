@@ -4,12 +4,15 @@ const path = require("path");
 module.exports = function (hookArgs) {
     const srcGitignore = "dot.gitignore";
     const destGitignore = ".gitignore";
-    let appRootFolder = hookArgs.projectDir;
+    const appRootFolder = hookArgs.projectDir;
 
     return copyFile(srcGitignore, destGitignore)
         .then(() => {
-            const toolsDir = path.join(appRootFolder, 'tools');
+            const toolsDir = path.join(appRootFolder, "tools");
             deleteFolderSync(toolsDir);
+
+            const readme = path.join(appRootFolder, "README.md");
+            fs.unlinkSync(readme);
 
             deleteFolderSync(__dirname);
         })
@@ -19,7 +22,7 @@ module.exports = function (hookArgs) {
 
     function copyFile(srcFilename, destFilename = srcFilename) {
         return new Promise((resolve, reject) => {
-            const sourcePath = path.join(appRootFolder, 'tools', srcFilename);
+            const sourcePath = path.join(appRootFolder, "tools", srcFilename);
             const destPath = path.join(appRootFolder, destFilename);
 
             fs.rename(sourcePath, destPath, (err) => {

@@ -3,7 +3,8 @@ npm-debug.log
 
 *.js.map
 *.js
-!hooks/after-createProject/*.js
+hooks/*
+!hooks/after-createProject/after-createProject.js
 *.css
 tsconfig.json
 tsconfig.esm.json

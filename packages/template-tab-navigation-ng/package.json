@@ -31,9 +31,9 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/NativeScript/template-tab-navigation-ng"
+        "url": "https://github.com/NativeScript/nativescript-app-templates"
     },
-    "homepage": "https://github.com/NativeScript/template-tab-navigation-ng",
+    "homepage": "https://github.com/NativeScript/nativescript-app-templates",
     "bugs": {
         "url": "https://github.com/NativeScript/NativeScript/issues"
     },
