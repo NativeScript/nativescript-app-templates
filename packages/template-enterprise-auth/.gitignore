@@ -1,13 +1,15 @@
 npm-debug.log
 .DS_Store
 
+webpack.config.js
+hooks/*
+!hooks/after-createProject/after-createProject.js
 *.js.map
 lib/
 node_modules/
 platforms/
 tmp/
+typings/
 .idea
-.cloud
 .project
-hooks/*
-!hooks/after-createProject/after-createProject.js
+.vscode

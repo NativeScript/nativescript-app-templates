@@ -2,10 +2,12 @@ npm-debug.log
 .DS_Store
 
 *.js.map
-vendor*.ts
 *.js
-!tools/*.js
-!hooks/**/*.js
+hooks/*
+!hooks/after-createProject/after-createProject.js
+tsconfig.json
+tsconfig.esm.json
+tsconfig.tns.json
 lib/
 node_modules/
 platforms/
@@ -14,5 +16,4 @@ typings/
 .idea
 .cloud
 .project
-hooks/*
-!hooks/after-createProject/after-createProject.js
+.vscode
