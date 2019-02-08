@@ -2,8 +2,7 @@
   "extends": "tslint:latest",
   "linterOptions": {
       "exclude": [
-          "app/*.d.ts",
-          "app/vendor*.ts"
+          "app/*.d.ts"
       ]
   },
   "rulesDirectory": [
@@ -26,13 +25,16 @@
     "no-irregular-whitespace": true,
     "no-output-on-prefix": true,
     "no-output-rename": true,
+    "no-string-literal": false,
     "no-submodule-imports": false,
+    "no-trailing-whitespace": [true, "ignore-blank-lines"],
     "no-unnecessary-initializer": true,
     "no-var-requires": false,
     "object-literal-key-quotes": [true, "as-needed"],
     "object-literal-sort-keys": false,
     "one-variable-per-declaration": [true, "ignore-for-loop"],
-    "pipe-naming": [true, "camelCase", "sg"],
+    "ordered-imports": false,
+    "prefer-conditional-expression": false,
     "use-host-property-decorator": true,
     "use-input-property-decorator": true,
     "use-life-cycle-interface": true,
