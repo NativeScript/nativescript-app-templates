@@ -1,18 +1,18 @@
-# npm-debug.log
-# .DS_Store
+npm-debug.log
+.DS_Store
 
-# *.js.map
-# vendor*.ts
-# *.js
-# !tools/*.js
-# lib/
-# node_modules/
-# platforms/
-# tmp/
-# typings/
-# .vscode
-# .idea
-# .cloud
-# .project
-# hooks/*
-# !hooks/after-createProject/after-createProject.js
+*.js.map
+vendor*.ts
+*.js
+!tools/*.js
+lib/
+node_modules/
+platforms/
+tmp/
+typings/
+.vscode
+.idea
+.cloud
+.project
+hooks/*
+!hooks/after-createProject/after-createProject.js
