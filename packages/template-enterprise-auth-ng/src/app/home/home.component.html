@@ -1,0 +1,32 @@
+<ActionBar class="action-bar" title="Your Company Name">
+    <ActionItem android.position="actionBar" ios.position="right" (tap)="onProfileButtonTap()">
+        <Label text="&#xf2bd;" class="fa action-button"></Label>
+    </ActionItem>
+</ActionBar>
+
+<GridLayout rows="auto, *, auto">
+    <StackLayout row="0" class="m-b-25">
+        <Label class="t-30 text-center title" text="Welcome"></Label>
+        <Label class="t-18 text-center font-weight-bold" [text]="loggedUser" ></Label>
+        <StackLayout class="hr"></StackLayout>
+    </StackLayout>
+    <GridLayout row="1" rows="auto, auto" columns="*, *" class="menu-container">
+        <StackLayout row="0" col="0" data-name="home" class="menu-item">
+            <Button text="&#xf015;" class="fa menu-icon" (tap)="onMenuButtonTap($event)"></Button>
+            <Label text="Home" class="text-center" (tap)="onMenuButtonTap($event)"></Label>
+        </StackLayout>
+        <StackLayout row="0" col="1" data-name="news" class="menu-item">
+            <Button text="&#xf1ea;" class="fa menu-icon" (tap)="onMenuButtonTap($event)"></Button>
+            <Label text="News" class="text-center" (tap)="onMenuButtonTap($event)"></Label>
+        </StackLayout>
+        <StackLayout row="1" col="0" data-name="favorites" class="menu-item">
+            <Button text="&#xf005;" class="fa menu-icon" (tap)="onMenuButtonTap($event)"></Button>
+            <Label text="Favorites" class="text-center" (tap)="onMenuButtonTap($event)"></Label>
+        </StackLayout>
+        <StackLayout row="1" col="1" data-name="settings" class="menu-item">
+            <Button text="&#xf013;" class="fa menu-icon" (tap)="onMenuButtonTap($event)"></Button>
+            <Label text="Settings" class="text-center" (tap)="onMenuButtonTap($event)"></Label>
+        </StackLayout>
+    </GridLayout>
+    <Button row="2" class="btn btn-rounded-sm btn-primary btn-margin font-weight-bold t-18 flexbox-item" (tap)="logout()" text="Log out"></Button>
+</GridLayout>

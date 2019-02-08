@@ -1,0 +1,15 @@
+{
+  "main": "app.js",
+  "android": {
+    "v8Flags": "--expose_gc"
+  },
+  "pluginsData": {
+    "kinvey-nativescript-sdk": {
+      "config": {
+        "appKey": "",
+        "appSecret": "",
+        "redirectUri": ""
+      }
+    }
+  }
+}
