@@ -1,2 +1,4 @@
 CODE_OF_CONDUCT.md
 tools/assets/
+hooks/*
+!hooks/after-createProject/after-createProject.js

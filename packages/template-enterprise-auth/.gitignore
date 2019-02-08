@@ -9,3 +9,5 @@ tmp/
 .idea
 .cloud
 .project
+hooks/*
+!hooks/after-createProject/after-createProject.js
