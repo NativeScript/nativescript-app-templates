@@ -1,5 +1,5 @@
 import { Observable } from "tns-core-modules/data/observable";
-import { Kinvey } from 'kinvey-nativescript-sdk';
+import { Kinvey } from "kinvey-nativescript-sdk";
 import { topmost } from "tns-core-modules/ui/frame";
 
 export class LoginViewModel extends Observable {
@@ -28,7 +28,7 @@ export class LoginViewModel extends Observable {
     private navigateHome(user: Kinvey.User) {
         topmost().navigate({
             moduleName: "home/home-page",
-            context: user.data['_socialIdentity'].kinveyAuth.id,
+            context: user.data["_socialIdentity"].kinveyAuth.id,
             animated: true,
             transition: {
                 name: "slideTop",

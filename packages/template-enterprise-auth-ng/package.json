@@ -29,7 +29,7 @@
         "authentication",
         "category-general"
     ],
-     "repository": {
+    "repository": {
         "type": "git",
         "url": "https://github.com/NativeScript/nativescript-app-templates"
     },
@@ -38,7 +38,7 @@
         "url": "https://github.com/NativeScript/NativeScript/issues"
     },
     "scripts": {
-        "lint": "tslint \"app/**/*.ts\""
+        "lint": "tslint \"src/**/*.ts\""
     },
     "dependencies": {
         "@angular/animations": "~7.1.0",
@@ -60,7 +60,9 @@
     },
     "devDependencies": {
         "@nativescript/schematics": "~0.5.0",
+        "codelyzer": "~4.5.0",
         "nativescript-dev-typescript": "~0.7.0",
-        "nativescript-dev-webpack": "~0.19.0"
+        "nativescript-dev-webpack": "~0.19.0",
+        "tslint": "~5.11.0"
     }
 }

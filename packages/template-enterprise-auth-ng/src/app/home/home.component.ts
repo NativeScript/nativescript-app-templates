@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit } from "@angular/core";
-import { Kinvey, User } from 'kinvey-nativescript-sdk';
+import { Kinvey, User } from "kinvey-nativescript-sdk";
 import { RouterExtensions } from "nativescript-angular/router";
-import { Page } from "tns-core-modules/ui/page"
+import { Page } from "tns-core-modules/ui/page";
 import { EventData } from "tns-core-modules/data/observable";
 import { StackLayout } from "tns-core-modules/ui/layouts/stack-layout";
 
@@ -11,7 +11,7 @@ import { StackLayout } from "tns-core-modules/ui/layouts/stack-layout";
     templateUrl: "./home.component.html"
 })
 export class HomeComponent implements OnInit {
-    public loggedUser: string;
+    loggedUser: string;
 
     constructor(private _routerExtensions: RouterExtensions, private page: Page) {
         this.page.actionBarHidden = false;
@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     ngOnInit(): void {
         Kinvey.User.me()
             .then((user: User) => {
-                this.loggedUser = user.data['_socialIdentity'].kinveyAuth.id
+                this.loggedUser = user.data["_socialIdentity"].kinveyAuth.id;
             });
     }
 

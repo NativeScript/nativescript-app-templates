@@ -1,8 +1,7 @@
-import { Component } from "@angular/core";
-import { Kinvey } from 'kinvey-nativescript-sdk';
+import { Component, NgZone } from "@angular/core";
+import { Kinvey } from "kinvey-nativescript-sdk";
 import { RouterExtensions } from "nativescript-angular/router";
-import { NgZone } from "@angular/core";
-import { Page } from "tns-core-modules/ui/page"
+import { Page } from "tns-core-modules/ui/page";
 
 @Component({
     selector: "Login",
