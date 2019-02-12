@@ -3,10 +3,10 @@
         "id": "org.nativescript.MasterDetail",
         "templateVersion": "v2",
         "tns-android": {
-            "version": "5.1.0"
+            "version": "5.2.0"
         },
         "tns-ios": {
-            "version": "5.1.1"
+            "version": "5.2.0"
         }
     },
     "name": "tns-template-master-detail-ts",
@@ -39,16 +39,16 @@
     },
     "dependencies": {
         "nativescript-imagepicker": "~6.0.0",
-        "nativescript-plugin-firebase": "~7.6.0",
+        "nativescript-plugin-firebase": "~7.7.0",
         "nativescript-theme-core": "~1.0.4",
-        "nativescript-ui-listview": "~5.0.0",
+        "nativescript-ui-listview": "~5.1.0",
         "rxjs": "~6.3.0",
-        "tns-core-modules": "~5.1.0"
+        "tns-core-modules": "~5.2.0"
     },
     "devDependencies": {
         "nativescript-dev-sass": "~1.6.0",
-        "nativescript-dev-typescript": "~0.7.0",
-        "nativescript-dev-webpack": "~0.19.0",
+        "nativescript-dev-typescript": "~0.8.0",
+        "nativescript-dev-webpack": "~0.20.0",
         "tslint": "~5.11.0"
     }
 }
