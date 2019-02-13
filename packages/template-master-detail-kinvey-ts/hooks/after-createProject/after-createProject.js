@@ -63,8 +63,8 @@ module.exports = function (hookArgs) {
     }
 
     function updateFirebaseConfigAppId(packageJson) {
-        const googleServicesJsonPath = path.join(appRootFolder, "App_Resources", "Android", "google-services.json");
-        const googleServiceInfoPlistPath = path.join(appRootFolder, "App_Resources", "iOS", "GoogleService-Info.plist");
+        const googleServicesJsonPath = path.join(appRootFolder, "app", "App_Resources", "Android", "google-services.json");
+        const googleServiceInfoPlistPath = path.join(appRootFolder, "app", "App_Resources", "iOS", "GoogleService-Info.plist");
 
         if (!packageJson.nativescript || !packageJson.nativescript.id) {
             return Promise.reject(new Error("cannot find nativescript node in package.json file"));
