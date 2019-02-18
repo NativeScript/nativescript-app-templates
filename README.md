@@ -22,3 +22,4 @@ If you have found an issue with this template, please report the problem in the 
 ## Contributing
 
 We love PRs, and accept them gladly. Feel free to propose changes and new ideas. We will review and discuss, so that they can be accepted and better integrated.
+
