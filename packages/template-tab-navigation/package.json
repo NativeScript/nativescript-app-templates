@@ -3,7 +3,7 @@
         "id": "org.nativescript.TabNavigation",
         "templateVersion": "v2",
         "tns-android": {
-            "version": "5.2.0"
+            "version": "5.2.1"
         },
         "tns-ios": {
             "version": "5.2.0"
