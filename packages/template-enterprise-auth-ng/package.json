@@ -1,70 +1,70 @@
 {
-    "nativescript": {
-        "id": "org.nativescript.EnterpriseAuth",
-        "templateVersion": "v2",
-        "tns-android": {
-            "version": "5.2.1"
-        },
-        "tns-ios": {
-            "version": "5.2.0"
-        }
+  "nativescript": {
+    "id": "org.nativescript.EnterpriseAuth",
+    "templateVersion": "v2",
+    "tns-android": {
+      "version": "5.2.1"
     },
-    "name": "tns-template-enterprise-auth-ng",
-    "displayName": "Entertprise Auth",
-    "templateType": "App template",
-    "version": "5.2.1",
-    "description": "NativeScript template for creating mobile apps that use enterprise identity and single sign-on systems to authenticate users. The template leverages Kinvey's Mobile Identity Connect feature to support various identity providers including SAML, OAuth2, OpenID Connect, Active Directory and more.",
-    "author": "Telerik <support@telerik.com>",
-    "license": "Apache-2.0",
-    "keywords": [
-        "telerik",
-        "mobile",
-        "nativescript",
-        "{N}",
-        "tns",
-        "appbuilder",
-        "template",
-        "login",
-        "kinvey",
-        "authentication",
-        "category-general"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/NativeScript/nativescript-app-templates"
-    },
-    "homepage": "https://github.com/NativeScript/nativescript-app-templates",
-    "bugs": {
-        "url": "https://github.com/NativeScript/NativeScript/issues"
-    },
-    "scripts": {
-        "lint": "tslint \"src/**/*.ts\""
-    },
-    "dependencies": {
-        "@angular/animations": "~7.2.0",
-        "@angular/common": "~7.2.0",
-        "@angular/compiler": "~7.2.0",
-        "@angular/core": "~7.2.0",
-        "@angular/forms": "~7.2.0",
-        "@angular/http": "~7.2.0",
-        "@angular/platform-browser": "~7.2.0",
-        "@angular/platform-browser-dynamic": "~7.2.0",
-        "@angular/router": "~7.2.0",
-        "kinvey-nativescript-sdk": "3.12.3",
-        "nativescript-angular": "~7.2.1",
-        "nativescript-theme-core": "~1.0.4",
-        "reflect-metadata": "~0.1.10",
-        "rxjs": "~6.3.0",
-        "tns-core-modules": "~5.2.0",
-        "zone.js": "~0.8.18"
-    },
-    "devDependencies": {
-        "@angular/compiler-cli": "~7.2.0",
-        "@nativescript/schematics": "~0.5.0",
-        "@ngtools/webpack": "~7.2.0",
-        "codelyzer": "~4.5.0",
-        "nativescript-dev-typescript": "~0.8.0",
-        "nativescript-dev-webpack": "~0.20.0",
-        "tslint": "~5.11.0"
+    "tns-ios": {
+      "version": "5.2.0"
     }
+  },
+  "name": "tns-template-enterprise-auth-ng",
+  "displayName": "Entertprise Auth",
+  "templateType": "App template",
+  "version": "5.2.1",
+  "description": "NativeScript template for creating mobile apps that use enterprise identity and single sign-on systems to authenticate users. The template leverages Kinvey's Mobile Identity Connect feature to support various identity providers including SAML, OAuth2, OpenID Connect, Active Directory and more.",
+  "author": "Telerik <support@telerik.com>",
+  "license": "Apache-2.0",
+  "keywords": [
+    "telerik",
+    "mobile",
+    "nativescript",
+    "{N}",
+    "tns",
+    "appbuilder",
+    "template",
+    "login",
+    "kinvey",
+    "authentication",
+    "category-general"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NativeScript/nativescript-app-templates"
+  },
+  "homepage": "https://github.com/NativeScript/nativescript-app-templates",
+  "bugs": {
+    "url": "https://github.com/NativeScript/NativeScript/issues"
+  },
+  "scripts": {
+    "lint": "tslint \"src/**/*.ts\""
+  },
+  "dependencies": {
+    "@angular/animations": "~7.2.0",
+    "@angular/common": "~7.2.0",
+    "@angular/compiler": "~7.2.0",
+    "@angular/core": "~7.2.0",
+    "@angular/forms": "~7.2.0",
+    "@angular/http": "~7.2.0",
+    "@angular/platform-browser": "~7.2.0",
+    "@angular/platform-browser-dynamic": "~7.2.0",
+    "@angular/router": "~7.2.0",
+    "kinvey-nativescript-sdk": "3.12.3",
+    "nativescript-angular": "~7.2.1",
+    "nativescript-theme-core": "~1.0.4",
+    "reflect-metadata": "~0.1.10",
+    "rxjs": "~6.3.0",
+    "tns-core-modules": "~5.2.0",
+    "zone.js": "~0.8.18"
+  },
+  "devDependencies": {
+    "@angular/compiler-cli": "~7.2.0",
+    "@nativescript/schematics": "~0.5.0",
+    "@ngtools/webpack": "~7.2.0",
+    "codelyzer": "~4.5.0",
+    "nativescript-dev-typescript": "~0.8.0",
+    "nativescript-dev-webpack": "~0.20.0",
+    "tslint": "~5.11.0"
+  }
 }
