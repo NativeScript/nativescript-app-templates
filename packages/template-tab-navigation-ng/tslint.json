@@ -12,6 +12,7 @@
     "array-type": [true, "generic"],
     "arrow-return-shorthand": true,
     "component-class-suffix": true,
+    "deprecation": true,
     "directive-class-suffix": true,
     "member-access": [true, "no-public"],
     "newline-before-return": true,

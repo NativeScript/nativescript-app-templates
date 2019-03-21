@@ -8,6 +8,7 @@
   "rules": {
     "array-type": [true, "generic"],
     "arrow-return-shorthand": true,
+    "deprecation": true,
     "member-access": [true, "no-public"],
     "newline-before-return": true,
     "no-angle-bracket-type-assertion": false,
