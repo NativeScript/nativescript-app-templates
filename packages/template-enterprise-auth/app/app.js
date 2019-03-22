@@ -7,7 +7,7 @@ const app = require("tns-core-modules/application");
 *************************************************************/
 require("./shared/kinvey.common");
 
-app.start({ moduleName: "login/login-page" });
+app.run({ moduleName: "app-root" });
 
 /*
 Do not place any code after the application has been started as it will not
