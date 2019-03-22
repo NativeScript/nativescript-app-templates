@@ -12,7 +12,7 @@
         <!--
         RadListView is a UI component part of the Progress NativeScript UI set of components.
         Learn more about the RadListView UI component and how it can be customized in this documentation article:
-        http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/ListView/getting-started
+        https://docs.nativescript.org/ui/professional-ui-components/ListView/getting-started
         This component is used to display the master list in the master-detail structure.
         -->
         <lv:RadListView items="{{ cars }}" itemTap="onCarItemTap" class="list-group">
