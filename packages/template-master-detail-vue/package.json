@@ -3,10 +3,10 @@
     "id": "org.nativescript.MasterDetail",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "5.2.1"
+      "version": "5.3.0"
     },
     "tns-ios": {
-      "version": "5.2.0"
+      "version": "5.3.0"
     }
   },
   "name": "tns-template-master-detail-vue",
@@ -38,12 +38,12 @@
     "category-general"
   ],
   "dependencies": {
-    "nativescript-imagepicker": "~6.0.0",
-    "nativescript-plugin-firebase": "~7.7.0",
+    "nativescript-imagepicker": "~6.1.0",
+    "nativescript-plugin-firebase": "~8.1.0",
     "nativescript-theme-core": "~1.0.4",
-    "nativescript-ui-listview": "~5.1.0",
+    "nativescript-ui-listview": "~6.1.0",
     "nativescript-vue": "~2.2.0",
-    "tns-core-modules": "~5.2.0"
+    "tns-core-modules": "~5.3.0"
   },
   "devDependencies": {
     "@babel/core": "~7.1.0",

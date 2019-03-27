@@ -3,10 +3,10 @@
     "id": "org.nativescript.EnterpriseAuth",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "5.2.1"
+      "version": "5.3.0"
     },
     "tns-ios": {
-      "version": "5.2.0"
+      "version": "5.3.0"
     }
   },
   "name": "tns-template-enterprise-auth-ts",
@@ -43,10 +43,10 @@
   "dependencies": {
     "kinvey-nativescript-sdk": "3.12.3",
     "nativescript-theme-core": "~1.0.4",
-    "tns-core-modules": "~5.2.0"
+    "tns-core-modules": "~5.3.0"
   },
   "devDependencies": {
-    "nativescript-dev-typescript": "~0.8.0",
+    "nativescript-dev-typescript": "~0.9.0",
     "nativescript-dev-webpack": "~0.20.0",
     "tslint": "~5.11.0"
   }
