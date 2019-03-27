@@ -1,54 +1,54 @@
 {
-  "nativescript": {
-    "id": "org.nativescript.MasterDetail",
-    "templateVersion": "v2",
-    "tns-android": {
-      "version": "5.2.1"
+    "nativescript": {
+        "id": "org.nativescript.MasterDetail",
+        "templateVersion": "v2",
+        "tns-android": {
+            "version": "5.2.1"
+        },
+        "tns-ios": {
+            "version": "5.2.0"
+        }
     },
-    "tns-ios": {
-      "version": "5.2.0"
+    "name": "tns-template-master-detail",
+    "displayName": "Master-Detail with Firebase",
+    "templateType": "App template",
+    "version": "5.2.1",
+    "description": "Master-detail interface to display collection of items from Firebase and inspect and edit selected item properties. ",
+    "author": "Telerik <support@telerik.com>",
+    "license": "Apache-2.0",
+    "keywords": [
+        "telerik",
+        "mobile",
+        "nativescript",
+        "{N}",
+        "tns",
+        "template",
+        "master-details",
+        "detail",
+        "category-general"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/NativeScript/nativescript-app-templates"
+    },
+    "homepage": "https://github.com/NativeScript/nativescript-app-templates",
+    "bugs": {
+        "url": "https://github.com/NativeScript/NativeScript/issues"
+    },
+    "scripts": {
+        "lint": "eslint \"app/**/*.js\""
+    },
+    "dependencies": {
+        "nativescript-imagepicker": "~6.1.0",
+        "nativescript-plugin-firebase": "~8.1.0",
+        "nativescript-theme-core": "~1.0.4",
+        "nativescript-ui-listview": "~6.1.0",
+        "rxjs": "~6.3.0",
+        "tns-core-modules": "~5.3.0"
+    },
+    "devDependencies": {
+        "eslint": "~5.8.0",
+        "nativescript-dev-sass": "~1.7.0",
+        "nativescript-dev-webpack": "~0.20.0"
     }
-  },
-  "name": "tns-template-master-detail",
-  "displayName": "Master-Detail with Firebase",
-  "templateType": "App template",
-  "version": "5.2.1",
-  "description": "Master-detail interface to display collection of items from Firebase and inspect and edit selected item properties. ",
-  "author": "Telerik <support@telerik.com>",
-  "license": "Apache-2.0",
-  "keywords": [
-    "telerik",
-    "mobile",
-    "nativescript",
-    "{N}",
-    "tns",
-    "template",
-    "master-details",
-    "detail",
-    "category-general"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/NativeScript/nativescript-app-templates"
-  },
-  "homepage": "https://github.com/NativeScript/nativescript-app-templates",
-  "bugs": {
-    "url": "https://github.com/NativeScript/NativeScript/issues"
-  },
-  "scripts": {
-    "lint": "eslint \"app/**/*.js\""
-  },
-  "dependencies": {
-    "nativescript-imagepicker": "~6.0.0",
-    "nativescript-plugin-firebase": "~7.7.0",
-    "nativescript-theme-core": "~1.0.4",
-    "nativescript-ui-listview": "~5.1.0",
-    "rxjs": "~6.3.0",
-    "tns-core-modules": "~5.2.0"
-  },
-  "devDependencies": {
-    "eslint": "~5.8.0",
-    "nativescript-dev-sass": "~1.6.0",
-    "nativescript-dev-webpack": "~0.20.0"
-  }
 }
