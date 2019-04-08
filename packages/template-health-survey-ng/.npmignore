@@ -1,6 +1,9 @@
 npm-debug.log
 .DS_Store
 
+# explicitly whitelist due to https://github.com/lerna/lerna/issues/1932
+!core
+
 *.js.map
 *.js
 hooks/*
