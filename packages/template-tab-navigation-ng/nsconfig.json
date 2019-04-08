@@ -1,4 +1,5 @@
 {
   "appResourcesPath": "App_Resources",
-  "appPath": "src"
+  "appPath": "src",
+  "useLegacyWorkflow": false
 }
