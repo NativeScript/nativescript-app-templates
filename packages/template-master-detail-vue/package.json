@@ -39,7 +39,7 @@
   ],
   "dependencies": {
     "nativescript-imagepicker": "~6.1.0",
-    "nativescript-plugin-firebase": "~8.1.0",
+    "nativescript-plugin-firebase": "~8.3.0",
     "nativescript-theme-core": "~1.0.4",
     "nativescript-ui-listview": "~6.1.0",
     "nativescript-vue": "~2.2.0",
