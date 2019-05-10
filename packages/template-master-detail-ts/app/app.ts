@@ -1,7 +1,5 @@
 import * as app from "tns-core-modules/application";
 
-import "./bundle-config";
-
 /*
 The {N} Firebase plugin needs some initialization steps before it is ready
 for use. Check out the initialization script at /shared/firebase.common.ts
