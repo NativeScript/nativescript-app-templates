@@ -41,15 +41,15 @@
     "lint": "eslint \"app/**/*.js\""
   },
   "dependencies": {
-    "kinvey-nativescript-sdk": "3.12.3",
-    "nativescript-imagepicker": "~6.1.0",
-    "nativescript-theme-core": "~1.0.4",
+    "kinvey-nativescript-sdk": "4.0.0",
+    "nativescript-imagepicker": "~6.2.0",
+    "nativescript-theme-core": "~1.0.46",
     "nativescript-ui-listview": "~6.3.0",
-    "tns-core-modules": "~5.3.0"
+    "tns-core-modules": "~5.3.2"
   },
   "devDependencies": {
     "eslint": "~5.8.0",
     "nativescript-dev-sass": "~1.7.0",
-    "nativescript-dev-webpack": "~0.21.0"
+    "nativescript-dev-webpack": "~0.21.2"
   }
 }
