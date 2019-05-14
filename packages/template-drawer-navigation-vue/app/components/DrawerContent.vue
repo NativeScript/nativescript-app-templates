@@ -6,8 +6,8 @@
                 <Label class="footnote" text="username@mail.com"></Label>
             </StackLayout>
         
-            <ScrollView row="1">
-                <StackLayout class="sidedrawer-content">
+            <ScrollView row="1" class="sidedrawer-content">
+                <StackLayout>
                     <GridLayout columns="auto, *" :class="'sidedrawer-list-item' + (selectedPage === 'Home' ? ' selected': '')" @tap="onNavigationItemTap(Home)">
                         <Label col="0" text.decode="&#xf015;" class="fa"></Label>
                         <Label col="1" text="Home" class="p-r-10"></Label>
