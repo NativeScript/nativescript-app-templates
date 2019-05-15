@@ -37,7 +37,7 @@
     "url": "https://github.com/NativeScript/NativeScript/issues"
   },
   "dependencies": {
-    "kinvey-nativescript-sdk": "4.0.0",
+    "kinvey-nativescript-sdk": "3.12.3",
     "nativescript-theme-core": "~1.0.4",
     "tns-core-modules": "~5.4.0"
   },
