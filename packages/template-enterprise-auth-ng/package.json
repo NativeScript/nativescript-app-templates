@@ -3,10 +3,10 @@
     "id": "org.nativescript.EnterpriseAuth",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "5.3.1"
+      "version": "5.4.0"
     },
     "tns-ios": {
-      "version": "5.3.1"
+      "version": "5.4.0"
     }
   },
   "name": "tns-template-enterprise-auth-ng",
@@ -55,7 +55,7 @@
     "nativescript-theme-core": "~1.0.4",
     "reflect-metadata": "~0.1.10",
     "rxjs": "~6.3.0",
-    "tns-core-modules": "~5.3.0",
+    "tns-core-modules": "~5.4.0",
     "zone.js": "~0.8.18"
   },
   "devDependencies": {
@@ -64,7 +64,7 @@
     "@ngtools/webpack": "~7.2.0",
     "codelyzer": "~4.5.0",
     "nativescript-dev-typescript": "~0.9.0",
-    "nativescript-dev-webpack": "~0.21.0",
+    "nativescript-dev-webpack": "~0.22.0",
     "tslint": "~5.11.0"
   }
 }
