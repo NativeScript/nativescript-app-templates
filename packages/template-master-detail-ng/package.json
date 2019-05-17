@@ -63,9 +63,9 @@
     "@angular/compiler-cli": "~8.0.0",
     "@ngtools/webpack": "~8.0.0",
     "codelyzer": "~4.5.0",
-    "nativescript-dev-sass": "~1.7.0",
-    "nativescript-dev-typescript": "~0.10.0",
     "nativescript-dev-webpack": "~0.24.0",
-    "tslint": "~5.11.0"
+    "node-sass": "^4.7.1",
+    "tslint": "~5.11.0",
+    "typescript": "~3.4.0"
   }
 }
