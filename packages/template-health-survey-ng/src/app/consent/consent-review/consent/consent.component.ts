@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { Kinvey } from "kinvey-nativescript-sdk";
 import { RouterExtensions } from "nativescript-angular/router";
 import { DataFormEventData } from "nativescript-ui-dataform";
 import { RadDataFormComponent } from "nativescript-ui-dataform/angular";
@@ -17,7 +16,7 @@ import { ConsentForm } from "./consent-form.model";
     styleUrls: ["../../consent-common.css"]
 })
 export class ConsentComponent implements OnInit {
-    @ViewChild("consentFormElement") consentFormElement: RadDataFormComponent;
+    @ViewChild("consentFormElement", { static: false }) consentFormElement: RadDataFormComponent;
     private _consentForm: ConsentForm;
 
     constructor(

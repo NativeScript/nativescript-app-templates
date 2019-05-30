@@ -42,6 +42,6 @@
     "tns-core-modules": "~5.4.0"
   },
   "devDependencies": {
-    "nativescript-dev-webpack": "~0.22.0"
+    "nativescript-dev-webpack": "~0.24.0"
   }
 }

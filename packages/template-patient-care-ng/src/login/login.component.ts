@@ -16,7 +16,7 @@ import { UserService } from "./shared/user.service";
     templateUrl: "./login.component.html"
 })
 export class LoginComponent implements OnInit {
-    @ViewChild("loginFormElement") loginFormElement: RadDataFormComponent;
+    @ViewChild("loginFormElement", { static: false }) loginFormElement: RadDataFormComponent;
     isLoading: boolean;
 
     private _loginForm: LoginForm;
