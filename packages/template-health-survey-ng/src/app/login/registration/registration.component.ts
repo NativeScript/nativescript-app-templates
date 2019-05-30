@@ -18,7 +18,7 @@ import { RegistrationForm } from "./registration-form.model";
     templateUrl: "./registration.component.html"
 })
 export class RegistrationComponent implements OnInit {
-    @ViewChild("registrationFormElement") registrationFormElement: RadDataFormComponent;
+    @ViewChild("registrationFormElement", { static: false }) registrationFormElement: RadDataFormComponent;
     isLoading: boolean;
 
     private _registrationForm: RegistrationForm;

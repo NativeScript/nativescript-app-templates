@@ -13,8 +13,8 @@ const radialAnimationDurationMilliseconds = 1000;
 })
 export class RadialRatingComponent implements AfterViewInit, OnChanges {
 
-    @ViewChild("progressLabel") progressLabelElement: ElementRef;
-    @ViewChild("completionLabel") completionLabelElement: ElementRef;
+    @ViewChild("progressLabel", { static: false }) progressLabelElement: ElementRef;
+    @ViewChild("completionLabel", { static: false }) completionLabelElement: ElementRef;
 
     @Input() kCompletionIconFontSize: number;
     @Input() kCol: number;
