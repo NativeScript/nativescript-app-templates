@@ -11,7 +11,7 @@
   },
   "name": "tns-template-patient-care-ng",
   "displayName": "Patient Care with Kinvey",
-  "version": "5.4.0",
+  "version": "5.4.1",
   "description": "Patient care template that saves data to Kinvey database.",
   "license": "SEE LICENSE IN <your-license-filename>",
   "keywords": [
@@ -63,7 +63,6 @@
   },
   "devDependencies": {
     "@angular/compiler-cli": "~8.0.0",
-    "@nativescript/schematics": "~0.6.0",
     "@ngtools/webpack": "~8.0.0",
     "codelyzer": "~4.5.0",
     "nativescript-dev-typescript": "~0.10.0",

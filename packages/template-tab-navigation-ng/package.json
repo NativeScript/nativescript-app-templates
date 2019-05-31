@@ -12,7 +12,7 @@
   "name": "tns-template-tab-navigation-ng",
   "displayName": "Tabs",
   "templateType": "App template",
-  "version": "5.4.0",
+  "version": "5.4.1",
   "description": "Tabbed interface template",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
@@ -59,7 +59,6 @@
   },
   "devDependencies": {
     "@angular/compiler-cli": "~8.0.0",
-    "@nativescript/schematics": "~0.6.0",
     "@ngtools/webpack": "~8.0.0",
     "codelyzer": "~4.5.0",
     "nativescript-dev-sass": "~1.7.0",
