@@ -40,10 +40,10 @@
   },
   "dependencies": {
     "nativescript-theme-core": "~1.0.4",
-    "nativescript-ui-sidedrawer": "~6.0.0",
+    "nativescript-ui-sidedrawer": "androidx",
     "nativescript-vue": "~2.2.0",
     "rxjs": "~6.5.0",
-    "tns-core-modules": "~5.4.0"
+    "tns-core-modules": "androidx"
   },
   "devDependencies": {
     "@babel/core": "~7.1.0",

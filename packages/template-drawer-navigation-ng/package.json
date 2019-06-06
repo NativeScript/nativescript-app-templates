@@ -3,7 +3,7 @@
     "id": "org.nativescript.DrawerNavigation",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "5.4.0"
+      "version": "androidx"
     },
     "tns-ios": {
       "version": "5.4.0"
@@ -52,10 +52,10 @@
     "@angular/router": "~8.0.0",
     "nativescript-angular": "~8.0.0",
     "nativescript-theme-core": "~1.0.4",
-    "nativescript-ui-sidedrawer": "~6.0.0",
+    "nativescript-ui-sidedrawer": "androidx",
     "reflect-metadata": "~0.1.12",
     "rxjs": "~6.5.0",
-    "tns-core-modules": "~5.4.0",
+    "tns-core-modules": "androidx",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

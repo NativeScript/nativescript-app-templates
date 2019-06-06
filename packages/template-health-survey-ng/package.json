@@ -52,10 +52,10 @@
     "nativescript-angular": "~8.0.0",
     "nativescript-iqkeyboardmanager": "~1.3.0",
     "nativescript-theme-core": "~1.0.4",
-    "nativescript-ui-dataform": "~4.0.0",
+    "nativescript-ui-dataform": "androidx",
     "reflect-metadata": "~0.1.12",
     "rxjs": "~6.5.0",
-    "tns-core-modules": "~5.4.0",
+    "tns-core-modules": "androidx",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

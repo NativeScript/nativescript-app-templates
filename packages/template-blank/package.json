@@ -3,7 +3,7 @@
     "id": "org.nativescript.Blank",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "5.4.0"
+      "version": "androidx"
     },
     "tns-ios": {
       "version": "5.4.0"
@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "nativescript-theme-core": "~1.0.4",
-    "tns-core-modules": "~5.4.0"
+    "tns-core-modules": "androidx"
   },
   "devDependencies": {
     "nativescript-dev-webpack": "~0.24.0"
