@@ -6,11 +6,11 @@
       "version": "5.4.0"
     },
     "tns-ios": {
-      "version": "5.4.0"
+      "version": "5.4.1"
     }
   },
   "name": "tns-template-hello-world-ng",
-  "version": "5.4.1",
+  "version": "5.4.2",
   "author": "Telerik <support@telerik.com>",
   "description": "NativeScript Angular Hello World template",
   "license": "Apache-2.0",

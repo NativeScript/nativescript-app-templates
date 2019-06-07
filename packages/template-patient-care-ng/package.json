@@ -6,12 +6,12 @@
       "version": "5.4.0"
     },
     "tns-ios": {
-      "version": "5.4.0"
+      "version": "5.4.1"
     }
   },
   "name": "tns-template-patient-care-ng",
   "displayName": "Patient Care with Kinvey",
-  "version": "5.4.1",
+  "version": "5.4.2",
   "description": "Patient care template that saves data to Kinvey database.",
   "license": "SEE LICENSE IN <your-license-filename>",
   "keywords": [

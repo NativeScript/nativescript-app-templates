@@ -6,13 +6,13 @@
       "version": "5.4.0"
     },
     "tns-ios": {
-      "version": "5.4.0"
+      "version": "5.4.1"
     }
   },
   "name": "tns-template-master-detail-kinvey-ng",
   "displayName": "Master-Detail with Kinvey",
   "templateType": "App template",
-  "version": "5.4.1",
+  "version": "5.4.2",
   "description": "Master-detail interface to display collection of items from Kinvey and inspect and edit selected item properties. ",
   "license": "SEE LICENSE IN <your-license-filename>",
   "keywords": [
