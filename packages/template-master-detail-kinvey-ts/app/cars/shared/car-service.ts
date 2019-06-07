@@ -1,7 +1,7 @@
 import { Config } from "../../shared/config";
 import { Car } from "./car-model";
 
-import { Kinvey } from "kinvey-nativescript-sdk";
+import { DataStore, Files, User, Query } from "kinvey-nativescript-sdk";
 import { File } from "tns-core-modules/file-system";
 
 const editableProperties = [
@@ -29,7 +29,7 @@ export class CarService {
     }
 
     private allCars: Array<Car> = [];
-    private carsStore = Kinvey.DataStore.collection<any>("cars");
+    private carsStore = DataStore.collection("cars");
 
     constructor() {
         if (CarService._instance) {
@@ -43,7 +43,7 @@ export class CarService {
         return this.login().then(() => {
             return this.carsStore.sync();
         }).then(() => {
-            const sortByNameQuery = new Kinvey.Query();
+            const sortByNameQuery = new Query();
             sortByNameQuery.ascending("name");
             const stream = this.carsStore.find(sortByNameQuery);
 
@@ -78,12 +78,12 @@ export class CarService {
             public: true
         };
 
-        return Kinvey.Files.upload(imageFile, metadata, { timeout: 2147483647 })
+        return Files.upload(imageFile, metadata, { timeout: 2147483647 })
             .then((uploadedFile: any) => {
-                const query = new Kinvey.Query();
+                const query = new Query();
                 query.equalTo("_id", uploadedFile._id);
 
-                return Kinvey.Files.find(query);
+                return Files.find(query);
             })
             .then((files: Array<any>) => {
                 if (files && files.length) {
@@ -98,10 +98,10 @@ export class CarService {
     }
 
     private login(): Promise<any> {
-        if (!!Kinvey.User.getActiveUser()) {
+        if (!!User.getActiveUser()) {
             return Promise.resolve();
         } else {
-            return Kinvey.User.login(Config.kinveyUsername, Config.kinveyPassword);
+            return User.login(Config.kinveyUsername, Config.kinveyPassword);
         }
     }
 
