@@ -3,7 +3,7 @@
     "id": "org.nativescript.HealthSurvey",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "5.4.0"
+      "version": "6.0.0-2019-06-05-002854-01"
     },
     "tns-ios": {
       "version": "5.4.0"
@@ -48,7 +48,7 @@
     "@angular/platform-browser-dynamic": "~8.0.0",
     "@angular/router": "~8.0.0",
     "jstimezonedetect": "~1.0.6",
-    "kinvey-nativescript-sdk": "3.12.3",
+    "kinvey-nativescript-sdk": "4.1.0",
     "nativescript-angular": "~8.0.0",
     "nativescript-iqkeyboardmanager": "~1.3.0",
     "nativescript-theme-core": "~1.0.4",

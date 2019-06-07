@@ -3,7 +3,7 @@
     "id": "org.nativescript.MasterDetailKinvey",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "5.4.0"
+      "version": "6.0.0-2019-06-05-002854-01"
     },
     "tns-ios": {
       "version": "5.4.0"
@@ -41,7 +41,7 @@
     "lint": "eslint \"app/**/*.js\""
   },
   "dependencies": {
-    "kinvey-nativescript-sdk": "3.12.3",
+    "kinvey-nativescript-sdk": "4.1.0",
     "nativescript-imagepicker": "~6.2.0",
     "nativescript-theme-core": "~1.0.4",
     "nativescript-ui-listview": "androidx",
