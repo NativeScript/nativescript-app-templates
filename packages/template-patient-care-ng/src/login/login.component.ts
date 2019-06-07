@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { Kinvey } from "kinvey-nativescript-sdk";
+import { User } from "kinvey-nativescript-sdk";
+// TODO: should be imported from kinvey-nativescript-sdk/angular but declaration file is currently missing
+import { UserService, Errors } from "kinvey-nativescript-sdk/lib/angular";
 import { RouterExtensions } from "nativescript-angular/router";
 import { DataFormEventData } from "nativescript-ui-dataform";
 import { RadDataFormComponent } from "nativescript-ui-dataform/angular";
@@ -8,7 +10,6 @@ import { alert } from "tns-core-modules/ui/dialogs";
 import { Page } from "tns-core-modules/ui/page";
 
 import { LoginForm } from "./login-form.model";
-import { UserService } from "./shared/user.service";
 
 @Component({
     selector: "Login",
@@ -23,7 +24,8 @@ export class LoginComponent implements OnInit {
 
     constructor(
         private _page: Page,
-        private _routerExtensions: RouterExtensions
+        private _routerExtensions: RouterExtensions,
+        private userService: UserService
     ) { }
 
     ngOnInit(): void {
@@ -52,8 +54,8 @@ export class LoginComponent implements OnInit {
 
         this.isLoading = true;
 
-        UserService.login(this._loginForm.email, this._loginForm.password)
-            .then((user: Kinvey.User) => {
+        this.userService.login(this._loginForm.email, this._loginForm.password)
+            .then((user: User) => {
                 this._routerExtensions.navigate(["/care"],
                     {
                         clearHistory: true,
@@ -67,7 +69,7 @@ export class LoginComponent implements OnInit {
 
                 this.isLoading = false;
             })
-            .catch((error: Kinvey.BaseError) => {
+            .catch((error: Errors.BaseError) => {
                 this.isLoading = false;
                 alert({
                     title: "Login failed",
