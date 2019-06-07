@@ -1,4 +1,4 @@
-const Kinvey = require("kinvey-nativescript-sdk").Kinvey;
+const Kinvey = require("kinvey-nativescript-sdk");
 const fs = require("tns-core-modules/file-system");
 
 const Config = require("../../shared/config");
