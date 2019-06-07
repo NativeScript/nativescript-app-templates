@@ -1,7 +1,6 @@
 const observableModule = require("tns-core-modules/data/observable");
-const Kinvey = require("kinvey-nativescript-sdk").Kinvey;
+const Kinvey = require("kinvey-nativescript-sdk");
 const topmost = require("tns-core-modules/ui/frame").topmost;
-
 
 function HomeViewModel(userInfo) {
     const viewModel = observableModule.fromObject({
@@ -27,7 +26,7 @@ function HomeViewModel(userInfo) {
             const menuButtonParent = args.object.parent;
             alert("Navigate to " + menuButtonParent.get("data-name"));
         },
-    
+
         onProfileButtonTap: function() {
             // Navigate to profile page here
             alert("Navigate to profile page");
