@@ -11,7 +11,7 @@
   },
   "name": "tns-template-blank-vue",
   "displayName": "Blank",
-  "version": "5.4.1",
+  "version": "5.4.2",
   "description": "Blank template for NativeScript apps using Vue.",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
