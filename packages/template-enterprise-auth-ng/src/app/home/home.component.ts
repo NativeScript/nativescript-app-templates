@@ -1,5 +1,7 @@
 import { Component, ElementRef, OnInit } from "@angular/core";
-import { Kinvey, User } from "kinvey-nativescript-sdk";
+import { User } from "kinvey-nativescript-sdk";
+// TODO: should be imported from kinvey-nativescript-sdk/angular but declaration file is currently missing
+import { UserService } from "kinvey-nativescript-sdk/lib/angular";
 import { RouterExtensions } from "nativescript-angular/router";
 import { Page } from "tns-core-modules/ui/page";
 import { EventData } from "tns-core-modules/data/observable";
@@ -13,19 +15,22 @@ import { StackLayout } from "tns-core-modules/ui/layouts/stack-layout";
 export class HomeComponent implements OnInit {
     loggedUser: string;
 
-    constructor(private _routerExtensions: RouterExtensions, private page: Page) {
+    constructor(
+        private _routerExtensions: RouterExtensions,
+        private _userService: UserService,
+        private page: Page) {
         this.page.actionBarHidden = false;
     }
 
     ngOnInit(): void {
-        Kinvey.User.me()
+        this._userService.me()
             .then((user: User) => {
-                this.loggedUser = user.data["_socialIdentity"].kinveyAuth.id;
+                this.loggedUser = (<any>user.data._socialIdentity).kinveyAuth.id;
             });
     }
 
     logout() {
-        Kinvey.User.logout()
+        this._userService.logout()
             .then(() => {
                 this._routerExtensions.navigate(["login"],
                     {
