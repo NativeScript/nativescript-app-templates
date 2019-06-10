@@ -47,7 +47,7 @@ The template also provides a data service:
 - `/cars/shared/car.service.ts` - serves as a data layer for the master-detail data items. Wraps the functions that are used to make operations on the Kinvey database.
 
 ### Kinvey integration
-The templates uses the [{N} Kinvey plugin](https://github.com/Kinvey/nativescript-sdk). The initialization is done before the app starts in the `/main.ts` file. The initialization script is located at `/shared/kinvey.common.ts`.
+The template uses the [{N} Kinvey plugin](https://github.com/Kinvey/nativescript-sdk). The initialization is done in the `src/app/app.module.ts` file with the KinveyModule import.
 
 ### [Optional] Kinvey database setup
 By design the app is connected to a read-only copy of the sample data in Kinvey. If you want to see the "edit" functionality in action you will have to clone the sample data and update the app configuration to point to your own Kinvey setup. You can find detailed instructions how to achieve that [here](https://github.com/NativeScript/template-master-detail-kinvey-ng/blob/master/tools/kinvey/kinvey-database-setup.md).

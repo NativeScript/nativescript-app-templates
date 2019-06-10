@@ -1,5 +1,5 @@
 const observableModule = require("tns-core-modules/data/observable");
-const Kinvey = require("kinvey-nativescript-sdk").Kinvey;
+const Kinvey = require("kinvey-nativescript-sdk");
 const topmost = require("tns-core-modules/ui/frame").topmost;
 
 function LoginViewModel() {
