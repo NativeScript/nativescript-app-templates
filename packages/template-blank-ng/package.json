@@ -12,7 +12,7 @@
   "name": "tns-template-blank-ng",
   "displayName": "Blank",
   "templateType": "App template",
-  "version": "5.4.2",
+  "version": "5.4.3",
   "description": "Blank template for NativeScript apps using Angular",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
