@@ -2,11 +2,4 @@
 import { platformNativeScriptDynamic } from "nativescript-angular/platform";
 import { AppModule } from "./app/app.module";
 
-/* ***********************************************************
-* The {N} Kinvey plugin needs some initialization steps before it is ready
-* for use. Check out the initialization script at /shared/kinvey.common.ts
-* along with more information about it.
-*************************************************************/
-import "./app/shared/kinvey.common";
-
 platformNativeScriptDynamic().bootstrapModule(AppModule);

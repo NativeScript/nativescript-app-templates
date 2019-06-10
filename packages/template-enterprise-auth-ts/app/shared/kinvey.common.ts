@@ -1,4 +1,4 @@
-import { Kinvey } from "kinvey-nativescript-sdk";
+import { init } from "kinvey-nativescript-sdk";
 
 /* ***********************************************************
 * The {N} Kinvey plugin initialization is explained in the plugin readme here:
@@ -7,4 +7,4 @@ import { Kinvey } from "kinvey-nativescript-sdk";
 * You can build and run this template without creating your own Kinvey project.
 *************************************************************/
 
-Kinvey.init();
+init();

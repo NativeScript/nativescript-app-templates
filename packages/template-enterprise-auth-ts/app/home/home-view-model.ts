@@ -1,6 +1,6 @@
 import { EventData, Observable } from "tns-core-modules/data/observable";
 import { ObservableProperty } from "../shared/observable-property-decorator";
-import { Kinvey } from "kinvey-nativescript-sdk";
+import { User } from "kinvey-nativescript-sdk";
 import { topmost } from "tns-core-modules/ui/frame";
 import { StackLayout } from "tns-core-modules/ui/layouts/stack-layout";
 
@@ -13,7 +13,7 @@ export class HomeViewModel extends Observable {
     }
 
     logout() {
-        Kinvey.User.logout()
+        User.logout()
             .then(() => {
                 topmost().navigate({
                     moduleName: "login/login-page",

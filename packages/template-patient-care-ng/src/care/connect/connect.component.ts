@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { Kinvey } from "kinvey-nativescript-sdk";
+// TODO: should be imported from kinvey-nativescript-sdk/angular but declaration file is currently missing
+import { UserService } from "kinvey-nativescript-sdk/lib/angular";
 import { RouterExtensions } from "nativescript-angular/router";
 
 import { ConnectService } from "./shared/connect.service";
@@ -21,7 +22,8 @@ export class ConnectComponent implements OnInit {
 
     constructor(
         private _routerExtensions: RouterExtensions,
-        private _connectService: ConnectService) {
+        private _connectService: ConnectService,
+        private _userService: UserService) {
     }
 
     get name(): string {
@@ -29,7 +31,7 @@ export class ConnectComponent implements OnInit {
             return this._name;
         }
 
-        const activeUser: any = Kinvey.User.getActiveUser();
+        const activeUser: any = this._userService.getActiveUser();
 
         if (activeUser) {
             const givenName = activeUser.data.givenName;
@@ -48,7 +50,7 @@ export class ConnectComponent implements OnInit {
             return this._monogram;
         }
 
-        const activeUser: any = Kinvey.User.getActiveUser();
+        const activeUser: any = this._userService.getActiveUser();
 
         if (activeUser) {
             const givenName = activeUser.data.givenName;

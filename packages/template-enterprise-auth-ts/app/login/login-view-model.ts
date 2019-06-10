@@ -1,5 +1,5 @@
 import { Observable } from "tns-core-modules/data/observable";
-import { Kinvey } from "kinvey-nativescript-sdk";
+import { User, Errors } from "kinvey-nativescript-sdk";
 import { topmost } from "tns-core-modules/ui/frame";
 
 export class LoginViewModel extends Observable {
@@ -8,15 +8,15 @@ export class LoginViewModel extends Observable {
     }
 
     login() {
-        let activeUser = Kinvey.User.getActiveUser();
+        let activeUser = User.getActiveUser();
         if (activeUser == null) {
-            Kinvey.User.loginWithMIC()
-                .then((user: Kinvey.User) => {
+            User.loginWithMIC()
+                .then((user: User) => {
                     activeUser = user;
                     this.navigateHome(activeUser);
                     console.log("user: " + JSON.stringify(user));
                 })
-                .catch((error: Kinvey.BaseError) => {
+                .catch((error: Errors.BaseError) => {
                     alert("An error occurred. Check your Kinvey settings.");
                     console.log("error: " + error);
                 });
@@ -25,10 +25,10 @@ export class LoginViewModel extends Observable {
         }
     }
 
-    private navigateHome(user: Kinvey.User) {
+    private navigateHome(user: User) {
         topmost().navigate({
             moduleName: "home/home-page",
-            context: user.data["_socialIdentity"].kinveyAuth.id,
+            context: (<any>user.data._socialIdentity).kinveyAuth.id,
             animated: true,
             transition: {
                 name: "slideTop",

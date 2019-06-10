@@ -6,12 +6,12 @@
       "version": "6.0.0-2019-06-05-002854-01"
     },
     "tns-ios": {
-      "version": "5.4.0"
+      "version": "5.4.1"
     }
   },
   "name": "tns-template-master-detail-vue",
   "displayName": "Master Detail with Firebase",
-  "version": "5.4.1",
+  "version": "5.4.2",
   "description": "Master-detail interface to display collection of items from Firebase and inspect and edit selected item properties.",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",

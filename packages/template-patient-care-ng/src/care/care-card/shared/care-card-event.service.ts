@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
-import { Kinvey } from "kinvey-nativescript-sdk";
+// TODO: should be imported from kinvey-nativescript-sdk/angular but declaration file is currently missing
+import { DataStoreService, Errors } from "kinvey-nativescript-sdk/lib/angular";
 import { BehaviorSubject, Observable } from "rxjs";
 
 import { CarePlanActivityType } from "./care-plan-activity-type.enum";
@@ -19,11 +20,13 @@ export class CareCardEventService {
     updatedEvent$: Observable<CarePlanEvent>;
 
     private _updatedEventItemSource: BehaviorSubject<CarePlanEvent>;
-    private _eventsDataStore = Kinvey.DataStore.collection<any>("Event");
+    private _eventsDataStore = null;
     private _events: Array<CarePlanEvent>;
     private _eventsPromise: Promise<any>;
 
-    constructor() {
+    constructor(dataStoreService: DataStoreService) {
+        this._eventsDataStore = dataStoreService.collection("Event");
+
         this._events = new Array<CarePlanEvent>();
 
         // Observable events source
@@ -94,7 +97,7 @@ export class CareCardEventService {
 
                     return events;
                 })
-                .catch((error: Kinvey.BaseError) => {
+                .catch((error: Errors.BaseError) => {
                     alert({
                         title: "Oops something went wrong.",
                         message: error.message,
