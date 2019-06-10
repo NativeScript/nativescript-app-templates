@@ -1,4 +1,4 @@
-const Kinvey = require("kinvey-nativescript-sdk").Kinvey;
+const Kinvey = require("kinvey-nativescript-sdk");
 
 /* ***********************************************************
 * The {N} Kinvey plugin initialization is explained in the plugin readme here:

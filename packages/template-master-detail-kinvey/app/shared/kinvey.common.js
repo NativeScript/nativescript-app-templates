@@ -1,4 +1,4 @@
-const Kinvey = require("kinvey-nativescript-sdk").Kinvey;
+const Kinvey = require("kinvey-nativescript-sdk");
 
 const config = require("./config");
 

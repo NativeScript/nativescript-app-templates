@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { Kinvey } from "kinvey-nativescript-sdk";
+// TODO: should be imported from kinvey-nativescript-sdk/angular but declaration file is currently missing
+import { UserService, Errors } from "kinvey-nativescript-sdk/lib/angular";
+import { User } from "kinvey-nativescript-sdk";
 import { RouterExtensions } from "nativescript-angular/router";
 import { DataFormEventData } from "nativescript-ui-dataform";
 import { RadDataFormComponent } from "nativescript-ui-dataform/angular";
@@ -9,7 +11,6 @@ import { layout } from "tns-core-modules/utils/utils";
 
 import { RegistrationStep, SignUpStep } from "../../core/task-manager/steps";
 import { TaskManagerService } from "../../core/task-manager/task-manager.service";
-import { UserService } from "../shared/user.service";
 import { RegistrationForm } from "./registration-form.model";
 
 @Component({
@@ -26,7 +27,8 @@ export class RegistrationComponent implements OnInit {
     constructor(
         private _page: Page,
         private _routerExtensions: RouterExtensions,
-        private _taskManagerService: TaskManagerService
+        private _taskManagerService: TaskManagerService,
+        private _userService: UserService
     ) { }
 
     ngOnInit(): void {
@@ -87,8 +89,8 @@ export class RegistrationComponent implements OnInit {
 
         this._taskManagerService.addStep(new RegistrationStep("registrationStep", this._registrationForm));
 
-        UserService.signup(this._registrationForm)
-            .then((user: Kinvey.User) => {
+        this._userService.signup(this._registrationForm)
+            .then((user: User) => {
                 this._taskManagerService.addStep(new SignUpStep("signUp"));
                 this._taskManagerService.pushTask("accountCreationTask");
 
@@ -105,7 +107,7 @@ export class RegistrationComponent implements OnInit {
 
                 this.isLoading = false;
             })
-            .catch((error: Kinvey.BaseError) => {
+            .catch((error: Errors.BaseError) => {
                 this.isLoading = false;
                 alert({
                     title: "Registration failed",

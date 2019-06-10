@@ -1,4 +1,4 @@
-import { Kinvey } from "kinvey-nativescript-sdk";
+import { init } from "kinvey-nativescript-sdk";
 
 import { Config } from "./config";
 
@@ -9,7 +9,7 @@ import { Config } from "./config";
 * You can build and run this template without creating your own Kinvey project.
 *************************************************************/
 
-Kinvey.init({
+init({
     appKey: Config.kinveyAppKey,
     appSecret: Config.kinveyAppSecret
 });
