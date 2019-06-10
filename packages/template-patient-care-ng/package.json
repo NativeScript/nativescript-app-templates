@@ -3,7 +3,7 @@
     "id": "org.nativescript.PatientCare",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "5.4.0"
+      "version": "6.0.0-2019-06-05-002854-01"
     },
     "tns-ios": {
       "version": "5.4.1"
@@ -53,9 +53,9 @@
     "nativescript-iqkeyboardmanager": "~1.3.0",
     "nativescript-phone": "~1.3.1",
     "nativescript-theme-core": "~1.0.4",
-    "nativescript-ui-dataform": "~4.0.0",
-    "nativescript-ui-gauge": "~4.0.0",
-    "nativescript-ui-listview": "~6.3.0",
+    "nativescript-ui-dataform": "androidx",
+    "nativescript-ui-gauge": "androidx",
+    "nativescript-ui-listview": "androidx",
     "reflect-metadata": "~0.1.12",
     "rxjs": "~6.5.0",
     "tns-core-modules": "~5.4.0",

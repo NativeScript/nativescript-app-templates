@@ -3,7 +3,7 @@
     "id": "org.nativescript.TabNavigation",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "5.4.0"
+      "version": "6.0.0-2019-06-05-002854-01"
     },
     "tns-ios": {
       "version": "5.4.1"
@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "nativescript-theme-core": "~1.0.4",
-    "tns-core-modules": "~5.4.0"
+    "tns-core-modules": "androidx"
   },
   "devDependencies": {
     "eslint": "~5.8.0",
