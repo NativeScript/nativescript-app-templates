@@ -6,12 +6,12 @@
       "version": "6.0.0-2019-06-05-002854-01"
     },
     "tns-ios": {
-      "version": "5.4.1"
+      "version": "5.4.2"
     }
   },
   "name": "tns-template-hello-world-ts",
   "main": "app.js",
-  "version": "5.4.2",
+  "version": "5.4.3",
   "author": "Telerik <support@telerik.com>",
   "description": "Nativescript hello-world-ts project template",
   "license": "Apache-2.0",

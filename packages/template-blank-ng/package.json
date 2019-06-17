@@ -6,13 +6,13 @@
       "version": "6.0.0-2019-06-05-002854-01"
     },
     "tns-ios": {
-      "version": "5.4.1"
+      "version": "5.4.2"
     }
   },
   "name": "tns-template-blank-ng",
   "displayName": "Blank",
   "templateType": "App template",
-  "version": "5.4.3",
+  "version": "5.4.4",
   "description": "Blank template for NativeScript apps using Angular",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
