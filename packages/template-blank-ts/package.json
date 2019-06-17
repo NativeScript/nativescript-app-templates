@@ -3,10 +3,10 @@
     "id": "org.nativescript.Blank",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "6.0.0-2019-06-05-002854-01"
+      "version": "6.0.0-2019-06-13-112614-01"
     },
     "tns-ios": {
-      "version": "5.4.2"
+      "version": "6.0.0-2019-06-13-141312-01"
     }
   },
   "name": "tns-template-blank-ts",
