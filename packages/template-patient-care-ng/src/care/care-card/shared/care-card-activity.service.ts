@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
-import { Kinvey } from "kinvey-nativescript-sdk";
+// TODO: should be imported from kinvey-nativescript-sdk/angular but declaration file is currently missing
+import { DataStoreService, Errors } from "kinvey-nativescript-sdk/lib/angular";
 
 import { CareCardEventService } from "./care-card-event.service";
 import { CarePlanActivityGroup } from "./care-plan-activity-group.enum";
@@ -11,12 +12,13 @@ import { CarePlanEvent } from "./care-plan-event.model";
     providedIn: "root"
 })
 export class CareCardActivityService {
-    private _activityStore = Kinvey.DataStore.collection<any>("Activity");
+    private _activityStore = null;
 
     private _activities: Array<CarePlanActivity>;
     private _activitiesPromise: Promise<any>;
 
-    constructor(private _careCardEventService: CareCardEventService) {
+    constructor(private _careCardEventService: CareCardEventService, dataStoreService: DataStoreService) {
+        this._activityStore = dataStoreService.collection("Activity");
         this._activities = new Array<CarePlanActivity>();
     }
 
@@ -45,7 +47,7 @@ export class CareCardActivityService {
 
                     return activities;
                 })
-                .catch((error: Kinvey.BaseError) => {
+                .catch((error: Errors.BaseError) => {
                     alert({
                         title: "Oops something went wrong.",
                         message: error.message,

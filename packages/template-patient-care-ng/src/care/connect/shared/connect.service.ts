@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { Kinvey } from "kinvey-nativescript-sdk";
-import { Observable } from "rxjs";
+// TODO: should be imported from kinvey-nativescript-sdk/angular but declaration file is currently missing
+import { DataStoreService, Errors } from "kinvey-nativescript-sdk/lib/angular";
 
 import { Contact } from "./contact.model";
 
@@ -10,8 +10,12 @@ import { Contact } from "./contact.model";
 export class ConnectService {
     private _contacts: Array<Contact>;
 
-    private _contactStore = Kinvey.DataStore.collection<any>("Contact");
+    private _contactStore = null;
     private _contactsPromise: Promise<any>;
+
+    constructor(dataStoreService: DataStoreService) {
+        this._contactStore = dataStoreService.collection("Contact");
+    }
 
     getContactById(id: string): Contact {
         return this._contacts.find((contact) => {
@@ -36,7 +40,7 @@ export class ConnectService {
 
                     return contacts;
                 })
-                .catch((error: Kinvey.BaseError) => {
+                .catch((error: Errors.BaseError) => {
                     alert({
                         title: "Oops something went wrong.",
                         message: error.message,

@@ -3,16 +3,16 @@
     "id": "org.nativescript.EnterpriseAuth",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "5.4.0"
+      "version": "6.0.0-2019-06-05-002854-01"
     },
     "tns-ios": {
-      "version": "5.4.0"
+      "version": "5.4.2"
     }
   },
   "name": "tns-template-enterprise-auth",
   "displayName": "Enterprise Auth",
   "templateType": "App template",
-  "version": "5.4.1",
+  "version": "5.4.4",
   "description": "Login interface implemented using Kinvey Mobile Identity Connect",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
@@ -37,9 +37,9 @@
     "url": "https://github.com/NativeScript/NativeScript/issues"
   },
   "dependencies": {
-    "kinvey-nativescript-sdk": "3.12.3",
+    "kinvey-nativescript-sdk": "4.1.0",
     "nativescript-theme-core": "~1.0.4",
-    "tns-core-modules": "~5.4.0"
+    "tns-core-modules": "androidx"
   },
   "devDependencies": {
     "nativescript-dev-webpack": "~0.24.0"

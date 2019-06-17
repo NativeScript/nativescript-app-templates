@@ -3,16 +3,16 @@
     "id": "org.nativescript.EnterpriseAuth",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "5.4.0"
+      "version": "6.0.0-2019-06-05-002854-01"
     },
     "tns-ios": {
-      "version": "5.4.0"
+      "version": "5.4.2"
     }
   },
   "name": "tns-template-enterprise-auth-ts",
   "displayName": "Enterprise Auth",
   "templateType": "App template",
-  "version": "5.4.1",
+  "version": "5.4.4",
   "description": "NativeScript template for creating mobile apps that use enterprise identity and single sign-on systems to authenticate users. The template leverages Kinvey's Mobile Identity Connect feature to support various identity providers including SAML, OAuth2, OpenID Connect, Active Directory and more.",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
@@ -41,9 +41,9 @@
     "lint": "tslint \"app/**/*.ts\""
   },
   "dependencies": {
-    "kinvey-nativescript-sdk": "3.12.3",
+    "kinvey-nativescript-sdk": "4.1.0",
     "nativescript-theme-core": "~1.0.4",
-    "tns-core-modules": "~5.4.0"
+    "tns-core-modules": "androidx"
   },
   "devDependencies": {
     "nativescript-dev-webpack": "~0.24.0",

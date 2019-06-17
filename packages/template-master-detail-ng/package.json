@@ -3,16 +3,16 @@
     "id": "org.nativescript.MasterDetail",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "5.4.0"
+      "version": "6.0.0-2019-06-05-002854-01"
     },
     "tns-ios": {
-      "version": "5.4.0"
+      "version": "5.4.2"
     }
   },
   "name": "tns-template-master-detail-ng",
   "displayName": "Master-Detail with Firebase",
   "templateType": "App template",
-  "version": "5.4.1",
+  "version": "5.4.4",
   "description": "Master-detail interface to display collection of items from Firebase and inspect and edit selected item properties. ",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
@@ -53,11 +53,11 @@
     "nativescript-imagepicker": "~6.2.0",
     "nativescript-plugin-firebase": "~8.3.0",
     "nativescript-theme-core": "~1.0.4",
-    "nativescript-ui-listview": "~6.3.0",
+    "nativescript-ui-listview": "androidx",
     "reflect-metadata": "~0.1.12",
     "rxjs": "~6.5.0",
     "tns-core-modules": "~5.4.0",
-    "zone.js": "~0.8.26"
+    "zone.js": "~0.9.1"
   },
   "devDependencies": {
     "@angular/compiler-cli": "~8.0.0",

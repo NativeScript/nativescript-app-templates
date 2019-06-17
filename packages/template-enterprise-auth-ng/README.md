@@ -36,7 +36,7 @@ The template has the following components:
 - `app/home/home.component.ts` - The home page of the app - provides a Login button which, when clicked, takes the user through the configured login process.
 
 ### Kinvey integration
-The template uses the [{N} Kinvey plugin](https://github.com/Kinvey/nativescript-sdk). The initialization is done before the app starts in the `src/main.ts` file. The initialization script is located at `app/shared/kinvey.common.ts`. Once an application is created using the template, the configuration of Kinvey key and secret need to be done in `app/package.json`.
+The template uses the [{N} Kinvey plugin](https://github.com/Kinvey/nativescript-sdk). The initialization is done in the `src/app/app.module.ts` file with the KinveyModule import. Once an application is created using the template, the configuration of Kinvey key and secret need to be done in `app/package.json`.
 
 ### [Optional] Kinvey database setup
 By design the app is not associated with any Kinvey account. To make the login work you will need to have one with Kinvey Mobile Identity Connect Auth Service set up. You can find detailed instructions how to achieve that [here](https://devcenter.kinvey.com/nativescript/guides/mobile-identity-connect).

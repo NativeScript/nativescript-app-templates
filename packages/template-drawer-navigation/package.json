@@ -3,16 +3,16 @@
     "id": "org.nativescript.DrawerNavigation",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "5.4.0"
+      "version": "6.0.0-2019-06-05-002854-01"
     },
     "tns-ios": {
-      "version": "5.4.0"
+      "version": "5.4.2"
     }
   },
   "name": "tns-template-drawer-navigation",
   "displayName": "Navigation Drawer",
   "templateType": "App template",
-  "version": "5.4.1",
+  "version": "5.4.3",
   "description": "Side navigation template",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
@@ -41,9 +41,9 @@
   },
   "dependencies": {
     "nativescript-theme-core": "~1.0.4",
-    "nativescript-ui-sidedrawer": "~6.0.0",
+    "nativescript-ui-sidedrawer": "androidx",
     "rxjs": "~6.5.0",
-    "tns-core-modules": "~5.4.0"
+    "tns-core-modules": "androidx"
   },
   "devDependencies": {
     "eslint": "~5.8.0",
