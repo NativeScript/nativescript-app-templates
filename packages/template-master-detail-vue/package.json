@@ -42,7 +42,7 @@
     "nativescript-plugin-firebase": "~9.0.1",
     "nativescript-theme-core": "~1.0.4",
     "nativescript-ui-listview": "androidx",
-    "nativescript-vue": "~2.2.0",
+    "nativescript-vue": "next",
     "tns-core-modules": "next"
   },
   "devDependencies": {

@@ -41,7 +41,7 @@
   "dependencies": {
     "nativescript-theme-core": "~1.0.4",
     "nativescript-ui-sidedrawer": "androidx",
-    "nativescript-vue": "~2.2.0",
+    "nativescript-vue": "next",
     "rxjs": "~6.5.0",
     "tns-core-modules": "next"
   },

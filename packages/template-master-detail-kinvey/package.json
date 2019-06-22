@@ -41,7 +41,7 @@
     "lint": "eslint \"app/**/*.js\""
   },
   "dependencies": {
-    "kinvey-nativescript-sdk": "4.1.0",
+    "kinvey-nativescript-sdk": "4.2.1",
     "nativescript-imagepicker": "~6.2.0",
     "nativescript-theme-core": "~1.0.4",
     "nativescript-ui-listview": "androidx",
