@@ -43,11 +43,11 @@
     "nativescript-theme-core": "~1.0.4",
     "nativescript-ui-sidedrawer": "androidx",
     "rxjs": "~6.5.0",
-    "tns-core-modules": "androidx"
+    "tns-core-modules": "next"
   },
   "devDependencies": {
     "eslint": "~5.8.0",
-    "nativescript-dev-webpack": "~0.24.0",
+    "nativescript-dev-webpack": "next",
     "node-sass": "^4.7.1"
   }
 }

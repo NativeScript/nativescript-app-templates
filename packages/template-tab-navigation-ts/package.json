@@ -41,10 +41,10 @@
   },
   "dependencies": {
     "nativescript-theme-core": "~1.0.4",
-    "tns-core-modules": "androidx"
+    "tns-core-modules": "next"
   },
   "devDependencies": {
-    "nativescript-dev-webpack": "~0.24.0",
+    "nativescript-dev-webpack": "next",
     "node-sass": "^4.7.1",
     "tslint": "~5.11.0",
     "typescript": "~3.4.0"
