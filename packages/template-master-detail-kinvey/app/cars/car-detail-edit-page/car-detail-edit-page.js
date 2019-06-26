@@ -101,11 +101,15 @@ function onSelectorTap(args) {
     const modalPagePath = "cars/list-selector-modal-page/list-selector-modal-page";
     const page = gridLayout.page;
 
-    page.showModal(modalPagePath, context, (value) => {
-        if (value) {
-            bindingContext.car.set(tag, value);
-        }
-    }, false);
+    page.showModal(modalPagePath, {
+        context: context,
+        closeCallback: (value) => {
+            if (value) {
+                bindingContext.car.set(tag, value);
+            }
+        },
+        fullscreen: false
+    });
 }
 
 function onImageAddRemoveTap(args) {
