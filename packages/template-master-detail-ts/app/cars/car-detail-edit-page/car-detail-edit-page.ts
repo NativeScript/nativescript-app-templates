@@ -73,11 +73,15 @@ export function onSelectorTap(args: EventData): void {
     const modalPagePath = "cars/list-selector-modal-page/list-selector-modal-page";
     const page = <Page>gridLayout.page;
 
-    page.showModal(modalPagePath, context, (value: string) => {
-        if (value) {
-            bindingContext.car[tag] = value;
-        }
-    }, false);
+    page.showModal(modalPagePath, {
+        context,
+        closeCallback: (value: string) => {
+            if (value) {
+                bindingContext.car[tag] = value;
+            }
+        },
+        fullscreen: false
+    });
 }
 
 export function onImageAddRemoveTap(args: EventData): void {
