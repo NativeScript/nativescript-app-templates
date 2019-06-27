@@ -51,7 +51,7 @@
     "kinvey-nativescript-sdk": "4.2.1",
     "nativescript-angular": "~8.0.0",
     "nativescript-imagepicker": "~6.2.0",
-    "nativescript-theme-core": "~1.0.4",
+    "nativescript-theme-core": "~1.0.6",
     "nativescript-ui-listview": "androidx",
     "reflect-metadata": "~0.1.12",
     "rxjs": "~6.5.0",
