@@ -52,7 +52,7 @@
     "@angular/router": "~8.0.0",
     "kinvey-nativescript-sdk": "4.2.1",
     "nativescript-angular": "~8.0.0",
-    "nativescript-theme-core": "~1.0.4",
+    "nativescript-theme-core": "~1.0.6",
     "reflect-metadata": "~0.1.10",
     "rxjs": "~6.5.0",
     "tns-core-modules": "next",
