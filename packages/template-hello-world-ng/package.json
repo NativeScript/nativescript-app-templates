@@ -3,10 +3,10 @@
     "id": "org.nativescript.HelloWorld",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "6.0.0-2019-06-13-112614-01"
+      "version": "6.0.0-rc-2019-07-04-174325-01"
     },
     "tns-ios": {
-      "version": "6.0.0-2019-06-13-141312-01"
+      "version": "6.0.0-rc-2019-07-10-174813-01"
     }
   },
   "name": "tns-template-hello-world-ng",
@@ -46,13 +46,13 @@
     "nativescript-theme-core": "~1.0.6",
     "reflect-metadata": "~0.1.12",
     "rxjs": "~6.5.0",
-    "tns-core-modules": "next",
+    "tns-core-modules": "rc",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
     "@angular/compiler-cli": "~8.0.0",
     "@ngtools/webpack": "~8.0.0",
-    "nativescript-dev-webpack": "next",
+    "nativescript-dev-webpack": "rc",
     "typescript": "~3.4.0"
   }
 }
