@@ -9,7 +9,6 @@ import { StackLayout } from "tns-core-modules/ui/layouts/stack-layout";
 
 @Component({
     selector: "Home",
-    moduleId: module.id,
     templateUrl: "./home.component.html"
 })
 export class HomeComponent implements OnInit {

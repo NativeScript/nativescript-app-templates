@@ -5,7 +5,6 @@ import { AppService } from "../../../shared/app.service";
 
 @Component({
     selector: "DataUse",
-    moduleId: module.id,
     templateUrl: "./data-use.component.html",
     styleUrls: ["../../consent-common.css"]
 })

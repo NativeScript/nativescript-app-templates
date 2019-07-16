@@ -5,7 +5,6 @@ import { DataService, IDataItem } from "../../shared/data.service";
 
 @Component({
     selector: "ItemDetail",
-    moduleId: module.id,
     templateUrl: "./item-detail.component.html"
 })
 export class ItemDetailComponent implements OnInit {

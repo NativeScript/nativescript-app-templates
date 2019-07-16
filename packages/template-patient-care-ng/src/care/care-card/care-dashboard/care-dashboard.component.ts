@@ -7,7 +7,6 @@ import { CarePlanEvent } from "../shared/care-plan-event.model";
 
 @Component({
     selector: "CareDashboard",
-    moduleId: module.id,
     templateUrl: "./care-dashboard.component.html",
     styleUrls: ["./care-dashboard.component.css", "../../care-common.css"]
 })

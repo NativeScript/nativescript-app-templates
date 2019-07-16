@@ -4,7 +4,6 @@ import { SelectedIndexChangedEventData, TabView } from "tns-core-modules/ui/tab-
 
 @Component({
     selector: "CareComponent",
-    moduleId: module.id,
     templateUrl: "./care.component.html",
     styleUrls: ["./care-common.css"]
 })

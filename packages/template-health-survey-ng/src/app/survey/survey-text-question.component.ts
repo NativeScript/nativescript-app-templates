@@ -7,7 +7,6 @@ import { AppService } from "../shared/app.service";
 
 @Component({
     selector: "SurveyTextQuestion",
-    moduleId: module.id,
     templateUrl: "./survey-text-question.component.html"
 })
 export class SurveyTextQuestionComponent {

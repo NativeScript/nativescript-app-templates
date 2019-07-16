@@ -13,7 +13,6 @@ import { carClassList, carDoorList, carSeatList, carTransmissionList } from "./c
 * This component gets the selected data item, provides options to edit the item and saves the changes.
 *************************************************************/
 @Component({
-    moduleId: module.id,
     selector: "CarDetailEdit",
     templateUrl: "./car-detail-edit.component.html",
     styleUrls: ["./car-detail-edit.component.scss"]

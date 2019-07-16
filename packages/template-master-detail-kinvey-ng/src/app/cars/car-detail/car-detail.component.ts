@@ -12,7 +12,6 @@ import { CarService } from "../shared/car.service";
 *************************************************************/
 @Component({
     selector: "CarDetail",
-    moduleId: module.id,
     templateUrl: "./car-detail.component.html"
 })
 export class CarDetailComponent implements OnInit {

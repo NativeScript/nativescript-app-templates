@@ -5,7 +5,6 @@ import { AppService } from "../../../shared/app.service";
 
 @Component({
     selector: "DataGathering",
-    moduleId: module.id,
     templateUrl: "./data-gathering.component.html",
     styleUrls: ["../../consent-common.css"]
 })

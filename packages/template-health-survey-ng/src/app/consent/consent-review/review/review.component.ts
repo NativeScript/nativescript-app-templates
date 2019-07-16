@@ -5,7 +5,6 @@ import { AppService } from "../../../shared/app.service";
 
 @Component({
     selector: "Review",
-    moduleId: module.id,
     templateUrl: "./review.component.html",
     styleUrls: ["../../consent-common.css"]
 })

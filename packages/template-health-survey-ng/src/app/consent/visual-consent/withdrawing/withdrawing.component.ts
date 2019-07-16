@@ -7,7 +7,6 @@ import { AppService } from "../../../shared/app.service";
 
 @Component({
     selector: "Withdrawing",
-    moduleId: module.id,
     templateUrl: "./withdrawing.component.html",
     styleUrls: ["../../consent-common.css"]
 })
