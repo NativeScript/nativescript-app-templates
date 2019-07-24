@@ -10,7 +10,6 @@ import { CarePlanEvent } from "../shared/care-plan-event.model";
 
 @Component({
     selector: "ActivityList",
-    moduleId: module.id,
     templateUrl: "./activity-list.component.html",
     styleUrls: ["../../care-common.css"]
 })

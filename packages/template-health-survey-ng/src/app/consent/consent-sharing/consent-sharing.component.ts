@@ -7,7 +7,6 @@ import { AppService } from "../../shared/app.service";
 
 @Component({
     selector: "ConsentSharing",
-    moduleId: module.id,
     templateUrl: "./consent-sharing.component.html",
     styleUrls: ["../consent-common.css"]
 })
