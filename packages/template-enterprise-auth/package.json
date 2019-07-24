@@ -6,13 +6,13 @@
       "version": "6.0.0"
     },
     "tns-ios": {
-      "version": "6.0.0"
+      "version": "6.0.1"
     }
   },
   "name": "tns-template-enterprise-auth",
   "displayName": "Enterprise Auth",
   "templateType": "App template",
-  "version": "5.4.4",
+  "version": "6.0.0",
   "description": "Login interface implemented using Kinvey Mobile Identity Connect",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",

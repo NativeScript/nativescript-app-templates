@@ -6,13 +6,13 @@
       "version": "6.0.0"
     },
     "tns-ios": {
-      "version": "6.0.0"
+      "version": "6.0.1"
     }
   },
   "name": "tns-template-drawer-navigation-ts",
   "displayName": "Navigation Drawer",
   "templateType": "App template",
-  "version": "5.4.3",
+  "version": "6.0.0",
   "description": "Side navigation template",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",

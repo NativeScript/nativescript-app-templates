@@ -6,12 +6,12 @@
       "version": "6.0.0"
     },
     "tns-ios": {
-      "version": "6.0.0"
+      "version": "6.0.1"
     }
   },
   "name": "tns-template-blank-vue",
   "displayName": "Blank",
-  "version": "5.4.3",
+  "version": "6.0.0",
   "description": "Blank template for NativeScript apps using Vue.",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
