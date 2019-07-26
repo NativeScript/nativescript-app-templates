@@ -88,7 +88,7 @@ export class RegistrationComponent implements OnInit {
 
         this._taskManagerService.addStep(new RegistrationStep("registrationStep", this._registrationForm));
 
-        this._userService.signup(this._registrationForm)
+        this._userService.signup(this._registrationForm.toPlainObject())
             .then((user: User) => {
                 this._taskManagerService.addStep(new SignUpStep("signUp"));
                 this._taskManagerService.pushTask("accountCreationTask");

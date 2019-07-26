@@ -83,7 +83,7 @@ export class RegistrationComponent implements OnInit {
 
         this.isLoading = true;
 
-        this.userService.signup(this._registrationForm)
+        this.userService.signup(this._registrationForm.toPlainObject())
             .then((user: User) => {
                 this._routerExtensions.navigate(["/care"],
                     {
