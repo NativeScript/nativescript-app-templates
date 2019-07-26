@@ -16,7 +16,6 @@ const capitalizeFirstLetter = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 * https://docs.nativescript.org/angular/code-samples/modal-page
 *************************************************************/
 @Component({
-    moduleId: module.id,
     providers: [ModalDialogService],
     selector: "MyListSelector",
     templateUrl: "./my-list-selector.component.html"

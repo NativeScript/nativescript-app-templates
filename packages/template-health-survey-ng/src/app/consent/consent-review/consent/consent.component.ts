@@ -11,7 +11,6 @@ import { ConsentForm } from "./consent-form.model";
 
 @Component({
     selector: "Consent",
-    moduleId: module.id,
     templateUrl: "./consent.component.html",
     styleUrls: ["../../consent-common.css"]
 })

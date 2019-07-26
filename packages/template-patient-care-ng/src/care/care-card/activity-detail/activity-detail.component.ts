@@ -14,7 +14,6 @@ const IOS_KEYBOARDTYPE_DECIMALPAD: number = 8;
 
 @Component({
     selector: "ActivityDetails",
-    moduleId: module.id,
     templateUrl: "./activity-detail.component.html",
     styleUrls: ["./activity-detail.component.css", "../../care-common.css"]
 })

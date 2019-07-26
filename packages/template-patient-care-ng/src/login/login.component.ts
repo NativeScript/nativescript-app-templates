@@ -13,7 +13,6 @@ import { LoginForm } from "./login-form.model";
 
 @Component({
     selector: "Login",
-    moduleId: module.id,
     templateUrl: "./login.component.html"
 })
 export class LoginComponent implements OnInit {

@@ -20,7 +20,6 @@ const MY_IMAGE_ADD_REMOVE_CONTROL_VALUE_ACCESSOR = {
 *************************************************************/
 @Component({
     selector: "MyImageAddRemove",
-    moduleId: module.id,
     templateUrl: "./my-image-add-remove.component.html",
     styleUrls: ["./my-image-add-remove.component.scss"],
     providers: [MY_IMAGE_ADD_REMOVE_CONTROL_VALUE_ACCESSOR]

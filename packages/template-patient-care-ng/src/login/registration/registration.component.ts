@@ -13,7 +13,6 @@ import { RegistrationForm } from "./registration-form.model";
 
 @Component({
     selector: "Registration",
-    moduleId: module.id,
     templateUrl: "./registration.component.html"
 })
 export class RegistrationComponent implements OnInit {

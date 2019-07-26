@@ -13,7 +13,6 @@ import { CarService } from "./shared/car.service";
 *************************************************************/
 @Component({
     selector: "CarsList",
-    moduleId: module.id,
     templateUrl: "./car-list.component.html",
     styleUrls: ["./car-list.component.scss"]
 })

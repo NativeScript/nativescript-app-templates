@@ -10,7 +10,6 @@ import { Contact } from "../shared/contact.model";
 
 @Component({
     selector: "ConnectDetail",
-    moduleId: module.id,
     templateUrl: "./connect-detail.component.html",
     styleUrls: ["../connect.component.css", "../../care-common.css"]
 })

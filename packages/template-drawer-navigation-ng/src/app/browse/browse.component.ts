@@ -4,7 +4,6 @@ import * as app from "tns-core-modules/application";
 
 @Component({
     selector: "Browse",
-    moduleId: module.id,
     templateUrl: "./browse.component.html"
 })
 export class BrowseComponent implements OnInit {

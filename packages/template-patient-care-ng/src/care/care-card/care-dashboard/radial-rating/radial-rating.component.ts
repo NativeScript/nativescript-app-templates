@@ -7,7 +7,6 @@ const radialAnimationDurationMilliseconds = 1000;
 
 @Component({
     selector: "RadialRating",
-    moduleId: module.id,
     templateUrl: "./radial-rating.component.html",
     styleUrls: ["./radial-rating.component.css"]
 })

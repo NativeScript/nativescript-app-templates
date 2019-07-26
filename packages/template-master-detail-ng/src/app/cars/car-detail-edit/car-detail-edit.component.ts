@@ -9,7 +9,6 @@ import { CarService } from "../shared/car.service";
 import { carClassList, carDoorList, carSeatList, carTransmissionList } from "./constants";
 
 @Component({
-    moduleId: module.id,
     selector: "CarDetailEdit",
     templateUrl: "./car-detail-edit.component.html",
     styleUrls: ["./car-detail-edit.component.scss"]

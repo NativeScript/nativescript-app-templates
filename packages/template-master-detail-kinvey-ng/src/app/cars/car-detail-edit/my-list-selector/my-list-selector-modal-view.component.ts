@@ -3,7 +3,6 @@ import { ModalDialogParams } from "nativescript-angular/modal-dialog";
 
 @Component({
     selector: "MyListSelectorModalView",
-    moduleId: module.id,
     templateUrl: "./my-list-selector-modal-view.component.html",
     styleUrls: ["./my-list-selector-modal-view.component.scss"]
 })
