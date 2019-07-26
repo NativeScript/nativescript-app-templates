@@ -16,4 +16,15 @@ export class RegistrationForm {
         this.gender = "male";
         this.dateOfBirth = null;
     }
+
+    toPlainObject() {
+        return {
+            email: this.email,
+            password: this.password,
+            givenName: this.givenName,
+            familyName: this.familyName,
+            gender: this.gender,
+            dateOfBirth: this.dateOfBirth
+        };
+    }
 }
