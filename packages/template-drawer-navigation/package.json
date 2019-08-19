@@ -42,12 +42,12 @@
   "dependencies": {
     "nativescript-theme-core": "~1.0.6",
     "nativescript-ui-sidedrawer": "~7.0.0",
-    "rxjs": "~6.5.0",
+    "rxjs": "^6.4.0",
     "tns-core-modules": "~6.0.0"
   },
   "devDependencies": {
     "eslint": "~5.8.0",
-    "nativescript-dev-webpack": "~1.0.0",
+    "nativescript-dev-webpack": "~1.1.0",
     "node-sass": "^4.7.1"
   }
 }
