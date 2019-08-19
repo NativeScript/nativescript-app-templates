@@ -3,16 +3,16 @@
     "id": "org.nativescript.Blank",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "6.0.0"
+      "version": "6.0.1"
     },
     "tns-ios": {
-      "version": "6.0.1"
+      "version": "6.0.2"
     }
   },
   "name": "tns-template-blank",
   "displayName": "Blank",
   "templateType": "App template",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "description": "Blank template for Vanilla NativeScript apps using JavaScript",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
@@ -38,6 +38,6 @@
     "tns-core-modules": "~6.0.0"
   },
   "devDependencies": {
-    "nativescript-dev-webpack": "~1.0.0"
+    "nativescript-dev-webpack": "~1.1.0"
   }
 }

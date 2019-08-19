@@ -3,16 +3,16 @@
     "id": "org.nativescript.TabNavigation",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "6.0.0"
+      "version": "6.0.1"
     },
     "tns-ios": {
-      "version": "6.0.1"
+      "version": "6.0.2"
     }
   },
   "name": "tns-template-tab-navigation",
   "displayName": "Tabs",
   "templateType": "App template",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "description": "Tabbed interface template",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "eslint": "~5.8.0",
-    "nativescript-dev-webpack": "~1.0.0",
+    "nativescript-dev-webpack": "~1.1.0",
     "node-sass": "^4.7.1"
   }
 }

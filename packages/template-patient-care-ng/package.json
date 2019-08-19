@@ -3,15 +3,15 @@
     "id": "org.nativescript.PatientCare",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "6.0.0"
+      "version": "6.0.1"
     },
     "tns-ios": {
-      "version": "6.0.1"
+      "version": "6.0.2"
     }
   },
   "name": "tns-template-patient-care-ng",
   "displayName": "Patient Care with Kinvey",
-  "version": "6.0.1",
+  "version": "6.0.2",
   "description": "Patient care template that saves data to Kinvey database.",
   "license": "SEE LICENSE IN <your-license-filename>",
   "keywords": [
@@ -38,17 +38,16 @@
     "lint": "tslint \"src/**/*.ts\""
   },
   "dependencies": {
-    "@angular/animations": "~8.0.0",
-    "@angular/common": "~8.0.0",
-    "@angular/compiler": "~8.0.0",
-    "@angular/core": "~8.0.0",
-    "@angular/forms": "~8.0.0",
-    "@angular/http": "~8.0.0-beta.10",
-    "@angular/platform-browser": "~8.0.0",
-    "@angular/platform-browser-dynamic": "~8.0.0",
-    "@angular/router": "~8.0.0",
+    "@angular/animations": "~8.2.0",
+    "@angular/common": "~8.2.0",
+    "@angular/compiler": "~8.2.0",
+    "@angular/core": "~8.2.0",
+    "@angular/forms": "~8.2.0",
+    "@angular/platform-browser": "~8.2.0",
+    "@angular/platform-browser-dynamic": "~8.2.0",
+    "@angular/router": "~8.2.0",
     "kinvey-nativescript-sdk": "4.2.1",
-    "nativescript-angular": "~8.0.0",
+    "nativescript-angular": "~8.2.0",
     "nativescript-email": "~1.5.1",
     "nativescript-iqkeyboardmanager": "~1.5.0",
     "nativescript-phone": "~1.4.0",
@@ -57,17 +56,17 @@
     "nativescript-ui-gauge": "~5.0.0",
     "nativescript-ui-listview": "~7.0.0",
     "reflect-metadata": "~0.1.12",
-    "rxjs": "~6.5.0",
+    "rxjs": "^6.4.0",
     "tns-core-modules": "~6.0.0",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
-    "@angular/compiler-cli": "~8.0.0",
-    "@ngtools/webpack": "~8.0.0",
+    "@angular/compiler-cli": "~8.2.0",
+    "@ngtools/webpack": "~8.2.0",
     "codelyzer": "~4.5.0",
-    "nativescript-dev-webpack": "~1.0.0",
+    "nativescript-dev-webpack": "~1.1.0",
     "tns-platform-declarations": "~6.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.4.0"
+    "typescript": "~3.5.3"
   }
 }
