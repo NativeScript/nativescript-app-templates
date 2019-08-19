@@ -3,10 +3,10 @@
     "id": "org.nativescript.TabNavigation",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "6.0.0"
+      "version": "6.0.1"
     },
     "tns-ios": {
-      "version": "6.0.1"
+      "version": "6.0.2"
     }
   },
   "name": "tns-template-tab-navigation-ts",
@@ -44,9 +44,9 @@
     "tns-core-modules": "~6.0.0"
   },
   "devDependencies": {
-    "nativescript-dev-webpack": "~1.0.0",
+    "nativescript-dev-webpack": "~1.1.0",
     "node-sass": "^4.7.1",
     "tslint": "~5.11.0",
-    "typescript": "~3.4.0"
+    "typescript": "~3.5.3"
   }
 }

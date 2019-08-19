@@ -3,10 +3,10 @@
     "id": "org.nativescript.HelloWorld",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "6.0.0"
+      "version": "6.0.1"
     },
     "tns-ios": {
-      "version": "6.0.1"
+      "version": "6.0.2"
     }
   },
   "name": "tns-template-hello-world",
@@ -36,6 +36,6 @@
     "tns-core-modules": "~6.0.0"
   },
   "devDependencies": {
-    "nativescript-dev-webpack": "~1.0.0"
+    "nativescript-dev-webpack": "~1.1.0"
   }
 }
