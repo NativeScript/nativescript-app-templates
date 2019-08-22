@@ -5,7 +5,6 @@ import { AppService } from "../../../shared/app.service";
 
 @Component({
     selector: "TimeCommitment",
-    moduleId: module.id,
     templateUrl: "./time-commitment.component.html",
     styleUrls: ["../../consent-common.css"]
 })

@@ -5,7 +5,6 @@ import { AppService } from "../../shared/app.service";
 
 @Component({
     selector: "Complete",
-    moduleId: module.id,
     templateUrl: "./survey-complete.component.html"
 })
 export class SurveyCompleteComponent implements OnInit {

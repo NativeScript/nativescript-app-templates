@@ -7,7 +7,6 @@ import { AppService } from "../shared/app.service";
 
 @Component({
     selector: "SurveyBooleanQuestion",
-    moduleId: module.id,
     templateUrl: "./survey-boolean-question.component.html"
 })
 export class SurveyBooleanQuestionComponent implements OnInit {
