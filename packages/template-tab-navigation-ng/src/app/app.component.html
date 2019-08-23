@@ -1,18 +1,37 @@
-<TabView androidTabsPosition="bottom">
+<BottomNavigation>
+    <TabStrip>
+        <!--
+            Besides the approach demonstrated below there is alternative shorthand syntax for setting TabStripItem title and icon:
 
-    <page-router-outlet
-        *tabItem="{title: 'Home', iconSource: getIconSource('home')}"
-        name="homeTab">
-    </page-router-outlet>
+            <TabStripItem title="Home" iconSource="font://&#xf015;" />
 
-    <page-router-outlet
-        *tabItem="{title: 'Browse', iconSource: getIconSource('browse')}"
-        name="browseTab">
-    </page-router-outlet>
+            Both shorthand and verbose syntax can use
+            TabStripItem Label {...} css selector to style the title label,
+            and TabStriptItem Image {...} css selector to style the icon image (see _app-common.scss).
+         -->
+        <TabStripItem>
+            <Label text="Home"></Label>
+            <Image src="font://&#xf015;" class="fa"></Image>
+        </TabStripItem>
+        <TabStripItem>
+            <Label text="Browse"></Label>
+            <Image src="font://&#xf1ea;" class="fa"></Image>
+        </TabStripItem>
+        <TabStripItem>
+            <Label text="Search"></Label>
+            <Image src="font://&#xf002;" class="fa"></Image>
+        </TabStripItem>
+    </TabStrip>
 
-    <page-router-outlet
-        *tabItem="{title: 'Search', iconSource: getIconSource('search')}"
-        name="searchTab">
-    </page-router-outlet>
+    <TabContentItem>
+        <page-router-outlet name="homeTab"></page-router-outlet>
+    </TabContentItem>
 
-</TabView>
+    <TabContentItem>
+        <page-router-outlet name="browseTab"></page-router-outlet>
+    </TabContentItem>
+
+    <TabContentItem>
+        <page-router-outlet name="searchTab"></page-router-outlet>
+    </TabContentItem>
+</BottomNavigation>

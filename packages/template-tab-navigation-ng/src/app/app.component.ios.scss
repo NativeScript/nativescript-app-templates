@@ -1,6 +1,18 @@
 @import 'app.component';
 
 // Place any CSS rules you want to apply only on IOS here
-TabView {
-    selected-tab-text-color: $item-active-color;
+TabStripItem Label {
+    color: $blue-dark;
+}
+
+TabStripItem:active Label {
+    color: $item-active-color;
+}
+
+TabStripItem Image {
+    color: $blue-dark;
+}
+
+TabStripItem:active Image {
+    color: $item-active-color;
 }
