@@ -3,13 +3,19 @@
         <!--
             Besides the approach demonstrated below there is alternative shorthand syntax for setting TabStripItem title and icon:
 
-            <TabStripItem title="Home" iconSource="font://&#xf015;" />
+            <TabStripItem title="Home" iconSource="res://tabIcons/home" />
 
             Both shorthand and verbose syntax can use
             TabStripItem Label {...} css selector to style the title label,
             and TabStriptItem Image {...} css selector to style the icon image (see _app-common.scss).
+            Note that when working with font icons we recommend the usage of the verbose syntax as it
+            is explicit and describes better the need to provide font icon as well as set the respective font (e.g. via class name).
          -->
         <TabStripItem>
+            <!--
+                Note TabStripItem will only accept single Label and/or single Image elements that it
+                will "adopt"; any other layout elements you try to specify will be ignored
+            -->
             <Label text="Home"></Label>
             <Image src="font://&#xf015;" class="fa"></Image>
         </TabStripItem>
