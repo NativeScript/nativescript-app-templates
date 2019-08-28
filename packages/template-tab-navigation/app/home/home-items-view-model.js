@@ -50,6 +50,22 @@ function HomeItemsViewModel() {
             {
                 name: "Item 12",
                 description: "Description for Item 12"
+            },
+            {
+                name: "Item 13",
+                description: "Description for Item 13"
+            },
+            {
+                name: "Item 14",
+                description: "Description for Item 14"
+            },
+            {
+                name: "Item 15",
+                description: "Description for Item 15"
+            },
+            {
+                name: "Item 16",
+                description: "Description for Item 16"
             }
         ]
     });

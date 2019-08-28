@@ -26,3 +26,19 @@
 ActionBar .action-bar-title {
     horizontal-align: center;
 }
+
+TabStripItem Label {
+    color: $blue-dark;
+}
+
+TabStripItem:active Label {
+    color: $item-active-color;
+}
+
+TabStripItem Image {
+    color: $blue-dark;
+}
+
+TabStripItem:active Image {
+    color: $item-active-color;
+}

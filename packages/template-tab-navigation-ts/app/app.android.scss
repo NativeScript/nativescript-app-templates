@@ -9,9 +9,8 @@
 @import 'app-common';
 
 // Place any CSS rules you want to apply only on Android here
-TabView {
-    tab-text-color: $blue-dark;
-    selected-tab-text-color: $item-active-color;
+TabStripItem Label {
+    text-transform: uppercase;
+    font-weight: bold;
 }
-
 
