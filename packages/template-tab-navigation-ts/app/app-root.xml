@@ -25,15 +25,15 @@ https://docs.nativescript.org/angular/ui/ng-ui-widgets/tabs.
                 will "adopt"; any other layout elements you try to specify will be ignored
             -->
             <Label text="Home" />
-            <Image src="font://&#xf015;" class="fa" />
+            <Image src="font://&#xf015;" class="fa t-36" />
         </TabStripItem>
         <TabStripItem>
             <Label text="Browse" />
-            <Image src="font://&#xf1ea;" class="fa" />
+            <Image src="font://&#xf1ea;" class="fa t-36" />
         </TabStripItem>
         <TabStripItem>
             <Label text="Search" />
-            <Image src="font://&#xf002;" class="fa" />
+            <Image src="font://&#xf002;" class="fa t-36" />
         </TabStripItem>
     </TabStrip>
 
