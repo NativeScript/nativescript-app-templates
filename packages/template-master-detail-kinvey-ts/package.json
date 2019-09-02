@@ -44,7 +44,8 @@
     "nativescript-imagepicker": "~6.2.0",
     "nativescript-theme-core": "~1.0.6",
     "nativescript-ui-listview": "~7.0.0",
-    "tns-core-modules": "~6.0.0"
+    "tns-core-modules": "~6.0.0",
+    "tslib": "^1.9.3"
   },
   "devDependencies": {
     "nativescript-dev-webpack": "~1.1.0",
