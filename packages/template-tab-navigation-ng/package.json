@@ -50,7 +50,7 @@
     "@angular/platform-browser-dynamic": "~8.2.0",
     "@angular/router": "~8.2.0",
     "nativescript-angular": "~8.2.0",
-    "nativescript-theme-core": "~1.0.6",
+    "nativescript-theme-core": "~2.0.17",
     "reflect-metadata": "~0.1.12",
     "rxjs": "^6.4.0",
     "tns-core-modules": "~6.1.0",

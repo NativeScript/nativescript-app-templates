@@ -1,9 +1,24 @@
+@import "~nativescript-theme-core/core";
+@import "~nativescript-theme-core/blue";
+
 // Place any CSS rules you want to apply on both iOS and Android here.
 // This is where the vast majority of your CSS code goes.
+
 // Font icon class
-.fa {
-    font-family: "FontAwesome";
- }
+.fab {
+    font-family: "Font Awesome 5 Brands", "fa-brands-400";
+    font-weight: 400;
+}
+
+.fas {
+    font-family: "Font Awesome 5 Free", "fa-solid-900";
+    font-weight: 900;
+}
+
+.far {
+    font-family: "Font Awesome 5 Free", "fa-regular-400";
+    font-weight: 400;
+}
 
 .t-36 {
     font-size: 36;
@@ -12,8 +27,8 @@
 // Common page class
 .page-content {
     .page-placeholder {
-        color: $page-icon-color;
-        font-size: $page-content-placeholder-font-size;
+        color: #d7d7d7;
+        font-size: 20;
         vertical-align: center;
         horizontal-align: center;
     }
@@ -22,28 +37,7 @@
         font-size: 72;
         vertical-align: top;
         horizontal-align: center;
-        color: $page-icon-color;
+        color: #d7d7d7;
         margin-top: 20%;
     }
-}
-
-//Action bar
-ActionBar .action-bar-title {
-    horizontal-align: center;
-}
-
-TabStripItem Label {
-    color: $blue-dark;
-}
-
-TabStripItem:active Label {
-    color: $item-active-color;
-}
-
-TabStripItem Image {
-    color: $blue-dark;
-}
-
-TabStripItem:active Image {
-    color: $item-active-color;
 }
