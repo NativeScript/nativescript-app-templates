@@ -3,10 +3,10 @@
     "id": "org.nativescript.HelloWorld",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "6.0.2"
+      "version": "6.1.0"
     },
     "tns-ios": {
-      "version": "6.0.2"
+      "version": "6.1.0"
     }
   },
   "name": "tns-template-hello-world",
