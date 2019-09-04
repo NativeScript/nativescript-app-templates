@@ -12,7 +12,7 @@
   "name": "tns-template-blank",
   "displayName": "Blank",
   "templateType": "App template",
-  "version": "6.0.2",
+  "version": "6.1.0",
   "description": "Blank template for Vanilla NativeScript apps using JavaScript",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
