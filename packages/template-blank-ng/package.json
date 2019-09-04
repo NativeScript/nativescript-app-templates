@@ -3,10 +3,10 @@
     "id": "org.nativescript.Blank",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "6.0.2"
+      "version": "6.1.0"
     },
     "tns-ios": {
-      "version": "6.0.2"
+      "version": "6.1.0"
     }
   },
   "name": "tns-template-blank-ng",
@@ -47,13 +47,13 @@
     "nativescript-theme-core": "~1.0.6",
     "reflect-metadata": "~0.1.12",
     "rxjs": "^6.4.0",
-    "tns-core-modules": "~6.0.0",
+    "tns-core-modules": "~6.1.0",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
     "@angular/compiler-cli": "~8.2.0",
     "@ngtools/webpack": "~8.2.0",
-    "nativescript-dev-webpack": "~1.1.0",
+    "nativescript-dev-webpack": "~1.2.0",
     "typescript": "~3.5.3"
   }
 }
