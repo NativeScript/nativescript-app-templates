@@ -3,16 +3,16 @@
     "id": "org.nativescript.DrawerNavigation",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "6.0.2"
+      "version": "6.1.0"
     },
     "tns-ios": {
-      "version": "6.0.2"
+      "version": "6.1.0"
     }
   },
   "name": "tns-template-drawer-navigation-ng",
   "displayName": "Navigation Drawer",
   "templateType": "App template",
-  "version": "6.0.2",
+  "version": "6.1.1",
   "description": "Side navigation template",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
@@ -54,16 +54,16 @@
     "nativescript-ui-sidedrawer": "~7.0.0",
     "reflect-metadata": "~0.1.12",
     "rxjs": "^6.4.0",
-    "tns-core-modules": "~6.0.0",
+    "tns-core-modules": "~6.1.0",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
     "@angular/compiler-cli": "~8.2.0",
     "@ngtools/webpack": "~8.2.0",
     "codelyzer": "~4.5.0",
-    "nativescript-dev-webpack": "~1.1.0",
+    "nativescript-dev-webpack": "~1.2.0",
     "node-sass": "^4.7.1",
-    "tslint": "~5.11.0",
+    "tslint": "~5.19.0",
     "typescript": "~3.5.3"
   }
 }
