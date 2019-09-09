@@ -1,13 +1,13 @@
 <template>
-    <Page class="page">
-        <ActionBar class="action-bar">
-            <Label class="action-bar-title" text="Home"></Label>
+    <Page>
+        <ActionBar>
+            <Label text="Home"></Label>
         </ActionBar>
 
         <GridLayout>
-            <Label class="info" horizontalAlignment="center" verticalAlignment="center">
+            <Label class="info">
                 <FormattedString>
-                    <Span class="fa" text.decode="&#xf135; "/>
+                    <Span class="fas" text.decode="&#xf135; "/>
                     <Span :text="message"/>
                 </FormattedString>
             </Label>
@@ -26,16 +26,16 @@
 </script>
 
 <style scoped lang="scss">
-    // Start custom common variables
-    @import '../app-variables';
-    // End custom common variables
+    @import '~nativescript-theme-core/scss/variables/blue';
 
     // Custom styles
-    .fa {
-        color: $accent-dark;
+    .fas {
+        @include colorize($color: accent);
     }
 
     .info {
         font-size: 20;
+        horizontal-align: center;
+        vertical-align: center;
     }
 </style>

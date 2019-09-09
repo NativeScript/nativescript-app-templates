@@ -38,7 +38,7 @@
     "category-general"
   ],
   "dependencies": {
-    "nativescript-theme-core": "~1.0.6",
+    "nativescript-theme-core": "~2.0.17",
     "nativescript-vue": "~2.4.0",
     "tns-core-modules": "~6.1.0"
   },
