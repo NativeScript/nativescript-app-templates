@@ -2,8 +2,10 @@
     <Label text="Home"></Label>
 </ActionBar>
 
-<ListView [items]="items">
-    <ng-template let-item="item">
-        <Label [nsRouterLink]="['../item', item.id]" [text]="item.name"></Label>
-    </ng-template>
-</ListView>
+<GridLayout>
+    <ListView [items]="items">
+        <ng-template let-item="item">
+            <Label [nsRouterLink]="['../item', item.id]" [text]="item.name"></Label>
+        </ng-template>
+    </ListView>
+</GridLayout>

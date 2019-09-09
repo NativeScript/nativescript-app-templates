@@ -20,24 +20,20 @@
     font-weight: 400;
 }
 
-.t-36 {
-    font-size: 36;
-}
-
 // Common page class
-.page-content {
-    .page-placeholder {
-        color: $grey;
+.page__content {
+    .page__content-placeholder {
+        color: const(grey);
         font-size: 20;
         vertical-align: center;
         horizontal-align: center;
     }
 
-    .page-icon {
+    .page__content-icon {
         font-size: 72;
         vertical-align: top;
         horizontal-align: center;
-        color: $grey;
+        color: const(grey);
         margin-top: 20%;
     }
 }
