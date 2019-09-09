@@ -1,30 +1,103 @@
+@import "~nativescript-theme-core/core";
+@import "~nativescript-theme-core/blue";
+
 // Place any CSS rules you want to apply on both iOS and Android here.
 // This is where the vast majority of your CSS code goes.
-/* Font icon class*/
-.fa {
-   font-family: "FontAwesome";
+
+// Font icon class
+.fab {
+    font-family: "Font Awesome 5 Brands", "fa-brands-400";
+    font-weight: 400;
 }
+
+.fas {
+    font-family: "Font Awesome 5 Free", "fa-solid-900";
+    font-weight: 900;
+}
+
+.far {
+    font-family: "Font Awesome 5 Free", "fa-regular-400";
+    font-weight: 400;
+}
+
 // Common page class
-.page-content {
-    
-    .page-placeholder {
-        color: $page-icon-color;
-        font-size: $page-content-placeholder-font-size;
+.page__content {
+    .page__content-placeholder {
+        color: const(grey);
+        font-size: 20;
         vertical-align: center;
         horizontal-align: center;
     }
 
-    .page-icon {
+    .page__content-icon {
         font-size: 72;
         vertical-align: top;
         horizontal-align: center;
-        color: $page-icon-color;
+        color: const(grey);
         margin-top: 20%;
     }
 }
 
-/* Action bar*/
-ActionBar .action-bar-title {
-    horizontal-align: center;
-}
+// Drawer navigation custom styles
+$sidedrawer-header-image-size: 60;
+$sidedrawer-header-image-offset-top: 20;
+$sidedrawer-header-image-offset-bottom: 5;
+$sidedrawer-list-item-offset-left: 15;
+$sidedrawer-list-icon-offset: 10;
+$sidedrawer-list-icon-size: 20;
 
+.nt-drawer__content {
+    @include colorize($background-color: ab-background);
+
+    .nt-drawer__header {
+        @include colorize($background-color: ab-background);
+
+        .nt-drawer__header-image {
+            color: const(grey);
+            height: $sidedrawer-header-image-size;
+            width: $sidedrawer-header-image-size;
+            font-size: $sidedrawer-header-image-size;
+            padding: 0;
+            margin-bottom: $sidedrawer-header-image-offset-bottom;
+            margin-top: $sidedrawer-header-image-offset-top;
+        }
+
+        .nt-drawer__header-brand {
+            @include colorize($color: ab-color);
+        }
+
+        .nt-drawer__header-footnote {
+            color: rgba($ab-color, 0.5);
+        }
+    }
+
+    .nt-drawer__body {
+        @include colorize($background-color: background);
+    }
+
+    .nt-drawer__list-item {
+        padding-left: $sidedrawer-list-item-offset-left;
+        height: 48;
+        horizontal-align: left;
+        width: 100%;
+        orientation: horizontal;
+
+        Label {
+            vertical-align: center;
+            @include colorize($color: primary);
+        }
+
+        .fas, .far {
+            width: $sidedrawer-list-icon-size;
+            margin-right: $sidedrawer-list-icon-offset;
+        }
+
+        &.selected {
+            @include colorize($background-color: item-active-background);
+
+            Label {
+                @include colorize($color: item-active-color);
+            }
+        }
+    }
+}

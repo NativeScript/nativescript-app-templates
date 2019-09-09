@@ -19,9 +19,9 @@
             <Label class="action-bar-title" text="Browse"></Label>
         </ActionBar>
 
-        <GridLayout class="page-content">
-            <Label class="page-icon fa" text.decode="&#xf1ea;"></Label>
-            <Label class="page-placeholder" :text="message"></Label>
+        <GridLayout class="page__content">
+            <Label class="page__content-icon far" text.decode="&#xf1ea;"></Label>
+            <Label class="page__content-placeholder" :text="message"></Label>
         </GridLayout>
 
     </Page>
@@ -50,7 +50,7 @@
 
 <style scoped lang="scss">
     // Start custom common variables
-    @import '../app-variables';
+    @import '~nativescript-theme-core/scss/variables/blue';
     // End custom common variables
 
     // Custom styles
