@@ -1,9 +1,8 @@
 <Page
-    class="page"
     navigatingTo="onNavigatingTo"  
     xmlns="http://schemas.nativescript.org/tns.xsd">
 
-    <ActionBar class="action-bar">
+    <ActionBar>
         <!-- 
         Use the NavigationButton as a side-drawer button in Android
         because ActionItems are shown on the right side of the ActionBar
@@ -19,11 +18,11 @@
             tap="onDrawerButtonTap"
             ios.position="left">
         </ActionItem>
-        <Label class="action-bar-title" text="Featured"></Label>
+        <Label text="Featured"></Label>
     </ActionBar>
 
-    <GridLayout class="page-content">
-        <Label class="page-icon fa" text="&#xf005;"></Label>
-        <Label class="page-placeholder" text="<!-- Page content goes here -->"></Label>
+    <GridLayout class="page__content">
+        <Label class="page__content-icon far" text="&#xf005;"></Label>
+        <Label class="page__content-placeholder" text="<!-- Page content goes here -->"></Label>
     </GridLayout>
 </Page>

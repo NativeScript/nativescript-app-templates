@@ -21,5 +21,10 @@
   }
 </script>
 
-<style lang="css">
+<style scoped lang="scss">
+    // Start custom common variables
+    @import '~nativescript-theme-core/scss/variables/blue';
+    // End custom common variables
+
+    // Custom styles
 </style>

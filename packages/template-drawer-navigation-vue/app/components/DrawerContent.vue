@@ -1,37 +1,37 @@
 <template lang="html">
-<GridLayout rows="auto, *" class="sidedrawer sidedrawer-left">
-            <StackLayout row="0" class="sidedrawer-header">
-                <Label class="sidedrawer-header-image fa" text.decode="&#xf2bd;"></Label>
-                <Label class="sidedrawer-header-brand" text="User Name"></Label>
-                <Label class="footnote" text="username@mail.com"></Label>
+<GridLayout rows="auto, *" class="nt-drawer__content">
+            <StackLayout row="0" class="nt-drawer__header">
+                <Image class="nt-drawer__header-image fas t-36" src.decode="font://&#xf2bd;"></Image>
+                <Label class="nt-drawer__header-brand" text="User Name"></Label>
+                <Label class="nt-drawer__header-footnote" text="username@mail.com"></Label>
             </StackLayout>
         
-            <ScrollView row="1" class="sidedrawer-content">
+            <ScrollView row="1" class="nt-drawer__body">
                 <StackLayout>
-                    <GridLayout columns="auto, *" :class="'sidedrawer-list-item' + (selectedPage === 'Home' ? ' selected': '')" @tap="onNavigationItemTap(Home)">
-                        <Label col="0" text.decode="&#xf015;" class="fa"></Label>
+                    <GridLayout columns="auto, *" :class="'nt-drawer__list-item' + (selectedPage === 'Home' ? ' selected': '')" @tap="onNavigationItemTap(Home)">
+                        <Label col="0" text.decode="&#xf015;" class="fas"></Label>
                         <Label col="1" text="Home" class="p-r-10"></Label>
                     </GridLayout>
 
-                    <GridLayout columns="auto, *" :class="'sidedrawer-list-item' + (selectedPage === 'Browse' ? ' selected': '')" @tap="onNavigationItemTap(Browse)">
-                        <Label col="0" text.decode="&#xf1ea;" class="fa"></Label>
+                    <GridLayout columns="auto, *" :class="'nt-drawer__list-item' + (selectedPage === 'Browse' ? ' selected': '')" @tap="onNavigationItemTap(Browse)">
+                        <Label col="0" text.decode="&#xf1ea;" class="far"></Label>
                         <Label col="1" text="Browse" class="p-r-10"></Label>
                     </GridLayout>
 
-                    <GridLayout columns="auto, *" :class="'sidedrawer-list-item' + (selectedPage === 'Search' ? ' selected': '')" @tap="onNavigationItemTap(Search)">
-                        <Label col="0" text.decode="&#xf002;" class="fa"></Label>
+                    <GridLayout columns="auto, *" :class="'nt-drawer__list-item' + (selectedPage === 'Search' ? ' selected': '')" @tap="onNavigationItemTap(Search)">
+                        <Label col="0" text.decode="&#xf002;" class="fas"></Label>
                         <Label col="1" text="Search" class="p-r-10"></Label>
                     </GridLayout>
 
-                    <GridLayout columns="auto, *" :class="'sidedrawer-list-item' + (selectedPage === 'Featured' ? ' selected': '')" @tap="onNavigationItemTap(Featured)">
-                        <Label col="0" text.decode="&#xf005;" class="fa"></Label>
+                    <GridLayout columns="auto, *" :class="'nt-drawer__list-item' + (selectedPage === 'Featured' ? ' selected': '')" @tap="onNavigationItemTap(Featured)">
+                        <Label col="0" text.decode="&#xf005;" class="fas"></Label>
                         <Label col="1" text="Featured" class="p-r-10"></Label>
                     </GridLayout>
         
-                    <StackLayout class="hr-light"></StackLayout>
+                    <StackLayout class="hr"></StackLayout>
 
-                    <GridLayout columns="auto, *" :class="'sidedrawer-list-item' + (selectedPage === 'Settings' ? ' selected': '')" @tap="onNavigationItemTap(Settings)">
-                        <Label col="0" text.decode="&#xf013;" class="fa"></Label>
+                    <GridLayout columns="auto, *" :class="'nt-drawer__list-item' + (selectedPage === 'Settings' ? ' selected': '')" @tap="onNavigationItemTap(Settings)">
+                        <Label col="0" text.decode="&#xf013;" class="fas"></Label>
                         <Label col="1" text="Settings" class="p-r-10"></Label>
                     </GridLayout>
                 </StackLayout>
@@ -82,67 +82,9 @@
 </script>
 
 <style scoped lang="scss">
-    // Custom common variables
-    @import '../app-variables';
+    // Start custom common variables
+    @import '~nativescript-theme-core/scss/variables/blue';
+    // End custom common variables
 
-    // Drawer navigation custom styles
-    $sidedrawer-header-image-size: 60;
-    $sidedrawer-header-image-offset-top: 20;
-    $sidedrawer-header-image-offset-bottom: 5;
-    $sidedrawer-list-item-offset-left: 15;
-    $sidedrawer-list-icon-offset: 10;
-    $sidedrawer-list-icon-size: 20;
-    .sidedrawer {
-        &.sidedrawer-left {
-            background-color: $ab-background;
-
-            .sidedrawer-header-image {
-                color: $background-dark;
-                height: $sidedrawer-header-image-size;
-                width: $sidedrawer-header-image-size;
-                font-size: $sidedrawer-header-image-size;
-                padding: 0;
-                margin-bottom: $sidedrawer-header-image-offset-bottom;
-                margin-top: $sidedrawer-header-image-offset-top;
-            }
-
-            .footnote {
-                color: rgba($ab-color, 0.5);
-            }
-        }
-
-        .sidedrawer-header {
-            background-color: $ab-background;
-
-            .sidedrawer-header-brand {
-                color: $ab-color;
-            }
-        }
-
-        .sidedrawer-content {
-            background-color: $side-drawer-background;
-        }
-
-        .sidedrawer-list-item {
-            padding-left: $sidedrawer-list-item-offset-left;
-
-            Label {
-                vertical-align: center;
-                color: $blue-dark;
-            }
-
-            .fa {
-                width: $sidedrawer-list-icon-size;
-                margin-right: $sidedrawer-list-icon-offset;
-            }
-
-            &.selected {
-                background-color: $item-active-background;
-
-                Label {
-                    color: $item-active-color;
-                }
-            }
-        }
-    }
+    // Custom styles
 </style>
