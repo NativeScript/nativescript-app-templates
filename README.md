@@ -8,7 +8,6 @@ This monorepo contains the following NativeScript app templates:
 - Tab Navigation ([JavaScript](/packages/template-tab-navigation), [TypeScript](/packages/template-tab-navigation-ts), and [Angular](/packages/template-tab-navigation-ng))
 - Master Detail with Firebase ([JavaScript](/packages/template-master-detail), [TypeScript](/packages/template-master-detail-ts), [Angular](/packages/template-master-detail-ng), and [Vue](/packages/template-master-detail-vue))
 - Master Detail with Kinvey ([JavaScript](/packages/template-master-detail-kinvey), [TypeScript](/packages/template-master-detail-kinvey-ts), and [Angular](/packages/template-master-detail-kinvey-ng))
-- Enterprise Auth ([JavaScript](/packages/template-enterprise-auth), [TypeScript](/packages/template-enterprise-auth-ts), and [Angular](/packages/template-enterprise-auth-ng))
 - Health Survey ([Angular](/packages/template-health-survey-ng))
 - Patient Care ([Angular](/packages/template-patient-care-ng))
 
