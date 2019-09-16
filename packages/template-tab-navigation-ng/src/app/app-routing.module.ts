@@ -13,19 +13,19 @@ const routes: Routes = [
     {
         path: "home",
         component: NSEmptyOutletComponent,
-        loadChildren: () => import(`~/app/home/home.module`).then((m) => m.HomeModule),
+        loadChildren: () => import("~/app/home/home.module").then((m) => m.HomeModule),
         outlet: "homeTab"
     },
     {
         path: "browse",
         component: NSEmptyOutletComponent,
-        loadChildren: () => import(`~/app/browse/browse.module`).then((m) => m.BrowseModule),
+        loadChildren: () => import("~/app/browse/browse.module").then((m) => m.BrowseModule),
         outlet: "browseTab"
     },
     {
         path: "search",
         component: NSEmptyOutletComponent,
-        loadChildren: () => import(`~/app/search/search.module`).then((m) => m.SearchModule),
+        loadChildren: () => import("~/app/search/search.module").then((m) => m.SearchModule),
         outlet: "searchTab"
     }
 ];
