@@ -1,0 +1,54 @@
+{
+  "nativescript": {
+    "id": "org.nativescript.TabNavigation",
+    "templateVersion": "v2",
+    "tns-android": {
+      "version": "6.1.0"
+    },
+    "tns-ios": {
+      "version": "6.1.0"
+    }
+  },
+  "name": "tns-template-tab-navigation-vue",
+  "displayName": "Tabs",
+  "version": "6.1.3",
+  "description": "Tabbed interface template using Vue",
+  "author": "Telerik <support@telerik.com>",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NativeScript/nativescript-app-templates"
+  },
+  "homepage": "https://github.com/NativeScript/nativescript-app-templates",
+  "bugs": {
+    "url": "https://github.com/NativeScript/NativeScript/issues"
+  },
+  "keywords": [
+    "telerik",
+    "progress",
+    "mobile",
+    "nativescript",
+    "{N}",
+    "tns",
+    "vue",
+    "nativescript-vue",
+    "template",
+    "tab",
+    "navigation",
+    "category-general"
+  ],
+  "dependencies": {
+    "nativescript-theme-core": "~1.0.6",
+    "nativescript-vue": "~2.4.0",
+    "tns-core-modules": "~6.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "~7.1.0",
+    "@babel/preset-env": "~7.1.0",
+    "babel-loader": "~8.0.0",
+    "nativescript-dev-webpack": "~1.2.0",
+    "nativescript-vue-template-compiler": "~2.4.0",
+    "node-sass": "^4.7.1",
+    "vue-loader": "~15.4.0"
+  }
+}
