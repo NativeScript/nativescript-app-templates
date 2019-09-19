@@ -5,7 +5,7 @@ This monorepo contains the following NativeScript app templates:
 - Hello World ([JavaScript](/packages/template-hello-world), [TypeScript](/packages/template-hello-world-ts), and [Angular](/packages/template-hello-world-ng))
 - Blank ([JavaScript](/packages/template-blank), [TypeScript](/packages/template-blank-ts), [Angular](/packages/template-blank-ng), and [Vue](/packages/template-blank-vue))
 - Drawer Navigation ([JavaScript](/packages/template-drawer-navigation), [TypeScript](/packages/template-drawer-navigation-ts), [Angular](/packages/template-drawer-navigation-ng), and [Vue](/packages/template-drawer-navigation-vue))
-- Tab Navigation ([JavaScript](/packages/template-tab-navigation), [TypeScript](/packages/template-tab-navigation-ts), and [Angular](/packages/template-tab-navigation-ng))
+- Tab Navigation ([JavaScript](/packages/template-tab-navigation), [TypeScript](/packages/template-tab-navigation-ts), [Angular](/packages/template-tab-navigation-ng), and [Vue](/packages/template-tab-navigation-vue))
 - Master Detail with Firebase ([JavaScript](/packages/template-master-detail), [TypeScript](/packages/template-master-detail-ts), [Angular](/packages/template-master-detail-ng), and [Vue](/packages/template-master-detail-vue))
 - Master Detail with Kinvey ([JavaScript](/packages/template-master-detail-kinvey), [TypeScript](/packages/template-master-detail-kinvey-ts), and [Angular](/packages/template-master-detail-kinvey-ng))
 - Health Survey ([Angular](/packages/template-health-survey-ng))
