@@ -14,7 +14,7 @@ export class Config {
 ```
 
 ### Set up your Firebase sample data
- - Follow the [Firebase documentation](https://support.google.com/firebase/answer/6386780?hl=en#import) to import the [sample JSON data](https://github.com/NativeScript/template-master-detail-ng/blob/master/tools/firebase/car-rental-export-public.json) to your Firebase project
+ - Follow the [Firebase documentation](https://support.google.com/firebase/answer/6386780?hl=en#import) to import the [sample JSON data](https://github.com/NativeScript/nativescript-app-templates/blob/master/packages/template-master-detail-ng/tools/firebase/car-rental-export-public.json) to your Firebase project
  - Default database security rules in Firebase require users to be authenticated but [for simplicity] the current version of the NativeScript master / detail app does not provide built-in support for authentication / authorization. Follow the [Firebase documentation](https://firebase.google.com/docs/database/security/quickstart) to replace the default rules (DO NOT use this ruleset for a production app):
 ```json
 {
@@ -36,5 +36,5 @@ service firebase.storage {
   }
 }
 ```
-- You need to comment out the readonly section in this car detail edit component and uncomment the actual code: https://github.com/NativeScript/template-master-detail-ng/blob/master/cars/car-detail-edit/car-detail-edit.component.ts
+- You need to comment out the readonly section in this car detail edit component and uncomment the actual code: https://github.com/NativeScript/nativescript-app-templates/blob/master/packages/template-master-detail-ng/src/app/cars/car-detail-edit/car-detail-edit.component.ts
  
