@@ -50,7 +50,7 @@ The template also provides a data service:
 The template uses the [{N} Kinvey plugin](https://github.com/Kinvey/nativescript-sdk). The initialization is done in the `src/app/app.module.ts` file with the KinveyModule import.
 
 ### [Optional] Kinvey database setup
-By design the app is connected to a read-only copy of the sample data in Kinvey. If you want to see the "edit" functionality in action you will have to clone the sample data and update the app configuration to point to your own Kinvey setup. You can find detailed instructions how to achieve that [here](https://github.com/NativeScript/template-master-detail-kinvey-ng/blob/master/tools/kinvey/kinvey-database-setup.md).
+By design the app is connected to a read-only copy of the sample data in Kinvey. If you want to see the "edit" functionality in action you will have to clone the sample data and update the app configuration to point to your own Kinvey setup. You can find detailed instructions how to achieve that [here](https://github.com/NativeScript/nativescript-app-templates/blob/master/packages/template-master-detail-kinvey-ng/tools/kinvey/kinvey-database-setup.md).
 
 ### Styling
 This template is set up to use SASS for styling. All classes used are based on the {N} core theme – consult the [documentation](https://docs.nativescript.org/angular/ui/theme.html#theme) to understand how to customize it. Check it out to see what classes you can use on which component.
