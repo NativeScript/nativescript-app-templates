@@ -3,7 +3,7 @@
     "id": "org.nativescript.HealthSurvey",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "6.1.1"
+      "version": "6.1.2"
     },
     "tns-ios": {
       "version": "6.1.0"
@@ -11,7 +11,7 @@
   },
   "name": "tns-template-health-survey-ng",
   "displayName": "Health Survey with Kinvey",
-  "version": "6.1.5",
+  "version": "6.1.6",
   "description": "Health survey template that saves data to Kinvey database.",
   "license": "SEE LICENSE IN <your-license-filename>",
   "keywords": [
