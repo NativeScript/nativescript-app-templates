@@ -1,14 +1,15 @@
-<Page class="page" xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" >
-    
-    <ActionBar class="action-bar">
+<Page navigatingTo="onNavigatingTo"
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar>
         <NavigationButton tap="onBackButtonTap" android.systemIcon="ic_menu_back" />
-        <Label class="action-bar-title" text="{{ car.name }}" horizontalAlignment="center" />
+        <Label text="{{ car.name }}" horizontalAlignment="center" />
         <ActionItem tap="onEditButtonTap" ios.position="right" android.position="right">
-            <Label text="Edit" verticalAlignment="center" class="action-item" />
+            <Label text="Edit" verticalAlignment="center" />
         </ActionItem>
     </ActionBar>
 
-    <GridLayout class="page-content">
+    <GridLayout class="page__content">
         <ScrollView>
             <GridLayout rows="auto, auto, auto">
                 <Image src="{{ car.imageUrl }}" stretch="aspectFill" height="200" class="m-b-15" />
@@ -27,7 +28,7 @@
 
                     <Label text="Class" row="1" class="p-l-15 p-b-10 m-r-20 text-secondary" />
                     <Label text="{{ car.class }}" row="1" col="1" class="text p-b-10" />
-                    
+
                     <Label text="Doors" row="2" class="p-l-15 p-b-10 m-r-20 text-secondary" />
                     <Label text="{{ car.doors }}" row="2" col="1" class="text p-b-10" />
 

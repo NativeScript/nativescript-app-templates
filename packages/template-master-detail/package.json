@@ -6,7 +6,7 @@
       "version": "6.1.2"
     },
     "tns-ios": {
-      "version": "6.1.0"
+      "version": "6.1.1"
     }
   },
   "name": "tns-template-master-detail",
@@ -41,10 +41,10 @@
   "dependencies": {
     "nativescript-imagepicker": "~7.0.0",
     "nativescript-plugin-firebase": "~9.1.0",
-    "nativescript-theme-core": "~1.0.6",
+    "nativescript-theme-core": "2.0.23",
     "nativescript-ui-listview": "~7.0.0",
     "rxjs": "^6.4.0",
-    "tns-core-modules": "~6.1.0"
+    "tns-core-modules": "6.2.0-next-2019-10-08-131118-02"
   },
   "devDependencies": {
     "eslint": "~5.8.0",

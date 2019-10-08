@@ -1,14 +1,14 @@
-<Page class="page" navigatingTo="onNavigatingTo"
+<Page navigatingTo="onNavigatingTo"
     xmlns:lv="nativescript-ui-listview"
-    xmlns="http://schemas.nativescript.org/tns.xsd" >
+    xmlns="http://schemas.nativescript.org/tns.xsd">
 
-    <ActionBar class="action-bar">
+    <ActionBar>
         <!-- Should remove the navigation button -->
         <NavigationButton ios:visibility="collapsed" />
-        <Label class="action-bar-title" text="Browse" horizontalAlignment="center" />
+        <Label text="Browse" horizontalAlignment="center" />
     </ActionBar>
 
-    <GridLayout class="page-content">
+    <GridLayout class="page__content">
         <!--
         RadListView is a UI component part of the Progress NativeScript UI set of components.
         Learn more about the RadListView UI component and how it can be customized in this documentation article:
