@@ -3,12 +3,11 @@ const app = require("tns-core-modules/application");
 
 const SettingsViewModel = require("./settings-view-model");
 
-function onNavigatingTo(args) {
-    const page = args.object;
+function onNavigatingTo({ object: page }) {
     page.bindingContext = new SettingsViewModel();
 }
 
-function onDrawerButtonTap(args) {
+function onDrawerButtonTap() {
     const sideDrawer = app.getRootView();
     sideDrawer.showDrawer();
 }

@@ -2,12 +2,11 @@ const app = require("tns-core-modules/application");
 
 const SearchViewModel = require("./search-view-model");
 
-function onNavigatingTo(args) {
-    const page = args.object;
+function onNavigatingTo({ object: page }) {
     page.bindingContext = new SearchViewModel();
 }
 
-function onDrawerButtonTap(args) {
+function onDrawerButtonTap() {
     const sideDrawer = app.getRootView();
     sideDrawer.showDrawer();
 }

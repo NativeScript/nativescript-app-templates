@@ -22,18 +22,17 @@
 
 // Common page class
 .page__content {
-    .page__content-placeholder {
+    &-icon,
+    &-placeholder {
         color: const(grey);
         font-size: 20;
         vertical-align: center;
         horizontal-align: center;
     }
 
-    .page__content-icon {
+    &-icon {
         font-size: 72;
         vertical-align: top;
-        horizontal-align: center;
-        color: const(grey);
         margin-top: 20%;
     }
 }
@@ -42,62 +41,10 @@
 $sidedrawer-header-image-size: 60;
 $sidedrawer-header-image-offset-top: 20;
 $sidedrawer-header-image-offset-bottom: 5;
-$sidedrawer-list-item-offset-left: 15;
-$sidedrawer-list-icon-offset: 10;
-$sidedrawer-list-icon-size: 20;
 
-.nt-drawer__content {
-    @include colorize($background-color: ab-background);
-
-    .nt-drawer__header {
-        @include colorize($background-color: ab-background);
-
-        .nt-drawer__header-image {
-            color: const(grey);
-            height: $sidedrawer-header-image-size;
-            width: $sidedrawer-header-image-size;
-            font-size: $sidedrawer-header-image-size;
-            padding: 0;
-            margin-bottom: $sidedrawer-header-image-offset-bottom;
-            margin-top: $sidedrawer-header-image-offset-top;
-        }
-
-        .nt-drawer__header-brand {
-            @include colorize($color: ab-color);
-        }
-
-        .nt-drawer__header-footnote {
-            color: rgba($ab-color, 0.5);
-        }
-    }
-
-    .nt-drawer__body {
-        @include colorize($background-color: background);
-    }
-
-    .nt-drawer__list-item {
-        padding-left: $sidedrawer-list-item-offset-left;
-        height: 48;
-        horizontal-align: left;
-        width: 100%;
-        orientation: horizontal;
-
-        Label {
-            vertical-align: center;
-            @include colorize($color: primary);
-        }
-
-        .fas, .far {
-            width: $sidedrawer-list-icon-size;
-            margin-right: $sidedrawer-list-icon-offset;
-        }
-
-        &.selected {
-            @include colorize($background-color: item-active-background);
-
-            Label {
-                @include colorize($color: item-active-color);
-            }
-        }
-    }
+.nt-drawer__header-image {
+    color: const(grey);
+    font-size: $sidedrawer-header-image-size;
+    margin-bottom: $sidedrawer-header-image-offset-bottom;
+    margin-top: $sidedrawer-header-image-offset-top;
 }
