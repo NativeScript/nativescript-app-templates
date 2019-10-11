@@ -2,11 +2,12 @@ const app = require("tns-core-modules/application");
 
 const BrowseViewModel = require("./browse-view-model");
 
-function onNavigatingTo({ object: page }) {
+function onNavigatingTo(args) {
+    const page = args.object;
     page.bindingContext = new BrowseViewModel();
 }
 
-function onDrawerButtonTap() {
+function onDrawerButtonTap(args) {
     const sideDrawer = app.getRootView();
     sideDrawer.showDrawer();
 }

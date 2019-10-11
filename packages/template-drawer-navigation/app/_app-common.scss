@@ -38,13 +38,6 @@
 }
 
 // Drawer navigation custom styles
-$sidedrawer-header-image-size: 60;
-$sidedrawer-header-image-offset-top: 20;
-$sidedrawer-header-image-offset-bottom: 5;
-
 .nt-drawer__header-image {
     color: const(grey);
-    font-size: $sidedrawer-header-image-size;
-    margin-bottom: $sidedrawer-header-image-offset-bottom;
-    margin-top: $sidedrawer-header-image-offset-top;
 }

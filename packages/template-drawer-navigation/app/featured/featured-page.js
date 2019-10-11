@@ -2,11 +2,12 @@ const app = require("tns-core-modules/application");
 
 const FeaturedViewModel = require("./featured-view-model");
 
-function onNavigatingTo({ object: page }) {
+function onNavigatingTo(args) {
+    const page = args.object;
     page.bindingContext = new FeaturedViewModel();
 }
 
-function onDrawerButtonTap() {
+function onDrawerButtonTap(args) {
     const sideDrawer = app.getRootView();
     sideDrawer.showDrawer();
 }
