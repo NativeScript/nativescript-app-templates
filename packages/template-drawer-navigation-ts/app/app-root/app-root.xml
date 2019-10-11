@@ -20,25 +20,25 @@ https://docs.nativescript.org/ui/professional-ui-components/SideDrawer/getting-s
                 <StackLayout>
                     <GridLayout columns="auto, *" class="{{ 'nt-drawer__list-item' + (selectedPage === 'Home' ? ' selected': '') }}"
                         route="home/home-page" title="Home" tap="onNavigationItemTap">
-                        <Label row="0" col="0" text="&#xf015;" class="fas" />
+                        <Label row="0" col="0" text="&#xf015;" class="nt-icon fas" />
                         <Label row="0" col="1" text="Home" class="p-r-10" />
                     </GridLayout>
 
                     <GridLayout columns="auto, *" class="{{ 'nt-drawer__list-item' + (selectedPage === 'Browse' ? ' selected': '') }}"
                         route="browse/browse-page" title="Browse" tap="onNavigationItemTap">
-                        <Label row="0" col="0" text="&#xf1ea;" class="far" />
+                        <Label row="0" col="0" text="&#xf1ea;" class="nt-icon far" />
                         <Label row="0" col="1" text="Browse" class="p-r-10" />
                     </GridLayout>
 
                     <GridLayout columns="auto, *" class="{{ 'nt-drawer__list-item' + (selectedPage === 'Search' ? ' selected': '') }}"
                         route="search/search-page" title="Search" tap="onNavigationItemTap">
-                        <Label row="0" col="0" text="&#xf002;" class="fas" />
+                        <Label row="0" col="0" text="&#xf002;" class="nt-icon fas" />
                         <Label row="0" col="1" text="Search" class="p-r-10" />
                     </GridLayout>
 
                     <GridLayout columns="auto, *" class="{{ 'nt-drawer__list-item' + (selectedPage === 'Featured' ? ' selected': '') }}"
                         route="featured/featured-page" title="Featured" tap="onNavigationItemTap">
-                        <Label row="0" col="0" text="&#xf005;" class="fas" />
+                        <Label row="0" col="0" text="&#xf005;" class="nt-icon fas" />
                         <Label row="0" col="1" text="Featured" class="p-r-10" />
                     </GridLayout>
 
@@ -46,7 +46,7 @@ https://docs.nativescript.org/ui/professional-ui-components/SideDrawer/getting-s
 
                     <GridLayout columns="auto, *" class="{{ 'nt-drawer__list-item' + (selectedPage === 'Settings' ? ' selected': '') }}"
                         route="settings/settings-page" title="Settings" tap="onNavigationItemTap">
-                        <Label row="0" col="0" text="&#xf013;" class="fas" />
+                        <Label row="0" col="0" text="&#xf013;" class="nt-icon fas" />
                         <Label row="0" col="1" text="Settings" class="p-r-10" />
                     </GridLayout>
                 </StackLayout>
