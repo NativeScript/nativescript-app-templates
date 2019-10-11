@@ -26,7 +26,7 @@
 </script>
 
 <style scoped lang="scss">
-    @import '~nativescript-theme-core/scss/variables/blue';
+    @import '~@nativescript/theme/scss/variables/blue';
 
     // Custom styles
     .fas {
