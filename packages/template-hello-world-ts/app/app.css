@@ -6,8 +6,8 @@ selectors and properties you can use to style UI components.
 
 /*
 In many cases you may want to use the NativeScript core theme instead
-of writing your own CSS rules. For a full list of class names in the theme
-refer to http://docs.nativescript.org/ui/theme. 
+of writing your own CSS rules. You can learn more about the 
+NativeScript core theme at https://github.com/nativescript/theme
 The imported CSS rules must precede all other types of rules.
 */
 @import "~@nativescript/theme/css/core.css";
@@ -17,9 +17,9 @@ The imported CSS rules must precede all other types of rules.
 This is where the vast majority of your CSS code goes. */
 
 /*
-The following CSS rule changes the font size of all UI
-components that have the btn class name.
+The following CSS rule changes the font size of all Buttons that have the
+"-primary" class modifier.
 */
-.btn {
+Button.-primary {
     font-size: 18;
 }
