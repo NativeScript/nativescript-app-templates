@@ -3,39 +3,62 @@ In NativeScript, the app.css file is where you place CSS rules that
 you would like to apply to your entire application. Check out
 http://docs.nativescript.org/ui/styling for a full list of the CSS
 selectors and properties you can use to style UI components.
-
 /*
 In many cases you may want to use the NativeScript core theme instead
-of writing your own CSS rules. For a full list of class names in the theme
-refer to http://docs.nativescript.org/ui/theme.
+of writing your own CSS rules. You can learn more about the 
+NativeScript core theme at https://github.com/nativescript/theme
+The imported CSS rules must precede all other types of rules.
 */
+@import "~@nativescript/theme/css/core.css";
 
-@import '~nativescript-theme-core/css/core.light.css';
-
-/* Override the theme's text-primary color (with the same color) to take priority for h1-6 classes. */
-.text-primary {
-    color: #30bcff;
-}
-/* End overrides */
-
-.btn[isEnabled=false] {
-    color: #808080;
-    background-color: transparent;
-    border-color: #d8d4d4;
+/* Font icon classes */
+.fab {
+    font-family: "Font Awesome 5 Brands", "fa-brands-400";
+    font-weight: 400;
 }
 
-.fa {
-    font-family: "FontAwesome";
+.fas {
+    font-family: "Font Awesome 5 Free", "fa-solid-900";
+    font-weight: 900;
+}
+
+.far {
+    font-family: "Font Awesome 5 Free", "fa-regular-400";
+    font-weight: 400;
 }
 
 .f-s-100 {
     font-size: 100;
 }
 
-.btn-margin {
+Button.-outline-sky,
+.ns-dark Button.-outline-sky {
+    color: var(--color-sky);
+    border-color: var(--color-sky);
     margin: 0 5 0 5;
+    padding: 0 5; /* TODO: move to core theme */
 }
 
-.btn-w-150 {
+Button.-outline-sky[isEnabled=false] {
+    color: #808080;
+    background-color: transparent;
+    border-color: #d8d4d4;
+}
+
+Button.-size-big {
     width: 150;
+}
+
+DataFormEditorCore {
+    border-width: 0;
+}
+
+DataFormEditorLabel { 
+    color:var(--light-text-color);
+    font-weight: bold; /* TODO: remove this when default font-weight is removed from ns-root */
+}
+
+.ns-dark DataFormEditorLabel { 
+    color: var(--dark-text-color);
+    font-weight: bold; /* TODO: remove this when default font-weight is removed from ns-root */
 }

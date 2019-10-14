@@ -1,11 +1,11 @@
-<ActionBar class="action-bar">
-    <Label class="action-bar-title" text="Survey Step 2 of 3" class="font-weight-bold"></Label>
+<ActionBar>
+    <Label text="Survey Step 2 of 3" class="font-weight-bold"></Label>
     <ActionItem (tap)="appService.logOut()" ios.position="right">
-        <Button text="Cancel" class="action-item text-center text-primary"></Button>
+        <Button text="Cancel" class="text-primary"></Button>
     </ActionItem>
 </ActionBar>
 
-<GridLayout class="page p-t-15" rows="*, auto">
+<GridLayout class="p-t-15" rows="*, auto">
     <ScrollView row="0">
         <StackLayout>
             <StackLayout class="m-x-15">
@@ -14,15 +14,15 @@
             </StackLayout>
 
             <StackLayout class="input-field p-t-30">
-                <StackLayout class="hr-light"></StackLayout>
+                <StackLayout class="hr"></StackLayout>
                 <TextView [(ngModel)]="answer" hint="Tap to write" height="150" backgroundColor="#00000000" class="input input-border p-x-10 p-y-15"></TextView>
-                <StackLayout class="hr-light"></StackLayout>
+                <StackLayout class="hr"></StackLayout>
             </StackLayout>
         </StackLayout>
     </ScrollView>
 
     <StackLayout row="1" class="m-x-auto m-b-30">
-        <Button text="Next" class="btn btn-active btn-outline btn-rounded-sm" (tap)="onNextButtonTap()" [isEnabled]="isAnswerSelected"
+        <Button text="Next" class="-outline -outline-sky -rounded-sm" (tap)="onNextButtonTap()" [isEnabled]="isAnswerSelected"
             [isUserInteractionEnabled]="isAnswerSelected"></Button>
         <Label text="Skip this question" class="text-primary m-x-auto p-t-5" (tap)="onNextButtonTap(false)"></Label>
     </StackLayout>

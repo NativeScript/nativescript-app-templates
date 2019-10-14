@@ -1,7 +1,7 @@
-<ActionBar class="action-bar">
-    <Label class="action-bar-title" text="Consent Step 8 of 9" class="font-weight-bold"></Label>
+<ActionBar>
+    <Label text="Consent Step 8 of 9" class="font-weight-bold"></Label>
     <ActionItem (tap)="appService.logOut()" ios.position="right">
-        <Button text="Cancel" class="action-item text-center text-primary"></Button>
+        <Button text="Cancel" class="text-primary"></Button>
     </ActionItem>
 </ActionBar>
 
@@ -20,7 +20,7 @@
     </ScrollView>
 
     <GridLayout rows="auto, *" columns="*, *" row="1" class="m-b-10">
-        <StackLayout row="0" colSpan="2" class="hr-light"></StackLayout>
+        <StackLayout row="0" colSpan="2" class="hr"></StackLayout>
         <Label row="1" col="0" text="Disagree" class="h3 text-left text-primary m-10" (tap)="appService.logOut()"></Label>
         <Label row="1" col="1" text="Agree" class="h3 text-right text-primary m-10" (tap)="onAgreeButtonTap()"></Label>
     </GridLayout>

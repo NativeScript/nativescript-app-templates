@@ -1,5 +1,5 @@
-<ActionBar class="action-bar">
-    <Label class="action-bar-title" text="Consent Step 7 of 9" class="font-weight-bold"></Label>
+<ActionBar>
+    <Label text="Consent Step 7 of 9" class="font-weight-bold"></Label>
     <ActionItem (tap)="appService.logOut()" ios.position="right">
         <Button text="Cancel" class="action-item text-center text-primary"></Button>
     </ActionItem>
@@ -17,13 +17,13 @@
         </StackLayout>
 
         <StackLayout class="p-t-30">
-            <StackLayout class="hr-light"></StackLayout>
+            <StackLayout class="hr"></StackLayout>
             <Label text="Share my data with institution and qualified researchers worldwide" textWrap="true" class="p-x-10 p-y-15 font-weight-bold"
                 (tap)="onOptionTap(0)"></Label>
-            <StackLayout class="hr-light"></StackLayout>
+            <StackLayout class="hr"></StackLayout>
             <Label text="Only share my data with institution and its partners" textWrap="true" class="p-x-10 p-y-15 font-weight-bold"
                 (tap)="onOptionTap(1)"></Label>
-            <StackLayout class="hr-light"></StackLayout>
+            <StackLayout class="hr"></StackLayout>
         </StackLayout>
     </StackLayout>
 </ScrollView>
