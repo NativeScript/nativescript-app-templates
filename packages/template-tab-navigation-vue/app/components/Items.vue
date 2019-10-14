@@ -1,12 +1,12 @@
 <template>
-  <Page class="page">
-    <ActionBar class="action-bar">
-      <Label class="action-bar-title" text="Home"></Label>
+  <Page>
+    <ActionBar>
+      <Label text="Home"></Label>
     </ActionBar>
 
-    <ListView for="item in items" @itemTap="onItemTap" class="list-group">
+    <ListView for="item in items" @itemTap="onItemTap">
       <v-template>
-        <StackLayout orientation="horizontal" class="list-group-item">
+        <StackLayout orientation="horizontal">
           <Label :text="item.name" textWrap="true"></Label>
         </StackLayout>
       </v-template>
@@ -109,7 +109,7 @@ export default {
 
 <style scoped lang="scss">
 // Start custom common variables
-@import "../app-variables";
+@import "~@nativescript/theme/scss/variables/blue";
 // End custom common variables
 
 // Custom styles

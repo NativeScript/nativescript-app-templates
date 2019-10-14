@@ -1,5 +1,5 @@
-@import "~nativescript-theme-core/core";
-@import "~nativescript-theme-core/blue";
+@import "~@nativescript/theme/core";
+@import "~@nativescript/theme/blue";
 
 // Place any CSS rules you want to apply on both iOS and Android here.
 // This is where the vast majority of your CSS code goes.
@@ -22,18 +22,17 @@
 
 // Common page class
 .page__content {
-    .page__content-placeholder {
+    &-icon,
+    &-placeholder {
         color: const(grey);
         font-size: 20;
         vertical-align: center;
         horizontal-align: center;
     }
 
-    .page__content-icon {
+    &-icon {
         font-size: 72;
         vertical-align: top;
-        horizontal-align: center;
-        color: const(grey);
         margin-top: 20%;
     }
 }

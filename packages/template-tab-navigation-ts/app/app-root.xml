@@ -1,4 +1,4 @@
-<BottomNavigation class="ns-statusbar-transparent">
+<BottomNavigation>
     <TabStrip>
         <TabStripItem>
             <!--

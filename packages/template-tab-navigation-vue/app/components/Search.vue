@@ -1,12 +1,12 @@
 <template lang="html">
-    <Page class="page">
-        <ActionBar class="action-bar">
-            <Label class="action-bar-title" text="Search"></Label>
+    <Page>
+        <ActionBar>
+            <Label text="Search"></Label>
         </ActionBar>
 
-        <GridLayout class="page-content">
-            <Label class="page-icon fa" text.decode="&#xf002;"></Label>
-            <Label class="page-placeholder" :text="message"></Label>
+        <GridLayout class="page__content">
+            <Label class="page__content-icon fas" text.decode="&#xf002;"></Label>
+            <Label class="page__content-placeholder" :text="message"></Label>
         </GridLayout>
     </Page>
 </template>
@@ -23,7 +23,7 @@ export default {
 
 <style lang="scss" scoped>
 // Start custom common variables
-@import "../app-variables";
+@import "~@nativescript/theme/scss/variables/blue";
 // End custom common variables
 
 // Custom styles
