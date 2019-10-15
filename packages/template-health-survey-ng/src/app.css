@@ -35,6 +35,7 @@ The imported CSS rules must precede all other types of rules.
 Button.-outline,
 .ns-dark Button.-outline {
     margin: 0 5;
+    android-elevation: 0;
 }
 
 Button.-outline[isEnabled=false] {
