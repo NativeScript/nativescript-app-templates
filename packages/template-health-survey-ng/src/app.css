@@ -10,6 +10,7 @@ NativeScript core theme at https://github.com/nativescript/theme
 The imported CSS rules must precede all other types of rules.
 */
 @import "~@nativescript/theme/css/core.css";
+@import "~@nativescript/theme/css/blue.css";
 
 /* Font icon classes */
 .fab {
@@ -31,15 +32,12 @@ The imported CSS rules must precede all other types of rules.
     font-size: 100;
 }
 
-Button.-outline-sky,
-.ns-dark Button.-outline-sky {
-    color: var(--color-sky);
-    border-color: var(--color-sky);
-    margin: 0 5 0 5;
-    padding: 0 5; /* TODO: move to core theme */
+Button.-outline,
+.ns-dark Button.-outline {
+    margin: 0 5;
 }
 
-Button.-outline-sky[isEnabled=false] {
+Button.-outline[isEnabled=false] {
     color: #808080;
     background-color: transparent;
     border-color: #d8d4d4;
@@ -54,7 +52,7 @@ DataFormEditorCore {
 }
 
 DataFormEditorLabel { 
-    color:var(--light-text-color);
+    color: var(--light-text-color);
     font-weight: bold; /* TODO: remove this when default font-weight is removed from ns-root */
 }
 

@@ -26,7 +26,7 @@
     </ScrollView>
 
     <StackLayout row="1" class="m-x-auto m-b-30">
-        <Button text="Next" class="-outline -outline-sky -rounded-sm" (tap)="onNextButtonTap()" [isEnabled]="isAnswerSelected"
+        <Button text="Next" class="-outline -sky -rounded-sm" (tap)="onNextButtonTap()" [isEnabled]="isAnswerSelected"
             [isUserInteractionEnabled]="isAnswerSelected"></Button>
         <Label text="Skip this question" class="text-primary m-x-auto p-t-5" (tap)="onNextButtonTap(false)"></Label>
     </StackLayout>
