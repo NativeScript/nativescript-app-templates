@@ -13,7 +13,7 @@
   "displayName": "Master-Detail with Firebase",
   "templateType": "App template",
   "version": "6.1.5",
-  "description": "Master-detail interface to display collection of items from Firebase and inspect and edit selected item properties. ",
+  "description": "Master-detail interface to display collection of items from Firebase and inspect and edit selected item properties.",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
   "keywords": [
@@ -39,12 +39,12 @@
     "lint": "eslint \"app/**/*.js\""
   },
   "dependencies": {
+    "@nativescript/theme": "~2.1.0",
     "nativescript-imagepicker": "~7.0.0",
     "nativescript-plugin-firebase": "~9.1.0",
-    "nativescript-theme-core": "2.0.23",
     "nativescript-ui-listview": "~7.0.0",
     "rxjs": "^6.4.0",
-    "tns-core-modules": "6.2.0-next-2019-10-08-131118-02"
+    "tns-core-modules": "next"
   },
   "devDependencies": {
     "eslint": "~5.8.0",
