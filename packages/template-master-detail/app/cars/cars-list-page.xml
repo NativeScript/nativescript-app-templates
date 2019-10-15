@@ -40,20 +40,20 @@
                         <StackLayout row="2" col="1" verticalAlignment="center" class="list-group-item-text">
                             <Label class="p-b-10">
                                 <FormattedString ios:fontFamily="system">
-                                    <Span text="&#xf1b9;   " class="fa text-primary" />
+                                    <Span text="&#xf1b9;   " class="fas text-primary" />
                                     <Span text="{{ class }}" />
                                 </FormattedString>
                             </Label>
                             <Label class="p-b-10">
                                 <FormattedString ios:fontFamily="system">
-                                    <Span text="&#xf085;   " class="fa text-primary" />
+                                    <Span text="&#xf085;   " class="fas text-primary" />
                                     <Span text="{{ transmission }}" />
                                     <Span text=" Transmission" />
                                 </FormattedString>
                             </Label>
                             <Label class="p-b-10">
                                 <FormattedString ios:fontFamily="system">
-                                    <Span text="&#xf2dc;   " class="fa text-primary" />
+                                    <Span text="&#xf2dc;   " class="fas text-primary" />
                                     <Span text="{{ hasAC ? 'Yes' : 'No' }}" />
                                 </FormattedString>
                             </Label>
