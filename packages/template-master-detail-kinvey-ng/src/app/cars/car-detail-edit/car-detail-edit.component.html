@@ -1,10 +1,10 @@
-<ActionBar class="action-bar">
+<ActionBar>
     <!--HACK - we should remove the navigation button-->
     <NavigationButton visibility="collapsed"></NavigationButton>
     <ActionItem ios.position="left" android.position="left" (tap)="onCancelButtonTap()">
-        <Label text="Cancel" class="action-item"></Label>
+        <Label text="Cancel"></Label>
     </ActionItem>
-    <Label class="action-bar-title" text="Edit Car Details" horizontalAlignment="center"></Label>
+    <Label text="Edit Car Details" horizontalAlignment="center"></Label>
     <ActionItem ios.position="right" android.position="right">
         <Label text="Done" class="action-item" verticalAlignment="center" (tap)="onDoneButtonTap()" 
             [isEnabled]="makeModel.valid && imageModel.valid"
@@ -12,15 +12,16 @@
     </ActionItem>
 </ActionBar>
 
-<GridLayout class="page page-content">
+<GridLayout>
     <ScrollView>
         <StackLayout class="car-list">
+
             <Label text="CAR MAKE" class="car-list-odd"></Label>
             <TextField #makeModel="ngModel" hint="Car make field is required" [(ngModel)]="car.name" class="car-list-even" required></TextField>
-
+            
             <GridLayout rows="*, 55, *" columns="*, auto" class="car-list-odd">
                 <Label text="PRICE PER DAY"></Label>
-                <Label col="1" horizontalAlignment="right" class="text-primary car-list-price">
+                <Label col="1" horizontalAlignment="right" class="text-primary car-list__price">
                     <FormattedString>
                         <Span text="€"></Span>
                         <Span [text]="pricePerDay"></Span>
@@ -40,7 +41,7 @@
                 on top of it. Check out the custom component at /cars/car-detail-edit/my-image-add-remove.
                 -->
                 <MyImageAddRemove #imageModel="ngModel" [(ngModel)]="carImageUrl" required></MyImageAddRemove>
-                <Label *ngIf="!imageModel.valid" class="ng-invalid-image" text="Image field is required"></Label>
+                <Label *ngIf="!imageModel.valid" class="c-error" text="Image field is required"></Label>
             </StackLayout>
 
             <Label class="car-list-odd" text="CLASS"></Label>
@@ -81,7 +82,9 @@
                 </Label>
                 <Slider row="1" colSpan="2" minValue="0" maxValue="5" [(ngModel)]="luggageValue"></Slider>
             </GridLayout>
+
         </StackLayout>
+
     </ScrollView>
 
     <ActivityIndicator [busy]="isUpdating"></ActivityIndicator>

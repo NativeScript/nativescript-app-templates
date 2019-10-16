@@ -1,13 +1,13 @@
-// Start custom common variables
-@import '../../../../app-variables';
-// End custom common variables
+@import '~@nativescript/theme/scss/variables/blue';
+
 // Custom styles
-.list-modal-view {
-    color: $blue-dark;
-    background-color: $blue-10;
-    
-    .list-modal-item {
+.modal-input {
+    @include colorize(
+        $background-color: background-alt-10,
+        $color: text-color
+    );
+
+    &__list-item {
         vertical-align: center;
-        margin-bottom: 10;
     }
 }
