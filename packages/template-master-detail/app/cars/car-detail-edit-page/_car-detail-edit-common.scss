@@ -3,25 +3,25 @@
 // Custom styles
 .car-list {
 
-    .car-list-even,
-    .car-list-odd {
+    &-even,
+    &-odd {
         padding: 10 15;
         margin: 0;
         border-bottom-width: const(border-width);
         @include colorize($border-color: background-alt-20);
     }
 
-    .car-list-odd {
+    &-odd {
         @include colorize($background-color: background-alt-10);
         @include colorize($color: secondary);
     }
 
-    .car-list-price {
+    &__price {
         width: 35;
         text-align: right;
     }
 
-    TextField.invalid-text {
+    TextField.placeholder-error {
         @include colorize($placeholder-color: error);
     }
 }
@@ -32,7 +32,7 @@
     font-size: 25;
     font-weight: bold;
 
-    .thumb-add {
+    &__add {
         background-color: transparent;
         border-radius: const(border-radius-sm);
         border-width: const(border-width);
@@ -42,10 +42,8 @@
         );
     }
 
-    .thumb-remove {
-        @include colorize(
-            $background-color: primary-accent,
-            $color: background
-        );
+    &__remove {
+        background-color: rgba(grey, 0.5);
+        @include colorize($color: background);
     }
 }

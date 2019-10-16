@@ -1,12 +1,12 @@
 @import '~@nativescript/theme/scss/variables/blue';
 
 // Custom styles
-.list-group {
-    .list-group-item {
+.cars-list {
+    &__item {
         padding: 0 0 8 0;
         @include colorize($background-color: background-alt-10);
 
-        .list-group-item-content {
+        &-content {
             padding: 8 15 4 15;
             @include colorize($background-color: background);
         }

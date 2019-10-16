@@ -15,16 +15,16 @@
         </ActionItem>
     </ActionBar>
 
-    <GridLayout class="page__content">
+    <GridLayout>
         <ScrollView>
             <StackLayout class="car-list">
                 <Label text="CAR MAKE" class="car-list-odd" />
                 <TextField text="{{ car.name }}" hint="Car make field is required"
-                    class="{{ car.name, car.name ? 'car-list-even' : 'car-list-even invalid-text' }}" />
+                    class="{{ car.name, car.name ? 'car-list-even' : 'car-list-even placeholder-error' }}" />
 
                 <GridLayout rows="*, 55, *" columns="*, auto" class="car-list-odd" >
                     <Label text="PRICE PER DAY" />
-                    <Label col="1" horizontalAlignment="right" class="text-primary car-list-price">
+                    <Label col="1" horizontalAlignment="right" class="text-primary car-list__price">
                         <FormattedString>
                             <Span text="€" />
                             <Span text="{{ car.price }}" />
@@ -41,11 +41,11 @@
                 <StackLayout class="car-list-even">
                     <GridLayout height="80" width="80" class="thumb" horizontalAlignment="left"
                         backgroundImage="{{ car.imageUrl }}" tap="onImageAddRemoveTap">
-                        <GridLayout class="thumb-add"
+                        <GridLayout class="thumb__add"
                             visibility="{{ car.imageUrl, car.imageUrl | visibilityValueConverter }}">
                             <Label text="&#xf030;" class="fas" horizontalAlignment="center" verticalAlignment="center" />
                         </GridLayout>
-                        <GridLayout class="thumb-remove"
+                        <GridLayout class="thumb__remove"
                             visibility="{{ car.imageUrl, !car.imageUrl | visibilityValueConverter }}">
                             <Label text="&#xf2ed;" class="far" horizontalAlignment="center" verticalAlignment="center" />
                         </GridLayout>
