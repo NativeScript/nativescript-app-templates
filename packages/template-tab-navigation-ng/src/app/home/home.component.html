@@ -5,7 +5,9 @@
 <GridLayout>
     <ListView [items]="items">
         <ng-template let-item="item">
-            <Label [nsRouterLink]="['../item', item.id]" [text]="item.name"></Label>
+            <StackLayout orientation="horizontal">
+                <Label [nsRouterLink]="['../item', item.id]" [text]="item.name"></Label>
+            </StackLayout>
         </ng-template>
     </ListView>
 </GridLayout>
