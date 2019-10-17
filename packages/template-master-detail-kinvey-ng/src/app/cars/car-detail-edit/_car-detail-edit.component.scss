@@ -7,6 +7,7 @@
     &-odd {
         padding: 10 15;
         margin: 0;
+        margin-bottom: 0;
         border-bottom-width: const(border-width);
         @include colorize($border-color: background-alt-20);
     }
