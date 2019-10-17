@@ -1,33 +1,21 @@
+@import "~@nativescript/theme/core";
+@import "~@nativescript/theme/blue";
+
 // Place any CSS rules you want to apply on both iOS and Android here.
 // This is where the vast majority of your CSS code goes.
 
-//Font icon
-.fa {
-   font-family: "FontAwesome";
-}
-//Action bar
-.action-item,
-NavigationButton {
-    color: $ab-color;
+// Font icon class
+.fab {
+    font-family: "Font Awesome 5 Brands", "fa-brands-400";
+    font-weight: 400;
 }
 
-.action-item:disabled {
-    color: rgba($ab-color, 0.5);
+.fas {
+    font-family: "Font Awesome 5 Free", "fa-solid-900";
+    font-weight: 900;
 }
 
-Slider {
-  background-color: $accent;
-  color: $accent;  
-}
-
-.text {
-    color: $blue-dark;
-}
-
-.text-primary {
-    color: $accent-dark;
-}
-
-.text-secondary {
-    color: $blue-50;
+.far {
+    font-family: "Font Awesome 5 Free", "fa-regular-400";
+    font-weight: 400;
 }

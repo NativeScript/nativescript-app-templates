@@ -1,5 +1,4 @@
-// Custom common variables
-@import '../../../../app-variables';
+@import '~@nativescript/theme/scss/variables/blue';
 
 // Custom styles
 .thumb {
@@ -7,17 +6,19 @@
     background-repeat: no-repeat;
     font-size: 25;
     font-weight: bold;
-    
-    .thumb-add {
+
+    &__add {
         background-color: transparent;
-        color: $blue-20;
-        border-radius: $border-radius;
-        border-width: $border-width;
-        border-color: $blue-20;
+        border-radius: const(border-radius-sm);
+        border-width: const(border-width);
+        @include colorize(
+            $border-color: background-alt-20,
+            $color: background-alt-20
+        );
     }
 
-    .thumb-remove {
-        color: $background-light;
-        background-color: $blue-20;
+    &__remove {
+        background-color: rgba(grey, 0.5);
+        @include colorize($color: background);
     }
 }

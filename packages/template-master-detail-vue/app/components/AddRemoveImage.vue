@@ -4,11 +4,11 @@
 
         <GridLayout row="1" col="0" height="80" width="80" class="thumb car-list-even" horizontalAlignment="left"
                     :backgroundImage="selectedImage" @tap="onImageAddRemoveTap">
-            <Label text.decode="&#xf030;" class="fa thumb-add" v-show="!selectedImage"/>
-            <Label text.decode="&#xf014;" class="fa thumb-remove" v-show="selectedImage" />
+            <Label text.decode="&#xf030;" class="fas thumb__add" v-show="!selectedImage"/>
+            <Label text.decode="&#xf2ed;" class="far thumb__remove" v-show="selectedImage" />
         </GridLayout>
 
-        <Label v-if="!imageUrl" row="1" col="1" class="invalid-image" verticalAlignment="middle" text="Image field is required" />
+        <Label v-if="!imageUrl" row="1" col="1" verticalAlignment="middle" text="Image field is required" />
     </GridLayout>
 </template>
 
@@ -90,38 +90,45 @@
 </script>
 
 <style scoped lang="scss">
-    // Custom common variables
-    @import '../app-variables';
+    @import '~@nativescript/theme/scss/variables/blue';
 
-    .page .thumb {
-        background-size: cover;
-        background-repeat: no-repeat;
-        padding: 0;
-        font-size: 25;
-        font-weight: bold;
+    // Custom styles
+    .car-list {
 
-        Label {
-            width: 100%;
-            height: 100%;
-            padding: 25 30;
+        &-even,
+        &-odd {
+            padding: 10 15;
+            margin: 0;
+            border-bottom-width: const(border-width);
+            @include colorize($border-color: background-alt-20);
         }
 
-        .thumb-add {
-            padding: 25;
-            background-color: transparent;
-            color: $blue-20;
-            border-radius: $border-radius;
-            border-width: $border-width;
-            border-color: $blue-20;
-        }
-
-        .thumb-remove {
-            color: $background-light;
-            background-color: $blue-20;
+        &-odd {
+            @include colorize($background-color: background-alt-10);
+            @include colorize($color: secondary);
         }
     }
 
-    .invalid-image {
-        margin-left: 10;
+    // Custom styles
+    .thumb {
+        background-size: cover;
+        background-repeat: no-repeat;
+        font-size: 25;
+        font-weight: bold;
+
+        &__add {
+            background-color: transparent;
+            border-radius: const(border-radius-sm);
+            border-width: const(border-width);
+            @include colorize(
+                $border-color: background-alt-20,
+                $color: background-alt-20
+            );
+        }
+
+        &__remove {
+            background-color: rgba(grey, 0.5);
+            @include colorize($color: background);
+        }
     }
 </style>
