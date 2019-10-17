@@ -1,10 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { isAndroid } from "tns-core-modules/platform";
 
 @Component({
     selector: "ns-app",
-    templateUrl: "app.component.html",
-    styleUrls: ["./app.component.scss"]
+    templateUrl: "app.component.html"
 })
 export class AppComponent implements OnInit {
 

@@ -3,15 +3,15 @@
         <TabStrip>
             <TabStripItem>
                 <Label text="Home"></Label>
-                <Image src.decode="font://&#xf015;" class="fa t-36"></Image>
+                <Image src.decode="font://&#xf015;" class="fas t-36"></Image>
             </TabStripItem>
             <TabStripItem>
                 <Label text="Browse"></Label>
-                <Image src.decode="font://&#xf1ea;" class="fa t-36"></Image>
+                <Image src.decode="font://&#xf1ea;" class="far t-36"></Image>
             </TabStripItem>
             <TabStripItem>
                 <Label text="Search"></Label>
-                <Image src.decode="font://&#xf002;" class="fa t-36"></Image>
+                <Image src.decode="font://&#xf002;" class="fas t-36"></Image>
             </TabStripItem>
         </TabStrip>
 
@@ -52,7 +52,7 @@ export default {
 
 <style lang="scss">
 // Start custom common variables
-@import "../app-variables";
+@import "~@nativescript/theme/scss/variables/blue";
 // End custom common variables
 
 // Custom styles

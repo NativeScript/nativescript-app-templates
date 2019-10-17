@@ -1,9 +1,9 @@
 <template>
-    <Page class="page">
+    <Page>
 
-        <ActionBar class="action-bar">
+        <ActionBar>
             <NavigationButton @tap="$navigateBack" android.systemIcon="ic_menu_back"/>
-            <Label class="action-bar-title" :text="item.name"></Label>
+            <Label :text="item.name"></Label>
         </ActionBar>
 
         <GridLayout>
@@ -26,7 +26,7 @@ export default {
 
 <style scoped lang="scss">
 // Start custom common variables
-@import "../app-variables";
+@import "~@nativescript/theme/scss/variables/blue";
 // End custom common variables
 
 // Custom styles
