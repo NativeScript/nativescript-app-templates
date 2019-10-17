@@ -2,19 +2,14 @@
     xmlns:lv="nativescript-ui-listview"
     xmlns="http://schemas.nativescript.org/tns.xsd">
 
-    <!-- ? -->
     <ActionBar title="{{ title }}" icon="">
         <Label text="{{ title }}" />
     </ActionBar>
 
     <GridLayout rows="auto, *, auto" verticalAlignment="top" class="modal-input">
         <Label text="{{ title }}" ios:visibility="collapsed" class="h3 modal-input__header" />
-        <lv:RadListView row="1" items="{{ items }}" selectionBehavior="Press" itemSelected="onItemSelected" class="modal-input__list">
-            <lv:RadListView.listViewLayout>
-                <lv:ListViewLinearLayout scrollDirection="Vertical" />
-            </lv:RadListView.listViewLayout>
-
-            <lv:RadListView.itemTemplate>
+        <ListView row="1" items="{{ items }}" itemTap="onItemSelected" class="modal-input__list">
+            <ListView.itemTemplate>
                 <GridLayout class="modal-input__list-item">
                     <GridLayout android:visibility="collapsed" columns="*, auto">
                         <Label text="{{ value }}" />
@@ -31,8 +26,8 @@
                         <Label col="1" text="{{value}}" />
                     </GridLayout>
                 </GridLayout>
-            </lv:RadListView.itemTemplate>
-        </lv:RadListView>
+            </ListView.itemTemplate>
+        </ListView>
         <Button class="-outline" row="3" text="CANCEL" ios:visibility="collapsed" horizontalAlignment="right" tap="onCancelButtonTap" />
     </GridLayout>
 </Page>

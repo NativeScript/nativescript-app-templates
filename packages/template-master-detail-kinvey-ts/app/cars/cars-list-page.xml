@@ -9,18 +9,8 @@
     </ActionBar>
 
     <GridLayout>
-        <!--
-        RadListView is a UI component part of the Progress NativeScript UI set of components.
-        Learn more about the RadListView UI component and how it can be customized in this documentation article:
-        https://docs.nativescript.org/ui/professional-ui-components/ListView/getting-started
-        This component is used to display the master list in the master-detail structure.
-        -->
-        <lv:RadListView items="{{ cars }}" itemTap="onCarItemTap" class="cars-list">
-            <lv:RadListView.listViewLayout>
-                <lv:ListViewLinearLayout scrollDirection="Vertical" />
-            </lv:RadListView.listViewLayout>
-
-            <lv:RadListView.itemTemplate>
+        <ListView items="{{ cars }}" itemTap="onCarItemTap" class="cars-list">
+            <ListView.itemTemplate>
                 <StackLayout class="cars-list__item">
 
                     <GridLayout rows="*, *, *" columns="*, *" class="cars-list__item-content">
@@ -61,8 +51,8 @@
                     </GridLayout>
 
                 </StackLayout>
-            </lv:RadListView.itemTemplate>
-        </lv:RadListView>
+            </ListView.itemTemplate>
+        </ListView>
 
         <ActivityIndicator busy="{{ isLoading }}" />
     </GridLayout>

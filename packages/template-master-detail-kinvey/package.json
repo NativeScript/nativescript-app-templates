@@ -44,7 +44,6 @@
     "@nativescript/theme": "~2.1.0",
     "kinvey-nativescript-sdk": "4.2.3",
     "nativescript-imagepicker": "~7.0.0",
-    "nativescript-ui-listview": "~7.0.0",
     "tns-core-modules": "next",
     "tslib": "^1.9.3"
   },
