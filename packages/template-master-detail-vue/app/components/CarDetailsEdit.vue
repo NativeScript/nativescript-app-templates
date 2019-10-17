@@ -1,27 +1,27 @@
 <template>
-    <Page class="page">
-        <ActionBar class="action-bar">
-            <Label class="action-bar-title" :text="'Edit ' + carData.name" horizontalAlignment="center" />
+    <Page>
+        <ActionBar>
+            <Label :text="'Edit ' + carData.name" horizontalAlignment="center" />
            <ActionItem @tap="onCancelButtonTap" position="left">
-               <Label text="Cancel" verticalAlignment="center" class="action-item" />
+               <Label text="Cancel" verticalAlignment="center" />
            </ActionItem>
            <ActionItem position="right">
-               <Label text="Done" class="action-item" verticalAlignment="center" @tap="onDoneButtonTap"
+               <Label text="Done" verticalAlignment="center" @tap="onDoneButtonTap"
                    :isEnabled="isModelValid"
                    :isUserInteractionEnabled="isModelValid" />
            </ActionItem>
         </ActionBar>
 
-        <GridLayout class="page">
+        <GridLayout>
             <ScrollView>
                 <StackLayout class="car-list">
                     <Label text="CAR MAKE" class="car-list-odd" />
                     <TextField :text="carData.name" hint="Car make field is required"
-                        :class="{ [carData.name]: true, [carData.name ? 'car-list-even' : 'car-list-even invalid-text']: true }" />
+                        :class="{ [carData.name]: true, [carData.name ? 'car-list-even' : 'car-list-even placeholder-error']: true }" />
 
                     <StackLayout class="car-list-odd" orientation="horizontal">
                         <Label text="PRICE PER DAY" />
-                        <Label col="1" horizontalAlignment="right" class="text-primary car-list-price">
+                        <Label col="1" horizontalAlignment="right" class="text-primary car-list__price">
                             <FormattedString>
                                 <Span text.decode="&euro;" />
                                 <Span :text="carData.price" />
@@ -162,40 +162,31 @@
 </script>
 
 <style lang="scss">
-    // Custom common variables
-    @import '../app-variables';
+    @import '~@nativescript/theme/scss/variables/blue';
 
     // Custom styles
     .car-list {
 
-        .car-list-even,
-        .car-list-odd {
+        &-even,
+        &-odd {
             padding: 10 15;
-            border-bottom-width: $border-width;
-            border-color: $blue-20;
+            margin: 0;
+            border-bottom-width: const(border-width);
+            @include colorize($border-color: background-alt-20);
         }
 
-        .car-list-odd {
-            background-color: $blue-10;
-            color: $blue-50;
+        &-odd {
+            @include colorize($background-color: background-alt-10);
+            @include colorize($color: secondary);
         }
 
-        .text-secondary {
-            horizontal-alignment: right;
-            vertical-alignment: center;
-        }
-
-        .car-list-price {
+        &__price {
             width: 35;
             text-align: right;
         }
 
-        TextField.invalid-text {
-            placeholder-color: $error;
-        }
-
-        .invalid-image {
-            color: $error;
+        TextField.placeholder-error {
+            @include colorize($placeholder-color: error);
         }
     }
 </style>

@@ -2,7 +2,7 @@
     <GridLayout rows="*, *" columns="*, auto">
         <Label row="0" col="0" colSpan="2" :text="type.toUpperCase()" class="car-list-odd" />
         <Label row="1" col="0" :text="selected" class="car-list-even" @tap="onSelectorTap" />
-        <Label row="1" col="1" text.decode="&#xf054;" class="fa text-secondary car-list-even" @tap="onSelectorTap" />
+        <Label row="1" col="1" text.decode="&#xf054;" class="fas car-list-even" @tap="onSelectorTap" />
     </GridLayout>
 </template>
 

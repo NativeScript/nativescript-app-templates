@@ -1,28 +1,28 @@
 <template>
-    <GridLayout rows="auto, *, auto" verticalAlignment="top" ios:class="list-modal-view -ios" android:class="list-modal-view -android">
-        <Label :text="title" class="h3 list-modal-header"></Label>
-        <RadListView row="1" :items="source" @itemTap="itemSelected" selectionBehavior="Press" class="list-modal-list">
+    <GridLayout rows="auto, *, auto" verticalAlignment="top" ios:class="modal-input -ios" android:class="modal-input -android">
+        <Label :text="title" class="h3 modal-input__header"></Label>
+        <RadListView row="1" :items="source" @itemTap="itemSelected" selectionBehavior="Press" class="modal-input__list">
             <v-template>
                 <GridLayout>
-                    <GridLayout android:visibility="collapsed" columns="*,auto" class="list-modal-item">
+                    <GridLayout android:visibility="collapsed" columns="*,auto" class="modal-input__list-item">
                         <Label :text="item.value"></Label>
                         <Label col="1" text.decode="&#xf00c;"
-                            class="fa list-modal-view-check"
+                            class="fas modal-input__list-check"
                             v-show="item.value === selectedValue"></Label>
                     </GridLayout>
-                    <GridLayout ios:visibility="collapsed" columns="auto,*" class="list-modal-item">
-                        <Label text.decode="&#xf10c;"
-                            class="fa list-modal-view-icon" verticalAlignment="center"
+                    <GridLayout ios:visibility="collapsed" columns="auto,*" class="modal-input__list-item">
+                        <Label text.decode="&#xf111;"
+                            class="far modal-input__list-icon" verticalAlignment="center"
                             v-show="item.value !== selectedValue"></Label>
                         <Label text.decode="&#xf192;"
-                            class="fa list-modal-view-icon selected" verticalAlignment="center"
+                            class="far modal-input__list-icon selected" verticalAlignment="center"
                             v-show="item.value === selectedValue"></Label>
                         <Label col="1" :text="item.value"></Label>
                     </GridLayout>
                 </GridLayout>
             </v-template>
         </RadListView>
-        <Button class="btn btn-outline" row="3" text="CANCEL" ios:visibility="collapsed" horizontalAlignment="right" @tap="$modal.close()"></Button>
+        <Button class="-outline" row="3" text="CANCEL" ios:visibility="collapsed" horizontalAlignment="right" @tap="$modal.close()"></Button>
     </GridLayout>
 </template>
 
@@ -50,56 +50,69 @@
 </script>
 
 <style lang="scss">
-    // Custom common variables
-    @import '../app-variables';
+    @import '~@nativescript/theme/scss/variables/blue';
 
     // Custom styles
-    .list-modal-item {
-        padding: 10 15;
-        vertical-align: center;
-    }
+    .modal-input {
+        @include colorize(
+            $background-color: background-alt-10,
+            $color: text-color
+        );
 
-    .list-modal-view.-ios {
-        height: 100%;
-        padding-top: 20;
-
-        .list-modal-item {
-            margin: 0;
-            border-bottom-width: $border-width;
-            border-color: $blue-20;
-            background-color: $background-light;
-        }
-
-        .list-modal-list {
-            border-top-width: $border-width;
-            border-color: $blue-20;
-        }
-
-        .list-modal-view-check {
-            color: $success-dark;
+        &__list-item {
+            vertical-align: center;
         }
     }
 
-    .list-modal-view.-android {
+    .modal-input.-android {
 
-        .list-modal-header {
+        &__header {
             padding: 15;
         }
 
-        .list-modal-view-icon {
+        &__list-item {
+            padding: 0 15 10 15;
+        }
+
+        &__list-icon {
             margin-right: 15;
             margin-top: 2;
 
             &.selected {
-               color: $accent-dark;
+                @include colorize($color: accent);
             }
         }
 
-        .btn.btn-outline {
+        Button.-outline {
+            android-elevation: 0;
+            background-color: transparent;
             border-color: transparent;
+            @include colorize($color: accent);
             font-size: 12;
             padding-right: 0;
             text-align: right;
+        }
+    }
+
+    .modal-input.-ios {
+        height: 100%;
+        padding-top: 20;
+
+        &__list {
+            border-top-width: const(border-width);
+            @include colorize($border-color: background-alt-20);
+
+            &-item {
+                border-bottom-width: const(border-width);
+                @include colorize(
+                    $background-color: background,
+                    $border-color: background-alt-20
+                );
+            }
+
+            &-check {
+                @include colorize($color: accent);
+            }
         }
     }
 </style>
