@@ -1,20 +1,14 @@
-// Start custom common variables
-@import '../app-variables';
-// End custom common variables
+@import '~@nativescript/theme/scss/variables/blue';
 
 // Custom styles
-.list-group {
-    .list-group-item {
+.cars-list {
+    &__item {
         padding: 0 0 8 0;
-        background-color: $blue-10;
+        @include colorize($background-color: background-alt-10);
 
-        .list-group-item-content {
+        &-content {
             padding: 8 15 4 15;
-            background-color: $background-light;
-        }
-
-        .fa {
-            color: $accent-dark;
+            @include colorize($background-color: background);
         }
     }
 }

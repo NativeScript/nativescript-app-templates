@@ -1,32 +1,28 @@
-// Custom common variables
-@import '../../app-variables';
+@import '~@nativescript/theme/scss/variables/blue';
 
 // Custom styles
 .car-list {
 
-    .car-list-even,
-    .car-list-odd {
+    &-even,
+    &-odd {
         padding: 10 15;
-        border-bottom-width: $border-width;
-        border-color: $blue-20;
+        margin: 0;
+        border-bottom-width: const(border-width);
+        @include colorize($border-color: background-alt-20);
     }
 
-    .car-list-odd {
-        background-color: $blue-10;
-        color: $blue-50;
+    &-odd {
+        @include colorize($background-color: background-alt-10);
+        @include colorize($color: secondary);
     }
 
-    .car-list-price {
+    &__price {
         width: 35;
         text-align: right;
     }
 
-    TextField.invalid-text {
-        placeholder-color: $error;
-    }
- 
-    .invalid-image {
-        color: $error;
+    TextField.placeholder-error {
+        @include colorize($placeholder-color: error);
     }
 }
 
@@ -35,17 +31,19 @@
     background-repeat: no-repeat;
     font-size: 25;
     font-weight: bold;
-    
-    .thumb-add {
+
+    &__add {
         background-color: transparent;
-        color: $blue-20;
-        border-radius: $border-radius;
-        border-width: $border-width;
-        border-color: $blue-20;
+        border-radius: const(border-radius-sm);
+        border-width: const(border-width);
+        @include colorize(
+            $border-color: background-alt-20,
+            $color: background-alt-20
+        );
     }
 
-    .thumb-remove {
-        color: $background-light;
-        background-color: $blue-20;
+    &__remove {
+        background-color: rgba(grey, 0.5);
+        @include colorize($color: background);
     }
 }
