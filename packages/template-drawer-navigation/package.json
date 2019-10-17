@@ -40,7 +40,7 @@
     "lint": "eslint \"app/**/*.js\""
   },
   "dependencies": {
-    "nativescript-theme-core": "~1.0.6",
+    "@nativescript/theme": "~2.1.0",
     "nativescript-ui-sidedrawer": "~7.0.0",
     "rxjs": "^6.4.0",
     "tns-core-modules": "~6.1.0"

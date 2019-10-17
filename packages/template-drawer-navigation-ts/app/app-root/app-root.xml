@@ -3,50 +3,50 @@ RadSideDrawer is a UI component part of the Progress NativeScript UI set of comp
 Learn more about the RadSideDrawer UI component and how it can be customized in this documentation article:
 https://docs.nativescript.org/ui/professional-ui-components/SideDrawer/getting-started
 -->
-<nsDrawer:RadSideDrawer id="sideDrawer" xmlns:nsDrawer="nativescript-ui-sidedrawer" loaded="onLoaded">
+<nsDrawer:RadSideDrawer id="sideDrawer" xmlns:nsDrawer="nativescript-ui-sidedrawer" loaded="onLoaded" class="ns-statusbar-transparent">
     <nsDrawer:RadSideDrawer.drawerTransition>
         <nsDrawer:SlideInOnTopTransition/>
     </nsDrawer:RadSideDrawer.drawerTransition>
 
     <nsDrawer:RadSideDrawer.drawerContent>
-        <GridLayout rows="auto, *" class="sidedrawer sidedrawer-left">
-            <StackLayout class="sidedrawer-header">
-                <Label class="sidedrawer-header-image fa" text="&#xf2bd;" />
-                <Label class="sidedrawer-header-brand" text="User Name" />
-                <Label class="footnote" text="username@mail.com" />
+        <GridLayout rows="auto, *" class="nt-drawer__content">
+            <StackLayout class="nt-drawer__header">
+                <Image class="nt-drawer__header-image fas t-36" src="font://&#xf2bd;" />
+                <Label class="nt-drawer__header-brand" text="User Name" />
+                <Label class="nt-drawer__header-footnote" text="username@mail.com" />
             </StackLayout>
 
-            <ScrollView row="1" class="sidedrawer-content">
+            <ScrollView row="1" class="nt-drawer__body">
                 <StackLayout>
-                    <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Home' ? ' selected': '') }}"
+                    <GridLayout columns="auto, *" class="{{ 'nt-drawer__list-item' + (selectedPage === 'Home' ? ' selected': '') }}"
                         route="home/home-page" title="Home" tap="onNavigationItemTap">
-                        <Label row="0" col="0" text="&#xf015;" class="fa" />
+                        <Label row="0" col="0" text="&#xf015;" class="nt-icon fas" />
                         <Label row="0" col="1" text="Home" class="p-r-10" />
                     </GridLayout>
 
-                    <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Browse' ? ' selected': '') }}"
+                    <GridLayout columns="auto, *" class="{{ 'nt-drawer__list-item' + (selectedPage === 'Browse' ? ' selected': '') }}"
                         route="browse/browse-page" title="Browse" tap="onNavigationItemTap">
-                        <Label row="0" col="0" text="&#xf1ea;" class="fa" />
+                        <Label row="0" col="0" text="&#xf1ea;" class="nt-icon far" />
                         <Label row="0" col="1" text="Browse" class="p-r-10" />
                     </GridLayout>
 
-                    <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Search' ? ' selected': '') }}"
+                    <GridLayout columns="auto, *" class="{{ 'nt-drawer__list-item' + (selectedPage === 'Search' ? ' selected': '') }}"
                         route="search/search-page" title="Search" tap="onNavigationItemTap">
-                        <Label row="0" col="0" text="&#xf002;" class="fa" />
+                        <Label row="0" col="0" text="&#xf002;" class="nt-icon fas" />
                         <Label row="0" col="1" text="Search" class="p-r-10" />
                     </GridLayout>
 
-                    <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Featured' ? ' selected': '') }}"
+                    <GridLayout columns="auto, *" class="{{ 'nt-drawer__list-item' + (selectedPage === 'Featured' ? ' selected': '') }}"
                         route="featured/featured-page" title="Featured" tap="onNavigationItemTap">
-                        <Label row="0" col="0" text="&#xf005;" class="fa" />
+                        <Label row="0" col="0" text="&#xf005;" class="nt-icon fas" />
                         <Label row="0" col="1" text="Featured" class="p-r-10" />
                     </GridLayout>
 
-                    <StackLayout class="hr-light"></StackLayout>
+                    <StackLayout class="hr"></StackLayout>
 
-                    <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Settings' ? ' selected': '') }}"
+                    <GridLayout columns="auto, *" class="{{ 'nt-drawer__list-item' + (selectedPage === 'Settings' ? ' selected': '') }}"
                         route="settings/settings-page" title="Settings" tap="onNavigationItemTap">
-                        <Label row="0" col="0" text="&#xf013;" class="fa" />
+                        <Label row="0" col="0" text="&#xf013;" class="nt-icon fas" />
                         <Label row="0" col="1" text="Settings" class="p-r-10" />
                     </GridLayout>
                 </StackLayout>
