@@ -16,9 +16,10 @@
         @include colorize($color: secondary);
     }
 
-    &__price {
-        width: 35;
+    &__value {
+        width: 65;
         text-align: right;
+        @include colorize($color: accent);
     }
 
     TextField.placeholder-error {

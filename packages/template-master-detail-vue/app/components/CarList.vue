@@ -9,7 +9,7 @@
             <v-template>
                 <StackLayout class="cars-list__item">
                     <GridLayout rows="*, *, *" columns="*, *" class="cars-list__item-content">
-                        <Label :text="item.name" class="text-primary font-weight-bold"/>
+                        <Label :text="item.name" class="cars-list__item-name font-weight-bold"/>
                         <Label col="1" horizontalAlignment="right" class="m-r-5">
                             <FormattedString>
                                 <Span text.decode="&euro;"/>
@@ -25,20 +25,20 @@
                         <StackLayout row="2" col="1" verticalAlignment="center">
                             <Label class="p-b-10">
                                 <FormattedString ios.fontFamily="system">
-                                    <Span text.decode="&#xf1b9;    " class="fas text-primary"></Span>
+                                    <Span text.decode="&#xf1b9;    " class="fas cars-list__item-icon"></Span>
                                     <Span :text="item.class"/>
                                 </FormattedString>
                             </Label>
                             <Label class="p-b-10">
                                 <FormattedString ios.fontFamily="system">
-                                    <Span text.decode="&#xf085;   " class="fas text-primary"/>
+                                    <Span text.decode="&#xf085;   " class="fas cars-list__item-icon"/>
                                     <Span :text="item.transmission"/>
                                     <Span text=" Transmission"/>
                                 </FormattedString>
                             </Label>
                             <Label class="p-b-10">
                                 <FormattedString ios.fontFamily="system">
-                                    <Span text.decode="&#xf2dc;    " class="fas text-primary"/>
+                                    <Span text.decode="&#xf2dc;    " class="fas cars-list__item-icon"/>
                                     <Span :text="item.hasAC ? 'Yes' : 'No'"/>
                                 </FormattedString>
                             </Label>
@@ -86,6 +86,11 @@
             &-content {
                 padding: 8 15 4 15;
                 @include colorize($background-color: background);
+            }
+
+            &-name,
+            &-icon {
+                @include colorize($color: accent);
             }
         }
     }
