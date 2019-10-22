@@ -1,11 +1,11 @@
 <ActionBar>
     <!--HACK - we should remove the navigation button-->
     <NavigationButton visibility="collapsed"></NavigationButton>
-    <ActionItem ios.position="left" android.position="left" (tap)="onCancelButtonTap()">
+    <ActionItem ios.position="left" (tap)="onCancelButtonTap()">
         <Label text="Cancel"></Label>
     </ActionItem>
     <Label text="Edit Car Details" horizontalAlignment="center"></Label>
-    <ActionItem ios.position="right" android.position="right">
+    <ActionItem ios.position="right">
         <Label text="Done" class="action-item" verticalAlignment="center" (tap)="onDoneButtonTap()" 
             [isEnabled]="makeModel.valid && imageModel.valid"
             [isUserInteractionEnabled]="makeModel.valid && imageModel.valid"></Label>
