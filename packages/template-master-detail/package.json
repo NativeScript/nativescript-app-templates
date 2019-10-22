@@ -39,7 +39,7 @@
     "lint": "eslint \"app/**/*.js\""
   },
   "dependencies": {
-    "@nativescript/theme": "~2.1.0",
+"@nativescript/theme": "next",
     "nativescript-imagepicker": "~7.0.0",
     "nativescript-plugin-firebase": "~9.1.0",
     "rxjs": "^6.4.0",
@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "eslint": "~5.8.0",
-    "nativescript-dev-webpack": "~1.2.0",
+    "nativescript-dev-webpack": "rc",
     "node-sass": "^4.7.1"
   }
 }
