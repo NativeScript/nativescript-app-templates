@@ -34,11 +34,11 @@
     "url": "https://github.com/NativeScript/NativeScript/issues"
   },
   "dependencies": {
-    "@nativescript/theme": "~2.1.0",
-    "tns-core-modules": "~6.1.0"
+    "@nativescript/theme": "next",
+    "tns-core-modules": "rc"
   },
   "devDependencies": {
-    "nativescript-dev-webpack": "~1.2.0",
+    "nativescript-dev-webpack": "rc",
     "typescript": "~3.5.3"
   }
 }

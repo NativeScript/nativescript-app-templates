@@ -5,10 +5,10 @@
         <!-- HACK - we should remove the navigation button -->
         <NavigationButton visibility="collapsed" />
         <Label text="Edit Car Details" horizontalAlignment="center" />
-        <ActionItem tap="onCancelButtonTap" ios.position="left" android.position="left">
+        <ActionItem tap="onCancelButtonTap" ios.position="left">
             <Label text="Cancel" verticalAlignment="center" />
         </ActionItem>
-        <ActionItem ios.position="right" android.position="right">
+        <ActionItem ios.position="right">
             <Label text="Done" verticalAlignment="center" tap="onDoneButtonTap"
                 isEnabled="{{ car.isModelValid }}"
                 isUserInteractionEnabled="{{ car.isModelValid }}" />

@@ -1,6 +1,6 @@
 const observableModule = require("tns-core-modules/data/observable");
 const { knownFolders, path } = require("tns-core-modules/file-system");
-const { fromAsset } = require("tns-core-modules/image-source");
+const { ImageSource } = require("tns-core-modules/image-source");
 const imagePicker = require("nativescript-imagepicker");
 
 const CarService = require("../shared/car-service");
@@ -80,7 +80,7 @@ function CarDetailEditViewModel(carModel) {
                 .then((selection) => selection.forEach(
                     (selectedAsset) => {
                         selectedAsset.options.height = 768;
-                        fromAsset(selectedAsset)
+                        ImageSource.fromAsset(selectedAsset)
                             .then((imageSource) => this._handleImageChange(imageSource));
                     })).catch((errorMessage) => console.log(errorMessage));
         },

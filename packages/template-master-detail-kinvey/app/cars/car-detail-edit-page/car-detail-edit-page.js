@@ -1,5 +1,5 @@
-const topmost = require("tns-core-modules/ui/frame").topmost;
-const alert = require("tns-core-modules/ui/dialogs").alert;
+const { Frame } = require("tns-core-modules/ui/frame");
+const { alert } = require("tns-core-modules/ui/dialogs");
 
 const CarDetailEditViewModel = require("./car-detail-edit-view-model");
 
@@ -31,7 +31,7 @@ function onNavigatingTo(args) {
  * The edit cancel button navigates back to the item details page.
  *************************************************************/
 function onCancelButtonTap(args) {
-    topmost().goBack();
+    Frame.topmost().goBack();
 }
 
 /* ***********************************************************
@@ -49,7 +49,7 @@ function onDoneButtonTap(args) {
     const bindingContext = actionItem.bindingContext;
 
     bindingContext.saveChanges()
-        .then(() => topmost().navigate({
+        .then(() => Frame.topmost().navigate({
             moduleName: "cars/cars-list-page",
             animated: true,
             clearHistory: true,
@@ -77,7 +77,7 @@ function onDoneButtonTap(args) {
             message: readOnlyMessage,
             okButtonText: "Ok"
         }))
-        .then(() => topmost().navigate({
+        .then(() => Frame.topmost().navigate({
             moduleName: "cars/cars-list-page",
             animated: true,
             clearHistory: true,

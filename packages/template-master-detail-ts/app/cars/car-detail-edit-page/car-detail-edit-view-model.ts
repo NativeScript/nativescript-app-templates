@@ -2,7 +2,7 @@ import * as imagePicker from "nativescript-imagepicker";
 import { Observable } from "tns-core-modules/data/observable";
 import { Folder, knownFolders, path } from "tns-core-modules/file-system";
 import { ImageAsset } from "tns-core-modules/image-asset";
-import { fromAsset, ImageSource } from "tns-core-modules/image-source";
+import { ImageSource } from "tns-core-modules/image-source";
 
 import { ObservableProperty } from "../../shared/observable-property-decorator";
 import { Car } from "../shared/car-model";
@@ -108,7 +108,7 @@ export class CarDetailEditViewModel extends Observable {
             .then((selection) => selection.forEach(
                 (selectedAsset: ImageAsset) => {
                     selectedAsset.options.height = 768;
-                    fromAsset(selectedAsset)
+                    ImageSource.fromAsset(selectedAsset)
                         .then((imageSource: ImageSource) => this.handleImageChange(imageSource));
                 })
             ).catch((errorMessage: any) => console.log(errorMessage));

@@ -1,7 +1,7 @@
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
 import { EventData } from "tns-core-modules/data/observable";
-import { topmost } from "tns-core-modules/ui/frame";
+import { Frame } from "tns-core-modules/ui/frame";
 import { GridLayout } from "tns-core-modules/ui/layouts/grid-layout";
 
 import { AppRootViewModel } from "./app-root-view-model";
@@ -19,7 +19,7 @@ export function onNavigationItemTap(args: EventData): void {
 
     bindingContext.selectedPage = componentTitle;
 
-    topmost().navigate({
+    Frame.topmost().navigate({
         moduleName: componentRoute,
         transition: {
             name: "fade"

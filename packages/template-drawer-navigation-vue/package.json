@@ -39,17 +39,17 @@
     "url": "https://github.com/NativeScript/NativeScript/issues"
   },
   "dependencies": {
-    "@nativescript/theme": "~2.1.0",
+    "@nativescript/theme": "next",
     "nativescript-ui-sidedrawer": "~7.0.0",
     "nativescript-vue": "~2.4.0",
     "rxjs": "^6.4.0",
-    "tns-core-modules": "~6.1.0"
+    "tns-core-modules": "rc"
   },
   "devDependencies": {
     "@babel/core": "~7.1.0",
     "@babel/preset-env": "~7.1.0",
     "babel-loader": "~8.0.0",
-    "nativescript-dev-webpack": "~1.2.0",
+    "nativescript-dev-webpack": "rc",
     "nativescript-vue-template-compiler": "~2.4.0",
     "node-sass": "^4.7.1",
     "vue-loader": "~15.4.0"
