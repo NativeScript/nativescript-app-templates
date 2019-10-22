@@ -1,4 +1,4 @@
-const topmost = require("tns-core-modules/ui/frame").topmost;
+const { Frame } = require("tns-core-modules/ui/frame");
 
 const CarsListViewModel = require("./cars-list-view-model");
 
@@ -39,7 +39,7 @@ function onNavigatingTo(args) {
 function onCarItemTap(args) {
     const tappedCarItem = args.view.bindingContext;
 
-    topmost().navigate({
+    Frame.topmost().navigate({
         moduleName: "cars/car-detail-page/car-detail-page",
         context: tappedCarItem,
         animated: true,

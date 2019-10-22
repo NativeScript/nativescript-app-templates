@@ -3,7 +3,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 import * as imagePicker from "nativescript-imagepicker";
 import { Folder, knownFolders, path } from "tns-core-modules/file-system";
 import { ImageAsset } from "tns-core-modules/image-asset";
-import { fromAsset, ImageSource } from "tns-core-modules/image-source";
+import { ImageSource } from "tns-core-modules/image-source";
 
 const tempImageFolderName = "nsimagepicker";
 const noop = () => { }; // tslint:disable-line no-empty
@@ -89,7 +89,7 @@ export class MyImageAddRemoveComponent implements ControlValueAccessor {
             .then((selection) => selection.forEach(
                 (selectedAsset: ImageAsset) => {
                     selectedAsset.options.height = 768;
-                    fromAsset(selectedAsset)
+                    ImageSource.fromAsset(selectedAsset)
                         .then((imageSource: ImageSource) => this.handleImageChange(imageSource));
                 })
             ).catch((errorMessage: any) => console.log(errorMessage));

@@ -1,4 +1,4 @@
-const topmost = require("tns-core-modules/ui/frame").topmost;
+const { Frame } = require("tns-core-modules/ui/frame");
 
 const CarDetailViewModel = require("./car-detail-view-model");
 
@@ -30,7 +30,7 @@ function onNavigatingTo(args) {
 * The back button is essential for a master-detail feature.
 *************************************************************/
 function onBackButtonTap() {
-    topmost().goBack();
+    Frame.topmost().goBack();
 }
 
 /* ***********************************************************
@@ -40,7 +40,7 @@ function onBackButtonTap() {
 function onEditButtonTap(args) {
     const bindingContext = args.object.bindingContext;
 
-    topmost().navigate({
+    Frame.topmost().navigate({
         moduleName: "cars/car-detail-edit-page/car-detail-edit-page",
         context: bindingContext.car,
         animated: true,

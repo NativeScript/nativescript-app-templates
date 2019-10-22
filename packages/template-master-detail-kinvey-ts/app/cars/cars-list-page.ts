@@ -1,4 +1,4 @@
-import { topmost } from "tns-core-modules/ui/frame";
+import { Frame } from "tns-core-modules/ui/frame";
 import { ItemEventData } from "tns-core-modules/ui/list-view";
 import { NavigatedData, Page } from "tns-core-modules/ui/page";
 
@@ -41,7 +41,7 @@ export function onNavigatingTo(args: NavigatedData): void {
 export function onCarItemTap(args: ItemEventData): void {
     const tappedCarItem = <Car>args.view.bindingContext;
 
-    topmost().navigate({
+    Frame.topmost().navigate({
         moduleName: "cars/car-detail-page/car-detail-page",
         context: tappedCarItem,
         animated: true,

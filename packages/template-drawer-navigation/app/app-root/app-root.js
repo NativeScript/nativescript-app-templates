@@ -1,5 +1,5 @@
 const application = require("tns-core-modules/application");
-const frameModule = require("tns-core-modules/ui/frame");
+const { Frame } = require("tns-core-modules/ui/frame");
 
 const AppRootViewModel = require("./app-root-view-model");
 
@@ -16,7 +16,7 @@ function onNavigationItemTap(args) {
 
     bindingContext.set("selectedPage", componentTitle);
 
-    frameModule.topmost().navigate({
+    Frame.topmost().navigate({
         moduleName: componentRoute,
         transition: {
             name: "fade"

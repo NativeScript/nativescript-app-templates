@@ -15,7 +15,7 @@
 <script>
     import { Folder, knownFolders, path } from "file-system";
     import { ImageAsset } from "image-asset";
-    import { fromAsset, ImageSource } from "image-source";
+    import { ImageSource } from "image-source";
     import * as imagePicker from "nativescript-imagepicker";
 
     const tempImageFolderName = "nsimagepicker";
@@ -60,7 +60,7 @@
                         selectedAsset => {
                             selectedAsset.options.height = 768;
 
-                            fromAsset(selectedAsset)
+                            ImageSource.fromAsset(selectedAsset)
                                 .then(imageSource => this.handleImageChange(imageSource));
                         }))
                     .catch((errorMessage) => console.log(errorMessage));

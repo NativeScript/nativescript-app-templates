@@ -1,6 +1,6 @@
 import { EventData } from "tns-core-modules/data/observable";
 import { alert } from "tns-core-modules/ui/dialogs";
-import { topmost } from "tns-core-modules/ui/frame";
+import { Frame } from "tns-core-modules/ui/frame";
 import { GridLayout } from "tns-core-modules/ui/layouts/grid-layout";
 import { NavigatedData, Page } from "tns-core-modules/ui/page";
 
@@ -34,7 +34,7 @@ export function onNavigatingTo(args: NavigatedData): void {
 * The edit cancel button navigates back to the item details page.
 *************************************************************/
 export function onCancelButtonTap(args: EventData): void {
-    topmost().goBack();
+    Frame.topmost().goBack();
 }
 
 /* ***********************************************************
@@ -52,7 +52,7 @@ export function onDoneButtonTap(args: EventData): void {
     const bindingContext = <CarDetailEditViewModel>actionItem.bindingContext;
 
     bindingContext.saveChanges()
-        .then(() => topmost().navigate({
+        .then(() => Frame.topmost().navigate({
             moduleName: "cars/cars-list-page",
             clearHistory: true,
             animated: true,
@@ -72,7 +72,7 @@ export function onDoneButtonTap(args: EventData): void {
     const readOnlyMessage = "Check out the \"Kinvey database setup\" section in the readme file to make it editable."; // tslint:disable-line:max-line-length
     const queue = Promise.resolve();
     queue.then(() => alert({ title: "Read-Only Template!", message: readOnlyMessage, okButtonText: "Ok" }))
-        .then(() => topmost().navigate({
+        .then(() => Frame.topmost().navigate({
             moduleName: "cars/cars-list-page",
             clearHistory: true,
             animated: true,
