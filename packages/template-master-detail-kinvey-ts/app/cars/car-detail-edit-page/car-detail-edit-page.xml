@@ -24,7 +24,7 @@
 
                 <GridLayout rows="*, 55, *" columns="*, auto" class="car-list-odd" >
                     <Label text="PRICE PER DAY" />
-                    <Label col="1" horizontalAlignment="right" class="car-list__price text-primary">
+                    <Label col="1" horizontalAlignment="right" class="car-list__value">
                         <FormattedString>
                             <Span text="€" />
                             <Span text="{{ car.price }}" />
@@ -80,7 +80,7 @@
 
                 <GridLayout rows="*, 55" columns="*, auto" class="car-list-odd">
                     <Label text="LUGGAGE" />
-                    <Label col="1" horizontalAlignment="right" class="text-primary">
+                    <Label col="1" horizontalAlignment="right" class="car-list__value">
                         <FormattedString>
                             <Span text="{{ car.luggage }}" />
                             <Span text=" Bag(s)" />

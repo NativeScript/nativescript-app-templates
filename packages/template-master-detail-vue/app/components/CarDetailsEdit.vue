@@ -21,7 +21,7 @@
 
                     <StackLayout class="car-list-odd" orientation="horizontal">
                         <Label text="PRICE PER DAY" />
-                        <Label col="1" horizontalAlignment="right" class="text-primary car-list__price">
+                        <Label col="1" horizontalAlignment="right" class="car-list__value">
                             <FormattedString>
                                 <Span text.decode="&euro;" />
                                 <Span :text="carData.price" />
@@ -43,7 +43,7 @@
 
                     <GridLayout orientation="horizontal" class="car-list-odd">
                         <Label text="LUGGAGE" />
-                        <Label col="1" horizontalAlignment="right" class="text-primary">
+                        <Label col="1" horizontalAlignment="right" class="car-list__value">
                             <FormattedString>
                                 <Span :text="carData.luggage" />
                                 <Span text=" Bag(s)" />
@@ -180,9 +180,10 @@
             @include colorize($color: secondary);
         }
 
-        &__price {
-            width: 35;
+        &__value {
+            width: 65;
             text-align: right;
+            @include colorize($color: accent);
         }
 
         TextField.placeholder-error {
