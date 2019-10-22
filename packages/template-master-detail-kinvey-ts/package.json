@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "@nativescript/theme": "next",
-    "kinvey-nativescript-sdk": "4.2.3",
+    "kinvey-nativescript-sdk": "4.2.5",
     "nativescript-imagepicker": "~7.0.0",
     "nativescript-theme-core": "~1.0.6",
     "tns-core-modules": "next",
