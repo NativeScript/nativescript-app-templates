@@ -1,5 +1,4 @@
 <Page navigatingTo="onNavigatingTo"
-    xmlns:lv="nativescript-ui-listview"
     xmlns="http://schemas.nativescript.org/tns.xsd">
 
     <ActionBar>
