@@ -15,7 +15,7 @@ http://docs.nativescript.org/ui/action-bar
 
 <!--
 The GridLayout arranges its child elements in a table structure of rows and columns.
-A cell can contain multiple child elements, they can span over multiple rows and columns, 
+A cell can contain multiple child elements, they can span over multiple rows and columns,
 and even overlap each other. The GridLayout has one column and one row by default.
 You can learn more about NativeScript layouts at https://docs.nativescript.org/ui/layout-containers.
 
@@ -26,7 +26,9 @@ You can learn more about the NativeScript core theme at https://github.com/nativ
 <GridLayout>
     <ListView [items]="items">
         <ng-template let-item="item">
-            <Label [nsRouterLink]="['/item', item.id]" [text]="item.name"></Label>
+            <StackLayout>
+                <Label [nsRouterLink]="['/item', item.id]" [text]="item.name"></Label>
+            </StackLayout>
         </ng-template>
     </ListView>
 </GridLayout>
