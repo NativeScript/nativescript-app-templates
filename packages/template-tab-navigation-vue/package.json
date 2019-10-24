@@ -38,7 +38,7 @@
     "category-general"
   ],
   "dependencies": {
-    "@nativescript/theme": "next",
+    "@nativescript/theme": "file:../../../theme/nativescript-theme-core",
     "nativescript-vue": "~2.4.0",
     "tns-core-modules": "rc"
   },
