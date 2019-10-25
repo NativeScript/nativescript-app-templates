@@ -19,7 +19,7 @@
         }
 
         &-check {
-            @include colorize($color: accent);
+            @include colorize($color: complementary);
         }
     }
 }

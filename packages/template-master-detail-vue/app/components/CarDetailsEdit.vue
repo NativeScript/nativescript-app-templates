@@ -183,11 +183,16 @@
         &__value {
             width: 65;
             text-align: right;
-            @include colorize($color: accent);
+            @include colorize($color: complementary);
         }
 
         TextField.placeholder-error {
             @include colorize($placeholder-color: error);
+        }
+
+        Slider {
+            @include colorize($background-color: complementary);
+            @include colorize($color: complementary);
         }
     }
 </style>
