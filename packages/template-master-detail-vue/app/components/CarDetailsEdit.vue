@@ -197,8 +197,10 @@
         }
 
         Slider {
-            @include colorize($background-color: complementary);
-            @include colorize($color: complementary);
+            @include colorize(
+                $background-color: complementary,
+                $color: complementary
+            );
         }
     }
 
