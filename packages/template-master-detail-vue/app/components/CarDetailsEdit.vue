@@ -1,11 +1,13 @@
 <template>
     <Page>
         <ActionBar>
-            <Label :text="'Edit ' + carData.name" horizontalAlignment="center" />
-           <ActionItem @tap="onCancelButtonTap" position="left">
+            <!-- HACK - we should remove the navigation button -->
+            <NavigationButton visibility="collapsed" />
+            <Label text="Edit Car Details" horizontalAlignment="center" />
+           <ActionItem @tap="onCancelButtonTap" ios.position="left">
                <Label text="Cancel" verticalAlignment="center" />
            </ActionItem>
-           <ActionItem position="right">
+           <ActionItem ios.position="right">
                <Label text="Done" verticalAlignment="center" @tap="onDoneButtonTap"
                    :isEnabled="isModelValid"
                    :isUserInteractionEnabled="isModelValid" />
@@ -17,9 +19,9 @@
                 <StackLayout class="car-list">
                     <Label text="CAR MAKE" class="car-list-odd" />
                     <TextField :text="carData.name" hint="Car make field is required"
-                        :class="{ [carData.name]: true, [carData.name ? 'car-list-even' : 'car-list-even placeholder-error']: true }" />
+                        :class="{ 'car-list-even': true, 'placeholder-error': !carData.name }" />
 
-                    <StackLayout class="car-list-odd" orientation="horizontal">
+                    <GridLayout rows="*, 55, *" columns="*, auto" class="car-list-odd">
                         <Label text="PRICE PER DAY" />
                         <Label col="1" horizontalAlignment="right" class="car-list__value">
                             <FormattedString>
@@ -27,9 +29,13 @@
                                 <Span :text="carData.price" />
                             </FormattedString>
                         </Label>
-                    </StackLayout>
 
-                    <Slider v-model="carData.price" height="70" verticalAlignment="center" class="car-list-even" />
+                        <StackLayout row="1" colSpan="2" verticalAlignment="center">
+                            <Slider v-model="carData.price" height="70" verticalAlignment="center" class="car-list-even" />
+                        </StackLayout>
+
+                        <Label text="ADD OR REMOVE IMAGE" row="2" colSpan="2" />
+                    </GridLayout>
 
                     <AddRemoveImage v-model="carData.imageUrl" @select="isCarImageDirty = true"></AddRemoveImage>
 
@@ -193,6 +199,29 @@
         Slider {
             @include colorize($background-color: complementary);
             @include colorize($color: complementary);
+        }
+    }
+
+    .thumb {
+
+        background-size: cover;
+        background-repeat: no-repeat;
+        font-size: 25;
+        font-weight: bold;
+
+        &__add {
+            background-color: transparent;
+            border-radius: const(border-radius-sm);
+            border-width: const(border-width);
+            @include colorize(
+                $border-color: background-alt-20,
+                $color: background-alt-20
+            );
+        }
+
+        &__remove {
+            background-color: rgba(grey, 0.5);
+            @include colorize($color: background);
         }
     }
 </style>
