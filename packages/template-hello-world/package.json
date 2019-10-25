@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/NativeScript/nativescript-app-templates",
   "dependencies": {
-    "@nativescript/theme": "file:../../../theme/nativescript-theme-core",
+    "@nativescript/theme": "next",
     "tns-core-modules": "rc"
   },
   "devDependencies": {
