@@ -1,7 +1,7 @@
 @import '~@nativescript/theme/scss/variables/blue';
 
 // Custom styles
-.thumb {
+:host-context(.ns-dark) .thumb {
     background-size: cover;
     background-repeat: no-repeat;
     font-size: 25;

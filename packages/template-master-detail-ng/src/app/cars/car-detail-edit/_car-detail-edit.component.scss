@@ -1,8 +1,7 @@
 @import '~@nativescript/theme/scss/variables/blue';
 
 // Custom styles
-.car-list {
-
+:host-context(.ns-dark) .car-list {
     &-even,
     &-odd {
         padding: 10 15;
