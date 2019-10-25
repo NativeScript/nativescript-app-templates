@@ -1,5 +1,5 @@
 <template>
-    <GridLayout rows="auto, *, auto" verticalAlignment="top" ios:class="modal-input -ios" class="modal-input -android">
+    <GridLayout rows="auto, *, auto" verticalAlignment="top" ios:class="modal-input -ios" android:class="modal-input -android">
         <Label :text="title" class="h3 modal-input__header"></Label>
         <RadListView row="1" :items="source" @itemTap="itemSelected" selectionBehavior="Press" class="modal-input__list">
             <v-template>
