@@ -44,7 +44,7 @@
     "kinvey-nativescript-sdk": "4.2.5",
     "nativescript-imagepicker": "~7.0.0",
     "nativescript-theme-core": "~1.0.6",
-    "tns-core-modules": "next",
+    "tns-core-modules": "rc",
     "tslib": "^1.9.3"
   },
   "devDependencies": {

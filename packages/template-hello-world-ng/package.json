@@ -41,7 +41,7 @@
     "@angular/platform-browser": "~8.2.0",
     "@angular/platform-browser-dynamic": "~8.2.0",
     "@angular/router": "~8.2.0",
-    "@nativescript/theme": "file:../../../theme/nativescript-theme-core",
+    "@nativescript/theme": "next",
     "nativescript-angular": "~8.2.0",
     "reflect-metadata": "~0.1.12",
     "rxjs": "^6.4.0",

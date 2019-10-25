@@ -40,7 +40,7 @@
     "lint": "eslint \"app/**/*.js\""
   },
   "dependencies": {
-    "@nativescript/theme": "file:../../../theme/nativescript-theme-core",
+    "@nativescript/theme": "next",
     "tns-core-modules": "rc"
   },
   "devDependencies": {
