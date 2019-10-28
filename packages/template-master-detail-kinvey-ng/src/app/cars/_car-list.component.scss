@@ -1,6 +1,7 @@
 @import '~@nativescript/theme/scss/variables/blue';
 
 // Custom styles
+.cars-list,
 :host-context(.ns-dark) .cars-list {
     &__item {
         padding: 0 0 8 0;
