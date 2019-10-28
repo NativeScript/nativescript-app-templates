@@ -20,6 +20,13 @@
     &__value {
         width: 65;
         text-align: right;
-        @include colorize($color: accent);
+        @include colorize($color: complementary);
+    }
+
+    Slider {
+        @include colorize(
+            $background-color: complementary,
+            $color: complementary
+        );
     }
 }

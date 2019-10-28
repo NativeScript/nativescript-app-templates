@@ -43,7 +43,7 @@
     "nativescript-plugin-firebase": "~9.1.0",
     "nativescript-ui-listview": "~7.0.0",
     "nativescript-vue": "~2.4.0",
-    "tns-core-modules": "next"
+    "tns-core-modules": "rc"
   },
   "devDependencies": {
     "@babel/core": "~7.1.0",

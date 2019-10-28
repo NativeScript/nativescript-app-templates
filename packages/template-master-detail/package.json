@@ -39,11 +39,11 @@
     "lint": "eslint \"app/**/*.js\""
   },
   "dependencies": {
-"@nativescript/theme": "next",
+    "@nativescript/theme": "next",
     "nativescript-imagepicker": "~7.0.0",
     "nativescript-plugin-firebase": "~9.1.0",
     "rxjs": "^6.4.0",
-    "tns-core-modules": "next"
+    "tns-core-modules": "rc"
   },
   "devDependencies": {
     "eslint": "~5.8.0",

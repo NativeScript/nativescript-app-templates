@@ -20,6 +20,14 @@
     font-weight: 400;
 }
 
+// Custom tabstrip item class
+.navigation__item {
+    &:active,
+    &:active Label {
+        @include colorize($color: complementary);
+    }
+}
+
 // Common page class
 .page__content {
     &-icon,

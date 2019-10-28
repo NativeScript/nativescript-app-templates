@@ -1,15 +1,17 @@
 <template>
-    <GridLayout rows="auto, *" columns="auto, *">
-        <Label row="0" col="0" text="ADD OR REMOVE IMAGE" colSpan="2" class="car-list-odd" />
-
-        <GridLayout row="1" col="0" height="80" width="80" class="thumb car-list-even" horizontalAlignment="left"
-                    :backgroundImage="selectedImage" @tap="onImageAddRemoveTap">
-            <Label text.decode="&#xf030;" class="fas thumb__add" v-show="!selectedImage"/>
-            <Label text.decode="&#xf2ed;" class="far thumb__remove" v-show="selectedImage" />
+    <StackLayout class="car-list-even">
+        <GridLayout height="80" width="80" class="thumb" horizontalAlignment="left"
+            :backgroundImage="selectedImage" @tap="onImageAddRemoveTap">
+            <GridLayout class="thumb__add" v-show="!selectedImage">
+                <Label text.decode="&#xf030;" class="fas" horizontalAlignment="center" verticalAlignment="center" />
+            </GridLayout>
+            <GridLayout class="thumb__remove" v-show="selectedImage">
+                <Label text.decode="&#xf2ed;" class="far" horizontalAlignment="center" verticalAlignment="center" />
+            </GridLayout>
         </GridLayout>
 
         <Label v-if="!imageUrl" row="1" col="1" verticalAlignment="middle" text="Image field is required" />
-    </GridLayout>
+    </StackLayout>
 </template>
 
 <script>
