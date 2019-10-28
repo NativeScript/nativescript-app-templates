@@ -182,14 +182,16 @@
         }
 
         &-odd {
-            @include colorize($background-color: background-alt-10);
-            @include colorize($color: secondary);
+            @include colorize(
+                $background-color: background-alt-10,
+                $color: secondary
+            );
         }
 
         &__value {
             width: 65;
             text-align: right;
-            @include colorize($color: complementary);
+            @include colorize($contrasted-color: complementary background 30% 10%);
         }
 
         TextField.placeholder-error {
@@ -198,8 +200,8 @@
 
         Slider {
             @include colorize(
-                $background-color: complementary,
-                $color: complementary
+                $contrasted-background-color: complementary background 20% 0%,
+                $contrasted-color: complementary background 20% 0%
             );
         }
     }
