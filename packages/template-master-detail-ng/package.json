@@ -52,7 +52,7 @@
     "nativescript-angular": "~8.2.0",
     "nativescript-imagepicker": "~7.0.0",
     "nativescript-plugin-firebase": "~9.1.0",
-    "nativescript-ui-listview": "~7.0.0",
+    "nativescript-ui-listview": "~7.1.0",
     "reflect-metadata": "~0.1.12",
     "rxjs": "^6.4.0",
     "tns-core-modules": "rc",

@@ -91,6 +91,26 @@ export class DataService {
             id: 16,
             name: "Item 16",
             description: "Description for Item 16"
+        },
+        {
+            id: 17,
+            name: "Item 17",
+            description: "Description for Item 17"
+        },
+        {
+            id: 18,
+            name: "Item 18",
+            description: "Description for Item 18"
+        },
+        {
+            id: 19,
+            name: "Item 19",
+            description: "Description for Item 19"
+        },
+        {
+            id: 20,
+            name: "Item 20",
+            description: "Description for Item 20"
         }
     );
 
