@@ -1,4 +1,5 @@
 <Page navigatingTo="onNavigatingTo"
+    xmlns:lv="nativescript-ui-listview"
     xmlns="http://schemas.nativescript.org/tns.xsd" >
 
     <ActionBar>
@@ -8,8 +9,12 @@
     </ActionBar>
 
     <GridLayout>
-        <ListView items="{{ cars }}" itemTap="onCarItemTap" class="cars-list">
-            <ListView.itemTemplate>
+        <lv:RadListView items="{{ cars }}" itemTap="onCarItemTap" class="cars-list">
+            <lv:RadListView.listViewLayout>
+                <lv:ListViewLinearLayout scrollDirection="Vertical" />
+            </lv:RadListView.listViewLayout>
+
+            <lv:RadListView.itemTemplate>
                 <StackLayout class="cars-list__item">
 
                     <GridLayout rows="*, *, *" columns="*, *" class="cars-list__item-content">
@@ -50,8 +55,8 @@
                     </GridLayout>
 
                 </StackLayout>
-            </ListView.itemTemplate>
-        </ListView>
+            </lv:RadListView.itemTemplate>
+        </lv:RadListView>
 
         <ActivityIndicator busy="{{ isLoading }}" />
     </GridLayout>

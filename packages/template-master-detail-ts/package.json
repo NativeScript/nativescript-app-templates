@@ -38,9 +38,10 @@
     "lint": "tslint \"app/**/*.ts\""
   },
   "dependencies": {
-"@nativescript/theme": "next",
+    "@nativescript/theme": "next",
     "nativescript-imagepicker": "~7.0.0",
     "nativescript-plugin-firebase": "~9.1.0",
+    "nativescript-ui-listview": "~7.1.0",
     "rxjs": "^6.4.0",
     "tns-core-modules": "rc"
   },
