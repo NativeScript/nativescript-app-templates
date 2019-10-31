@@ -6,13 +6,6 @@ Execute the following command to create an app from this template:
 
 ```
 tns create my-blank-vue --template tns-template-blank-vue
-
-cd my-blank-vue
-npm install
-
-tns run android --bundle
-# or
-tns run ios --bundle
 ```
 
 > Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm](https://www.npmjs.com/package/tns-template-blank-vue).
@@ -25,13 +18,6 @@ git clone git@github.com:NativeScript/nativescript-app-templates.git
 
 # create app template from local source (all templates are in the 'packages' subfolder of the monorepo)
 tns create my-blank-vue --template nativescript-app-templates/packages/template-blank-vue
-
-cd my-blank-vue
-npm install
-
-tns run android --bundle
-# or
-tns run ios --bundle
 ```
 
 **NB:** Please, have in mind that the master branch may refer to dependencies that are not on NPM yet!
@@ -40,7 +26,7 @@ tns run ios --bundle
 
 ### Architecture
 There is a single blank component located in:
-- `/components/Home.vue` - sets up an empty page layout.
+- `/app/components/Home.vue` - sets up an empty page layout.
 
 **Home** page has the following components:
 - `ActionBar` - It holds the title of the page.

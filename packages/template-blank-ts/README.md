@@ -25,11 +25,11 @@ tns create my-blank-ts --template nativescript-app-templates/packages/template-b
 ## Walkthrough
 
 ### Architecture
-The application root component is located at:
-- `app-root.xml` - sets up a Frame that lets you navigate between pages.
+The application root module:
+- `/app/app-root` - sets up a Frame that lets you navigate between pages.
 
-There is a single blank page that sets up an empty page layout:
-- `/home`
+There is a single blank page module that sets up an empty layout:
+- `/app/home/home-page`
 
 **Home** page has the following components:
 - `ActionBar` - It holds the title of the page.

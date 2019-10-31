@@ -38,38 +38,39 @@ tns create my-master-detail-ng --template nativescript-app-templates/packages/te
 
 ### Architecture
 The application component:
-- `app.component.ts` - sets up a page router outlet that lets you navigate between pages.
+- `/src/app/app.component` - sets up a page router outlet that lets you navigate between pages.
 
 The template has the following components:
-- `/cars/car-list.component.ts` - the master list component. It gets the data and displays it in a list. On item tap, it navigates to the item details component.
-- `/cars/car-detail/car-detail.component.ts` - the item details component. Displays the details of the tapped item. Has an `Edit` button that leads to the edit component.
-- `/cars/car-detail-edit/car-detail-edit.component.ts` - the item details edit component. Provides edit options for the selected item. The `Done` button saves the changes.
+- `/src/app/cars/car-list.component` - the master list component. It gets the data and displays it in a list. On item tap, it navigates to the item details component.
+- `/src/app/cars/car-detail/car-detail.component` - the item details component. Displays the details of the tapped item. Has an `Edit` button that leads to the edit component.
+- `/src/app/cars/car-detail-edit/car-detail-edit.component` - the item details edit component. Provides edit options for the selected item. The `Done` button saves the changes.
 
 There is one model to represent the data items:
-- `/cars/shared/car.model.ts`
+- `/src/app/cars/shared/car.model`
 
 The template also provides a data service:
-- `/cars/shared/car.service.ts` - serves as a data layer for the master-detail data items. Wraps the functions that are used to make operations on the Firebase database.
+- `/src/app/cars/shared/car.service` - serves as a data layer for the master-detail data items. Wraps the functions that are used to make operations on the database.
 
 ### Firebase integration
-The templates uses the [{N} Firebase plugin](https://github.com/EddyVerbruggen/nativescript-plugin-firebase). The initialization is done before the app starts in the `/main.ts` file. The initialization script is located at `/shared/firebase.common.ts`.
+The templates uses the [{N} Firebase plugin](https://github.com/EddyVerbruggen/nativescript-plugin-firebase). The initialization is done before the app starts in the `/src/main.ts` file. The initialization script is located at `/src/app/shared/firebase.common.ts`.
 
 ### [Optional] Firebase database setup
 By design the app is connected to a read-only copy of the sample data in Firebase. If you want to see the "edit" functionality in action you will have to clone the sample data and update the app configuration to point to your own Firebase setup. You can find detailed instructions how to achieve that [here](https://github.com/NativeScript/nativescript-app-templates/blob/master/packages/template-master-detail-ng/tools/firebase/firebase-database-setup.md).
 
 ### Styling
-This template is set up to use SASS for styling. All classes used are based on the {N} core theme – consult the [documentation](https://docs.nativescript.org/angular/ui/theme.html#theme) to understand how to customize it. Check it out to see what classes you can use on which component.
+This template is set up to use SASS for styling. All classes used are based on the {N} core theme – consult the [documentation](https://github.com/NativeScript/theme) to understand how to customize it.
 
-It has 4 global style files that are located at the root of the app folder:
-- `_app-variables.scss` - holds the global SASS variables that are imported on each component's styles.
-- `app.scss` - the global common style sheet. These style rules are applied to both Android and iOS.
-- `platform.android.scss` - the global Android style sheet. These style rules are applied to Android only.
-- `platform.ios.scss` - the global iOS style sheet. These style rules are applied to iOS only.
+It has 3 global style files that are located at the root of the app folder:
+
+- `/src/_app-common.scss` - the global common style sheet. These style rules are applied to both Android and iOS.
+- `/src/app.android.scss` - the global Android style sheet. These style rules are applied to Android only.
+- `/src/app.ios.scss` - the global iOS style sheet. These style rules are applied to iOS only.
 
 Each component has 3 style files located in its folder:
-- `_page-name.scss` - the component common style sheet. These style rules are applied to both Android and iOS.
-- `page-name.android.scss` - the component Android style sheet. These style rules are applied to Android only.
-- `page-name.ios.scss` - the component iOS style sheet. These style rules are applied to iOS only.
+
+- `../_{page-name}.component.scss` - the component common style sheet. These style rules are applied to both Android and iOS.
+- `../{page-name}.component.android.scss` - the component Android style sheet. These style rules are applied to Android only.
+- `../{page-name}.component.ios.scss` - the component iOS style sheet. These style rules are applied to iOS only.
 
 ## Get Help
 The NativeScript framework has a vibrant community that can help when you run into problems.

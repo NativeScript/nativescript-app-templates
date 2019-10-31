@@ -37,22 +37,22 @@ tns create my-tab-vue --template nativescript-app-templates/packages/template-ta
 
 ### Architecture
 The application root component is located at:
-- `/components/App.vue` - sets up the bottom navigation layout and references the navigatable pages contents.
+- `/app/components/App.vue` - sets up the tab navigation with individual navigation frames in each content item.
 
-The template has the following pages used for the tab views:
-- `/components/Items.vue` - the master home page. Displays a list of items and navigates to the item details page on item tap.
-- `/components/ItemDetails.vue` - the item details page. Displays the details of the tapped item.
-- `/components/Browse.vue` - blank page
-- `/components/Search.vue` - blank page
+The template has the following pages used for the tab content items:
+- `/app/components/Items.vue` - the master home page. Displays a list of items and navigates to the item details page on item tap.
+- `/app/components/ItemDetails.vue` - the item details page. Displays the details of the tapped item.
+- `/app/components/Browse.vue` - blank page
+- `/app/components/Search.vue` - blank page
 
 ### Styling
-This template is set up to use SASS for styling. All classes used are based on the {N} core theme – consult the [documentation](https://docs.nativescript.org/angular/ui/theme.html#theme) to understand how to customize it. Check it out to see what classes you can use on which component.
+This template is set up to use SASS for styling. All classes used are based on the {N} core theme – consult the [documentation](https://github.com/NativeScript/theme) to understand how to customize it.
 
-It has 4 global style files that are located at the root of the app folder:
-- `_app-variables.scss` - holds the global SASS variables that are imported on each component's styles.
-- `_app-common.scss` - the global common style sheet. These style rules are applied to both Android and iOS.
-- `app.android.scss` - the global Android style sheet. These style rules are applied to Android only.
-- `app.ios.scss` - the global iOS style sheet. These style rules are applied to iOS only.
+It has 3 global style files that are located at the root of the app folder:
+
+- `/app/_app-common.scss` - the global common style sheet. These style rules are applied to both Android and iOS.
+- `/app/app.android.scss` - the global Android style sheet. These style rules are applied to Android only.
+- `/app/app.ios.scss` - the global iOS style sheet. These style rules are applied to iOS only.
 
 ## Get Help
 The NativeScript framework has a vibrant community that can help when you run into problems.
