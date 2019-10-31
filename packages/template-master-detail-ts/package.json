@@ -41,6 +41,7 @@
     "@nativescript/theme": "~2.2.0",
     "nativescript-imagepicker": "~7.1.0",
     "nativescript-plugin-firebase": "~10.1.0",
+    "nativescript-ui-listview": "~7.1.0",
     "rxjs": "^6.4.0",
     "tns-core-modules": "~6.2.0"
   },
