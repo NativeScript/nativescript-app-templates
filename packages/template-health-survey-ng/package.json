@@ -3,10 +3,10 @@
     "id": "org.nativescript.HealthSurvey",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "6.1.2"
+      "version": "6.2.0"
     },
     "tns-ios": {
-      "version": "6.1.0"
+      "version": "6.2.0"
     }
   },
   "name": "tns-template-health-survey-ng",
@@ -48,21 +48,21 @@
     "@angular/router": "~8.2.0",
     "jstimezonedetect": "~1.0.6",
     "kinvey-nativescript-sdk": "4.2.5",
-    "nativescript-angular": "~8.2.0",
+    "nativescript-angular": "~8.20.0",
     "nativescript-iqkeyboardmanager": "~1.5.0",
     "nativescript-theme-core": "~1.0.6",
-    "nativescript-ui-dataform": "~5.0.0",
+    "nativescript-ui-dataform": "~6.0.0",
     "reflect-metadata": "~0.1.12",
     "rxjs": "^6.4.0",
-    "tns-core-modules": "rc",
+    "tns-core-modules": "~6.2.0",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
     "@angular/compiler-cli": "~8.2.0",
     "@ngtools/webpack": "~8.2.0",
     "codelyzer": "~4.5.0",
-    "nativescript-dev-webpack": "rc",
-    "tns-platform-declarations": "~6.1.0",
+    "nativescript-dev-webpack": "~1.3.0",
+    "tns-platform-declarations": "~6.2.0",
     "tslint": "~5.19.0",
     "typescript": "~3.5.3"
   }
