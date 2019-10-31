@@ -90,7 +90,7 @@
 
             &-name,
             &-icon {
-                @include colorize($color: accent);
+                @include colorize($contrasted-color: complementary background 30% 0%);
             }
         }
     }

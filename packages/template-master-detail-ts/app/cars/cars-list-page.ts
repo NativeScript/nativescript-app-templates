@@ -1,5 +1,5 @@
+import { ListViewEventData } from "nativescript-ui-listview";
 import { Frame } from "tns-core-modules/ui/frame";
-import { ItemEventData } from "tns-core-modules/ui/list-view";
 import { NavigatedData, Page } from "tns-core-modules/ui/page";
 
 import { CarsListViewModel } from "./cars-list-view-model";
@@ -17,7 +17,7 @@ export function onNavigatingTo(args: NavigatedData): void {
     page.bindingContext = viewModel;
 }
 
-export function onCarItemTap(args: ItemEventData): void {
+export function onCarItemTap(args: ListViewEventData): void {
     const tappedCarItem = <Car>args.view.bindingContext;
 
     Frame.topmost().navigate({

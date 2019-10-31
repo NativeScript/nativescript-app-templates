@@ -79,7 +79,7 @@
             margin-top: 2;
 
             &.selected {
-                @include colorize($color: accent);
+                @include colorize($color: complementary);
             }
         }
 
@@ -87,7 +87,7 @@
             android-elevation: 0;
             background-color: transparent;
             border-color: transparent;
-            @include colorize($color: accent);
+            @include colorize($color: complementary);
             font-size: 12;
             padding-right: 0;
             text-align: right;
@@ -111,7 +111,7 @@
             }
 
             &-check {
-                @include colorize($color: accent);
+                @include colorize($color: complementary);
             }
         }
     }

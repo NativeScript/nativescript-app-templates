@@ -3,10 +3,10 @@
     "id": "org.nativescript.MasterDetailKinvey",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "6.1.2"
+      "version": "6.2.0"
     },
     "tns-ios": {
-      "version": "6.1.1"
+      "version": "6.2.0"
     }
   },
   "name": "tns-template-master-detail-kinvey-ng",
@@ -47,21 +47,21 @@
     "@angular/platform-browser": "~8.2.0",
     "@angular/platform-browser-dynamic": "~8.2.0",
     "@angular/router": "~8.2.0",
-    "@nativescript/theme": "next",
+    "@nativescript/theme": "~2.2.0",
     "kinvey-nativescript-sdk": "4.2.5",
-    "nativescript-angular": "~8.2.0",
-    "nativescript-imagepicker": "~7.0.0",
-    "nativescript-ui-listview": "~7.0.0",
+    "nativescript-angular": "~8.20.0",
+    "nativescript-imagepicker": "~7.1.0",
+    "nativescript-ui-listview": "~8.0.0",
     "reflect-metadata": "~0.1.12",
     "rxjs": "^6.4.0",
-    "tns-core-modules": "next",
+    "tns-core-modules": "~6.2.0",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
     "@angular/compiler-cli": "~8.2.0",
     "@ngtools/webpack": "~8.2.0",
     "codelyzer": "~4.5.0",
-    "nativescript-dev-webpack": "rc",
+    "nativescript-dev-webpack": "~1.3.0",
     "node-sass": "^4.7.1",
     "tslint": "~5.19.0",
     "typescript": "~3.5.3"
