@@ -26,10 +26,10 @@ tns create my-blank-ng --template nativescript-app-templates/packages/template-b
 
 ### Architecture
 The application component:
-- `app.component.ts` - sets up a page router outlet that lets you navigate between pages.
+- `/src/app/app.component` - sets up a page router outlet that lets you navigate between pages.
 
-There is a single blank component that sets up an empty page layout:
-- `/home`
+There is a single blank component that sets up an empty layout:
+- `/src/app/home/home.component`
 
 **Home** page has the following components:
 - `ActionBar` - It holds the title of the page.
