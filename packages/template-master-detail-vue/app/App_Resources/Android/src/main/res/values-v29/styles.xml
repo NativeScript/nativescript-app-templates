@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Application theme -->
+    <style name="AppTheme" parent="AppThemeBase">
+        <item name="android:forceDarkAllowed">true</item>
+    </style>
+
+</resources>
