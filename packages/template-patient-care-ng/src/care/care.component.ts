@@ -11,7 +11,7 @@ export class CareComponent {
     title: string;
 
     getIconSource(icon: string): string {
-        return isAndroid ? "" : "res://tabIcons/" + icon;
+        return isAndroid ? "" : "res://" + icon;
     }
 
     onSelectedIndexChanged(args: SelectedIndexChangedEventData) {
