@@ -1,4 +1,7 @@
 import { Observable } from "tns-core-modules/data/observable";
+import { Button } from "tns-core-modules/ui/button";
+import { ShowModalOptions } from "tns-core-modules/ui/core/view";
+const modalViewModulets = "./modal-ts-view-page";
 
 export class HelloWorldModel extends Observable {
 
@@ -24,9 +27,17 @@ export class HelloWorldModel extends Observable {
         }
     }
 
-    onTap() {
-        this._counter--;
-        this.updateMessage();
+    onTap(args) {
+        const mainView: Button = <Button>args.object;
+        const option: ShowModalOptions = {
+            context: { username: "test_username", password: "test" },
+            closeCallback: (username, password) => {
+                // Receive data from the modal view. e.g. username & password
+                alert(`Username: ${username} : Password: ${password}`);
+            },
+            fullscreen: false
+        };
+        mainView.showModal(modalViewModulets, option);
     }
 
     private updateMessage() {

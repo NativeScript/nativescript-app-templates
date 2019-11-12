@@ -33,8 +33,9 @@
   },
   "homepage": "https://github.com/NativeScript/nativescript-app-templates",
   "dependencies": {
+    "@nativescript/core": "file:../../../NativeScript/nativescript-core",
     "@nativescript/theme": "~2.2.0",
-    "tns-core-modules": "~6.2.0"
+    "tns-core-modules": "file:../../../NativeScript/dist/tns-core-modules"
   },
   "devDependencies": {
     "nativescript-dev-webpack": "~1.3.0",
