@@ -20,6 +20,10 @@
     font-weight: 400;
 }
 
+.t-6 {
+    font-size: 6;
+}
+
 // Common page class
 .page__content {
     &-icon,
@@ -41,3 +45,4 @@
 .nt-drawer__header-image {
     color: const(grey);
 }
+
