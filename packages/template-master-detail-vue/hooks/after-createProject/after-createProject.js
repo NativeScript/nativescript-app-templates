@@ -2,11 +2,16 @@ const fs = require("fs");
 const path = require("path");
 
 module.exports = function (hookArgs) {
+    const appRootFolder = hookArgs.projectDir;
     const srcGitignore = "dot.gitignore";
     const destGitignore = ".gitignore";
-    const appRootFolder = hookArgs.projectDir;
+    const srcVscodeExtensions = "vscode.extensions.json";
+    const destVscodeExtensions = ".vscode/extensions.json";
+    const vscodeDir = path.join(appRootFolder, ".vscode");
 
-    return copyFile(srcGitignore, destGitignore)
+    return mkDir(vscodeDir)
+        .then(copyFile(srcVscodeExtensions, destVscodeExtensions))
+        .then(copyFile(srcGitignore, destGitignore))
         .then(() => {
             const packageJsonPath = path.join(appRootFolder, "package.json");
             const packageJson = require(packageJsonPath);
@@ -29,6 +34,18 @@ module.exports = function (hookArgs) {
         .catch((err) => {
             console.log(err);
         });
+
+    function mkDir(path) {
+        return new Promise((resolve, reject) => {
+            fs.mkdir(path, null, (err) => {
+                if (err) {
+                    return reject(err);
+                }
+
+                resolve();
+            });
+        });
+    }
 
     function copyFile(srcFilename, destFilename = srcFilename) {
         return new Promise((resolve, reject) => {
@@ -95,4 +112,4 @@ module.exports = function (hookArgs) {
             });
         });
     }
-}
+};

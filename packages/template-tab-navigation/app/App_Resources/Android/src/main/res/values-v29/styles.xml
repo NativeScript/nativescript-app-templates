@@ -2,8 +2,11 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Application theme -->
-    <style name="AppTheme" parent="AppThemeBase">
+    <style name="AppThemeBase29" parent="AppThemeBase21">
         <item name="android:forceDarkAllowed">true</item>
+    </style>
+
+    <style name="AppTheme" parent="AppThemeBase29">
     </style>
 
 </resources>
