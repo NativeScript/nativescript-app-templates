@@ -3,63 +3,31 @@ const path = require("path");
 
 module.exports = function (hookArgs) {
     const appRootFolder = hookArgs.projectDir;
-    const srcGitignore = "dot.gitignore";
-    const destGitignore = ".gitignore";
-    const srcVscodeExtensions = "vscode.extensions.json";
-    const destVscodeExtensions = ".vscode/extensions.json";
+    const toolsDir = path.join(appRootFolder, "tools");
     const vscodeDir = path.join(appRootFolder, ".vscode");
+    const srcGitignore = path.join(toolsDir, "dot.gitignore");
+    const destGitignore = path.join(appRootFolder, ".gitignore");
+    const srcVscodeExtensions = path.join(toolsDir, "vscode.extensions.json");
+    const destVscodeExtensions = path.join(vscodeDir, "extensions.json");
 
-    return mkDir(vscodeDir)
-        .then(copyFile(srcVscodeExtensions, destVscodeExtensions))
-        .then(copyFile(srcGitignore, destGitignore))
-        .then(() => {
-            const packageJsonPath = path.join(appRootFolder, "package.json");
-            const packageJson = require(packageJsonPath);
-
-            if (!packageJson) {
-                throw new Error("package.json file not found");
-            }
-
-            return updateFirebaseConfigAppId(packageJson);
-        })
-        .then(() => {
-            const toolsDir = path.join(appRootFolder, "tools");
+    try {
+        fs.mkdirSync(vscodeDir);
+        fs.copyFileSync(srcVscodeExtensions, destVscodeExtensions);
+        fs.copyFileSync(srcGitignore, destGitignore);
+        updateFirebaseConfigAppId();
+    } catch (error) {
+        console.log(error);
+    } finally {
+        try {
             deleteFolderSync(toolsDir);
 
             const readme = path.join(appRootFolder, "README.md");
             fs.unlinkSync(readme);
-
+    
             deleteFolderSync(__dirname);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-
-    function mkDir(path) {
-        return new Promise((resolve, reject) => {
-            fs.mkdir(path, null, (err) => {
-                if (err) {
-                    return reject(err);
-                }
-
-                resolve();
-            });
-        });
-    }
-
-    function copyFile(srcFilename, destFilename = srcFilename) {
-        return new Promise((resolve, reject) => {
-            const sourcePath = path.join(appRootFolder, "tools", srcFilename);
-            const destPath = path.join(appRootFolder, destFilename);
-
-            fs.rename(sourcePath, destPath, (err) => {
-                if (err) {
-                    return reject(err);
-                }
-
-                resolve();
-            });
-        });
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     function deleteFolderSync(folderPath) {
@@ -70,7 +38,8 @@ module.exports = function (hookArgs) {
 
                 if (contentDirs) {
                     deleteFolderSync(content);
-                } else {
+                }
+                else {
                     fs.unlinkSync(content);
                 }
             });
@@ -79,37 +48,28 @@ module.exports = function (hookArgs) {
         }
     }
 
-    function updateFirebaseConfigAppId(packageJson) {
-        const googleServicesJsonPath = path.join(appRootFolder, "App_Resources", "Android", "google-services.json");
-        const googleServiceInfoPlistPath = path.join(appRootFolder, "App_Resources", "iOS", "GoogleService-Info.plist");
-
-        if (!packageJson.nativescript || !packageJson.nativescript.id) {
-            return Promise.reject(new Error("cannot find nativescript node in package.json file"));
+    function updateFirebaseConfigAppId() {
+        const packageJsonPath = path.join(appRootFolder, "package.json");
+        const packageJson = require(packageJsonPath);
+        if (!packageJson) {
+            throw new Error("package.json file not found");
         }
 
-        return Promise.all([
-            replaceAppId(googleServicesJsonPath, packageJson.nativescript.id),
-            replaceAppId(googleServiceInfoPlistPath, packageJson.nativescript.id)
-        ]);
+        if (!packageJson.nativescript || !packageJson.nativescript.id) {
+            throw new Error("cannot find nativescript node in package.json file");
+        }
+
+        const googleServicesJsonPath = path.join(appRootFolder, "app", "App_Resources", "Android", "google-services.json");
+        replaceAppId(googleServicesJsonPath, packageJson.nativescript.id);
+
+        const googleServiceInfoPlistPath = path.join(appRootFolder, "app", "App_Resources", "iOS", "GoogleService-Info.plist");
+        replaceAppId(googleServiceInfoPlistPath, packageJson.nativescript.id);
     }
 
     function replaceAppId(filePath, appId) {
-        return new Promise((resolve, reject) => {
-            fs.readFile(filePath, "utf8", (err, content) => {
-                if (err) {
-                    return reject(err);
-                }
-
-                const appIdPlaceholder = "__PACKAGE__";
-                const updatedContent = content.replace(appIdPlaceholder, appId);
-                fs.writeFile(filePath, updatedContent, (err) => {
-                    if (err) {
-                        return reject(err);
-                    }
-
-                    resolve();
-                });
-            });
-        });
+        const content = fs.readFileSync(filePath, "utf8");
+        const appIdPlaceholder = "__PACKAGE__";
+        const updatedContent = content.replace(appIdPlaceholder, appId);
+        fs.writeFileSync(filePath, updatedContent);
     }
 };

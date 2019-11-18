@@ -13,17 +13,20 @@ module.exports = function (hookArgs) {
     try {
         fs.mkdirSync(vscodeDir);
         fs.copyFileSync(srcVscodeExtensions, destVscodeExtensions);
-    
         fs.copyFileSync(srcGitignore, destGitignore);
-
-        deleteFolderSync(toolsDir);
-
-        const readme = path.join(appRootFolder, "README.md");
-        fs.unlinkSync(readme);
-
-        deleteFolderSync(__dirname);
     } catch (error) {
         console.log(error);
+    } finally {
+        try {
+            deleteFolderSync(toolsDir);
+
+            const readme = path.join(appRootFolder, "README.md");
+            fs.unlinkSync(readme);
+    
+            deleteFolderSync(__dirname);
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     function deleteFolderSync(folderPath) {
