@@ -3,53 +3,27 @@ const path = require("path");
 
 module.exports = function (hookArgs) {
     const appRootFolder = hookArgs.projectDir;
-    const srcGitignore = "dot.gitignore";
-    const destGitignore = ".gitignore";
-    const srcVscodeExtensions = "vscode.extensions.json";
-    const destVscodeExtensions = ".vscode/extensions.json";
+    const toolsDir = path.join(appRootFolder, "tools");
     const vscodeDir = path.join(appRootFolder, ".vscode");
+    const srcGitignore = path.join(toolsDir, "dot.gitignore");
+    const destGitignore = path.join(appRootFolder, ".gitignore");
+    const srcVscodeExtensions = path.join(toolsDir, "vscode.extensions.json");
+    const destVscodeExtensions = path.join(vscodeDir, "extensions.json");
+
+    try {
+        fs.mkdirSync(vscodeDir);
+        fs.copyFileSync(srcVscodeExtensions, destVscodeExtensions);
     
-    return mkDir(vscodeDir)
-        .then(copyFile(srcVscodeExtensions, destVscodeExtensions))
-        .then(copyFile(srcGitignore, destGitignore))
-        .then(() => {
-            const toolsDir = path.join(appRootFolder, "tools");
-            deleteFolderSync(toolsDir);
+        fs.copyFileSync(srcGitignore, destGitignore);
 
-            const readme = path.join(appRootFolder, "README.md");
-            fs.unlinkSync(readme);
+        deleteFolderSync(toolsDir);
 
-            deleteFolderSync(__dirname);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+        const readme = path.join(appRootFolder, "README.md");
+        fs.unlinkSync(readme);
 
-    function mkDir(path) {
-        return new Promise((resolve, reject) => {
-            fs.mkdir(path, null, (err) => {
-                if (err) {
-                    return reject(err);
-                }
-
-                resolve();
-            });
-        });
-    }
-
-    function copyFile(srcFilename, destFilename = srcFilename) {
-        return new Promise((resolve, reject) => {
-            const sourcePath = path.join(appRootFolder, "tools", srcFilename);
-            const destPath = path.join(appRootFolder, destFilename);
-
-            fs.rename(sourcePath, destPath, (err) => {
-                if (err) {
-                    return reject(err);
-                }
-
-                resolve();
-            });
-        });
+        deleteFolderSync(__dirname);
+    } catch (error) {
+        console.log(error);
     }
 
     function deleteFolderSync(folderPath) {
