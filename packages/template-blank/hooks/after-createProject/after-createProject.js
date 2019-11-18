@@ -9,8 +9,10 @@ module.exports = function (hookArgs) {
     const destVscodeExtensions = ".vscode/extensions.json";
     const vscodeDir = path.join(appRootFolder, ".vscode");
     
-    return mkDir(vscodeDir)
-        .then(copyFile(srcVscodeExtensions, destVscodeExtensions))
+    // async fs.mkdir has some timing issues where .vscode dir is not ready when we try to copy file into it
+    fs.mkdirSync(vscodeDir);
+
+    return copyFile(srcVscodeExtensions, destVscodeExtensions)
         .then(copyFile(srcGitignore, destGitignore))
         .then(() => {
             const toolsDir = path.join(appRootFolder, "tools");
@@ -24,18 +26,6 @@ module.exports = function (hookArgs) {
         .catch((err) => {
             console.log(err);
         });
-
-    function mkDir(path) {
-        return new Promise((resolve, reject) => {
-            fs.mkdir(path, null, (err) => {
-                if (err) {
-                    return reject(err);
-                }
-
-                resolve();
-            });
-        });
-    }
 
     function copyFile(srcFilename, destFilename = srcFilename) {
         return new Promise((resolve, reject) => {
