@@ -14,6 +14,7 @@
     "component-class-suffix": true,
     "deprecation": true,
     "directive-class-suffix": true,
+    "interface-name": [true, "never-prefix"],
     "member-access": [true, "no-public"],
     "newline-before-return": true,
     "no-angle-bracket-type-assertion": false,
