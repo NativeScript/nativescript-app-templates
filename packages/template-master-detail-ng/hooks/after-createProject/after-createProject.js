@@ -59,10 +59,10 @@ module.exports = function (hookArgs) {
             throw new Error("cannot find nativescript node in package.json file");
         }
 
-        const googleServicesJsonPath = path.join(appRootFolder, "app", "App_Resources", "Android", "google-services.json");
+        const googleServicesJsonPath = path.join(appRootFolder, "App_Resources", "Android", "google-services.json");
         replaceAppId(googleServicesJsonPath, packageJson.nativescript.id);
 
-        const googleServiceInfoPlistPath = path.join(appRootFolder, "app", "App_Resources", "iOS", "GoogleService-Info.plist");
+        const googleServiceInfoPlistPath = path.join(appRootFolder, "App_Resources", "iOS", "GoogleService-Info.plist");
         replaceAppId(googleServiceInfoPlistPath, packageJson.nativescript.id);
     }
 
