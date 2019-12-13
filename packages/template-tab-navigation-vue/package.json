@@ -11,7 +11,7 @@
   },
   "name": "tns-template-tab-navigation-vue",
   "displayName": "Tabs",
-  "version": "6.2.4",
+  "version": "6.3.0",
   "description": "Tabbed interface template using Vue",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
