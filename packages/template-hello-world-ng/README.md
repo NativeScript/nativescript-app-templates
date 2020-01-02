@@ -14,7 +14,7 @@ Or the `--ng` shorthand.
 tns create my-hello-world-ng --ng
 ```
 
-> Note: Both commands will create a new NativeScript app that uses the latest version of this template published to [npm] (https://www.npmjs.com/package/tns-template-hello-world-ng).
+> Note: Both commands will create a new NativeScript app that uses the latest version of this template published to [npm](https://www.npmjs.com/package/tns-template-hello-world-ng).
 
 If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
 
