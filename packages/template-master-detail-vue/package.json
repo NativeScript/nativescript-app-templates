@@ -38,18 +38,18 @@
     "category-general"
   ],
   "dependencies": {
-    "@nativescript/theme": "~2.2.1",
+    "@nativescript/theme": "~2.3.0",
     "nativescript-imagepicker": "~7.1.0",
     "nativescript-plugin-firebase": "~10.3.2",
     "nativescript-ui-listview": "~8.0.1",
     "nativescript-vue": "~2.4.0",
-    "tns-core-modules": "~6.3.0"
+    "tns-core-modules": "~6.4.0"
   },
   "devDependencies": {
     "@babel/core": "~7.1.0",
     "@babel/preset-env": "~7.1.0",
     "babel-loader": "~8.0.0",
-    "nativescript-dev-webpack": "~1.4.0",
+    "nativescript-dev-webpack": "~1.5.0",
     "nativescript-vue-template-compiler": "~2.4.0",
     "node-sass": "^4.7.1",
     "vue-loader": "~15.4.0"

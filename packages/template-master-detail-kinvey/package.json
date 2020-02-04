@@ -41,16 +41,16 @@
     "lint": "eslint \"app/**/*.js\""
   },
   "dependencies": {
-    "@nativescript/theme": "~2.2.1",
+    "@nativescript/theme": "~2.3.0",
     "kinvey-nativescript-sdk": "4.2.5",
     "nativescript-imagepicker": "~7.1.0",
     "nativescript-ui-listview": "~8.0.1",
-    "tns-core-modules": "~6.3.0",
+    "tns-core-modules": "~6.4.0",
     "tslib": "^1.9.3"
   },
   "devDependencies": {
     "eslint": "~5.8.0",
-    "nativescript-dev-webpack": "~1.4.0",
+    "nativescript-dev-webpack": "~1.5.0",
     "node-sass": "^4.7.1"
   }
 }
