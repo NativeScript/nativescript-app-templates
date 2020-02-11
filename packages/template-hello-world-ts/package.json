@@ -11,7 +11,7 @@
   },
   "name": "tns-template-hello-world-ts",
   "main": "app.js",
-  "version": "6.4.0",
+  "version": "6.4.1",
   "author": "Telerik <support@telerik.com>",
   "description": "Nativescript hello-world-ts project template",
   "license": "Apache-2.0",
