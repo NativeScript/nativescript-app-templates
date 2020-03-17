@@ -3,16 +3,16 @@
     "id": "org.nativescript.Blank",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "6.4.1"
+      "version": "6.5.0"
     },
     "tns-ios": {
-      "version": "6.4.0"
+      "version": "6.5.0"
     }
   },
   "name": "tns-template-blank-ng",
   "displayName": "Blank",
   "templateType": "App template",
-  "version": "6.4.1",
+  "version": "6.5.0",
   "description": "Blank template for NativeScript apps using Angular",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
@@ -47,7 +47,7 @@
     "nativescript-angular": "~8.21.0",
     "reflect-metadata": "~0.1.12",
     "rxjs": "^6.4.0",
-    "tns-core-modules": "~6.4.0",
+    "tns-core-modules": "~6.5.0",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {

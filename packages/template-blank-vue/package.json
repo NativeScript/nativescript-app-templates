@@ -3,15 +3,15 @@
     "id": "org.nativescript.Blank",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "6.4.1"
+      "version": "6.5.0"
     },
     "tns-ios": {
-      "version": "6.4.0"
+      "version": "6.5.0"
     }
   },
   "name": "tns-template-blank-vue",
   "displayName": "Blank",
-  "version": "6.4.1",
+  "version": "6.5.0",
   "description": "Blank template for NativeScript apps using Vue.",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
@@ -40,7 +40,7 @@
   "dependencies": {
     "@nativescript/theme": "~2.3.0",
     "nativescript-vue": "~2.4.0",
-    "tns-core-modules": "~6.4.0"
+    "tns-core-modules": "~6.5.0"
   },
   "devDependencies": {
     "@babel/core": "~7.1.0",

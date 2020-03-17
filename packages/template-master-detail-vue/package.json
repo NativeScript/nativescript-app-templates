@@ -3,15 +3,15 @@
     "id": "org.nativescript.MasterDetail",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "6.4.1"
+      "version": "6.5.0"
     },
     "tns-ios": {
-      "version": "6.4.0"
+      "version": "6.5.0"
     }
   },
   "name": "tns-template-master-detail-vue",
   "displayName": "Master Detail with Firebase",
-  "version": "6.4.1",
+  "version": "6.5.0",
   "description": "Master-detail interface to display collection of items from Firebase and inspect and edit selected item properties.",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
@@ -43,7 +43,7 @@
     "nativescript-plugin-firebase": "~10.3.2",
     "nativescript-ui-listview": "~8.0.1",
     "nativescript-vue": "~2.4.0",
-    "tns-core-modules": "~6.4.0"
+    "tns-core-modules": "~6.5.0"
   },
   "devDependencies": {
     "@babel/core": "~7.1.0",
