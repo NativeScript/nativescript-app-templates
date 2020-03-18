@@ -1,4 +1,4 @@
-# NativeScript JavaScript Template
+# NativeScript KotlinJS Template
 
 This template creates a "Hello, world" NativeScript app using KotlinJS.
 
