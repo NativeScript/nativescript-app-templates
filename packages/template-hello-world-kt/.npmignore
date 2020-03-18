@@ -6,6 +6,7 @@ hooks/*
 !hooks/after-createProject/after-createProject.js
 *.js.map
 lib/
+kotlin_build/
 node_modules/
 platforms/
 tmp/
