@@ -6,6 +6,7 @@ hooks/*
 *.js.map
 lib/
 node_modules/
+kotlin_build/
 platforms/
 tmp/
 typings/
