@@ -10,7 +10,7 @@ git clone git@github.com:NativeScript/nativescript-app-templates.git
 git checkout experimental
 
 # create app template from local source (all templates are in the 'packages' subfolder of the monorepo)
-tns create my-hello-world-js --template nativescript-app-templates/packages/template-hello-world
+tns create my-hello-world-kt --template nativescript-app-templates/packages/template-hello-world-kt
 ```
 
 ## Get Help
