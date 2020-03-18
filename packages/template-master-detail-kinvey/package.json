@@ -41,7 +41,7 @@
     "lint": "eslint \"app/**/*.js\""
   },
   "dependencies": {
-    "@nativescript/theme": "~2.3.0",
+    "@nativescript/theme": "~2.3.3",
     "kinvey-nativescript-sdk": "4.2.5",
     "nativescript-imagepicker": "~7.1.0",
     "nativescript-ui-listview": "~8.0.1",
@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "eslint": "~5.8.0",
-    "nativescript-dev-webpack": "~1.5.0",
+    "nativescript-dev-webpack": "~1.5.1",
     "node-sass": "^4.7.1"
   }
 }

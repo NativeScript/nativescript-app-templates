@@ -32,10 +32,10 @@
   },
   "homepage": "https://github.com/NativeScript/nativescript-app-templates",
   "dependencies": {
-    "@nativescript/theme": "~2.3.0",
+    "@nativescript/theme": "~2.3.3",
     "tns-core-modules": "~6.5.0"
   },
   "devDependencies": {
-    "nativescript-dev-webpack": "~1.5.0"
+    "nativescript-dev-webpack": "~1.5.1"
   }
 }

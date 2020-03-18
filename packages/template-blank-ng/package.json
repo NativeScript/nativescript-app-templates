@@ -43,7 +43,7 @@
     "@angular/platform-browser": "~8.2.0",
     "@angular/platform-browser-dynamic": "~8.2.0",
     "@angular/router": "~8.2.0",
-    "@nativescript/theme": "~2.3.0",
+    "@nativescript/theme": "~2.3.3",
     "nativescript-angular": "~8.21.0",
     "reflect-metadata": "~0.1.12",
     "rxjs": "^6.4.0",
@@ -53,7 +53,7 @@
   "devDependencies": {
     "@angular/compiler-cli": "~8.2.0",
     "@ngtools/webpack": "~8.2.0",
-    "nativescript-dev-webpack": "~1.5.0",
+    "nativescript-dev-webpack": "~1.5.1",
     "typescript": "~3.5.3"
   }
 }
