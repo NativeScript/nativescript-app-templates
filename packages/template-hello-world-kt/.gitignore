@@ -1,0 +1,14 @@
+npm-debug.log
+.DS_Store
+
+hooks/*
+!hooks/after-createProject/after-createProject.js
+*.js.map
+lib/
+node_modules/
+platforms/
+tmp/
+typings/
+.idea
+.project
+.vscode
