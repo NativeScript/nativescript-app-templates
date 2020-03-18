@@ -12,7 +12,7 @@
   "name": "tns-template-master-detail-kinvey-ts",
   "displayName": "Master-Detail with Kinvey",
   "templateType": "App template",
-  "version": "6.4.1",
+  "version": "6.5.0",
   "description": "Master-detail interface to display collection of items from Kinvey and inspect and edit selected item properties.",
   "author": "Telerik <support@telerik.com>",
   "license": "Apache-2.0",
