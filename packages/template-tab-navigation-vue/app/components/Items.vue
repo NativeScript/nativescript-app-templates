@@ -94,14 +94,15 @@ export default {
             const tappedItem = view.bindingContext;
 
             this.$navigateTo(ItemDetails, {
-                props: { 
-                    context: tappedItem,
-                    animated: true,
-                    transition: {
-                        name: "slide",
-                        duration: 200,
-                        curve: "ease"
-                    }}});
+                frame: 'items',
+                props: { context: tappedItem },
+                animated: true, 
+                transition: {
+                    name: "slide",
+                    duration: 200,
+                    curve: "ease"
+                }
+            });
         }
     }
 };
