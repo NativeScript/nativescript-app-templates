@@ -16,19 +16,19 @@
         </TabStrip>
 
         <TabContentItem>
-            <Frame>
+            <Frame id="items>
                 <Items />
             </Frame>
         </TabContentItem>
 
         <TabContentItem>
-            <Frame>
+            <Frame id="browse>
                 <Browse />
             </Frame>
         </TabContentItem>
 
         <TabContentItem>
-            <Frame>
+            <Frame id="search>
                 <Search />
             </Frame>
         </TabContentItem>
