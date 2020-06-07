@@ -1,44 +1,45 @@
 <template>
     <Page>
         <ActionBar>
-            <Label text="Car List" horizontalAlignment="center" />
+            <Label horizontalAlignment="center" text="Car List"/>
         </ActionBar>
 
-        <RadListView v-if="!isLoading" for="item in carList" @itemTap="onItemTap" class="cars-list">
-            <ListViewLinearLayout v-tkListViewLayout scrollDirection="Vertical"/>
+        <RadListView @itemTap="onItemTap" class="cars-list" for="item in carList" v-if="!isLoading">
+            <ListViewLinearLayout scrollDirection="Vertical" v-tkListViewLayout/>
             <v-template>
                 <StackLayout class="cars-list__item">
-                    <GridLayout rows="*, *, *" columns="*, *" class="cars-list__item-content">
+                    <GridLayout class="cars-list__item-content" columns="*, *" rows="*, *, *">
                         <Label :text="item.name" class="cars-list__item-name font-weight-bold"/>
-                        <Label col="1" horizontalAlignment="right" class="m-r-5">
+                        <Label class="m-r-5" col="1" horizontalAlignment="right">
                             <FormattedString>
                                 <Span text.decode="&euro;"/>
                                 <Span :text="item.price"/>
-                                <Span text="/day"/> 
+                                <Span text="/day"/>
                             </FormattedString>
                         </Label>
 
-                        <Label row="1" class="hr m-y-5" colSpan="2"/>
+                        <Label class="hr m-y-5" colSpan="2" row="1"/>
 
-                        <Image row="2" :src="item.imageUrl" stretch="aspectFill" height="120" class="m-r-20" loadMode="async"/>
+                        <Image :src="item.imageUrl" class="m-r-20" height="120" loadMode="async" row="2"
+                               stretch="aspectFill"/>
 
-                        <StackLayout row="2" col="1" verticalAlignment="center">
+                        <StackLayout col="1" row="2" verticalAlignment="center">
                             <Label class="p-b-10">
                                 <FormattedString ios.fontFamily="system">
-                                    <Span text.decode="&#xf1b9;    " class="fas cars-list__item-icon"></Span>
+                                    <Span class="fas cars-list__item-icon" text.decode="&#xf1b9;    "></Span>
                                     <Span :text="item.class"/>
                                 </FormattedString>
                             </Label>
                             <Label class="p-b-10">
                                 <FormattedString ios.fontFamily="system">
-                                    <Span text.decode="&#xf085;   " class="fas cars-list__item-icon"/>
+                                    <Span class="fas cars-list__item-icon" text.decode="&#xf085;   "/>
                                     <Span :text="item.transmission"/>
                                     <Span text=" Transmission"/>
                                 </FormattedString>
                             </Label>
                             <Label class="p-b-10">
                                 <FormattedString ios.fontFamily="system">
-                                    <Span text.decode="&#xf2dc;    " class="fas cars-list__item-icon"/>
+                                    <Span class="fas cars-list__item-icon" text.decode="&#xf2dc;    "/>
                                     <Span :text="item.hasAC ? 'Yes' : 'No'"/>
                                 </FormattedString>
                             </Label>
@@ -47,34 +48,34 @@
                 </StackLayout>
             </v-template>
         </RadListView>
-        <ActivityIndicator v-else :busy="isLoading"/>
+        <ActivityIndicator :busy="isLoading" v-else/>
     </Page>
 </template>
 
 <script>
-    import CarDetails from "./CarDetails";
+  import CarDetails from "./CarDetails";
 
-    export default {
-        computed: {
-            carList() {
-                return this.$root.cars;
-            },
+  export default {
+    computed: {
+      carList() {
+        return this.$root.cars;
+      },
 
-            isLoading() {
-                return !this.carList.length;
-            }
-        },
+      isLoading() {
+        return !this.carList.length;
+      }
+    },
 
-        methods: {
-            onItemTap(e) {
-                this.$emit("select", e.item);
-                this.$navigateTo(CarDetails, { props: { car: e.item } });
-            }
-        }
-    };
+    methods: {
+      onItemTap(args) {
+        this.$emit("select", args.item);
+        this.$navigateTo(CarDetails, {props: {car: args.item}});
+      }
+    }
+  };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
     @import '~@nativescript/theme/scss/variables/blue';
 
     // Custom styles

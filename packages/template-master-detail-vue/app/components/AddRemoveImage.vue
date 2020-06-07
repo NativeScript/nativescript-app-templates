@@ -1,97 +1,96 @@
 <template>
     <StackLayout class="car-list-even">
-        <GridLayout height="80" width="80" class="thumb" horizontalAlignment="left"
-            :backgroundImage="selectedImage" @tap="onImageAddRemoveTap">
+        <GridLayout :backgroundImage="selectedImage" @tap="onImageAddRemoveTap" class="thumb" height="80"
+                    horizontalAlignment="left" width="80">
             <GridLayout class="thumb__add" v-show="!selectedImage">
-                <Label text.decode="&#xf030;" class="fas" horizontalAlignment="center" verticalAlignment="center" />
+                <Label class="fas" horizontalAlignment="center" text.decode="&#xf030;" verticalAlignment="center"/>
             </GridLayout>
             <GridLayout class="thumb__remove" v-show="selectedImage">
-                <Label text.decode="&#xf2ed;" class="far" horizontalAlignment="center" verticalAlignment="center" />
+                <Label class="far" horizontalAlignment="center" text.decode="&#xf2ed;" verticalAlignment="center"/>
             </GridLayout>
         </GridLayout>
 
-        <Label v-if="!imageUrl" row="1" col="1" verticalAlignment="middle" text="Image field is required" />
+        <Label col="1" row="1" text="Image field is required" v-if="!imageUrl" verticalAlignment="middle"/>
     </StackLayout>
 </template>
 
 <script>
-    import { Folder, knownFolders, path } from "file-system";
-    import { ImageAsset } from "image-asset";
-    import { ImageSource } from "image-source";
-    import * as imagePicker from "nativescript-imagepicker";
+  import {knownFolders, path} from "file-system";
+  import {ImageSource} from "image-source";
+  import * as imagePicker from "nativescript-imagepicker";
 
-    const tempImageFolderName = "nsimagepicker";
+  const tempImageFolderName = "nsimagepicker";
 
-    export default {
-        name: "AddRemoveImage",
+  export default {
+    name: "AddRemoveImage",
 
-        model: {
-            prop: "image-url",
-            event: "select"
-        },
+    model: {
+      prop: "image-url",
+      event: "select"
+    },
 
-        props: ["image-url"],
+    props: ["image-url"],
 
-        data() {
-            return {
-                selectedImage: this.imageUrl,
-                imageTempFolder: knownFolders.temp().getFolder(tempImageFolderName)
-            }
-        },
+    data() {
+      return {
+        selectedImage: this.imageUrl,
+        imageTempFolder: knownFolders.temp().getFolder(tempImageFolderName)
+      }
+    },
 
-        methods: {
-            onImageAddRemoveTap() {
-                if (this.selectedImage) {
-                    return this.handleImageChange(null);
-                }
-
-                this.imageTempFolder.clear();
-
-                this.pickImage();
-            },
-
-            pickImage() {
-                const context = imagePicker.create({
-                    mode: "single"
-                });
-
-                context
-                    .authorize()
-                    .then(() => context.present())
-                    .then(selection => selection.forEach(
-                        selectedAsset => {
-                            selectedAsset.options.height = 768;
-
-                            ImageSource.fromAsset(selectedAsset)
-                                .then(imageSource => this.handleImageChange(imageSource));
-                        }))
-                    .catch((errorMessage) => console.log(errorMessage));
-            },
-
-            handleImageChange(source) {
-                if (source) {
-                    const tempImagePath = path.join(this.imageTempFolder.path, `${Date.now()}.jpg`);
-
-                    if (source.saveToFile(tempImagePath, "jpeg")) {
-                        this.selectedImage = tempImagePath;
-                    }
-                } else {
-                    this.selectedImage = null;
-                }
-
-                this.$emit("select", this.selectedImage);
-            }
-        },
-
-        watch: {
-            imageUrl(value) {
-                this.selectedImage = value;
-            }
+    methods: {
+      onImageAddRemoveTap() {
+        if (this.selectedImage) {
+          return this.handleImageChange(null);
         }
+
+        this.imageTempFolder.clear();
+
+        this.pickImage();
+      },
+
+      pickImage() {
+        const context = imagePicker.create({
+          mode: "single"
+        });
+
+        context
+          .authorize()
+          .then(() => context.present())
+          .then(selection => selection.forEach(
+            selectedAsset => {
+              selectedAsset.options.height = 768;
+
+              ImageSource.fromAsset(selectedAsset)
+                .then(imageSource => this.handleImageChange(imageSource));
+            }))
+          .catch((errorMessage) => console.log(errorMessage));
+      },
+
+      handleImageChange(source) {
+        if (source) {
+          const tempImagePath = path.join(this.imageTempFolder.path, `${Date.now()}.jpg`);
+
+          if (source.saveToFile(tempImagePath, "jpeg")) {
+            this.selectedImage = tempImagePath;
+          }
+        } else {
+          this.selectedImage = null;
+        }
+
+        this.$emit("select", this.selectedImage);
+      }
+    },
+
+    watch: {
+      imageUrl(value) {
+        this.selectedImage = value;
+      }
     }
+  }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
     @import '~@nativescript/theme/scss/variables/blue';
 
     // Custom styles
@@ -123,8 +122,8 @@
             border-radius: const(border-radius-sm);
             border-width: const(border-width);
             @include colorize(
-                $border-color: background-alt-20,
-                $color: background-alt-20
+                    $border-color: background-alt-20,
+                    $color: background-alt-20
             );
         }
 

@@ -12,20 +12,20 @@
 </template>
 
 <script>
-export default {
-    data: () => {
-        return {
-            message: "<!-- Browse page content goes here -->"
-        };
+  export default {
+    data() {
+      return {
+        message: "<!-- Browse page content goes here -->"
+      };
     }
-}
+  }
 </script>
 
 <style lang="scss" scoped>
-// Start custom common variables
-@import "~@nativescript/theme/scss/variables/blue";
-// End custom common variables
+    // Start custom common variables
+    @import "~@nativescript/theme/scss/variables/blue";
+    // End custom common variables
 
-// Custom styles
+    // Custom styles
 
 </style>

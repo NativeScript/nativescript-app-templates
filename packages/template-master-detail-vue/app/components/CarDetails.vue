@@ -1,43 +1,43 @@
 <template>
     <Page>
         <ActionBar>
-            <NavigationButton @tap="$navigateBack()" android.systemIcon="ic_menu_back" />
-            <Label :text="carData.name" horizontalAlignment="center" />
-            <ActionItem @tap="onEditButtonTap" ios.position="right" android.position="right">
-                <Label text="Edit" verticalAlignment="center" />
+            <NavigationButton @tap="$navigateBack()" android.systemIcon="ic_menu_back"/>
+            <Label :text="carData.name" horizontalAlignment="center"/>
+            <ActionItem @tap="onEditButtonTap" android.position="right" ios.position="right">
+                <Label text="Edit" verticalAlignment="center"/>
             </ActionItem>
         </ActionBar>
 
         <ScrollView>
             <StackLayout>
-                <Image :src="carData.imageUrl" stretch="aspectFill" height="200" class="m-b-15" />
+                <Image :src="carData.imageUrl" class="m-b-15" height="200" stretch="aspectFill"/>
 
-                <Label row="1" class="hr m-y-15"/>
+                <Label class="hr m-y-15" row="1"/>
 
-                <GridLayout row="2" rows="*, *, *, *, *, *" columns="auto,auto">
-                    <Label text="Price" class="p-l-15 p-b-10 m-r-20"/>
-                    <Label col="1" class="p-b-10">
+                <GridLayout columns="auto,auto" row="2" rows="*, *, *, *, *, *">
+                    <Label class="p-l-15 p-b-10 m-r-20" text="Price"/>
+                    <Label class="p-b-10" col="1">
                         <FormattedString>
-                            <Span text.decode="&euro;" />
-                            <Span :text="carData.price" />
-                            <Span text="/day" />
+                            <Span text.decode="&euro;"/>
+                            <Span :text="carData.price"/>
+                            <Span text="/day"/>
                         </FormattedString>
                     </Label>
 
-                    <Label text="Class" row="1" class="p-l-15 p-b-10 m-r-20" />
-                    <Label :text="carData.class" row="1" col="1" class="p-b-10" />
+                    <Label class="p-l-15 p-b-10 m-r-20" row="1" text="Class"/>
+                    <Label :text="carData.class" class="p-b-10" col="1" row="1"/>
 
-                    <Label text="Doors" row="2" class="p-l-15 p-b-10 m-r-20" />
-                    <Label :text="carData.doors" row="2" col="1" class="p-b-10" />
+                    <Label class="p-l-15 p-b-10 m-r-20" row="2" text="Doors"/>
+                    <Label :text="carData.doors" class="p-b-10" col="1" row="2"/>
 
-                    <Label text="Seats" row="3" class="p-l-15 p-b-10 m-r-20" />
-                    <Label :text="carData.seats" row="3" col="1" class="p-b-10" />
+                    <Label class="p-l-15 p-b-10 m-r-20" row="3" text="Seats"/>
+                    <Label :text="carData.seats" class="p-b-10" col="1" row="3"/>
 
-                    <Label text="Transmission" row="4" class="p-l-15 p-b-10 m-r-20" />
-                    <Label :text="carData.transmission" row="4" col="1" class="p-b-10" />
+                    <Label class="p-l-15 p-b-10 m-r-20" row="4" text="Transmission"/>
+                    <Label :text="carData.transmission" class="p-b-10" col="1" row="4"/>
 
-                    <Label text="Luggage" row="5" class="p-l-15 p-b-10 m-r-20" />
-                    <Label :text="carData.luggage" row="5" col="1" class="p-b-10" />
+                    <Label class="p-l-15 p-b-10 m-r-20" row="5" text="Luggage"/>
+                    <Label :text="carData.luggage" class="p-b-10" col="1" row="5"/>
                 </GridLayout>
             </StackLayout>
         </ScrollView>
@@ -45,25 +45,25 @@
 </template>
 
 <script>
-    import CarDetailsEdit from "./CarDetailsEdit";
+  import CarDetailsEdit from "./CarDetailsEdit";
 
-    export default {
-        props: ["car"],
+  export default {
+    props: ["car"],
 
-        computed: {
-            carData() {
-                return this.car || {};
-            }
-        },
+    computed: {
+      carData() {
+        return this.car || {};
+      }
+    },
 
-        methods: {
-            onEditButtonTap() {
-                this.$navigateTo(CarDetailsEdit, {
-                    transition: "slideTop",
-                    backstackVisible: false,
-                    props: { car: this.carData }
-                });
-            }
-        }
-    };
+    methods: {
+      onEditButtonTap() {
+        this.$navigateTo(CarDetailsEdit, {
+          transition: "slideTop",
+          backstackVisible: false,
+          props: {car: this.carData}
+        });
+      }
+    }
+  };
 </script>

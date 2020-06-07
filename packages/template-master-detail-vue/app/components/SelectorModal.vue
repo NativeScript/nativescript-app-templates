@@ -1,52 +1,61 @@
 <template>
-    <GridLayout rows="auto, *, auto" verticalAlignment="top" ios:class="modal-input -ios" android:class="modal-input -android">
-        <Label :text="title" class="h3 modal-input__header"></Label>
-        <RadListView row="1" :items="source" @itemTap="itemSelected" selectionBehavior="Press" class="modal-input__list">
+    <GridLayout android:class="modal-input -android"
+                ios:class="modal-input -ios"
+                rows="auto, *, auto"
+                verticalAlignment="top">
+        <Label :text="title" class="h3 modal-input__header"/>
+        <RadListView :items="source" @itemTap="itemSelected" class="modal-input__list" row="1"
+                     selectionBehavior="Press">
             <v-template>
                 <GridLayout>
-                    <GridLayout android:visibility="collapsed" columns="*,auto" class="modal-input__list-item">
+                    <GridLayout android:visibility="collapsed" class="modal-input__list-item" columns="*,auto">
                         <Label :text="item.value"></Label>
-                        <Label col="1" text.decode="&#xf00c;"
-                            class="fas modal-input__list-check"
-                            v-show="item.value === selectedValue"></Label>
+                        <Label class="fas modal-input__list-check" col="1"
+                               text.decode="&#xf00c;"
+                               v-show="item.value === selectedValue"/>
                     </GridLayout>
-                    <GridLayout ios:visibility="collapsed" columns="auto,*" class="modal-input__list-item">
-                        <Label text.decode="&#xf111;"
-                            class="far modal-input__list-icon" verticalAlignment="center"
-                            v-show="item.value !== selectedValue"></Label>
-                        <Label text.decode="&#xf192;"
-                            class="far modal-input__list-icon selected" verticalAlignment="center"
-                            v-show="item.value === selectedValue"></Label>
-                        <Label col="1" :text="item.value"></Label>
+                    <GridLayout class="modal-input__list-item" columns="auto,*" ios:visibility="collapsed">
+                        <Label class="far modal-input__list-icon"
+                               text.decode="&#xf111;" v-show="item.value !== selectedValue"
+                               verticalAlignment="center"/>
+                        <Label class="far modal-input__list-icon selected"
+                               text.decode="&#xf192;" v-show="item.value === selectedValue"
+                               verticalAlignment="center"/>
+                        <Label :text="item.value" col="1"/>
                     </GridLayout>
                 </GridLayout>
             </v-template>
         </RadListView>
-        <Button class="-outline" row="3" text="CANCEL" ios:visibility="collapsed" horizontalAlignment="right" @tap="$modal.close()"></Button>
+        <Button @tap="$modal.close()"
+                class="-outline"
+                horizontalAlignment="right"
+                ios:visibility="collapsed"
+                row="3"
+                text="CANCEL"/>
     </GridLayout>
 </template>
 
 <script>
-    export default {
-        name: "SelectorModal",
+  export default {
+    name: "SelectorModal",
 
-        props: ["title", "items", "selected"],
+    props: ["title", "items", "selected"],
 
-        data() {
-            return {
-                source: this.items.map((value, index) => ({ index, value })),
-                selectedValue: this.selected
-            };
-        },
+    data() {
+      return {
+        source: this.items.map((value, index) => ({index, value})),
+        selectedValue: this.selected
+      };
+    },
 
-        methods: {
-            itemSelected(e) {
-                this.selectedValue = e.item.value;
+    methods: {
+      itemSelected(e) {
+        this.selectedValue = e.item.value;
 
-                this.$modal.close(this.selectedValue);
-            }
-        }
+        this.$modal.close(this.selectedValue);
+      }
     }
+  }
 </script>
 
 <style lang="scss">
@@ -55,8 +64,8 @@
     // Custom styles
     .modal-input {
         @include colorize(
-            $background-color: background-alt-10,
-            $color: text-color
+                $background-color: background-alt-10,
+                $color: text-color
         );
 
         &__list-item {
@@ -105,8 +114,8 @@
             &-item {
                 border-bottom-width: const(border-width);
                 @include colorize(
-                    $background-color: background,
-                    $border-color: background-alt-20
+                        $background-color: background,
+                        $border-color: background-alt-20
                 );
             }
 

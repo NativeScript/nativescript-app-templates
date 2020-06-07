@@ -1,7 +1,7 @@
 <template>
     <Page>
         <ActionBar>
-            <Label text="Home"></Label>
+            <Label text="Home"/>
         </ActionBar>
 
         <GridLayout>
@@ -16,13 +16,13 @@
 </template>
 
 <script>
-    export default {
-        computed: {
-            message() {
-                return "Blank {N}-Vue app";
-            }
-        }
-    };
+  export default {
+    computed: {
+      message() {
+        return "Blank {N}-Vue app";
+      }
+    }
+  };
 </script>
 
 <style scoped lang="scss">
