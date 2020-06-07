@@ -10,7 +10,7 @@
     }
   },
   "name": "tns-template-hello-world-ng",
-  "version": "6.6.1",
+  "version": "6.6.2",
   "author": "NativeScript Team <nativescript@nstudio.io>",
   "description": "NativeScript Angular Hello World template",
   "license": "Apache-2.0",
@@ -43,8 +43,8 @@
     "@angular/platform-browser": "~9.1.0",
     "@angular/platform-browser-dynamic": "~9.1.0",
     "@angular/router": "~9.1.0",
-    "@nativescript/theme": "~2.3.0",
     "@nativescript/angular": "~9.0.0",
+    "@nativescript/theme": "~2.3.0",
     "reflect-metadata": "~0.1.12",
     "rxjs": "^6.5.0",
     "tns-core-modules": "~6.5.0",

@@ -12,7 +12,7 @@
   "name": "tns-template-blank-ts",
   "displayName": "Blank",
   "templateType": "App template",
-  "version": "6.4.1",
+  "version": "6.5.4",
   "description": "Blank template for Vanilla NativeScript apps using TypeScript",
   "author": "NativeScript Team <nativescript@nstudio.io>",
   "license": "Apache-2.0",
