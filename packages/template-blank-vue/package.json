@@ -13,7 +13,7 @@
   "displayName": "Blank",
   "version": "6.5.0",
   "description": "Blank template for NativeScript apps using Vue.",
-  "author": "Telerik <support@telerik.com>",
+  "author": "NativeScript Team <nativescript@nstudio.io>",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -24,10 +24,9 @@
     "url": "https://github.com/NativeScript/NativeScript/issues"
   },
   "keywords": [
-    "telerik",
-    "progress",
-    "mobile",
+    "nstudio",
     "nativescript",
+    "mobile",
     "{N}",
     "tns",
     "vue",

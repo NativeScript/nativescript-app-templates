@@ -15,13 +15,13 @@
   "description": "NativeScript Angular Hello World template",
   "license": "Apache-2.0",
   "keywords": [
+    "nstudio",
     "nativescript",
     "mobile",
     "angular",
     "{N}",
     "tns",
-    "template",
-    "nstudio"
+    "template"
   ],
   "repository": {
     "type": "git",

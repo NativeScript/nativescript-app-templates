@@ -14,10 +14,11 @@
   "templateType": "App template",
   "version": "6.4.1",
   "description": "Blank template for Vanilla NativeScript apps using JavaScript",
-  "author": "Telerik <support@telerik.com>",
+  "author": "NativeScript Team <nativescript@nstudio.io>",
   "license": "Apache-2.0",
   "keywords": [
-    "telerik",
+    "nstudio",
+    "nativescript",
     "mobile",
     "nativescript",
     "{N}",

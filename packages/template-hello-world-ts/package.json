@@ -12,16 +12,15 @@
   "name": "tns-template-hello-world-ts",
   "main": "app.js",
   "version": "6.5.1",
-  "author": "Telerik <support@telerik.com>",
+  "author": "NativeScript Team <nativescript@nstudio.io>",
   "description": "Nativescript hello-world-ts project template",
   "license": "Apache-2.0",
   "keywords": [
-    "telerik",
-    "mobile",
+    "nstudio",
     "nativescript",
+    "mobile",
     "{N}",
     "tns",
-    "appbuilder",
     "template"
   ],
   "repository": {
