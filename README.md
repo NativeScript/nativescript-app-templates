@@ -19,3 +19,44 @@ If you have found an issue with this template, please report the problem in the 
 ## Contributing
 
 We love PRs, and accept them gladly. Feel free to propose changes and new ideas. We will review and discuss, so that they can be accepted and better integrated.
+
+## Releasing
+
+This monorepo uses Lerna to manage packages and their releases.
+
+Install the dependencies in the root of the repo with
+
+```bash
+$ npm i # or yarn
+```
+
+To list which packages have been changed since the last release
+
+```bash
+$ npx lerna changed
+```
+
+This will print something like this
+
+```bash
+lerna notice cli v3.14.2
+lerna info versioning independent
+lerna info Looking for changed packages since tns-template-blank-ng@6.5.4
+lerna info ignoring diff in paths matching [ 'ignored-file', '*.md' ]
+tns-template-hello-world-ng
+lerna success found 1 package ready to publish
+```
+
+To manually specify version for each package interactively run
+
+```bash
+$ npx lerna version
+```
+
+This should prompt the new version number for every changed package.
+
+To release the packages, run
+
+```bash
+$ npx lerna publish
+```
