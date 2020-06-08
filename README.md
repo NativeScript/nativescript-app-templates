@@ -60,3 +60,11 @@ To release the packages, run
 ```bash
 $ npx lerna publish
 ```
+
+If you want to bump and publish at the same time,
+
+```bash
+$ npx lerna publish
+```
+
+will also prompt the new version interactively and then publish the package to npm.
