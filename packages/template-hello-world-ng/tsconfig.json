@@ -20,7 +20,8 @@
       }
   },
   "include": [
-    "references.d.ts"
+    "references.d.ts",
+    "src/tests/**/*.ts"
   ],
   "files": [
     "./src/main.ts"
