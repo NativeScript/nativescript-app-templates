@@ -17,6 +17,7 @@ module.exports = {
       ignorableDeepImportMatchers: [
         /tns-core-modules\//,
         /@nativescript\/core\//,
+        /@nativescript\/angular\//,
         /nativescript-angular\//,
       ]
     },
@@ -31,7 +32,10 @@ module.exports = {
         },
       },
       ignorableDeepImportMatchers: [
-        /@nativescript\/core\//
+        /tns-core-modules\//,
+        /@nativescript\/core\//,
+        /@nativescript\/angular\//,
+        /nativescript-angular\//,
       ]
     },
     "nativescript-datetimepicker": {
@@ -54,7 +58,8 @@ module.exports = {
       ignorableDeepImportMatchers: [
         /tns-core-modules\//,
         /@nativescript\/core\//,
-        /@nativescript\/angular\//
+        /@nativescript\/angular\//,
+        /nativescript-angular\//,
       ]
     },
     "nativescript-ui-sidedrawer": {
@@ -70,7 +75,8 @@ module.exports = {
       ignorableDeepImportMatchers: [
         /tns-core-modules\//,
         /@nativescript\/core\//,
-        /@nativescript\/angular\//
+        /@nativescript\/angular\//,
+        /nativescript-angular\//,
       ]
     },
     "nativescript-ui-listview": {
@@ -86,7 +92,8 @@ module.exports = {
       ignorableDeepImportMatchers: [
         /tns-core-modules\//,
         /@nativescript\/core\//,
-        /@nativescript\/angular\//
+        /@nativescript\/angular\//,
+        /nativescript-angular\//,
       ]
     }
   }
