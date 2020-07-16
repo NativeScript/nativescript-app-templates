@@ -1,16 +1,14 @@
 {
   "compilerOptions": {
-      "module": "commonjs",
-      "target": "es5",
+      "module": "ESNext",
+      "target": "es2015",
       "experimentalDecorators": true,
       "emitDecoratorMetadata": true,
       "noEmitHelpers": true,
       "noEmitOnError": true,
       "skipLibCheck": true,
       "lib": [
-          "es2017",
-          "dom",
-          "es6"
+        "es2018", "es2017", "dom", "es6"
       ],
       "baseUrl": ".",
       "paths": {
