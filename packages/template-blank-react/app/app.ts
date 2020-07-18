@@ -1,7 +1,7 @@
 import * as React from "react";
 
 /* Controls react-nativescript log verbosity. true: all logs; false: only error logs. */
-Object.defineProperty(global, '__DEV__', { value: true });
+Object.defineProperty(global, '__DEV__', { value: false });
 
 /*
 In NativeScript, the app.ts file is the entry point to your application.
