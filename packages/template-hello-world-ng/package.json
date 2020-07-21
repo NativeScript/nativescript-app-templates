@@ -3,14 +3,14 @@
     "id": "org.nativescript.HelloWorld",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "6.5.0"
+      "version": "6.5.3"
     },
     "tns-ios": {
-      "version": "6.5.0"
+      "version": "6.5.2"
     }
   },
-  "name": "tns-template-hello-world-ng",
-  "version": "6.7.0-rc.0",
+  "name": "@nativescript/template-hello-world-ng",
+  "version": "6.7.0-rc.3",
   "author": "NativeScript Team <nativescript@nstudio.io>",
   "description": "NativeScript Angular Hello World template",
   "license": "Apache-2.0",
@@ -45,17 +45,17 @@
     "@angular/platform-browser-dynamic": "~10.0.0",
     "@angular/router": "~10.0.0",
     "@nativescript/angular": "rc",
+    "@nativescript/core": "rc",
     "@nativescript/theme": "~2.3.0",
     "reflect-metadata": "~0.1.12",
     "rxjs": "^6.5.0",
-    "@nativescript/core": "rc",
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
     "@angular/compiler-cli": "~10.0.0",
+    "@nativescript/types": "rc",
+    "@nativescript/webpack": "rc",
     "@ngtools/webpack": "~10.0.0",
-    "@nativescript/webpack": "~2.0.0-alpha.3",
-    "@nativescript/types": "~7.0.0-rc.0",
     "typescript": "~3.9.0"
   }
 }

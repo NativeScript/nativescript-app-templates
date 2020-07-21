@@ -4,23 +4,6 @@
  */
 module.exports = {
   packages: {
-    "nativescript-ui-sidedrawer": {
-      entryPoints: {
-          angular: {
-              override: {
-                  main: "./side-drawer-directives.js",
-                  typings: "./side-drawer-directives.d.ts"
-              },
-              ignoreMissingDependencies: true
-          }
-      },
-      ignorableDeepImportMatchers: [
-        /tns-core-modules\//,
-        /@nativescript\/core\//,
-        /@nativescript\/angular\//,
-        /nativescript-angular\//,
-      ]
-    },
     "nativescript-localize": {
       entryPoints: {
         ".": {
@@ -51,40 +34,6 @@ module.exports = {
           override: {
             main: "./index.js",
             typings: "./index.d.ts",
-          },
-          ignoreMissingDependencies: true,
-        }
-      },
-      ignorableDeepImportMatchers: [
-        /tns-core-modules\//,
-        /@nativescript\/core\//,
-        /@nativescript\/angular\//,
-        /nativescript-angular\//,
-      ]
-    },
-    "nativescript-ui-sidedrawer": {
-      entryPoints: {
-        "angular": {
-          override: {
-            main: "./side-drawer-directives.js",
-            typings: "./side-drawer-directives.d.ts",
-          },
-          ignoreMissingDependencies: true,
-        }
-      },
-      ignorableDeepImportMatchers: [
-        /tns-core-modules\//,
-        /@nativescript\/core\//,
-        /@nativescript\/angular\//,
-        /nativescript-angular\//,
-      ]
-    },
-    "nativescript-ui-listview": {
-      entryPoints: {
-        "angular": {
-          override: {
-            main: "./listview-directives.js",
-            typings: "./listview-directives.d.ts",
           },
           ignoreMissingDependencies: true,
         }
