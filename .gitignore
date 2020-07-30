@@ -8,6 +8,7 @@ node_modules/
 platforms/
 tmp/
 typings/
+*.tgz
 
 .idea
 .cloud
