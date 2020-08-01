@@ -10,7 +10,7 @@
     }
   },
   "name": "@nativescript/template-hello-world-ng",
-  "version": "6.7.1",
+  "version": "6.7.2",
   "author": "NativeScript Team <nativescript@nstudio.io>",
   "description": "NativeScript Angular Hello World template",
   "license": "Apache-2.0",

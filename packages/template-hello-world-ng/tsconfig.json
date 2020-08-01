@@ -19,7 +19,9 @@
       }
   },
   "include": [
-    "src/tests/**/*.ts"
+    "src/tests/**/*.ts",
+    "src/**/*.ios.ts",
+    "src/**/*.android.ts"
   ],
   "files": [
     "./references.d.ts",
