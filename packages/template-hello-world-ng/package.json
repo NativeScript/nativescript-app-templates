@@ -10,7 +10,7 @@
     }
   },
   "name": "@nativescript/template-hello-world-ng",
-  "version": "6.7.0",
+  "version": "6.7.1",
   "author": "NativeScript Team <nativescript@nstudio.io>",
   "description": "NativeScript Angular Hello World template",
   "license": "Apache-2.0",
@@ -54,7 +54,7 @@
   "devDependencies": {
     "@angular/compiler-cli": "~10.0.0",
     "@nativescript/types": "rc",
-    "@nativescript/webpack": "~2.0.0",
+    "@nativescript/webpack": "~2.1.0",
     "@ngtools/webpack": "~10.0.0",
     "typescript": "~3.9.0"
   }

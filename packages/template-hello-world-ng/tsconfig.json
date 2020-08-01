@@ -19,10 +19,10 @@
       }
   },
   "include": [
-    "references.d.ts",
     "src/tests/**/*.ts"
   ],
   "files": [
+    "./references.d.ts",
     "./src/main.ts"
   ],
   "exclude": [
