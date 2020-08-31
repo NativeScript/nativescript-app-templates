@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewContainerRef } from "@angular/core";
-import { ModalDialogOptions, ModalDialogService } from "nativescript-angular/modal-dialog";
-import { PageRoute } from "nativescript-angular/router";
+import { ModalDialogOptions, ModalDialogService, PageRoute } from "@nativescript/angular";
 import { switchMap } from "rxjs/operators";
 
 import { CarEditService } from "../../shared/car-edit.service";

@@ -1,20 +1,11 @@
 {
-  "nativescript": {
-    "id": "org.nativescript.TabNavigation",
-    "templateVersion": "v2",
-    "tns-android": {
-      "version": "6.5.0"
-    },
-    "tns-ios": {
-      "version": "6.5.0"
-    }
-  },
-  "name": "tns-template-tab-navigation",
+  "name": "@nativescript/template-tab-navigation",
+  "main": "main.js",
   "displayName": "Tabs",
   "templateType": "App template",
-  "version": "6.5.4",
+  "version": "7.0.0",
   "description": "Tabbed interface template",
-  "author": "NativeScript Team <nativescript@nstudio.io>",
+  "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
   "keywords": [
     "nstudio",
@@ -39,12 +30,12 @@
     "lint": "eslint \"app/**/*.js\""
   },
   "dependencies": {
-    "@nativescript/theme": "~2.3.0",
-    "tns-core-modules": "~6.5.0"
+    "@nativescript/core": "~7.0.0",
+    "@nativescript/theme": "~2.3.0"
   },
   "devDependencies": {
-    "eslint": "~5.8.0",
-    "nativescript-dev-webpack": "~1.5.0",
-    "node-sass": "^4.7.1"
+    "eslint": "~7.7.0",
+    "@nativescript/webpack": "~3.0.0",
+    "node-sass": "^4.14.1"
   }
 }

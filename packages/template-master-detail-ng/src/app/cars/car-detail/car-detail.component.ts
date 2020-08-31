@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { PageRoute, RouterExtensions } from "nativescript-angular/router";
+import { PageRoute, RouterExtensions } from "@nativescript/angular";
 import { switchMap } from "rxjs/operators";
 
 import { Car } from "../shared/car.model";

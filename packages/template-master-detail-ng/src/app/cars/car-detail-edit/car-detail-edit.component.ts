@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { PageRoute, RouterExtensions } from "nativescript-angular/router";
+import { PageRoute, RouterExtensions } from "@nativescript/angular";
 import { switchMap } from "rxjs/operators";
-import { alert } from "tns-core-modules/ui/dialogs";
+import { Dialogs } from "@nativescript/core";
 
 import { CarEditService } from "../shared/car-edit.service";
 import { Car } from "../shared/car.model";
@@ -131,7 +131,7 @@ export class CarDetailEditComponent implements OnInit {
             })
             .catch((errorMessage: any) => {
                 this._isUpdating = false;
-                alert({ title: "Oops!", message: "Something went wrong. Please try again.", okButtonText: "Ok" });
+                Dialogs.alert({ title: "Oops!", message: "Something went wrong. Please try again.", okButtonText: "Ok" });
             });
         *************************************************************/
 
@@ -140,7 +140,7 @@ export class CarDetailEditComponent implements OnInit {
         *************************************************************/
         const readOnlyMessage = "Check out the \"Firebase database setup\" section in the readme file to make it editable."; // tslint:disable-line:max-line-length
         const queue = Promise.resolve();
-        queue.then(() => alert({ title: "Read-Only Template!", message: readOnlyMessage, okButtonText: "Ok" }))
+        queue.then(() => Dialogs.alert({ title: "Read-Only Template!", message: readOnlyMessage, okButtonText: "Ok" }))
             .then(() => this._routerExtensions.navigate(["/cars"], {
                 clearHistory: true,
                 animated: true,

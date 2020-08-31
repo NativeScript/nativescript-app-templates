@@ -1,20 +1,11 @@
 {
-  "nativescript": {
-    "id": "org.nativescript.Blank",
-    "templateVersion": "v2",
-    "tns-android": {
-      "version": "6.5.0"
-    },
-    "tns-ios": {
-      "version": "6.5.0"
-    }
-  },
-  "name": "tns-template-blank-ng",
+  "name": "@nativescript/template-blank-ng",
+  "main": "main.js",
   "displayName": "Blank",
   "templateType": "App template",
-  "version": "6.5.4",
+  "version": "7.0.0",
   "description": "Blank template for NativeScript apps using Angular",
-  "author": "NativeScript Team <nativescript@nstudio.io>",
+  "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
   "keywords": [
     "nstudio",
@@ -35,25 +26,25 @@
     "url": "https://github.com/NativeScript/NativeScript/issues"
   },
   "dependencies": {
-    "@angular/animations": "~8.2.0",
-    "@angular/common": "~8.2.0",
-    "@angular/compiler": "~8.2.0",
-    "@angular/core": "~8.2.0",
-    "@angular/forms": "~8.2.0",
-    "@angular/platform-browser": "~8.2.0",
-    "@angular/platform-browser-dynamic": "~8.2.0",
-    "@angular/router": "~8.2.0",
+    "@angular/animations": "~10.0.0",
+    "@angular/common": "~10.0.0",
+    "@angular/compiler": "~10.0.0",
+    "@angular/core": "~10.0.0",
+    "@angular/forms": "~10.0.0",
+    "@angular/platform-browser": "~10.0.0",
+    "@angular/platform-browser-dynamic": "~10.0.0",
+    "@angular/router": "~10.0.0",
+    "@nativescript/core": "~7.0.0",
     "@nativescript/theme": "~2.3.0",
-    "nativescript-angular": "~8.21.0",
+    "@nativescript/angular": "~10.0.0",
     "reflect-metadata": "~0.1.12",
-    "rxjs": "^6.4.0",
-    "tns-core-modules": "~6.5.0",
-    "zone.js": "~0.9.1"
+    "rxjs": "^6.6.0",
+    "zone.js": "~0.11.1"
   },
   "devDependencies": {
-    "@angular/compiler-cli": "~8.2.0",
-    "@ngtools/webpack": "~8.2.0",
-    "nativescript-dev-webpack": "~1.5.0",
-    "typescript": "~3.5.3"
+    "@angular/compiler-cli": "~10.0.0",
+    "@ngtools/webpack": "~10.0.0",
+    "@nativescript/webpack": "~3.0.0",
+    "typescript": "~3.9.0"
   }
 }

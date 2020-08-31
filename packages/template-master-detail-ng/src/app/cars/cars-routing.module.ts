@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes } from "@angular/router";
-import { NativeScriptRouterModule } from "nativescript-angular/router";
+import { NativeScriptRouterModule } from "@nativescript/angular";
 
 import { CarDetailEditComponent } from "./car-detail-edit/car-detail-edit.component";
 import { CarDetailComponent } from "./car-detail/car-detail.component";
