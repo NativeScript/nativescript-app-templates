@@ -30,15 +30,15 @@
   "dependencies": {
     "@nativescript/core": "~7.0.0",
     "@nativescript/theme": "~2.3.0",
-    "nativescript-vue": "~2.4.0"
+    "nativescript-vue": "~2.8.0"
   },
   "devDependencies": {
     "@babel/core": "~7.1.0",
     "@babel/preset-env": "~7.1.0",
     "babel-loader": "~8.0.0",
     "@nativescript/webpack": "~3.0.0",
-    "nativescript-vue-template-compiler": "~2.4.0",
+    "nativescript-vue-template-compiler": "~2.8.0",
     "node-sass": "^4.7.1",
-    "vue-loader": "~15.4.0"
+    "vue-loader": "~15.9.3"
   }
 }
