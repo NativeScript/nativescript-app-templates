@@ -1,5 +1,5 @@
 {
-  "name": "tns-template-tab-navigation-vue",
+  "name": "@nativescript/template-tab-navigation-vue",
   "main": "main.js",
   "displayName": "Tabs",
   "version": "7.0.0",
