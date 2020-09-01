@@ -7,6 +7,9 @@
   "description": "Blank template for Vanilla NativeScript apps using TypeScript",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "nstudio",
     "nativescript",

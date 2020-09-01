@@ -5,6 +5,9 @@
   "author": "NativeScript Team <oss@nativescript.org>",
   "description": "NativeScript Angular Hello World template",
   "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "nativescript",
     "mobile",
