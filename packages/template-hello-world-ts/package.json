@@ -1,26 +1,17 @@
 {
-  "nativescript": {
-    "id": "org.nativescript.HelloWorld",
-    "templateVersion": "v2",
-    "tns-android": {
-      "version": "6.5.0"
-    },
-    "tns-ios": {
-      "version": "6.5.0"
-    }
-  },
-  "name": "tns-template-hello-world-ts",
-  "main": "app.js",
-  "version": "6.5.4",
-  "author": "NativeScript Team <nativescript@nstudio.io>",
+  "name": "@nativescript/template-hello-world-ts",
+  "main": "main.js",
+  "version": "7.0.3",
+  "author": "NativeScript Team <oss@nativescript.org>",
   "description": "Nativescript hello-world-ts project template",
   "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
-    "nstudio",
     "nativescript",
     "mobile",
     "{N}",
-    "tns",
     "template"
   ],
   "repository": {
@@ -32,12 +23,12 @@
   },
   "homepage": "https://github.com/NativeScript/nativescript-app-templates",
   "dependencies": {
-    "@nativescript/core": "~6.5.0",
+    "@nativescript/core": "~7.0.0",
     "@nativescript/theme": "~2.3.0"
   },
   "devDependencies": {
-    "nativescript-dev-webpack": "~1.5.0",
-    "tns-platform-declarations": "~6.5.0",
-    "typescript": "~3.8.3"
+    "@nativescript/webpack": "~3.0.0",
+    "@nativescript/types": "~7.0.0",
+    "typescript": "~3.9.0"
   }
 }

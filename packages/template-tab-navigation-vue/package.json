@@ -1,19 +1,10 @@
 {
-  "nativescript": {
-    "id": "org.nativescript.TabNavigation",
-    "templateVersion": "v2",
-    "tns-android": {
-      "version": "6.5.0"
-    },
-    "tns-ios": {
-      "version": "6.5.0"
-    }
-  },
-  "name": "tns-template-tab-navigation-vue",
+  "name": "@nativescript/template-tab-navigation-vue",
+  "main": "main.js",
   "displayName": "Tabs",
-  "version": "6.5.4",
+  "version": "7.0.0",
   "description": "Tabbed interface template using Vue",
-  "author": "NativeScript Team <nativescript@nstudio.io>",
+  "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -22,6 +13,9 @@
   "homepage": "https://github.com/NativeScript/nativescript-app-templates",
   "bugs": {
     "url": "https://github.com/NativeScript/NativeScript/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [
     "nstudio",
@@ -37,17 +31,17 @@
     "category-general"
   ],
   "dependencies": {
+    "@nativescript/core": "~7.0.0",
     "@nativescript/theme": "~2.3.0",
-    "nativescript-vue": "~2.4.0",
-    "tns-core-modules": "~6.5.0"
+    "nativescript-vue": "~2.8.0"
   },
   "devDependencies": {
     "@babel/core": "~7.1.0",
     "@babel/preset-env": "~7.1.0",
     "babel-loader": "~8.0.0",
-    "nativescript-dev-webpack": "~1.5.0",
-    "nativescript-vue-template-compiler": "~2.4.0",
-    "node-sass": "^4.7.1",
-    "vue-loader": "~15.4.0"
+    "@nativescript/webpack": "~3.0.0",
+    "nativescript-vue-template-compiler": "~2.8.0",
+    "node-sass": "^4.14.1",
+    "vue-loader": "~15.9.3"
   }
 }

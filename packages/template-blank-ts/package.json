@@ -1,21 +1,15 @@
 {
-  "nativescript": {
-    "id": "org.nativescript.Blank",
-    "templateVersion": "v2",
-    "tns-android": {
-      "version": "6.5.0"
-    },
-    "tns-ios": {
-      "version": "6.5.0"
-    }
-  },
-  "name": "tns-template-blank-ts",
+  "name": "@nativescript/template-blank-ts",
+  "main": "main.js",
   "displayName": "Blank",
   "templateType": "App template",
-  "version": "6.5.4",
+  "version": "7.0.0",
   "description": "Blank template for Vanilla NativeScript apps using TypeScript",
-  "author": "NativeScript Team <nativescript@nstudio.io>",
+  "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "nstudio",
     "nativescript",
@@ -35,10 +29,10 @@
   },
   "dependencies": {
     "@nativescript/theme": "~2.3.0",
-    "tns-core-modules": "~6.5.0"
+    "@nativescript/core": "~7.0.0"
   },
   "devDependencies": {
-    "nativescript-dev-webpack": "~1.5.0",
-    "typescript": "~3.5.3"
+    "@nativescript/webpack": "~3.0.0",
+    "typescript": "~3.9.0"
   }
 }

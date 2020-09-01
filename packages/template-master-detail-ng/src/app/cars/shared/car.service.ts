@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from "@angular/core";
-import * as firebase from "nativescript-plugin-firebase";
+import { firebase, storage } from "@nativescript/firebase";
 import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
 
@@ -67,7 +67,7 @@ export class CarService {
     }
 
     uploadImage(remoteFullPath: string, localFullPath: string): Promise<any> {
-        return firebase.storage.uploadFile({
+        return storage.uploadFile({
             localFullPath,
             remoteFullPath,
             onProgress: null

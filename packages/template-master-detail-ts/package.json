@@ -1,21 +1,15 @@
 {
-  "nativescript": {
-    "id": "org.nativescript.MasterDetail",
-    "templateVersion": "v2",
-    "tns-android": {
-      "version": "6.5.0"
-    },
-    "tns-ios": {
-      "version": "6.5.0"
-    }
-  },
-  "name": "tns-template-master-detail-ts",
+  "name": "@nativescript/template-master-detail-ts",
+  "main": "main.js",
   "displayName": "Master-Detail with Firebase",
   "templateType": "App template",
-  "version": "6.5.4",
+  "version": "7.0.0",
   "description": "Master-detail interface to display collection of items from Firebase and inspect and edit selected item properties.",
-  "author": "NativeScript Team <nativescript@nstudio.io>",
+  "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "nstudio",
     "nativescript",
@@ -38,17 +32,17 @@
     "lint": "tslint \"app/**/*.ts\""
   },
   "dependencies": {
+    "@nativescript/core": "~7.0.0",
     "@nativescript/theme": "~2.3.0",
-    "nativescript-imagepicker": "~7.1.0",
-    "nativescript-plugin-firebase": "~10.3.2",
-    "nativescript-ui-listview": "~8.0.1",
-    "rxjs": "^6.4.0",
-    "tns-core-modules": "~6.5.0"
+    "@nativescript/imagepicker": "~1.0.0",
+    "@nativescript/firebase": "~11.0.0",
+    "nativescript-ui-listview": "~9.0.0",
+    "rxjs": "^6.6.0"
   },
   "devDependencies": {
-    "nativescript-dev-webpack": "~1.5.0",
-    "node-sass": "^4.7.1",
-    "tslint": "~5.19.0",
-    "typescript": "~3.5.3"
+    "@nativescript/webpack": "~3.0.0",
+    "node-sass": "^4.14.1",
+    "tslint": "~6.1.3",
+    "typescript": "~3.9.0"
   }
 }

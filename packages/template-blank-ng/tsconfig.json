@@ -1,24 +1,21 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
-        "target": "es5",
+        "module": "esnext",
+        "target": "es2017",
+        "moduleResolution": "node",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "noEmitHelpers": true,
         "noEmitOnError": true,
         "skipLibCheck": true,
         "lib": [
-            "es6",
-            "dom",
-            "es2015.iterable"
+            "es2017",
+            "dom"
         ],
         "baseUrl": ".",
         "paths": {
             "~/*": [
                 "src/*"
-            ],
-            "*": [
-                "./node_modules/*"
             ]
         }
     },

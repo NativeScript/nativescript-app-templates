@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { RouterExtensions } from "nativescript-angular/router";
+import { RouterExtensions } from "@nativescript/angular";
 import { ListViewEventData } from "nativescript-ui-listview";
 import { Subscription } from "rxjs";
 import { finalize } from "rxjs/operators";
-import { ObservableArray } from "tns-core-modules/data/observable-array";
+import { ObservableArray } from "@nativescript/core";
 
 import { Car } from "./shared/car.model";
 import { CarService } from "./shared/car.service";
