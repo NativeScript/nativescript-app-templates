@@ -1,6 +1,6 @@
 {
   "name": "@nativescript/template-master-detail",
-  "main": "main.js",
+  "main": "app.js",
   "displayName": "Master-Detail with Firebase",
   "templateType": "App template",
   "version": "7.0.0",

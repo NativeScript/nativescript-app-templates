@@ -1,6 +1,6 @@
 {
   "name": "@nativescript/template-tab-navigation-ts",
-  "main": "main.js",
+  "main": "app.js",
   "displayName": "Tabs",
   "templateType": "App template",
   "version": "7.0.0",
