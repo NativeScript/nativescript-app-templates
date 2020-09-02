@@ -1,6 +1,6 @@
 {
   "name": "@nativescript/template-blank-ts",
-  "main": "main.js",
+  "main": "app.js",
   "displayName": "Blank",
   "templateType": "App template",
   "version": "7.0.0",

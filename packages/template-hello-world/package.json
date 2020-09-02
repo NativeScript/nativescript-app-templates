@@ -1,6 +1,6 @@
 {
   "name": "@nativescript/template-hello-world",
-  "main": "main.js",
+  "main": "app.js",
   "version": "7.0.0",
   "author": "NativeScript Team <oss@nativescript.org>",
   "description": "Nativescript hello-world project template",
