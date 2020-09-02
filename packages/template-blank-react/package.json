@@ -1,6 +1,6 @@
 {
   "name": "@nativescript/template-blank-react",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "Blank template for NativeScript apps using React.",
   "author": "Jamie Birch <14055146+shirakaba@users.noreply.github.com>",
   "main": "main.js",
@@ -31,10 +31,10 @@
     "template"
   ],
   "dependencies": {
+    "@nativescript/core": "~7.0.0",
     "@nativescript/theme": "2.2.1",
     "react": "^16.13.1",
-    "react-nativescript": "^1.0.6",
-    "@nativescript/core": "~7.0.0"
+    "react-nativescript": "^1.0.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -43,15 +43,15 @@
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.9.0",
+    "@nativescript/types": "~7.0.0",
+    "@nativescript/webpack": "~3.0.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.0-beta.5",
     "@types/react": "16.9.34",
     "babel-loader": "^8.0.6",
     "fork-ts-checker-webpack-plugin": "^1.3.7",
-    "@nativescript/webpack": "~3.0.0",
     "node-sass": "^4.14.1",
     "patch-package": "^6.2.2",
     "react-refresh": "^0.8.3",
-    "@nativescript/types": "~7.0.0",
     "typescript": "^3.9.5"
   },
   "gitHead": "1350d382fb4b0ed4c6e9685df909518b2688e004",

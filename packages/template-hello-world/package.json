@@ -1,7 +1,7 @@
 {
   "name": "@nativescript/template-hello-world",
   "main": "app.js",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "author": "NativeScript Team <oss@nativescript.org>",
   "description": "Nativescript hello-world project template",
   "license": "Apache-2.0",
@@ -25,8 +25,8 @@
   },
   "homepage": "https://github.com/NativeScript/nativescript-app-templates",
   "dependencies": {
-    "@nativescript/theme": "~2.3.0",
-    "@nativescript/core": "~7.0.0"
+    "@nativescript/core": "~7.0.0",
+    "@nativescript/theme": "~2.3.0"
   },
   "devDependencies": {
     "@nativescript/webpack": "~3.0.0"

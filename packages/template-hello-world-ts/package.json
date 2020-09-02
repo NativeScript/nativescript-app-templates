@@ -1,7 +1,7 @@
 {
   "name": "@nativescript/template-hello-world-ts",
   "main": "app.js",
-  "version": "7.0.3",
+  "version": "7.0.1",
   "author": "NativeScript Team <oss@nativescript.org>",
   "description": "Nativescript hello-world-ts project template",
   "license": "Apache-2.0",
@@ -27,8 +27,8 @@
     "@nativescript/theme": "~2.3.0"
   },
   "devDependencies": {
-    "@nativescript/webpack": "~3.0.0",
     "@nativescript/types": "~7.0.0",
+    "@nativescript/webpack": "~3.0.0",
     "typescript": "~3.9.0"
   }
 }
