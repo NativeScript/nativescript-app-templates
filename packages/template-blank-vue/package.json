@@ -1,6 +1,6 @@
 {
   "name": "@nativescript/template-blank-vue",
-  "main": "main.js",
+  "main": "app.js",
   "displayName": "Blank",
   "version": "7.0.0",
   "description": "Blank template for NativeScript apps using Vue.",

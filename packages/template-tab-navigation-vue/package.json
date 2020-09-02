@@ -1,6 +1,6 @@
 {
   "name": "@nativescript/template-tab-navigation-vue",
-  "main": "main.js",
+  "main": "app.js",
   "displayName": "Tabs",
   "version": "7.0.0",
   "description": "Tabbed interface template using Vue",
