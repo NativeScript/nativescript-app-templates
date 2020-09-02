@@ -19,13 +19,13 @@
       }
   },
   "include": [
-    "src/tests/**/*.ts",
-    "src/**/*.ios.ts",
-    "src/**/*.android.ts"
+    "app/tests/**/*.ts",
+    "app/**/*.ios.ts",
+    "app/**/*.android.ts"
   ],
   "files": [
     "./references.d.ts",
-    "./src/main.ts"
+    "./app/main.ts"
   ],
   "exclude": [
       "node_modules",

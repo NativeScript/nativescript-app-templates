@@ -8,7 +8,7 @@
   "projects": {
     "hello-world": {
       "root": "",
-      "sourceRoot": "src",
+      "sourceRoot": "app",
       "projectType": "application",
       "prefix": "ns"
     }

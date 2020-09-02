@@ -1,6 +1,6 @@
 {
   "name": "@nativescript/template-drawer-navigation-ng",
-  "main": "main.js",
+  "main": "app.js",
   "displayName": "Navigation Drawer",
   "templateType": "App template",
   "version": "7.0.0",
@@ -31,7 +31,7 @@
     "url": "https://github.com/NativeScript/NativeScript/issues"
   },
   "scripts": {
-    "lint": "tslint \"src/**/*.ts\""
+    "lint": "tslint \\\"app/**/*.ts\\\""
   },
   "dependencies": {
     "@angular/animations": "~10.0.0",

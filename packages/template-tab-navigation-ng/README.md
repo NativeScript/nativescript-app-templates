@@ -37,23 +37,23 @@ tns create my-tab-ng --template nativescript-app-templates/packages/template-tab
 
 ### Architecture
 The tab navigation is set up in the application component:
-- `/src/app/app.component` - sets up the tab navigation and defines page router outlets for its items.
+- `/app/app/app.component` - sets up the tab navigation and defines page router outlets for its items.
 
 There are four components used for the tab content items located in these folders:
 
-- `/src/app/home/home.component` - the master home page. Displays a list of items and navigates to the item details page on item tap.
-- `/src/app/home/item-detail/item-detail.component` - the item details page. Displays the details of the tapped item.
-- `/src/app/browse/browse.component` - blank page
-- `/src/app/search/search.component` - blank page
+- `/app/app/home/home.component` - the master home page. Displays a list of items and navigates to the item details page on item tap.
+- `/app/app/home/item-detail/item-detail.component` - the item details page. Displays the details of the tapped item.
+- `/app/app/browse/browse.component` - blank page
+- `/app/app/search/search.component` - blank page
 
 ### Styling
 This template is set up to use SASS for styling. All classes used are based on the {N} core theme – consult the [documentation](https://github.com/NativeScript/theme) to understand how to customize it.
 
 It has 3 global style files that are located at the root of the app folder:
 
-- `/src/_app-common.scss` - the global common style sheet. These style rules are applied to both Android and iOS.
-- `/src/app.android.scss` - the global Android style sheet. These style rules are applied to Android only.
-- `/src/app.ios.scss` - the global iOS style sheet. These style rules are applied to iOS only.
+- `/app/_app-common.scss` - the global common style sheet. These style rules are applied to both Android and iOS.
+- `/app/app.android.scss` - the global Android style sheet. These style rules are applied to Android only.
+- `/app/app.ios.scss` - the global iOS style sheet. These style rules are applied to iOS only.
 
 ## Get Help
 The NativeScript framework has a vibrant community that can help when you run into problems.

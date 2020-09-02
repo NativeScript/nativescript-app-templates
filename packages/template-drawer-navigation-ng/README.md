@@ -42,7 +42,7 @@ tns create my-drawer-ng --template nativescript-app-templates/packages/template-
 
 The RadSideDrawer component is set up as an application root view in:
 
-- `/src/app/app-component` - sets up the side drawer content and defines a page router outlet for the pages.
+- `/app/app/app-component` - sets up the side drawer content and defines a page router outlet for the pages.
 
 RadSideDrawer has the following component structure:
 
@@ -52,11 +52,11 @@ RadSideDrawer has the following component structure:
 
 There are five blank components located in these folders:
 
-- `/src/app/browse/browse.component`
-- `/src/app/featured/featured.component`
-- `/src/app/home/home.component`
-- `/src/app/search/search.component`
-- `/src/app/settings/settings.component`
+- `/app/app/browse/browse.component`
+- `/app/app/featured/featured.component`
+- `/app/app/home/home.component`
+- `/app/app/search/search.component`
+- `/app/app/settings/settings.component`
 
 ### Styling
 
@@ -64,9 +64,9 @@ This template is set up to use SASS for styling. All classes used are based on t
 
 It has 3 global style files that are located at the root of the app folder:
 
-- `/src/_app-common.scss` - the global common style sheet. These style rules are applied to both Android and iOS.
-- `/src/app.android.scss` - the global Android style sheet. These style rules are applied to Android only.
-- `/src/app.ios.scss` - the global iOS style sheet. These style rules are applied to iOS only.
+- `/app/_app-common.scss` - the global common style sheet. These style rules are applied to both Android and iOS.
+- `/app/app.android.scss` - the global Android style sheet. These style rules are applied to Android only.
+- `/app/app.ios.scss` - the global iOS style sheet. These style rules are applied to iOS only.
 
 ## Get Help
 
