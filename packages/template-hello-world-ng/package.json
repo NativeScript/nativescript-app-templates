@@ -1,7 +1,7 @@
 {
   "name": "@nativescript/template-hello-world-ng",
   "main": "main.js",
-  "version": "7.0.1",
+  "version": "7.0.2",
   "author": "NativeScript Team <oss@nativescript.org>",
   "description": "NativeScript Angular Hello World template",
   "license": "Apache-2.0",
@@ -27,15 +27,15 @@
     "postinstall": "npm run ngcc"
   },
   "dependencies": {
-    "@angular/animations": "~10.0.0",
-    "@angular/common": "~10.0.0",
-    "@angular/compiler": "~10.0.0",
-    "@angular/core": "~10.0.0",
-    "@angular/forms": "~10.0.0",
-    "@angular/platform-browser": "~10.0.0",
-    "@angular/platform-browser-dynamic": "~10.0.0",
-    "@angular/router": "~10.0.0",
-    "@nativescript/angular": "~10.0.0",
+    "@angular/animations": "~10.1.0",
+    "@angular/common": "~10.1.0",
+    "@angular/compiler": "~10.1.0",
+    "@angular/core": "~10.1.0",
+    "@angular/forms": "~10.1.0",
+    "@angular/platform-browser": "~10.1.0",
+    "@angular/platform-browser-dynamic": "~10.1.0",
+    "@angular/router": "~10.1.0",
+    "@nativescript/angular": "~10.1.0",
     "@nativescript/core": "~7.0.0",
     "@nativescript/theme": "~2.3.0",
     "reflect-metadata": "~0.1.12",
@@ -43,10 +43,10 @@
     "zone.js": "~0.11.1"
   },
   "devDependencies": {
-    "@angular/compiler-cli": "~10.0.0",
+    "@angular/compiler-cli": "~10.1.0",
     "@nativescript/types": "~7.0.0",
     "@nativescript/webpack": "~3.0.0",
-    "@ngtools/webpack": "~10.0.0",
+    "@ngtools/webpack": "~10.1.0",
     "typescript": "~3.9.0"
   }
 }
