@@ -1,10 +1,8 @@
-@import "~@nativescript/theme/core";
-@import "~@nativescript/theme/blue";
-
-// Place any CSS rules you want to apply on both iOS and Android here.
-// This is where the vast majority of your CSS code goes.
-
-// Font icon class
+/**
+ * Place any CSS rules you want to apply on both iOS and Android here.
+ * This is where the vast majority of your CSS code goes.
+ * Font icon class
+ */
 .fab {
     font-family: "Font Awesome 5 Brands", "fa-brands-400";
     font-weight: 400;
