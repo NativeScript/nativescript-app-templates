@@ -6,24 +6,25 @@ App templates help you jump start your native cross-platform apps with built-in 
 Execute the following command to create an app from this template:
 
 ```
-tns create my-blank-react --template tns-template-blank-react
+ns create my-blank-react --react
 
 cd my-blank-react
 npm install
 
-tns preview
+ns preview
 # or
-tns run android
+ns run android
 # or
-tns run ios
+ns run ios
 ```
 
 > Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm](https://www.npmjs.com/package/tns-template-blank-react).
 
+<!--
 ## Quick start from the latest master
 
 ```sh
-tns create my-blank-react --template https://github.com/shirakaba/tns-template-blank-react/tarball/master
+ns create my-blank-react --template https://github.com/shirakaba/tns-template-blank-react/tarball/master
 ```
 
 ## Building from a local clone of the repo
@@ -35,17 +36,18 @@ If you want to create a new app that uses the source of the template from the `m
 git clone https://github.com/shirakaba/tns-template-blank-react.git
 
 # create app template from local source (all templates are in the 'packages' subfolder of the monorepo)
-tns create my-blank-react --template tns-template-blank-react
+ns create my-blank-react --template tns-template-blank-react
 
 cd my-blank-react
 npm install
 
-tns preview
+ns preview
 # or
-tns run android
+ns run android
 # or
-tns run ios
+ns run ios
 ```
+-->
 
 **NB:** Please, keep in mind that the master branch may refer to dependencies that are not on NPM yet!
 

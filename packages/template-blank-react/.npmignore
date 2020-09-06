@@ -16,5 +16,4 @@ typings/
 .vscode
 .npmrc
 *.tgz
-.awcache
 .update_backup
