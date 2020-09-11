@@ -3,7 +3,6 @@ npm-debug.log
 
 *.js.map
 *.js
-!react-nativescript.webpack.config.js
 hooks/*
 !hooks/after-createProject/after-createProject.js
 lib/
@@ -17,5 +16,4 @@ typings/
 .vscode
 .npmrc
 *.tgz
-.awcache
 .update_backup

@@ -8,9 +8,6 @@ platforms/
 *.js
 !webpack.config.js
 
-# React NativeScript Template
-!react-nativescript.webpack.config.js
-
 # Logs
 logs
 *.log
