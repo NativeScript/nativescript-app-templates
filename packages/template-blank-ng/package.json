@@ -3,7 +3,7 @@
   "main": "main.js",
   "displayName": "Blank",
   "templateType": "App template",
-  "version": "7.0.2",
+  "version": "7.0.3",
   "description": "Blank template for NativeScript apps using Angular",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -39,7 +39,7 @@
     "@angular/router": "~10.1.0",
     "@nativescript/angular": "~10.1.0",
     "@nativescript/core": "~7.0.0",
-    "@nativescript/theme": "~2.3.0",
+    "@nativescript/theme": "~2.5.0",
     "reflect-metadata": "~0.1.12",
     "rxjs": "^6.6.0",
     "zone.js": "~0.11.1"

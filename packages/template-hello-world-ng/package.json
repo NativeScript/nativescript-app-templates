@@ -22,10 +22,6 @@
   "bugs": {
     "url": "https://github.com/NativeScript/NativeScript/issues"
   },
-  "scripts": {
-    "ngcc": "ngcc --properties es2015 module main --first-only",
-    "postinstall": "npm run ngcc"
-  },
   "dependencies": {
     "@angular/animations": "~10.1.0",
     "@angular/common": "~10.1.0",

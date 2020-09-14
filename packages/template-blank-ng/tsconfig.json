@@ -19,8 +19,17 @@
             ]
         }
     },
+    "include": [
+      "src/tests/**/*.ts",
+      "src/**/*.ios.ts",
+      "src/**/*.android.ts"
+    ],
+    "files": [
+      "./src/main.ts"
+    ],
     "exclude": [
         "node_modules",
-        "platforms"
+        "platforms",
+        "e2e"
     ]
 }
