@@ -2,8 +2,6 @@ npm-debug.log
 .DS_Store
 
 *.js.map
-*.js
-!svelte.config.js
 hooks/*
 !hooks/after-createProject/after-createProject.js
 lib/
