@@ -8,7 +8,7 @@ Execute the following command to create an app from this template:
 ns create my-blank-svelte --template @nativescript/template-blank-svelte
 ```
 
-> Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm] (https://www.npmjs.com/package/@nativescript/template-blank-svelte).
+> Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm](https://www.npmjs.com/package/@nativescript/template-blank-svelte).
 
 If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
 
