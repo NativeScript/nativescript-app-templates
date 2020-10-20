@@ -3,7 +3,7 @@ App templates help you jump start your native cross-platform apps with built-in 
 
 This monorepo contains the following NativeScript app templates:
 - Hello World ([JavaScript](/packages/template-hello-world), [TypeScript](/packages/template-hello-world-ts), and [Angular](/packages/template-hello-world-ng))
-- Blank ([JavaScript](/packages/template-blank), [TypeScript](/packages/template-blank-ts), [Angular](/packages/template-blank-ng), [Vue](/packages/template-blank-vue), and [React](/packages/template-blank-react))
+- Blank ([JavaScript](/packages/template-blank), [TypeScript](/packages/template-blank-ts), [Angular](/packages/template-blank-ng), [Vue](/packages/template-blank-vue), [React](/packages/template-blank-react), and [Svelte](/packages/template-blank-svelte))
 - Drawer Navigation ([JavaScript](/packages/template-drawer-navigation), [TypeScript](/packages/template-drawer-navigation-ts), [Angular](/packages/template-drawer-navigation-ng), and [Vue](/packages/template-drawer-navigation-vue))
 - Tab Navigation ([JavaScript](/packages/template-tab-navigation), [TypeScript](/packages/template-tab-navigation-ts), [Angular](/packages/template-tab-navigation-ng), and [Vue](/packages/template-tab-navigation-vue))
 - Master Detail with Firebase ([JavaScript](/packages/template-master-detail), [TypeScript](/packages/template-master-detail-ts), [Angular](/packages/template-master-detail-ng), and [Vue](/packages/template-master-detail-vue))
