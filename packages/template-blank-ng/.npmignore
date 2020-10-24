@@ -15,5 +15,6 @@ typings/
 .project
 .vscode
 .npmrc
+*.tgz
 
 tools/assets/
