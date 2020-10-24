@@ -3,6 +3,7 @@ npm-debug.log
 
 *.js.map
 *.js
+!webpack.config.js
 hooks/*
 !hooks/after-createProject/after-createProject.js
 lib/

@@ -10,7 +10,7 @@ purpose of the file is to pass control to the app’s first module.
 */
 
 import * as ReactNativeScript from "react-nativescript";
-import AppContainer from "./components/AppContainer";
+import { mainStackNavigator as AppContainer } from "./components/Navigator";
 
 ReactNativeScript.start(React.createElement(AppContainer, {}, null));
 
