@@ -10,6 +10,9 @@ platforms/
 !hooks/after-createProject/
 !hooks/after-createProject/after-createProject.js
 
+# React NativeScript
+!webpack.config.js
+
 # Logs
 logs
 *.log
