@@ -1,6 +1,6 @@
 {
   "name": "@nativescript/template-blank-react",
-  "version": "7.0.4",
+  "version": "7.0.5",
   "description": "Blank template for NativeScript apps using React.",
   "author": "Jamie Birch <14055146+shirakaba@users.noreply.github.com>",
   "main": "app.js",

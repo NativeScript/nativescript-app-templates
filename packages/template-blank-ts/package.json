@@ -3,7 +3,7 @@
   "main": "app.js",
   "displayName": "Blank",
   "templateType": "App template",
-  "version": "7.0.2",
+  "version": "7.0.3",
   "description": "Blank template for Vanilla NativeScript apps using TypeScript",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
