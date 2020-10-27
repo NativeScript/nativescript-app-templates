@@ -10,7 +10,7 @@ module.exports = function (hookArgs) {
     const vscodeDir = path.join(appRootFolder, ".vscode");
     const srcGitignore = path.join(toolsDir, "dot.gitignore");
     const destGitignore = path.join(appRootFolder, ".gitignore");
-    // I'll continue to copy this file across, but omit the recommendation for "telerik.nativescript" as that's Core-focused.
+    // I'll continue to copy this file across, but omit the recommendation for "nativescript.nativescript" as that's Core-focused.
     const srcVscodeExtensions = path.join(toolsDir, "vscode.extensions.json");
     const destVscodeExtensions = path.join(vscodeDir, "extensions.json");
 
@@ -26,7 +26,7 @@ module.exports = function (hookArgs) {
 
             const readme = path.join(appRootFolder, "README.md");
             fs.unlinkSync(readme);
-    
+
             deleteFolderSync(__dirname);
         } catch (error) {
             console.log(error);
