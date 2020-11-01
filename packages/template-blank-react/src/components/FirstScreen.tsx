@@ -1,12 +1,12 @@
 import * as React from "react";
 import { RouteProp } from '@react-navigation/core';
 import { Dialogs } from '@nativescript/core';
-import { NativeStackNavigationProp } from "react-nativescript-navigation";
+import { FrameNavigationProp } from "react-nativescript-navigation";
 import { MainStackParamList } from "./NavigationParamList";
 
 type FirstScreenProps = {
     route: RouteProp<MainStackParamList, "first">,
-    navigation: NativeStackNavigationProp<MainStackParamList, "first">,
+    navigation: FrameNavigationProp<MainStackParamList, "first">,
 }
 
 export function First({ navigation }: FirstScreenProps) {
