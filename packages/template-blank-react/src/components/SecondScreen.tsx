@@ -1,11 +1,11 @@
 import * as React from "react";
 import { RouteProp } from '@react-navigation/core';
-import { NativeStackNavigationProp } from "react-nativescript-navigation";
+import { FrameNavigationProp } from "react-nativescript-navigation";
 import { MainStackParamList } from "./NavigationParamList";
 
 type SecondScreenProps = {
     route: RouteProp<MainStackParamList, "second">,
-    navigation: NativeStackNavigationProp<MainStackParamList, "second">,
+    navigation: FrameNavigationProp<MainStackParamList, "second">,
 }
 
 export function Second({ navigation }: SecondScreenProps) {
