@@ -67,12 +67,6 @@ module.exports = (env) => {
     );
 
     if(hmr && !production){
-        console.warn(
-            `[webpack.config.js] Warning: You have enabled HMR. However, as of the NativeScript 7 template updates, it ` + 
-            `is broken, due to an issue in CopyWebpackPlugin. Please follow the instructions in this issue thread to roll ` +
-            `back CopyWebpackPlugin to v4.6.0 and restore HMR: https://github.com/shirakaba/react-nativescript/issues/65\n` +
-            `... After that, feel free to delete this warning from webpack.config.js!`
-        );
         baseConfig.plugins.push(new ReactRefreshWebpackPlugin({
             /**
              * Maybe one day we'll implement an Error Overlay, but the work involved is too daunting for now.
