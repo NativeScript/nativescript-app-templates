@@ -1,0 +1,25 @@
+name: '@nativescript/template-* -> npm'
+
+on:
+  push:
+    branches: [ 'master' ]
+
+env:
+  NPM_TAG: 'next'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup
+        run: npm install
+
+      - name: Publish All Templates
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+          npm run publish.all
