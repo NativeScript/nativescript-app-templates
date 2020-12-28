@@ -1,6 +1,6 @@
 {
   "name": "@nativescript/template-blank-react",
-  "version": "7.0.8",
+  "version": "7.0.9",
   "description": "Blank template for NativeScript apps using React.",
   "author": "Jamie Birch <14055146+shirakaba@users.noreply.github.com>",
   "main": "app.js",
@@ -39,7 +39,7 @@
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@nativescript/types": "^7.0.4",
-    "@nativescript/webpack": "~3.0.0",
+    "@nativescript/webpack": "^4.0.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.0-beta.5",
     "@types/react": "16.9.34",
     "babel-loader": "8.0.6",
