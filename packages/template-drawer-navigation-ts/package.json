@@ -1,6 +1,6 @@
 {
   "name": "@nativescript/template-drawer-navigation-ts",
-  "main": "app.js",
+  "main": "main.js",
   "displayName": "Navigation Drawer",
   "templateType": "App template",
   "version": "7.0.3",
