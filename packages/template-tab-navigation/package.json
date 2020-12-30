@@ -3,7 +3,7 @@
   "main": "app.js",
   "displayName": "Tabs",
   "templateType": "App template",
-  "version": "7.0.3",
+  "version": "7.0.4",
   "description": "Tabbed interface template",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -33,11 +33,11 @@
     "lint": "eslint \"app/**/*.js\""
   },
   "dependencies": {
-    "@nativescript/core": "~7.0.0",
+    "@nativescript/core": "~7.1.0",
     "@nativescript/theme": "~2.3.0"
   },
   "devDependencies": {
-    "@nativescript/webpack": "~3.0.0",
+    "@nativescript/webpack": "~4.0.0",
     "eslint": "~7.7.0",
     "node-sass": "^4.14.1"
   }
