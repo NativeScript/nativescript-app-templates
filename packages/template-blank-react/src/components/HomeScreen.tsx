@@ -10,7 +10,7 @@ type HomeScreenProps = {
     navigation: FrameNavigationProp<MainStackParamList, "Home">,
 }
 
-export function Home({ navigation }: HomeScreenProps) {
+export function HomeScreen({ navigation }: HomeScreenProps) {
     return (
         <flexboxLayout style={styles.container}>
             <label

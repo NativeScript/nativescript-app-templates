@@ -9,7 +9,7 @@ type SecondScreenProps = {
     navigation: FrameNavigationProp<MainStackParamList, "Secondary">,
 }
 
-export function Secondary({ navigation }: SecondScreenProps) {
+export function SecondaryScreen({ navigation }: SecondScreenProps) {
     return (
         <flexboxLayout style={styles.container}>
             <label style={styles.text}>
