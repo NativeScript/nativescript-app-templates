@@ -4,12 +4,12 @@ import { FrameNavigationProp } from "react-nativescript-navigation";
 import { MainStackParamList } from "./NavigationParamList";
 import { StyleSheet } from "react-nativescript";
 
-type SecondScreenProps = {
+type SecondaryScreenProps = {
     route: RouteProp<MainStackParamList, "Secondary">,
     navigation: FrameNavigationProp<MainStackParamList, "Secondary">,
 }
 
-export function SecondaryScreen({ navigation }: SecondScreenProps) {
+export function SecondaryScreen({ navigation }: SecondaryScreenProps) {
     return (
         <flexboxLayout style={styles.container}>
             <label style={styles.text}>
