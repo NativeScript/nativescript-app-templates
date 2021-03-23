@@ -3,7 +3,7 @@
   "main": "app.js",
   "displayName": "Master-Detail with Firebase",
   "templateType": "App template",
-  "version": "7.0.4",
+  "version": "7.0.5",
   "description": "Master-detail interface to display collection of items from Firebase and inspect and edit selected item properties.",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",

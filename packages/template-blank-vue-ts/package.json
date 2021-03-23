@@ -2,7 +2,7 @@
   "name": "@nativescript/template-blank-vue-ts",
   "main": "app.js",
   "displayName": "Blank Vue Typescript",
-  "version": "7.0.5",
+  "version": "7.0.6",
   "description": "Blank Typescript template for NativeScript apps using Vue.",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
