@@ -3,7 +3,7 @@
   "main": "app.js",
   "displayName": "Navigation Drawer",
   "templateType": "App template",
-  "version": "7.0.4",
+  "version": "7.0.5",
   "description": "Side navigation template using Vue.",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -44,7 +44,7 @@
     "@nativescript/webpack": "~4.0.0",
     "babel-loader": "~8.0.0",
     "nativescript-vue-template-compiler": "~2.8.0",
-    "node-sass": "^4.7.1",
+    "sass": "^1.32.8",
     "vue-loader": "~15.9.3"
   }
 }
