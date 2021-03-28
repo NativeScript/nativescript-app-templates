@@ -5,6 +5,9 @@ package-lock.json
 
 packages/**/App_Resources
 packages/**/hooks
+packages/**/.editorconfig
+packages/**/tools
+!packages/**/tools/assets
 apps/
 
 hooks/*
