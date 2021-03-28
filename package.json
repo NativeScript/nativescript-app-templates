@@ -4,13 +4,12 @@
   "scripts": {
     "lerna": "lerna",
     "prettier": "prettier --write packages/**/*.{js,ts,html,json,css,scss}",
-    "copy-app-resources": "lerna exec --no-bail --stream --concurrency 1 -- \"cp -R ../../tools/App_Resources .\"",
-    "copy-hooks": "lerna exec --no-bail --stream --concurrency 1 -- \"cp -R ../../tools/hooks .\"",
-    "publish.all": "lerna exec --no-bail --stream --concurrency 1 -- \"npm publish\"",
+    "publish.all": "node prepareTemplates.js && lerna exec --no-bail --stream --concurrency 1 -- \"npm publish\"",
     "prepare": "husky install"
   },
   "devDependencies": {
     "@prettier/plugin-xml": "^0.13.1",
+    "cpy": "^8.1.2",
     "husky": "^5.2.0",
     "lerna": "~3.14.0",
     "lint-staged": "^10.5.4",
