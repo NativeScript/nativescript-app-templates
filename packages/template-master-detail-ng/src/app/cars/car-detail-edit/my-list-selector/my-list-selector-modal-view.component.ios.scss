@@ -3,23 +3,23 @@
 // Place any CSS rules you want to apply only on IOS here
 // Custom styles
 .modal-input {
-    height: 100%;
-    padding-top: 20;
+  height: 100%;
+  padding-top: 20;
 
-    &__list {
-        border-top-width: const(border-width);
-        @include colorize($border-color: background-alt-20);
+  &__list {
+    border-top-width: const(border-width);
+    @include colorize($border-color: background-alt-20);
 
-        &-item {
-            border-bottom-width: const(border-width);
-            @include colorize(
-                $background-color: background,
-                $border-color: background-alt-20
-            );
-        }
-
-        &-check {
-            @include colorize($color: complementary);
-        }
+    &-item {
+      border-bottom-width: const(border-width);
+      @include colorize(
+        $background-color: background,
+        $border-color: background-alt-20
+      );
     }
+
+    &-check {
+      @include colorize($color: complementary);
+    }
+  }
 }

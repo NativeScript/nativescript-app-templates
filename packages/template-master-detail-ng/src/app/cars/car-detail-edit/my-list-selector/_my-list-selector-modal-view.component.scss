@@ -2,12 +2,9 @@
 
 // Custom styles
 .modal-input {
-    @include colorize(
-        $background-color: background-alt-10,
-        $color: text-color
-    );
+  @include colorize($background-color: background-alt-10, $color: text-color);
 
-    &__list-item {
-        vertical-align: center;
-    }
+  &__list-item {
+    vertical-align: center;
+  }
 }

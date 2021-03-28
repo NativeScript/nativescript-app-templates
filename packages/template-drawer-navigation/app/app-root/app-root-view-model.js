@@ -1,16 +1,19 @@
-const core = require("@nativescript/core");
+const core = require('@nativescript/core')
 
-const SelectedPageService = require("../shared/selected-page-service");
+const SelectedPageService = require('../shared/selected-page-service')
 
 function AppRootViewModel() {
     const viewModel = core.fromObject({
-        selectedPage: ""
-    });
+        selectedPage: '',
+    })
 
-    SelectedPageService.getInstance().selectedPage$
-    .subscribe((selectedPage) => { viewModel.selectedPage = selectedPage; });
+    SelectedPageService.getInstance().selectedPage$.subscribe(
+        (selectedPage) => {
+            viewModel.selectedPage = selectedPage
+        }
+    )
 
-    return viewModel;
+    return viewModel
 }
 
-module.exports = AppRootViewModel;
+module.exports = AppRootViewModel

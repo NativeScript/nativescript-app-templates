@@ -3,18 +3,18 @@
 // Custom styles
 .cars-list,
 :host-context(.ns-dark) .cars-list {
-    &__item {
-        padding: 0 0 8 0;
-        @include colorize($background-color: background-alt-10);
+  &__item {
+    padding: 0 0 8 0;
+    @include colorize($background-color: background-alt-10);
 
-        &-content {
-            padding: 8 15 4 15;
-            @include colorize($background-color: background);
-        }
-
-        &-name,
-        &-icon {
-            @include colorize($contrasted-color: complementary background 30% 0%);
-        }
+    &-content {
+      padding: 8 15 4 15;
+      @include colorize($background-color: background);
     }
+
+    &-name,
+    &-icon {
+      @include colorize($contrasted-color: complementary background 30% 0%);
+    }
+  }
 }

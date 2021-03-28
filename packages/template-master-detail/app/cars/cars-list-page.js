@@ -1,33 +1,33 @@
-const { Frame } = require("@nativescript/core");
+const { Frame } = require('@nativescript/core')
 
-const CarsListViewModel = require("./cars-list-view-model");
+const CarsListViewModel = require('./cars-list-view-model')
 
 function onNavigatingTo(args) {
     if (args.isBackNavigation) {
-        return;
+        return
     }
 
-    const viewModel = new CarsListViewModel();
-    viewModel.load();
+    const viewModel = new CarsListViewModel()
+    viewModel.load()
 
-    const page = args.object;
-    page.bindingContext = viewModel;
+    const page = args.object
+    page.bindingContext = viewModel
 }
 
 function onCarItemTap(args) {
-    const tappedCarItem = args.view.bindingContext;
+    const tappedCarItem = args.view.bindingContext
 
     Frame.topmost().navigate({
-        moduleName: "cars/car-detail-page/car-detail-page",
+        moduleName: 'cars/car-detail-page/car-detail-page',
         context: tappedCarItem,
         animated: true,
         transition: {
-            name: "slide",
+            name: 'slide',
             duration: 200,
-            curve: "ease"
-        }
-    });
+            curve: 'ease',
+        },
+    })
 }
 
-exports.onNavigatingTo = onNavigatingTo;
-exports.onCarItemTap = onCarItemTap;
+exports.onNavigatingTo = onNavigatingTo
+exports.onCarItemTap = onCarItemTap

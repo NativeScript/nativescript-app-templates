@@ -1,1 +1,1 @@
-declare var TNS_ENV: string;
+declare var TNS_ENV: string

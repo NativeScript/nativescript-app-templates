@@ -1,9 +1,9 @@
 export class RoundingValueConverter {
     toView(value: number): number {
-        return value;
+        return value
     }
 
     toModel(value: number): number {
-        return Math.round(value);
+        return Math.round(value)
     }
 }

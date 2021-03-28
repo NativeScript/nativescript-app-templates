@@ -12,10 +12,10 @@ function Car(options) {
         transmission: options.transmission,
         imageUrl: options.imageUrl,
         imageStoragePath: options.imageStoragePath,
-        isModelValid: !!options.name && !!options.imageUrl
-    };
+        isModelValid: !!options.name && !!options.imageUrl,
+    }
 
-    return model;
+    return model
 }
 
-module.exports = Car;
+module.exports = Car

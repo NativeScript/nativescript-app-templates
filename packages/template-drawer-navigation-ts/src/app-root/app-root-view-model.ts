@@ -1,15 +1,16 @@
-import { Observable } from "@nativescript/core";
+import { Observable } from '@nativescript/core'
 
-import { ObservableProperty } from "../shared/observable-property-decorator";
-import { SelectedPageService } from "../shared/selected-page-service";
+import { ObservableProperty } from '../shared/observable-property-decorator'
+import { SelectedPageService } from '../shared/selected-page-service'
 
 export class AppRootViewModel extends Observable {
-    @ObservableProperty() selectedPage: string;
+    @ObservableProperty() selectedPage: string
 
     constructor() {
-        super();
+        super()
 
-        SelectedPageService.getInstance().selectedPage$
-        .subscribe((selectedPage: string) => this.selectedPage = selectedPage);
+        SelectedPageService.getInstance().selectedPage$.subscribe(
+            (selectedPage: string) => (this.selectedPage = selectedPage)
+        )
     }
 }

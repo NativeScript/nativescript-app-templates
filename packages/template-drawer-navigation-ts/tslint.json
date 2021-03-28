@@ -1,9 +1,7 @@
 {
   "extends": "tslint:latest",
   "linterOptions": {
-    "exclude": [
-        "app/*.d.ts"
-    ]
+    "exclude": ["app/*.d.ts"]
   },
   "rules": {
     "array-type": [true, "generic"],
@@ -26,12 +24,21 @@
     "one-variable-per-declaration": [true, "ignore-for-loop"],
     "ordered-imports": false,
     "prefer-conditional-expression": false,
-    "trailing-comma": [true, {
-      "multiline": "never",
-      "singleline": "never"
-    }],
-    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"],
-    "whitespace": [true,
+    "trailing-comma": [
+      true,
+      {
+        "multiline": "never",
+        "singleline": "never"
+      }
+    ],
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore"
+    ],
+    "whitespace": [
+      true,
       "check-branch",
       "check-decl",
       "check-operator",

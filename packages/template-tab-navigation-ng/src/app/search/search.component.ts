@@ -1,8 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core'
 
 @Component({
-    selector: "Search",
-    templateUrl: "./search.component.html"
+    selector: 'Search',
+    templateUrl: './search.component.html',
 })
 export class SearchComponent implements OnInit {
     constructor() {

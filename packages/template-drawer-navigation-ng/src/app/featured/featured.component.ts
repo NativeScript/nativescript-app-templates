@@ -1,13 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { RadSideDrawer } from "nativescript-ui-sidedrawer";
-import { Application } from "@nativescript/core";
+import { Component, OnInit } from '@angular/core'
+import { RadSideDrawer } from 'nativescript-ui-sidedrawer'
+import { Application } from '@nativescript/core'
 
 @Component({
-    selector: "Featured",
-    templateUrl: "./featured.component.html"
+    selector: 'Featured',
+    templateUrl: './featured.component.html',
 })
 export class FeaturedComponent implements OnInit {
-
     constructor() {
         // Use the component constructor to inject providers.
     }
@@ -17,7 +16,7 @@ export class FeaturedComponent implements OnInit {
     }
 
     onDrawerButtonTap(): void {
-        const sideDrawer = <RadSideDrawer>Application.getRootView();
-        sideDrawer.showDrawer();
+        const sideDrawer = <RadSideDrawer>Application.getRootView()
+        sideDrawer.showDrawer()
     }
 }

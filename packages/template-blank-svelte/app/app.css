@@ -13,4 +13,3 @@ The imported CSS rules must precede all other types of rules.
 @import '~@nativescript/theme/css/core.css';
 @import '~@nativescript/theme/css/default.css';
 @import './font-awesome.css';
-

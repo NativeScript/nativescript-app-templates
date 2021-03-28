@@ -3,23 +3,23 @@
 // Custom styles
 .thumb,
 :host-context(.ns-dark) .thumb {
-    background-size: cover;
-    background-repeat: no-repeat;
-    font-size: 25;
-    font-weight: bold;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-size: 25;
+  font-weight: bold;
 
-    &__add {
-        background-color: transparent;
-        border-radius: const(border-radius-sm);
-        border-width: const(border-width);
-        @include colorize(
-            $border-color: background-alt-20,
-            $color: background-alt-20
-        );
-    }
+  &__add {
+    background-color: transparent;
+    border-radius: const(border-radius-sm);
+    border-width: const(border-width);
+    @include colorize(
+      $border-color: background-alt-20,
+      $color: background-alt-20
+    );
+  }
 
-    &__remove {
-        background-color: rgba(grey, 0.5);
-        @include colorize($color: background);
-    }
+  &__remove {
+    background-color: rgba(grey, 0.5);
+    @include colorize($color: background);
+  }
 }

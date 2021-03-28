@@ -1,6 +1,6 @@
-const { Frame, Dialogs } = require("@nativescript/core");
+const { Frame, Dialogs } = require('@nativescript/core')
 
-const CarDetailEditViewModel = require("./car-detail-edit-view-model");
+const CarDetailEditViewModel = require('./car-detail-edit-view-model')
 
 /* ***********************************************************
  * This is the item detail edit code behind.
@@ -18,19 +18,19 @@ function onNavigatingTo(args) {
      * page in the same data state that he left it in before navigating.
      *************************************************************/
     if (args.isBackNavigation) {
-        return;
+        return
     }
 
-    const page = args.object;
+    const page = args.object
 
-    page.bindingContext = new CarDetailEditViewModel(page.navigationContext);
+    page.bindingContext = new CarDetailEditViewModel(page.navigationContext)
 }
 
 /* ***********************************************************
  * The edit cancel button navigates back to the item details page.
  *************************************************************/
 function onCancelButtonTap(args) {
-    Frame.topmost().goBack();
+    Frame.topmost().goBack()
 }
 
 /* ***********************************************************
@@ -69,57 +69,64 @@ function onDoneButtonTap(args) {
     /* ***********************************************************
      * Comment out the code block below if you made the app editable.
      *************************************************************/
-    const readOnlyMessage = "Check out the \"Firebase database setup\" section in the readme file to make it editable.";
-    const queue = Promise.resolve();
-    queue.then(() => Dialogs.alert({
-            title: "Read-Only Template!",
-            message: readOnlyMessage,
-            okButtonText: "Ok"
-        }))
-        .then(() => Frame.topmost().navigate({
-            moduleName: "cars/cars-list-page",
-            animated: true,
-            clearHistory: true,
-            transition: {
-                name: "slideBottom",
-                duration: 200,
-                curve: "ease"
-            }
-        }));
+    const readOnlyMessage =
+        'Check out the "Firebase database setup" section in the readme file to make it editable.'
+    const queue = Promise.resolve()
+    queue
+        .then(() =>
+            Dialogs.alert({
+                title: 'Read-Only Template!',
+                message: readOnlyMessage,
+                okButtonText: 'Ok',
+            })
+        )
+        .then(() =>
+            Frame.topmost().navigate({
+                moduleName: 'cars/cars-list-page',
+                animated: true,
+                clearHistory: true,
+                transition: {
+                    name: 'slideBottom',
+                    duration: 200,
+                    curve: 'ease',
+                },
+            })
+        )
 }
 
 function onSelectorTap(args) {
-    const gridLayout = args.object;
-    const tag = gridLayout.tag;
-    const bindingContext = gridLayout.bindingContext;
-    const selectedValue = bindingContext.car[tag];
+    const gridLayout = args.object
+    const tag = gridLayout.tag
+    const bindingContext = gridLayout.bindingContext
+    const selectedValue = bindingContext.car[tag]
     const context = {
         tag,
-        selectedValue
-    };
-    const modalPagePath = "cars/list-selector-modal-page/list-selector-modal-page";
-    const page = gridLayout.page;
+        selectedValue,
+    }
+    const modalPagePath =
+        'cars/list-selector-modal-page/list-selector-modal-page'
+    const page = gridLayout.page
 
     page.showModal(modalPagePath, {
         context: context,
         closeCallback: (value) => {
             if (value) {
-                bindingContext.car.set(tag, value);
+                bindingContext.car.set(tag, value)
             }
         },
-        fullscreen: false
-    });
+        fullscreen: false,
+    })
 }
 
 function onImageAddRemoveTap(args) {
-    const gridLayout = args.object;
-    const bindingContext = gridLayout.bindingContext;
+    const gridLayout = args.object
+    const bindingContext = gridLayout.bindingContext
 
-    bindingContext.onImageAddRemove();
+    bindingContext.onImageAddRemove()
 }
 
-exports.onNavigatingTo = onNavigatingTo;
-exports.onCancelButtonTap = onCancelButtonTap;
-exports.onDoneButtonTap = onDoneButtonTap;
-exports.onSelectorTap = onSelectorTap;
-exports.onImageAddRemoveTap = onImageAddRemoveTap;
+exports.onNavigatingTo = onNavigatingTo
+exports.onCancelButtonTap = onCancelButtonTap
+exports.onDoneButtonTap = onDoneButtonTap
+exports.onSelectorTap = onSelectorTap
+exports.onImageAddRemoveTap = onImageAddRemoveTap

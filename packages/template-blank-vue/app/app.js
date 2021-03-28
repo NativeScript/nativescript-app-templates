@@ -1,7 +1,7 @@
-import Vue from "nativescript-vue";
+import Vue from 'nativescript-vue'
 
-import Home from "./components/Home";
+import Home from './components/Home'
 
 new Vue({
-    render: h => h('frame', [h(Home)]),
-}).$start();
+    render: (h) => h('frame', [h(Home)]),
+}).$start()

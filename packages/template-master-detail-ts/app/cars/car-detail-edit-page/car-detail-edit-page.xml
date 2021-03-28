@@ -1,5 +1,7 @@
-<Page navigatingTo="onNavigatingTo"
-    xmlns="http://schemas.nativescript.org/tns.xsd">
+<Page
+  navigatingTo="onNavigatingTo"
+  xmlns="http://schemas.nativescript.org/tns.xsd"
+>
 
     <ActionBar>
         <!-- HACK - we should remove the navigation button -->
@@ -9,9 +11,13 @@
             <Label text="Cancel" verticalAlignment="center" />
         </ActionItem>
         <ActionItem ios.position="right">
-            <Label text="Done" verticalAlignment="center" tap="onDoneButtonTap"
-                isEnabled="{{ car.isModelValid }}"
-                isUserInteractionEnabled="{{ car.isModelValid }}" />
+            <Label
+        text="Done"
+        verticalAlignment="center"
+        tap="onDoneButtonTap"
+        isEnabled="{{ car.isModelValid }}"
+        isUserInteractionEnabled="{{ car.isModelValid }}"
+      />
         </ActionItem>
     </ActionBar>
 
@@ -19,12 +25,23 @@
         <ScrollView>
             <StackLayout class="car-list">
                 <Label text="CAR MAKE" class="car-list-odd" />
-                <TextField text="{{ car.name }}" hint="Car make field is required"
-                    class="{{ car.name, car.name ? 'car-list-even' : 'car-list-even placeholder-error' }}" />
+                <TextField
+          text="{{ car.name }}"
+          hint="Car make field is required"
+          class="{{ car.name, car.name ? 'car-list-even' : 'car-list-even placeholder-error' }}"
+        />
 
-                <GridLayout rows="*, 55, *" columns="*, auto" class="car-list-odd" >
+                <GridLayout
+          rows="*, 55, *"
+          columns="*, auto"
+          class="car-list-odd"
+        >
                     <Label text="PRICE PER DAY" />
-                    <Label col="1" horizontalAlignment="right" class="car-list__value">
+                    <Label
+            col="1"
+            horizontalAlignment="right"
+            class="car-list__value"
+          >
                         <FormattedString>
                             <Span text="€" />
                             <Span text="{{ car.price }}" />
@@ -32,62 +49,141 @@
                     </Label>
 
                     <StackLayout row="1" colSpan="2" verticalAlignment="center">
-                        <Slider value="{{ car.price, car.price | roundingValueConverter }}" />
+                        <Slider
+              value="{{ car.price, car.price | roundingValueConverter }}"
+            />
                     </StackLayout>
 
                     <Label text="ADD OR REMOVE IMAGE" row="2" colSpan="2" />
                 </GridLayout>
 
                 <StackLayout class="car-list-even">
-                    <GridLayout height="80" width="80" class="thumb" horizontalAlignment="left"
-                        backgroundImage="{{ car.imageUrl }}" tap="onImageAddRemoveTap">
-                        <GridLayout class="thumb__add"
-                            visibility="{{ car.imageUrl, car.imageUrl | visibilityValueConverter }}">
-                            <Label text="&#xf030;" class="fas" horizontalAlignment="center" verticalAlignment="center" />
+                    <GridLayout
+            height="80"
+            width="80"
+            class="thumb"
+            horizontalAlignment="left"
+            backgroundImage="{{ car.imageUrl }}"
+            tap="onImageAddRemoveTap"
+          >
+                        <GridLayout
+              class="thumb__add"
+              visibility="{{ car.imageUrl, car.imageUrl | visibilityValueConverter }}"
+            >
+                            <Label
+                text="&#xf030;"
+                class="fas"
+                horizontalAlignment="center"
+                verticalAlignment="center"
+              />
                         </GridLayout>
-                        <GridLayout class="thumb__remove"
-                            visibility="{{ car.imageUrl, !car.imageUrl | visibilityValueConverter }}">
-                            <Label text="&#xf2ed;" class="far" horizontalAlignment="center" verticalAlignment="center" />
+                        <GridLayout
+              class="thumb__remove"
+              visibility="{{ car.imageUrl, !car.imageUrl | visibilityValueConverter }}"
+            >
+                            <Label
+                text="&#xf2ed;"
+                class="far"
+                horizontalAlignment="center"
+                verticalAlignment="center"
+              />
                         </GridLayout>
                     </GridLayout>
-                    <Label visibility="{{ car.imageUrl, car.imageUrl | visibilityValueConverter }}"
-                        class="c-error" text="Image field is required" />
+                    <Label
+            visibility="{{ car.imageUrl, car.imageUrl | visibilityValueConverter }}"
+            class="c-error"
+            text="Image field is required"
+          />
                 </StackLayout>
 
                 <Label text="CLASS" class="car-list-odd" />
-                <GridLayout columns="*, auto" tap="onSelectorTap" tag="class" class="car-list-even">
+                <GridLayout
+          columns="*, auto"
+          tap="onSelectorTap"
+          tag="class"
+          class="car-list-even"
+        >
                     <Label text="{{ car.class }}" />
-                    <Label text="&#xf054;" class="fas" col="1" horizontalAlignment="center" verticalAlignment="center" />
+                    <Label
+            text="&#xf054;"
+            class="fas"
+            col="1"
+            horizontalAlignment="center"
+            verticalAlignment="center"
+          />
                 </GridLayout>
 
                 <Label text="DOORS" class="car-list-odd" />
-                <GridLayout columns="*, auto" tap="onSelectorTap" tag="doors" class="car-list-even">
+                <GridLayout
+          columns="*, auto"
+          tap="onSelectorTap"
+          tag="doors"
+          class="car-list-even"
+        >
                     <Label text="{{ car.doors }}" />
-                    <Label text="&#xf054;" class="fas" col="1" horizontalAlignment="center" verticalAlignment="center" />
+                    <Label
+            text="&#xf054;"
+            class="fas"
+            col="1"
+            horizontalAlignment="center"
+            verticalAlignment="center"
+          />
                 </GridLayout>
 
                 <Label text="SEATS" class="car-list-odd" />
-                <GridLayout columns="*, auto" tap="onSelectorTap" tag="seats" class="car-list-even">
+                <GridLayout
+          columns="*, auto"
+          tap="onSelectorTap"
+          tag="seats"
+          class="car-list-even"
+        >
                     <Label text="{{ car.seats }}" />
-                    <Label text="&#xf054;" class="fas" col="1" horizontalAlignment="center" verticalAlignment="center" />
+                    <Label
+            text="&#xf054;"
+            class="fas"
+            col="1"
+            horizontalAlignment="center"
+            verticalAlignment="center"
+          />
                 </GridLayout>
 
                 <Label text="TRANSMISSION" class="car-list-odd" />
-                <GridLayout columns="*, auto" tap="onSelectorTap" tag="transmission" class="car-list-even">
+                <GridLayout
+          columns="*, auto"
+          tap="onSelectorTap"
+          tag="transmission"
+          class="car-list-even"
+        >
                     <Label text="{{ car.transmission }}" />
-                    <Label text="&#xf054;" class="fas" col="1" horizontalAlignment="center" verticalAlignment="center" />
+                    <Label
+            text="&#xf054;"
+            class="fas"
+            col="1"
+            horizontalAlignment="center"
+            verticalAlignment="center"
+          />
                 </GridLayout>
 
                 <GridLayout rows="*, 55" columns="*, auto" class="car-list-odd">
                     <Label text="LUGGAGE" />
-                    <Label col="1" horizontalAlignment="right" class="car-list__value">
+                    <Label
+            col="1"
+            horizontalAlignment="right"
+            class="car-list__value"
+          >
                         <FormattedString>
                             <Span text="{{ car.luggage }}" />
                             <Span text=" Bag(s)" />
                         </FormattedString>
                     </Label>
 
-                    <Slider row="1" colSpan="2" minValue="0" maxValue="5" value="{{ car.luggage, car.luggage | roundingValueConverter }}" />
+                    <Slider
+            row="1"
+            colSpan="2"
+            minValue="0"
+            maxValue="5"
+            value="{{ car.luggage, car.luggage | roundingValueConverter }}"
+          />
                 </GridLayout>
 
             </StackLayout>

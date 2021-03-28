@@ -1,22 +1,22 @@
-const ListSelectorViewModel = require("./list-selector-view-model");
+const ListSelectorViewModel = require('./list-selector-view-model')
 
-let viewModel;
+let viewModel
 
 function onShownModally(args) {
-    const page = args.object;
+    const page = args.object
 
-    viewModel = new ListSelectorViewModel(args.context, args.closeCallback);
-    page.bindingContext = viewModel;
+    viewModel = new ListSelectorViewModel(args.context, args.closeCallback)
+    page.bindingContext = viewModel
 }
 
 function onItemSelected(args) {
-    viewModel.selectItem(args.index);
+    viewModel.selectItem(args.index)
 }
 
 function onCancelButtonTap() {
-    viewModel.cancelSelection();
+    viewModel.cancelSelection()
 }
 
-exports.onShownModally = onShownModally;
-exports.onItemSelected = onItemSelected;
-exports.onCancelButtonTap = onCancelButtonTap;
+exports.onShownModally = onShownModally
+exports.onItemSelected = onItemSelected
+exports.onCancelButtonTap = onCancelButtonTap

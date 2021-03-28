@@ -1,11 +1,9 @@
-const core = require("@nativescript/core");
+import { fromObject } from '@nativescript/core'
 
-function HomeViewModel() {
-    const viewModel = core.fromObject({
+export function HomeViewModel() {
+    const viewModel = fromObject({
         /* Add your view model properties here */
-    });
+    })
 
-    return viewModel;
+    return viewModel
 }
-
-module.exports = HomeViewModel;

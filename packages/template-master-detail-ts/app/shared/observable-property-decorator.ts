@@ -1,21 +1,21 @@
-import { Observable } from "@nativescript/core";
+import { Observable } from '@nativescript/core'
 
 export function ObservableProperty() {
     return (target: Observable, propertyKey: string) => {
         Object.defineProperty(target, propertyKey, {
             get() {
-                return this["_" + propertyKey];
+                return this['_' + propertyKey]
             },
             set(value) {
-                if (this["_" + propertyKey] === value) {
-                    return;
+                if (this['_' + propertyKey] === value) {
+                    return
                 }
 
-                this["_" + propertyKey] = value;
-                this.notifyPropertyChange(propertyKey, value);
+                this['_' + propertyKey] = value
+                this.notifyPropertyChange(propertyKey, value)
             },
             enumerable: true,
-            configurable: true
-        });
-    };
+            configurable: true,
+        })
+    }
 }

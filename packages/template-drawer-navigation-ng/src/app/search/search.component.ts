@@ -1,13 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { RadSideDrawer } from "nativescript-ui-sidedrawer";
-import { Application } from "@nativescript/core";
+import { Component, OnInit } from '@angular/core'
+import { RadSideDrawer } from 'nativescript-ui-sidedrawer'
+import { Application } from '@nativescript/core'
 
 @Component({
-    selector: "Search",
-    templateUrl: "./search.component.html"
+    selector: 'Search',
+    templateUrl: './search.component.html',
 })
 export class SearchComponent implements OnInit {
-
     constructor() {
         // Use the component constructor to inject providers.
     }
@@ -17,7 +16,7 @@ export class SearchComponent implements OnInit {
     }
 
     onDrawerButtonTap(): void {
-        const sideDrawer = <RadSideDrawer>Application.getRootView();
-        sideDrawer.showDrawer();
+        const sideDrawer = <RadSideDrawer>Application.getRootView()
+        sideDrawer.showDrawer()
     }
 }

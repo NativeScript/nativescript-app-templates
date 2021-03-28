@@ -1,11 +1,11 @@
-const { fromObject } = require("@nativescript/core");
+const { fromObject } = require('@nativescript/core')
 
 function CarDetailViewModel(carModel) {
     const viewModel = fromObject({
-        car: carModel
-    });
+        car: carModel,
+    })
 
-    return viewModel;
+    return viewModel
 }
 
-module.exports = CarDetailViewModel;
+module.exports = CarDetailViewModel

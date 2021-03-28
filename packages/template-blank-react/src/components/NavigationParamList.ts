@@ -1,4 +1,4 @@
 export type MainStackParamList = {
-    Home: {},
-    Secondary: {},
-};
+    Home: {}
+    Secondary: {}
+}

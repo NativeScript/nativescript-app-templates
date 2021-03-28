@@ -1,24 +1,24 @@
-const Observable = require("@nativescript/core").Observable;
+const Observable = require('@nativescript/core').Observable
 
 function getMessage(counter) {
     if (counter <= 0) {
-        return "Hoorraaay! You unlocked the NativeScript clicker achievement!";
+        return 'Hoorraaay! You unlocked the NativeScript clicker achievement!'
     } else {
-        return `${counter} taps left`;
+        return `${counter} taps left`
     }
 }
 
 function createViewModel() {
-    const viewModel = new Observable();
-    viewModel.counter = 42;
-    viewModel.message = getMessage(viewModel.counter);
+    const viewModel = new Observable()
+    viewModel.counter = 42
+    viewModel.message = getMessage(viewModel.counter)
 
     viewModel.onTap = () => {
-        viewModel.counter--;
-        viewModel.set("message", getMessage(viewModel.counter));
-    };
+        viewModel.counter--
+        viewModel.set('message', getMessage(viewModel.counter))
+    }
 
-    return viewModel;
+    return viewModel
 }
 
-exports.createViewModel = createViewModel;
+exports.createViewModel = createViewModel
