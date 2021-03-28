@@ -7,7 +7,7 @@ import { BrowseComponent } from './browse.component'
 const routes: Routes = [{ path: 'default', component: BrowseComponent }]
 
 @NgModule({
-    imports: [NativeScriptRouterModule.forChild(routes)],
-    exports: [NativeScriptRouterModule],
+  imports: [NativeScriptRouterModule.forChild(routes)],
+  exports: [NativeScriptRouterModule],
 })
 export class BrowseRoutingModule {}

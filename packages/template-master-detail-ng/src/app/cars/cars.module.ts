@@ -1,8 +1,5 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core'
-import {
-    NativeScriptCommonModule,
-    NativeScriptFormsModule,
-} from '@nativescript/angular'
+import { NativeScriptCommonModule, NativeScriptFormsModule } from '@nativescript/angular'
 import { NativeScriptUIListViewModule } from 'nativescript-ui-listview/angular'
 
 import { CarDetailEditComponent } from './car-detail-edit/car-detail-edit.component'
@@ -14,22 +11,22 @@ import { CarListComponent } from './car-list.component'
 import { CarsRoutingModule } from './cars-routing.module'
 
 @NgModule({
-    imports: [
-        CarsRoutingModule,
-        NativeScriptCommonModule,
-        NativeScriptFormsModule,
-        NativeScriptUIListViewModule,
-    ],
-    declarations: [
-        CarListComponent,
-        CarDetailComponent,
-        CarDetailEditComponent,
-        MyListSelectorComponent,
-        MyListSelectorModalViewComponent,
-        MyImageAddRemoveComponent,
-    ],
-    entryComponents: [MyListSelectorModalViewComponent],
-    providers: [],
-    schemas: [NO_ERRORS_SCHEMA],
+  imports: [
+    CarsRoutingModule,
+    NativeScriptCommonModule,
+    NativeScriptFormsModule,
+    NativeScriptUIListViewModule,
+  ],
+  declarations: [
+    CarListComponent,
+    CarDetailComponent,
+    CarDetailEditComponent,
+    MyListSelectorComponent,
+    MyListSelectorModalViewComponent,
+    MyImageAddRemoveComponent,
+  ],
+  entryComponents: [MyListSelectorModalViewComponent],
+  providers: [],
+  schemas: [NO_ERRORS_SCHEMA],
 })
 export class CarsModule {}

@@ -7,13 +7,13 @@ import { CarDetailComponent } from './car-detail/car-detail.component'
 import { CarListComponent } from './car-list.component'
 
 const routes: Routes = [
-    { path: '', component: CarListComponent },
-    { path: 'car-detail/:id', component: CarDetailComponent },
-    { path: 'car-detail-edit/:id', component: CarDetailEditComponent },
+  { path: '', component: CarListComponent },
+  { path: 'car-detail/:id', component: CarDetailComponent },
+  { path: 'car-detail-edit/:id', component: CarDetailEditComponent },
 ]
 
 @NgModule({
-    imports: [NativeScriptRouterModule.forChild(routes)],
-    exports: [NativeScriptRouterModule],
+  imports: [NativeScriptRouterModule.forChild(routes)],
+  exports: [NativeScriptRouterModule],
 })
 export class CarsRoutingModule {}

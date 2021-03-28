@@ -1,11 +1,11 @@
 const { fromObject } = require('@nativescript/core')
 
 function SearchViewModel() {
-    const viewModel = fromObject({
-        /* Add your view model properties here */
-    })
+  const viewModel = fromObject({
+    /* Add your view model properties here */
+  })
 
-    return viewModel
+  return viewModel
 }
 
 module.exports = SearchViewModel

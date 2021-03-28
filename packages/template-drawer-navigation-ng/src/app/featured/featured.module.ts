@@ -5,8 +5,8 @@ import { FeaturedRoutingModule } from './featured-routing.module'
 import { FeaturedComponent } from './featured.component'
 
 @NgModule({
-    imports: [NativeScriptCommonModule, FeaturedRoutingModule],
-    declarations: [FeaturedComponent],
-    schemas: [NO_ERRORS_SCHEMA],
+  imports: [NativeScriptCommonModule, FeaturedRoutingModule],
+  declarations: [FeaturedComponent],
+  schemas: [NO_ERRORS_SCHEMA],
 })
 export class FeaturedModule {}

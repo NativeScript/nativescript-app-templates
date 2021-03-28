@@ -1,15 +1,8 @@
 <ActionBar>
-  <NavigationButton
-    (tap)="onBackTap()"
-    android.systemIcon="ic_menu_back"
-  ></NavigationButton>
+  <NavigationButton (tap)="onBackTap()" android.systemIcon="ic_menu_back"></NavigationButton>
   <Label [text]="item.name"></Label>
 </ActionBar>
 
 <GridLayout>
-  <Label
-    class="m-10 h3"
-    verticalAlignment="top"
-    [text]="item.description"
-  ></Label>
+  <Label class="m-10 h3" verticalAlignment="top" [text]="item.description"></Label>
 </GridLayout>

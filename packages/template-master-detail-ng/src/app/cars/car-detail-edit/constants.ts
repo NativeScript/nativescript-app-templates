@@ -1,10 +1,4 @@
-export const carClassList: Array<string> = [
-    'Mini',
-    'Economy',
-    'Compact',
-    'Standard',
-    'Luxury',
-]
+export const carClassList: Array<string> = ['Mini', 'Economy', 'Compact', 'Standard', 'Luxury']
 
 export const carDoorList: Array<number> = [2, 3, 5]
 

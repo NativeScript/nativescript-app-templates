@@ -14,13 +14,13 @@ import { Config } from './config'
  *************************************************************/
 
 export function initFirebase() {
-    firebase
-        .init({
-            persist: false,
-            storageBucket: Config.firebaseBucket,
-        })
-        .then(
-            (instance) => console.log('firebase.init done'),
-            (error) => console.log('firebase.init error: ' + error)
-        )
+  firebase
+    .init({
+      persist: false,
+      storageBucket: Config.firebaseBucket,
+    })
+    .then(
+      (instance) => console.log('firebase.init done'),
+      (error) => console.log('firebase.init error: ' + error)
+    )
 }

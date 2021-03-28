@@ -7,7 +7,7 @@ import { SearchComponent } from './search.component'
 const routes: Routes = [{ path: 'default', component: SearchComponent }]
 
 @NgModule({
-    imports: [NativeScriptRouterModule.forChild(routes)],
-    exports: [NativeScriptRouterModule],
+  imports: [NativeScriptRouterModule.forChild(routes)],
+  exports: [NativeScriptRouterModule],
 })
 export class SearchRoutingModule {}

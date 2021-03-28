@@ -5,8 +5,8 @@ import { BrowseRoutingModule } from './browse-routing.module'
 import { BrowseComponent } from './browse.component'
 
 @NgModule({
-    imports: [NativeScriptCommonModule, BrowseRoutingModule],
-    declarations: [BrowseComponent],
-    schemas: [NO_ERRORS_SCHEMA],
+  imports: [NativeScriptCommonModule, BrowseRoutingModule],
+  declarations: [BrowseComponent],
+  schemas: [NO_ERRORS_SCHEMA],
 })
 export class BrowseModule {}

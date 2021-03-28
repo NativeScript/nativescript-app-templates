@@ -13,9 +13,9 @@ const config = require('./config')
  * will stop working.
  *************************************************************/
 init({
-    persist: false,
-    storageBucket: config.firebaseBucket,
+  persist: false,
+  storageBucket: config.firebaseBucket,
 }).then(
-    () => console.log('firebase.init done'),
-    (error) => console.log(`firebase.init error: ${error}`)
+  () => console.log('firebase.init done'),
+  (error) => console.log(`firebase.init error: ${error}`)
 )

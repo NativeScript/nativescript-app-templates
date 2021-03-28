@@ -8,16 +8,8 @@
         <Label text="{{ title }}" />
     </ActionBar>
 
-    <GridLayout
-    rows="auto, *, auto"
-    verticalAlignment="top"
-    class="modal-input"
-  >
-        <Label
-      text="{{ title }}"
-      ios:visibility="collapsed"
-      class="h3 modal-input__header"
-    />
+    <GridLayout rows="auto, *, auto" verticalAlignment="top" class="modal-input">
+        <Label text="{{ title }}" ios:visibility="collapsed" class="h3 modal-input__header" />
         <lv:RadListView
       row="1"
       items="{{ items }}"
@@ -31,10 +23,7 @@
 
             <lv:RadListView.itemTemplate>
                 <GridLayout class="modal-input__list-item">
-                    <GridLayout
-            android:visibility="collapsed"
-            columns="*, auto"
-          >
+                    <GridLayout android:visibility="collapsed" columns="*, auto">
                         <Label text="{{ value }}" />
                         <Label
               col="1"

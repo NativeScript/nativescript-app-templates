@@ -15,33 +15,33 @@ Vue.use(RadListView)
 Vue.config.silent = TNS_ENV === 'production'
 
 new Vue({
-    template: `
+  template: `
         <Frame>
             <CarList :cars="cars" />
         </Frame>`,
 
-    components: {
-        CarList,
-        CarDetails,
-        CarDetailsEdit,
-    },
+  components: {
+    CarList,
+    CarDetails,
+    CarDetailsEdit,
+  },
 
-    data: {
-        cars: [],
-    },
+  data: {
+    cars: [],
+  },
 
-    created() {
-        firebase.init(config).then(
-            (instance) => {
-                console.log('firebase.init done')
+  created() {
+    firebase.init(config).then(
+      (instance) => {
+        console.log('firebase.init done')
 
-                cars.load().then((data) => {
-                    this.cars = Object.values(data)
-                })
-            },
-            (error) => {
-                console.log(`firebase.init error: ${error}`)
-            }
-        )
-    },
+        cars.load().then((data) => {
+          this.cars = Object.values(data)
+        })
+      },
+      (error) => {
+        console.log(`firebase.init error: ${error}`)
+      }
+    )
+  },
 }).$start()

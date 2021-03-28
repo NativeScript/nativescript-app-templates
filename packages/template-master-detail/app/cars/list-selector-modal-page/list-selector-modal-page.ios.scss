@@ -12,10 +12,7 @@
 
     &-item {
       border-bottom-width: const(border-width);
-      @include colorize(
-        $background-color: background,
-        $border-color: background-alt-20
-      );
+      @include colorize($background-color: background, $border-color: background-alt-20);
     }
 
     &-check {

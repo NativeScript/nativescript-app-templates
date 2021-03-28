@@ -13,11 +13,11 @@ import { Config } from './config'
  * will stop working.
  *************************************************************/
 firebase
-    .init({
-        persist: false,
-        storageBucket: Config.firebaseBucket,
-    })
-    .then(
-        (instance) => console.log('firebase.init done'),
-        (error) => console.log('firebase.init error: ' + error)
-    )
+  .init({
+    persist: false,
+    storageBucket: Config.firebaseBucket,
+  })
+  .then(
+    (instance) => console.log('firebase.init done'),
+    (error) => console.log('firebase.init error: ' + error)
+  )

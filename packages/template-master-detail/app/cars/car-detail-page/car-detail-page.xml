@@ -1,19 +1,9 @@
-<Page
-  navigatingTo="onNavigatingTo"
-  xmlns="http://schemas.nativescript.org/tns.xsd"
->
+<Page navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd">
 
     <ActionBar>
-        <NavigationButton
-      tap="onBackButtonTap"
-      android.systemIcon="ic_menu_back"
-    />
+        <NavigationButton tap="onBackButtonTap" android.systemIcon="ic_menu_back" />
         <Label text="{{ car.name }}" horizontalAlignment="center" />
-        <ActionItem
-      tap="onEditButtonTap"
-      ios.position="right"
-      android.position="right"
-    >
+        <ActionItem tap="onEditButtonTap" ios.position="right" android.position="right">
             <Label text="Edit" verticalAlignment="center" />
         </ActionItem>
     </ActionBar>
@@ -21,20 +11,11 @@
     <GridLayout>
         <ScrollView>
             <GridLayout rows="auto, auto, auto">
-                <Image
-          src="{{ car.imageUrl }}"
-          stretch="aspectFill"
-          height="200"
-          class="m-b-15"
-        />
+                <Image src="{{ car.imageUrl }}" stretch="aspectFill" height="200" class="m-b-15" />
 
                 <StackLayout row="1" class="hr m-y-15" />
 
-                <GridLayout
-          row="2"
-          rows="*, *, *, *, *, *"
-          columns="auto, auto"
-        >
+                <GridLayout row="2" rows="*, *, *, *, *, *" columns="auto, auto">
                     <Label text="Price" class="p-l-15 p-b-10 m-r-20" />
                     <Label col="1" class="p-b-10">
                         <FormattedString>
@@ -45,52 +26,19 @@
                     </Label>
 
                     <Label text="Class" row="1" class="p-l-15 p-b-10 m-r-20" />
-                    <Label
-            text="{{ car.class }}"
-            row="1"
-            col="1"
-            class="p-b-10"
-          />
+                    <Label text="{{ car.class }}" row="1" col="1" class="p-b-10" />
 
                     <Label text="Doors" row="2" class="p-l-15 p-b-10 m-r-20" />
-                    <Label
-            text="{{ car.doors }}"
-            row="2"
-            col="1"
-            class="p-b-10"
-          />
+                    <Label text="{{ car.doors }}" row="2" col="1" class="p-b-10" />
 
                     <Label text="Seats" row="3" class="p-l-15 p-b-10 m-r-20" />
-                    <Label
-            text="{{ car.seats }}"
-            row="3"
-            col="1"
-            class="p-b-10"
-          />
+                    <Label text="{{ car.seats }}" row="3" col="1" class="p-b-10" />
 
-                    <Label
-            text="Transmission"
-            row="4"
-            class="p-l-15 p-b-10 m-r-20"
-          />
-                    <Label
-            text="{{ car.transmission }}"
-            row="4"
-            col="1"
-            class="p-b-10"
-          />
+                    <Label text="Transmission" row="4" class="p-l-15 p-b-10 m-r-20" />
+                    <Label text="{{ car.transmission }}" row="4" col="1" class="p-b-10" />
 
-                    <Label
-            text="Luggage"
-            row="5"
-            class="p-l-15 p-b-10 m-r-20"
-          />
-                    <Label
-            text="{{ car.luggage }}"
-            row="5"
-            col="1"
-            class="p-b-10"
-          />
+                    <Label text="Luggage" row="5" class="p-l-15 p-b-10 m-r-20" />
+                    <Label text="{{ car.luggage }}" row="5" col="1" class="p-b-10" />
                 </GridLayout>
             </GridLayout>
         </ScrollView>

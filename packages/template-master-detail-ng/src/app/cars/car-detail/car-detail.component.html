@@ -1,12 +1,7 @@
 <ActionBar>
-  <NavigationButton android.systemIcon="ic_menu_back" (tap)="onBackButtonTap()">
-  </NavigationButton>
+  <NavigationButton android.systemIcon="ic_menu_back" (tap)="onBackButtonTap()"> </NavigationButton>
   <Label [text]="car.name" horizontalAlignment="center"></Label>
-  <ActionItem
-    ios.position="right"
-    android.position="right"
-    (tap)="onEditButtonTap()"
-  >
+  <ActionItem ios.position="right" android.position="right" (tap)="onEditButtonTap()">
     <Label text="Edit"></Label>
   </ActionItem>
 </ActionBar>
@@ -14,12 +9,7 @@
 <GridLayout>
   <ScrollView>
     <GridLayout rows="auto, auto, auto">
-      <Image
-        [src]="car.imageUrl"
-        stretch="aspectFill"
-        height="200"
-        class="m-b-15"
-      ></Image>
+      <Image [src]="car.imageUrl" stretch="aspectFill" height="200" class="m-b-15"></Image>
 
       <StackLayout row="1" class="hr m-y-15"></StackLayout>
 

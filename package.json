@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "lerna": "lerna",
-    "prettier": "prettier --write packages/**/*.{jsx?,tsx?,html,xml,json,css,scss}",
+    "prettier": "prettier --write packages/**/*.{js,ts,html,json,css,scss}",
     "copy-app-resources": "lerna exec --no-bail --stream --concurrency 1 -- \"cp -R ../../tools/App_Resources .\"",
     "copy-hooks": "lerna exec --no-bail --stream --concurrency 1 -- \"cp -R ../../tools/hooks .\"",
     "publish.all": "lerna exec --no-bail --stream --concurrency 1 -- \"npm publish\"",
@@ -15,11 +15,6 @@
     "lerna": "~3.14.0",
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1"
-  },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true,
-    "tabWidth": 2
   },
   "lint-staged": {
     "packages/**/*.{jsx?,tsx?,html,xml,json,css,scss}": "prettier --write"

@@ -7,10 +7,10 @@ import { ItemsComponent } from './item/items.component'
 import { ItemDetailComponent } from './item/item-detail.component'
 
 @NgModule({
-    bootstrap: [AppComponent],
-    imports: [NativeScriptModule, AppRoutingModule],
-    declarations: [AppComponent, ItemsComponent, ItemDetailComponent],
-    providers: [],
-    schemas: [NO_ERRORS_SCHEMA],
+  bootstrap: [AppComponent],
+  imports: [NativeScriptModule, AppRoutingModule],
+  declarations: [AppComponent, ItemsComponent, ItemDetailComponent],
+  providers: [],
+  schemas: [NO_ERRORS_SCHEMA],
 })
 export class AppModule {}

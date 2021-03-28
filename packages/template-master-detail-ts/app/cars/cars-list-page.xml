@@ -11,11 +11,7 @@
     </ActionBar>
 
     <GridLayout>
-        <lv:RadListView
-      items="{{ cars }}"
-      itemTap="onCarItemTap"
-      class="cars-list"
-    >
+        <lv:RadListView items="{{ cars }}" itemTap="onCarItemTap" class="cars-list">
             <lv:RadListView.listViewLayout>
                 <lv:ListViewLinearLayout scrollDirection="Vertical" />
             </lv:RadListView.listViewLayout>
@@ -23,15 +19,8 @@
             <lv:RadListView.itemTemplate>
                 <StackLayout class="cars-list__item">
 
-                    <GridLayout
-            rows="*, *, *"
-            columns="*, *"
-            class="cars-list__item-content"
-          >
-                        <Label
-              text="{{ name }}"
-              class="font-weight-bold cars-list__item-name"
-            />
+                    <GridLayout rows="*, *, *" columns="*, *" class="cars-list__item-content">
+                        <Label text="{{ name }}" class="font-weight-bold cars-list__item-name" />
                         <Label col="1" horizontalAlignment="right">
                             <FormattedString>
                                 <Span text="€" />
@@ -53,29 +42,20 @@
                         <StackLayout row="2" col="1" verticalAlignment="center">
                             <Label class="p-b-10">
                                 <FormattedString ios:fontFamily="system">
-                                    <Span
-                    text="&#xf1b9;    "
-                    class="fas cars-list__item-icon"
-                  />
+                                    <Span text="&#xf1b9;    " class="fas cars-list__item-icon" />
                                     <Span text="{{ class }}" />
                                 </FormattedString>
                             </Label>
                             <Label class="p-b-10">
                                 <FormattedString ios:fontFamily="system">
-                                    <Span
-                    text="&#xf085;   "
-                    class="fas cars-list__item-icon"
-                  />
+                                    <Span text="&#xf085;   " class="fas cars-list__item-icon" />
                                     <Span text="{{ transmission }}" />
                                     <Span text=" Transmission" />
                                 </FormattedString>
                             </Label>
                             <Label class="p-b-10">
                                 <FormattedString ios:fontFamily="system">
-                                    <Span
-                    text="&#xf2dc;    "
-                    class="fas cars-list__item-icon"
-                  />
+                                    <Span text="&#xf2dc;    " class="fas cars-list__item-icon" />
                                     <Span text="{{ hasAC ? 'Yes' : 'No' }}" />
                                 </FormattedString>
                             </Label>

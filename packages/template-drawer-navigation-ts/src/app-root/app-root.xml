@@ -16,15 +16,9 @@ https://docs.nativescript.org/ui/professional-ui-components/SideDrawer/getting-s
     <nsDrawer:RadSideDrawer.drawerContent>
         <GridLayout rows="auto, *" class="nt-drawer__content">
             <StackLayout class="nt-drawer__header">
-                <Image
-          class="nt-drawer__header-image fas t-36"
-          src="font://&#xf2bd;"
-        />
+                <Image class="nt-drawer__header-image fas t-36" src="font://&#xf2bd;" />
                 <Label class="nt-drawer__header-brand" text="User Name" />
-                <Label
-          class="nt-drawer__header-footnote"
-          text="username@mail.com"
-        />
+                <Label class="nt-drawer__header-footnote" text="username@mail.com" />
             </StackLayout>
 
             <ScrollView row="1" class="nt-drawer__body">
@@ -36,12 +30,7 @@ https://docs.nativescript.org/ui/professional-ui-components/SideDrawer/getting-s
             title="Home"
             tap="onNavigationItemTap"
           >
-                        <Label
-              row="0"
-              col="0"
-              text="&#xf015;"
-              class="nt-icon fas"
-            />
+                        <Label row="0" col="0" text="&#xf015;" class="nt-icon fas" />
                         <Label row="0" col="1" text="Home" class="p-r-10" />
                     </GridLayout>
 
@@ -52,12 +41,7 @@ https://docs.nativescript.org/ui/professional-ui-components/SideDrawer/getting-s
             title="Browse"
             tap="onNavigationItemTap"
           >
-                        <Label
-              row="0"
-              col="0"
-              text="&#xf1ea;"
-              class="nt-icon far"
-            />
+                        <Label row="0" col="0" text="&#xf1ea;" class="nt-icon far" />
                         <Label row="0" col="1" text="Browse" class="p-r-10" />
                     </GridLayout>
 
@@ -68,12 +52,7 @@ https://docs.nativescript.org/ui/professional-ui-components/SideDrawer/getting-s
             title="Search"
             tap="onNavigationItemTap"
           >
-                        <Label
-              row="0"
-              col="0"
-              text="&#xf002;"
-              class="nt-icon fas"
-            />
+                        <Label row="0" col="0" text="&#xf002;" class="nt-icon fas" />
                         <Label row="0" col="1" text="Search" class="p-r-10" />
                     </GridLayout>
 
@@ -84,12 +63,7 @@ https://docs.nativescript.org/ui/professional-ui-components/SideDrawer/getting-s
             title="Featured"
             tap="onNavigationItemTap"
           >
-                        <Label
-              row="0"
-              col="0"
-              text="&#xf005;"
-              class="nt-icon fas"
-            />
+                        <Label row="0" col="0" text="&#xf005;" class="nt-icon fas" />
                         <Label row="0" col="1" text="Featured" class="p-r-10" />
                     </GridLayout>
 
@@ -102,12 +76,7 @@ https://docs.nativescript.org/ui/professional-ui-components/SideDrawer/getting-s
             title="Settings"
             tap="onNavigationItemTap"
           >
-                        <Label
-              row="0"
-              col="0"
-              text="&#xf013;"
-              class="nt-icon fas"
-            />
+                        <Label row="0" col="0" text="&#xf013;" class="nt-icon fas" />
                         <Label row="0" col="1" text="Settings" class="p-r-10" />
                     </GridLayout>
                 </StackLayout>

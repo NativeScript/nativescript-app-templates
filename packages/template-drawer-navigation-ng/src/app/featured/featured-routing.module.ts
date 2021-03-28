@@ -7,7 +7,7 @@ import { FeaturedComponent } from './featured.component'
 const routes: Routes = [{ path: '', component: FeaturedComponent }]
 
 @NgModule({
-    imports: [NativeScriptRouterModule.forChild(routes)],
-    exports: [NativeScriptRouterModule],
+  imports: [NativeScriptRouterModule.forChild(routes)],
+  exports: [NativeScriptRouterModule],
 })
 export class FeaturedRoutingModule {}
