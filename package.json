@@ -4,7 +4,8 @@
   "scripts": {
     "lerna": "lerna",
     "prettier": "prettier --write packages/**/*.{js,ts,html,json,css,scss}",
-    "publish.all": "node prepareTemplates.js && lerna exec --no-bail --stream --concurrency 1 -- \"npm publish\"",
+    "prepare-templates": "node prepareTemplates.js",
+    "publish.all": "npm run prepare-templates && lerna exec --no-bail --stream --concurrency 1 -- \"npm publish\"",
     "prepare": "husky install"
   },
   "devDependencies": {
