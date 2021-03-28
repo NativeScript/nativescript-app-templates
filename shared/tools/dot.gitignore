@@ -3,9 +3,6 @@ hooks/
 node_modules/
 platforms/
 
-# NativeScript Template
-*.js.map
-
 # Logs
 logs
 *.log
