@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core'
-import { initFirebase } from './shared/firebase.common'
 
 @Component({
   selector: 'ns-app',
@@ -7,6 +6,5 @@ import { initFirebase } from './shared/firebase.common'
 })
 export class AppComponent implements OnInit {
   ngOnInit() {
-    initFirebase()
   }
 }

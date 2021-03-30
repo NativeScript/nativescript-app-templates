@@ -1,15 +1,24 @@
 {
   "name": "@nativescript/template-blank-ts",
-  "main": "app.js",
+  "main": "app/app.ts",
   "displayName": "Blank",
   "templateType": "App template",
-  "version": "7.0.4",
+  "version": "8.0.0",
   "description": "Blank template for Vanilla NativeScript apps using TypeScript",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
   "publishConfig": {
     "access": "public"
   },
+  "files": [
+    "app",
+    "App_Resources",
+    "tools",
+    "hooks",
+    "!tools/assets",
+    ".editorconfig",
+    "tsconfig.json"
+  ],
   "keywords": [
     "nstudio",
     "nativescript",
@@ -28,11 +37,11 @@
     "url": "https://github.com/NativeScript/NativeScript/issues"
   },
   "dependencies": {
-    "@nativescript/core": "~7.1.0",
+    "@nativescript/core": "~8.0.0-alpha.8",
     "@nativescript/theme": "~2.3.0"
   },
   "devDependencies": {
-    "@nativescript/webpack": "~4.0.0",
+    "@nativescript/webpack": "5.0.0-alpha.6",
     "typescript": "~3.9.0"
   }
 }
