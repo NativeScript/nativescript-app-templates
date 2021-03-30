@@ -1,7 +1,7 @@
 import { Injectable, NgZone } from '@angular/core'
-import { firebase, storage } from '@nativescript/firebase'
 import { Observable, throwError } from 'rxjs'
 import { catchError } from 'rxjs/operators'
+import ApiService  from "~/services/api.service";
 
 import { Car } from './car.model'
 
@@ -52,22 +52,22 @@ export class CarService {
 
       const onValueEvent = (snapshot: any) => {
         this._ngZone.run(() => {
-          const results = this.handleSnapshot(snapshot.value)
+          const results = this.handleSnapshot(snapshot)
           observer.next(results)
         })
       }
-      firebase.addValueEventListener(onValueEvent, `/${path}`)
+      ApiService.addValueEventListener(onValueEvent, `/${path}`)
     }).pipe(catchError(this.handleErrors))
   }
 
   update(carModel: Car): Promise<any> {
     const updateModel = CarService.cloneUpdateModel(carModel)
 
-    return firebase.update('/cars/' + carModel.id, updateModel)
+    return ApiService.update('/cars/' + carModel.id, updateModel)
   }
 
   uploadImage(remoteFullPath: string, localFullPath: string): Promise<any> {
-    return storage.uploadFile({
+    return ApiService.uploadFile({
       localFullPath,
       remoteFullPath,
       onProgress: null,
