@@ -2,5 +2,6 @@
 import { platformNativeScriptDynamic } from '@nativescript/angular'
 
 import { AppModule } from './app/app.module'
+import "./app.css";
 
 platformNativeScriptDynamic().bootstrapModule(AppModule)
