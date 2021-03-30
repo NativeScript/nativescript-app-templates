@@ -1,8 +1,8 @@
-import { firebase, storage } from '@nativescript/firebase'
-import { Observable, Subscription } from 'rxjs'
+import { Observable, Subscription, throwError } from 'rxjs'
 import { catchError } from 'rxjs/operators'
 
 import { Car } from './car-model'
+import ApiService  from "~/services/api.service";
 
 const editableProperties = [
   'doors',
@@ -50,21 +50,21 @@ export class CarService {
       const path = 'cars'
 
       const onValueEvent = (snapshot: any) => {
-        const results = this.handleSnapshot(snapshot.value)
+        const results = this.handleSnapshot(snapshot)
         observer.next(results)
       }
-      firebase.addValueEventListener(onValueEvent, `/${path}`)
+      ApiService.addValueEventListener(onValueEvent, `/${path}`)
     }).pipe(catchError(this.handleErrors))
   }
 
   update(carModel: Car): Promise<any> {
     const updateModel = CarService.cloneUpdateModel(carModel)
 
-    return firebase.update(`/cars/${carModel.id}`, updateModel)
+    return ApiService.update(`/cars/${carModel.id}`, updateModel)
   }
 
   uploadImage(remoteFullPath: string, localFullPath: string): Promise<any> {
-    return storage.uploadFile({
+    return ApiService.uploadFile({
       localFullPath,
       remoteFullPath,
       onProgress: null,
