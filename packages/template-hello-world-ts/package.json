@@ -1,13 +1,23 @@
 {
   "name": "@nativescript/template-hello-world-ts",
-  "main": "app.js",
-  "version": "7.0.6",
+  "main": "app/app.ts",
+  "version": "8.0.0",
   "author": "NativeScript Team <oss@nativescript.org>",
   "description": "Nativescript hello-world-ts project template",
   "license": "Apache-2.0",
   "publishConfig": {
     "access": "public"
   },
+  "files": [
+    "app",
+    "App_Resources",
+    "tools",
+    "hooks",
+    "!tools/assets",
+    ".editorconfig",
+    "tsconfig.json",
+    "references.d.ts"
+  ],
   "keywords": [
     "nativescript",
     "mobile",
@@ -23,12 +33,12 @@
   },
   "homepage": "https://github.com/NativeScript/nativescript-app-templates",
   "dependencies": {
-    "@nativescript/core": "~7.1.0",
-    "@nativescript/theme": "~2.3.0"
+    "@nativescript/core": "~8.0.0-alpha.8",
+    "@nativescript/theme": "~3.0.1"
   },
   "devDependencies": {
-    "@nativescript/types": "~7.0.0",
-    "@nativescript/webpack": "~4.0.0",
+    "@nativescript/types": "~7.3.0",
+    "@nativescript/webpack": "5.0.0-alpha.6",
     "typescript": "~3.9.0"
   }
 }
