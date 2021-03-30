@@ -1,8 +1,8 @@
 {
   "name": "@nativescript/template-tab-navigation-vue",
-  "main": "app.js",
+  "main": "app/app.js",
   "displayName": "Tabs",
-  "version": "7.0.5",
+  "version": "8.0.0",
   "description": "Tabbed interface template using Vue",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -17,6 +17,15 @@
   "publishConfig": {
     "access": "public"
   },
+  "files": [
+    "app",
+    "App_Resources",
+    "tools",
+    "hooks",
+    "!tools/assets",
+    ".editorconfig",
+    "jsconfig.json"
+  ],
   "keywords": [
     "nstudio",
     "nativescript",
@@ -31,14 +40,14 @@
     "category-general"
   ],
   "dependencies": {
-    "@nativescript/core": "~7.1.0",
+    "@nativescript/core": "~8.0.0-alpha.8",
     "@nativescript/theme": "~2.3.0",
     "nativescript-vue": "~2.8.0"
   },
   "devDependencies": {
     "@babel/core": "~7.1.0",
     "@babel/preset-env": "~7.1.0",
-    "@nativescript/webpack": "~4.0.0",
+    "@nativescript/webpack": "5.0.0-alpha.6",
     "babel-loader": "~8.0.0",
     "nativescript-vue-template-compiler": "~2.8.0",
     "sass": "^1.32.8",
