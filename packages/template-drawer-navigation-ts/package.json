@@ -1,15 +1,24 @@
 {
   "name": "@nativescript/template-drawer-navigation-ts",
-  "main": "main.js",
+  "main": "src/main.ts",
   "displayName": "Navigation Drawer",
   "templateType": "App template",
-  "version": "7.0.6",
+  "version": "8.0.0",
   "description": "Side navigation template",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
   "publishConfig": {
     "access": "public"
   },
+  "files": [
+    "src",
+    "App_Resources",
+    "tools",
+    "hooks",
+    "!tools/assets",
+    ".editorconfig",
+    "tsconfig.json"
+  ],
   "keywords": [
     "nstudio",
     "nativescript",
@@ -33,13 +42,13 @@
     "lint": "tslint \"app/**/*.ts\""
   },
   "dependencies": {
-    "@nativescript/core": "~7.1.0",
+    "@nativescript/core": "~8.0.0-alpha.8",
     "@nativescript/theme": "~2.3.0",
     "nativescript-ui-sidedrawer": "~9.0.0",
     "rxjs": "^6.6.0"
   },
   "devDependencies": {
-    "@nativescript/webpack": "~4.0.0",
+    "@nativescript/webpack": "5.0.0-alpha.6",
     "sass": "^1.32.8",
     "tslint": "~6.1.3",
     "typescript": "~3.9.0"
