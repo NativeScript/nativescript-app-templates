@@ -1,15 +1,25 @@
 {
   "name": "@nativescript/template-tab-navigation-ng",
-  "main": "main.js",
+  "main": "src/main.ts",
   "displayName": "Tabs",
   "templateType": "App template",
-  "version": "7.0.7",
+  "version": "8.0.0",
   "description": "Tabbed interface template",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
   "publishConfig": {
     "access": "public"
   },
+  "files": [
+    "src",
+    "App_Resources",
+    "tools",
+    "hooks",
+    "!tools/assets",
+    ".editorconfig",
+    "tsconfig.json",
+    "angular.json"
+  ],
   "keywords": [
     "nstudio",
     "nativescript",
@@ -43,7 +53,7 @@
     "@angular/platform-browser-dynamic": "~11.0.0",
     "@angular/router": "~11.0.0",
     "@nativescript/angular": "~11.0.0",
-    "@nativescript/core": "~7.1.0",
+    "@nativescript/core": "~8.0.0-alpha.8",
     "@nativescript/theme": "~2.3.0",
     "reflect-metadata": "~0.1.12",
     "rxjs": "^6.6.0",
@@ -51,7 +61,7 @@
   },
   "devDependencies": {
     "@angular/compiler-cli": "~11.0.0",
-    "@nativescript/webpack": "~4.0.0",
+    "@nativescript/webpack": "5.0.0-alpha.6",
     "@ngtools/webpack": "~11.0.0",
     "codelyzer": "~6.0.0",
     "sass": "^1.32.8",
