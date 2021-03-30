@@ -1,8 +1,8 @@
 {
   "name": "@nativescript/template-blank-vue",
-  "main": "app.js",
+  "main": "app/app.js",
   "displayName": "Blank",
-  "version": "7.0.5",
+  "version": "8.0.0",
   "description": "Blank template for NativeScript apps using Vue.",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -17,6 +17,15 @@
   "publishConfig": {
     "access": "public"
   },
+  "files": [
+    "app",
+    "App_Resources",
+    "tools",
+    "hooks",
+    "!tools/assets",
+    ".editorconfig",
+    "tsconfig.json"
+  ],
   "keywords": [
     "nstudio",
     "nativescript",
@@ -31,17 +40,17 @@
     "category-general"
   ],
   "dependencies": {
-    "@nativescript/core": "~7.1.0",
+    "@nativescript/core": "~8.0.0-alpha.8",
     "@nativescript/theme": "~2.3.0",
-    "nativescript-vue": "~2.8.0"
+    "nativescript-vue": "~2.8.4"
   },
   "devDependencies": {
     "@babel/core": "~7.1.0",
     "@babel/preset-env": "~7.1.0",
-    "@nativescript/webpack": "~4.0.0",
+    "@nativescript/webpack": "5.0.0-alpha.6",
     "babel-loader": "~8.0.0",
-    "nativescript-vue-template-compiler": "~2.8.0",
+    "nativescript-vue-template-compiler": "~2.8.4",
     "sass": "^1.32.8",
-    "vue-loader": "~15.9.3"
+    "vue-loader": "~15.9.6"
   }
 }
