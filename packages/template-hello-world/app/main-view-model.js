@@ -1,4 +1,4 @@
-const Observable = require('@nativescript/core').Observable
+import { Observable } from '@nativescript/core'
 
 function getMessage(counter) {
   if (counter <= 0) {
@@ -8,7 +8,7 @@ function getMessage(counter) {
   }
 }
 
-function createViewModel() {
+export function createViewModel() {
   const viewModel = new Observable()
   viewModel.counter = 42
   viewModel.message = getMessage(viewModel.counter)
@@ -21,4 +21,3 @@ function createViewModel() {
   return viewModel
 }
 
-exports.createViewModel = createViewModel
