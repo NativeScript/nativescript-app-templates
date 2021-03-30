@@ -1,4 +1,4 @@
-const visibilityValueConverter = {
+export const visibilityValueConverter = {
   toView: function (value) {
     if (value) {
       return 'collapsed'
@@ -10,5 +10,3 @@ const visibilityValueConverter = {
     return value
   },
 }
-
-module.exports = visibilityValueConverter

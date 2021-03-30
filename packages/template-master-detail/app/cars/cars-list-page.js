@@ -1,8 +1,8 @@
-const { Frame } = require('@nativescript/core')
+import { Frame } from '@nativescript/core'
 
-const CarsListViewModel = require('./cars-list-view-model')
+import { CarsListViewModel } from './cars-list-view-model'
 
-function onNavigatingTo(args) {
+export function onNavigatingTo(args) {
   if (args.isBackNavigation) {
     return
   }
@@ -14,7 +14,7 @@ function onNavigatingTo(args) {
   page.bindingContext = viewModel
 }
 
-function onCarItemTap(args) {
+export function onCarItemTap(args) {
   const tappedCarItem = args.view.bindingContext
 
   Frame.topmost().navigate({
@@ -28,6 +28,3 @@ function onCarItemTap(args) {
     },
   })
 }
-
-exports.onNavigatingTo = onNavigatingTo
-exports.onCarItemTap = onCarItemTap

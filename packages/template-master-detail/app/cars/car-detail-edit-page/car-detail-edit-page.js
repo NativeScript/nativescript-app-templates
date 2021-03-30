@@ -1,6 +1,6 @@
-const { Frame, Dialogs } = require('@nativescript/core')
+import { Frame, Dialogs } from '@nativescript/core'
 
-const CarDetailEditViewModel = require('./car-detail-edit-view-model')
+import { CarDetailEditViewModel } from './car-detail-edit-view-model'
 
 /* ***********************************************************
  * This is the item detail edit code behind.
@@ -11,7 +11,7 @@ const CarDetailEditViewModel = require('./car-detail-edit-view-model')
  * Use the "onNavigatingTo" handler to get the data item id parameter passed through navigation.
  * Use it to initialize the view model and assign it to the view.
  *************************************************************/
-function onNavigatingTo(args) {
+export function onNavigatingTo(args) {
   /* ***********************************************************
    * The "onNavigatingTo" event handler lets you detect if the user navigated with a back button.
    * Skipping the re-initialization on back navigation means the user will see the
@@ -29,14 +29,14 @@ function onNavigatingTo(args) {
 /* ***********************************************************
  * The edit cancel button navigates back to the item details page.
  *************************************************************/
-function onCancelButtonTap(args) {
+export function onCancelButtonTap(args) {
   Frame.topmost().goBack()
 }
 
 /* ***********************************************************
  * The edit done button calls the view model save changes logic.
  *************************************************************/
-function onDoneButtonTap(args) {
+export function onDoneButtonTap(args) {
   /* ***********************************************************
    * By design this app is set up to work with read-only sample data.
    * Follow the steps in the "Firebase database setup" section in app/readme.md file
@@ -94,7 +94,7 @@ function onDoneButtonTap(args) {
     )
 }
 
-function onSelectorTap(args) {
+export function onSelectorTap(args) {
   const gridLayout = args.object
   const tag = gridLayout.tag
   const bindingContext = gridLayout.bindingContext
@@ -117,15 +117,9 @@ function onSelectorTap(args) {
   })
 }
 
-function onImageAddRemoveTap(args) {
+export function onImageAddRemoveTap(args) {
   const gridLayout = args.object
   const bindingContext = gridLayout.bindingContext
 
   bindingContext.onImageAddRemove()
 }
-
-exports.onNavigatingTo = onNavigatingTo
-exports.onCancelButtonTap = onCancelButtonTap
-exports.onDoneButtonTap = onDoneButtonTap
-exports.onSelectorTap = onSelectorTap
-exports.onImageAddRemoveTap = onImageAddRemoveTap

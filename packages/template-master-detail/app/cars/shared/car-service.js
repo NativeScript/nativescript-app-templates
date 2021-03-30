@@ -1,8 +1,7 @@
-const catchError = require('rxjs/operators').catchError
-const Observable = require('rxjs').Observable
-const firebase = require('@nativescript/firebase').firebase
-
-const Car = require('./car-model')
+import { catchError } from 'rxjs/operators'
+import { Observable, throwError } from 'rxjs'
+import { Car } from './car-model'
+import ApiService  from "~/services/api.service";
 
 const editableProperties = [
   'doors',
@@ -15,7 +14,7 @@ const editableProperties = [
   'class',
 ]
 
-function CarService() {
+export function CarService() {
   if (CarService._instance) {
     throw new Error('Use CarService.getInstance() instead of new.')
   }
@@ -36,22 +35,22 @@ function CarService() {
     return new Observable((observer) => {
       const path = 'cars'
       const onValueEvent = (snapshot) => {
-        const results = this._handleSnapshot(snapshot.value)
+        const results = this._handleSnapshot(snapshot)
         observer.next(results)
       }
 
-      firebase.addValueEventListener(onValueEvent, `/${path}`)
+      ApiService.addValueEventListener(onValueEvent, `/${path}`)
     }).pipe(catchError(this._handleErrors))
   }
 
   this.update = function (carModel) {
     const updateModel = cloneUpdateModel(carModel)
 
-    return firebase.update(`/cars/${carModel.id}`, updateModel)
+    return ApiService.update(`/cars/${carModel.id}`, updateModel)
   }
 
   this.uploadImage = function (remoteFullPath, localFullPath) {
-    return firebase.storage.uploadFile({
+    return ApiService.uploadFile({
       localFullPath,
       remoteFullPath,
       onProgress: null,
@@ -73,7 +72,7 @@ function CarService() {
   }
 
   this._handleErrors = function (error) {
-    return Observable.throw(error)
+    return throwError(error)
   }
 }
 
@@ -86,5 +85,3 @@ CarService._instance = new CarService()
 function cloneUpdateModel(car) {
   return editableProperties.reduce((a, e) => ((a[e] = car[e]), a), {}) // eslint-disable-line no-return-assign, no-sequences
 }
-
-module.exports = CarService

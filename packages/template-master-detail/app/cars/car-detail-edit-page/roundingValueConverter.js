@@ -1,4 +1,4 @@
-const roundingValueConverter = {
+export const roundingValueConverter = {
   toView: function (value) {
     return value
   },
@@ -7,4 +7,3 @@ const roundingValueConverter = {
   },
 }
 
-module.exports = roundingValueConverter

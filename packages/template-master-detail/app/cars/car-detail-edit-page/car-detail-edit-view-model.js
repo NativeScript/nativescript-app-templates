@@ -1,13 +1,13 @@
-const { fromObject, knownFolders, path, ImageSource } = require('@nativescript/core')
-const imagePicker = require('@nativescript/imagepicker')
+import { fromObject, knownFolders, path, ImageSource, Observable } from '@nativescript/core'
+import * as imagePicker from '@nativescript/imagepicker'
 
-const CarService = require('../shared/car-service')
-const roundingValueConverter = require('./roundingValueConverter')
-const visibilityValueConverter = require('./visibilityValueConverter')
+import { CarService } from '../shared/car-service'
+import { roundingValueConverter } from './roundingValueConverter'
+import { visibilityValueConverter } from './visibilityValueConverter'
 
 const tempImageFolderName = 'nsimagepicker'
 
-function CarDetailEditViewModel(carModel) {
+export function CarDetailEditViewModel(carModel) {
   const viewModel = fromObject({
     // car will be fresh editable copy due to the observable.fromObject(...) wrapping
     car: fromObject(carModel),
@@ -103,7 +103,7 @@ function CarDetailEditViewModel(carModel) {
   })
 
   viewModel.car.addEventListener(
-    observableModule.Observable.propertyChangeEvent,
+    Observable.propertyChangeEvent,
     (propertyChangeData) => {
       const propertyName = propertyChangeData.propertyName
       if (propertyName === 'name' || propertyName === 'imageUrl') {
@@ -124,4 +124,3 @@ function clearImageTempFolder() {
   getImageTempFolder().clear()
 }
 
-module.exports = CarDetailEditViewModel

@@ -1,8 +1,8 @@
-const { Frame } = require('@nativescript/core')
+import { Frame } from '@nativescript/core'
 
-const CarDetailViewModel = require('./car-detail-view-model')
+import { CarDetailViewModel } from './car-detail-view-model'
 
-function onNavigatingTo(args) {
+export function onNavigatingTo(args) {
   if (args.isBackNavigation) {
     return
   }
@@ -12,11 +12,11 @@ function onNavigatingTo(args) {
   page.bindingContext = new CarDetailViewModel(page.navigationContext)
 }
 
-function onBackButtonTap() {
+export function onBackButtonTap() {
   Frame.topmost().goBack()
 }
 
-function onEditButtonTap(args) {
+export function onEditButtonTap(args) {
   const bindingContext = args.object.bindingContext
 
   Frame.topmost().navigate({
@@ -31,6 +31,3 @@ function onEditButtonTap(args) {
   })
 }
 
-exports.onNavigatingTo = onNavigatingTo
-exports.onBackButtonTap = onBackButtonTap
-exports.onEditButtonTap = onEditButtonTap

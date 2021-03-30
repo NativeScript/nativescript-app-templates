@@ -1,11 +1,11 @@
-const { fromObject, ObservableArray } = require('@nativescript/core')
-const finalize = require('rxjs/operators').finalize
+import { fromObject, ObservableArray } from '@nativescript/core'
+import { finalize } from 'rxjs/operators'
 
-const CarService = require('./shared/car-service')
+import { CarService } from './shared/car-service'
 
 const subscriptionKey = 'car-list-view-model'
 
-function CarsListViewModel() {
+export function CarsListViewModel() {
   const viewModel = fromObject({
     cars: new ObservableArray([]),
     isLoading: false,
@@ -53,4 +53,3 @@ function CarsListViewModel() {
   return viewModel
 }
 
-module.exports = CarsListViewModel

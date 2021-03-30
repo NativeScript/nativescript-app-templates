@@ -1,7 +1,7 @@
-const { fromObject, ObservableArray } = require('@nativescript/core')
-const { carClassList, carDoorList, carSeatList, carTransmissionList } = require('./constants')
+import { fromObject, ObservableArray } from '@nativescript/core'
+import { carClassList, carDoorList, carSeatList, carTransmissionList } from './constants'
 
-function ListSelectorViewModel(context, closeCallback) {
+export function ListSelectorViewModel(context, closeCallback) {
   const protoItems = resolveProtoItems(context.tag)
   const selectedIndex = protoItems.indexOf(context.selectedValue)
   const items = new ObservableArray([])
@@ -57,4 +57,3 @@ function capitalizeFirstLetter(str) {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
-module.exports = ListSelectorViewModel

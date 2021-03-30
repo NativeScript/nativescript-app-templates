@@ -1,4 +1,4 @@
-function Car(options) {
+export function Car(options) {
   const model = {
     id: options.id,
     name: options.name,
@@ -17,5 +17,3 @@ function Car(options) {
 
   return model
 }
-
-module.exports = Car

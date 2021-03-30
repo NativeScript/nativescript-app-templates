@@ -1,11 +1,4 @@
-const { Application } = require('@nativescript/core')
-
-/*
-The {N} Firebase plugin needs some initialization steps before it is ready
-for use. Check out the initialization script at /shared/firebase.common.ts
-along with more information about it.
-*/
-require('./shared/firebase.common')
+import { Application } from '@nativescript/core'
 
 Application.run({ moduleName: 'app-root' })
 
