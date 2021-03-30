@@ -1,6 +1,6 @@
-import { firebase, storage } from '@nativescript/firebase'
+import ApiService  from "~/services/api.service";
 
-import Car from './car-model'
+import { Car } from './car-model'
 
 const editableProperties = [
   'doors',
@@ -23,8 +23,8 @@ function CarService() {
 
   this.load = function () {
     return new Promise((resolve, reject) => {
-      firebase.addValueEventListener((snapshot) => {
-        const data = snapshot.value
+      ApiService.addValueEventListener((snapshot) => {
+        const data = snapshot
 
         this._cars = []
 
@@ -44,11 +44,11 @@ function CarService() {
   this.update = function (carModel) {
     const updateModel = cloneUpdateModel(carModel)
 
-    return firebase.update(`/cars/${carModel.id}`, updateModel)
+    return ApiService.update(`/cars/${carModel.id}`, updateModel)
   }
 
   this.uploadImage = function (remoteFullPath, localFullPath) {
-    return storage.uploadFile({
+    return ApiService.uploadFile({
       localFullPath,
       remoteFullPath,
       onProgress: null,

@@ -1,5 +1,4 @@
 import { firebase } from '@nativescript/firebase'
-import config from './shared/firebase-config'
 
 import Vue from 'nativescript-vue'
 
@@ -12,7 +11,7 @@ import CarDetailsEdit from './components/CarDetailsEdit'
 
 Vue.use(RadListView)
 
-Vue.config.silent = TNS_ENV === 'production'
+Vue.config.silent = !__DEV__
 
 new Vue({
   template: `
@@ -30,18 +29,4 @@ new Vue({
     cars: [],
   },
 
-  created() {
-    firebase.init(config).then(
-      (instance) => {
-        console.log('firebase.init done')
-
-        cars.load().then((data) => {
-          this.cars = Object.values(data)
-        })
-      },
-      (error) => {
-        console.log(`firebase.init error: ${error}`)
-      }
-    )
-  },
 }).$start()

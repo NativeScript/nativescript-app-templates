@@ -59,7 +59,7 @@
 </script>
 
 <style lang="scss">
-    @import '~@nativescript/theme/scss/variables/blue';
+    @import '@nativescript/theme/scss/variables/blue';
 
     // Custom styles
     .modal-input {
