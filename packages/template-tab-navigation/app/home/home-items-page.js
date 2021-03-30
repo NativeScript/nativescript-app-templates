@@ -1,11 +1,11 @@
-const HomeItemsViewModel = require('./home-items-view-model')
+import { HomeItemsViewModel } from './home-items-view-model'
 
-function onNavigatingTo(args) {
+export function onNavigatingTo(args) {
   const component = args.object
   component.bindingContext = new HomeItemsViewModel()
 }
 
-function onItemTap(args) {
+export function onItemTap(args) {
   const view = args.view
   const page = view.page
   const tappedItem = view.bindingContext
@@ -21,6 +21,3 @@ function onItemTap(args) {
     },
   })
 }
-
-exports.onItemTap = onItemTap
-exports.onNavigatingTo = onNavigatingTo

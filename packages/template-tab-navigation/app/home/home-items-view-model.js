@@ -1,6 +1,6 @@
-const { fromObject } = require('@nativescript/core')
+import { fromObject } from '@nativescript/core'
 
-function HomeItemsViewModel() {
+export function HomeItemsViewModel() {
   const viewModel = fromObject({
     items: [
       {
@@ -72,5 +72,3 @@ function HomeItemsViewModel() {
 
   return viewModel
 }
-
-module.exports = HomeItemsViewModel

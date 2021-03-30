@@ -1,32 +1,13 @@
-<BottomNavigation>
-    <TabStrip>
-        <TabStripItem class="navigation__item">
-            <!--
-                Note TabStripItem will only accept single Label and/or single Image elements that it
-                will "adopt"; any other layout elements you try to specify will be ignored
-            -->
-            <Label text="Home" />
-            <Image src="font://&#xf015;" class="fas t-36" />
-        </TabStripItem>
-        <TabStripItem class="navigation__item">
-            <Label text="Browse" />
-            <Image src="font://&#xf1ea;" class="far t-36" />
-        </TabStripItem>
-        <TabStripItem class="navigation__item">
-            <Label text="Search" />
-            <Image src="font://&#xf002;" class="fas t-36" />
-        </TabStripItem>
-    </TabStrip>
-
-    <TabContentItem>
+<TabView>
+    <TabViewItem title="Home" >
         <Frame defaultPage="home/home-items-page" />
-    </TabContentItem>
+    </TabViewItem>
 
-    <TabContentItem>
+    <TabViewItem title="Browse" >
         <Frame defaultPage="browse/browse-page" />
-    </TabContentItem>
+    </TabViewItem>
 
-    <TabContentItem>
+    <TabViewItem title="Search" >
         <Frame defaultPage="search/search-page" />
-    </TabContentItem>
-</BottomNavigation>
+    </TabViewItem>
+</TabView>
