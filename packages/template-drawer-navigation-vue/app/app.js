@@ -5,7 +5,7 @@ import DrawerContent from './components/DrawerContent'
 import RadSideDrawer from 'nativescript-ui-sidedrawer/vue'
 Vue.use(RadSideDrawer)
 
-Vue.config.silent = TNS_ENV === 'production'
+Vue.config.silent = !__DEV__
 
 new Vue({
   render(h) {

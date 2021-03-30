@@ -1,6 +1,6 @@
-const { BehaviorSubject } = require('rxjs')
+import { BehaviorSubject } from 'rxjs'
 
-function SelectedPageService() {
+export function SelectedPageService() {
   if (SelectedPageService._instance) {
     throw new Error('Use SelectedPageService.getInstance() instead of new.')
   }
@@ -22,4 +22,3 @@ SelectedPageService.getInstance = function () {
 
 SelectedPageService._instance = new SelectedPageService()
 
-module.exports = SelectedPageService
