@@ -1,16 +1,13 @@
-const app = require('@nativescript/core').Application
+import { Application } from '@nativescript/core'
 
-const SearchViewModel = require('./search-view-model')
+import { SearchViewModel } from './search-view-model'
 
-function onNavigatingTo(args) {
+export function onNavigatingTo(args) {
   const page = args.object
   page.bindingContext = new SearchViewModel()
 }
 
-function onDrawerButtonTap(args) {
-  const sideDrawer = app.getRootView()
+export function onDrawerButtonTap(args) {
+  const sideDrawer = Application.getRootView()
   sideDrawer.showDrawer()
 }
-
-exports.onNavigatingTo = onNavigatingTo
-exports.onDrawerButtonTap = onDrawerButtonTap

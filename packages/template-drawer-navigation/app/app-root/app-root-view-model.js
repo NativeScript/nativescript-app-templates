@@ -1,9 +1,9 @@
-const core = require('@nativescript/core')
+import { fromObject } from '@nativescript/core'
 
-const SelectedPageService = require('../shared/selected-page-service')
+import { SelectedPageService } from '../shared/selected-page-service'
 
-function AppRootViewModel() {
-  const viewModel = core.fromObject({
+export function AppRootViewModel() {
+  const viewModel = fromObject({
     selectedPage: '',
   })
 
@@ -13,5 +13,3 @@ function AppRootViewModel() {
 
   return viewModel
 }
-
-module.exports = AppRootViewModel

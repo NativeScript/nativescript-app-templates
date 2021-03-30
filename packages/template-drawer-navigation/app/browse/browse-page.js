@@ -1,16 +1,14 @@
-const app = require('@nativescript/core').Application
+import { Application } from '@nativescript/core'
 
-const BrowseViewModel = require('./browse-view-model')
+import { BrowseViewModel } from './browse-view-model'
 
-function onNavigatingTo(args) {
+export function onNavigatingTo(args) {
   const page = args.object
   page.bindingContext = new BrowseViewModel()
 }
 
-function onDrawerButtonTap(args) {
-  const sideDrawer = app.getRootView()
+export function onDrawerButtonTap(args) {
+  const sideDrawer = Application.getRootView()
   sideDrawer.showDrawer()
 }
 
-exports.onNavigatingTo = onNavigatingTo
-exports.onDrawerButtonTap = onDrawerButtonTap

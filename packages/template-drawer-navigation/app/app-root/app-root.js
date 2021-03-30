@@ -1,13 +1,13 @@
-const { Frame, Application } = require('@nativescript/core')
+import { Frame, Application } from '@nativescript/core';
 
-const AppRootViewModel = require('./app-root-view-model')
+import { AppRootViewModel } from './app-root-view-model'
 
-function onLoaded(args) {
+export function onLoaded(args) {
   const drawerComponent = args.object
   drawerComponent.bindingContext = new AppRootViewModel()
 }
 
-function onNavigationItemTap(args) {
+export function onNavigationItemTap(args) {
   const component = args.object
   const componentRoute = component.route
   const componentTitle = component.title
@@ -26,5 +26,3 @@ function onNavigationItemTap(args) {
   drawerComponent.closeDrawer()
 }
 
-exports.onLoaded = onLoaded
-exports.onNavigationItemTap = onNavigationItemTap
