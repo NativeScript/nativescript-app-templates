@@ -38,7 +38,7 @@
     "url": "https://github.com/NativeScript/NativeScript/issues"
   },
   "dependencies": {
-    "@nativescript/core": "~8.0.0-alpha.8",
+    "@nativescript/core": "~8.0.0",
     "@nativescript/theme": "~3.0.1"
   },
   "devDependencies": {

@@ -42,7 +42,7 @@
   ],
   "dependencies": {
     "nativescript-vue": "^2.8.4",
-    "@nativescript/core": "~8.0.0-alpha.8",
+    "@nativescript/core": "~8.0.0",
     "@nativescript/theme": "~3.0.1"
   },
   "devDependencies": {
