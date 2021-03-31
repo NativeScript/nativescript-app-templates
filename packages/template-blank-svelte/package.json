@@ -45,7 +45,7 @@
     "svelte-native": "~0.9.5"
   },
   "devDependencies": {
-    "@nativescript/webpack": "5.0.0-alpha.6",
+    "@nativescript/webpack": "5.0.0-beta.0",
     "svelte": "~3.35.0",
     "svelte-loader-hot": "~0.3.1",
     "svelte-native-preprocessor": "^0.2.0",

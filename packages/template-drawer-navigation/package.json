@@ -48,7 +48,7 @@
     "rxjs": "^6.6.7"
   },
   "devDependencies": {
-    "@nativescript/webpack": "5.0.0-alpha.6",
+    "@nativescript/webpack": "5.0.0-beta.0",
     "eslint": "~7.7.0",
     "sass": "^1.32.8"
   }

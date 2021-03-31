@@ -61,7 +61,7 @@
   },
   "devDependencies": {
     "@angular/compiler-cli": "~11.2.7",
-    "@nativescript/webpack": "5.0.0-alpha.6",
+    "@nativescript/webpack": "5.0.0-beta.0",
     "@ngtools/webpack": "~11.2.6",
     "codelyzer": "~6.0.0",
     "sass": "^1.32.8",

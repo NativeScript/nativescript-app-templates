@@ -42,6 +42,6 @@
     "@nativescript/theme": "~3.0.1"
   },
   "devDependencies": {
-    "@nativescript/webpack": "5.0.0-alpha.6"
+    "@nativescript/webpack": "5.0.0-beta.0"
   }
 }
