@@ -53,7 +53,7 @@
     "nativescript-vue-template-compiler": "^2.8.1",
     "nativescript-worker-loader": "~0.12.1",
     "sass": "^1.32.8",
-    "@nativescript/types": "^7.0.0",
+    "@nativescript/types": "^8.0.0",
     "typescript": "^3.9.7",
     "@types/node": "^14.6.2",
     "vue": "^2.6.12",

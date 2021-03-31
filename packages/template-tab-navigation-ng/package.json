@@ -17,8 +17,7 @@
     "hooks",
     "!tools/assets",
     ".editorconfig",
-    "tsconfig.json",
-    "angular.json"
+    "tsconfig.json"
   ],
   "keywords": [
     "nstudio",
