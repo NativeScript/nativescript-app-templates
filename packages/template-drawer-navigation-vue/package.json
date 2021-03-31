@@ -17,7 +17,7 @@
     "hooks",
     "!tools/assets",
     ".editorconfig",
-    "tsconfig.json"
+    "jsconfig.json"
   ],
   "keywords": [
     "nstudio",
