@@ -1,13 +1,13 @@
 <ActionBar>
-    <Label text="Home"></Label>
+  <Label text="Home"></Label>
 </ActionBar>
 
 <GridLayout>
-    <ListView [items]="items">
-        <ng-template let-item="item">
-            <StackLayout>
-                <Label [nsRouterLink]="['../item', item.id]" [text]="item.name"></Label>
-            </StackLayout>
-        </ng-template>
-    </ListView>
+  <ListView [items]="items">
+    <ng-template let-item="item">
+      <StackLayout>
+        <Label [nsRouterLink]="['../item', item.id]" [text]="item.name"></Label>
+      </StackLayout>
+    </ng-template>
+  </ListView>
 </GridLayout>

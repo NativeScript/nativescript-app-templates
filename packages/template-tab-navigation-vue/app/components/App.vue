@@ -52,7 +52,7 @@
 
 <style lang="scss">
     // Start custom common variables
-    @import "~@nativescript/theme/scss/variables/blue";
+    @import "@nativescript/theme/scss/variables/blue";
     // End custom common variables
 
     // Custom styles

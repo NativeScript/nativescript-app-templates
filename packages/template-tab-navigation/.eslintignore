@@ -1,5 +1,0 @@
-# /node_modules/* and /bower_components/* ignored by default
-
-app/App_Resources/*
-hooks/*
-platforms/*

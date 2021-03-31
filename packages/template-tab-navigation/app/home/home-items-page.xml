@@ -1,15 +1,13 @@
-<Page
-    navigatingTo="onNavigatingTo"  
-    xmlns="http://schemas.nativescript.org/tns.xsd">
+<Page navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd">
 
     <ActionBar>
-        <Label text="Home"></Label>
+        <Label text="Home" />
     </ActionBar>
 
     <ListView items="{{ items }}" itemTap="onItemTap">
         <ListView.itemTemplate>
             <StackLayout orientation="horizontal">
-                <Label text="{{ name }}" textWrap="true"></Label>
+                <Label text="{{ name }}" textWrap="true" />
             </StackLayout>
         </ListView.itemTemplate>
     </ListView>

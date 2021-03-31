@@ -1,45 +1,43 @@
 <ActionBar>
-    <NavigationButton android.systemIcon="ic_menu_back" (tap)="onBackButtonTap()">
-    </NavigationButton>
-    <Label [text]="car.name" horizontalAlignment="center"></Label>
-    <ActionItem ios.position="right" android.position="right" (tap)="onEditButtonTap()">
-        <Label text="Edit"></Label>
-    </ActionItem>
+  <NavigationButton android.systemIcon="ic_menu_back" (tap)="onBackButtonTap()"> </NavigationButton>
+  <Label [text]="car.name" horizontalAlignment="center"></Label>
+  <ActionItem ios.position="right" android.position="right" (tap)="onEditButtonTap()">
+    <Label text="Edit"></Label>
+  </ActionItem>
 </ActionBar>
 
 <GridLayout>
-    <ScrollView>
-        <GridLayout rows="auto, auto, auto">
-            <Image [src]="car.imageUrl" stretch="aspectFill" height="200" class="m-b-15"></Image>
+  <ScrollView>
+    <GridLayout rows="auto, auto, auto">
+      <Image [src]="car.imageUrl" stretch="aspectFill" height="200" class="m-b-15"></Image>
 
-            <StackLayout row="1" class="hr m-y-15"></StackLayout>
+      <StackLayout row="1" class="hr m-y-15"></StackLayout>
 
-            <GridLayout row="2" rows="*,*,*,*,*,*" columns="auto, auto">
+      <GridLayout row="2" rows="*,*,*,*,*,*" columns="auto, auto">
+        <Label text="Price" class="p-l-15 p-b-10 m-r-20"></Label>
+        <Label col="1" class="p-b-10">
+          <FormattedString>
+            <Span text="&euro;"></Span>
+            <Span [text]="car.price"></Span>
+            <Span text="/day"></Span>
+          </FormattedString>
+        </Label>
 
-                <Label text="Price" class="p-l-15 p-b-10 m-r-20"></Label>
-                <Label col="1" class="p-b-10">
-                    <FormattedString>
-                        <Span text="&euro;"></Span>
-                        <Span [text]="car.price"></Span>
-                        <Span text="/day"></Span>
-                    </FormattedString>
-                </Label>
+        <Label text="Class" class="p-l-15 p-b-10 m-r-20" row="1"></Label>
+        <Label [text]="car.class" row="1" col="1" class="p-b-10"></Label>
 
-                <Label text="Class" class="p-l-15 p-b-10 m-r-20" row="1"></Label>
-                <Label [text]="car.class" row="1" col="1" class="p-b-10"></Label>
+        <Label text="Doors" class="p-l-15 p-b-10 m-r-20" row="2"></Label>
+        <Label [text]="car.doors" row="2" col="1" class="p-b-10"></Label>
 
-                <Label text="Doors" class="p-l-15 p-b-10 m-r-20" row="2"></Label>
-                <Label [text]="car.doors" row="2" col="1" class="p-b-10"></Label>
+        <Label text="Seats" class="p-l-15 p-b-10 m-r-20" row="3"></Label>
+        <Label [text]="car.seats" row="3" col="1" class="p-b-10"></Label>
 
-                <Label text="Seats" class="p-l-15 p-b-10 m-r-20" row="3"></Label>
-                <Label [text]="car.seats" row="3" col="1" class="p-b-10"></Label>
+        <Label text="Transmission" class="p-l-15 m-r-20 p-b-10" row="4"></Label>
+        <Label [text]="car.transmission" row="4" col="1" class="p-b-10"></Label>
 
-                <Label text="Transmission" class="p-l-15 m-r-20 p-b-10" row="4"></Label>
-                <Label [text]="car.transmission" row="4" col="1" class="p-b-10"></Label>
-
-                <Label text="Luggage" class="p-l-15 p-b-10 m-r-20" row="5"></Label>
-                <Label [text]="car.luggage" row="5" col="1" class="p-b-10"></Label>
-            </GridLayout>
-        </GridLayout>
-    </ScrollView>
+        <Label text="Luggage" class="p-l-15 p-b-10 m-r-20" row="5"></Label>
+        <Label [text]="car.luggage" row="5" col="1" class="p-b-10"></Label>
+      </GridLayout>
+    </GridLayout>
+  </ScrollView>
 </GridLayout>

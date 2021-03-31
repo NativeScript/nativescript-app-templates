@@ -1,25 +1,24 @@
-const { BehaviorSubject } = require("rxjs");
+import { BehaviorSubject } from 'rxjs'
 
-function SelectedPageService() {
-    if (SelectedPageService._instance) {
-        throw new Error("Use SelectedPageService.getInstance() instead of new.");
-    }
+export function SelectedPageService() {
+  if (SelectedPageService._instance) {
+    throw new Error('Use SelectedPageService.getInstance() instead of new.')
+  }
 
-    // Observable selectedPage source
-    this._selectedPageSource = new BehaviorSubject("Home");
+  // Observable selectedPage source
+  this._selectedPageSource = new BehaviorSubject('Home')
 
-    // Observable selectedPage stream
-    this.selectedPage$ = this._selectedPageSource.asObservable();
+  // Observable selectedPage stream
+  this.selectedPage$ = this._selectedPageSource.asObservable()
 
-    this.updateSelectedPage = function(selectedPage) {
-        this._selectedPageSource.next(selectedPage);
-    };
+  this.updateSelectedPage = function (selectedPage) {
+    this._selectedPageSource.next(selectedPage)
+  }
 }
 
 SelectedPageService.getInstance = function () {
-    return SelectedPageService._instance;
-};
+  return SelectedPageService._instance
+}
 
-SelectedPageService._instance = new SelectedPageService();
+SelectedPageService._instance = new SelectedPageService()
 
-module.exports = SelectedPageService;

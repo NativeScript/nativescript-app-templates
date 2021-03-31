@@ -3,7 +3,7 @@
   "version": "7.0.11",
   "description": "Blank template for NativeScript apps using React.",
   "author": "Jamie Birch <14055146+shirakaba@users.noreply.github.com>",
-  "main": "app.js",
+  "main": "src/app.ts",
   "scripts": {
     "postinstall": "patch-package",
     "type-check": "tsc --noEmit",
@@ -21,6 +21,16 @@
   "publishConfig": {
     "access": "public"
   },
+  "files": [
+    "src",
+    "App_Resources",
+    "tools",
+    "hooks",
+    "!tools/assets",
+    ".editorconfig",
+    "tsconfig.json",
+    "patches"
+  ],
   "keywords": [
     "mobile",
     "nativescript",
@@ -30,7 +40,7 @@
     "template"
   ],
   "dependencies": {
-    "@nativescript/core": "~7.1.0",
+    "@nativescript/core": "~8.0.0",
     "@react-navigation/core": "^5.13.2",
     "react": "^16.13.1",
     "react-nativescript": "^2.2.0",
@@ -39,8 +49,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
-    "@nativescript/types": "^7.0.4",
-    "@nativescript/webpack": "~4.0.0",
+    "@nativescript/types": "^8.0.0",
+    "@nativescript/webpack": "5.0.0-beta.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.0-beta.5",
     "@types/react": "16.9.34",
     "babel-loader": "8.0.6",

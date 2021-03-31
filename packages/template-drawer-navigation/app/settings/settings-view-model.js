@@ -1,15 +1,13 @@
-const core = require("@nativescript/core");
+import { fromObject } from '@nativescript/core'
 
-const SelectedPageService = require("../shared/selected-page-service");
+import { SelectedPageService } from '../shared/selected-page-service'
 
-function SettingsViewModel() {
-    SelectedPageService.getInstance().updateSelectedPage("Settings");
+export function SettingsViewModel() {
+  SelectedPageService.getInstance().updateSelectedPage('Settings')
 
-    const viewModel = core.fromObject({
-        /* Add your view model properties here */
-    });
+  const viewModel = fromObject({
+    /* Add your view model properties here */
+  })
 
-    return viewModel;
+  return viewModel
 }
-
-module.exports = SettingsViewModel;

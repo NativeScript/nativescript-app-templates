@@ -3,6 +3,13 @@ npm-debug.log
 package-lock.json
 .DS_Store
 
+packages/**/App_Resources
+packages/**/hooks
+packages/**/.editorconfig
+packages/**/tools
+!packages/**/tools/assets
+apps/
+
 hooks/*
 node_modules/
 platforms/

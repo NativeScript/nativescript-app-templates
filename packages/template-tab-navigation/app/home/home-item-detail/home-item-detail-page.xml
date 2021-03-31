@@ -1,13 +1,11 @@
-<Page
-    navigatingTo="onNavigatingTo"  
-    xmlns="http://schemas.nativescript.org/tns.xsd">
+<Page navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd">
 
     <ActionBar>
-        <NavigationButton tap="onBackButtonTap" android.systemIcon="ic_menu_back"/>
-        <Label text="{{ name }}"></Label>
+        <NavigationButton tap="onBackButtonTap" android.systemIcon="ic_menu_back" />
+        <Label text="{{ name }}" />
     </ActionBar>
 
     <GridLayout>
-        <Label class="m-10 h3" text="{{ description }}" verticalAlignment="top" ></Label>
+        <Label class="m-10 h3" text="{{ description }}" verticalAlignment="top" />
     </GridLayout>
 </Page>

@@ -1,17 +1,13 @@
+import { Application } from '@nativescript/core'
 
-const app = require("@nativescript/core").Application;
+import { SettingsViewModel } from './settings-view-model'
 
-const SettingsViewModel = require("./settings-view-model");
-
-function onNavigatingTo(args) {
-    const page = args.object;
-    page.bindingContext = new SettingsViewModel();
+export function onNavigatingTo(args) {
+  const page = args.object
+  page.bindingContext = new SettingsViewModel()
 }
 
-function onDrawerButtonTap(args) {
-    const sideDrawer = app.getRootView();
-    sideDrawer.showDrawer();
+export function onDrawerButtonTap(args) {
+  const sideDrawer = Application.getRootView()
+  sideDrawer.showDrawer()
 }
-
-exports.onNavigatingTo = onNavigatingTo;
-exports.onDrawerButtonTap = onDrawerButtonTap;

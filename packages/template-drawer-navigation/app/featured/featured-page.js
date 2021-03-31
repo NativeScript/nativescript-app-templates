@@ -1,16 +1,14 @@
-const app = require("@nativescript/core").Application;
+import { Application } from '@nativescript/core'
 
-const FeaturedViewModel = require("./featured-view-model");
+import { FeaturedViewModel } from './featured-view-model'
 
-function onNavigatingTo(args) {
-    const page = args.object;
-    page.bindingContext = new FeaturedViewModel();
+export function onNavigatingTo(args) {
+  const page = args.object
+  page.bindingContext = new FeaturedViewModel()
 }
 
-function onDrawerButtonTap(args) {
-    const sideDrawer = app.getRootView();
-    sideDrawer.showDrawer();
+export function onDrawerButtonTap(args) {
+  const sideDrawer = Application.getRootView()
+  sideDrawer.showDrawer()
 }
 
-exports.onNavigatingTo = onNavigatingTo;
-exports.onDrawerButtonTap = onDrawerButtonTap;

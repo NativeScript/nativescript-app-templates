@@ -1,11 +1,11 @@
-import { Observable } from "@nativescript/core";
+import { Observable } from '@nativescript/core'
 
-import { SelectedPageService } from "../shared/selected-page-service";
+import { SelectedPageService } from '../shared/selected-page-service'
 
 export class SettingsViewModel extends Observable {
-    constructor() {
-        super();
+  constructor() {
+    super()
 
-        SelectedPageService.getInstance().updateSelectedPage("Settings");
-    }
+    SelectedPageService.getInstance().updateSelectedPage('Settings')
+  }
 }

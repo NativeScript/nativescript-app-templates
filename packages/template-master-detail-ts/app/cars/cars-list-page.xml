@@ -1,6 +1,8 @@
-<Page navigatingTo="onNavigatingTo"
-    xmlns:lv="nativescript-ui-listview"
-    xmlns="http://schemas.nativescript.org/tns.xsd" >
+<Page
+  navigatingTo="onNavigatingTo"
+  xmlns:lv="nativescript-ui-listview"
+  xmlns="http://schemas.nativescript.org/tns.xsd"
+>
 
     <ActionBar>
         <!-- Should remove the navigation button -->
@@ -29,7 +31,13 @@
 
                         <StackLayout row="1" class="hr m-y-5" colSpan="2" />
 
-                        <Image row="2" src="{{ imageUrl }}" stretch="aspectFill" height="120" class="m-r-20" />
+                        <Image
+              row="2"
+              src="{{ imageUrl }}"
+              stretch="aspectFill"
+              height="120"
+              class="m-r-20"
+            />
 
                         <StackLayout row="2" col="1" verticalAlignment="center">
                             <Label class="p-b-10">

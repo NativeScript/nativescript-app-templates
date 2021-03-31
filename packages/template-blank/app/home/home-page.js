@@ -1,8 +1,6 @@
-const HomeViewModel = require("./home-view-model");
+import { HomeViewModel } from './home-view-model'
 
-function onNavigatingTo(args) {
-    const page = args.object;
-    page.bindingContext = new HomeViewModel();
+export function onNavigatingTo(args) {
+  const page = args.object
+  page.bindingContext = new HomeViewModel()
 }
-
-exports.onNavigatingTo = onNavigatingTo;

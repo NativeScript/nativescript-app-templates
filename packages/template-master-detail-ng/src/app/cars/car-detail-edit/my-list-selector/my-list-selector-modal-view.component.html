@@ -1,25 +1,47 @@
 <GridLayout rows="auto, *, auto" verticalAlignment="top" class="modal-input">
-    <Label [text]="title" class="h3 modal-input__header"></Label>
-    <RadListView row="1" [items]="items" (itemSelected)="onItemSelected($event)" selectionBehavior="Press" class="modal-input__list">
-        <ng-template tkListItemTemplate let-item="item">
-            <GridLayout class="modal-input__list-item">
-                <GridLayout android:visibility="collapsed" columns="*,auto">
-                    <Label [text]="item.value"></Label>
-                    <Label col="1" text="&#xf00c;" 
-                        class="fas modal-input__list-check" 
-                        [visibility]="item.isSelected ? 'visible' : 'collapsed'"></Label>
-                </GridLayout>
-                <GridLayout ios:visibility="collapsed" columns="auto,*">
-                    <Label text="&#xf111;" 
-                        class="far modal-input__list-icon" verticalAlignment="center" 
-                        [visibility]="item.isSelected ? 'collapsed' : 'visible'"></Label>
-                    <Label text="&#xf192;" 
-                        class="far modal-input__list-icon selected" verticalAlignment="center" 
-                        [visibility]="item.isSelected ? 'visible' : 'collapsed'"></Label>
-                    <Label col="1" [text]="item.value"></Label>
-                </GridLayout>
-            </GridLayout>
-        </ng-template>
-    </RadListView>
-    <Button class="-outline" row="3" text="CANCEL" ios:visibility="collapsed" horizontalAlignment="right" (tap)="onCancelButtonTap()"></Button>
+  <Label [text]="title" class="h3 modal-input__header"></Label>
+  <RadListView
+    row="1"
+    [items]="items"
+    (itemSelected)="onItemSelected($event)"
+    selectionBehavior="Press"
+    class="modal-input__list"
+  >
+    <ng-template tkListItemTemplate let-item="item">
+      <GridLayout class="modal-input__list-item">
+        <GridLayout android:visibility="collapsed" columns="*,auto">
+          <Label [text]="item.value"></Label>
+          <Label
+            col="1"
+            text="&#xf00c;"
+            class="fas modal-input__list-check"
+            [visibility]="item.isSelected ? 'visible' : 'collapsed'"
+          ></Label>
+        </GridLayout>
+        <GridLayout ios:visibility="collapsed" columns="auto,*">
+          <Label
+            text="&#xf111;"
+            class="far modal-input__list-icon"
+            verticalAlignment="center"
+            [visibility]="item.isSelected ? 'collapsed' : 'visible'"
+          ></Label>
+          <Label
+            text="&#xf192;"
+            class="far modal-input__list-icon selected"
+            verticalAlignment="center"
+            [visibility]="item.isSelected ? 'visible' : 'collapsed'"
+          ></Label>
+          <Label col="1" [text]="item.value"></Label>
+        </GridLayout>
+      </GridLayout>
+    </ng-template>
+  </RadListView>
+  <Button
+    class="-outline"
+    row="3"
+    text="CANCEL"
+    ios:visibility="collapsed"
+    horizontalAlignment="right"
+    (tap)="onCancelButtonTap()"
+  ></Button>
 </GridLayout>

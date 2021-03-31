@@ -1,7 +1,7 @@
-import { Observable } from "@nativescript/core";
+import { Observable } from '@nativescript/core'
 
 export class BrowseViewModel extends Observable {
-    constructor() {
-        super();
-    }
+  constructor() {
+    super()
+  }
 }

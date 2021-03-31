@@ -1,8 +1,25 @@
-<GridLayout height="80" width="80" class="thumb" horizontalAlignment="left" [backgroundImage]="imageUrl" (tap)="onImageAddRemoveTap()">
-    <GridLayout class="thumb__remove" *ngIf="imageUrl">
-        <Label text="&#xf2ed;" class="far" horizontalAlignment="center" verticalAlignment="center"></Label>
-    </GridLayout>
-    <GridLayout class="thumb__add" *ngIf="!imageUrl">
-        <Label text="&#xf030;" class="fas" horizontalAlignment="center" verticalAlignment="center"></Label>
-    </GridLayout>
+<GridLayout
+  height="80"
+  width="80"
+  class="thumb"
+  horizontalAlignment="left"
+  [backgroundImage]="imageUrl"
+  (tap)="onImageAddRemoveTap()"
+>
+  <GridLayout class="thumb__remove" *ngIf="imageUrl">
+    <Label
+      text="&#xf2ed;"
+      class="far"
+      horizontalAlignment="center"
+      verticalAlignment="center"
+    ></Label>
+  </GridLayout>
+  <GridLayout class="thumb__add" *ngIf="!imageUrl">
+    <Label
+      text="&#xf030;"
+      class="fas"
+      horizontalAlignment="center"
+      verticalAlignment="center"
+    ></Label>
+  </GridLayout>
 </GridLayout>

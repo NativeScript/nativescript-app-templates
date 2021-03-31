@@ -1,11 +1,9 @@
-const { fromObject } = require("@nativescript/core");
+import { fromObject } from '@nativescript/core'
 
-function CarDetailViewModel(carModel) {
-    const viewModel = fromObject({
-        car: carModel
-    });
+export function CarDetailViewModel(carModel) {
+  const viewModel = fromObject({
+    car: carModel,
+  })
 
-    return viewModel;
+  return viewModel
 }
-
-module.exports = CarDetailViewModel;

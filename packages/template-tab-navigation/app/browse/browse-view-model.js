@@ -1,11 +1,9 @@
-const { fromObject } = require("@nativescript/core");
+import { fromObject } from '@nativescript/core'
 
-function BrowseViewModel() {
-    const viewModel = fromObject({
-        /* Add your view model properties here */
-    });
+export function BrowseViewModel() {
+  const viewModel = fromObject({
+    /* Add your view model properties here */
+  })
 
-    return viewModel;
+  return viewModel
 }
-
-module.exports = BrowseViewModel;

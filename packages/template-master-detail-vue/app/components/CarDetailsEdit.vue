@@ -69,7 +69,7 @@
 </template>
 
 <script>
-  import {alert} from "ui/dialogs";
+  import { alert } from "@nativescript/core";
   import CarList from "./CarList";
   import Selector from "./Selector";
   import AddRemoveImage from "./AddRemoveImage";
@@ -169,7 +169,7 @@
 </script>
 
 <style lang="scss">
-    @import '~@nativescript/theme/scss/variables/blue';
+    @import '@nativescript/theme/scss/variables/blue';
 
     // Custom styles
     .car-list {
