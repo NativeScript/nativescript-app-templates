@@ -3,7 +3,7 @@
   "main": "app/app.js",
   "displayName": "Navigation Drawer",
   "templateType": "App template",
-  "version": "8.0.1",
+  "version": "8.0.2",
   "description": "Side navigation template",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -48,7 +48,7 @@
     "rxjs": "^6.6.7"
   },
   "devDependencies": {
-    "@nativescript/webpack": "5.0.0-beta.0",
+    "@nativescript/webpack": "5.0.0-beta.2",
     "eslint": "~7.7.0",
     "sass": "^1.32.8"
   }

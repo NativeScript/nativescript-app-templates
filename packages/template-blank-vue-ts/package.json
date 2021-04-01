@@ -2,7 +2,7 @@
   "name": "@nativescript/template-blank-vue-ts",
   "main": "app/app.ts",
   "displayName": "Blank Vue Typescript",
-  "version": "8.0.1",
+  "version": "8.0.2",
   "description": "Blank Typescript template for NativeScript apps using Vue.",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -41,22 +41,17 @@
     "category-general"
   ],
   "dependencies": {
-    "nativescript-vue": "^2.8.4",
+    "nativescript-vue": "~2.9.0",
     "@nativescript/core": "~8.0.0",
     "@nativescript/theme": "~3.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/preset-env": "^7.11.5",
-    "babel-loader": "^8.1.0",
-    "@nativescript/webpack": "5.0.0-beta.0",
-    "nativescript-vue-template-compiler": "^2.8.1",
-    "nativescript-worker-loader": "~0.12.1",
+    "@nativescript/types": "~8.0.0",
+    "@nativescript/webpack": "5.0.0-beta.2",
+    "@types/node": "~14.6.2",
+    "nativescript-vue-template-compiler": "~2.9.0",
     "sass": "^1.32.8",
-    "@nativescript/types": "^8.0.0",
-    "typescript": "^3.9.7",
-    "@types/node": "^14.6.2",
-    "vue": "^2.6.12",
-    "vue-loader": "^15.9.3"
+    "typescript": "~4.0.0",
+    "vue": "~2.6.12"
   }
 }

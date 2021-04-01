@@ -3,7 +3,7 @@
   "main": "src/main.ts",
   "displayName": "Blank",
   "templateType": "App template",
-  "version": "8.0.1",
+  "version": "8.0.2",
   "description": "Blank template for NativeScript apps using Angular",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -55,7 +55,7 @@
   },
   "devDependencies": {
     "@angular/compiler-cli": "~11.2.7",
-    "@nativescript/webpack": "5.0.0-beta.0",
+    "@nativescript/webpack": "5.0.0-beta.2",
     "@ngtools/webpack": "~11.2.6",
     "typescript": "~4.0.0"
   }

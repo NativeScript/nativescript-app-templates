@@ -3,7 +3,7 @@
   "main": "app/app.js",
   "displayName": "Navigation Drawer",
   "templateType": "App template",
-  "version": "8.0.1",
+  "version": "8.0.2",
   "description": "Side navigation template using Vue.",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -44,16 +44,12 @@
     "@nativescript/core": "~8.0.0",
     "@nativescript/theme": "~3.0.1",
     "nativescript-ui-sidedrawer": "~9.0.3",
-    "nativescript-vue": "~2.8.4",
+    "nativescript-vue": "~2.9.0",
     "rxjs": "^6.6.0"
   },
   "devDependencies": {
-    "@babel/core": "~7.1.0",
-    "@babel/preset-env": "~7.1.0",
-    "@nativescript/webpack": "5.0.0-beta.0",
-    "babel-loader": "~8.0.0",
-    "nativescript-vue-template-compiler": "~2.8.4",
-    "sass": "^1.32.8",
-    "vue-loader": "~15.9.3"
+    "@nativescript/webpack": "5.0.0-beta.2",
+    "nativescript-vue-template-compiler": "~2.9.0",
+    "sass": "^1.32.8"
   }
 }

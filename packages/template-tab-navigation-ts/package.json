@@ -3,7 +3,7 @@
   "main": "app/app.ts",
   "displayName": "Tabs",
   "templateType": "App template",
-  "version": "8.0.1",
+  "version": "8.0.2",
   "description": "Tabbed interface template",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -46,9 +46,9 @@
     "@nativescript/theme": "~3.0.1"
   },
   "devDependencies": {
-    "@nativescript/webpack": "5.0.0-beta.0",
+    "@nativescript/webpack": "5.0.0-beta.2",
     "sass": "^1.32.8",
     "tslint": "~6.1.3",
-    "typescript": "~3.9.0"
+    "typescript": "~4.0.0"
   }
 }
