@@ -13,8 +13,8 @@
   "files": [
     "app",
     "App_Resources",
-    "tools",
     "hooks",
+    "tools",
     "!tools/assets",
     ".editorconfig",
     "jsconfig.json"
@@ -45,10 +45,10 @@
     "@nativescript/theme": "~3.0.1",
     "nativescript-ui-sidedrawer": "~9.0.3",
     "nativescript-vue": "~2.9.0",
-    "rxjs": "^6.6.0"
+    "rxjs": "~6.6.0"
   },
   "devDependencies": {
-    "@nativescript/webpack": "5.0.0-beta.2",
+    "@nativescript/webpack": "5.0.0-beta.3",
     "nativescript-vue-template-compiler": "~2.9.0",
     "sass": "^1.32.8"
   }

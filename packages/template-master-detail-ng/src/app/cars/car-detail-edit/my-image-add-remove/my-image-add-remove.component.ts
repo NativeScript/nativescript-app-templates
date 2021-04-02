@@ -4,11 +4,11 @@ import * as imagePicker from '@nativescript/imagepicker'
 import { Folder, knownFolders, path, ImageAsset, ImageSource } from '@nativescript/core'
 
 const tempImageFolderName = 'nsimagepicker'
-const noop = () => {} // tslint:disable-line no-empty
+const noop = () => {}
 
 const MY_IMAGE_ADD_REMOVE_CONTROL_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => MyImageAddRemoveComponent), // tslint:disable-line no-forward-ref
+  useExisting: forwardRef(() => MyImageAddRemoveComponent),
   multi: true,
 }
 
@@ -60,7 +60,6 @@ export class MyImageAddRemoveComponent implements ControlValueAccessor {
   }
 
   // ControlValueAccessor implementation
-  // tslint:disable-next-line:no-empty
   registerOnTouched(fn: any): void {}
 
   onImageAddRemoveTap(): void {

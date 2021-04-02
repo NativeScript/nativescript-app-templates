@@ -11,12 +11,12 @@
   "files": [
     "app",
     "App_Resources",
-    "tools",
     "hooks",
+    "tools",
     "!tools/assets",
     ".editorconfig",
-    "tsconfig.json",
-    "references.d.ts"
+    "references.d.ts",
+    "tsconfig.json"
   ],
   "keywords": [
     "nativescript",
@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@nativescript/types": "~8.0.0",
-    "@nativescript/webpack": "5.0.0-beta.2",
+    "@nativescript/webpack": "5.0.0-beta.3",
     "typescript": "~4.0.0"
   }
 }

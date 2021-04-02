@@ -22,14 +22,15 @@
     "access": "public"
   },
   "files": [
-    "src",
     "App_Resources",
-    "tools",
     "hooks",
+    "patches",
+    "src",
+    "tools",
     "!tools/assets",
     ".editorconfig",
-    "tsconfig.json",
-    "patches"
+    "references.d.ts",
+    "tsconfig.json"
   ],
   "keywords": [
     "mobile",
@@ -48,13 +49,10 @@
     "react-refresh": "^0.8.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@nativescript/types": "^8.0.0",
-    "@nativescript/webpack": "5.0.0-beta.2",
+    "@nativescript/types": "~8.0.0",
+    "@nativescript/webpack": "5.0.0-beta.3",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.0-beta.5",
     "@types/react": "16.9.34",
-    "babel-loader": "8.0.6",
-    "fork-ts-checker-webpack-plugin": "^5.1.0",
     "patch-package": "^6.2.2",
     "typescript": "~4.0.0"
   },

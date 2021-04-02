@@ -13,12 +13,13 @@
   "files": [
     "app",
     "App_Resources",
-    "tools",
     "hooks",
+    "tools",
     "!tools/assets",
     ".editorconfig",
-    "tsconfig.json",
-    "svelte.config.js"
+    "references.d.ts",
+    "svelte.config.js",
+    "tsconfig.json"
   ],
   "keywords": [
     "nstudio",
@@ -45,7 +46,8 @@
     "svelte-native": "~0.9.5"
   },
   "devDependencies": {
-    "@nativescript/webpack": "5.0.0-beta.2",
+    "@nativescript/types": "~8.0.0",
+    "@nativescript/webpack": "5.0.0-beta.3",
     "svelte": "~3.35.0",
     "svelte-loader-hot": "~0.3.1",
     "svelte-native-preprocessor": "^0.2.0",

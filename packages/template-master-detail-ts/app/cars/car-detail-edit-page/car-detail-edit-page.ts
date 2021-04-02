@@ -46,7 +46,7 @@ export function onDoneButtonTap(args: EventData): void {
    * Comment out the code block below if you made the app editable.
    *************************************************************/
   const readOnlyMessage =
-    'Check out the "Firebase database setup" section in the readme file to make it editable.' // tslint:disable-line:max-line-length
+    'Check out the "Firebase database setup" section in the readme file to make it editable.'
   const queue = Promise.resolve()
   queue
     .then(() =>
