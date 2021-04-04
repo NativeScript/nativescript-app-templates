@@ -64,7 +64,7 @@ There is a single blank component located in:
 ## Get Help
 The NativeScript framework has a vibrant community that can help when you run into problems.
 
-Try [joining the NativeScript community Slack](https://app.slack.com/client/T0L97VCSY/). The Slack `#react` channel is a great place to get help troubleshooting problems, as well as connect with other NativeScript developers.
+Try [joining the NativeScript community Discord](https://nativescript.org/discord). The Discord `#react` channel is a great place to get help troubleshooting problems, as well as connect with other NativeScript developers.
 
 If you have found an issue with this template, please report the problem in this repository's [Issues page](https://github.com/shirakaba/tns-template-blank-react/issues).
 

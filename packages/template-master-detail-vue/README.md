@@ -67,7 +67,7 @@ It has 3 global style files that are located at the root of the app folder:
 ## Get Help
 The NativeScript framework has a vibrant community that can help when you run into problems.
 
-Try [joining the NativeScript community Slack](https://www.nativescript.org/slack-invitation-form). The Slack channel is a great place to get help troubleshooting problems, as well as connect with other NativeScript developers.
+Try [joining the NativeScript community Discord](https://nativescript.org/discord). The Discord channel is a great place to get help troubleshooting problems, as well as connect with other NativeScript developers.
 
 If you have found an issue with this template, please report the problem in the [NativeScript repository](https://github.com/NativeScript/NativeScript/issues).
 
