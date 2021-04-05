@@ -29,7 +29,7 @@ module.exports = function (hookArgs) {
   } catch (error) {
     console.log(error)
   }
-  
+
 
   function deleteFolderSync(folderPath) {
     if (fs.statSync(folderPath).isDirectory()) {
@@ -58,7 +58,7 @@ module.exports = function (hookArgs) {
     )
 
     // init webpack config
-    execSync(`node ${binPath} init`, {
+    execSync(`node "${binPath}" init`, {
       cwd: appRootFolder,
       stdio: 'inherit',
     })
