@@ -1,6 +1,7 @@
 <template>
     <Page class="page">
       <ActionBar class="action-bar">
+        <NavigationButton visibility="hidden"/>
         <GridLayout columns="50, *">
           <Label class="action-bar-title" text="Search" colSpan="2"/>
 
