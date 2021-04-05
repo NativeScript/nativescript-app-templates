@@ -1,5 +1,5 @@
 <template lang="html">
-    <TabView>
+    <TabView androidTabsPosition="bottom">
         <TabViewItem title="Home">
             <Frame id="items">
                 <Items/>

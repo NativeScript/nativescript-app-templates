@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "@nativescript/types": "~8.0.0",
-    "@nativescript/webpack": "5.0.0-beta.3",
+    "@nativescript/webpack": "5.0.0-beta.4",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.0-beta.5",
     "@types/react": "16.9.34",
     "patch-package": "^6.2.2",

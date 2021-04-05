@@ -1,4 +1,4 @@
-<TabView>
+<TabView androidTabsPosition="bottom">
     <TabViewItem title="Home" >
         <Frame defaultPage="home/home-items-page" />
     </TabViewItem>
