@@ -1,32 +1,18 @@
 <template>
     <Page class="page">
-        <ActionBar class="action-bar">
-            <!--
-            Use the NavigationButton as a side-drawer button in Android
-            because ActionItems are shown on the right side of the ActionBar
-            -->
-            <NavigationButton ios:visibility="collapsed" @tap="onDrawerButtonTap">
-              <Label class="fas" text.decode="&#xf0c9;"></Label>
-            </NavigationButton>
-            <!--
-            Use the ActionItem for IOS with position set to left. Using the
-            NavigationButton as a side-drawer button in iOS is not possible,
-            because its function is to always navigate back in the application.
-            -->
-            <ActionItem
-                        android:visibility="collapsed"
-                        @tap="onDrawerButtonTap"
-                        ios.position="left">
-              <Label class="fas" text.decode="&#xf0c9;"></Label>
-            </ActionItem>
-            <Label class="action-bar-title" text="Browse"/>
-        </ActionBar>
+      <ActionBar class="action-bar">
+        <NavigationButton visibility="hidden"/>
+        <GridLayout columns="50, *">
+          <Label class="action-bar-title" text="Browse" colSpan="2"/>
+
+          <Label class="fas" text.decode="&#xf0c9;" @tap="onDrawerButtonTap"/>
+        </GridLayout>
+      </ActionBar>
 
         <GridLayout class="page__content">
             <Label class="page__content-icon far" text.decode="&#xf1ea;"/>
             <Label class="page__content-placeholder" :text="message"/>
         </GridLayout>
-
     </Page>
 </template>
 

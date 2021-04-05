@@ -29,7 +29,7 @@ const editableProperties = [
 })
 export class CarService {
   private static cloneUpdateModel(car: Car): object {
-    return editableProperties.reduce((a, e) => ((a[e] = car[e]), a), {}) // tslint:disable-line:ban-comma-operator
+    return editableProperties.reduce((a, e) => ((a[e] = car[e]), a), {})
   }
 
   private _cars: Array<Car> = []

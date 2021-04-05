@@ -11,8 +11,9 @@
     "baseUrl": ".",
     "paths": {
       "~/*": ["app/*"],
-      "*": ["./node_modules/*"]
+      "@/*": ["app/*"]
     }
   },
+  "files": ["./references.d.ts"],
   "exclude": ["node_modules", "platforms"]
 }

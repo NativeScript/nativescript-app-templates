@@ -11,8 +11,10 @@
     "lib": ["es6", "dom"],
     "baseUrl": ".",
     "paths": {
-      "~/*": ["app/*"]
+      "~/*": ["app/*"],
+      "@/*": ["app/*"]
     }
   },
+  "files": ["./references.d.ts"],
   "exclude": ["node_modules", "platforms"]
 }

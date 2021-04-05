@@ -7,7 +7,6 @@ export class ListSelectorViewModel extends Observable {
   private _tag: string
   private _selectedIndex: number
 
-  // tslint:disable-next-line:ban-types
   constructor(context: any, private _closeCallback: Function) {
     super()
 

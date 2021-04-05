@@ -3,7 +3,7 @@
   "main": "app/app.ts",
   "displayName": "Blank",
   "templateType": "App template",
-  "version": "8.0.2",
+  "version": "8.0.3",
   "description": "Blank template for Vanilla NativeScript apps using TypeScript",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -13,10 +13,11 @@
   "files": [
     "app",
     "App_Resources",
-    "tools",
     "hooks",
+    "tools",
     "!tools/assets",
     ".editorconfig",
+    "references.d.ts",
     "tsconfig.json"
   ],
   "keywords": [
@@ -41,7 +42,8 @@
     "@nativescript/theme": "~3.0.1"
   },
   "devDependencies": {
-    "@nativescript/webpack": "5.0.0-beta.2",
+    "@nativescript/types": "~8.0.0",
+    "@nativescript/webpack": "5.0.0-beta.4",
     "typescript": "~4.0.0"
   }
 }

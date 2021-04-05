@@ -1,8 +1,7 @@
 <template>
     <Page>
-
         <ActionBar>
-            <NavigationButton @tap="$navigateBack" android.systemIcon="ic_menu_back"/>
+            <NavigationButton @tap="$navigateBack()" android.systemIcon="ic_menu_back"/>
             <Label :text="item.name"></Label>
         </ActionBar>
 

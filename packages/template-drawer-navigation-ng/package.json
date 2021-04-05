@@ -3,7 +3,7 @@
   "main": "src/main.ts",
   "displayName": "Navigation Drawer",
   "templateType": "App template",
-  "version": "8.0.2",
+  "version": "8.0.3",
   "description": "Side navigation template",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -11,12 +11,13 @@
     "access": "public"
   },
   "files": [
-    "src",
     "App_Resources",
-    "tools",
     "hooks",
+    "src",
+    "tools",
     "!tools/assets",
     ".editorconfig",
+    "references.d.ts",
     "tsconfig.json"
   ],
   "keywords": [
@@ -39,9 +40,6 @@
   "bugs": {
     "url": "https://github.com/NativeScript/NativeScript/issues"
   },
-  "scripts": {
-    "lint": "tslint \"src/**/*.ts\""
-  },
   "dependencies": {
     "@angular/animations": "~11.2.7",
     "@angular/common": "~11.2.7",
@@ -56,16 +54,14 @@
     "@nativescript/theme": "~3.0.1",
     "nativescript-ui-sidedrawer": "~9.0.3",
     "reflect-metadata": "~0.1.13",
-    "rxjs": "^6.6.7",
+    "rxjs": "~6.6.7",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular/compiler-cli": "~11.2.7",
-    "@nativescript/webpack": "5.0.0-beta.2",
+    "@nativescript/types": "~8.0.0",
+    "@nativescript/webpack": "5.0.0-beta.4",
     "@ngtools/webpack": "~11.2.6",
-    "codelyzer": "~6.0.0",
-    "sass": "^1.32.8",
-    "tslint": "~6.1.3",
     "typescript": "~4.0.0"
   }
 }
