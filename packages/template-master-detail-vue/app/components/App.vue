@@ -6,6 +6,7 @@
 
 <script>
 import CarList from './CarList'
+import db from "~/car-rental-export-public.json"
 
 export default {
   components: {
@@ -14,7 +15,7 @@ export default {
 
   data() {
     return {
-      cars: [],
+      cars: Object.values(db.cars),
     }
   },
 }
