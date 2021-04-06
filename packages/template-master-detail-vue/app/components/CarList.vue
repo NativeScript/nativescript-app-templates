@@ -4,7 +4,7 @@
             <Label horizontalAlignment="center" text="Car List"/>
         </ActionBar>
 
-        <RadListView @itemTap="onItemTap" class="cars-list" for="item in carList" v-if="!isLoading">
+        <RadListView @itemTap="onItemTap" class="cars-list" for="item in cars" v-if="!isLoading">
             <ListViewLinearLayout scrollDirection="Vertical" v-tkListViewLayout/>
             <v-template>
                 <StackLayout class="cars-list__item">
@@ -56,13 +56,13 @@
   import CarDetails from "./CarDetails";
 
   export default {
-    computed: {
-      carList() {
-        return this.$root.cars;
-      },
+    props: {
+      cars: Array
+    },
 
+    computed: {
       isLoading() {
-        return !this.carList.length;
+        return !this.cars.length;
       }
     },
 

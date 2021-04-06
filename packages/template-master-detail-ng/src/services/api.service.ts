@@ -1,6 +1,9 @@
 import db from "./car-rental-export-public.json"
 
 class ApiService {
+
+  private db: any;
+
   constructor() {
     this.db = db;
   }
