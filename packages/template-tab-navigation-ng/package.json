@@ -3,7 +3,7 @@
   "main": "src/main.ts",
   "displayName": "Tabs",
   "templateType": "App template",
-  "version": "8.0.4",
+  "version": "8.0.5",
   "description": "Tabbed interface template",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -59,7 +59,7 @@
   "devDependencies": {
     "@angular/compiler-cli": "~11.2.7",
     "@nativescript/types": "~8.0.0",
-    "@nativescript/webpack": "5.0.0-beta.4",
+    "@nativescript/webpack": "beta",
     "@ngtools/webpack": "~11.2.6",
     "typescript": "~4.0.0"
   }
