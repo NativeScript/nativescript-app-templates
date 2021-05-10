@@ -15,6 +15,7 @@
       "@/*": ["app/*"]
     }
   },
+  "include": ["app/**/*"],
   "files": ["./references.d.ts"],
   "exclude": ["node_modules", "platforms"]
 }
