@@ -2,7 +2,7 @@
   "name": "@nativescript/template-tab-navigation-vue",
   "main": "app/app.js",
   "displayName": "Tabs",
-  "version": "8.0.4",
+  "version": "8.0.5",
   "description": "Tabbed interface template using Vue",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
