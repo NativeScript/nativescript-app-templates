@@ -41,17 +41,17 @@
     "url": "https://github.com/NativeScript/NativeScript/issues"
   },
   "dependencies": {
-    "@nativescript/core": "~8.0.0",
+    "@nativescript/core": "~8.1.1",
     "@nativescript/theme": "~3.0.1",
     "svelte-native": "~0.9.5"
   },
   "devDependencies": {
-    "@nativescript/types": "~8.0.0",
-    "@nativescript/webpack": "beta",
+    "@nativescript/types": "~8.1.1",
+    "@nativescript/webpack": "~5.0.0",
     "svelte": "~3.35.0",
     "svelte-loader-hot": "~0.3.1",
     "svelte-native-preprocessor": "^0.2.0",
     "svelte-preprocess": "^4.7.0",
-    "typescript": "~4.0.0"
+    "typescript": "~4.3.5"
   }
 }

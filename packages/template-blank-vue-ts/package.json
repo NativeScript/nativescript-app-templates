@@ -41,16 +41,16 @@
     "category-general"
   ],
   "dependencies": {
-    "@nativescript/core": "~8.0.0",
+    "@nativescript/core": "~8.1.1",
     "@nativescript/theme": "~3.0.1",
     "nativescript-vue": "~2.9.0"
   },
   "devDependencies": {
-    "@nativescript/types": "~8.0.0",
-    "@nativescript/webpack": "beta",
+    "@nativescript/types": "~8.1.1",
+    "@nativescript/webpack": "~5.0.0",
     "@types/node": "~14.6.2",
     "nativescript-vue-template-compiler": "~2.9.0",
-    "typescript": "~4.0.0",
+    "typescript": "~4.3.5",
     "vue": "~2.6.12"
   }
 }

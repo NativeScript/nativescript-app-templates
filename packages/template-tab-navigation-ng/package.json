@@ -50,7 +50,7 @@
     "@angular/platform-browser-dynamic": "~11.2.7",
     "@angular/router": "~11.2.7",
     "@nativescript/angular": "~11.8.0",
-    "@nativescript/core": "~8.0.0",
+    "@nativescript/core": "~8.1.1",
     "@nativescript/theme": "~3.0.1",
     "reflect-metadata": "~0.1.13",
     "rxjs": "~6.6.7",
@@ -58,9 +58,9 @@
   },
   "devDependencies": {
     "@angular/compiler-cli": "~11.2.7",
-    "@nativescript/types": "~8.0.0",
-    "@nativescript/webpack": "beta",
+    "@nativescript/types": "~8.1.1",
+    "@nativescript/webpack": "~5.0.0",
     "@ngtools/webpack": "~11.2.6",
-    "typescript": "~4.0.0"
+    "typescript": "~4.3.5"
   }
 }
