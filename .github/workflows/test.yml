@@ -31,7 +31,7 @@ jobs:
           - template-blank-vue             
           - template-hello-world           
           - template-master-detail-vue
-        node: [12, 15, 16]
+        node: [16]
 
     steps:
       - uses: actions/checkout@v2
