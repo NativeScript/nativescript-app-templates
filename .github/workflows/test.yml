@@ -46,7 +46,7 @@ jobs:
 
       - name: Setup
         run: |
-          npm i -g nativescript --ignore-scripts
+          npm i -g nativescript@next --ignore-scripts
           ns usage-reporting disable
           ns error-reporting disable
 
