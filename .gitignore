@@ -1,6 +1,5 @@
 lerna-debug.log
 npm-debug.log
-package-lock.json
 .DS_Store
 
 packages/**/App_Resources
