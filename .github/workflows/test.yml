@@ -11,27 +11,27 @@ jobs:
     strategy:
       matrix:
         template:
-          - template-blank                 
-          - template-blank-vue-ts          
-          - template-hello-world-ng        
+          - template-blank
+          - template-blank-vue-ts
+          - template-hello-world-ng
           - template-tab-navigation
-          - template-blank-ng              
-          - template-drawer-navigation     
-          - template-hello-world-ts        
+          - template-blank-ng
+          - template-drawer-navigation
+          - template-hello-world-ts
           - template-tab-navigation-ng
-          - template-blank-react           
-          - template-drawer-navigation-ng  
-          - template-master-detail         
+          - template-blank-react
+          - template-drawer-navigation-ng
+          - template-master-detail
           - template-tab-navigation-ts
-          - template-blank-svelte          
-          - template-drawer-navigation-ts  
-          - template-master-detail-ng      
+          - template-blank-svelte
+          - template-drawer-navigation-ts
+          - template-master-detail-ng
           - template-tab-navigation-vue
-          - template-blank-ts              
-          - template-drawer-navigation-vue 
+          - template-blank-ts
+          - template-drawer-navigation-vue
           - template-master-detail-ts
-          - template-blank-vue             
-          - template-hello-world           
+          - template-blank-vue
+          - template-hello-world
           - template-master-detail-vue
         node: [16]
 
@@ -40,6 +40,16 @@ jobs:
         with:
           path: 'templates'
 
+      - name: Install Python
+        uses: actions/setup-python@v1
+
+      - name: Install Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+          cache: 'npm'
+          cache-dependency-path: templates/package-lock.json
+
       - name: Cache Gradle
         uses: actions/cache@v2
         with:
@@ -47,21 +57,12 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-      
+
       - name: Cache Python
         uses: actions/cache@v2
         with:
           key: ${{ runner.os }}-python-cache-${{ env.pythonLocation }}-${{ hashFiles('**/package.json') }}
           path: ${{ env.pythonLocation }}
-
-      - uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node }}
-          cache: 'npm'
-          cache-dependency-path: templates/package-lock.json
-
-      - name: Install Python
-        uses: actions/setup-python@v1
 
       - name: Setup
         working-directory: templates
@@ -77,12 +78,12 @@ jobs:
 
       - name: Create app from template
         env:
-          TEMPLATE_NAME: ${{ matrix.template }} 
+          TEMPLATE_NAME: ${{ matrix.template }}
         run: |
           ns create myApp --template="$(pwd)/templates/packages/$TEMPLATE_NAME"
           cd myApp
           npm install
-      
+
       - name: Test iOS Build
         working-directory: myApp
         run: |
