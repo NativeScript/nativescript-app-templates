@@ -42,6 +42,7 @@ jobs:
 
       - uses: actions/cache@v2
         with:
+          key: ${{ runner.os }}-gradle-cache-${{ hashFiles('**/package.json') }}
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
