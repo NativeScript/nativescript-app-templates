@@ -44,13 +44,18 @@ jobs:
           cache: 'npm'
           cache-dependency-path: templates/package-lock.json
 
+      - name: Install Python
+        uses: actions/setup-python@v1
+
       - name: Setup
+        working-directory: templates
         run: |
+          python -m pip install --upgrade pip six
           npm i -g nativescript@next --ignore-scripts
           ns usage-reporting disable
           ns error-reporting disable
+          ns -v
 
-          cd templates
           npm install
           npm run prepare-templates
 
