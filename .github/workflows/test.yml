@@ -40,6 +40,12 @@ jobs:
         with:
           path: 'templates'
 
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node }}
