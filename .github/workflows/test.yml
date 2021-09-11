@@ -40,12 +40,19 @@ jobs:
         with:
           path: 'templates'
 
-      - uses: actions/cache@v2
+      - name: Cache Gradle
+        uses: actions/cache@v2
         with:
           key: ${{ runner.os }}-gradle-cache-${{ hashFiles('**/package.json') }}
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
+      
+      - name: Cache Python
+        uses: actions/cache@v2
+        with:
+          key: ${{ runner.os }}-python-cache-${{ env.pythonLocation }}-${{ hashFiles('**/package.json') }}
+          path: ${{ env.pythonLocation }}
 
       - uses: actions/setup-node@v2
         with:
