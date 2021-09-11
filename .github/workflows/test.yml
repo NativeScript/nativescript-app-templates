@@ -73,6 +73,8 @@ jobs:
           TEMPLATE_NAME: ${{ matrix.template }} 
         run: |
           ns create myApp --template="$(pwd)/templates/packages/$TEMPLATE_NAME"
+          cd myApp
+          npm install
       
       - name: Test iOS Build
         working-directory: myApp
