@@ -30,7 +30,6 @@ module.exports = function (hookArgs) {
     console.log(error)
   }
 
-
   function deleteFolderSync(folderPath) {
     if (fs.statSync(folderPath).isDirectory()) {
       fs.readdirSync(folderPath).forEach((file) => {

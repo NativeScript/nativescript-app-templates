@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "lerna": "lerna",
-    "prettier": "prettier --write packages/**/*.{js,ts,html,json,css,scss}",
+    "prettier": "prettier --check --write packages/**/*.{js,ts,html,json,css,scss}",
     "prepare-templates": "node prepareTemplates.js",
     "publish.all": "npm run prepare-templates && lerna exec --no-bail --stream --concurrency 1 -- \"npm publish\"",
     "prepare": "husky install"

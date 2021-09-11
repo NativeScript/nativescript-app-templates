@@ -49,13 +49,13 @@
     "@angular/platform-browser": "^12.2.0",
     "@angular/platform-browser-dynamic": "^12.2.0",
     "@angular/router": "^12.2.0",
-    "@nativescript/angular": "~11.8.0",
+    "@nativescript/angular": "^12.2.0",
     "@nativescript/core": "~8.1.1",
-    "@nativescript/imagepicker": "~1.0.3",
+    "@nativescript/imagepicker": "~1.0.5",
     "@nativescript/theme": "~3.0.1",
-    "nativescript-ui-listview": "~9.1.0",
+    "nativescript-ui-listview": "~10.0.0",
     "reflect-metadata": "~0.1.13",
-    "rxjs": "~6.6.7",
+    "rxjs": "~7.3.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
