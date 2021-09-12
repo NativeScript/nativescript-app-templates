@@ -3,7 +3,7 @@
   "main": "app/app.ts",
   "displayName": "Master-Detail",
   "templateType": "App template",
-  "version": "8.0.1",
+  "version": "8.1.0",
   "description": "Master-detail interface to display collection of items from json collection and inspect and edit selected item properties.",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
