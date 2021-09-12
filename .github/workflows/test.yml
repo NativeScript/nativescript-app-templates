@@ -1,0 +1,95 @@
+name: '@nativescript/template-* -> test'
+
+on: push
+
+jobs:
+  test:
+    runs-on: macos-latest
+
+    name: ${{ matrix.template }} (node ${{ matrix.node }})
+
+    strategy:
+      matrix:
+        template:
+          - template-blank
+          - template-blank-vue-ts
+          - template-hello-world-ng
+          - template-tab-navigation
+          - template-blank-ng
+          - template-drawer-navigation
+          - template-hello-world-ts
+          - template-tab-navigation-ng
+          - template-blank-react
+          - template-drawer-navigation-ng
+          - template-master-detail
+          - template-tab-navigation-ts
+          - template-blank-svelte
+          - template-drawer-navigation-ts
+          - template-master-detail-ng
+          - template-tab-navigation-vue
+          - template-blank-ts
+          - template-drawer-navigation-vue
+          - template-master-detail-ts
+          - template-blank-vue
+          - template-hello-world
+          - template-master-detail-vue
+        node: [16]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          path: 'templates'
+
+      - name: Install Python
+        uses: actions/setup-python@v1
+
+      - name: Install Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+          cache: 'npm'
+          cache-dependency-path: templates/package-lock.json
+
+      - name: Cache Gradle
+        uses: actions/cache@v2
+        with:
+          key: ${{ runner.os }}-gradle-cache-${{ hashFiles('**/package-lock.json') }}
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+
+      - name: Cache Python
+        uses: actions/cache@v2
+        with:
+          key: ${{ runner.os }}-python-cache-${{ env.pythonLocation }}-${{ hashFiles('**/package-lock.json') }}
+          path: ${{ env.pythonLocation }}
+
+      - name: Setup
+        working-directory: templates
+        run: |
+          python -m pip install --upgrade pip six
+          npm i -g nativescript@next --ignore-scripts
+          ns usage-reporting disable
+          ns error-reporting disable
+          ns -v
+
+          npm install
+          npm run prepare-templates
+
+      - name: Create app from template
+        env:
+          TEMPLATE_NAME: ${{ matrix.template }}
+        run: |
+          ns create myApp --template="$(pwd)/templates/packages/$TEMPLATE_NAME"
+          cd myApp
+          npm install
+
+      - name: Test iOS Build
+        working-directory: myApp
+        run: |
+          ns build ios
+
+      - name: Test Android Build
+        working-directory: myApp
+        run: |
+          ns build android
