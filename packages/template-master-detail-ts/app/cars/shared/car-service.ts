@@ -86,6 +86,6 @@ export class CarService {
   }
 
   private handleErrors(error: Response): Observable<any> {
-    return Observable.throw(error)
+    return throwError(error)
   }
 }

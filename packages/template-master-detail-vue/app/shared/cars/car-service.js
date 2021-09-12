@@ -1,6 +1,7 @@
-import ApiService  from "~/services/api.service";
+import { throwError } from 'rxjs'
 
 import { Car } from './car-model'
+import ApiService  from "~/services/api.service";
 
 const editableProperties = [
   'doors',
@@ -56,7 +57,7 @@ function CarService() {
   }
 
   this._handleErrors = function (error) {
-    return Observable.throw(error)
+    return throwError(error)
   }
 }
 
