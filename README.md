@@ -22,7 +22,11 @@ We love PRs, and accept them gladly. Feel free to propose changes and new ideas.
 
 ## Releasing
 
-This monorepo uses Lerna to manage packages and their releases.
+The templates are automatically released (CI) once they are merged to the main branch as long as the `package.json` version has been updated. Manual releases are not recommended, just bumping the version & pushing to the main branch is enough. 
+
+It is recommended to only bump the patch version when making changes - minor/major versions should generally be kep in sync with the NativeScript version (CLI).
+
+<!-- This monorepo uses Lerna to manage packages and their releases.
 
 Install the dependencies in the root of the repo with
 
@@ -68,3 +72,4 @@ $ npx lerna publish
 ```
 
 will also prompt the new version interactively and then publish the package to npm.
+ -->
