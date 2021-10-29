@@ -1,24 +1,26 @@
 {
   "compilerOptions": {
-    "module": "esnext",
+    "strict": true,
     "target": "es2017",
+    "module": "esnext",
     "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": false,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "noEmitHelpers": true,
-    "noEmitOnError": true,
-    "skipLibCheck": true,
     "lib": ["dom", "es2017"],
-    "types": ["svelte"],
+    "sourceMap": true,
+    "noEmitHelpers": true,
+    "importHelpers": true,
     "baseUrl": ".",
     "paths": {
       "~/*": ["app/*"],
       "@/*": ["app/*"]
-    }
+    },
+    "typeRoots": ["types"],
+    "types": ["node"],
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true
   },
-  "include": ["app/**/*"],
-  "files": ["./references.d.ts"],
+  "include": ["app", "types"],
   "exclude": ["node_modules", "platforms"]
 }
