@@ -3,7 +3,7 @@
   "main": "app/app.ts",
   "displayName": "Blank Svelte",
   "templateType": "App template",
-  "version": "8.1.0",
+  "version": "8.1.1",
   "description": "Blank template for NativeScript apps using Svelte",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -13,11 +13,11 @@
   "files": [
     "app",
     "App_Resources",
-    "types",
     "hooks",
+    "types",
     "tools",
     "!tools/assets",
-    ".gitignore",
+    ".editorconfig",
     "svelte.config.js",
     "tsconfig.json"
   ],
