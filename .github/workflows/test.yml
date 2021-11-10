@@ -75,6 +75,11 @@ jobs:
 
           npm install
           npm run prepare-templates
+          
+      - name: "Uninstall build-tools@31.0.0"
+        run: |
+          SDKMANAGER=$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager
+          echo y | $SDKMANAGER --uninstall "build-tools;31.0.0"
 
       - name: Create app from template
         env:
