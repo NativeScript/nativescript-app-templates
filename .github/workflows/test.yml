@@ -97,7 +97,7 @@ jobs:
       - name: Test Android Build
         working-directory: myApp
         run: |
-          cat cat <<EOT > _fix_ndk_version.js
+          cat <<EOT > _fix_ndk_version.js
             const fs = require("fs");
             const path = require("path");
 
