@@ -12,4 +12,20 @@ The imported CSS rules must precede all other types of rules.
 */
 @import '@nativescript/theme/css/core.css';
 @import '@nativescript/theme/css/default.css';
-@import './font-awesome.css';
+
+/* Font icon class */
+.fab {
+  font-family: 'Font Awesome 5 Brands', 'fa-brands-400';
+  font-weight: 400;
+}
+
+.fas {
+  font-family: 'Font Awesome 5 Free', 'fa-solid-900';
+  font-weight: 900;
+}
+
+.far {
+  font-family: 'Font Awesome 5 Free', 'fa-regular-400';
+  font-weight: 400;
+}
+
