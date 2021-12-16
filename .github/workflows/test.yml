@@ -53,7 +53,7 @@ jobs:
       - name: Cache Gradle
         uses: actions/cache@v2
         with:
-          key: ${{ runner.os }}-gradle-cache-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-gradle-cache-${{ hashFiles('**/package-lock.json') }}-v1
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
