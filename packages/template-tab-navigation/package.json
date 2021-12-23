@@ -3,7 +3,7 @@
   "main": "app/app.js",
   "displayName": "Tabs",
   "templateType": "App template",
-  "version": "8.1.0",
+  "version": "8.1.1",
   "description": "Tabbed interface template",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",

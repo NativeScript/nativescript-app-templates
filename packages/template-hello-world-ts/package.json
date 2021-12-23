@@ -1,7 +1,7 @@
 {
   "name": "@nativescript/template-hello-world-ts",
   "main": "app/app.ts",
-  "version": "8.1.0",
+  "version": "8.1.1",
   "author": "NativeScript Team <oss@nativescript.org>",
   "description": "Nativescript hello-world-ts project template",
   "license": "Apache-2.0",
