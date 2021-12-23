@@ -45,7 +45,7 @@
     "@nativescript/theme": "~3.0.1",
     "nativescript-ui-sidedrawer": "~10.0.1",
     "nativescript-vue": "~2.9.0",
-    "rxjs": "~7.3.0"
+    "rxjs": "~7.4.0"
   },
   "devDependencies": {
     "@nativescript/webpack": "~5.0.0",

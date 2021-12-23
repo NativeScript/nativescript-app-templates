@@ -3,7 +3,7 @@
   "main": "src/main.ts",
   "displayName": "Blank",
   "templateType": "App template",
-  "version": "8.1.1",
+  "version": "8.1.2",
   "description": "Blank template for NativeScript apps using Angular",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -39,25 +39,26 @@
     "url": "https://github.com/NativeScript/NativeScript/issues"
   },
   "dependencies": {
-    "@angular/animations": "^12.2.0",
-    "@angular/common": "^12.2.0",
-    "@angular/compiler": "^12.2.0",
-    "@angular/core": "^12.2.0",
-    "@angular/forms": "^12.2.0",
-    "@angular/platform-browser": "^12.2.0",
-    "@angular/platform-browser-dynamic": "^12.2.0",
-    "@angular/router": "^12.2.0",
-    "@nativescript/angular": "^12.2.0",
+    "@angular/animations": "~13.1.1",
+    "@angular/common": "~13.1.1",
+    "@angular/compiler": "~13.1.1",
+    "@angular/core": "~13.1.1",
+    "@angular/forms": "~13.1.1",
+    "@angular/platform-browser": "~13.1.1",
+    "@angular/platform-browser-dynamic": "~13.1.1",
+    "@angular/router": "~13.1.1",
+    "@nativescript/angular": "^13.0.0",
     "@nativescript/core": "~8.1.1",
     "@nativescript/theme": "~3.0.1",
-    "rxjs": "~7.3.0",
+    "rxjs": "~7.4.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular/compiler-cli": "^12.2.0",
+    "@angular-devkit/build-angular": "~13.1.1",
+    "@angular/compiler-cli": "~13.1.1",
     "@nativescript/types": "~8.1.1",
     "@nativescript/webpack": "~5.0.0",
-    "@ngtools/webpack": "^12.2.0",
-    "typescript": "~4.3.5"
+    "@ngtools/webpack": "~13.1.1",
+    "typescript": "~4.4.4"
   }
 }
