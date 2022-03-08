@@ -49,7 +49,7 @@
   },
   "devDependencies": {
     "@nativescript/types": "~8.2.0",
-    "@nativescript/webpack": "~5.0.5",
+    "@nativescript/webpack": "~5.0.6",
     "@types/react": "16.9.34",
     "patch-package": "~6.4.7",
     "typescript": "~4.5.5"
