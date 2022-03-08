@@ -43,6 +43,11 @@ jobs:
       - name: Install Python
         uses: actions/setup-python@v1
 
+      - uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
       - name: Install Node
         uses: actions/setup-node@v2
         with:
@@ -76,10 +81,10 @@ jobs:
           npm install
           npm run prepare-templates
           
-      - name: "Uninstall build-tools@31.0.0"
-        run: |
-          SDKMANAGER=$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager
-          echo y | $SDKMANAGER --uninstall "build-tools;31.0.0"
+      # - name: "Uninstall build-tools@31.0.0"
+      #   run: |
+      #     SDKMANAGER=$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager
+      #     echo y | $SDKMANAGER --uninstall "build-tools;31.0.0"
 
       - name: Create app from template
         env:
@@ -97,22 +102,22 @@ jobs:
       - name: Test Android Build
         working-directory: myApp
         run: |
-          cat <<EOT > _fix_ndk_version.js
-            const fs = require('fs');
-            const path = require('path');
+          # cat <<EOT > _fix_ndk_version.js
+          #   const fs = require('fs');
+          #   const path = require('path');
 
-            const appGradlePath = path.resolve(
-              __dirname,
-              'App_Resources/Android/app.gradle'
-            );
-            let contents = fs.readFileSync(appGradlePath);
-            contents = contents.toString().replace(
-              'defaultConfig {',
-              'ndkVersion "22.1.7171670"\n  defaultConfig {'
-            );
-            fs.writeFileSync(appGradlePath, contents);
-          EOT
-
-          node _fix_ndk_version.js
+          #   const appGradlePath = path.resolve(
+          #     __dirname,
+          #     'App_Resources/Android/app.gradle'
+          #   );
+          #   let contents = fs.readFileSync(appGradlePath);
+          #   contents = contents.toString().replace(
+          #     'defaultConfig {',
+          #     'ndkVersion "22.1.7171670"\n  defaultConfig {'
+          #   );
+          #   fs.writeFileSync(appGradlePath, contents);
+          # EOT
+          # 
+          # node _fix_ndk_version.js
 
           ns build android
