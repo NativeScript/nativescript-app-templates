@@ -1,17 +1,24 @@
-// Add your native dependencies here:
-// dependencies {
-//	 implementation 'androidx.multidex:multidex:2.0.1'
-// }
-
-// If you want to add something to be applied before applying plugins' include.gradle files
-// e.g. project.ext.googlePlayServicesVersion = "15.0.1"
-// create a file named before-plugins.gradle in the current directory and place it there
+// You can add your native dependencies here
+dependencies {
+//  implementation 'androidx.multidex:multidex:2.0.1'
+}
 
 android {
+  // compileSdkVersion 32
+  // buildToolsVersion "32.0.0"
+  // ndkVersion ""
+
   defaultConfig {
     minSdkVersion 17
+    // targetSdkVersion 32
+
+    // Version Information
+    versionCode 1
+    versionName "1.0.0"
+    
     generatedDensities = []
   }
+
   aaptOptions {
     additionalParameters "--no-version-vectors"
   }
