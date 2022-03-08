@@ -12,8 +12,4 @@ project.ext {
 
   // useKotlin = true
   // kotlinVersion = "1.6.0"
-
-  // compileSdk = 32
-  // targetSdk = 32
-  // buildToolsVersion = "32.0.0"
 }
