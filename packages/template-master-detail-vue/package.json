@@ -43,7 +43,7 @@
     "@nativescript/core": "~8.3.0",
     "@nativescript/imagepicker": "~1.0.6",
     "@nativescript/theme": "~3.0.2",
-    "nativescript-ui-listview": "~10.0.2",
+    "nativescript-ui-listview": "~10.2.0",
     "nativescript-vue": "~2.9.0"
   },
   "devDependencies": {

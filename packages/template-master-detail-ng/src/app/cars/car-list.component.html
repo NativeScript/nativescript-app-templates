@@ -1,17 +1,10 @@
 <ActionBar>
-  <!-- Should remove the navigation button -->
   <NavigationButton ios:visibility="collapsed"></NavigationButton>
   <Label text="Browse" horizontalAlignment="center"></Label>
 </ActionBar>
 
 <GridLayout>
   <RadListView [items]="cars" (itemTap)="onCarItemTap($event)" class="cars-list">
-    <!--
-    RadListView is a UI component part of the Progress NativeScript UI set of components.
-    Learn more about the RadListView UI component and how it can be customized in this documentation article:
-    https://docs.nativescript.org/angular/ui/professional-ui-components/ng-ListView/getting-started
-    This component is used to display the master list in the master-detail structure.
-    -->
     <ng-template tkListItemTemplate let-car="item">
       <StackLayout class="cars-list__item">
         <GridLayout rows="*, *, *" columns="*, *" class="cars-list__item-content">
@@ -35,14 +28,12 @@
           ></Image>
           <StackLayout row="2" col="1" verticalAlignment="center">
             <Label class="p-b-10">
-              <!-- set fontFamily="system" to workaround "Service exited due to Segmentation fault: 11" error -->
               <FormattedString ios:fontFamily="system">
                 <Span text="&#xf1b9;    " class="fas cars-list__item-icon"></Span>
                 <Span [text]="car?.class"></Span>
               </FormattedString>
             </Label>
             <Label class="p-b-10">
-              <!-- set fontFamily="system" to workaround "Service exited due to Segmentation fault: 11" error -->
               <FormattedString ios:fontFamily="system">
                 <Span text="&#xf085;   " class="fas cars-list__item-icon"></Span>
                 <Span [text]="car?.transmission"></Span>
@@ -50,7 +41,6 @@
               </FormattedString>
             </Label>
             <Label>
-              <!-- set fontFamily="system" to workaround "Service exited due to Segmentation fault: 11" error -->
               <FormattedString ios:fontFamily="system">
                 <Span text="&#xf2dc;    " class="fas cars-list__item-icon"></Span>
                 <Span [text]="car?.hasAC ? 'Yes' : 'No'"></Span>

@@ -1,8 +1,3 @@
-<!--
-RadSideDrawer is a UI component part of the Progress NativeScript UI set of components.
-Learn more about the RadSideDrawer UI component and how it can be customized in this documentation article:
-https://docs.nativescript.org/ui/professional-ui-components/SideDrawer/getting-started
--->
 <nsDrawer:RadSideDrawer
   id="sideDrawer"
   xmlns:nsDrawer="nativescript-ui-sidedrawer"
