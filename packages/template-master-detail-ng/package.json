@@ -3,7 +3,7 @@
   "main": "src/main.ts",
   "displayName": "Master-Detail with Firebase",
   "templateType": "App template",
-  "version": "8.2.3",
+  "version": "8.2.4",
   "description": "Master-detail interface to display collection of items from json collection and inspect and edit selected item properties. ",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -53,7 +53,7 @@
     "@nativescript/core": "~8.3.0",
     "@nativescript/imagepicker": "~1.0.6",
     "@nativescript/theme": "~3.0.2",
-    "nativescript-ui-listview": "~10.1.0",
+    "nativescript-ui-listview": "~10.2.0",
     "rxjs": "~7.5.0",
     "zone.js": "~0.11.5"
   },

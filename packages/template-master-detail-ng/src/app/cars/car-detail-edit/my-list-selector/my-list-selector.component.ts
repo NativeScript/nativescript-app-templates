@@ -8,12 +8,6 @@ import { MyListSelectorModalViewComponent } from './my-list-selector-modal-view.
 
 const capitalizeFirstLetter = (s) => s.charAt(0).toUpperCase() + s.slice(1)
 
-/* ***********************************************************
- * The MyListSelector custom component uses a {N} modal page to let the user select and option
- * from a list. You can also check out the my-list-selector-modal-view.component.ts to see the
- * contents of the modal page. Learn more about modal pages in this documentation article:
- * https://docs.nativescript.org/angular/code-samples/modal-page
- *************************************************************/
 @Component({
   providers: [ModalDialogService],
   selector: 'MyListSelector',
@@ -37,7 +31,6 @@ export class MyListSelectorComponent implements OnInit {
   ngOnInit(): void {
     let carId = ''
 
-    // use switchMap to get the latest activatedRoute instance
     this._pageRoute.activatedRoute
       .pipe(switchMap((activatedRoute) => activatedRoute.params))
       .forEach((params) => {
