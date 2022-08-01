@@ -2,7 +2,7 @@ name: '@nativescript/template-* -> npm'
 
 on:
   push:
-    branches: [ 'master' ]
+    branches: [ 'main' ]
 
 env:
   NPM_TAG: 'next'
