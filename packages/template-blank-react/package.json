@@ -44,7 +44,7 @@
     "@nativescript/core": "~8.3.0",
     "@react-navigation/core": "^5.15.3",
     "react": "~16.13.1",
-    "react-nativescript": "^3.0.0-beta.1",
+    "react-nativescript": "^3.0.0-beta.3",
     "react-nativescript-navigation": "3.0.0-beta.2"
   },
   "devDependencies": {
