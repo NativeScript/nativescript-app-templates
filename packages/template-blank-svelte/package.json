@@ -18,6 +18,7 @@
     "tools",
     "!tools/assets",
     ".editorconfig",
+    ".npmrc",
     "svelte.config.js",
     "tsconfig.json"
   ],

@@ -29,6 +29,7 @@
     "tools",
     "!tools/assets",
     ".editorconfig",
+    ".npmrc",
     "references.d.ts",
     "tsconfig.json"
   ],
