@@ -4,7 +4,7 @@ on: push
 
 jobs:
   test:
-    runs-on: macos-latest
+    runs-on: macos-12
 
     name: ${{ matrix.template }} (node ${{ matrix.node }})
 
@@ -80,7 +80,7 @@ jobs:
 
           npm install
           npm run prepare-templates
-          
+
       # - name: "Uninstall build-tools@31.0.0"
       #   run: |
       #     SDKMANAGER=$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager
@@ -117,7 +117,7 @@ jobs:
           #   );
           #   fs.writeFileSync(appGradlePath, contents);
           # EOT
-          # 
+          #
           # node _fix_ndk_version.js
 
           ns build android
