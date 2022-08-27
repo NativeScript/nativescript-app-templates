@@ -1,7 +1,7 @@
 {
   "name": "@nativescript/template-hello-world-ng",
   "main": "./src/main.ts",
-  "version": "8.3.0",
+  "version": "8.3.1",
   "author": "NativeScript Team <oss@nativescript.org>",
   "description": "NativeScript Angular Hello World template",
   "license": "Apache-2.0",
@@ -33,26 +33,26 @@
     "url": "https://github.com/NativeScript/NativeScript/issues"
   },
   "dependencies": {
-    "@angular/animations": "~14.1.0",
-    "@angular/common": "~14.1.0",
-    "@angular/compiler": "~14.1.0",
-    "@angular/core": "~14.1.0",
-    "@angular/forms": "~14.1.0",
-    "@angular/platform-browser": "~14.1.0",
-    "@angular/platform-browser-dynamic": "~14.1.0",
-    "@angular/router": "~14.1.0",
-    "@nativescript/angular": "^14.0.0",
+    "@angular/animations": "~14.2.0",
+    "@angular/common": "~14.2.0",
+    "@angular/compiler": "~14.2.0",
+    "@angular/core": "~14.2.0",
+    "@angular/forms": "~14.2.0",
+    "@angular/platform-browser": "~14.2.0",
+    "@angular/platform-browser-dynamic": "~14.2.0",
+    "@angular/router": "~14.2.0",
+    "@nativescript/angular": "~14.2.0",
     "@nativescript/core": "~8.3.0",
     "@nativescript/theme": "~3.0.2",
     "rxjs": "~7.5.0",
     "zone.js": "~0.11.5"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~14.1.0",
-    "@angular/compiler-cli": "~14.1.0",
+    "@angular-devkit/build-angular": "~14.2.0",
+    "@angular/compiler-cli": "~14.2.0",
     "@nativescript/types": "~8.3.0",
     "@nativescript/webpack": "~5.0.6",
-    "@ngtools/webpack": "~14.1.0",
+    "@ngtools/webpack": "~14.2.0",
     "typescript": "~4.7.0"
   }
 }
