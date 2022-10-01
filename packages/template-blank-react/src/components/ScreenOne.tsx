@@ -1,23 +1,24 @@
-import * as React from "react";
-import { RouteProp } from '@react-navigation/core';
 import { Dialogs } from '@nativescript/core';
-import { FrameNavigationProp } from "react-nativescript-navigation";
+import { RouteProp } from '@react-navigation/core';
+import * as React from "react";
 import { StyleSheet } from "react-nativescript";
-import { MainStackParamList } from "./NavigationParamList";
+import { FrameNavigationProp } from "react-nativescript-navigation";
 
-type HomeScreenProps = {
-    route: RouteProp<MainStackParamList, "Home">,
-    navigation: FrameNavigationProp<MainStackParamList, "Home">,
-}
+import { MainStackParamList } from "../NavigationParamList";
 
-export function HomeScreen({ navigation }: HomeScreenProps) {
+type ScreenOneProps = {
+    route: RouteProp<MainStackParamList, "One">,
+    navigation: FrameNavigationProp<MainStackParamList, "One">,
+};
+
+export function ScreenOne({ navigation }: ScreenOneProps) {
     return (
         <flexboxLayout style={styles.container}>
             <label
                 className="fas"
                 style={styles.text}
             >
-                &#xf135; Hello World!
+                &#xf135; You're viewing screen one!
             </label>
             <button
                 style={styles.button}
@@ -27,7 +28,7 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
             </button>
             <button
                 style={styles.button}
-                onTap={() => navigation.navigate('Secondary')}
+                onTap={() => navigation.navigate("Two", { message: "Hello, world!" })}
             >
                 Go to next screen
             </button>
