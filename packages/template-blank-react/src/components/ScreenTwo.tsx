@@ -1,19 +1,23 @@
-import * as React from "react";
 import { RouteProp } from '@react-navigation/core';
-import { FrameNavigationProp } from "react-nativescript-navigation";
-import { MainStackParamList } from "./NavigationParamList";
+import * as React from "react";
 import { StyleSheet } from "react-nativescript";
+import { FrameNavigationProp } from "react-nativescript-navigation";
 
-type SecondaryScreenProps = {
-    route: RouteProp<MainStackParamList, "Secondary">,
-    navigation: FrameNavigationProp<MainStackParamList, "Secondary">,
-}
+import { MainStackParamList } from "../NavigationParamList";
 
-export function SecondaryScreen({ navigation }: SecondaryScreenProps) {
+type ScreenTwoProps = {
+    route: RouteProp<MainStackParamList, "Two">,
+    navigation: FrameNavigationProp<MainStackParamList, "Two">,
+};
+
+export function ScreenTwo({ navigation, route }: ScreenTwoProps) {
     return (
         <flexboxLayout style={styles.container}>
             <label style={styles.text}>
-                You're viewing the secondary screen!
+                You're viewing screen two!
+            </label>
+            <label style={styles.text}>
+                Messsage: {route.params.message}
             </label>
             <button
                 style={styles.button}

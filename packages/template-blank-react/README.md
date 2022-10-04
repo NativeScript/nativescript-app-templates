@@ -18,48 +18,29 @@ ns run android
 ns run ios
 ```
 
-> Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm](https://www.npmjs.com/package/tns-template-blank-react).
+> Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm](https://www.npmjs.com/package/@nativescript/template-blank-react).
 
-<!--
-## Quick start from the latest master
-
-```sh
-ns create my-blank-react --template https://github.com/shirakaba/tns-template-blank-react/tarball/master
-```
-
-## Building from a local clone of the repo
-
-If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
-
-```
-# clone nativescript-app-templates monorepo locally
-git clone https://github.com/shirakaba/tns-template-blank-react.git
-
-# create app template from local source (all templates are in the 'packages' subfolder of the monorepo)
-ns create my-blank-react --template tns-template-blank-react
-
-cd my-blank-react
-npm install
-
-ns preview
-# or
-ns run android
-# or
-ns run ios
-```
--->
 
 **NB:** Please, keep in mind that the master branch may refer to dependencies that are not on NPM yet!
 
 ## Walkthrough
 
-### Architecture
-There is a single blank component located in:
-- `/components/AppContainer.tsx` - sets up an empty page layout.
+Having created an app from this template, here's an introduction to how it works:
 
-**Home** page has the following components:
-- `<actionBar>` - It holds the title of the page.
-- `<gridLayout>` - The main page layout that should contains all the page content.
+### Architecture
+
+- `src/app.ts`: The app entrypoint. It renders the MainStack component as the root component.
+- `src/components/MainStack.tsx`: A React Navigation 5 [stack navigator](https://reactnavigation.org/docs/5.x/stack-navigator/) serving as the root component.
+- `src/components/ScreenOne.tsx`, `src/components/ScreenTwo.tsx`: A couple of screens to navigate to.
+- `src/NavigationParamList.tsx`: A record of the navigation params for each route in your app.
+
+### The basics
+
+Learn React NativeScript itself by reading [its docs](https://react-nativescript.netlify.app/docs/introduction/introduction.html).
+
+Learn how to navigate by referring to the React Navigation 5 [docs])https://reactnavigation.org/docs/5.x/getting-started) and refer to the [react-nativescript-navigation](https://github.com/shirakaba/react-nativescript-navigation/tree/master/react-nativescript-navigation) repo to see which options are supported for each navigator.
+
+React libraries without a dependency on `react-dom` (like Redux) should work just fine in React NativeScript as long as the `react` version is compatible.
 
 ## Get Help
 The NativeScript framework has a vibrant community that can help when you run into problems.

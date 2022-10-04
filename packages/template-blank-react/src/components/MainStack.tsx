@@ -1,15 +1,19 @@
-import * as React from "react";
 import { BaseNavigationContainer } from '@react-navigation/core';
+import * as React from "react";
 import { stackNavigatorFactory } from "react-nativescript-navigation";
-import { HomeScreen } from "./HomeScreen";
-import { SecondaryScreen } from "./SecondaryScreen";
+
+import { ScreenOne } from "./ScreenOne";
+import { ScreenTwo } from "./ScreenTwo";
 
 const StackNavigator = stackNavigatorFactory();
 
-export const mainStackNavigator = () => (
+/**
+ * The main stack navigator for the whole app.
+ */
+export const MainStack = () => (
     <BaseNavigationContainer>
         <StackNavigator.Navigator
-            initialRouteName="Home"
+            initialRouteName="Screen One"
             screenOptions={{
                 headerStyle: {
                     backgroundColor: "white",
@@ -18,12 +22,12 @@ export const mainStackNavigator = () => (
             }}
         >
             <StackNavigator.Screen
-                name="Home"
-                component={HomeScreen}
+                name="Screen One"
+                component={ScreenOne}
             />
             <StackNavigator.Screen
-                name="Secondary"
-                component={SecondaryScreen}
+                name="Screen Two"
+                component={ScreenTwo}
             />
         </StackNavigator.Navigator>
     </BaseNavigationContainer>

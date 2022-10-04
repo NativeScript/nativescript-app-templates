@@ -5,9 +5,7 @@
   "author": "Jamie Birch <14055146+shirakaba@users.noreply.github.com>",
   "main": "src/app.ts",
   "scripts": {
-    "postinstall": "patch-package",
-    "type-check": "tsc --noEmit",
-    "type-check:watch": "npm run type-check -- --watch"
+    "type-check": "tsc --noEmit"
   },
   "license": "Apache-2.0",
   "repository": {
@@ -24,7 +22,6 @@
   "files": [
     "App_Resources",
     "hooks",
-    "patches",
     "src",
     "tools",
     "!tools/assets",
@@ -42,18 +39,16 @@
     "template"
   ],
   "dependencies": {
-    "@nativescript/core": "~8.3.0",
-    "@react-navigation/core": "^5.15.3",
-    "react": "~16.13.1",
-    "react-nativescript": "^3.0.0-beta.3",
-    "react-nativescript-navigation": "3.0.0-beta.2"
+    "@nativescript/core": "~8.3.5",
+    "react": "^16.14.0",
+    "react-nativescript": "^4.0.0",
+    "react-nativescript-navigation": "^4.0.0"
   },
   "devDependencies": {
-    "@nativescript/types": "~8.3.0",
-    "@nativescript/webpack": "~5.0.6",
-    "@types/react": "16.9.34",
-    "patch-package": "~6.4.7",
-    "typescript": "~4.5.5"
+    "@nativescript/types": "~8.3.1",
+    "@nativescript/webpack": "~5.0.8",
+    "@types/react": "npm:types-react-without-jsx-intrinsics@^16.14.30",
+    "typescript": "^4.8.4"
   },
   "gitHead": "1350d382fb4b0ed4c6e9685df909518b2688e004",
   "readme": "NativeScript Application"
