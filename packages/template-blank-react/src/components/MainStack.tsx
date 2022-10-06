@@ -22,11 +22,11 @@ export const MainStack = () => (
             }}
         >
             <StackNavigator.Screen
-                name="Screen One"
+                name="One"
                 component={ScreenOne}
             />
             <StackNavigator.Screen
-                name="Screen Two"
+                name="Two"
                 component={ScreenTwo}
             />
         </StackNavigator.Navigator>
