@@ -17,7 +17,7 @@ export function ScreenTwo({ navigation, route }: ScreenTwoProps) {
                 You're viewing screen two!
             </label>
             <label style={styles.text}>
-                Messsage: {route.params.message}
+                Message: {route.params.message}
             </label>
             <button
                 style={styles.button}
