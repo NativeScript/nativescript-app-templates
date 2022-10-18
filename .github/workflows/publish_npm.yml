@@ -13,15 +13,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          registry-url: 'https://registry.npmjs.org'
       - name: Setup
         run: npm install
-
       - name: Publish All Templates
         env:
-          NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
         run: |
-          npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
           # run publish in every package, ignore failures (ie no publish required if the version is already published)
           npm run prepare-templates
           npx lerna exec --no-bail --stream --concurrency 1 -- "npm publish || true"
