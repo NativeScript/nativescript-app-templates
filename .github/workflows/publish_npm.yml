@@ -21,7 +21,7 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
         run: |
-          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+          npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
           # run publish in every package, ignore failures (ie no publish required if the version is already published)
           npm run prepare-templates
-          npx lerna exec --no-bail --stream --concurrency 1 -- "cp ../../.npmrc . && (npm publish || true)"
+          npx lerna exec --no-bail --stream --concurrency 1 -- "npm publish || true"
