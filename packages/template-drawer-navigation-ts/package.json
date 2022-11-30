@@ -3,7 +3,7 @@
   "main": "src/main.ts",
   "displayName": "Navigation Drawer",
   "templateType": "App template",
-  "version": "8.3.1",
+  "version": "8.4.0",
   "description": "Side navigation template",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -40,14 +40,14 @@
     "url": "https://github.com/NativeScript/NativeScript/issues"
   },
   "dependencies": {
-    "@nativescript/core": "~8.3.0",
+    "@nativescript/core": "~8.4.0",
     "@nativescript/theme": "~3.0.2",
-    "nativescript-ui-sidedrawer": "~10.0.2",
+    "nativescript-ui-sidedrawer": "~14.2.1",
     "rxjs": "~7.5.0"
   },
   "devDependencies": {
-    "@nativescript/types": "~8.3.0",
-    "@nativescript/webpack": "~5.0.9",
-    "typescript": "~4.5.5"
+    "@nativescript/types": "~8.4.0",
+    "@nativescript/webpack": "~5.0.12",
+    "typescript": "~4.8.4"
   }
 }
