@@ -53,8 +53,8 @@
     "@nativescript/core": "~8.4.0",
     "@nativescript/theme": "~3.0.2",
     "nativescript-ui-sidedrawer": "~14.2.1",
-    "rxjs": "~7.5.0",
-    "zone.js": "~0.11.5"
+    "rxjs": "~7.6.0",
+    "zone.js": "~0.12.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~15.0.0",

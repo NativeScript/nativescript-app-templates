@@ -43,7 +43,7 @@
     "@nativescript/core": "~8.4.0",
     "@nativescript/theme": "~3.0.2",
     "nativescript-ui-sidedrawer": "~14.2.1",
-    "rxjs": "~7.5.0"
+    "rxjs": "~7.6.0"
   },
   "devDependencies": {
     "@nativescript/types": "~8.4.0",
