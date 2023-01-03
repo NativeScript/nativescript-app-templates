@@ -42,7 +42,7 @@
     "@nativescript/core": "~8.4.0",
     "@nativescript/theme": "~3.0.2",
     "nativescript-ui-sidedrawer": "~10.0.2",
-    "rxjs": "~7.5.0"
+    "rxjs": "~7.6.0"
   },
   "devDependencies": {
     "@nativescript/webpack": "~5.0.12"
