@@ -3,7 +3,7 @@
   "main": "src/main.ts",
   "displayName": "Tabs",
   "templateType": "App template",
-  "version": "8.4.1",
+  "version": "8.4.2",
   "description": "Tabbed interface template",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -41,26 +41,26 @@
     "url": "https://github.com/NativeScript/NativeScript/issues"
   },
   "dependencies": {
-    "@angular/animations": "~15.0.0",
-    "@angular/common": "~15.0.0",
-    "@angular/compiler": "~15.0.0",
-    "@angular/core": "~15.0.0",
-    "@angular/forms": "~15.0.0",
-    "@angular/platform-browser": "~15.0.0",
-    "@angular/platform-browser-dynamic": "~15.0.0",
-    "@angular/router": "~15.0.0",
-    "@nativescript/angular": "~15.0.0",
+    "@angular/animations": "~15.1.0",
+    "@angular/common": "~15.1.0",
+    "@angular/compiler": "~15.1.0",
+    "@angular/core": "~15.1.0",
+    "@angular/forms": "~15.1.0",
+    "@angular/platform-browser": "~15.1.0",
+    "@angular/platform-browser-dynamic": "~15.1.0",
+    "@angular/router": "~15.1.0",
+    "@nativescript/angular": "^15.0.0",
     "@nativescript/core": "~8.4.0",
     "@nativescript/theme": "~3.0.2",
     "rxjs": "~7.6.0",
     "zone.js": "~0.12.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~15.0.0",
-    "@angular/compiler-cli": "~15.0.0",
+    "@angular-devkit/build-angular": "~15.1.0",
+    "@angular/compiler-cli": "~15.1.0",
     "@nativescript/types": "~8.4.0",
     "@nativescript/webpack": "~5.0.12",
-    "@ngtools/webpack": "~15.0.0",
+    "@ngtools/webpack": "~15.1.0",
     "typescript": "~4.8.4"
   }
 }
