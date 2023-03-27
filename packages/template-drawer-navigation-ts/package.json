@@ -40,7 +40,7 @@
     "url": "https://github.com/NativeScript/NativeScript/issues"
   },
   "dependencies": {
-    "@nativescript/core": "~8.4.0",
+    "@nativescript/core": "~8.5.0",
     "@nativescript/theme": "~3.0.2",
     "nativescript-ui-sidedrawer": "~14.2.1",
     "rxjs": "~7.6.0"

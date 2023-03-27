@@ -39,7 +39,7 @@
     "template"
   ],
   "dependencies": {
-    "@nativescript/core": "~8.4.0",
+    "@nativescript/core": "~8.5.0",
     "react": "^16.14.0",
     "react-nativescript": "^4.0.0",
     "react-nativescript-navigation": "^4.0.0"

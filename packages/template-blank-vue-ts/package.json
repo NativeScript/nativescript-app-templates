@@ -41,7 +41,7 @@
     "category-general"
   ],
   "dependencies": {
-    "@nativescript/core": "~8.4.0",
+    "@nativescript/core": "~8.5.0",
     "@nativescript/theme": "~3.0.2",
     "nativescript-vue": "~2.9.2"
   },
