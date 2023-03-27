@@ -41,7 +41,7 @@
   "dependencies": {
     "@nativescript/core": "~8.5.0",
     "@nativescript/theme": "~3.0.2",
-    "nativescript-ui-sidedrawer": "~10.0.2",
+    "nativescript-ui-sidedrawer": "~15.2.0",
     "rxjs": "~7.6.0"
   },
   "devDependencies": {

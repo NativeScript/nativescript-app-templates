@@ -52,7 +52,7 @@
     "@nativescript/angular": "^15.0.0",
     "@nativescript/core": "~8.5.0",
     "@nativescript/theme": "~3.0.2",
-    "nativescript-ui-sidedrawer": "~14.2.1",
+    "nativescript-ui-sidedrawer": "~15.2.0",
     "rxjs": "~7.6.0",
     "zone.js": "~0.12.0"
   },
