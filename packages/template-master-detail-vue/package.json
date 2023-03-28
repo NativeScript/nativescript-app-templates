@@ -2,7 +2,7 @@
   "name": "@nativescript/template-master-detail-vue",
   "main": "app/app.js",
   "displayName": "Master Detail",
-  "version": "8.4.1",
+  "version": "8.5.0",
   "description": "Master-detail interface to display collection of items from json collection and inspect and edit selected item properties.",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
