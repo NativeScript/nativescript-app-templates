@@ -1,6 +1,6 @@
 {
   "name": "@nativescript/template-blank-react",
-  "version": "8.4.1",
+  "version": "8.5.0",
   "description": "Blank template for NativeScript apps using React.",
   "author": "Jamie Birch <14055146+shirakaba@users.noreply.github.com>",
   "main": "src/app.ts",
@@ -39,14 +39,14 @@
     "template"
   ],
   "dependencies": {
-    "@nativescript/core": "~8.4.0",
+    "@nativescript/core": "~8.5.0",
     "react": "^16.14.0",
     "react-nativescript": "^4.0.0",
     "react-nativescript-navigation": "^4.0.0"
   },
   "devDependencies": {
-    "@nativescript/types": "~8.4.0",
-    "@nativescript/webpack": "~5.0.12",
+    "@nativescript/types": "~8.5.0",
+    "@nativescript/webpack": "~5.0.14",
     "@types/react": "npm:types-react-without-jsx-intrinsics@^16.14.30",
     "typescript": "~4.8.4"
   },
