@@ -46,6 +46,6 @@
     "rxjs": "~7.6.0"
   },
   "devDependencies": {
-    "@nativescript/webpack": "~5.0.12"
+    "@nativescript/webpack": "~5.0.14"
   }
 }

@@ -44,10 +44,10 @@
     "@nativescript/imagepicker": "~1.0.6",
     "@nativescript/theme": "~3.0.2",
     "nativescript-ui-listview": "~15.2.0",
-    "nativescript-vue": "~2.9.2"
+    "nativescript-vue": "~2.9.3"
   },
   "devDependencies": {
-    "@nativescript/webpack": "~5.0.12",
-    "nativescript-vue-template-compiler": "~2.9.2"
+    "@nativescript/webpack": "~5.0.14",
+    "nativescript-vue-template-compiler": "~2.9.3"
   }
 }

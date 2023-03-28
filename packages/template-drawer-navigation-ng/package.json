@@ -54,13 +54,13 @@
     "@nativescript/theme": "~3.0.2",
     "nativescript-ui-sidedrawer": "~15.2.0",
     "rxjs": "~7.6.0",
-    "zone.js": "~0.12.0"
+    "zone.js": "~0.13.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~15.2.0",
     "@angular/compiler-cli": "~15.2.0",
-    "@nativescript/types": "~8.4.0",
-    "@nativescript/webpack": "~5.0.12",
+    "@nativescript/types": "~8.5.0",
+    "@nativescript/webpack": "~5.0.14",
     "@ngtools/webpack": "~15.2.0",
     "typescript": "~4.8.4"
   }

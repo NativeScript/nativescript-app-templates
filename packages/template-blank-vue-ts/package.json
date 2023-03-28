@@ -43,13 +43,13 @@
   "dependencies": {
     "@nativescript/core": "~8.5.0",
     "@nativescript/theme": "~3.0.2",
-    "nativescript-vue": "~2.9.2"
+    "nativescript-vue": "~2.9.3"
   },
   "devDependencies": {
-    "@nativescript/types": "~8.4.0",
-    "@nativescript/webpack": "~5.0.12",
+    "@nativescript/types": "~8.5.0",
+    "@nativescript/webpack": "~5.0.14",
     "@types/node": "~17.0.21",
-    "nativescript-vue-template-compiler": "~2.9.2",
+    "nativescript-vue-template-compiler": "~2.9.3",
     "typescript": "~4.8.4",
     "vue": "~2.6.12"
   }
