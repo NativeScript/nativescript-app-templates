@@ -78,6 +78,7 @@ jobs:
           ns usage-reporting disable
           ns error-reporting disable
           ns -v
+          ns doctor
 
           npm install
           npm run prepare-templates
