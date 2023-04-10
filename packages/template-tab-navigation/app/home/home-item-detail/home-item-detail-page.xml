@@ -1,7 +1,7 @@
 <Page navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd">
 
     <ActionBar>
-        <NavigationButton tap="onBackButtonTap" android.systemIcon="ic_menu_back" />
+        <NavigationButton tap="onBackButtonTap" android.systemIcon="ic_menu_back"  text="return to list" />
         <Label text="{{ name }}" />
     </ActionBar>
 
