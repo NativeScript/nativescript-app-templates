@@ -1,8 +1,8 @@
 {
   "name": "@nativescript/template-blank-vue-vision",
-  "main": "app/app.ts",
+  "main": "src/app.ts",
   "displayName": "Blank Vue Typescript",
-  "version": "8.6.0",
+  "version": "8.6.1",
   "description": "Nativescript visionOS Starter with Vue",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -18,13 +18,14 @@
     "access": "public"
   },
   "files": [
-    "app",
+    "src",
     "App_Resources",
     "hooks",
     "tools",
     "!tools/assets",
     "types",
     ".editorconfig",
+    "tailwind.config.js",
     "tsconfig.json"
   ],
   "keywords": [

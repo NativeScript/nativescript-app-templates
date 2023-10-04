@@ -33,13 +33,13 @@ onUnmounted(() => {
   <Frame>
     <Page>
       <ActionBar>
-        <Label text="Home" class="font-bold text-lg" />
+        <Label text="Home" class="font-bold text-2xl" />
       </ActionBar>
 
       <GridLayout rows="*, auto, auto, *" class="px-4">
         <Label
           row="1"
-          class="text-xl align-middle text-center text-gray-500"
+          class="text-2xl align-middle text-center"
           :text="message"
           @tap="logMessage"
         />
@@ -47,7 +47,7 @@ onUnmounted(() => {
         <Button
           row="2"
           @tap="$navigateTo(Details)"
-          class="mt-4 px-4 py-2 bg-white border-2 border-blue-400 rounded-lg"
+          class="mt-4 px-4 py-2 bg-white/10 text-2xl border-2 border-blue-400 rounded-lg"
           horizontalAlignment="center"
         >
           View Details
