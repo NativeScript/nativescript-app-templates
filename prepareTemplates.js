@@ -3,7 +3,8 @@ const fs = require('fs');
 const path = require('path');
 const cpy = require('cpy')
 
-const SHARED_PATH = path.resolve(__dirname, './shared')
+const SHARED_MOBILE_PATH = path.resolve(__dirname, './shared-mobile')
+const SHARED_VISION_PATH = path.resolve(__dirname, './shared-vision')
 const PACKAGES_PATH = path.resolve(__dirname, './packages')
 
 const entries = fs.readdirSync(PACKAGES_PATH, {
@@ -21,11 +22,21 @@ for(const entry of entries) {
 function prepareTemplate(templatePath) {
     console.log('processing ', templatePath)
 
-    // Copy shared resources into template
-    cpy(`**/*`, templatePath, {
-        cwd: SHARED_PATH,
-        overwrite: false,
-        dot: true,
-        parents: true
-    })
+    if (templatePath.indexOf('vision') > -1) {
+        // Copy shared resources into template
+        cpy(`**/*`, templatePath, {
+            cwd: SHARED_VISION_PATH,
+            overwrite: false,
+            dot: true,
+            parents: true
+        })
+    } else {
+        // Copy shared resources into template
+        cpy(`**/*`, templatePath, {
+            cwd: SHARED_MOBILE_PATH,
+            overwrite: false,
+            dot: true,
+            parents: true
+        })
+    }
 }

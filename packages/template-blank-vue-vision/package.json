@@ -1,0 +1,51 @@
+{
+  "name": "@nativescript/template-blank-vue-vision",
+  "main": "app/app.ts",
+  "displayName": "Blank Vue Typescript",
+  "version": "8.6.0",
+  "description": "Nativescript visionOS Starter with Vue",
+  "author": "NativeScript Team <oss@nativescript.org>",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NativeScript/nativescript-app-templates"
+  },
+  "homepage": "https://github.com/NativeScript/nativescript-app-templates",
+  "bugs": {
+    "url": "https://github.com/NativeScript/NativeScript/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "app",
+    "App_Resources",
+    "hooks",
+    "tools",
+    "!tools/assets",
+    "types",
+    ".editorconfig",
+    "tsconfig.json"
+  ],
+  "keywords": [
+    "nstudio",
+    "nativescript",
+    "mobile",
+    "{N}",
+    "vue",
+    "visionOS",
+    "Vision Pro"
+  ],
+  "dependencies": {
+    "@nativescript/core": "vision",
+    "nativescript-vue": "3.0.0-beta.9"
+  },
+  "devDependencies": {
+    "@nativescript/tailwind": "^2.0.1",
+    "@nativescript/types": "~8.5.0",
+    "@nativescript/webpack": "vision",
+    "@types/node": "~17.0.21",
+    "tailwindcss": "~3.2.0",
+    "typescript": "~5.2.2"
+  }
+}
