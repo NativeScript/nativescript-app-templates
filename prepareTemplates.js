@@ -28,7 +28,7 @@ function prepareTemplate(templatePath) {
         // Copy shared resources into template
         cpy(`**/*`, templatePath, {
             cwd: SHARED_VISION_PATH,
-            overwrite: false,
+            overwrite: true,
             dot: true,
             parents: true
         })
@@ -43,7 +43,7 @@ function prepareTemplate(templatePath) {
                 const flavorFrontIconPath = path.resolve(SHARED_VISION_ICONS_PATH, flavor);
                 cpy(`**/*`, visionIconPath, {
                     cwd: flavorFrontIconPath,
-                    overwrite: false,
+                    overwrite: true,
                     dot: true,
                     parents: true
                 })
