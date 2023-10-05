@@ -1,0 +1,11 @@
+<ActionBar title="My App"> </ActionBar>
+
+<GridLayout>
+  <ListView [items]="items">
+    <ng-template let-item="item">
+      <StackLayout [nsRouterLink]="['/item', item.id]" class="p-4">
+        <Label [text]="item.name" class="text-3xl"></Label>
+      </StackLayout>
+    </ng-template>
+  </ListView>
+</GridLayout>

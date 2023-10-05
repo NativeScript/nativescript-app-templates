@@ -1,0 +1,59 @@
+{
+  "name": "@nativescript/template-blank-react-vision",
+  "version": "8.6.1",
+  "description": "Nativescript visionOS Starter with React",
+  "author": "Jamie Birch <14055146+shirakaba@users.noreply.github.com>",
+  "main": "src/app.ts",
+  "scripts": {
+    "type-check": "tsc --noEmit"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NativeScript/nativescript-app-templates"
+  },
+  "homepage": "https://github.com/NativeScript/nativescript-app-templates",
+  "bugs": {
+    "url": "https://github.com/NativeScript/NativeScript/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "App_Resources",
+    "hooks",
+    "src",
+    "tools",
+    "!tools/assets",
+    ".editorconfig",
+    ".npmrc",
+    "references.d.ts",
+    "tailwind.config.js",
+    "tsconfig.json"
+  ],
+  "keywords": [
+    "mobile",
+    "nativescript",
+    "{N}",
+    "react",
+    "react-nativescript",
+    "visionOS",
+    "Vision Pro"
+  ],
+  "dependencies": {
+    "@nativescript/core": "vision",
+    "react": "^18.2.0",
+    "react-nativescript": "^5.0.0",
+    "react-nativescript-navigation": "^5.0.0"
+  },
+  "devDependencies": {
+    "@nativescript/tailwind": "^2.0.1",
+    "@nativescript/types": "~8.5.0",
+    "@nativescript/webpack": "vision",
+    "@types/react": "npm:types-react-without-jsx-intrinsics@^18.0.17",
+    "tailwindcss": "~3.2.0",
+    "typescript": "~5.2.0"
+  },
+  "gitHead": "1350d382fb4b0ed4c6e9685df909518b2688e004",
+  "readme": "NativeScript Application"
+}

@@ -1,0 +1,54 @@
+{
+  "name": "@nativescript/template-blank-svelte-vision",
+  "main": "src/app.ts",
+  "version": "8.6.1",
+  "description": "Nativescript visionOS Starter with Svelte",
+  "author": "NativeScript Team <oss@nativescript.org>",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "src",
+    "App_Resources",
+    "hooks",
+    "types",
+    "tools",
+    "!tools/assets",
+    ".editorconfig",
+    ".npmrc",
+    "svelte.config.js",
+    "tsconfig.json"
+  ],
+  "keywords": [
+    "nstudio",
+    "nativescript",
+    "mobile",
+    "{N}",
+    "svelte",
+    "svelte-native",
+    "visionOS",
+    "Vision Pro"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NativeScript/nativescript-app-templates"
+  },
+  "homepage": "https://github.com/NativeScript/nativescript-app-templates",
+  "bugs": {
+    "url": "https://github.com/NativeScript/NativeScript/issues"
+  },
+  "dependencies": {
+    "@nativescript/core": "vision",
+    "svelte-native": "~1.0.0"
+  },
+  "devDependencies": {
+    "@nativescript/types": "~8.5.0",
+    "@nativescript/webpack": "vision",
+    "svelte": "~3.44.0",
+    "svelte-loader": "^3.1.2",
+    "svelte-native-preprocessor": "^1.0.0",
+    "svelte-preprocess": "^4.7.0",
+    "typescript": "~4.8.4"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "name": "@nativescript/template-hello-world-ng-vision",
+  "main": "./src/main.ts",
+  "version": "8.6.1",
+  "author": "NativeScript Team <oss@nativescript.org>",
+  "description": "Nativescript visionOS Starter with Angular",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "App_Resources",
+    "hooks",
+    "src",
+    "tools",
+    "!tools/assets",
+    ".editorconfig",
+    "references.d.ts",
+    "tailwind.config.js",
+    "tsconfig.json"
+  ],
+  "keywords": [
+    "nativescript",
+    "mobile",
+    "angular",
+    "{N}",
+    "visionOS",
+    "Vision Pro"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NativeScript/nativescript-app-templates"
+  },
+  "bugs": {
+    "url": "https://github.com/NativeScript/NativeScript/issues"
+  },
+  "dependencies": {
+    "@angular/animations": "~16.2.0",
+    "@angular/common": "~16.2.0",
+    "@angular/compiler": "~16.2.0",
+    "@angular/core": "~16.2.0",
+    "@angular/forms": "~16.2.0",
+    "@angular/platform-browser": "~16.2.0",
+    "@angular/platform-browser-dynamic": "~16.2.0",
+    "@angular/router": "~16.2.0",
+    "@nativescript/angular": "^16.0.0",
+    "@nativescript/core": "vision",
+    "rxjs": "~7.8.0",
+    "zone.js": "~0.14.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~16.2.0",
+    "@angular/compiler-cli": "~16.2.0",
+    "@nativescript/tailwind": "^2.0.1",
+    "@nativescript/types": "~8.5.0",
+    "@nativescript/webpack": "vision",
+    "@ngtools/webpack": "~16.2.0",
+    "tailwindcss": "~3.2.0",
+    "typescript": "~5.1.0"
+  }
+}
