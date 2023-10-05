@@ -1,7 +1,7 @@
 {
   "name": "@nativescript/template-hello-world-ng-vision",
   "main": "./src/main.ts",
-  "version": "8.6.1",
+  "version": "8.6.2",
   "author": "NativeScript Team <oss@nativescript.org>",
   "description": "Nativescript visionOS Starter with Angular",
   "license": "Apache-2.0",
