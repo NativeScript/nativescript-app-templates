@@ -1,4 +1,4 @@
-# NativeScript with Vue for visionOS
+# NativeScript with Solid for visionOS
 
 ```
 ns run visionos --no-hmr
