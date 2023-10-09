@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@nativescript/tailwind": "^2.0.1",
-    "@nativescript/types": "~8.5.0",
+    "@nativescript/types": "~8.6.0",
     "@nativescript/webpack": "vision",
     "tailwindcss": "~3.2.0",
     "typescript": "~5.2.0"

@@ -57,10 +57,10 @@
           .authorize()
           .then(() => context.present())
           .then(selection => selection.forEach(
-            selectedAsset => {
-              selectedAsset.options.height = 768;
+            result => {
+              result.asset.options.height = 768;
 
-              ImageSource.fromAsset(selectedAsset)
+              ImageSource.fromAsset(result.asset)
                 .then(imageSource => this.handleImageChange(imageSource));
             }))
           .catch((errorMessage) => console.log(errorMessage));
