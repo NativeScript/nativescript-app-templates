@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "target": "es2017",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "lib": ["es2017", "DOM"],
+    "sourceMap": true,
+    "jsx": "preserve",
+    "jsxImportSource": "@nativescript-dom/solidjs-types",
+    "noEmitHelpers": true,
+    "importHelpers": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"],
+      "@/*": ["src/*"]
+    },
+    "allowJs": true,
+    "types": [
+      "node",
+      "@nativescript-dom/core-types",
+      "@nativescript-dom/solidjs-types"
+    ],
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "outDir": "dist",
+    "downlevelIteration": true,
+    "maxNodeModuleJsDepth": 5
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "platforms"]
+}

@@ -75,9 +75,9 @@ export function CarDetailEditViewModel(carModel) {
         .authorize()
         .then(() => context.present())
         .then((selection) =>
-          selection.forEach((selectedAsset) => {
-            selectedAsset.options.height = 768
-            ImageSource.fromAsset(selectedAsset).then((imageSource) =>
+          selection.forEach((result) => {
+            result.asset.options.height = 768
+            ImageSource.fromAsset(result.asset).then((imageSource) =>
               this._handleImageChange(imageSource)
             )
           })

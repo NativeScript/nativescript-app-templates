@@ -1,0 +1,9 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+    <ActionBar title="My App" icon="" />
+
+    <StackLayout class="p-5">
+        <Label text="Tap the button" class="text-3xl text-center" />
+        <Button text="TAP" tap="{{ onTap }}" class="text-3xl p-2 my-5 bg-white/10 rounded-full" width="300" />
+        <Label text="{{ message }}" class="text-2xl text-center" textWrap="true" />
+    </StackLayout>
+</Page>

@@ -1,0 +1,48 @@
+{
+  "name": "@nativescript/template-hello-world-ts-vision",
+  "main": "src/app.ts",
+  "version": "8.6.2",
+  "author": "NativeScript Team <oss@nativescript.org>",
+  "description": "NativeScript visionOS Starter with TypeScript",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "src",
+    "App_Resources",
+    "hooks",
+    "tools",
+    "!tools/assets",
+    ".editorconfig",
+    "references.d.ts",
+    "tailwind.config.js",
+    "tsconfig.json"
+  ],
+  "keywords": [
+    "NativeScript",
+    "mobile",
+    "{N}",
+    "template",
+    "visionOS",
+    "Vision Pro"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NativeScript/nativescript-app-templates"
+  },
+  "bugs": {
+    "url": "https://github.com/NativeScript/NativeScript/issues"
+  },
+  "homepage": "https://github.com/NativeScript/nativescript-app-templates",
+  "dependencies": {
+    "@nativescript/core": "vision"
+  },
+  "devDependencies": {
+    "@nativescript/tailwind": "^2.0.1",
+    "@nativescript/types": "~8.6.0",
+    "@nativescript/webpack": "vision",
+    "tailwindcss": "~3.2.0",
+    "typescript": "~5.2.0"
+  }
+}

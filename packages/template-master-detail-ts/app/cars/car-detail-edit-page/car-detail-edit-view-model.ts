@@ -105,9 +105,9 @@ export class CarDetailEditViewModel extends Observable {
       .authorize()
       .then(() => context.present())
       .then((selection) =>
-        selection.forEach((selectedAsset: ImageAsset) => {
-          selectedAsset.options.height = 768
-          ImageSource.fromAsset(selectedAsset).then((imageSource: ImageSource) =>
+        selection.forEach((result) => {
+          result.asset.options.height = 768
+          ImageSource.fromAsset(result.asset).then((imageSource: ImageSource) =>
             this.handleImageChange(imageSource)
           )
         })
