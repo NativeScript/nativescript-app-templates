@@ -1,7 +1,7 @@
 {
   "name": "@nativescript/template-blank-svelte-vision",
   "main": "src/app.ts",
-  "version": "8.6.4",
+  "version": "8.6.5",
   "description": "Nativescript visionOS Starter with Svelte",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
