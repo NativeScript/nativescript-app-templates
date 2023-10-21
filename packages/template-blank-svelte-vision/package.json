@@ -40,15 +40,15 @@
   },
   "dependencies": {
     "@nativescript/core": "vision",
-    "svelte-native": "~1.0.0"
+    "svelte-native": "~1.0.9"
   },
   "devDependencies": {
-    "@nativescript/types": "~8.6.0",
-    "@nativescript/webpack": "vision",
-    "svelte": "~4.2.1",
-    "svelte-loader": "^3.1.2",
+    "@nativescript/types": "~8.6.1",
+    "@nativescript/webpack": "~5.0.18",
+    "svelte": "~4.2.2",
+    "svelte-loader": "^3.1.9",
     "svelte-native-preprocessor": "^1.0.0",
     "svelte-preprocess": "^5.0.4",
-    "typescript": "~5.1.6"
+    "typescript": "~5.2.2"
   }
 }
