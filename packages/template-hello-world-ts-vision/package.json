@@ -36,13 +36,13 @@
   },
   "homepage": "https://github.com/NativeScript/nativescript-app-templates",
   "dependencies": {
-    "@nativescript/core": "vision"
+    "@nativescript/core": "~8.7.0"
   },
   "devDependencies": {
     "@nativescript/tailwind": "^2.0.1",
-    "@nativescript/types": "~8.6.0",
-    "@nativescript/webpack": "vision",
-    "tailwindcss": "~3.2.0",
-    "typescript": "~5.2.0"
+    "@nativescript/types": "~8.7.0",
+    "@nativescript/webpack": "~5.0.0",
+    "tailwindcss": "~3.4.0",
+    "typescript": "~5.4.0"
   }
 }
