@@ -47,7 +47,7 @@
     "react-nativescript-navigation": "^5.0.0"
   },
   "devDependencies": {
-    "@nativescript/tailwind": "^2.0.1",
+    "@nativescript/tailwind": "^2.1.0",
     "@nativescript/types": "~8.7.0",
     "@nativescript/webpack": "~5.0.0",
     "@types/react": "npm:types-react-without-jsx-intrinsics@^18.0.17",

@@ -51,7 +51,7 @@
   "devDependencies": {
     "@angular-devkit/build-angular": "~17.3.0",
     "@angular/compiler-cli": "~17.3.0",
-    "@nativescript/tailwind": "^2.0.1",
+    "@nativescript/tailwind": "^2.1.0",
     "@nativescript/types": "~8.7.0",
     "@nativescript/webpack": "~5.0.0",
     "@ngtools/webpack": "~17.3.0",

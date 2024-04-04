@@ -53,7 +53,7 @@
     "@babel/preset-typescript": "^7.22.5",
     "@nativescript-dom/core-types": "^1.0.29",
     "@nativescript-dom/solidjs-types": "^1.0.15",
-    "@nativescript/tailwind": "^2.0.1",
+    "@nativescript/tailwind": "^2.1.0",
     "@nativescript/webpack": "~5.0.0",
     "babel": "^6.23.0",
     "babel-loader": "^9.1.3",
