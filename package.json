@@ -9,12 +9,12 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "@prettier/plugin-xml": "^0.13.1",
-    "cpy": "^8.1.2",
-    "husky": "^5.2.0",
-    "lerna": "~3.14.0",
-    "lint-staged": "^10.5.4",
-    "prettier": "^2.2.1"
+    "@prettier/plugin-xml": "^3.4.1",
+    "cpy": "^11.0.0",
+    "husky": "^9.0.0",
+    "lerna": "~8.1.2",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5"
   },
   "lint-staged": {
     "packages/**/*.{jsx?,tsx?,html,xml,json,css,scss}": "prettier --write"
