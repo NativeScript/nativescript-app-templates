@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.h-center {
+  /* {N} specific css */
+  horizontal-align: center;
+}

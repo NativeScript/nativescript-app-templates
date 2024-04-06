@@ -21,7 +21,7 @@ ns run ios
 > Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm](https://www.npmjs.com/package/@nativescript/template-blank-react).
 
 
-**NB:** Please, keep in mind that the master branch may refer to dependencies that are not on NPM yet!
+**NB:** Please, keep in mind that the main branch may refer to dependencies that are not on NPM yet!
 
 ## Walkthrough
 

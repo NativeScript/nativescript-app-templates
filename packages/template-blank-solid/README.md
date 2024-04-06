@@ -1,14 +1,14 @@
-# NativeScript Core Blank Template
+# NativeScript with Solid Blank Template
 App templates help you jump start your native cross-platform apps with built-in UI elements and best practices. Save time writing boilerplate code over and over again when you create new apps.
 
 ## Quick Start
 Execute the following command to create an app from this template:
 
 ```
-ns create my-blank-js --template @nativescript/template-blank
+ns create my-blank-solid --template @nativescript/template-blank-solid
 ```
 
-> Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm](https://www.npmjs.com/package/@nativescript/template-blank).
+> Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm](https://www.npmjs.com/package/@nativescript/template-blank-solid).
 
 If you want to create a new app that uses the source of the template from the `main` branch, you can execute the following:
 
@@ -17,23 +17,10 @@ If you want to create a new app that uses the source of the template from the `m
 git clone git@github.com:NativeScript/nativescript-app-templates.git
 
 # create app template from local source (all templates are in the 'packages' subfolder of the monorepo)
-ns create my-blank-js --template nativescript-app-templates/packages/template-blank
+ns create my-blank-solid --template nativescript-app-templates/packages/template-blank-solid
 ```
 
 **NB:** Please, have in mind that the main branch may refer to dependencies that are not on NPM yet!
-
-## Walkthrough
-
-### Architecture
-The application root module:
-- `/app/app-root` - sets up a Frame that lets you navigate between pages.
-
-There is a single blank page module that sets up an empty layout:
-- `/app/home/home-page`
-
-**Home** page has the following components:
-- `ActionBar` - It holds the title of the page.
-- `GridLayout` - The main page layout that should contains all the page content.
 
 ## Get Help
 The NativeScript framework has a vibrant community that can help when you run into problems.

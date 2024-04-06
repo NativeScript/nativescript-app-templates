@@ -39,7 +39,7 @@
   ],
   "dependencies": {
     "@nativescript/core": "~8.7.0",
-    "nativescript-vue": "3.0.0-beta.9"
+    "nativescript-vue": "rc"
   },
   "devDependencies": {
     "@nativescript/tailwind": "^2.1.0",
