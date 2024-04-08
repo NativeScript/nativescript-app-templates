@@ -1,6 +1,6 @@
 {
   "name": "@nativescript/template-blank-react-vision",
-  "version": "8.6.2",
+  "version": "8.7.0",
   "description": "Nativescript visionOS Starter with React",
   "author": "Jamie Birch <14055146+shirakaba@users.noreply.github.com>",
   "main": "src/app.ts",

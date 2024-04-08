@@ -2,7 +2,7 @@
   "name": "@nativescript/template-blank-vue-vision",
   "main": "src/app.ts",
   "displayName": "Blank Vue Typescript",
-  "version": "8.6.3",
+  "version": "8.7.0",
   "description": "Nativescript visionOS Starter with Vue",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
