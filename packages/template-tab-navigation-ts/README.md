@@ -21,7 +21,7 @@ ns create my-tab-ts --template @nativescript/template-tab-navigation-ts
 
 > Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm](https://www.npmjs.com/package/@nativescript/template-tab-navigation-ts).
 
-If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
+If you want to create a new app that uses the source of the template from the `main` branch, you can execute the following:
 
 ```
 # clone nativescript-app-templates monorepo locally
@@ -31,7 +31,7 @@ git clone git@github.com:NativeScript/nativescript-app-templates.git
 ns create my-tab-ts --template nativescript-app-templates/packages/template-tab-navigation-ts
 ```
 
-**NB:** Please, have in mind that the master branch may refer to dependencies that are not on NPM yet!
+**NB:** Please, have in mind that the main branch may refer to dependencies that are not on NPM yet!
 
 ## Walkthrough
 

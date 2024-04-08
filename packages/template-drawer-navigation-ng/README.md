@@ -24,7 +24,7 @@ ns create my-drawer-ng --template @nativescript/template-drawer-navigation-ng
 
 > Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm](https://www.npmjs.com/package/@nativescript/template-drawer-navigation-ng).
 
-If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
+If you want to create a new app that uses the source of the template from the `main` branch, you can execute the following:
 
 ``` shell
 # clone nativescript-app-templates monorepo locally
@@ -34,7 +34,7 @@ git clone git@github.com:NativeScript/nativescript-app-templates.git
 ns create my-drawer-ng --template nativescript-app-templates/packages/template-drawer-navigation-ng
 ```
 
-**NB:** Please, have in mind that the master branch may refer to dependencies that are not on NPM yet!
+**NB:** Please, have in mind that the main branch may refer to dependencies that are not on NPM yet!
 
 ## Walkthrough
 
