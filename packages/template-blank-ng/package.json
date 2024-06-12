@@ -3,7 +3,7 @@
   "main": "src/main.ts",
   "displayName": "Blank",
   "templateType": "App template",
-  "version": "8.7.0",
+  "version": "8.7.1",
   "description": "Blank template for NativeScript apps using Angular",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
