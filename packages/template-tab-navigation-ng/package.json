@@ -50,7 +50,7 @@
     "@angular/platform-browser-dynamic": "~18.0.0",
     "@angular/router": "~18.0.0",
     "@nativescript/angular": "^18.0.0",
-    "@nativescript/core": "~8.7.0",
+    "@nativescript/core": "~8.8.0",
     "@nativescript/theme": "~3.0.2",
     "rxjs": "~7.8.0",
     "zone.js": "~0.14.0"
@@ -58,8 +58,8 @@
   "devDependencies": {
     "@angular-devkit/build-angular": "~18.0.0",
     "@angular/compiler-cli": "~18.0.0",
-    "@nativescript/types": "~8.7.0",
-    "@nativescript/webpack": "~5.0.21",
+    "@nativescript/types": "~8.8.0",
+    "@nativescript/webpack": "~5.0.0",
     "@ngtools/webpack": "~18.0.0",
     "typescript": "~5.4.0"
   }

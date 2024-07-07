@@ -39,14 +39,14 @@
     "template"
   ],
   "dependencies": {
-    "@nativescript/core": "~8.7.0",
+    "@nativescript/core": "~8.8.0",
     "react": "^18.2.0",
     "react-nativescript": "^5.0.0",
     "react-nativescript-navigation": "^5.0.0"
   },
   "devDependencies": {
-    "@nativescript/types": "~8.7.0",
-    "@nativescript/webpack": "~5.0.21",
+    "@nativescript/types": "~8.8.0",
+    "@nativescript/webpack": "~5.0.0",
     "@types/react": "npm:types-react-without-jsx-intrinsics@^18.0.17",
     "typescript": "~5.4.0"
   },
