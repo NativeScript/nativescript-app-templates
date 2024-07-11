@@ -1,7 +1,7 @@
 {
   "name": "@nativescript/template-hello-world-ng-vision",
   "main": "./src/main.ts",
-  "version": "8.7.1",
+  "version": "8.8.0",
   "author": "NativeScript Team <oss@nativescript.org>",
   "description": "Nativescript visionOS Starter with Angular",
   "license": "Apache-2.0",
@@ -44,7 +44,7 @@
     "@angular/platform-browser-dynamic": "~18.0.0",
     "@angular/router": "~18.0.0",
     "@nativescript/angular": "^18.0.0",
-    "@nativescript/core": "~8.7.0",
+    "@nativescript/core": "~8.8.0",
     "rxjs": "~7.8.0",
     "zone.js": "~0.14.0"
   },
@@ -52,7 +52,7 @@
     "@angular-devkit/build-angular": "~18.0.0",
     "@angular/compiler-cli": "~18.0.0",
     "@nativescript/tailwind": "^2.1.0",
-    "@nativescript/types": "~8.7.0",
+    "@nativescript/types": "~8.8.0",
     "@nativescript/webpack": "~5.0.0",
     "@ngtools/webpack": "~18.0.0",
     "tailwindcss": "~3.4.0",

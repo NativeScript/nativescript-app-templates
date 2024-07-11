@@ -2,7 +2,7 @@
   "name": "@nativescript/template-blank-vue",
   "main": "app/app.js",
   "displayName": "Blank",
-  "version": "8.7.1",
+  "version": "8.8.0",
   "description": "Blank template for NativeScript apps using Vue.",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -40,12 +40,12 @@
     "category-general"
   ],
   "dependencies": {
-    "@nativescript/core": "~8.7.0",
+    "@nativescript/core": "~8.8.0",
     "@nativescript/theme": "~3.0.2",
     "nativescript-vue": "~2.9.3"
   },
   "devDependencies": {
-    "@nativescript/webpack": "~5.0.21",
+    "@nativescript/webpack": "~5.0.0",
     "nativescript-vue-template-compiler": "~2.9.3"
   }
 }
