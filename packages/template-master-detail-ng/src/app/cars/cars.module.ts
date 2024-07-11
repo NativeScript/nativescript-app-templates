@@ -25,7 +25,6 @@ import { CarsRoutingModule } from './cars-routing.module'
     MyListSelectorModalViewComponent,
     MyImageAddRemoveComponent,
   ],
-  entryComponents: [MyListSelectorModalViewComponent],
   providers: [],
   schemas: [NO_ERRORS_SCHEMA],
 })
