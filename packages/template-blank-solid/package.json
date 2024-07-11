@@ -1,7 +1,7 @@
 {
   "name": "@nativescript/template-blank-solid",
   "main": "src/app.js",
-  "version": "8.7.1",
+  "version": "8.8.0",
   "description": "Nativescript Starter with Solid",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",

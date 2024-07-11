@@ -6,6 +6,9 @@
     "prettier": "prettier --check --write packages/**/*.{js,ts,html,json,css,scss}",
     "prepare-templates": "node prepareTemplates.js",
     "publish.all": "npm run prepare-templates && lerna exec --no-bail --stream --concurrency 1 -- \"npm publish\"",
+    "bump.all.patch": "lerna exec --no-bail --stream --concurrency 1 -- \"npm version patch\"",
+    "bump.all.minor": "lerna exec --no-bail --stream --concurrency 1 -- \"npm version minor\"",
+    "bump.all.major": "lerna exec --no-bail --stream --concurrency 1 -- \"npm version major\"",
     "prepare": "husky install"
   },
   "devDependencies": {
