@@ -3,7 +3,7 @@
   "main": "src/main.ts",
   "displayName": "Navigation Drawer",
   "templateType": "App template",
-  "version": "8.8.0",
+  "version": "8.8.1",
   "description": "Side navigation template",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "@nativescript/core": "~8.8.0",
-    "@nativescript/theme": "~3.0.2",
+    "@nativescript/theme": "^3.1.0",
     "nativescript-ui-sidedrawer": "~15.2.0",
     "rxjs": "~7.8.0"
   },
