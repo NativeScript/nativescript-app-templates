@@ -2,7 +2,7 @@
   "name": "@nativescript/template-blank-vue",
   "main": "app/app.js",
   "displayName": "Blank",
-  "version": "8.8.0",
+  "version": "8.8.1",
   "description": "Blank template for NativeScript apps using Vue.",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
