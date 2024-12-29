@@ -1,5 +1,5 @@
 {
-  "name": "@nativescript/template-blank-solid",
+  "name": "@nativescript/template-blank-solid-ts",
   "main": "app/index.js",
   "version": "8.8.1",
   "description": "Nativescript Starter with Solid",
