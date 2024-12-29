@@ -3,7 +3,7 @@
   "main": "app/app.js",
   "displayName": "Navigation Drawer",
   "templateType": "App template",
-  "version": "8.8.1",
+  "version": "8.8.2",
   "description": "Side navigation template",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
