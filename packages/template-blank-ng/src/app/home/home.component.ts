@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
+import {
+  NativeScriptCommonModule,
+  NativeScriptRouterModule,
+} from '@nativescript/angular';
 
 @Component({
   selector: 'Home',
   templateUrl: './home.component.html',
+  imports: [NativeScriptCommonModule, NativeScriptRouterModule],
+  schemas: [NO_ERRORS_SCHEMA],
 })
-export class HomeComponent implements OnInit {
-  constructor() {
-    // Use the component constructor to inject providers.
-  }
+export class HomeComponent {
 
-  ngOnInit(): void {
-    // Init your component properties here.
-  }
 }
