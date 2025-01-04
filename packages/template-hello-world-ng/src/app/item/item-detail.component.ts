@@ -5,8 +5,8 @@ import { Item } from './item'
 import { ItemService } from './item.service'
 
 @Component({
-  selector: 'ns-detail',
-  templateUrl: './detail.component.html',
+  selector: 'ns-item-detail',
+  templateUrl: './item-detail.component.html',
   imports: [NativeScriptCommonModule],
   schemas: [NO_ERRORS_SCHEMA],
 })
