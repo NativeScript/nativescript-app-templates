@@ -1,13 +1,13 @@
-import { Injectable } from '@angular/core'
-
+import { Injectable, signal } from '@angular/core'
 import { Item } from './item'
 
 @Injectable({
   providedIn: 'root',
 })
 export class ItemService {
-  private items = new Array<Item>(
-    { id: 1, name: 'Ter Stegen', role: 'Goalkeeper' },
+  items = signal<Item[]>([
+    { id: 1, name: 'NativeScript', role: 'Technology' },
+    { id: 2, name: 'Ter Stegen', role: 'Goalkeeper' },
     { id: 3, name: 'Piqué', role: 'Defender' },
     { id: 4, name: 'I. Rakitic', role: 'Midfielder' },
     { id: 5, name: 'Sergio', role: 'Midfielder' },
@@ -28,14 +28,10 @@ export class ItemService {
     { id: 22, name: 'Aleix Vidal', role: 'Midfielder' },
     { id: 23, name: 'Umtiti', role: 'Defender' },
     { id: 24, name: 'Mathieu', role: 'Defender' },
-    { id: 25, name: 'Masip', role: 'Goalkeeper' }
-  )
-
-  getItems(): Array<Item> {
-    return this.items
-  }
+    { id: 25, name: 'Masip', role: 'Goalkeeper' },
+  ])
 
   getItem(id: number): Item {
-    return this.items.filter((item) => item.id === id)[0]
+    return this.items().find((item) => item.id === id)
   }
 }
