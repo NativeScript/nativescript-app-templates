@@ -1,7 +1,7 @@
 {
   "name": "@nativescript/template-blank-solid",
   "main": "src/index.js",
-  "version": "8.8.5",
+  "version": "8.9.0",
   "description": "Nativescript Starter with Solid",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -40,7 +40,7 @@
   "scripts": {},
   "dependencies": {
     "@nativescript-community/solid-js": "^0.0.6",
-    "@nativescript/core": "~8.8.0",
+    "@nativescript/core": "~8.9.0",
     "dominative": "^0.1.3",
     "solid-js": "^1.8.21",
     "solid-navigation": "1.0.0-alpha.16",
@@ -52,9 +52,7 @@
     "@babel/preset-typescript": "^7.24.1",
     "@nativescript-dom/core-types": "1.0.29",
     "@nativescript-dom/solidjs-types": "1.0.23",
-    "@nativescript/android": "8.8.2",
-    "@nativescript/ios": "8.8.1",
-    "@nativescript/types": "~8.8.0",
+    "@nativescript/types": "~8.9.0",
     "@nativescript/webpack": "~5.0.0",
     "babel": "^6.23.0",
     "babel-loader": "^9.1.3",

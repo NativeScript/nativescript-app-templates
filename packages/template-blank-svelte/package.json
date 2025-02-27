@@ -3,7 +3,7 @@
   "main": "app/app.ts",
   "displayName": "Blank Svelte",
   "templateType": "App template",
-  "version": "8.8.2",
+  "version": "8.9.0",
   "description": "Blank template for NativeScript apps using Svelte",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -42,12 +42,12 @@
     "url": "https://github.com/NativeScript/NativeScript/issues"
   },
   "dependencies": {
-    "@nativescript/core": "~8.8.0",
+    "@nativescript/core": "~8.9.0",
     "@nativescript/theme": "^3.1.0",
     "svelte-native": "~1.0.9"
   },
   "devDependencies": {
-    "@nativescript/types": "~8.8.0",
+    "@nativescript/types": "~8.9.0",
     "@nativescript/webpack": "~5.0.0",
     "svelte": "~4.2.2",
     "svelte-loader": "^3.1.9",

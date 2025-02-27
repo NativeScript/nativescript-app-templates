@@ -1,7 +1,7 @@
 {
   "name": "@nativescript/template-blank-svelte-vision",
   "main": "src/app.ts",
-  "version": "8.8.2",
+  "version": "8.9.0",
   "description": "Nativescript visionOS Starter with Svelte",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -39,11 +39,11 @@
     "url": "https://github.com/NativeScript/NativeScript/issues"
   },
   "dependencies": {
-    "@nativescript/core": "~8.8.0",
+    "@nativescript/core": "~8.9.0",
     "svelte-native": "~1.0.9"
   },
   "devDependencies": {
-    "@nativescript/types": "~8.8.0",
+    "@nativescript/types": "~8.9.0",
     "@nativescript/webpack": "~5.0.0",
     "svelte": "~4.2.2",
     "svelte-loader": "^3.2.0",
