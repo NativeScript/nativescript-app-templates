@@ -5,7 +5,7 @@ App templates help you jump start your native cross-platform apps with built-in 
 Execute the following command to create an app from this template:
 
 ```
-ns create my-blank-solid --template @nativescript/template-blank-solid
+ns create my-blank-solid --template @nativescript/template-blank-solid-ts
 ```
 
 > Note: This command will create a new NativeScript app that uses the latest version of this template published to [npm](https://www.npmjs.com/package/@nativescript/template-blank-solid).
