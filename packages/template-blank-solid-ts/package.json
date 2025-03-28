@@ -1,7 +1,7 @@
 {
   "name": "@nativescript/template-blank-solid-ts",
   "main": "src/index.js",
-  "version": "8.9.0",
+  "version": "8.9.1",
   "description": "Nativescript Starter with Solid",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -49,7 +49,7 @@
   "devDependencies": {
     "@babel/core": "^7.24.4",
     "@babel/preset-env": "^7.24.4",
-    "@babel/preset-typescript": "^7.24.1",
+    "@babel/preset-typescript": "^7.23.3"
     "@nativescript-dom/core-types": "1.0.29",
     "@nativescript-dom/solidjs-types": "1.0.23",
     "@nativescript/types": "~8.9.0",
