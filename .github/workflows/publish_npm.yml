@@ -2,7 +2,7 @@ name: '@nativescript/template-* -> npm'
 
 on:
   push:
-    branches: [ 'main' ]
+    branches: ['main']
 
 env:
   NPM_TAG: 'next'
@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '18.x'
+          node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
       - name: Setup
         run: npm install

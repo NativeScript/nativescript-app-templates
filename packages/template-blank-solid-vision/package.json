@@ -61,7 +61,7 @@
     "babel-preset-solid": "^1.9.5",
     "patch-package": "^8.0.0",
     "solid-refresh": "^0.7.5",
-    "tailwindcss": "~4.1.4",
+    "tailwindcss": "^4.1.4",
     "typescript": "~5.8.3"
   }
 }

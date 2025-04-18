@@ -60,7 +60,7 @@
     "@nativescript/types": "~8.9.1",
     "@nativescript/webpack": "~5.0.24",
     "@ngtools/webpack": "~19.2.8",
-    "tailwindcss": "~4.1.4",
+    "tailwindcss": "^4.1.4",
     "typescript": "~5.8.3"
   }
 }
