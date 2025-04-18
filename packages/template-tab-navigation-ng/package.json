@@ -41,26 +41,26 @@
     "url": "https://github.com/NativeScript/NativeScript/issues"
   },
   "dependencies": {
-    "@angular/animations": "~18.0.0",
-    "@angular/common": "~18.0.0",
-    "@angular/compiler": "~18.0.0",
-    "@angular/core": "~18.0.0",
-    "@angular/forms": "~18.0.0",
-    "@angular/platform-browser": "~18.0.0",
-    "@angular/platform-browser-dynamic": "~18.0.0",
-    "@angular/router": "~18.0.0",
-    "@nativescript/angular": "^18.0.0",
-    "@nativescript/core": "~8.9.0",
+    "@angular/animations": "~19.2.7",
+    "@angular/common": "~19.2.7",
+    "@angular/compiler": "~19.2.7",
+    "@angular/core": "~19.2.7",
+    "@angular/forms": "~19.2.7",
+    "@angular/platform-browser": "~19.2.7",
+    "@angular/platform-browser-dynamic": "~19.2.7",
+    "@angular/router": "~19.2.7",
+    "@nativescript/angular": "^19.0.1",
+    "@nativescript/core": "~8.9.1",
     "@nativescript/theme": "^3.1.0",
-    "rxjs": "~7.8.0",
-    "zone.js": "~0.14.0"
+    "rxjs": "~7.8.2",
+    "zone.js": "~0.15.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~18.0.0",
-    "@angular/compiler-cli": "~18.0.0",
-    "@nativescript/types": "~8.9.0",
-    "@nativescript/webpack": "~5.0.0",
-    "@ngtools/webpack": "~18.0.0",
-    "typescript": "~5.4.0"
+    "@angular-devkit/build-angular": "~19.2.8",
+    "@angular/compiler-cli": "~19.2.7",
+    "@nativescript/types": "~8.9.1",
+    "@nativescript/webpack": "~5.0.24",
+    "@ngtools/webpack": "~19.2.8",
+    "typescript": "~5.8.3"
   }
 }

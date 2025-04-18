@@ -40,28 +40,28 @@
     "Vision Pro"
   ],
   "dependencies": {
-    "@nativescript-community/solid-js": "^0.0.6",
-    "@nativescript-community/ui-collectionview": "^5.3.0",
-    "@nativescript/core": "~8.9.0",
+    "@nativescript-community/solid-js": "^0.1.1",
+    "@nativescript-community/ui-collectionview": "^6.0.4",
+    "@nativescript/core": "~8.9.1",
     "dominative": "^0.1.3",
-    "solid-js": "^1.7.12",
-    "solid-navigation": "^1.0.0-alpha.11",
+    "solid-js": "^1.9.5",
+    "solid-navigation": "^1.0.0-alpha.16",
     "undom-ng": "^1.1.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.10",
-    "@babel/preset-env": "^7.20.2",
-    "@babel/preset-typescript": "^7.22.5",
-    "@nativescript-dom/core-types": "^1.0.29",
-    "@nativescript-dom/solidjs-types": "^1.0.15",
-    "@nativescript/tailwind": "^2.1.0",
-    "@nativescript/webpack": "~5.0.0",
+    "@babel/core": "^7.26.10",
+    "@babel/preset-env": "^7.26.9",
+    "@babel/preset-typescript": "^7.27.0",
+    "@nativescript-dom/core-types": "^1.0.31",
+    "@nativescript-dom/solidjs-types": "^1.0.25",
+    "@nativescript/tailwind": "^4.0.3",
+    "@nativescript/webpack": "~5.0.24",
     "babel": "^6.23.0",
-    "babel-loader": "^9.1.3",
-    "babel-preset-solid": "^1.7.12",
+    "babel-loader": "^10.0.0",
+    "babel-preset-solid": "^1.9.5",
     "patch-package": "^8.0.0",
-    "solid-refresh": "^0.5.3",
-    "tailwindcss": "~3.4.0",
-    "typescript": "~5.4.0"
+    "solid-refresh": "^0.7.5",
+    "tailwindcss": "^4.1.4",
+    "typescript": "~5.8.3"
   }
 }

@@ -33,12 +33,12 @@
   },
   "homepage": "https://github.com/NativeScript/nativescript-app-templates",
   "dependencies": {
-    "@nativescript/core": "~8.9.0",
+    "@nativescript/core": "~8.9.1",
     "@nativescript/theme": "^3.1.0"
   },
   "devDependencies": {
-    "@nativescript/types": "~8.9.0",
-    "@nativescript/webpack": "~5.0.0",
-    "typescript": "~5.4.0"
+    "@nativescript/types": "~8.9.1",
+    "@nativescript/webpack": "~5.0.24",
+    "typescript": "~5.8.3"
   }
 }

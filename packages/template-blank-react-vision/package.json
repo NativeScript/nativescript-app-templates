@@ -41,18 +41,18 @@
     "Vision Pro"
   ],
   "dependencies": {
-    "@nativescript/core": "~8.9.0",
-    "react": "^18.2.0",
+    "@nativescript/core": "~8.9.1",
+    "react": "^19.1.0",
     "react-nativescript": "^5.0.0",
     "react-nativescript-navigation": "^5.0.0"
   },
   "devDependencies": {
-    "@nativescript/tailwind": "^2.1.0",
-    "@nativescript/types": "~8.9.0",
-    "@nativescript/webpack": "~5.0.0",
+    "@nativescript/tailwind": "^4.0.3",
+    "@nativescript/types": "~8.9.1",
+    "@nativescript/webpack": "~5.0.24",
     "@types/react": "npm:types-react-without-jsx-intrinsics@^18.0.17",
-    "tailwindcss": "~3.4.0",
-    "typescript": "~5.4.0"
+    "tailwindcss": "~4.1.4",
+    "typescript": "~5.8.3"
   },
   "gitHead": "1350d382fb4b0ed4c6e9685df909518b2688e004",
   "readme": "NativeScript Application"
