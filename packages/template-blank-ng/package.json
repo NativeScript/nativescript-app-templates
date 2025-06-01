@@ -3,7 +3,7 @@
   "main": "src/main.ts",
   "displayName": "Blank",
   "templateType": "App template",
-  "version": "8.9.0",
+  "version": "8.9.1",
   "description": "Blank template for NativeScript apps using Angular",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -40,27 +40,27 @@
     "url": "https://github.com/NativeScript/NativeScript/issues"
   },
   "dependencies": {
-    "@angular/animations": "~19.0.0",
-    "@angular/common": "~19.0.0",
-    "@angular/compiler": "~19.0.0",
-    "@angular/core": "~19.0.0",
-    "@angular/forms": "~19.0.0",
-    "@angular/platform-browser": "~19.0.0",
-    "@angular/platform-browser-dynamic": "~19.0.0",
-    "@angular/router": "~19.0.0",
-    "@nativescript/angular": "^19.0.0",
+    "@angular/animations": "~20.0.0",
+    "@angular/common": "~20.0.0",
+    "@angular/compiler": "~20.0.0",
+    "@angular/core": "~20.0.0",
+    "@angular/forms": "~20.0.0",
+    "@angular/platform-browser": "~20.0.0",
+    "@angular/platform-browser-dynamic": "~20.0.0",
+    "@angular/router": "~20.0.0",
+    "@nativescript/angular": "^20.0.0",
     "@nativescript/core": "~8.9.0",
     "rxjs": "~7.8.0",
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~19.0.0",
-    "@angular/compiler-cli": "~19.0.0",
+    "@angular-devkit/build-angular": "~20.0.0",
+    "@angular/compiler-cli": "~20.0.0",
     "@nativescript/tailwind": "^2.1.0",
     "@nativescript/types": "~8.9.0",
     "@nativescript/webpack": "~5.0.0",
-    "@ngtools/webpack": "~19.0.0",
+    "@ngtools/webpack": "~20.0.0",
     "tailwindcss": "~3.4.0",
-    "typescript": "~5.6.0"
+    "typescript": "~5.8.0"
   }
 }
