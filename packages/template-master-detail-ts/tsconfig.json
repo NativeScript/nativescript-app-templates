@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
     "module": "esnext",
-    "target": "es2017",
-    "moduleResolution": "node",
+    "target": "es2020",
+    "moduleResolution": "bundler",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "noEmitHelpers": true,
     "noEmitOnError": true,
     "skipLibCheck": true,
-    "lib": ["es2017", "dom"],
+    "lib": ["ESNext", "dom"],
     "baseUrl": ".",
     "paths": {
       "~/*": ["app/*"],

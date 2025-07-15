@@ -3,7 +3,7 @@
     "strict": true,
     "target": "esnext",
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "lib": ["esnext", "WebWorker"],
     "sourceMap": true,
     "noEmitHelpers": true,

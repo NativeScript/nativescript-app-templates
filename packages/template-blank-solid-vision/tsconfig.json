@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
     "strict": true,
-    "target": "es2017",
+    "target": "es2020",
     "module": "esnext",
-    "moduleResolution": "node",
-    "lib": ["es2017", "DOM"],
+    "moduleResolution": "bundler",
+    "lib": ["ESNext", "DOM"],
     "sourceMap": true,
     "jsx": "preserve",
     "jsxImportSource": "@nativescript-dom/solidjs-types",
