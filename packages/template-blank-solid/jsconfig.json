@@ -3,7 +3,7 @@
     "strict": true,
     "target": "ES2020",
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "lib": ["ESNext", "DOM"],
     "jsx": "preserve",
     "jsxImportSource": "@nativescript-dom/solidjs-types",
