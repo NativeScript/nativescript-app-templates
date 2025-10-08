@@ -1,8 +1,17 @@
 <ActionBar title="Details">
-@if (isAndroid) {
+  @if (isAndroid) {
   <StackLayout orientation="horizontal" horizontalAlignment="left">
-    <Label text="< Back" color="#1976d2" (tap)="goBack()" style="font-size: 18; margin-left: 4"></Label>
-    <Label text="Details" color="#333" style="font-size: 20; font-weight:600; margin-left: 30"></Label>
+    <Label
+      text="< Back"
+      color="#1976d2"
+      (tap)="goBack()"
+      style="font-size: 18; margin-left: 4"
+    ></Label>
+    <Label
+      text="Details"
+      color="#333"
+      style="font-size: 20; font-weight: 600; margin-left: 30"
+    ></Label>
   </StackLayout>
   }
 </ActionBar>
@@ -18,12 +27,13 @@
     <Label textWrap="true" [text]="person()?.nationality"></Label>
   </StackLayout>
 
-   <StackLayout class="text-xl m-2">
+  <StackLayout class="text-xl m-2">
     <Label class="m-2 ml-4" fontWeight="700" text="Notable Achievements:"></Label>
     <Label
       class="text-xl m-2 ml-4"
       [text]="formatAchievements(person()?.notableAchievements)"
-      textWrap="true">
+      textWrap="true"
+    >
     </Label>
   </StackLayout>
 </FlexboxLayout>
