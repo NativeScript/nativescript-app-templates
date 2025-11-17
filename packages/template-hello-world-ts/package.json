@@ -1,7 +1,7 @@
 {
   "name": "@nativescript/template-hello-world-ts",
   "main": "app/app.ts",
-  "version": "8.9.0",
+  "version": "9.0.0",
   "author": "NativeScript Team <oss@nativescript.org>",
   "description": "Nativescript hello-world-ts project template",
   "license": "Apache-2.0",
@@ -33,12 +33,12 @@
   },
   "homepage": "https://github.com/NativeScript/nativescript-app-templates",
   "dependencies": {
-    "@nativescript/core": "~8.9.0",
+    "@nativescript/core": "~9.0.0",
     "@nativescript/theme": "^3.1.0"
   },
   "devDependencies": {
-    "@nativescript/types": "~8.9.0",
-    "@nativescript/webpack": "~5.0.0",
+    "@nativescript/types": "~9.0.0",
+    "@nativescript/webpack": "~5.0.25",
     "typescript": "~5.4.0"
   }
 }
