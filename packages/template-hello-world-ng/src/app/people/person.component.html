@@ -1,7 +1,7 @@
-<ActionBar title="My App"> </ActionBar>
+<ActionBar title="Computer Scientists" iosLargeTitle="true"> </ActionBar>
 
 <GridLayout>
-  <ListView [items]="itemService.items()">
+  <ListView [items]="personService.items()">
     <ng-template let-item="item">
       <StackLayout [nsRouterLink]="['/item', item.id]">
         <Label [text]="item.name" class="text-lg text-gray-500 p-4"></Label>

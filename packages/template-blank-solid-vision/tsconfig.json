@@ -16,11 +16,7 @@
       "@/*": ["src/*"]
     },
     "allowJs": true,
-    "types": [
-      "node",
-      "@nativescript-dom/core-types",
-      "@nativescript-dom/solidjs-types"
-    ],
+    "types": ["node", "@nativescript-dom/core-types", "@nativescript-dom/solidjs-types"],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,

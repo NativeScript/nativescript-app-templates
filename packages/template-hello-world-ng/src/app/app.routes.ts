@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { ItemsComponent } from './item/items.component';
-import { ItemDetailComponent } from './item/item-detail.component';
+import { PersonComponent } from './people/person.component';
+import { PersonDetailComponent } from './people/person-detail.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/items', pathMatch: 'full' },
-  { path: 'items', component: ItemsComponent },
-  { path: 'item/:id', component: ItemDetailComponent },
+  { path: 'items', component: PersonComponent },
+  { path: 'item/:id', component: PersonDetailComponent },
 ];
