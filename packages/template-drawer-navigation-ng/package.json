@@ -3,7 +3,7 @@
   "main": "src/main.ts",
   "displayName": "Navigation Drawer",
   "templateType": "App template",
-  "version": "8.9.0",
+  "version": "9.0.0",
   "description": "Side navigation template",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -50,7 +50,7 @@
     "@angular/platform-browser-dynamic": "~18.0.0",
     "@angular/router": "~18.0.0",
     "@nativescript/angular": "^18.0.0",
-    "@nativescript/core": "~8.9.0",
+    "@nativescript/core": "~9.0.0",
     "@nativescript/theme": "^3.1.0",
     "nativescript-ui-sidedrawer": "~15.2.0",
     "rxjs": "~7.8.0",
@@ -59,8 +59,8 @@
   "devDependencies": {
     "@angular-devkit/build-angular": "~18.0.0",
     "@angular/compiler-cli": "~18.0.0",
-    "@nativescript/types": "~8.9.0",
-    "@nativescript/webpack": "~5.0.0",
+    "@nativescript/types": "~9.0.0",
+    "@nativescript/webpack": "~5.0.25",
     "@ngtools/webpack": "~18.0.0",
     "typescript": "~5.4.0"
   }
