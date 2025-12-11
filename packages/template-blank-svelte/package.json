@@ -20,7 +20,8 @@
     ".editorconfig",
     ".npmrc",
     "svelte.config.js",
-    "tsconfig.json"
+    "tsconfig.json",
+    "webpack.config.js"
   ],
   "keywords": [
     "nstudio",
@@ -43,7 +44,7 @@
   },
   "dependencies": {
     "@nativescript-community/svelte-native": "~1.0.30",
-    "@nativescript/core": "~9.0.0"
+    "@nativescript/core": "^9.0.0"
   },
   "devDependencies": {
     "@nativescript-community/svelte-native-preprocessor": "^1.0.1",
@@ -56,6 +57,6 @@
   },
   "overrides": {
     "@nativescript/core": "^9.0.0",
-    "svelte": "~4.2.0"
+    "svelte": "~4.2.20"
   }
 }
