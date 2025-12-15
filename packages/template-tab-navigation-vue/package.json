@@ -2,7 +2,7 @@
   "name": "@nativescript/template-tab-navigation-vue",
   "main": "app/app.js",
   "displayName": "Tabs",
-  "version": "9.0.0",
+  "version": "9.0.1",
   "description": "Tabbed interface template using Vue",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -45,7 +45,7 @@
     "nativescript-vue": "~2.9.3"
   },
   "devDependencies": {
-    "@nativescript/webpack": "~5.0.25",
+    "@nativescript/webpack": "5.0.24",
     "nativescript-vue-template-compiler": "~2.9.3"
   }
 }

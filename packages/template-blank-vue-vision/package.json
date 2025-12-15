@@ -2,7 +2,7 @@
   "name": "@nativescript/template-blank-vue-vision",
   "main": "src/app.ts",
   "displayName": "Blank Vue Typescript",
-  "version": "9.0.0",
+  "version": "9.0.1",
   "description": "Nativescript visionOS Starter with Vue",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -39,7 +39,7 @@
   ],
   "dependencies": {
     "@nativescript/core": "~9.0.0",
-    "nativescript-vue": "rc"
+    "nativescript-vue": "^3.0.0"
   },
   "devDependencies": {
     "@nativescript/tailwind": "^2.1.0",
