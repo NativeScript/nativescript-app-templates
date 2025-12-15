@@ -10,19 +10,43 @@ env:
 jobs:
   release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6.0.0
         with:
-          node-version: '18.x'
+          node-version: 22
           registry-url: 'https://registry.npmjs.org'
+      - name: Update npm (required for OIDC trusted publishing)
+        run: |
+          npm install -g npm@^11.5.1
+          npm --version
       - name: Setup
         run: npm install
-      - name: Publish All Templates
+      - name: Prepare Templates
+        run: npm run prepare-templates
+
+      - name: Publish All Templates (OIDC trusted publishing)
+        if: ${{ vars.USE_NPM_TOKEN != 'true' }}
+        env:
+          NODE_AUTH_TOKEN: ""
+        run: |
+          echo "Publishing templates to npm with tag $NPM_TAG via OIDC trusted publishing..."
+          unset NODE_AUTH_TOKEN
+          if [ -n "${NPM_CONFIG_USERCONFIG:-}" ]; then
+            rm -f "$NPM_CONFIG_USERCONFIG"
+          fi
+          # run publish in every package, ignore failures (ie no publish required if the version is already published)
+          npx lerna exec --no-bail --stream --concurrency 1 -- "npm publish --tag \"$NPM_TAG\" --access public --provenance || true"
+
+      - name: Publish All Templates (granular token)
+        if: ${{ vars.USE_NPM_TOKEN == 'true' }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
         run: |
+          echo "Publishing templates to npm with tag $NPM_TAG via granular token..."
           # run publish in every package, ignore failures (ie no publish required if the version is already published)
-          npm run prepare-templates
-          npx lerna exec --no-bail --stream --concurrency 1 -- "npm publish || true"
+          npx lerna exec --no-bail --stream --concurrency 1 -- "npm publish --tag \"$NPM_TAG\" --access public --provenance || true"
