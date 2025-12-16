@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-TAG="${NPM_TAG:-next}"
+TAG="${NPM_TAG:-}"
 
 pkg_name="$(node -p "require('./package.json').name")"
 pkg_version="$(node -p "require('./package.json').version")"
@@ -27,10 +27,14 @@ if ! grep -qiE '(E404|404 Not Found|code E404|is not in this registry)' "$view_l
 fi
 
 args=(
-  --tag "$TAG"
   --access public
   --provenance
 )
+
+# Only add --tag if NPM_TAG is explicitly provided
+if [ -n "$TAG" ]; then
+  args=( --tag "$TAG" "${args[@]}" )
+fi
 
 log_file="$(mktemp)"
 
