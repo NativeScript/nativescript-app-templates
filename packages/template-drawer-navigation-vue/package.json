@@ -42,13 +42,12 @@
   },
   "dependencies": {
     "@nativescript/core": "~9.0.0",
-    "@nativescript/theme": "^3.1.0",
-    "nativescript-ui-sidedrawer": "~15.2.0",
-    "nativescript-vue": "~2.9.3",
-    "rxjs": "~7.8.0"
+    "@nativescript-community/ui-drawer": "^1.0.0",
+    "nativescript-vue": "^3.0.0"
   },
   "devDependencies": {
-    "@nativescript/webpack": "5.0.24",
-    "nativescript-vue-template-compiler": "~2.9.3"
+    "@nativescript/tailwind": "^4.0.0",
+    "@nativescript/webpack": "~5.0.31",
+    "tailwindcss": "^4.0.0"
   }
 }

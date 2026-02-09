@@ -1,46 +1,27 @@
 <template>
-    <Page class="page">
-      <ActionBar class="action-bar">
-        <NavigationButton visibility="hidden"/>
-        <GridLayout columns="50, *">
-          <Label class="action-bar-title" text="Browse" colSpan="2"/>
+    <Page>
+        <ActionBar>
+            <GridLayout columns="auto, *">
+                <Label col="0" class="fas text-lg" text.decode="&#xf0c9;" @tap="onDrawerButtonTap"/>
+                <Label col="1" text="Browse" class="font-bold text-lg"/>
+            </GridLayout>
+        </ActionBar>
 
-          <Label class="fas" text.decode="&#xf0c9;" @tap="onDrawerButtonTap"/>
-        </GridLayout>
-      </ActionBar>
-
-        <GridLayout class="page__content">
-            <Label class="page__content-icon far" text.decode="&#xf1ea;"/>
-            <Label class="page__content-placeholder" :text="message"/>
+        <GridLayout>
+            <Label class="far text-7xl text-gray-400 text-center" style="vertical-align: top; margin-top: 20%" text.decode="&#xf1ea;"/>
+            <Label class="text-xl text-gray-400 text-center align-middle" text="Page content goes here"/>
         </GridLayout>
     </Page>
 </template>
 
 <script>
-  import * as utils from "~/shared/utils";
-  import { SelectedPageService } from "../shared/selected-page-service";
+  import * as utils from '~/shared/utils'
 
   export default {
-    mounted() {
-      SelectedPageService.getInstance().updateSelectedPage("Browse");
-    },
-    computed: {
-      message() {
-        return "<!-- Page content goes here -->";
-      }
-    },
     methods: {
       onDrawerButtonTap() {
-        utils.showDrawer();
+        utils.showDrawer()
       }
     }
-  };
+  }
 </script>
-
-<style scoped lang="scss">
-    // Start custom common variables
-    @import '@nativescript/theme/scss/variables/blue';
-    // End custom common variables
-
-    // Custom styles
-</style>

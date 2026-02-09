@@ -1,7 +1,5 @@
-import Vue from 'nativescript-vue'
+import { createApp } from 'nativescript-vue'
 
-import App from './components/App'
+import App from './components/App.vue'
 
-new Vue({
-  render: (h) => h(App),
-}).$start()
+createApp(App).start()

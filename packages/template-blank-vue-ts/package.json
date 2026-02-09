@@ -25,8 +25,6 @@
     "!tools/assets",
     "types",
     ".editorconfig",
-    "tailwind.config.js",
-    "webpack.config.js",
     "tsconfig.json"
   ],
   "keywords": [
@@ -44,18 +42,14 @@
   ],
   "dependencies": {
     "@nativescript/core": "~9.0.0",
-    "nativescript-vue": "~2.9.3"
+    "nativescript-vue": "^3.0.0"
   },
   "devDependencies": {
-    "@nativescript/tailwind": "^2.1.0",
+    "@nativescript/tailwind": "^4.0.0",
     "@nativescript/types": "~9.0.0",
     "@nativescript/webpack": "~5.0.31",
     "@types/node": "^20.0.0",
-    "nativescript-vue-template-compiler": "~2.9.3",
-    "tailwindcss": "~3.4.0",
-    "typescript": "~5.4.0",
-    "vue": "~2.6.12",
-    "vue-loader": "^15.11.1",
-    "vue-template-compiler": "~2.6.12"
+    "tailwindcss": "^4.0.0",
+    "typescript": "~5.4.0"
   }
 }

@@ -1,31 +1,16 @@
-<template lang="html">
+<template>
     <Page>
         <ActionBar>
-            <Label text="Search"></Label>
+            <Label text="Search"/>
         </ActionBar>
 
-        <GridLayout class="page__content">
-            <Label class="page__content-icon fas" text.decode="&#xf002;"></Label>
-            <Label class="page__content-placeholder" :text="message"></Label>
+        <GridLayout>
+            <Label class="fas text-7xl text-gray-400 text-center" style="vertical-align: top; margin-top: 20%" text.decode="&#xf002;"/>
+            <Label class="text-xl text-gray-400 text-center align-middle" text="Search page content goes here"/>
         </GridLayout>
     </Page>
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        message: "<!-- Search page content goes here -->"
-      };
-    }
-  }
+  export default {}
 </script>
-
-<style lang="scss" scoped>
-    // Start custom common variables
-    @import "@nativescript/theme/scss/variables/blue";
-    // End custom common variables
-
-    // Custom styles
-
-</style>

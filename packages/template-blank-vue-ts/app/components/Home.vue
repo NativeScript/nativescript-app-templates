@@ -11,9 +11,7 @@
 </template>
 
 <script lang="ts">
-  import Vue from "nativescript-vue";
-
-  export default Vue.extend({
+  export default {
     computed: {
       message() {
         return "Blank {N}-Vue app";
@@ -25,11 +23,5 @@
         console.log('You have tapped the message!')
       }
     }
-  });
+  };
 </script>
-
-<style>
-  /* .info {
-    font-size: 20;
-  } */
-</style>

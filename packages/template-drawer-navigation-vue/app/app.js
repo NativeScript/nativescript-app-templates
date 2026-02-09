@@ -1,12 +1,8 @@
-import Vue from 'nativescript-vue'
-import RadSideDrawer from 'nativescript-ui-sidedrawer/vue'
+import { createApp } from 'nativescript-vue'
+import DrawerPlugin from '@nativescript-community/ui-drawer/vue3'
 
-Vue.use(RadSideDrawer)
+import App from './components/App.vue'
 
-import App from './components/App'
-
-Vue.config.silent = !__DEV__
-
-new Vue({
-  render: h => h(App)
-}).$start()
+const app = createApp(App)
+app.use(DrawerPlugin)
+app.start()
