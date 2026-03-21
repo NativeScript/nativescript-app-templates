@@ -25,5 +25,5 @@
     "importHelpers": true
   },
   "include": ["src", "references.d.ts"],
-  "exclude": ["node_modules", "platforms"]
+  "exclude": ["node_modules", "platforms", "**/*.test.ts", "**/*.spec.ts"]
 }
