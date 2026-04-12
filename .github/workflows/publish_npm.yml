@@ -21,7 +21,8 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Update npm (required for OIDC trusted publishing)
         run: |
-          npm install -g npm@^11.5.1
+          corepack enable
+          corepack prepare npm@11.5.1 --activate
           npm --version
       - name: Setup
         run: npm install
