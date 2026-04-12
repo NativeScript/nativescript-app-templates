@@ -18,7 +18,6 @@ jobs:
       - uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6.0.0
         with:
           node-version: 22
-          registry-url: 'https://registry.npmjs.org'
       - name: Update npm (required for OIDC trusted publishing)
         run: |
           corepack enable
@@ -31,17 +30,8 @@ jobs:
 
       - name: Publish All Templates (OIDC trusted publishing)
         if: ${{ vars.USE_NPM_TOKEN != 'true' }}
-        env:
-          NODE_AUTH_TOKEN: ""
         run: |
           echo "Publishing templates to npm with tag $NPM_TAG via OIDC trusted publishing..."
-          unset NODE_AUTH_TOKEN
-          # Ensure we don't have token-based npm auth config lingering from setup-node
-          rm -f ~/.npmrc
-          if [ -n "${NPM_CONFIG_USERCONFIG:-}" ]; then
-            rm -f "$NPM_CONFIG_USERCONFIG"
-            unset NPM_CONFIG_USERCONFIG
-          fi
           # run publish in every package; only ignore "already published" errors
           npx lerna exec --no-bail --stream --concurrency 1 -- "bash \"$GITHUB_WORKSPACE/.github/scripts/npm-publish-ci.sh\""
 
@@ -51,5 +41,6 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
         run: |
           echo "Publishing templates to npm with tag $NPM_TAG via granular token..."
+          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" >> ~/.npmrc
           # run publish in every package; only ignore "already published" errors
           npx lerna exec --no-bail --stream --concurrency 1 -- "bash \"$GITHUB_WORKSPACE/.github/scripts/npm-publish-ci.sh\""
