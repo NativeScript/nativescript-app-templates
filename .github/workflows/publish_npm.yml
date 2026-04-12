@@ -20,9 +20,10 @@ jobs:
           node-version: 22
       - name: Update npm (required for OIDC trusted publishing)
         run: |
-          corepack enable
-          corepack prepare npm@11.5.1 --activate
-          npm --version
+            corepack enable npm
+            corepack install -g npm@11.5.1
+            test "$(npm --version)" = "11.5.1"
+            test "$(npx --version)" = "11.5.1"
       - name: Setup
         run: npm install
       - name: Prepare Templates
