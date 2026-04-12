@@ -1,27 +1,17 @@
 <template>
-  <Page>
-    <ActionBar>
-      <Label text="Home" class="font-bold text-lg"/>
-    </ActionBar>
+    <Page>
+        <ActionBar>
+            <Label text="Home"/>
+        </ActionBar>
 
-    <GridLayout>
-      <Label class="text-xl align-middle text-center text-gray-500" :text="message" @tap="logMessage" />
-    </GridLayout>
-  </Page>
+        <GridLayout>
+            <Label class="text-xl align-middle text-center text-gray-500" :text="message" />
+        </GridLayout>
+    </Page>
 </template>
 
-<script lang="ts">
-  export default {
-    computed: {
-      message() {
-        return "Blank {N}-Vue app";
-      }
-    },
+<script setup lang="ts">
+  import { computed } from 'nativescript-vue'
 
-    methods: {
-      logMessage() {
-        console.log('You have tapped the message!')
-      }
-    }
-  };
+  const message = computed(() => "Blank {N}-Vue app");
 </script>
