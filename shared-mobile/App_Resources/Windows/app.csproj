@@ -1,6 +1,7 @@
-<!-- <Project>
+<Project>
   <PropertyGroup>
-    <AppDisplayName>My App</AppDisplayName>
-    <AppDescription>My Windows App — built with NativeScript on Windows.</AppDescription>
+    <!-- <AppDisplayName>My App</AppDisplayName>
+    <AppDescription>My Windows App — built with NativeScript on Windows.</AppDescription> -->
+    <ApplicationManifest Condition="'$(ApplicationManifest)' == '' and Exists('$(MSBuildThisFileDirectory)app.manifest')">$(MSBuildThisFileDirectory)app.manifest</ApplicationManifest>
   </PropertyGroup>
-</Project> -->
+</Project>
