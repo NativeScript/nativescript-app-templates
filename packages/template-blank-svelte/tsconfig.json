@@ -8,12 +8,11 @@
     "sourceMap": true,
     "noEmitHelpers": true,
     "importHelpers": true,
-    "baseUrl": ".",
     "paths": {
-      "~/*": ["app/*"],
-      "@/*": ["app/*"]
+      "~/*": ["./app/*"],
+      "@/*": ["./app/*"]
     },
-    "typeRoots": ["types"],
+    "typeRoots": ["./types", "./node_modules/@types"],
     "types": ["node"],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,

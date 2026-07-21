@@ -10,10 +10,9 @@
     "jsxImportSource": "@nativescript-dom/solidjs-types",
     "noEmitHelpers": true,
     "importHelpers": true,
-    "baseUrl": ".",
     "paths": {
-      "~/*": ["src/*"],
-      "@/*": ["src/*"]
+      "~/*": ["./src/*"],
+      "@/*": ["./src/*"]
     },
     "allowJs": true,
     "types": ["node", "@nativescript-dom/core-types", "@nativescript-dom/solidjs-types"],
@@ -23,7 +22,6 @@
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "outDir": "dist",
-    "downlevelIteration": true,
     "maxNodeModuleJsDepth": 5
   },
   "include": ["src"],

@@ -44,11 +44,12 @@
   },
   "devDependencies": {
     "@nativescript-community/svelte-native-preprocessor": "^1.0.1",
+    "@types/node": "^20.0.0",
     "@nativescript/types": "~9.0.0",
     "@nativescript/webpack": "~5.0.25",
     "svelte": "~4.2.20",
     "svelte-loader": "^3.2.4",
     "svelte-preprocess": "^6.0.3",
-    "typescript": "~5.9.2"
+    "typescript": "~6.0.0"
   }
 }

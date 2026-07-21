@@ -48,7 +48,7 @@
     "@nativescript/types": "~9.0.0",
     "@nativescript/webpack": "~5.0.28",
     "@types/react": "npm:types-react-without-jsx-intrinsics@^18.0.17",
-    "typescript": "~5.4.0"
+    "typescript": "~6.0.0"
   },
   "overrides": {
     "@nativescript/core": "~9.0.0"

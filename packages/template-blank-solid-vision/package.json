@@ -62,6 +62,6 @@
     "patch-package": "^8.0.0",
     "solid-refresh": "^0.5.3",
     "tailwindcss": "~3.4.0",
-    "typescript": "~5.4.0"
+    "typescript": "~6.0.0"
   }
 }

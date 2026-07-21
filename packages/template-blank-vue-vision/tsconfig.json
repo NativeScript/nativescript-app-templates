@@ -8,10 +8,9 @@
     "sourceMap": true,
     "noEmitHelpers": true,
     "importHelpers": true,
-    "baseUrl": ".",
     "paths": {
-      "~/*": ["src/*"],
-      "@/*": ["src/*"]
+      "~/*": ["./src/*"],
+      "@/*": ["./src/*"]
     },
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,

@@ -60,6 +60,6 @@
     "babel-preset-solid": "^1.8.19",
     "solid-refresh": "^0.7.5",
     "tailwindcss": "~3.4.3",
-    "typescript": "~5.9.0"
+    "typescript": "~6.0.0"
   }
 }
