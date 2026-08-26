@@ -42,7 +42,7 @@
     "url": "https://github.com/NativeScript/NativeScript/issues"
   },
   "dependencies": {
-    "@nativescript/core": "~9.0.0",
+    "@nativescript/core": "~9.1.0",
     "@nativescript-community/ui-drawer": "^0.1.31",
     "nativescript-vue": "^3.0.0"
   },

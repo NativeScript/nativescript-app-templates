@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "@nativescript-community/svelte-native": "~1.0.30",
-    "@nativescript/core": "^9.0.0"
+    "@nativescript/core": "~9.1.0"
   },
   "devDependencies": {
     "@nativescript-community/svelte-native-preprocessor": "^1.0.1",
@@ -57,7 +57,7 @@
     "typescript": "~6.0.0"
   },
   "overrides": {
-    "@nativescript/core": "^9.0.0",
+    "@nativescript/core": "~9.1.0",
     "svelte": "~4.2.20"
   }
 }

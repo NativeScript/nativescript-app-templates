@@ -49,13 +49,13 @@
     "@angular/platform-browser": "~22.0.0",
     "@angular/platform-browser-dynamic": "~22.0.0",
     "@angular/router": "~22.0.0",
-    "@nativescript/angular": "^21.0.0",
-    "@nativescript/core": "~9.0.0",
+    "@nativescript/angular": "~22.0.0",
+    "@nativescript/core": "~9.1.0",
     "@nativescript/imagepicker": "~3.1.0",
     "@nativescript/theme": "^3.1.0",
     "nativescript-ui-listview": "~15.2.0",
     "rxjs": "~7.8.0",
-    "zone.js": "~0.15.0"
+    "zone.js": "~0.16.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~22.0.0",

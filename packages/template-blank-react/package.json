@@ -39,7 +39,7 @@
     "template"
   ],
   "dependencies": {
-    "@nativescript/core": "~9.0.0",
+    "@nativescript/core": "~9.1.0",
     "react": "^18.2.0",
     "react-nativescript": "^5.0.0",
     "react-nativescript-navigation": "^5.0.0"
@@ -51,7 +51,7 @@
     "typescript": "~6.0.0"
   },
   "overrides": {
-    "@nativescript/core": "~9.0.0"
+    "@nativescript/core": "~9.1.0"
   },
   "gitHead": "1350d382fb4b0ed4c6e9685df909518b2688e004",
   "readme": "NativeScript Application"

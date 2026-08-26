@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/NativeScript/nativescript-app-templates",
   "dependencies": {
-    "@nativescript/core": "~9.0.0",
+    "@nativescript/core": "~9.1.0",
     "@nativescript/theme": "^3.1.0"
   },
   "devDependencies": {
