@@ -3,7 +3,7 @@
   "main": "src/main.ts",
   "displayName": "Master-Detail with Firebase",
   "templateType": "App template",
-  "version": "9.0.0",
+  "version": "9.1.0",
   "description": "Master-detail interface to display collection of items from json collection and inspect and edit selected item properties. ",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -41,28 +41,28 @@
     "url": "https://github.com/NativeScript/NativeScript/issues"
   },
   "dependencies": {
-    "@angular/animations": "~18.0.0",
-    "@angular/common": "~18.0.0",
-    "@angular/compiler": "~18.0.0",
-    "@angular/core": "~18.0.0",
-    "@angular/forms": "~18.0.0",
-    "@angular/platform-browser": "~18.0.0",
-    "@angular/platform-browser-dynamic": "~18.0.0",
-    "@angular/router": "~18.0.0",
-    "@nativescript/angular": "^18.0.0",
-    "@nativescript/core": "~9.0.0",
+    "@angular/animations": "~22.0.0",
+    "@angular/common": "~22.0.0",
+    "@angular/compiler": "~22.0.0",
+    "@angular/core": "~22.0.0",
+    "@angular/forms": "~22.0.0",
+    "@angular/platform-browser": "~22.0.0",
+    "@angular/platform-browser-dynamic": "~22.0.0",
+    "@angular/router": "~22.0.0",
+    "@nativescript/angular": "~22.0.0",
+    "@nativescript/core": "~9.1.0",
     "@nativescript/imagepicker": "~3.1.0",
     "@nativescript/theme": "^3.1.0",
     "nativescript-ui-listview": "~15.2.0",
     "rxjs": "~7.8.0",
-    "zone.js": "~0.14.0"
+    "zone.js": "~0.16.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~18.0.0",
-    "@angular/compiler-cli": "~18.0.0",
+    "@angular-devkit/build-angular": "~22.0.0",
+    "@angular/compiler-cli": "~22.0.0",
     "@nativescript/types": "~9.0.0",
     "@nativescript/webpack": "~5.0.25",
-    "@ngtools/webpack": "~18.0.0",
-    "typescript": "~5.4.0"
+    "@ngtools/webpack": "~22.0.0",
+    "typescript": "~6.0.0"
   }
 }

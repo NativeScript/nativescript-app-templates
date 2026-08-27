@@ -7,10 +7,9 @@
     "lib": ["ESNext", "DOM"],
     "jsx": "preserve",
     "jsxImportSource": "@nativescript-dom/solidjs-types",
-    "baseUrl": ".",
     "paths": {
-      "~/*": ["src/*"],
-      "@/*": ["src/*"]
+      "~/*": ["./src/*"],
+      "@/*": ["./src/*"]
     },
     "noEmit": true,
     "allowJs": true,

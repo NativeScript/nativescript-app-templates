@@ -3,7 +3,7 @@
   "main": "app/app.ts",
   "displayName": "Master-Detail",
   "templateType": "App template",
-  "version": "9.0.0",
+  "version": "9.1.0",
   "description": "Master-detail interface to display collection of items from json collection and inspect and edit selected item properties.",
   "author": "NativeScript Team <oss@nativescript.org>",
   "license": "Apache-2.0",
@@ -39,7 +39,7 @@
     "url": "https://github.com/NativeScript/NativeScript/issues"
   },
   "dependencies": {
-    "@nativescript/core": "~9.0.0",
+    "@nativescript/core": "~9.1.0",
     "@nativescript/imagepicker": "~3.1.0",
     "@nativescript/theme": "^3.1.0",
     "nativescript-ui-listview": "~15.2.0",
@@ -48,6 +48,6 @@
   "devDependencies": {
     "@nativescript/types": "~9.0.0",
     "@nativescript/webpack": "~5.0.25",
-    "typescript": "~5.4.0"
+    "typescript": "~6.0.0"
   }
 }

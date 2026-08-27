@@ -1,6 +1,6 @@
 {
   "name": "@nativescript/template-blank-react-vision",
-  "version": "9.0.0",
+  "version": "9.1.0",
   "description": "Nativescript visionOS Starter with React",
   "author": "Jamie Birch <14055146+shirakaba@users.noreply.github.com>",
   "main": "src/app.ts",
@@ -41,7 +41,7 @@
     "Vision Pro"
   ],
   "dependencies": {
-    "@nativescript/core": "~9.0.0",
+    "@nativescript/core": "~9.1.0",
     "react": "^18.2.0",
     "react-nativescript": "^5.0.0",
     "react-nativescript-navigation": "^5.0.0"
@@ -52,7 +52,7 @@
     "@nativescript/webpack": "~5.0.25",
     "@types/react": "npm:types-react-without-jsx-intrinsics@^18.0.17",
     "tailwindcss": "~3.4.0",
-    "typescript": "~5.4.0"
+    "typescript": "~6.0.0"
   },
   "gitHead": "1350d382fb4b0ed4c6e9685df909518b2688e004",
   "readme": "NativeScript Application"
