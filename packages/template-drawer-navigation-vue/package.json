@@ -44,7 +44,7 @@
   "dependencies": {
     "@nativescript/core": "~9.1.0",
     "@nativescript-community/ui-drawer": "^0.1.31",
-    "nativescript-vue": "^3.0.0"
+    "nativescript-vue": "^3.1.1"
   },
   "devDependencies": {
     "@nativescript/tailwind": "^4.0.0",
