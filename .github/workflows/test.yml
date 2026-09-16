@@ -3,7 +3,69 @@ name: '@nativescript/template-* -> test'
 on: push
 
 jobs:
+  # Only templates whose files changed are built; anything they all share
+  # (shared-mobile, prepareTemplates.js, the root package files, this
+  # workflow) rebuilds every template. Vision and Solid templates are not
+  # built here, so the list below is the universe, not the packages dir.
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      templates: ${{ steps.list.outputs.templates }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - id: list
+        env:
+          BEFORE: ${{ github.event.before }}
+          ALL: |
+            template-blank
+            template-blank-vue-ts
+            template-hello-world-ng
+            template-tab-navigation
+            template-blank-ng
+            template-drawer-navigation
+            template-hello-world-ts
+            template-tab-navigation-ng
+            template-blank-react
+            template-drawer-navigation-ng
+            template-master-detail
+            template-tab-navigation-ts
+            template-blank-svelte
+            template-drawer-navigation-ts
+            template-master-detail-ng
+            template-tab-navigation-vue
+            template-blank-ts
+            template-drawer-navigation-vue
+            template-master-detail-ts
+            template-blank-vue
+            template-hello-world
+            template-master-detail-vue
+        run: |
+          if [ "$GITHUB_REF_NAME" = "main" ] && git cat-file -e "$BEFORE" 2>/dev/null; then
+            base=$BEFORE
+          else
+            base=$(git merge-base origin/main HEAD)
+          fi
+          changed=$(git diff --name-only "$base" HEAD | grep -vE '\.md$' || true)
+
+          if [ -z "$changed" ]; then
+            selected=""
+          elif echo "$changed" | grep -qvE '^packages/template-[^/]+/'; then
+            selected=$ALL
+          else
+            changedDirs=$(echo "$changed" | grep -oE '^packages/template-[^/]+' | xargs -n1 basename | sort -u)
+            selected=$(comm -12 <(echo "$ALL" | sort) <(echo "$changedDirs"))
+          fi
+
+          templates=$(printf '%s\n' $selected | grep . | jq -R . | jq -sc .)
+          echo "templates=$templates" >> "$GITHUB_OUTPUT"
+          echo "Building: $templates"
+
   test:
+    needs: changes
+    if: needs.changes.outputs.templates != '[]'
     runs-on: macos-15
 
     name: ${{ matrix.template }} (node ${{ matrix.node }})
@@ -11,29 +73,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        template:
-          - template-blank
-          - template-blank-vue-ts
-          - template-hello-world-ng
-          - template-tab-navigation
-          - template-blank-ng
-          - template-drawer-navigation
-          - template-hello-world-ts
-          - template-tab-navigation-ng
-          - template-blank-react
-          - template-drawer-navigation-ng
-          - template-master-detail
-          - template-tab-navigation-ts
-          - template-blank-svelte
-          - template-drawer-navigation-ts
-          - template-master-detail-ng
-          - template-tab-navigation-vue
-          - template-blank-ts
-          - template-drawer-navigation-vue
-          - template-master-detail-ts
-          - template-blank-vue
-          - template-hello-world
-          - template-master-detail-vue
+        template: ${{ fromJSON(needs.changes.outputs.templates) }}
         node: ['lts/*']
 
     steps:
