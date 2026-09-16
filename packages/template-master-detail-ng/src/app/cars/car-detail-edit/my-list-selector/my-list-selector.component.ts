@@ -9,6 +9,7 @@ import { MyListSelectorModalViewComponent } from './my-list-selector-modal-view.
 const capitalizeFirstLetter = (s) => s.charAt(0).toUpperCase() + s.slice(1)
 
 @Component({
+  standalone: false,
   providers: [ModalDialogService],
   selector: 'MyListSelector',
   templateUrl: './my-list-selector.component.html',

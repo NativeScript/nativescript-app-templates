@@ -6,6 +6,7 @@ import { Car } from '../shared/car.model'
 import { CarService } from '../shared/car.service'
 
 @Component({
+  standalone: false,
   selector: 'CarDetail',
   templateUrl: './car-detail.component.html',
 })

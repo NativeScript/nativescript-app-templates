@@ -17,6 +17,7 @@ const MY_IMAGE_ADD_REMOVE_CONTROL_VALUE_ACCESSOR = {
  * an image and provides custom logic and design to the process.
  *************************************************************/
 @Component({
+  standalone: false,
   selector: 'MyImageAddRemove',
   templateUrl: './my-image-add-remove.component.html',
   styleUrls: ['./my-image-add-remove.component.scss'],
