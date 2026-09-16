@@ -2,6 +2,11 @@ name: '@nativescript/template-* -> test'
 
 on: push
 
+# a newer push to the same branch supersedes any run still in progress
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   # Only templates whose files changed are built; anything they all share
   # (shared-mobile, prepareTemplates.js, the root package files, this
