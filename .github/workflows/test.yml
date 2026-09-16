@@ -9,6 +9,7 @@ jobs:
     name: ${{ matrix.template }} (node ${{ matrix.node }})
 
     strategy:
+      fail-fast: false
       matrix:
         template:
           - template-blank
