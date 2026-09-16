@@ -5,6 +5,7 @@ import { RouterExtensions } from '@nativescript/angular'
 import { DataService, DataItem } from '../../shared/data.service'
 
 @Component({
+  standalone: false,
   selector: 'ItemDetail',
   templateUrl: './item-detail.component.html',
 })

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core'
 import { DataService, DataItem } from '../shared/data.service'
 
 @Component({
+  standalone: false,
   selector: 'Home',
   templateUrl: './home.component.html',
 })

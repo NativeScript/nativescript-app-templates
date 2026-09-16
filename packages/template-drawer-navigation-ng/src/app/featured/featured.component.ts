@@ -3,6 +3,7 @@ import { RadSideDrawer } from 'nativescript-ui-sidedrawer'
 import { Application } from '@nativescript/core'
 
 @Component({
+  standalone: false,
   selector: 'Featured',
   templateUrl: './featured.component.html',
 })

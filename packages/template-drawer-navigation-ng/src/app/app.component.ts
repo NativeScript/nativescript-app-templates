@@ -10,6 +10,7 @@ import { filter } from 'rxjs/operators'
 import { Application } from '@nativescript/core'
 
 @Component({
+  standalone: false,
   selector: 'ns-app',
   templateUrl: 'app.component.html',
 })

@@ -2,6 +2,7 @@ import { Component } from '@angular/core'
 import { ModalDialogParams } from '@nativescript/angular'
 
 @Component({
+  standalone: false,
   selector: 'MyListSelectorModalView',
   templateUrl: './my-list-selector-modal-view.component.html',
   styleUrls: ['./my-list-selector-modal-view.component.scss'],
