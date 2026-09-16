@@ -157,4 +157,8 @@ jobs:
 
       - name: Build
         working-directory: myApp
+        env:
+          # the Linux image ships the SDK without the emulator package, which
+          # is all the CLI's pre-build check complains about
+          NS_SKIP_ENV_CHECK: ${{ matrix.platform == 'android' && '1' || '' }}
         run: ns build ${{ matrix.platform }}
