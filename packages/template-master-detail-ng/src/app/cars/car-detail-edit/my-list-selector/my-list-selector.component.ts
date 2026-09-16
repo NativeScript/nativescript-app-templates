@@ -16,9 +16,9 @@ const capitalizeFirstLetter = (s) => s.charAt(0).toUpperCase() + s.slice(1)
 })
 export class MyListSelectorComponent implements OnInit {
   @Input() tag: string
-  @Input() items: Array<string>
-  @Input() selectedValue: string
-  @Output() selectedValueChange = new EventEmitter<string>()
+  @Input() items: Array<string | number>
+  @Input() selectedValue: string | number
+  @Output() selectedValueChange = new EventEmitter<string | number>()
 
   private _carEditModel: Car
 
@@ -56,7 +56,7 @@ export class MyListSelectorComponent implements OnInit {
 
     this._modalService
       .showModal(MyListSelectorModalViewComponent, options)
-      .then((selectedValue: string) => {
+      .then((selectedValue: string | number) => {
         if (selectedValue) {
           this.selectedValue = selectedValue
           this.selectedValueChange.emit(this.selectedValue)

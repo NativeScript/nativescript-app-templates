@@ -4,7 +4,7 @@
 </ActionBar>
 
 <GridLayout>
-  <RadListView [items]="cars" (itemTap)="onCarItemTap($event)" class="cars-list">
+  <RadListView [items]="cars" (itemTap)="onCarItemTap($any($event))" class="cars-list">
     <ng-template tkListItemTemplate let-car="item">
       <StackLayout class="cars-list__item">
         <GridLayout rows="*, *, *" columns="*, *" class="cars-list__item-content">
