@@ -2,6 +2,9 @@ name: '@nativescript/template-* -> test'
 
 on: push
 
+permissions:
+  contents: read
+
 # a newer push to the same branch supersedes any run still in progress
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
