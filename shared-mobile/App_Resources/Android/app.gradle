@@ -4,13 +4,13 @@ dependencies {
 }
 
 android {
-  compileSdkVersion 35
-  buildToolsVersion "35"
+  compileSdkVersion 36
+  buildToolsVersion "36"
   // ndkVersion ""
 
   defaultConfig {
     minSdkVersion 24
-    targetSdkVersion 35
+    targetSdkVersion 36
 
     // Version Information
     versionCode 1

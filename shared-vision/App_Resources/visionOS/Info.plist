@@ -41,5 +41,12 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIApplicationSceneManifest</key>
+    <dict>
+      <key>UIApplicationPreferredDefaultSceneSessionRole</key>
+      <string>UIWindowSceneSessionRoleApplication</string>
+      <key>UIApplicationSupportsMultipleScenes</key>
+      <true/>
+    </dict>
 </dict>
 </plist>
