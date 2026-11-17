@@ -1,0 +1,231 @@
+diff --git a/node_modules/solid-navigation/dist/src/context.js b/node_modules/solid-navigation/dist/src/context.js
+index e17ece1..1696673 100644
+--- a/node_modules/solid-navigation/dist/src/context.js
++++ b/node_modules/solid-navigation/dist/src/context.js
+@@ -1,17 +1,17 @@
+ import { createContext, useContext } from "solid-js";
+-export const NavigationContextInternal = createContext();
++export const NavigationContextInternal = createContext(null);
+ export function useRouterInternal() {
+     return useContext(NavigationContextInternal);
+ }
+-export const NavigationContext = createContext();
++export const NavigationContext = createContext(null);
+ export function useRouter() {
+     return useContext(NavigationContext);
+ }
+-export const ParamsContext = createContext();
++export const ParamsContext = createContext(null);
+ export function useParams() {
+     return useContext(ParamsContext);
+ }
+-export const RouteContext = createContext();
++export const RouteContext = createContext(null);
+ export function useRoute() {
+     return useContext(RouteContext);
+ }
+diff --git a/node_modules/solid-navigation/dist/src/route.jsx b/node_modules/solid-navigation/dist/src/route.jsx
+index ce2c277..e9f0c17 100644
+--- a/node_modules/solid-navigation/dist/src/route.jsx
++++ b/node_modules/solid-navigation/dist/src/route.jsx
+@@ -1,4 +1,4 @@
+-import { onCleanup, onMount } from "solid-js";
++import { onSettled } from "solid-js";
+ import { useRouter, useRouterInternal } from "./context";
+ export const Route = (props) => {
+     const router = useRouter();
+@@ -9,16 +9,22 @@ export const Route = (props) => {
+         routeOptions: props.routeOptions,
+         pageProps: props.pageProps,
+     };
+-    onMount(() => {
++    onSettled(() => {
+         routerInternal === null || routerInternal === void 0 ? void 0 : routerInternal.pushRoute(route);
+-        if ((router === null || router === void 0 ? void 0 : router.initialRouteName) === props.name && !router.current()) {
+-            router === null || router === void 0 ? void 0 : router.navigate(props.name, {
+-                params: props.initialParams,
++        if ((router === null || router === void 0 ? void 0 : router.initialRouteName) === props.name) {
++            // Navigating renders the page, and render() flushes — which Solid
++            // forbids inside onSettled — so the first navigation runs after it.
++            queueMicrotask(() => {
++                if (!router.current()) {
++                    router.navigate(props.name, {
++                        params: props.initialParams,
++                    });
++                }
+             });
+         }
+-    });
+-    onCleanup(() => {
+-        routerInternal === null || routerInternal === void 0 ? void 0 : routerInternal.removeRoute(route);
++        return () => {
++            routerInternal === null || routerInternal === void 0 ? void 0 : routerInternal.removeRoute(route);
++        };
+     });
+     return null;
+ };
+diff --git a/node_modules/solid-navigation/dist/src/stack-item.jsx b/node_modules/solid-navigation/dist/src/stack-item.jsx
+index b3b02b7..7aa705d 100644
+--- a/node_modules/solid-navigation/dist/src/stack-item.jsx
++++ b/node_modules/solid-navigation/dist/src/stack-item.jsx
+@@ -1,12 +1,12 @@
+ import { NavigationContext, ParamsContext, RouteContext } from "./context";
+ export function StackItem(props) {
+     const RouteComponent = props.route.component;
+-    return (<NavigationContext.Provider value={props.context}>
+-      <ParamsContext.Provider value={props.paramAccessor}>
+-        <RouteContext.Provider value={props.route}>
++    return (<NavigationContext value={props.context}>
++      <ParamsContext value={props.paramAccessor}>
++        <RouteContext value={props.route}>
+           <RouteComponent />
+-        </RouteContext.Provider>
+-      </ParamsContext.Provider>
+-    </NavigationContext.Provider>);
++        </RouteContext>
++      </ParamsContext>
++    </NavigationContext>);
+ }
+ //# sourceMappingURL=stack-item.jsx.map
+\ No newline at end of file
+diff --git a/node_modules/solid-navigation/dist/src/stack-router.jsx b/node_modules/solid-navigation/dist/src/stack-router.jsx
+index 07bb41e..edc7b87 100644
+--- a/node_modules/solid-navigation/dist/src/stack-router.jsx
++++ b/node_modules/solid-navigation/dist/src/stack-router.jsx
+@@ -1,7 +1,7 @@
+ import { render } from "@nativescript-community/solid-js";
+ import { Frame } from "@nativescript/core";
+ import { isNullOrUndefined } from "@nativescript/core/utils";
+-import { createStore } from "solid-js/store";
++import { createStore } from "solid-js";
+ import { NavigationContext, NavigationContextInternal, useParams as useParamsDefault, useRoute as useRouteDefault, useRouter as userRouterDefault, } from "./context";
+ import { Route as RouteInternal } from "./route";
+ import { StackItem } from "./stack-item";
+@@ -25,14 +25,16 @@ export function createStackRouter(routes) {
+             ? undefined
+             : Frame.topmost();
+         const parentContext = useRouter();
++        // Store writes are not readable until the next flush, so lookups go through
++        // this plain array: <Route> registers and navigates in the same tick.
++        const routeList = getRoutes(routes);
+         const [state, setState] = createStore({
+-            routes: getRoutes(routes),
++            routes: [...routeList],
+             stack: [],
+         });
+         const navigate = (routeName, options) => {
+             var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
+-            const routeIndex = state.routes.findIndex((route) => route.name === routeName);
+-            const route = state.routes[routeIndex];
++            const route = routeList.find((r) => r.name === routeName);
+             if (!route)
+                 //@ts-ignore
+                 return console.warn(`Trying to navigate to a route "${routeName}" that does not exist in the route map.`);
+@@ -54,18 +56,19 @@ export function createStackRouter(routes) {
+                                 ((_d = route.routeOptions) === null || _d === void 0 ? void 0 : _d.noHeader) ||
+                                 false;
+                     }
+-                    const [paramAccessor, paramSetter] = createStore((options === null || options === void 0 ? void 0 : options.params) || route.params);
++                    const [paramAccessor, paramSetter] = createStore((options === null || options === void 0 ? void 0 : options.params) || route.params || {});
+                     const stackItem = Object.assign(Object.assign({}, route), { id: page.id, ref: page, params: (options === null || options === void 0 ? void 0 : options.params) || route.params, setParams: paramSetter });
+-                    setState("stack", (stack) => {
+-                        return [...stack, stackItem];
++                    setState((s) => {
++                        s.stack.push(stackItem);
+                     });
+                     const disposer = render(() => (<StackItem context={context} paramAccessor={paramAccessor} route={stackItem}/>), page);
+                     const disposeNativeView = () => {
+                         //@ts-ignore
+                         disposer();
+-                        setState("stack", (routes) => {
+-                            const _routes = [...routes].splice(routes.findIndex((r) => r.id === page.id), 1);
+-                            return _routes;
++                        setState((s) => {
++                            const index = s.stack.findIndex((r) => r.id === page.id);
++                            if (index > -1)
++                                s.stack.splice(index, 1);
+                         });
+                         page.off("disposeNativeView", disposeNativeView);
+                     };
+@@ -98,36 +101,45 @@ export function createStackRouter(routes) {
+                 frameRef = !props.useTopMostFrame ? frameRef : Frame.topmost();
+                 frameRef === null || frameRef === void 0 ? void 0 : frameRef.goBack();
+             },
+-            routes: state.routes,
+-            stack: state.stack,
++            get routes() {
++                return state.routes;
++            },
++            get stack() {
++                return state.stack;
++            },
+             current: () => state.stack[state.stack.length - 1],
+             initialRouteName: props.initialRouteName,
+             parent: () => parentContext,
+         };
+         const contextInternal = {
+             pushRoute: (route) => {
+-                if (state.routes.findIndex((r) => r.name === route.name) > -1)
++                if (routeList.findIndex((r) => r.name === route.name) > -1)
+                     return;
+-                setState("routes", (routes) => [...routes, route]);
++                routeList.push(route);
++                setState((s) => {
++                    s.routes.push(route);
++                });
+             },
+             removeRoute: (route) => {
+-                const index = state.routes.findIndex((r) => r.name === route.name);
++                const index = routeList.findIndex((r) => r.name === route.name);
+                 if (index > -1) {
+-                    setState("routes", (routes) => {
+-                        const _routes = [...routes].splice(index, 1);
+-                        return _routes;
++                    routeList.splice(index, 1);
++                    setState((s) => {
++                        const i = s.routes.findIndex((r) => r.name === route.name);
++                        if (i > -1)
++                            s.routes.splice(i, 1);
+                     });
+                 }
+             },
+         };
+-        return (<NavigationContextInternal.Provider value={contextInternal}>
+-        <NavigationContext.Provider value={context}>
++        return (<NavigationContextInternal value={contextInternal}>
++        <NavigationContext value={context}>
+           {!props.useTopMostFrame ? (<frame {...props.frameProps} ref={(ref) => {
+                     frameRef = ref;
+                 }}/>) : null}
+           {props.children}
+-        </NavigationContext.Provider>
+-      </NavigationContextInternal.Provider>);
++        </NavigationContext>
++      </NavigationContextInternal>);
+     };
+     return (() => ({
+         Route: RouteInternal,
+diff --git a/node_modules/solid-navigation/nativescript.webpack.js b/node_modules/solid-navigation/nativescript.webpack.js
+index 907ce4a..b8b797b 100644
+--- a/node_modules/solid-navigation/nativescript.webpack.js
++++ b/node_modules/solid-navigation/nativescript.webpack.js
+@@ -12,15 +12,16 @@ module.exports = (webpack) =>
+         .options({
+           babelrc: false,
+           configFile: false,
+-          presets: [
++          presets: ["@babel/typescript"],
++          plugins: [
+             [
+-              "babel-preset-solid",
++              "@solidjs/babel-plugin",
+               {
+                 moduleName: "@nativescript-community/solid-js",
+                 generate: "universal",
++                hydratable: false,
+               },
+             ],
+-            "@babel/typescript",
+           ],
+         });
+     },

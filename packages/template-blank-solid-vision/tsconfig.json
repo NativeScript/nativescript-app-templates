@@ -21,7 +21,7 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
-    "outDir": "dist",
+    "noEmit": true,
     "maxNodeModuleJsDepth": 5
   },
   "include": ["src"],

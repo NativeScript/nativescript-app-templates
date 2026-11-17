@@ -2,6 +2,7 @@ import { JSX } from "@nativescript-dom/solidjs-types/jsx-runtime";
 import {
   children,
   createSignal,
+  flush,
   getOwner,
   Owner,
   runWithOwner,
@@ -61,14 +62,18 @@ export const List: Component<
                     renderItem({ item, index, type: type })
                   );
                   event.view = element() as never;
+                  // The list measures the cell as soon as itemLoading returns,
+                  // so the recycled view must update synchronously.
                   (event.view as any).__update_solid_context = (
                     item: any,
                     index: number,
                     type: string
                   ) => {
-                    setItem(item);
-                    setIndex(index);
-                    setType(type);
+                    flush(() => {
+                      setItem(item);
+                      setIndex(index);
+                      setType(type);
+                    });
                   };
                 });
               }}

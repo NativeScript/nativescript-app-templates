@@ -34,7 +34,9 @@ declare module "@nativescript-dom/solidjs-types/jsx-runtime" {
        * Register custom library view
        */
       collectionview: Partial<
-        HTMLListViewElementAttributes<HTMLCollectionViewElement>
+        HTMLListViewElementAttributes<HTMLCollectionViewElement> & {
+          children: JSX.Element;
+        }
       >;
 
       /**
@@ -50,11 +52,13 @@ declare module "@nativescript-dom/solidjs-types/jsx-runtime" {
       arrayprop: Partial<
         HTMLViewBaseElementAttributes & {
           key: string;
+          children: JSX.Element;
         }
       >;
       keyprop: Partial<
         HTMLViewBaseElementAttributes & {
           key: string;
+          children: JSX.Element;
         }
       >;
     }
