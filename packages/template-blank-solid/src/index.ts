@@ -5,7 +5,7 @@ import { App } from './app'
 Application.run({
   create: () => {
     document.body.actionBarHidden = true
-    render(() => <App />, document.body)
+    render(App, document.body)
     return document
   },
 })
