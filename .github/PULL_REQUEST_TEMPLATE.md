@@ -11,7 +11,7 @@ To help the rest of the community review your change, please follow the instruct
 
 - [ ] The PR title follows our guidelines: https://github.com/NativeScript/NativeScript/blob/main/CONTRIBUTING.md#commit-messages.
 - [ ] There is an issue for the bug/feature this PR is for. To avoid wasting your time, it's best to open a suggestion issue first and wait for approval before working on it.
-- [ ] You have signed the [CLA](http://www.nativescript.org/cla).
+- [ ] You have read and signed the [CLA](https://github.com/NativeScript/.github/blob/master/CLA.md) (first-time contributors can sign directly on the PR by commenting `I have read the CLA and I hereby sign the CLA`).
 - [ ] All existing tests are passing: https://github.com/NativeScript/NativeScript/blob/main/DevelopmentWorkflow.md#running-unit-tests.
 
 ## What is the current behavior?
